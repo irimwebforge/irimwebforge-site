@@ -18,4 +18,4 @@ Site web professionnel présentant les services de développement d'interfaces a
 - `app/` - Pages et routes (App Router)
 - `components/` - Composants réutilisables
 - `lib/` - Utilitaires et types
-- `public/` - Assets statiques
+- `public/` - Assets statiques# Updated on Mon May  5 11:27:06 CEST 2025
