@@ -1,26 +1,130 @@
+/* Import Tailwind directement avec l'instruction @import standard */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Couleurs principales */
+  --color-primary: #00A0A0;
+  --color-secondary: #004466;
+  --color-tertiary: #F06424;
+
+  /* Neutres */
+  --color-black: #111111;
+  --color-white: #EEEEEE;
+
+  /* Typographie */
+  --font-display: "Noto Sans", system-ui, sans-serif;
+  --font-body: "Questrial", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  /* Couleurs de base */
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Couleurs de surface */
+  --surface-primary: #ffffff;
+  --surface-secondary: #f5f5f5;
+  --surface-tertiary: #e5e5e5;
+
+  /* Couleurs de texte */
+  --text-primary: #171717;
+  --text-secondary: #525252;
+  --text-tertiary: #737373;
+
+  /* Bordures */
+  --border-color: #e5e5e5;
+  --border-color-hover: #d4d4d4;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Couleurs de base */
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #f5f5f5;
+
+    /* Couleurs de surface */
+    --surface-primary: #171717;
+    --surface-secondary: #262626;
+    --surface-tertiary: #404040;
+
+    /* Couleurs de texte */
+    --text-primary: #f5f5f5;
+    --text-secondary: #a3a3a3;
+    --text-tertiary: #737373;
+
+    /* Bordures */
+    --border-color: #404040;
+    --border-color-hover: #525252;
+
+    /* Ajustement des couleurs principales pour le mode sombre */
+    --color-primary: #00b3b3;
+    --color-secondary: #005577;
+    --color-tertiary: #ff7a3d;
   }
 }
 
+/* Les styles globaux */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--color-primary);
+  transition-property: color;
+  transition-duration: 200ms;
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+/* Classes utilitaires personnalisées */
+@layer utilities {
+  .gradient-primary {
+    background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .surface-primary {
+    background-color: var(--surface-primary);
+  }
+
+  .surface-secondary {
+    background-color: var(--surface-secondary);
+  }
+
+  .surface-tertiary {
+    background-color: var(--surface-tertiary);
+  }
+
+  .text-primary {
+    color: var(--text-primary);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-tertiary {
+    color: var(--text-tertiary);
+  }
+
+  .border-color {
+    border-color: var(--border-color);
+  }
+
+  .border-color-hover {
+    border-color: var(--border-color-hover);
+  }
 }
