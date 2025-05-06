@@ -38,7 +38,7 @@ export const FormField: React.FC<FormFieldProps> = ({
   disabled = false,
   fullWidth = true,
 }) => {
-  const fieldId = `field-${id}`;
+  const fieldId = id;
   const baseClasses = `${fullWidth ? 'w-full' : ''} ${className}`;
   
   // Champ textarea

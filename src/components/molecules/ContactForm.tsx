@@ -47,8 +47,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { id, value } = e.target;
-    // On extrait le nom du champ depuis l'id (supprime 'field-' du début)
-    const fieldName = id.replace('field-', '');
+    // On extrait le nom du champ depuis l'id (supprime 'contact-' du début)
+    const fieldName = id.replace('contact-', '');
     
     setFormData((prev) => ({
       ...prev,
@@ -172,7 +172,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Nom */}
         <FormField
-          id="name"
+          id="contact-name"
           label="Nom complet"
           placeholder="Votre nom et prénom"
           required
@@ -183,7 +183,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         
         {/* Email */}
         <FormField
-          id="email"
+          id="contact-email"
           label="Adresse email"
           type="email"
           placeholder="exemple@domaine.com"
@@ -197,7 +197,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Téléphone */}
         <FormField
-          id="phone"
+          id="contact-phone"
           label="Téléphone"
           type="tel"
           placeholder="06 12 34 56 78"
@@ -208,7 +208,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         
         {/* Type de projet */}
         <FormField
-          id="projectType"
+          id="contact-projectType"
           label="Type de projet"
           type="select"
           placeholder="Sélectionnez une option"
@@ -222,7 +222,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       
       {/* Message */}
       <FormField
-        id="message"
+        id="contact-message"
         label="Votre projet"
         type="textarea"
         placeholder="Décrivez votre projet, vos besoins et votre univers"

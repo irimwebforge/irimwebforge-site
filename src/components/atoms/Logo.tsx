@@ -11,6 +11,7 @@ interface LogoProps {
   variant?: 'logo' | 'banner';
   mode?: 'auto' | 'light' | 'dark' | 'default';
   onClick?: () => void;
+  priority?: boolean;
 }
 
 export const Logo = ({
@@ -21,6 +22,7 @@ export const Logo = ({
   variant = 'logo',
   mode = 'auto',
   onClick,
+  priority = false,
 }: LogoProps) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -65,18 +67,30 @@ export const Logo = ({
   }
 
   // Assurez-vous que les dimensions sont appropriées pour le variant
-  const finalWidth = width;
-  const finalHeight = variant === 'banner' ? (height * 1.5) : height;
+  const finalWidth = width || 200;
+  const finalHeight = variant === 'banner' ? Math.round(finalWidth * 0.3) : Math.round(finalWidth * 0.3);
 
   return (
-    <div className={`logo-container ${className}`} onClick={onClick}>
+    <div 
+      className={`logo-container ${className}`} 
+      onClick={onClick}
+      style={{ 
+        width: finalWidth ? `${finalWidth}px` : 'auto',
+        maxWidth: '100%',
+      }}
+    >
       <Image
         src={logoPath}
         alt="IRIM Webforge"
         width={finalWidth}
         height={finalHeight}
-        priority
+        quality={90}
+        priority={priority}
         className="logo-image"
+        style={{ 
+          maxWidth: '100%',
+          height: 'auto'
+        }}
       />
     </div>
   );
