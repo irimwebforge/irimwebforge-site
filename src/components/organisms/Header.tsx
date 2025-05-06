@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '../atoms/Button';
+import { Logo } from '../atoms/Logo';
 
 interface NavLinkProps {
   href: string;
@@ -21,13 +22,12 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="py-4 border-b border-gray-200 bg-white">
+    <header className="py-4 border-b border-color surface-primary">
       <div className="mx-auto px-4 sm:px-6 max-w-6xl">
         <div className="flex justify-between items-center">
-          <div className="font-bold text-xl">
-            <span className="text-[var(--color-primary)]">IRIM</span>
-            <span className="text-[var(--color-secondary)]">Webforge</span>
-          </div>
+          <Link href="/">
+            <Logo width={120} height={40} />
+          </Link>
 
           <nav className="hidden md:flex items-center space-x-6">
             <NavLink href="/">Accueil</NavLink>

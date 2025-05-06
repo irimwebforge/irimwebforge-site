@@ -1,0 +1,92 @@
+{
+    "projectName": "IrimWebForge",
+    "projectDescription": "Site web freelance spécialisé en interfaces administratives sur mesure",
+    "contextInstructions": {
+      "vision": "IrimWebForge est une entreprise freelance spécialisée dans la création d'interfaces administratives sur mesure (hors CMS), avec une approche artisanale et personnalisée. La promesse fondamentale est 'Des sites web qui vous ressemblent vraiment'.",
+      "identity": {
+        "colors": {
+          "primary": "#00A0A0",
+          "secondary": "#F06424",
+          "tertiary": "#004466",
+          "neutralBlack": "#111111", 
+          "neutralWhite": "#EEEEEE"
+        },
+        "typography": {
+          "headings": "Noto Sans (italique gras pour titres principaux)",
+          "body": "Questrial ou système sans-serif",
+          "logoText": "IRIM (turquoise) + Webforge (bleu foncé)"
+        },
+        "style": "Épuré, artisanal, chaleureux, professionnel"
+      },
+      "structure": {
+        "framework": "Next.js avec TypeScript",
+        "styling": "TailwindCSS",
+        "architecture": "Atomic Design",
+        "priorityPages": [
+          "Home (HeroSection, ValueProposition, aperçu projet, formulaire contact)",
+          "Contact (Formulaire qualification lead, infos contact)",
+          "Structure globale (NavBar, Footer)"
+        ],
+        "priorityComponents": [
+          "Système design (couleurs, typographie, espacement)",
+          "Boutons (primaire, secondaire, outline, lien)",
+          "Formulaires (champs texte, select, textarea)",
+          "Cartes (projets, services, étapes processus)"
+        ]
+      },
+      "audience": "Thérapeutes, artisans créatifs, startups innovantes et entrepreneurs cherchant une présence web authentique",
+      "tonalité": {
+        "style": "Professionnel mais chaleureux",
+        "approche": "Personnel sans être familier",
+        "technique": "Pédagogue sur les aspects techniques",
+        "passion": "Passionné pour l'artisanat digital"
+      },
+      "antiPatterns": [
+        "Design trop générique type Bootstrap/template",
+        "Surcharge visuelle ou animations excessives",
+        "Jargon technique sans explication",
+        "Trop de composants importés (privilégier code sur mesure)",
+        "Design ne reflétant pas l'approche 'artisanale'"
+      ]
+    },
+    "developmentGuidelines": {
+      "atomicDesign": {
+        "atoms": [
+          "Logo - Composant React basé sur texte stylisé",
+          "Button - Styles selon design system",
+          "Typography - Styles texte selon design",
+          "Input - Styles formulaire selon design",
+          "Colors - Variables CSS pour palette",
+          "Spacing - Système d'espacement cohérent"
+        ],
+        "molecules": [
+          "NavItem - Élément de navigation",
+          "Card - Pour services et projets",
+          "Testimonial - Témoignage client",
+          "FormField - Champs avec labels et validation"
+        ],
+        "organisms": [
+          "NavBar - Navigation responsive",
+          "Footer - Pied de page standard",
+          "HeroSection - Section 'Des sites qui vous ressemblent'",
+          "ContactForm - Formulaire contact/qualification",
+          "ProjectShowcase - Galerie projet CBD-Shop"
+        ],
+        "implementationOrder": [
+          "Extraire composants atoms du design system",
+          "Créer variables CSS/SCSS pour couleurs/espacements",
+          "Implémenter NavBar et Footer",
+          "Créer structure page par défaut",
+          "Développer page d'accueil MVP",
+          "Implémenter page contact fonctionnelle"
+        ]
+      },
+      "codingStandards": {
+        "tailwind": "Utiliser approche utility-first",
+        "components": "Privilégier composants fonctionnels avec hooks",
+        "typeScript": "Typer correctement tous les composants",
+        "accessibility": "Suivre WCAG niveau AA",
+        "responsive": "Mobile-first approach"
+      }
+    }
+  }
