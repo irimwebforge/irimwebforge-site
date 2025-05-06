@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Typography } from '@/components/atoms/Typography';
+import { Icon } from '@/components/atoms/Icon';
 
 export interface CarouselProps {
   className?: string;
@@ -271,9 +272,7 @@ export const Carousel: React.FC<CarouselProps> = ({
               }}
               aria-label="Slide précédent"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
+              <Icon name="ChevronLeft" size={24} />
             </button>
             
             <button
@@ -284,9 +283,7 @@ export const Carousel: React.FC<CarouselProps> = ({
               }}
               aria-label="Slide suivant"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              <Icon name="ChevronRight" size={24} />
             </button>
           </>
         )}

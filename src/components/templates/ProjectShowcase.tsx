@@ -13,7 +13,7 @@ export type Project = {
   id: string;
   title: string;
   slug: string;
-  imageSrc: string;
+  imageUrl: string;
   thumbnailSrc?: string;
   tags: Array<{
     id: string;
@@ -33,7 +33,6 @@ export interface ProjectShowcaseProps {
   description?: string;
   projects: Project[];
   categories?: string[];
-  variant?: 'grid' | 'masonry' | 'carousel';
   showFilters?: boolean;
   maxProjects?: number;
   showMoreButton?: boolean;
@@ -51,7 +50,6 @@ export const ProjectShowcase = ({
   description,
   projects,
   categories = [],
-  variant = 'grid',
   showFilters = true,
   maxProjects = 6,
   showMoreButton = true,
@@ -111,7 +109,7 @@ export const ProjectShowcase = ({
       <Container>
         {/* En-tête de la section */}
         <div className="text-center mb-12">
-          <Typography as="h2" variant="h2" className="mb-3">
+          <Typography as="h2" variant="h2" className="mb-3 font-bold italic">
             {title}
           </Typography>
           
@@ -150,7 +148,7 @@ export const ProjectShowcase = ({
               id={project.id}
               title={project.title}
               slug={project.slug}
-              imageSrc={project.imageSrc}
+              imageSrc={project.imageUrl}
               tags={project.tags}
               description={project.description}
               clientName={project.clientName}
@@ -164,7 +162,7 @@ export const ProjectShowcase = ({
         {showMoreButton && filteredProjects.length > maxProjects && (
           <div className="text-center">
             <Link href={moreButtonLink}>
-              <Button variant="outline">
+              <Button variant="secondary">
                 {moreButtonText}
               </Button>
             </Link>

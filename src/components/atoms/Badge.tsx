@@ -16,9 +16,22 @@ export interface BadgeProps {
   onClick?: () => void;
 }
 
+// Fonction utilitaire pour déterminer si un badge devrait utiliser la couleur tertiaire par défaut
+const shouldUseTertiary = (children: React.ReactNode): boolean => {
+  if (typeof children !== 'string') return false;
+  
+  const text = children.toLowerCase();
+  return text.includes('nouveau') || 
+         text.includes('new') || 
+         text.includes('featured') || 
+         text.includes('à la une') || 
+         text.includes('important') || 
+         text.includes('promo');
+};
+
 export const Badge: React.FC<BadgeProps> = ({
   children,
-  variant = 'default',
+  variant: providedVariant,
   size = 'medium',
   shape = 'rounded',
   icon,
@@ -31,6 +44,9 @@ export const Badge: React.FC<BadgeProps> = ({
   maxCount = 99,
   onClick,
 }) => {
+  // Utiliser la couleur tertiaire par défaut pour certains badges
+  const variant = providedVariant || (shouldUseTertiary(children) ? 'tertiary' : 'default');
+
   // Couleurs de base selon la variante
   const variantClasses = {
     default: isSolid 
@@ -38,13 +54,13 @@ export const Badge: React.FC<BadgeProps> = ({
       : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200',
     primary: isSolid 
       ? 'bg-[var(--color-primary)] text-white' 
-      : 'bg-[var(--color-primary)] bg-opacity-10 text-[var(--color-primary)]',
+      : 'bg-[var(--color-primary)]/10 text-[var(--color-primary)]',
     secondary: isSolid 
       ? 'bg-[var(--color-secondary)] text-white' 
-      : 'bg-[var(--color-secondary)] bg-opacity-10 text-[var(--color-secondary)]',
+      : 'bg-[var(--color-secondary)]/10 text-[var(--color-secondary)]',
     tertiary: isSolid 
       ? 'bg-[var(--color-tertiary)] text-white' 
-      : 'bg-[var(--color-tertiary)] bg-opacity-10 text-[var(--color-tertiary)]',
+      : 'bg-amber-50 text-[var(--color-tertiary)]',
     success: isSolid 
       ? 'bg-green-600 text-white' 
       : 'bg-green-100 text-green-800 dark:bg-green-900 dark:bg-opacity-20 dark:text-green-400',

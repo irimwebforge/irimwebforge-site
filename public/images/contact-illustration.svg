@@ -1,0 +1,26 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond abstrait -->
+  <rect width="500" height="500" fill="#f5f7fa" />
+  
+  <!-- Éléments de design abstraits -->
+  <circle cx="250" cy="250" r="150" fill="#e2f0f0" />
+  <path d="M50,250 Q150,50 250,250 T450,250" stroke="#00B3B3" stroke-width="8" fill="none" />
+  <path d="M50,350 Q150,150 250,350 T450,350" stroke="#F06424" stroke-width="5" fill="none" opacity="0.6" />
+
+  <!-- Éléments du formulaire stylisés -->
+  <rect x="150" y="150" width="200" height="40" rx="5" fill="white" stroke="#004466" stroke-width="2" />
+  <rect x="150" y="210" width="200" height="40" rx="5" fill="white" stroke="#004466" stroke-width="2" />
+  <rect x="150" y="270" width="200" height="80" rx="5" fill="white" stroke="#004466" stroke-width="2" />
+  
+  <!-- Bouton d'envoi stylisé -->
+  <rect x="150" y="370" width="200" height="40" rx="20" fill="url(#gradient)" />
+  <text x="250" y="395" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Envoyer</text>
+  
+  <!-- Dégradé pour le bouton -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00B3B3" />
+      <stop offset="100%" stop-color="#004466" />
+    </linearGradient>
+  </defs>
+</svg> 

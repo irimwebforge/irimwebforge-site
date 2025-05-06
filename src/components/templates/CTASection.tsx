@@ -11,7 +11,7 @@ import Image from 'next/image';
 export type Action = {
   text: string;
   url: string;
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'gradient';
   size?: 'sm' | 'md' | 'lg';
 };
 
@@ -35,6 +35,8 @@ export interface CTASectionProps {
     author: string;
     role?: string;
   };
+  borderLeft?: string;
+  borderColor?: string;
 }
 
 /**
@@ -55,6 +57,8 @@ export const CTASection = ({
   imagePosition = 'right',
   className = '',
   testimonial,
+  borderLeft,
+  borderColor,
 }: CTASectionProps) => {
   // Si la variante est 'default' et que les actions sont fournies,
   // nous utilisons directement le composant CallToAction
@@ -68,20 +72,21 @@ export const CTASection = ({
             primaryAction={{
               text: primaryAction.text,
               url: primaryAction.url,
-              variant: primaryAction.variant || 'primary',
+              variant: primaryAction.variant || 'gradient',
             }}
             secondaryAction={
               secondaryAction
                 ? {
                     text: secondaryAction.text,
                     url: secondaryAction.url,
-                    variant: secondaryAction.variant || 'outline',
+                    variant: secondaryAction.variant || 'secondary',
                   }
                 : undefined
             }
             variant="accent"
-            accentColor="primary"
+            color="primary"
             align={align as 'left' | 'center'}
+            borderLeft={borderLeft}
           />
         </Container>
       </section>
@@ -120,7 +125,7 @@ export const CTASection = ({
         <Container>
           <div className={`flex flex-col md:flex-row items-center justify-between gap-6 ${alignClasses[align]}`}>
             <div className="md:w-2/3">
-              <Typography as="h2" variant="h2" className="mb-2">
+              <Typography as="h2" variant="h2" className="mb-2 font-bold italic">
                 {title}
               </Typography>
               {description && (
@@ -131,7 +136,7 @@ export const CTASection = ({
             </div>
             <div className="md:w-1/3 flex justify-center md:justify-end gap-4">
               <Button 
-                variant={primaryAction.variant || 'primary'} 
+                variant={primaryAction.variant || 'gradient'} 
                 size={primaryAction.size || 'lg'}
                 onClick={() => window.location.href = primaryAction.url}
               >
@@ -139,7 +144,7 @@ export const CTASection = ({
               </Button>
               {secondaryAction && (
                 <Button 
-                  variant={secondaryAction.variant || 'outline'} 
+                  variant={secondaryAction.variant || 'secondary'} 
                   size={secondaryAction.size || 'lg'}
                   onClick={() => window.location.href = secondaryAction.url}
                 >
@@ -181,7 +186,7 @@ export const CTASection = ({
                   {subtitle}
                 </Typography>
               )}
-              <Typography as="h2" variant="h2" className="mb-4">
+              <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
                 {title}
               </Typography>
               {description && (
@@ -194,7 +199,7 @@ export const CTASection = ({
               {testimonial && (
                 <div className="mb-6 p-4 bg-white bg-opacity-10 backdrop-blur-sm rounded-lg">
                   <Typography variant="p" className="italic mb-2">
-                    "{testimonial.quote}"
+                    &quot;{testimonial.quote}&quot;
                   </Typography>
                   <Typography variant="subtle">
                     — {testimonial.author}{testimonial.role ? `, ${testimonial.role}` : ''}
@@ -204,15 +209,16 @@ export const CTASection = ({
               
               <div className="flex flex-wrap gap-4 mt-6 justify-center md:justify-start">
                 <Button 
-                  variant={primaryAction.variant || 'primary'} 
+                  variant={primaryAction.variant || 'gradient'} 
                   size={primaryAction.size || 'lg'}
                   onClick={() => window.location.href = primaryAction.url}
+                  className="shine-effect"
                 >
                   {primaryAction.text}
                 </Button>
                 {secondaryAction && (
                   <Button 
-                    variant={secondaryAction.variant || 'outline'} 
+                    variant={secondaryAction.variant || 'secondary'} 
                     size={secondaryAction.size || 'lg'}
                     onClick={() => window.location.href = secondaryAction.url}
                   >
@@ -229,10 +235,13 @@ export const CTASection = ({
 
   // Rendu pour la variante 'card'
   if (variant === 'card') {
+    // Classe pour la bordure colorée si elle est spécifiée
+    const borderClass = borderColor ? `border-2 border-[${borderColor}]` : '';
+    
     return (
       <section className={`py-16 ${className}`}>
         <Container>
-          <div className={`max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl ${backgroundClasses[backgroundColor]} ${textClasses[textColor]}`}>
+          <div className={`max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${borderClass}`}>
             {/* Image de fond (si fournie) */}
             {imageSrc && imagePosition === 'background' && (
               <div className="relative h-64 w-full">
@@ -253,7 +262,7 @@ export const CTASection = ({
                     {subtitle}
                   </Typography>
                 )}
-                <Typography as="h2" variant="h2" className="mb-4">
+                <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
                   {title}
                 </Typography>
                 {description && (
@@ -264,15 +273,16 @@ export const CTASection = ({
                 
                 <div className="flex flex-wrap gap-4 mt-6 justify-center">
                   <Button 
-                    variant={primaryAction.variant || 'primary'} 
+                    variant={primaryAction.variant || 'gradient'} 
                     size={primaryAction.size || 'lg'}
                     onClick={() => window.location.href = primaryAction.url}
+                    className="shine-effect"
                   >
                     {primaryAction.text}
                   </Button>
                   {secondaryAction && (
                     <Button 
-                      variant={secondaryAction.variant || 'outline'} 
+                      variant={secondaryAction.variant || 'secondary'} 
                       size={secondaryAction.size || 'lg'}
                       onClick={() => window.location.href = secondaryAction.url}
                     >

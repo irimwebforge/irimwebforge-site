@@ -6,6 +6,7 @@ import { Button } from '@/components/atoms/Button';
 import { Container } from '@/components/atoms/Container';
 import { Divider } from '@/components/atoms/Divider';
 import { Badge } from '@/components/atoms/Badge';
+import { NavLink } from '@/components/atoms/NavLink';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -20,7 +21,8 @@ export interface PageHeaderProps {
   actions?: Array<{
     label: string;
     href?: string;
-    variant?: 'primary' | 'secondary' | 'tertiary' | 'outline' | 'ghost' | 'gradient';
+    variant?: 'primary' | 'secondary' | 'outline' | 'gradient';
+    isMainCta?: boolean;
     onClick?: () => void;
   }>;
   backgroundImage?: string;
@@ -116,9 +118,9 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
                 {index === breadcrumbs.length - 1 ? (
                   <span className="font-medium">{crumb.label}</span>
                 ) : (
-                  <Link href={crumb.href} className="hover:underline text-opacity-80">
+                  <NavLink href={crumb.href} className="hover:underline text-opacity-80">
                     {crumb.label}
-                  </Link>
+                  </NavLink>
                 )}
               </li>
             </React.Fragment>
@@ -134,23 +136,28 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
     
     return (
       <div className={`mt-8 flex flex-wrap gap-3 ${align === 'center' ? 'justify-center' : align === 'right' ? 'justify-end' : 'justify-start'}`}>
-        {actions.map((action, index) => (
-          action.href ? (
+        {actions.map((action, index) => {
+          // Détermine si c'est un CTA principal (pour l'effet brillance)
+          const isMainCTA = action.variant === 'gradient' || action.isMainCta;
+          const buttonClassName = isMainCTA ? 'shine-effect' : '';
+          
+          return action.href ? (
             <Link key={index} href={action.href}>
-              <Button variant={action.variant || 'primary'}>
+              <Button variant={action.variant || 'primary'} className={buttonClassName}>
                 {action.label}
               </Button>
             </Link>
           ) : (
             <Button 
               key={index} 
-              variant={action.variant || 'primary'} 
+              variant={action.variant || 'primary'}
+              className={buttonClassName}
               onClick={action.onClick}
             >
               {action.label}
             </Button>
-          )
-        ))}
+          );
+        })}
       </div>
     );
   };
@@ -273,7 +280,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             
             <Typography 
               variant="h1" 
-              className={`${sizeClasses[size].titleSize} font-bold mb-4`}
+              className={`${sizeClasses[size].titleSize} font-bold italic mb-4`}
             >
               {title}
             </Typography>

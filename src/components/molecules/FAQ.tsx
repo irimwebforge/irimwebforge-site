@@ -2,22 +2,36 @@
 
 import React, { useState } from 'react';
 import { Typography } from '@/components/atoms/Typography';
+import { Icon } from '@/components/atoms/Icon';
+import { cn } from '@/lib/utils';
 
 export interface FAQItem {
+  /** Identifiant unique de l'élément FAQ */
   id: string;
+  /** Question ou titre de l'élément FAQ */
   question: string;
+  /** Contenu de la réponse (texte ou composant React) */
   answer: React.ReactNode | string;
+  /** État initial (ouvert/fermé) */
   isOpen?: boolean;
 }
 
 export interface FAQProps {
+  /** Liste des éléments FAQ à afficher */
   items: FAQItem[];
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Titre de la section FAQ */
   title?: string;
+  /** Sous-titre ou description de la section FAQ */
   subtitle?: string;
-  accentColor?: 'primary' | 'secondary' | 'tertiary';
+  /** Couleur d'accentuation utilisée pour les éléments visuels */
+  color?: 'primary' | 'secondary' | 'tertiary';
+  /** Style visuel du composant */
   variant?: 'default' | 'separated' | 'bordered';
+  /** Type d'icône utilisé pour indiquer l'expansion */
   icon?: 'plus' | 'arrow' | 'chevron';
+  /** Autorise l'ouverture simultanée de plusieurs éléments */
   allowMultiple?: boolean;
 }
 
@@ -26,7 +40,7 @@ export const FAQ: React.FC<FAQProps> = ({
   className = '',
   title,
   subtitle,
-  accentColor = 'primary',
+  color = 'primary',
   variant = 'default',
   icon = 'plus',
   allowMultiple = false,
@@ -64,39 +78,41 @@ export const FAQ: React.FC<FAQProps> = ({
   
   // Icônes de toggle
   const renderIcon = (isOpen: boolean, itemId: string) => {
-    const iconColor = `text-[var(--color-${accentColor})]`;
+    const iconColor = `text-[var(--color-${color})]`;
     
     switch (icon) {
       case 'plus':
         return (
-          <div className={`transition-transform duration-200 ${iconColor}`}>
+          <div className={cn(
+            'transition-transform duration-200',
+            iconColor
+          )}>
             {isOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
+              <Icon name="Minus" size={20} />
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
+              <Icon name="Plus" size={20} />
             )}
           </div>
         );
       case 'arrow':
         return (
-          <div className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : 'rotate-0'} ${iconColor}`}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="m6 9 6 6 6-6"/>
-            </svg>
+          <div className={cn(
+            'transition-transform duration-200',
+            isOpen ? 'rotate-180' : 'rotate-0',
+            iconColor
+          )}>
+            <Icon name="ChevronDown" size={20} />
           </div>
         );
       case 'chevron':
       default:
         return (
-          <div className={`transition-transform duration-200 ${isOpen ? 'rotate-90' : 'rotate-0'} ${iconColor}`}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
+          <div className={cn(
+            'transition-transform duration-200',
+            isOpen ? 'rotate-90' : 'rotate-0',
+            iconColor
+          )}>
+            <Icon name="ChevronRight" size={20} />
           </div>
         );
     }
@@ -116,21 +132,26 @@ export const FAQ: React.FC<FAQProps> = ({
     return (
       <div 
         key={item.id} 
-        className={`${variant === 'default' || variant === 'bordered' ? itemClasses[variant] : ''}`}
+        className={cn(
+          variant === 'default' || variant === 'bordered' ? itemClasses[variant] : ''
+        )}
       >
         <div 
-          className={`
-            flex justify-between items-center gap-4 w-full cursor-pointer py-4 px-2 
-            ${variant === 'separated' ? itemClasses[variant] : ''}
-            ${isOpen ? `text-[var(--color-${accentColor})]` : ''}
-          `}
+          className={cn(
+            'flex justify-between items-center gap-4 w-full cursor-pointer py-4 px-2',
+            variant === 'separated' ? itemClasses[variant] : '',
+            isOpen ? `text-[var(--color-${color})]` : ''
+          )}
           onClick={() => handleItemClick(item.id)}
           aria-expanded={isOpen}
           aria-controls={`faq-answer-${item.id}`}
         >
           <Typography 
             variant="h4"
-            className={`flex-1 ${isOpen ? `text-[var(--color-${accentColor})]` : ''}`}
+            className={cn(
+              'flex-1',
+              isOpen ? `text-[var(--color-${color})]` : ''
+            )}
           >
             {item.question}
           </Typography>
@@ -140,7 +161,11 @@ export const FAQ: React.FC<FAQProps> = ({
         
         <div 
           id={`faq-answer-${item.id}`}
-          className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 py-4' : 'max-h-0 py-0'} px-2`}
+          className={cn(
+            'overflow-hidden transition-all duration-300',
+            isOpen ? 'max-h-96 py-4' : 'max-h-0 py-0',
+            'px-2'
+          )}
           aria-hidden={!isOpen}
         >
           {typeof item.answer === 'string' ? (
@@ -156,7 +181,7 @@ export const FAQ: React.FC<FAQProps> = ({
   };
   
   return (
-    <div className={`faq-container ${className}`}>
+    <div className={cn('faq-container', className)}>
       {(title || subtitle) && (
         <div className="mb-8">
           {title && (
@@ -173,7 +198,7 @@ export const FAQ: React.FC<FAQProps> = ({
         </div>
       )}
       
-      <div className={`space-y-0 ${variantClasses[variant]}`}>
+      <div className={cn('space-y-0', variantClasses[variant])}>
         {items.map(renderFAQItem)}
       </div>
     </div>
@@ -182,11 +207,16 @@ export const FAQ: React.FC<FAQProps> = ({
 
 // Composant simple pour un élément individuel de FAQ (utilisable hors du composant principal)
 export interface FAQItemComponentProps {
+  /** Question ou titre de l'élément FAQ */
   question: string;
+  /** Contenu de la réponse (texte ou composant React) */
   answer: React.ReactNode | string;
+  /** Classes CSS additionnelles */
   className?: string;
+  /** État initial (ouvert/fermé) */
   isOpen?: boolean;
-  accentColor?: 'primary' | 'secondary' | 'tertiary';
+  /** Couleur d'accentuation utilisée pour les éléments visuels */
+  color?: 'primary' | 'secondary' | 'tertiary';
 }
 
 export const FAQItemComponent: React.FC<FAQItemComponentProps> = ({
@@ -194,39 +224,41 @@ export const FAQItemComponent: React.FC<FAQItemComponentProps> = ({
   answer,
   className = '',
   isOpen = false,
-  accentColor = 'primary',
+  color = 'primary',
 }) => {
   const [isExpanded, setIsExpanded] = useState(isOpen);
   
   return (
-    <div className={`border-b border-gray-200 last:border-b-0 ${className}`}>
+    <div className={cn('border-b border-gray-200 last:border-b-0', className)}>
       <div 
-        className={`flex justify-between items-center gap-4 cursor-pointer py-4 px-2 ${isExpanded ? `text-[var(--color-${accentColor})]` : ''}`}
+        className={cn(
+          'flex justify-between items-center gap-4 cursor-pointer py-4 px-2',
+          isExpanded ? `text-[var(--color-${color})]` : ''
+        )}
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <Typography 
           variant="h4"
-          className={`flex-1 ${isExpanded ? `text-[var(--color-${accentColor})]` : ''}`}
+          className={isExpanded ? `text-[var(--color-${color})]` : ''}
         >
           {question}
         </Typography>
         
-        <div className={`transition-transform duration-200 text-[var(--color-${accentColor})]`}>
-          {isExpanded ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-            </svg>
-          )}
+        <div className={cn(
+          'transition-transform duration-200',
+          isExpanded ? 'rotate-180' : 'rotate-0',
+          `text-[var(--color-${color})]`
+        )}>
+          <Icon name="ChevronDown" size={20} />
         </div>
       </div>
       
       <div 
-        className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96 py-4' : 'max-h-0 py-0'} px-2`}
+        className={cn(
+          'overflow-hidden transition-all duration-300',
+          isExpanded ? 'max-h-96 py-4' : 'max-h-0 py-0',
+          'px-2'
+        )}
       >
         {typeof answer === 'string' ? (
           <Typography variant="p" className="text-secondary">

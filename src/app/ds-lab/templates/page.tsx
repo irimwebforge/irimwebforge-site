@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import { Typography } from '@/components/atoms/Typography';
-import { Tabs } from '@/components/molecules/Tabs';
 import { Button } from '@/components/atoms/Button';
 import Link from 'next/link';
+import { Icon } from '@/components/atoms/Icon';
 
 // Import des templates
 import { ProjectShowcase } from '@/components/templates/ProjectShowcase';
@@ -14,13 +14,16 @@ import { ValueProposition } from '@/components/templates/ValueProposition';
 
 // Import des données mock
 import { 
-  mockProjects, 
-  mockServices, 
-  mockValues, 
   mockStats, 
   mockTestimonials,
   mockCTAVariants
 } from '../mocks/data';
+
+// Import des adaptateurs
+import { adaptedProjects } from './projectAdapter';
+import { adaptAction, newsletterProps } from './ctaAdapter';
+import { adaptedServices } from './serviceAdapter';
+import { adaptedValues } from './valueAdapter';
 
 export default function TemplatesPage() {
   const [activeTemplate, setActiveTemplate] = useState('project-showcase');
@@ -36,9 +39,8 @@ export default function TemplatesPage() {
             title="Nos réalisations"
             subtitle="Découvrez notre portfolio de projets"
             description="Des projets sur mesure qui reflètent parfaitement l'identité de nos clients."
-            projects={mockProjects}
+            projects={adaptedProjects}
             showFilters={true}
-            variant="grid"
           />
         </div>
       )
@@ -52,8 +54,11 @@ export default function TemplatesPage() {
             title="Nos services"
             subtitle="Des solutions adaptées à vos besoins"
             description="Nous proposons des services sur mesure pour répondre à vos besoins spécifiques."
-            services={mockServices}
-            layout="grid"
+            services={adaptedServices}
+            variant="grid"
+            showCtaButton={true}
+            ctaButtonText="Découvrir tous nos services"
+            ctaButtonLink="#"
           />
         </div>
       )
@@ -68,9 +73,10 @@ export default function TemplatesPage() {
             <CTASection
               title={mockCTAVariants.simple.title}
               description={mockCTAVariants.simple.description}
-              primaryAction={mockCTAVariants.simple.primaryAction}
-              secondaryAction={mockCTAVariants.simple.secondaryAction}
-              variant="simple"
+              primaryAction={adaptAction(mockCTAVariants.simple.primaryAction, true)}
+              secondaryAction={adaptAction(mockCTAVariants.simple.secondaryAction)}
+              variant="default"
+              borderLeft="var(--color-tertiary)"
             />
           </div>
           
@@ -79,22 +85,31 @@ export default function TemplatesPage() {
             <CTASection
               title={mockCTAVariants.withImage.title}
               description={mockCTAVariants.withImage.description}
-              primaryAction={mockCTAVariants.withImage.primaryAction}
-              secondaryAction={mockCTAVariants.withImage.secondaryAction}
-              imageUrl={mockCTAVariants.withImage.imageUrl}
-              variant="withImage"
+              primaryAction={adaptAction(mockCTAVariants.withImage.primaryAction, true)}
+              secondaryAction={adaptAction(mockCTAVariants.withImage.secondaryAction)}
+              imageSrc={mockCTAVariants.withImage.imageUrl}
+              variant="split"
             />
           </div>
           
           <div>
-            <Typography variant="h3" className="mb-4">Variante newsletter</Typography>
-            <CTASection
-              title={mockCTAVariants.newsletter.title}
-              description={mockCTAVariants.newsletter.description}
-              inputPlaceholder={mockCTAVariants.newsletter.inputPlaceholder}
-              buttonLabel={mockCTAVariants.newsletter.buttonLabel}
-              disclaimerText={mockCTAVariants.newsletter.disclaimerText}
-              variant="newsletter"
+            <Typography variant="h3" className="mb-4">Variante card</Typography>
+            <CTASection 
+              title="Lancez votre projet avec nous"
+              description="Un accompagnement personnalisé du brief à la mise en ligne."
+              primaryAction={{
+                text: "Demander un devis",
+                url: "#contact",
+                variant: "gradient"
+              }}
+              secondaryAction={{
+                text: "Nos réalisations",
+                url: "#projets",
+                variant: "secondary"
+              }}
+              variant="card"
+              backgroundColor="light"
+              borderColor="var(--color-tertiary)"
             />
           </div>
         </div>
@@ -109,8 +124,12 @@ export default function TemplatesPage() {
             title="Nos valeurs"
             subtitle="Ce qui nous définit"
             description="Des principes qui guident notre approche et notre travail au quotidien."
-            values={mockValues}
-            stats={mockStats}
+            values={adaptedValues}
+            stats={mockStats.map(stat => ({
+              title: stat.label,
+              value: stat.value,
+              subtitle: stat.description
+            }))}
             testimonials={mockTestimonials}
             showStats={true}
             showTestimonials={true}
@@ -130,12 +149,22 @@ export default function TemplatesPage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-7xl">
       <div className="mb-8 text-center">
-        <Typography as="h1" variant="h1" className="mb-3">
+        <Typography as="h1" variant="h1" className="mb-3 font-bold italic">
           Bibliothèque de Templates
         </Typography>
-        <Typography variant="lead" className="max-w-3xl mx-auto">
-          Découvrez les différents templates disponibles pour construire rapidement des pages complètes.
+        <Typography variant="lead" className="max-w-3xl mx-auto" withAccentedWords>
+          Découvrez les différents templates disponibles pour construire rapidement des pages complètes avec un design sur-mesure et professionnel.
         </Typography>
+      </div>
+
+      <div className="mb-6 p-4 border-l-4 border-l-[var(--color-tertiary)] bg-amber-50/30 rounded-md max-w-3xl mx-auto">
+        <Typography variant="p" className="font-medium mb-2">Principes du design system appliqués aux templates</Typography>
+        <ul className="ml-5 list-disc text-sm space-y-1">
+          <li>Titres h1/h2 en italique gras pour une hiérarchie visuelle claire</li>
+          <li>Effet brillance (shine-effect) exclusivement pour les CTA principaux</li>
+          <li>Utilisation de la variante gradient pour les boutons d&apos;action principaux</li>
+          <li>Couleur tertiaire (orange) utilisée avec parcimonie pour les accents visuels</li>
+        </ul>
       </div>
 
       {/* Navigation par onglets */}
@@ -144,10 +173,10 @@ export default function TemplatesPage() {
           {tabs.map(tab => (
             <Button 
               key={tab.id}
-              variant={activeTemplate === tab.id ? "primary" : "outline"}
+              variant={activeTemplate === tab.id ? "gradient" : "secondary"}
               size="md"
               onClick={() => setActiveTemplate(tab.id)}
-              className="min-w-[140px]"
+              className={activeTemplate === tab.id ? "shine-effect" : ""}
             >
               {tab.label}
             </Button>
@@ -162,12 +191,13 @@ export default function TemplatesPage() {
 
       {/* Lien retour */}
       <div className="mt-16 text-center">
-        <Link href="/test" className="text-primary hover:underline inline-flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M19 12H5"></path>
-            <path d="M12 19l-7-7 7-7"></path>
-          </svg>
-          Retour à la page de test des composants
+        <Link href="/ds-lab" className="text-primary hover:underline inline-flex items-center gap-2">
+          <Icon name="ArrowLeft" size={16} />
+          Retour au DS Lab
+        </Link>
+        <Link href="/ds-lab/color-tertiary" className="text-primary hover:underline border-b-2 border-[var(--color-tertiary)] inline-flex items-center gap-2 ml-6">
+          <Icon name="Palette" size={16} />
+          Voir l&apos;utilisation de la couleur tertiaire
         </Link>
       </div>
     </div>

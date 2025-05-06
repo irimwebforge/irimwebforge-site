@@ -102,7 +102,7 @@ export const EnhancedContactForm: React.FC<EnhancedContactFormProps> = ({
       <div className="flex-1">
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-2">
-            <Typography variant="h2" className="text-2xl font-bold">{title}</Typography>
+            <Typography variant="h2" className="text-2xl font-bold italic">{title}</Typography>
             <Badge variant={accentColor} size="small">Nouveau projet</Badge>
           </div>
           <Typography variant="p" className="text-secondary">{subtitle}</Typography>
@@ -199,7 +199,7 @@ export const EnhancedContactForm: React.FC<EnhancedContactFormProps> = ({
       <Card 
         variant="accent" 
         accentPosition="top" 
-        accentColor={accentColor} 
+        color={accentColor} 
         className={`p-6 ${className}`}
         hover={false}
       >

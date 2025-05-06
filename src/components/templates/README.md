@@ -10,6 +10,28 @@ Dans notre architecture Atomic Design, les templates :
 - Servent de squelette pour les pages spécifiques
 - Ne contiennent pas de données spécifiques (contrairement aux pages)
 
+## Principes du Design System
+
+Pour maintenir la cohérence visuelle dans tous les templates, voici les principes à respecter :
+
+1. **Typographie** : 
+   - Utiliser l'italique gras pour les titres h1 et h2 avec la classe `font-bold italic`
+   - Respecter la hiérarchie des tailles de texte définies dans le composant Typography
+
+2. **Appels à l'action (CTA)** :
+   - Réserver l'effet de brillance (`shine-effect`) exclusivement aux CTA principaux
+   - Utiliser la variante `gradient` pour les boutons d'action principaux
+   - Utiliser la variante `secondary` ou `outline` pour les actions secondaires
+
+3. **Couleurs** :
+   - Limiter l'usage de la couleur tertiaire (orange) à des accents visuels spécifiques
+   - Utiliser principalement les couleurs primaire et secondaire pour les éléments d'interface
+   - Appliquer des dégradés pour les CTA principaux et les liens actifs
+
+4. **Espacement et structure** :
+   - Maintenir une marge verticale cohérente entre les sections (généralement py-16)
+   - Adapter la disposition sur mobiles en utilisant des flex-col qui passent en flex-row sur desktop
+
 ## Structure du dossier
 
 - `ProjectShowcase.tsx` - Section présentant les projets réalisés (portfolio)

@@ -55,7 +55,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     
     // Afficher les pages autour de la page actuelle
     let startPage = Math.max(edgeCount + 1, validatedCurrentPage - siblingCount);
-    let endPage = Math.min(validatedTotalPages - edgeCount, validatedCurrentPage + siblingCount);
+    const endPage = Math.min(validatedTotalPages - edgeCount, validatedCurrentPage + siblingCount);
     
     // Ajouter un ellipsis si nécessaire
     if (startPage > edgeCount + 1) {

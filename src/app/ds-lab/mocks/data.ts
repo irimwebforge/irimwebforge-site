@@ -20,7 +20,7 @@ type ServiceType = {
   id: string;
   title: string;
   description: string;
-  icon: string;
+  icon: string; // Nom de l'icône Lucide
   features: string[];
   imageUrl: string;
   callToAction: {
@@ -37,7 +37,7 @@ type Value = {
   id: string;
   title: string;
   description: string;
-  icon: string | React.ReactNode;
+  icon: string; // Nom de l'icône Lucide
   color?: 'primary' | 'secondary' | 'tertiary';
 };
 
@@ -67,7 +67,7 @@ export const mockProjects: ProjectType[] = [
     id: 'proj-1',
     title: 'MisterCBD E-commerce',
     description: 'Boutique en ligne moderne de produits CBD avec interface d\'administration personnalisée',
-    imageUrl: '/images/projects/mister-cbd.jpg',
+    imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [
       { id: 'tag-1', label: 'E-commerce' },
       { id: 'tag-2', label: 'Interface Admin' }
@@ -79,7 +79,7 @@ export const mockProjects: ProjectType[] = [
     id: 'proj-2',
     title: 'Echo des Rêves',
     description: 'Site vitrine pour un artisan bijoutier avec catalogue de produits',
-    imageUrl: '/images/projects/echo-reves.jpg',
+    imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [
       { id: 'tag-3', label: 'Site Vitrine' },
       { id: 'tag-4', label: 'Artisanat' }
@@ -91,7 +91,7 @@ export const mockProjects: ProjectType[] = [
     id: 'proj-3',
     title: 'MoodCycle App',
     description: 'Application mobile de suivi d\'humeur avec visualisation de données',
-    imageUrl: '/images/projects/moodcycle.jpg',
+    imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [
       { id: 'tag-5', label: 'Application' },
       { id: 'tag-6', label: 'Santé' }
@@ -103,7 +103,7 @@ export const mockProjects: ProjectType[] = [
     id: 'proj-4',
     title: 'GreenLeaf CRM',
     description: 'CRM personnalisé pour une entreprise de jardinage',
-    imageUrl: '/images/projects/greenleaf.jpg',
+    imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [
       { id: 'tag-7', label: 'CRM' },
       { id: 'tag-2', label: 'Interface Admin' }
@@ -115,7 +115,7 @@ export const mockProjects: ProjectType[] = [
     id: 'proj-5',
     title: 'TechConf Landing',
     description: 'Landing page pour une conférence tech avec système d\'inscription',
-    imageUrl: '/images/projects/techconf.jpg',
+    imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [
       { id: 'tag-8', label: 'Landing Page' },
       { id: 'tag-9', label: 'Événementiel' }
@@ -127,7 +127,7 @@ export const mockProjects: ProjectType[] = [
     id: 'proj-6',
     title: 'FoodFast Delivery',
     description: 'Plateforme de livraison de repas avec tableau de bord en temps réel',
-    imageUrl: '/images/projects/foodfast.jpg',
+    imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [
       { id: 'tag-10', label: 'Plateforme' },
       { id: 'tag-11', label: 'Food' }
@@ -143,7 +143,7 @@ export const mockServices: ServiceType[] = [
     id: 'service-1',
     title: 'Sites Web sur Mesure',
     description: 'Des sites web professionnels adaptés à votre image de marque et optimisés pour la conversion.',
-    icon: '🌐',
+    icon: 'Globe',
     features: [
       'Design personnalisé selon votre identité visuelle',
       'Optimisé pour le référencement SEO',
@@ -151,7 +151,7 @@ export const mockServices: ServiceType[] = [
       'Performances optimisées',
       'Sécurité renforcée'
     ],
-    imageUrl: '/images/services/website.jpg',
+    imageUrl: '/images/projects/project-placeholder.jpg',
     callToAction: {
       label: 'Découvrir cette offre',
       href: '#'
@@ -165,7 +165,7 @@ export const mockServices: ServiceType[] = [
     id: 'service-2',
     title: 'Applications Web',
     description: 'Applications web intuitives et performantes pour améliorer vos processus métiers.',
-    icon: '📱',
+    icon: 'Smartphone',
     features: [
       'Interface utilisateur intuitive',
       'Synchronisation temps réel',
@@ -173,7 +173,7 @@ export const mockServices: ServiceType[] = [
       'Sécurité avancée',
       'Évolutivité garantie'
     ],
-    imageUrl: '/images/services/webapp.jpg',
+    imageUrl: '/images/projects/project-placeholder.jpg',
     callToAction: {
       label: 'Découvrir cette offre',
       href: '#'
@@ -187,7 +187,7 @@ export const mockServices: ServiceType[] = [
     id: 'service-3',
     title: 'Interfaces Admin',
     description: 'Des interfaces d\'administration sur mesure pour gérer efficacement votre contenu et vos données.',
-    icon: '⚙️',
+    icon: 'Settings',
     features: [
       'Tableau de bord personnalisé',
       'Gestion de contenu intuitive',
@@ -195,7 +195,7 @@ export const mockServices: ServiceType[] = [
       'Gestion des utilisateurs et permissions',
       'Automatisation des tâches répétitives'
     ],
-    imageUrl: '/images/services/admin.jpg',
+    imageUrl: '/images/projects/project-placeholder.jpg',
     callToAction: {
       label: 'Découvrir cette offre',
       href: '#'
@@ -213,28 +213,28 @@ export const mockValues: Value[] = [
     id: 'value-1',
     title: 'Artisanat Digital',
     description: 'Chaque ligne de code est écrite avec soin, comme un artisan façonne son œuvre.',
-    icon: '🛠️',
+    icon: 'Hammer',
     color: 'primary'
   },
   {
     id: 'value-2',
     title: 'Simplicité Efficace',
     description: 'Des solutions qui vont à l\'essentiel, sans complexité inutile.',
-    icon: '✨',
+    icon: 'Sparkles',
     color: 'secondary'
   },
   {
     id: 'value-3',
     title: 'Authenticité',
     description: 'Des interfaces qui reflètent fidèlement votre identité et vos valeurs.',
-    icon: '🔍',
+    icon: 'Search',
     color: 'tertiary'
   },
   {
     id: 'value-4',
     title: 'Sur-mesure',
     description: 'Chaque projet est unique et mérite une approche personnalisée.',
-    icon: '✂️',
+    icon: 'Scissors',
     color: 'primary'
   }
 ];
@@ -317,7 +317,7 @@ export const mockCTAVariants = {
       label: "Voir nos réalisations",
       href: "#projets"
     },
-    imageUrl: "/images/cta-illustration.svg"
+    imageUrl: "/images/projects/project-placeholder.jpg"
   },
   newsletter: {
     title: "Restez informé des dernières tendances",

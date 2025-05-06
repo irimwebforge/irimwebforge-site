@@ -1,15 +1,24 @@
 import React from 'react';
 import { Typography } from '@/components/atoms/Typography';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 export interface TestimonialProps {
+  /** Texte du témoignage */
   quote: string;
+  /** Nom de l'auteur du témoignage */
   author: string;
+  /** Nom de l'entreprise de l'auteur */
   company?: string;
+  /** URL de l'avatar de l'auteur */
   avatarSrc?: string;
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Style visuel du témoignage */
   variant?: 'default' | 'compact' | 'featured';
+  /** Nom du projet associé au témoignage */
   projectName?: string;
+  /** URL du projet associé */
   projectUrl?: string;
 }
 
@@ -23,7 +32,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   projectName,
   projectUrl,
 }) => {
-  const baseClasses = `testimonial relative ${className}`;
+  const baseClasses = 'testimonial relative';
 
   // Styles variantes
   const variantClasses = {
@@ -41,7 +50,10 @@ export const Testimonial: React.FC<TestimonialProps> = ({
         
         <Typography 
           variant="lead" 
-          className={`italic relative z-10 ${variant === 'compact' ? 'text-base' : 'text-lg'}`}
+          className={cn(
+            'italic relative z-10',
+            variant === 'compact' ? 'text-base' : 'text-lg'
+          )}
         >
           {quote}
         </Typography>
@@ -52,7 +64,10 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   // Rendu des informations sur l'auteur
   const renderAuthor = () => {
     return (
-      <div className={`flex items-center mt-4 ${variant === 'compact' ? 'mt-3' : 'mt-6'}`}>
+      <div className={cn(
+        'flex items-center',
+        variant === 'compact' ? 'mt-3' : 'mt-6'
+      )}>
         {avatarSrc && (
           <div className="mr-3">
             <div className="w-12 h-12 rounded-full overflow-hidden">
@@ -97,7 +112,11 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   };
 
   return (
-    <div className={`${baseClasses} ${variantClasses[variant]}`}>
+    <div className={cn(
+      baseClasses,
+      variantClasses[variant],
+      className
+    )}>
       {renderQuote()}
       {renderAuthor()}
     </div>

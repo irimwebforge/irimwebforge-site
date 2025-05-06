@@ -8,14 +8,15 @@ import { Card } from '@/components/molecules/Card';
 import { Button } from '@/components/atoms/Button';
 import { FeatureGrid } from '@/components/molecules/FeatureGrid';
 import { Badge } from '@/components/atoms/Badge';
+import { Icon } from '@/components/atoms/Icon';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export interface Feature {
   id: string;
-  icon?: string | React.ReactNode;
   title: string;
   description: string;
+  icon?: React.ReactNode | string;
   link?: {
     text: string;
     href: string;
@@ -50,7 +51,8 @@ export interface FeatureSectionProps {
   cta?: {
     text: string;
     href: string;
-    variant?: 'primary' | 'secondary' | 'outline';
+    variant?: 'primary' | 'secondary' | 'outline' | 'gradient';
+    isMainCta?: boolean;
   };
 }
 
@@ -97,6 +99,22 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
     4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
   };
   
+  // Adapter les caractéristiques pour FeatureGrid
+  const adaptFeaturesForGrid = (features: Feature[]) => {
+    return features.map(feature => ({
+      ...feature,
+      // Convertir le lien si nécessaire
+      link: feature.link ? {
+        text: feature.link.text,
+        url: feature.link.href,
+      } : undefined,
+      // Convertir l'icône string en composant Icon si nécessaire
+      icon: typeof feature.icon === 'string' 
+        ? <Icon name={feature.icon as any} />
+        : feature.icon
+    }));
+  };
+  
   // Rendu des fonctionnalités selon le layout choisi
   const renderFeatures = () => {
     switch (layout) {
@@ -110,19 +128,9 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
         return renderCompactLayout();
       default:
         // Grid layout (default)
-        // Adapter les features pour le FeatureGrid
-        const adaptedFeatures = features.map(feature => ({
-          ...feature,
-          // Convertir le lien si nécessaire
-          link: feature.link ? {
-            text: feature.link.text,
-            url: feature.link.href,
-          } : undefined,
-        }));
-        
         return (
           <FeatureGrid 
-            features={adaptedFeatures}
+            features={adaptFeaturesForGrid(features)}
             columns={columns}
             variant={withNumbers ? 'bordered' : 'card'}
           />
@@ -136,7 +144,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       <div className={`grid ${columnClasses[columns]} gap-6 mt-8`}>
         {features.map((feature, index) => (
           <Card 
-            key={index} 
+            key={feature.id} 
             className="p-6"
             hover
           >
@@ -174,7 +182,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
     return (
       <div className="space-y-8 mt-8">
         {features.map((feature, index) => (
-          <div key={index} className="flex items-start gap-4">
+          <div key={feature.id} className="flex items-start gap-4">
             {/* Icône ou index */}
             <div className="flex-shrink-0 mt-1">
               {renderFeatureIcon(feature, index, 'large')}
@@ -215,7 +223,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
           const isImageRight = (index % 2 === 0) === (imageSide === 'right');
           
           return (
-            <div key={index} className={`flex flex-col ${isImageRight ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8`}>
+            <div key={feature.id} className={`flex flex-col ${isImageRight ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8`}>
               {/* Contenu textuel */}
               <div className="flex-1">
                 {/* Numéro ou icône */}
@@ -248,7 +256,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
                 <div className="flex-1">
                   <div className="relative aspect-video w-full">
                     <Image
-                      src={typeof feature.icon === 'string' ? feature.icon : '/images/placeholder-feature.svg'}
+                      src={getImageSource(feature)}
                       alt={feature.title}
                       fill
                       className="object-cover rounded-lg shadow-md"
@@ -263,12 +271,25 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
     );
   };
   
+  // Helper pour obtenir la source d'image
+  const getImageSource = (feature: Feature) => {
+    if (typeof feature.icon === 'string') {
+      const isImageUrl = feature.icon.startsWith('http://') || 
+                       feature.icon.startsWith('https://') || 
+                       feature.icon.startsWith('/');
+      if (isImageUrl) {
+        return feature.icon;
+      }
+    }
+    return '/images/placeholder-feature.svg';
+  };
+  
   // Layout compact
   const renderCompactLayout = () => {
     return (
       <div className={`grid ${columnClasses[columns]} gap-6 mt-8`}>
         {features.map((feature, index) => (
-          <div key={index} className="flex items-start gap-3">
+          <div key={feature.id} className="flex items-start gap-3">
             {/* Icône ou numéro */}
             {renderFeatureIcon(feature, index, 'small')}
             
@@ -310,11 +331,25 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
     // Si une icône est fournie
     if (feature.icon) {
       if (typeof feature.icon === 'string') {
-        return (
-          <div className={iconClasses}>
-            <Image src={feature.icon} alt="" width={size === 'small' ? 16 : 24} height={size === 'small' ? 16 : 24} />
-          </div>
-        );
+        // Vérifier si c'est une URL d'image ou un nom d'icône
+        const isImageUrl = feature.icon.startsWith('http://') || 
+                          feature.icon.startsWith('https://') || 
+                          feature.icon.startsWith('/');
+        
+        if (isImageUrl) {
+          return (
+            <div className={iconClasses}>
+              <Image src={feature.icon} alt="" width={size === 'small' ? 16 : 24} height={size === 'small' ? 16 : 24} />
+            </div>
+          );
+        } else {
+          // C'est un nom d'icône Lucide
+          return (
+            <div className={iconClasses}>
+              <Icon name={feature.icon as any} size={size === 'small' ? 16 : 24} />
+            </div>
+          );
+        }
       } else {
         return (
           <div className={iconClasses}>
@@ -338,9 +373,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
     // Par défaut, retourner un espace réservé
     return (
       <div className={iconClasses}>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-        </svg>
+        <Icon name="Check" size={size === 'small' ? 16 : 20} />
       </div>
     );
   };
@@ -359,7 +392,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
           {/* Titre de section */}
           <Typography
             variant="h2"
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-bold italic mb-4"
           >
             {title}
           </Typography>
@@ -405,7 +438,10 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
         {cta && (
           <div className={`mt-12 ${textAlign === 'center' ? 'text-center' : ''}`}>
             <Link href={cta.href}>
-              <Button variant={cta.variant || 'primary'}>
+              <Button 
+                variant={cta.variant || 'primary'}
+                className={cta.variant === 'gradient' || cta.isMainCta ? 'shine-effect' : ''}
+              >
                 {cta.text}
               </Button>
             </Link>

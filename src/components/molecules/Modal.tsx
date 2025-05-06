@@ -4,21 +4,36 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Typography } from '@/components/atoms/Typography';
 import { Button } from '@/components/atoms/Button';
 import { createPortal } from 'react-dom';
+import { cn } from '@/lib/utils';
 
 export interface ModalProps {
+  /** État d'ouverture de la modal */
   isOpen: boolean;
+  /** Fonction appelée à la fermeture de la modal */
   onClose: () => void;
+  /** Titre de la modal (chaîne ou nœud React) */
   title?: React.ReactNode | string;
+  /** Contenu de la modal */
   children: React.ReactNode;
+  /** Contenu du pied de modal (boutons, actions) */
   footer?: React.ReactNode;
+  /** Taille de la modal */
   size?: 'small' | 'medium' | 'large' | 'fullscreen';
+  /** Fermer la modal avec la touche Échap */
   closeOnEsc?: boolean;
+  /** Fermer la modal en cliquant sur l'arrière-plan */
   closeOnBackdropClick?: boolean;
+  /** Centrer verticalement la modal */
   centered?: boolean;
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Afficher le bouton de fermeture */
   showCloseButton?: boolean;
+  /** Animation à l'ouverture/fermeture */
   animation?: 'fade' | 'slide' | 'zoom' | 'none';
+  /** Classes CSS pour l'arrière-plan */
   backdropClassName?: string;
+  /** Empêcher le défilement de la page en arrière-plan */
   preventScroll?: boolean;
 }
 
@@ -155,7 +170,11 @@ export const Modal: React.FC<ModalProps> = ({
   // Contenu du modal
   const modalContent = (
     <div 
-      className={`fixed inset-0 z-50 flex ${centered ? 'items-center justify-center' : 'items-start justify-center overflow-y-auto pt-10 pb-10'} ${backdropClassName}`}
+      className={cn(
+        'fixed inset-0 z-50 flex',
+        centered ? 'items-center justify-center' : 'items-start justify-center overflow-y-auto pt-10 pb-10',
+        backdropClassName
+      )}
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
       onClick={handleBackdropClick}
       aria-modal="true"
@@ -163,12 +182,12 @@ export const Modal: React.FC<ModalProps> = ({
     >
       <div 
         ref={modalRef}
-        className={`
-          relative bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full m-4
-          ${sizeClasses[size]} 
-          ${animationClasses[animation]} 
-          ${className}
-        `}
+        className={cn(
+          'relative bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full m-4',
+          sizeClasses[size],
+          animationClasses[animation],
+          className
+        )}
         onClick={(e) => e.stopPropagation()}
       >
         {/* En-tête du modal */}
@@ -221,14 +240,23 @@ export const Modal: React.FC<ModalProps> = ({
 
 // Composants auxiliaires pour les cas d'utilisation courants
 export interface ConfirmModalProps {
+  /** État d'ouverture de la modal */
   isOpen: boolean;
+  /** Fonction appelée à la fermeture de la modal */
   onClose: () => void;
+  /** Fonction appelée à la confirmation */
   onConfirm: () => void;
+  /** Titre de la modal */
   title: string;
+  /** Message ou contenu de la modal */
   message: React.ReactNode | string;
+  /** Texte du bouton de confirmation */
   confirmLabel?: string;
+  /** Texte du bouton d'annulation */
   cancelLabel?: string;
+  /** Style visuel du bouton de confirmation */
   confirmVariant?: 'primary' | 'secondary' | 'tertiary';
+  /** Taille de la modal */
   size?: 'small' | 'medium' | 'large';
 }
 
@@ -277,12 +305,19 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
 };
 
 export interface AlertModalProps {
+  /** État d'ouverture de la modal */
   isOpen: boolean;
+  /** Fonction appelée à la fermeture de la modal */
   onClose: () => void;
+  /** Titre de la modal */
   title: string;
+  /** Message ou contenu de la modal */
   message: React.ReactNode | string;
+  /** Texte du bouton de fermeture */
   closeLabel?: string;
+  /** Style visuel de l'alerte */
   variant?: 'info' | 'success' | 'warning' | 'danger';
+  /** Taille de la modal */
   size?: 'small' | 'medium' | 'large';
 }
 
@@ -341,7 +376,7 @@ export const AlertModal: React.FC<AlertModalProps> = ({
       onClose={onClose}
       title={
         <div className="flex items-center">
-          <span className={`mr-2 ${variantClasses[variant]}`}>
+          <span className={cn('mr-2', variantClasses[variant])}>
             {variantIcons[variant]}
           </span>
           <span>{title}</span>

@@ -1,25 +1,15 @@
+"use client";
+
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '../atoms/Button';
 import { Logo } from '../atoms/Logo';
-
-interface NavLinkProps {
-  href: string;
-  children: React.ReactNode;
-  active?: boolean;
-}
-
-const NavLink = ({ href, children, active }: NavLinkProps) => (
-  <Link
-    href={href}
-    className={`hover:text-[var(--color-primary)] transition-colors ${active ? 'text-[var(--color-primary)]' : ''}`}
-  >
-    {children}
-  </Link>
-);
+import { NavLink } from '../atoms/NavLink';
+import { usePathname } from 'next/navigation';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="py-4 border-b border-color surface-primary">
@@ -30,11 +20,11 @@ export function Header() {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-6">
-            <NavLink href="/">Accueil</NavLink>
-            <NavLink href="/services">Services</NavLink>
-            <NavLink href="/projets">Projets</NavLink>
-            <NavLink href="/a-propos">À propos</NavLink>
-            <Button variant="primary" size="sm">Contact</Button>
+            <NavLink href="/" exact color="primary" useGradient>Accueil</NavLink>
+            <NavLink href="/services" exact color="primary" useGradient>Services</NavLink>
+            <NavLink href="/projets" exact color="primary" useGradient>Projets</NavLink>
+            <NavLink href="/a-propos" exact color="primary" useGradient>À propos</NavLink>
+            <Button variant="gradient" size="sm" className="shine-effect">Contact</Button>
           </nav>
 
           <button
@@ -51,11 +41,11 @@ export function Header() {
         {isMobileMenuOpen && (
           <div className="mt-4 py-4 border-t md:hidden">
             <nav className="flex flex-col space-y-4">
-              <NavLink href="/">Accueil</NavLink>
-              <NavLink href="/services">Services</NavLink>
-              <NavLink href="/projets">Projets</NavLink>
-              <NavLink href="/a-propos">À propos</NavLink>
-              <Button variant="primary" fullWidth>Contact</Button>
+              <NavLink href="/" exact color="primary" useGradient>Accueil</NavLink>
+              <NavLink href="/services" exact color="primary" useGradient>Services</NavLink>
+              <NavLink href="/projets" exact color="primary" useGradient>Projets</NavLink>
+              <NavLink href="/a-propos" exact color="primary" useGradient>À propos</NavLink>
+              <Button variant="gradient" fullWidth className="shine-effect">Contact</Button>
             </nav>
           </div>
         )}

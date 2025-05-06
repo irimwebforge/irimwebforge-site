@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Typography } from '@/components/atoms/Typography';
+import { cn } from '@/lib/utils';
 
 // Types pour les cellules du tableau
 export type ComparisonCellValue = 
@@ -16,32 +17,52 @@ export type ComparisonCellValue =
 
 // Structure d'une ligne de comparaison
 export interface ComparisonRow {
+  /** Identifiant unique de la ligne */
   id: string;
+  /** Nom de la fonctionnalité comparée */
   feature: string;
+  /** Description détaillée de la fonctionnalité */
   description?: string;
+  /** Valeurs pour chaque colonne */
   values: ComparisonCellValue[];
+  /** Catégorie de la fonctionnalité (pour regroupement) */
   category?: string;
+  /** Mise en évidence visuelle de la ligne */
   highlight?: boolean;
 }
 
 // Structure d'une colonne
 export interface ComparisonColumn {
+  /** Identifiant unique de la colonne */
   id: string;
+  /** Titre de la colonne */
   title: string;
+  /** Description détaillée de la colonne */
   description?: string;
+  /** Mise en évidence visuelle de la colonne */
   highlight?: boolean;
-  accentColor?: 'primary' | 'secondary' | 'tertiary';
+  /** Couleur d'accentuation de la colonne */
+  color?: 'primary' | 'secondary' | 'tertiary';
 }
 
 export interface ComparativeTableProps {
-  columns: ComparisonColumn[]; // Les titres des colonnes (solutions comparées)
-  rows: ComparisonRow[]; // Les lignes (caractéristiques comparées)
+  /** Colonnes du tableau (solutions comparées) */
+  columns: ComparisonColumn[]; 
+  /** Lignes du tableau (caractéristiques comparées) */
+  rows: ComparisonRow[];
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Titre du tableau */
   title?: string;
+  /** Sous-titre ou description du tableau */
   subtitle?: string;
+  /** Fixer l'en-tête lors du défilement */
   stickyHeader?: boolean;
+  /** Regrouper les lignes par catégorie */
   groupByCategory?: boolean;
+  /** Mettre en évidence la colonne recommandée */
   highlightRecommended?: boolean;
+  /** Point de rupture pour la vue responsive */
   responsiveBreakpoint?: 'sm' | 'md' | 'lg';
 }
 
@@ -109,7 +130,7 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
       if (tooltip) {
         return (
           <div className="relative group">
-            <div className={highlight ? `font-bold text-[var(--color-${columns[columnIndex]?.accentColor || 'primary'})]` : ''}>
+            <div className={highlight ? `font-bold text-[var(--color-${columns[columnIndex]?.color || 'primary'})]` : ''}>
               {cellContent}
               <span className="ml-1 text-gray-400 cursor-help">?</span>
             </div>
@@ -123,7 +144,7 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
       // Si la cellule est mise en évidence
       if (highlight) {
         return (
-          <div className={`font-bold text-[var(--color-${columns[columnIndex]?.accentColor || 'primary'})]`}>
+          <div className={`font-bold text-[var(--color-${columns[columnIndex]?.color || 'primary'})]`}>
             {cellContent}
           </div>
         );
@@ -139,7 +160,10 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
   // Rendu d'une ligne responsive (pour les écrans mobiles)
   const renderResponsiveRow = (row: ComparisonRow) => {
     return (
-      <div key={row.id} className={`mb-6 pb-6 border-b border-gray-200 ${row.highlight ? 'bg-gray-50' : ''}`}>
+      <div key={row.id} className={cn(
+        'mb-6 pb-6 border-b border-gray-200', 
+        row.highlight ? 'bg-gray-50' : ''
+      )}>
         <Typography variant="h4" className="mb-2">
           {row.feature}
         </Typography>
@@ -153,7 +177,10 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
         <div className="space-y-4">
           {columns.map((column, index) => (
             <div key={column.id} className="flex justify-between items-center">
-              <div className={`font-medium ${column.highlight ? `text-[var(--color-${column.accentColor || 'primary'})]` : ''}`}>
+              <div className={cn(
+                'font-medium',
+                column.highlight ? `text-[var(--color-${column.color || 'primary'})]` : ''
+              )}>
                 {column.title}
               </div>
               <div>
@@ -177,13 +204,16 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
         )}
         
         {/* Version responsive (mobile) */}
-        <div className={`block ${responsiveBreakpoint}:hidden`}>
+        <div className={cn(`block ${responsiveBreakpoint}:hidden`)}>
           {categoryRows.map(renderResponsiveRow)}
         </div>
         
         {/* Version tableau (desktop) */}
-        <div className={`hidden ${responsiveBreakpoint}:block overflow-hidden`}>
-          <table className={`w-full border-collapse ${responsiveClasses[responsiveBreakpoint]}`}>
+        <div className={cn(`hidden ${responsiveBreakpoint}:block overflow-hidden`)}>
+          <table className={cn(
+            'w-full border-collapse',
+            responsiveClasses[responsiveBreakpoint]
+          )}>
             <thead className={stickyHeader ? 'sticky top-0 bg-white z-10' : ''}>
               <tr className="border-b-2 border-gray-200">
                 <th className="text-left p-3 w-1/4">
@@ -193,11 +223,14 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
                 {columns.map(column => (
                   <th 
                     key={column.id} 
-                    className={`text-center p-3 ${column.highlight && highlightRecommended ? `bg-[var(--color-${column.accentColor || 'primary'})] bg-opacity-5` : ''}`}
+                    className={cn(
+                      'text-center p-3',
+                      column.highlight && highlightRecommended ? `bg-[var(--color-${column.color || 'primary'})] bg-opacity-5` : ''
+                    )}
                   >
                     <Typography 
                       variant="h4" 
-                      className={column.highlight && highlightRecommended ? `text-[var(--color-${column.accentColor || 'primary'})]` : ''}
+                      className={column.highlight && highlightRecommended ? `text-[var(--color-${column.color || 'primary'})]` : ''}
                     >
                       {column.title}
                     </Typography>
@@ -216,7 +249,10 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
               {categoryRows.map(row => (
                 <tr 
                   key={row.id} 
-                  className={`border-b border-gray-200 ${row.highlight ? 'bg-gray-50' : ''}`}
+                  className={cn(
+                    'border-b border-gray-200',
+                    row.highlight ? 'bg-gray-50' : ''
+                  )}
                 >
                   <td className="p-3">
                     <Typography variant="p" className="font-medium">
@@ -233,7 +269,10 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
                   {columns.map((column, index) => (
                     <td 
                       key={`${row.id}-${column.id}`} 
-                      className={`text-center p-3 ${column.highlight && highlightRecommended ? `bg-[var(--color-${column.accentColor || 'primary'})] bg-opacity-5` : ''}`}
+                      className={cn(
+                        'text-center p-3',
+                        column.highlight && highlightRecommended ? `bg-[var(--color-${column.color || 'primary'})] bg-opacity-5` : ''
+                      )}
                     >
                       {renderCell(row.values[index], index)}
                     </td>
@@ -248,7 +287,7 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
   };
   
   return (
-    <div className={`comparative-table ${className}`}>
+    <div className={cn('comparative-table', className)}>
       {(title || subtitle) && (
         <div className="mb-8">
           {title && (

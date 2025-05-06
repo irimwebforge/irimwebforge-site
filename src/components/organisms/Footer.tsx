@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { Logo } from '../atoms/Logo';
+import { NavLink } from '../atoms/NavLink';
+import { Typography } from '../atoms/Typography';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,37 +13,37 @@ export function Footer() {
           {/* Logo et description */}
           <div className="md:col-span-1">
             <Logo width={100} height={33} />
-            <p className="mt-4 text-sm text-secondary">
+            <Typography variant="small" className="mt-4 text-secondary">
               Studio de création digitale spécialisé dans la conception d'interfaces sur mesure.
-            </p>
+            </Typography>
           </div>
 
           {/* Liens rapides */}
           <div>
-            <h3 className="font-semibold text-base mb-4 text-primary">Navigation</h3>
+            <Typography variant="p" className="font-semibold text-base mb-4 text-primary">Navigation</Typography>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/" className="text-secondary hover:text-primary transition-colors">Accueil</Link></li>
-              <li><Link href="/services" className="text-secondary hover:text-primary transition-colors">Services</Link></li>
-              <li><Link href="/projets" className="text-secondary hover:text-primary transition-colors">Projets</Link></li>
-              <li><Link href="/a-propos" className="text-secondary hover:text-primary transition-colors">À propos</Link></li>
-              <li><Link href="/contact" className="text-secondary hover:text-primary transition-colors">Contact</Link></li>
+              <li><NavLink href="/" color="secondary" className="hover:text-[var(--color-primary)]">Accueil</NavLink></li>
+              <li><NavLink href="/services" color="secondary" className="hover:text-[var(--color-primary)]">Services</NavLink></li>
+              <li><NavLink href="/projets" color="secondary" className="hover:text-[var(--color-primary)]">Projets</NavLink></li>
+              <li><NavLink href="/a-propos" color="secondary" className="hover:text-[var(--color-primary)]">À propos</NavLink></li>
+              <li><NavLink href="/contact" color="secondary" className="hover:text-[var(--color-primary)]">Contact</NavLink></li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold text-base mb-4 text-primary">Services</h3>
+            <Typography variant="p" className="font-semibold text-base mb-4 text-primary">Services</Typography>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/services/site-web" className="text-secondary hover:text-primary transition-colors">Sites web</Link></li>
-              <li><Link href="/services/applications" className="text-secondary hover:text-primary transition-colors">Applications</Link></li>
-              <li><Link href="/services/interfaces" className="text-secondary hover:text-primary transition-colors">Interfaces</Link></li>
-              <li><Link href="/services/maintenance" className="text-secondary hover:text-primary transition-colors">Maintenance</Link></li>
+              <li><NavLink href="/services/site-web" color="secondary" className="hover:text-[var(--color-primary)]">Sites web</NavLink></li>
+              <li><NavLink href="/services/applications" color="secondary" className="hover:text-[var(--color-primary)]">Applications</NavLink></li>
+              <li><NavLink href="/services/interfaces" color="secondary" className="hover:text-[var(--color-primary)]">Interfaces</NavLink></li>
+              <li><NavLink href="/services/maintenance" color="secondary" className="hover:text-[var(--color-primary)]">Maintenance</NavLink></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-base mb-4 text-primary">Contact</h3>
+            <Typography variant="p" className="font-semibold text-base mb-4 text-primary">Contact</Typography>
             <ul className="space-y-2 text-sm">
               <li className="text-secondary">contact@irimwebforge.com</li>
               <li className="text-secondary">06 00 00 00 00</li>
@@ -51,16 +53,16 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-color flex flex-col md:flex-row justify-between items-center">
-          <p className="text-xs text-tertiary mb-4 md:mb-0">
+          <Typography variant="small" className="text-xs text-tertiary mb-4 md:mb-0">
             &copy; {currentYear} IRIM Webforge. Tous droits réservés.
-          </p>
+          </Typography>
           <div className="flex space-x-4">
-            <Link href="/mentions-legales" className="text-xs text-tertiary hover:text-secondary transition-colors">
+            <NavLink href="/mentions-legales" className="text-xs text-tertiary hover:text-secondary">
               Mentions légales
-            </Link>
-            <Link href="/politique-confidentialite" className="text-xs text-tertiary hover:text-secondary transition-colors">
+            </NavLink>
+            <NavLink href="/politique-confidentialite" className="text-xs text-tertiary hover:text-secondary">
               Politique de confidentialité
-            </Link>
+            </NavLink>
           </div>
         </div>
       </div>

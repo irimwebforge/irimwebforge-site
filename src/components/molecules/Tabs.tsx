@@ -2,27 +2,45 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Typography } from '@/components/atoms/Typography';
+import { cn } from '@/lib/utils';
 
 export interface TabItem {
+  /** Identifiant unique de l'onglet */
   id: string;
+  /** Texte ou contenu de l'étiquette de l'onglet */
   label: React.ReactNode;
+  /** Contenu du panel associé à l'onglet */
   content: React.ReactNode;
+  /** Indique si l'onglet est désactivé */
   disabled?: boolean;
+  /** Icône affichée avant le label */
   icon?: React.ReactNode;
+  /** Badge numérique ou texte court affiché après le label */
   badge?: string | number;
 }
 
 export interface TabsProps {
+  /** Liste des onglets à afficher */
   tabs: TabItem[];
+  /** ID de l'onglet actif par défaut */
   defaultTab?: string;
+  /** Fonction appelée lors du changement d'onglet */
   onChange?: (id: string) => void;
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Style visuel des onglets */
   variant?: 'default' | 'boxed' | 'pills' | 'underlined';
+  /** Alignement des onglets */
   alignment?: 'start' | 'center' | 'end' | 'stretch';
+  /** Orientation des onglets */
   orientation?: 'horizontal' | 'vertical';
+  /** Taille des onglets */
   size?: 'small' | 'medium' | 'large';
+  /** Animer les transitions entre onglets */
   animated?: boolean;
+  /** Afficher des ombres de défilement si les onglets dépassent */
   withScrollShadows?: boolean;
+  /** Classes CSS pour le contenu des onglets */
   contentClassName?: string;
 }
 
@@ -189,11 +207,18 @@ export const Tabs: React.FC<TabsProps> = ({
   
   return (
     <div 
-      className={`tabs ${orientation === 'vertical' ? 'flex flex-row' : 'flex flex-col'} ${className}`}
+      className={cn(
+        'tabs',
+        orientation === 'vertical' ? 'flex flex-row' : 'flex flex-col',
+        className
+      )}
       ref={tabsRef}
     >
       {/* Navigation des onglets */}
-      <div className={`relative ${orientation === 'vertical' ? 'flex-shrink-0' : ''}`}>
+      <div className={cn(
+        'relative',
+        orientation === 'vertical' ? 'flex-shrink-0' : ''
+      )}>
         {/* Ombres de défilement */}
         {withScrollShadows && orientation === 'horizontal' && (
           <>
@@ -209,11 +234,13 @@ export const Tabs: React.FC<TabsProps> = ({
         {/* Conteneur des onglets */}
         <div
           ref={tabsNavRef}
-          className={`
-            ${orientation === 'horizontal' ? 'flex overflow-x-auto scrollbar-hide' : 'flex flex-col'}
-            ${variant === 'pills' ? 'p-1' : ''}
-            ${variantClasses[variant]} ${alignmentClasses[alignment]} ${sizeClasses[size]}
-          `}
+          className={cn(
+            orientation === 'horizontal' ? 'flex overflow-x-auto scrollbar-hide' : 'flex flex-col',
+            variant === 'pills' ? 'p-1' : '',
+            variantClasses[variant],
+            alignmentClasses[alignment],
+            sizeClasses[size]
+          )}
           role="tablist"
           aria-orientation={orientation}
         >
@@ -222,15 +249,15 @@ export const Tabs: React.FC<TabsProps> = ({
               key={tab.id}
               role="tab"
               data-tab-id={tab.id}
-              className={`
-                flex items-center px-4 py-2 transition-all focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2
-                ${orientation === 'vertical' ? 'text-left' : ''}
-                ${tab.id === activeTab ? activeTabClasses[variant] : ''}
-                ${tab.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800'}
-                ${variant === 'pills' ? 'rounded-full' : variant === 'boxed' ? 'rounded-t-lg' : ''}
-                ${orientation === 'horizontal' && variant === 'default' || variant === 'underlined' ? 'border-b-2 border-transparent' : ''}
-                ${alignment === 'stretch' ? 'flex-1' : ''}
-              `}
+              className={cn(
+                'flex items-center px-4 py-2 transition-all focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2',
+                orientation === 'vertical' ? 'text-left' : '',
+                tab.id === activeTab ? activeTabClasses[variant] : '',
+                tab.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800',
+                variant === 'pills' ? 'rounded-full' : variant === 'boxed' ? 'rounded-t-lg' : '',
+                orientation === 'horizontal' && (variant === 'default' || variant === 'underlined') ? 'border-b-2 border-transparent' : '',
+                alignment === 'stretch' ? 'flex-1' : ''
+              )}
               onClick={() => !tab.disabled && handleTabChange(tab.id)}
               onKeyDown={(e) => !tab.disabled && handleKeyDown(e, tab.id, index)}
               tabIndex={tab.id === activeTab ? 0 : -1}
@@ -252,17 +279,17 @@ export const Tabs: React.FC<TabsProps> = ({
       </div>
       
       {/* Contenu des onglets */}
-      <div className={`tab-content flex-1 p-4 ${contentClassName}`}>
+      <div className={cn('tab-content flex-1 p-4', contentClassName)}>
         {tabs.map(tab => (
           <div
             key={tab.id}
             role="tabpanel"
             id={`tabpanel-${tab.id}`}
             aria-labelledby={`tab-${tab.id}`}
-            className={`
-              ${animated ? 'transition-opacity duration-300' : ''}
-              ${tab.id === activeTab ? 'block opacity-100' : 'hidden opacity-0'}
-            `}
+            className={cn(
+              animated ? 'transition-opacity duration-300' : '',
+              tab.id === activeTab ? 'block opacity-100' : 'hidden opacity-0'
+            )}
           >
             {tab.content}
           </div>
@@ -274,11 +301,17 @@ export const Tabs: React.FC<TabsProps> = ({
 
 // Composant pour un usage plus simple avec des enfants
 export interface TabProps {
+  /** Identifiant unique de l'onglet */
   id: string;
+  /** Texte ou contenu de l'étiquette de l'onglet */
   label: React.ReactNode;
+  /** Contenu du panel */
   children: React.ReactNode;
+  /** Indique si l'onglet est désactivé */
   disabled?: boolean;
+  /** Icône affichée avant le label */
   icon?: React.ReactNode;
+  /** Badge numérique ou texte court affiché après le label */
   badge?: string | number;
 }
 
@@ -290,6 +323,7 @@ export const Tab: React.FC<TabProps> = ({ children }) => {
 
 // Composant TabGroup qui accepte des Tab comme enfants
 export interface TabGroupProps extends Omit<TabsProps, 'tabs'> {
+  /** Onglets enfants (composants Tab) */
   children: React.ReactElement<TabProps> | React.ReactElement<TabProps>[];
 }
 

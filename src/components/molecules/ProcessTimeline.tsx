@@ -31,7 +31,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
   steps,
   className = '',
   orientation = 'vertical',
-  accentColor = 'primary',
+  accentColor = 'tertiary',
   title,
   subtitle,
   withNumbers = true,

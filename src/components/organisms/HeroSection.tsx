@@ -1,49 +1,66 @@
 import React from 'react';
-import Image from 'next/image';
-import { Typography } from '../atoms/Typography';
-import { Button } from '../atoms/Button';
+import { Button } from '@/components/atoms/Button';
+import { Typography } from '@/components/atoms/Typography';
 
 interface HeroSectionProps {
   title: string;
   subtitle: string;
   ctaText: string;
-  onCtaClick?: () => void;
-  imageSrc?: string;
+  ctaHref: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+  backgroundImage?: string;
   className?: string;
 }
 
-export function HeroSection({
+const HeroSection: React.FC<HeroSectionProps> = ({
   title,
   subtitle,
   ctaText,
-  onCtaClick,
-  imageSrc,
-  className,
-}: HeroSectionProps) {
+  ctaHref,
+  secondaryCtaText,
+  secondaryCtaHref,
+  backgroundImage,
+  className = '',
+}) => {
+  const style = backgroundImage ? {
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  } : {};
+
   return (
-    <section className={`py-16 md:py-24 ${className}`}>
-      <div className="mx-auto px-4 sm:px-6 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-6">
-            <Typography as="h1" variant="h1">{title}</Typography>
-            <Typography variant="lead">{subtitle}</Typography>
-            <Button variant="gradient" size="lg" onClick={onCtaClick}>
-              {ctaText}
+    <section 
+      className={`py-20 px-4 flex items-center justify-center relative ${className}`}
+      style={style}
+    >
+      <div className="max-w-4xl mx-auto text-center">
+        <Typography as="h1" variant="h1" className="mb-4 font-bold italic">
+          {title}
+        </Typography>
+        
+        <Typography as="p" variant="lead" className="mb-8 max-w-2xl mx-auto">
+          {subtitle}
+        </Typography>
+        
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Button variant="gradient" size="lg" className="shine-effect" onClick={() => window.location.href = ctaHref}>
+            {ctaText}
+          </Button>
+          
+          {secondaryCtaText && (
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => window.location.href = secondaryCtaHref || ''}
+            >
+              {secondaryCtaText}
             </Button>
-          </div>
-          {imageSrc && (
-            <div className="order-first md:order-last relative w-full aspect-video">
-              <Image
-                src={imageSrc}
-                alt="Hero illustration"
-                fill
-                className="object-cover rounded-lg shadow-md"
-                priority
-              />
-            </div>
           )}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export { HeroSection };

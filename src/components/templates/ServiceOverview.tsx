@@ -6,6 +6,8 @@ import { Container } from '@/components/atoms/Container';
 import { ServiceHighlight } from '@/components/molecules/ServiceHighlight';
 import { FeatureGrid } from '@/components/molecules/FeatureGrid';
 import { Button } from '@/components/atoms/Button';
+import { Icon } from '@/components/atoms/Icon';
+import { IconName } from '@/components/atoms/Icon';
 import Link from 'next/link';
 
 // Types pour les services
@@ -13,7 +15,7 @@ export type Service = {
   id: string;
   title: string;
   description: string;
-  icon: React.ReactNode;
+  icon: IconName | React.ReactNode;
   color?: 'primary' | 'secondary' | 'tertiary';
   slug?: string;
   bulletPoints?: string[];
@@ -26,7 +28,7 @@ export type Feature = {
   id: string;
   title: string;
   description: string;
-  icon: React.ReactNode;
+  icon: IconName | React.ReactNode;
   color?: 'primary' | 'secondary' | 'tertiary';
   link?: {
     text: string;
@@ -75,12 +77,20 @@ export const ServiceOverview = ({
     transparent: '',
   };
 
+  // Fonction pour rendre l'icône (chaîne = Lucide Icon, React.ReactNode = directement)
+  const renderIcon = (icon: IconName | React.ReactNode, size = 24) => {
+    if (typeof icon === 'string') {
+      return <Icon name={icon as IconName} size={size} />;
+    }
+    return icon;
+  };
+
   return (
     <section className={`py-16 ${backgroundClasses[backgroundColor]} ${className}`}>
       <Container>
         {/* En-tête de la section */}
         <div className="text-center mb-12">
-          <Typography as="h2" variant="h2" className="mb-3">
+          <Typography as="h2" variant="h2" className="mb-3 font-bold italic">
             {title}
           </Typography>
           
@@ -105,7 +115,7 @@ export const ServiceOverview = ({
                 key={service.id}
                 title={service.title}
                 description={service.description}
-                icon={service.icon}
+                icon={renderIcon(service.icon)}
                 color={service.color || 'primary'}
                 variant={service.featured ? 'featured' : 'default'}
                 ctaLink={service.slug ? `/services/${service.slug}` : undefined}
@@ -125,7 +135,7 @@ export const ServiceOverview = ({
               >
                 <div className="flex-1">
                   <div className={`w-16 h-16 flex items-center justify-center rounded-full mb-4 bg-[var(--color-${service.color || 'primary'}-100)]`}>
-                    {service.icon}
+                    {renderIcon(service.icon, 32)}
                   </div>
                   <Typography as="h3" variant="h3" className="mb-3">
                     {service.title}
@@ -138,7 +148,7 @@ export const ServiceOverview = ({
                     <ul className="space-y-2 mb-4">
                       {service.bulletPoints.map((point, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <span className={`text-[var(--color-${service.color || 'primary'})]`}>✓</span>
+                          <Icon name="Check" className={`text-[var(--color-${service.color || 'primary'})]`} />
                           <Typography variant="p">{point}</Typography>
                         </li>
                       ))}
@@ -147,7 +157,7 @@ export const ServiceOverview = ({
                   
                   {service.slug && (
                     <Link href={`/services/${service.slug}`}>
-                      <Button variant="outline" size="sm">
+                      <Button variant="secondary" size="sm">
                         {service.ctaText || 'En savoir plus'}
                       </Button>
                     </Link>
@@ -156,7 +166,7 @@ export const ServiceOverview = ({
                 <div className="flex-1 relative h-64 md:h-full rounded-lg bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700">
                   {/* Emplacement pour une image ou illustration du service */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-4xl p-6">{service.icon}</div>
+                    <div className="text-4xl p-6">{renderIcon(service.icon, 64)}</div>
                   </div>
                 </div>
               </div>
@@ -172,7 +182,7 @@ export const ServiceOverview = ({
                 className="rounded-lg p-6 border border-gray-200 dark:border-gray-700 transition-all hover:shadow-md"
               >
                 <div className={`w-12 h-12 flex items-center justify-center rounded-full mb-4 bg-[var(--color-${service.color || 'primary'}-100)]`}>
-                  {service.icon}
+                  {renderIcon(service.icon)}
                 </div>
                 <Typography as="h3" variant="h4" className="mb-3">
                   {service.title}
@@ -187,7 +197,7 @@ export const ServiceOverview = ({
                     className="text-[var(--color-primary)] hover:underline inline-flex items-center gap-1"
                   >
                     {service.ctaText || 'En savoir plus'}
-                    <span aria-hidden="true">→</span>
+                    <Icon name="ArrowRight" className="ml-1" size={16} />
                   </Link>
                 )}
               </div>
@@ -203,7 +213,12 @@ export const ServiceOverview = ({
             </Typography>
             
             <FeatureGrid
-              features={features}
+              features={features.map(feature => ({
+                ...feature,
+                icon: typeof feature.icon === 'string' 
+                  ? renderIcon(feature.icon as IconName) 
+                  : feature.icon
+              }))}
               variant="bordered"
               columns={3}
             />
@@ -214,7 +229,7 @@ export const ServiceOverview = ({
         {showCtaButton && (
           <div className="text-center mt-12">
             <Link href={ctaButtonLink}>
-              <Button variant="primary" size="lg">
+              <Button variant="gradient" size="lg" className="shine-effect">
                 {ctaButtonText}
               </Button>
             </Link>

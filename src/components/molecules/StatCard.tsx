@@ -3,24 +3,38 @@
 import React from 'react';
 import { Typography } from '@/components/atoms/Typography';
 import { Card } from '@/components/molecules/Card';
+import { cn } from '@/lib/utils';
 
 export interface StatCardProps {
+  /** Titre de la statistique */
   title: string;
+  /** Valeur numérique ou textuelle de la statistique */
   value: string | number;
+  /** Texte descriptif supplémentaire */
   subtitle?: string;
+  /** Icône associée à la statistique */
   icon?: React.ReactNode;
+  /** Informations sur la tendance */
   trend?: {
     value: string | number;
     direction: 'up' | 'down' | 'neutral';
     label?: string;
   };
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Style visuel de la carte */
   variant?: 'default' | 'bordered' | 'minimal' | 'accent';
-  accentColor?: 'primary' | 'secondary' | 'tertiary';
+  /** Couleur d'accentuation utilisée */
+  color?: 'primary' | 'secondary' | 'tertiary';
+  /** Disposition des éléments */
   layout?: 'vertical' | 'horizontal';
+  /** Taille du composant */
   size?: 'small' | 'medium' | 'large';
+  /** Animer la valeur lors de l'affichage */
   animateValue?: boolean;
+  /** Préfixe à afficher avant la valeur */
   valuePrefix?: string;
+  /** Suffixe à afficher après la valeur */
   valueSuffix?: string;
 }
 
@@ -32,7 +46,7 @@ export const StatCard: React.FC<StatCardProps> = ({
   trend,
   className = '',
   variant = 'default',
-  accentColor = 'primary',
+  color = 'primary',
   layout = 'vertical',
   size = 'medium',
   animateValue = false,
@@ -40,9 +54,9 @@ export const StatCard: React.FC<StatCardProps> = ({
   valueSuffix = '',
 }) => {
   // Classes pour les couleurs d'accentuation
-  const accentColorClass = `text-[var(--color-${accentColor})]`;
-  const accentBgClass = `bg-[var(--color-${accentColor})] bg-opacity-10`;
-  const accentBorderClass = `border-[var(--color-${accentColor})]`;
+  const accentColorClass = `text-[var(--color-${color})]`;
+  const accentBgClass = `bg-[var(--color-${color})] bg-opacity-10`;
+  const accentBorderClass = `border-[var(--color-${color})]`;
   
   // Classes pour la taille
   const sizeClasses = {
@@ -85,11 +99,11 @@ export const StatCard: React.FC<StatCardProps> = ({
     if (!icon) return null;
     
     return (
-      <div className={`
-        ${layout === 'horizontal' ? 'mr-4' : 'mb-3'} 
-        ${variant === 'accent' ? accentColorClass : ''} 
-        ${size === 'small' ? 'text-lg' : size === 'medium' ? 'text-xl' : 'text-2xl'}
-      `}>
+      <div className={cn(
+        layout === 'horizontal' ? 'mr-4' : 'mb-3',
+        variant === 'accent' ? accentColorClass : '',
+        size === 'small' ? 'text-lg' : size === 'medium' ? 'text-xl' : 'text-2xl'
+      )}>
         {icon}
       </div>
     );
@@ -128,7 +142,10 @@ export const StatCard: React.FC<StatCardProps> = ({
     };
     
     return (
-      <div className={`mt-1 ${trendColorClasses[direction]} text-sm font-medium`}>
+      <div className={cn(
+        'mt-1 text-sm font-medium',
+        trendColorClasses[direction]
+      )}>
         {trendIcons[direction]}
         <span>{trendValue}</span>
         {label && <span className="ml-1 text-gray-500 text-xs">{label}</span>}
@@ -138,11 +155,20 @@ export const StatCard: React.FC<StatCardProps> = ({
   
   // Rendu du contenu principal
   const content = (
-    <div className={`${layoutClasses[layout]} ${sizeClasses[size].container}`}>
+    <div className={cn(
+      layoutClasses[layout],
+      sizeClasses[size].container
+    )}>
       {renderIcon()}
       
-      <div className={`flex flex-col ${layout === 'horizontal' && icon ? 'flex-1' : ''}`}>
-        <Typography variant="small" className={`text-secondary ${sizeClasses[size].title}`}>
+      <div className={cn(
+        'flex flex-col',
+        layout === 'horizontal' && icon ? 'flex-1' : ''
+      )}>
+        <Typography variant="small" className={cn(
+          'text-secondary',
+          sizeClasses[size].title
+        )}>
           {title}
         </Typography>
         
@@ -150,7 +176,10 @@ export const StatCard: React.FC<StatCardProps> = ({
           {valuePrefix && <span className="mr-1 text-gray-500">{valuePrefix}</span>}
           <Typography 
             variant="h2" 
-            className={`${sizeClasses[size].value} ${variant === 'accent' ? accentColorClass : ''}`}
+            className={cn(
+              sizeClasses[size].value,
+              variant === 'accent' ? accentColorClass : ''
+            )}
           >
             {value}
           </Typography>
@@ -158,7 +187,10 @@ export const StatCard: React.FC<StatCardProps> = ({
         </div>
         
         {subtitle && (
-          <Typography variant="small" className={`text-secondary ${sizeClasses[size].subtitle}`}>
+          <Typography variant="small" className={cn(
+            'text-secondary',
+            sizeClasses[size].subtitle
+          )}>
             {subtitle}
           </Typography>
         )}
@@ -171,7 +203,7 @@ export const StatCard: React.FC<StatCardProps> = ({
   // Rendu avec ou sans Card (variante minimale)
   if (variant === 'minimal') {
     return (
-      <div className={`${className}`}>
+      <div className={className}>
         {content}
       </div>
     );
@@ -182,7 +214,11 @@ export const StatCard: React.FC<StatCardProps> = ({
     <Card 
       variant={variant === 'accent' ? 'default' : variant === 'bordered' ? 'outlined' : 'default'}
       padding="none"
-      className={`overflow-hidden ${variantClasses[variant]} ${className}`}
+      className={cn(
+        'overflow-hidden',
+        variantClasses[variant],
+        className
+      )}
     >
       {content}
     </Card>
@@ -191,13 +227,21 @@ export const StatCard: React.FC<StatCardProps> = ({
 
 // Composant pour afficher un groupe de statistiques
 export interface StatGroupProps {
+  /** Liste des statistiques à afficher */
   stats: StatCardProps[];
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Nombre de colonnes dans la grille */
   columns?: 2 | 3 | 4;
+  /** Titre de la section */
   title?: string;
+  /** Sous-titre de la section */
   subtitle?: string;
+  /** Hauteur égale pour toutes les cartes */
   equalHeight?: boolean;
+  /** Style visuel des cartes */
   variant?: 'default' | 'bordered' | 'minimal' | 'accent';
+  /** Disposition des éléments */
   layout?: 'vertical' | 'horizontal';
 }
 
@@ -219,7 +263,7 @@ export const StatGroup: React.FC<StatGroupProps> = ({
   };
   
   return (
-    <div className={`stat-group ${className}`}>
+    <div className={cn('stat-group', className)}>
       {(title || subtitle) && (
         <div className="mb-6">
           {title && (
@@ -236,14 +280,21 @@ export const StatGroup: React.FC<StatGroupProps> = ({
         </div>
       )}
       
-      <div className={`grid ${columnClasses[columns]} gap-6 ${equalHeight ? 'h-full' : ''}`}>
+      <div className={cn(
+        'grid gap-6',
+        columnClasses[columns],
+        equalHeight ? 'h-full' : ''
+      )}>
         {stats.map((stat, index) => (
           <StatCard 
             key={`${stat.title}-${index}`} 
             {...stat}
             variant={stat.variant || variant}
             layout={stat.layout || layout}
-            className={`${equalHeight ? 'h-full' : ''} ${stat.className || ''}`}
+            className={cn(
+              equalHeight ? 'h-full' : '',
+              stat.className || ''
+            )}
           />
         ))}
       </div>

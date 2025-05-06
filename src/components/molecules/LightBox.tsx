@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { Typography } from '@/components/atoms/Typography';
+import { Icon } from '@/components/atoms/Icon';
 
 export interface LightBoxImage {
   id: string;
@@ -178,9 +179,7 @@ export const LightBox: React.FC<LightBoxProps> = ({
         onClick={handleClose}
         aria-label="Fermer"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        <Icon name="X" size={32} />
       </button>
       
       {/* Navigation - Précédent */}
@@ -193,9 +192,7 @@ export const LightBox: React.FC<LightBoxProps> = ({
           }}
           aria-label="Image précédente"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
+          <Icon name="ChevronLeft" size={40} />
         </button>
       )}
       
@@ -209,9 +206,7 @@ export const LightBox: React.FC<LightBoxProps> = ({
           }}
           aria-label="Image suivante"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          <Icon name="ChevronRight" size={40} />
         </button>
       )}
       
@@ -241,7 +236,7 @@ export const LightBox: React.FC<LightBoxProps> = ({
           {/* Indicateur de chargement */}
           {loading && (
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+              <Icon name="Loader2" className="h-12 w-12 animate-spin text-white" />
             </div>
           )}
         </div>

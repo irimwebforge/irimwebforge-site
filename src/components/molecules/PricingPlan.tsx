@@ -5,17 +5,25 @@ import { Typography } from '@/components/atoms/Typography';
 import { Button } from '@/components/atoms/Button';
 import { Card } from '@/components/molecules/Card';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 export interface PricingFeature {
+  /** Identifiant unique de la fonctionnalité */
   id: string;
+  /** Description de la fonctionnalité */
   text: string;
+  /** Indique si la fonctionnalité est incluse dans ce forfait */
   included: boolean;
+  /** Mise en évidence visuelle */
   highlight?: boolean;
 }
 
 export interface PricingPlanProps {
+  /** Titre du forfait */
   title: string;
+  /** Description courte du forfait */
   description?: string;
+  /** Informations sur le prix */
   price: {
     amount: number | string;
     currency?: string;
@@ -23,13 +31,21 @@ export interface PricingPlanProps {
     suffix?: string;
     prefix?: string;
   };
+  /** Liste des fonctionnalités incluses/exclues */
   features: PricingFeature[];
+  /** Texte du bouton d'action */
   ctaText?: string;
+  /** Lien du bouton d'action */
   ctaLink?: string;
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Style visuel de la carte */
   variant?: 'default' | 'featured' | 'compact';
+  /** Badge affiché sur la carte (ex: "Populaire") */
   badge?: string;
-  accentColor?: 'primary' | 'secondary' | 'tertiary';
+  /** Couleur d'accentuation utilisée */
+  color?: 'primary' | 'secondary' | 'tertiary';
+  /** Fonction appelée au clic sur le bouton */
   onCtaClick?: () => void;
 }
 
@@ -43,7 +59,7 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
   className = '',
   variant = 'default',
   badge,
-  accentColor = 'primary',
+  color = 'primary',
   onCtaClick,
 }) => {
   // Classes pour les couleurs d'accent
@@ -76,7 +92,7 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
   // Classes pour les variantes
   const variantClasses = {
     default: '',
-    featured: `border-2 ${colorClasses[accentColor].split(' ')[1]} shadow-md`,
+    featured: `border-2 ${colorClasses[color].split(' ')[1]} shadow-md`,
     compact: 'p-4',
   };
   
@@ -85,7 +101,10 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
     if (!badge) return null;
     
     return (
-      <div className={`absolute -top-3 right-4 ${colorClasses[accentColor].split(' ')[2]} bg-opacity-90 text-white text-xs font-bold px-3 py-1 rounded-full`}>
+      <div className={cn(
+        'absolute -top-3 right-4 text-white text-xs font-bold px-3 py-1 rounded-full bg-opacity-90',
+        colorClasses[color].split(' ')[2]
+      )}>
         {badge}
       </div>
     );
@@ -94,10 +113,19 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
   // Rendu des fonctionnalités
   const renderFeatures = () => {
     return (
-      <ul className={`my-6 space-y-3 ${variant === 'compact' ? 'text-sm' : ''}`}>
+      <ul className={cn(
+        'my-6 space-y-3',
+        variant === 'compact' ? 'text-sm' : ''
+      )}>
         {features.map((feature) => (
-          <li key={feature.id} className={`flex items-start ${feature.highlight ? 'font-medium' : ''}`}>
-            <span className={`mr-2 mt-1 ${feature.included ? `text-[var(--color-${accentColor})]` : 'text-gray-400'}`}>
+          <li key={feature.id} className={cn(
+            'flex items-start',
+            feature.highlight ? 'font-medium' : ''
+          )}>
+            <span className={cn(
+              'mr-2 mt-1',
+              feature.included ? `text-[var(--color-${color})]` : 'text-gray-400'
+            )}>
               {feature.included ? (
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12"></polyline>
@@ -109,7 +137,9 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
                 </svg>
               )}
             </span>
-            <Typography variant="small" className={`${!feature.included ? 'text-gray-400 line-through' : ''}`}>
+            <Typography variant="small" className={cn(
+              !feature.included ? 'text-gray-400 line-through' : ''
+            )}>
               {feature.text}
             </Typography>
           </li>
@@ -123,7 +153,10 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
     <div className="relative h-full flex flex-col">
       {renderBadge()}
       
-      <div className={`text-center ${variant === 'compact' ? 'mb-3' : 'mb-6'}`}>
+      <div className={cn(
+        'text-center',
+        variant === 'compact' ? 'mb-3' : 'mb-6'
+      )}>
         <Typography variant={variant === 'compact' ? 'h4' : 'h3'} className="mb-2">
           {title}
         </Typography>
@@ -135,7 +168,11 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
         )}
       </div>
       
-      <div className={`text-center ${variant === 'compact' ? 'py-2' : 'py-4'} ${colorClasses[accentColor].split(' ')[0]}`}>
+      <div className={cn(
+        'text-center',
+        variant === 'compact' ? 'py-2' : 'py-4',
+        colorClasses[color].split(' ')[0]
+      )}>
         {formattedPrice()}
       </div>
       
@@ -169,7 +206,11 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
   if (variant === 'featured') {
     return (
       <Card
-        className={`overflow-visible ${variantClasses[variant]} ${className}`}
+        className={cn(
+          'overflow-visible',
+          variantClasses[variant],
+          className
+        )}
         padding="large"
       >
         {content}
@@ -180,7 +221,10 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
   // Sinon, on utilise une Card standard
   return (
     <Card
-      className={`${variantClasses[variant]} ${className}`}
+      className={cn(
+        variantClasses[variant],
+        className
+      )}
       padding={variant === 'compact' ? 'small' : 'normal'}
     >
       {content}
@@ -190,10 +234,15 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
 
 // Composant pour afficher une grille de plans tarifaires
 export interface PricingGridProps {
+  /** Liste des forfaits à afficher */
   plans: PricingPlanProps[];
+  /** Titre de la section */
   title?: string;
+  /** Sous-titre de la section */
   subtitle?: string;
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Nombre de colonnes dans la grille */
   columns?: 2 | 3 | 4;
 }
 
@@ -212,7 +261,7 @@ export const PricingGrid: React.FC<PricingGridProps> = ({
   };
   
   return (
-    <div className={`pricing-grid ${className}`}>
+    <div className={cn('pricing-grid', className)}>
       {(title || subtitle) && (
         <div className="text-center mb-10">
           {title && (
@@ -229,7 +278,10 @@ export const PricingGrid: React.FC<PricingGridProps> = ({
         </div>
       )}
       
-      <div className={`grid grid-cols-1 ${columnClasses[columns]} gap-6`}>
+      <div className={cn(
+        'grid grid-cols-1 gap-6',
+        columnClasses[columns]
+      )}>
         {plans.map((plan, index) => (
           <PricingPlan key={`${plan.title}-${index}`} {...plan} />
         ))}

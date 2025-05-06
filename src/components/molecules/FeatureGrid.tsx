@@ -1,13 +1,20 @@
 import React from 'react';
 import { Typography } from '@/components/atoms/Typography';
 import { Card } from '@/components/molecules/Card';
+import { cn } from '@/lib/utils';
 
 export interface Feature {
+  /** Identifiant unique de la fonctionnalité */
   id: string;
+  /** Titre de la fonctionnalité */
   title: string;
+  /** Description de la fonctionnalité */
   description: string;
+  /** Icône représentant la fonctionnalité */
   icon?: React.ReactNode;
+  /** Couleur d'accentuation utilisée */
   color?: 'primary' | 'secondary' | 'tertiary';
+  /** Lien optionnel vers plus d'informations */
   link?: {
     text: string;
     url: string;
@@ -15,12 +22,20 @@ export interface Feature {
 }
 
 export interface FeatureGridProps {
+  /** Liste des fonctionnalités à afficher */
   features: Feature[];
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Nombre de colonnes dans la grille */
   columns?: 2 | 3 | 4;
+  /** Style visuel des fonctionnalités */
   variant?: 'card' | 'minimal' | 'bordered';
+  /** Espacement entre les éléments */
   gap?: 'small' | 'medium' | 'large';
+  /** Alignement de l'icône */
   alignIcon?: 'top' | 'center';
+  /** Utiliser des icônes tertiaires par défaut */
+  withDefaultTertiaryIcons?: boolean;
 }
 
 export const FeatureGrid: React.FC<FeatureGridProps> = ({
@@ -30,6 +45,7 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
   variant = 'card',
   gap = 'medium',
   alignIcon = 'top',
+  withDefaultTertiaryIcons = true,
 }) => {
   // Configuration des colonnes de la grille
   const gridColumnClasses = {
@@ -72,7 +88,7 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
       },
     };
 
-    const featureColor = feature.color || 'primary';
+    const featureColor = feature.color || (withDefaultTertiaryIcons ? 'tertiary' : 'primary');
     const colorClass = colorClasses[featureColor];
 
     // Contenu commun à toutes les variantes
@@ -80,9 +96,12 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
       <>
         {feature.icon && (
           <div 
-            className={`${colorClass.bg} rounded-full p-3 flex-shrink-0 ${
+            className={cn(
+              colorClass.bg,
+              'rounded-full p-3 flex-shrink-0 flex items-center justify-center',
+              colorClass.text,
               variant === 'minimal' ? 'w-12 h-12' : 'w-14 h-14'
-            } flex items-center justify-center ${colorClass.text}`}
+            )}
           >
             {feature.icon}
           </div>
@@ -90,7 +109,7 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
         <div className={feature.icon ? 'mt-4' : ''}>
           <Typography 
             variant={variant === 'minimal' ? 'h4' : 'h3'} 
-            className={`font-bold mb-2 ${colorClass.text}`}
+            className={cn('font-bold mb-2', colorClass.text)}
           >
             {feature.title}
           </Typography>
@@ -100,7 +119,10 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
           {feature.link && (
             <a 
               href={feature.link.url} 
-              className={`inline-block mt-3 ${colorClass.text} font-medium hover:underline`}
+              className={cn(
+                'inline-block mt-3 font-medium hover:underline',
+                colorClass.text
+              )}
             >
               {feature.link.text}
             </a>
@@ -119,7 +141,10 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
             padding="large"
             className="h-full"
           >
-            <div className={`flex flex-col ${iconAlignmentClasses[alignIcon]}`}>
+            <div className={cn(
+              'flex flex-col',
+              iconAlignmentClasses[alignIcon]
+            )}>
               {featureContent}
             </div>
           </Card>
@@ -128,9 +153,14 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
         return (
           <div 
             key={feature.id} 
-            className={`border border-color rounded-lg p-5 h-full surface-primary`}
+            className={cn(
+              'border border-color rounded-lg p-5 h-full surface-primary'
+            )}
           >
-            <div className={`flex flex-col ${iconAlignmentClasses[alignIcon]}`}>
+            <div className={cn(
+              'flex flex-col',
+              iconAlignmentClasses[alignIcon]
+            )}>
               {featureContent}
             </div>
           </div>
@@ -139,7 +169,10 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
       default:
         return (
           <div key={feature.id} className="h-full">
-            <div className={`flex flex-col ${iconAlignmentClasses[alignIcon]}`}>
+            <div className={cn(
+              'flex flex-col',
+              iconAlignmentClasses[alignIcon]
+            )}>
               {featureContent}
             </div>
           </div>
@@ -148,7 +181,12 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
   };
 
   return (
-    <div className={`grid ${gridColumnClasses[columns]} ${gapClasses[gap]} ${className}`}>
+    <div className={cn(
+      'grid',
+      gridColumnClasses[columns],
+      gapClasses[gap],
+      className
+    )}>
       {features.map(renderFeature)}
     </div>
   );
@@ -156,11 +194,17 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
 
 // Composant pour afficher un ensemble complet avec titre et sous-titre
 export interface FeatureSectionProps {
+  /** Titre de la section */
   title: string;
+  /** Sous-titre ou description de la section */
   subtitle?: string;
+  /** Liste des fonctionnalités à afficher */
   features: Feature[];
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Nombre de colonnes dans la grille */
   columns?: 2 | 3 | 4;
+  /** Style visuel des fonctionnalités */
   variant?: 'card' | 'minimal' | 'bordered';
 }
 
@@ -173,7 +217,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
   variant = 'card',
 }) => {
   return (
-    <section className={`feature-section ${className}`}>
+    <section className={cn('feature-section', className)}>
       <div className="text-center mb-10">
         <Typography variant="h2" className="mb-3">
           {title}

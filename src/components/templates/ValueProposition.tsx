@@ -102,7 +102,7 @@ export const ValueProposition = ({
           )}
           
           <div>
-            <Typography as="h2" variant="h2" className="mb-3">
+            <Typography as="h2" variant="h2" className="mb-3 font-bold italic">
               {title}
             </Typography>
             
@@ -180,7 +180,7 @@ export const ValueProposition = ({
         {showTestimonials && testimonials.length > 0 && (
           <div className="mt-16">
             <Typography as="h3" variant="h3" className="text-center mb-8">
-              Ce qu'en disent nos clients
+              Ce qu&apos;en disent nos clients
             </Typography>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

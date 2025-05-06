@@ -5,30 +5,47 @@ import { Typography } from '@/components/atoms/Typography';
 import { Card } from '@/components/molecules/Card';
 import Image from 'next/image';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 export interface BlogTag {
+  /** Identifiant unique du tag */
   id: string;
+  /** Nom du tag affiché */
   name: string;
+  /** Slug utilisé pour les URL de filtrage */
   slug: string;
+  /** Couleur d'accentuation du tag */
   color?: 'primary' | 'secondary' | 'tertiary' | 'default';
 }
 
 export interface BlogPostCardProps {
+  /** Identifiant unique de l'article */
   id: string;
+  /** Titre de l'article */
   title: string;
+  /** Slug pour l'URL de l'article */
   slug: string;
+  /** Extrait ou résumé de l'article */
   excerpt?: string;
+  /** URL de l'image de couverture */
   coverImage?: string;
+  /** Date de publication (chaîne ou objet Date) */
   publishedAt: string | Date;
+  /** Temps de lecture estimé */
   readTime?: string | number;
+  /** Informations sur l'auteur */
   author?: {
     name: string;
     avatar?: string;
     role?: string;
   };
+  /** Tags associés à l'article */
   tags?: BlogTag[];
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Style visuel de la carte */
   variant?: 'default' | 'featured' | 'compact' | 'horizontal';
+  /** Fonction appelée au clic sur la carte */
   onClick?: () => void;
 }
 
@@ -86,7 +103,10 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
           return (
             <span 
               key={tag.id} 
-              className={`text-xs px-2 py-1 rounded-full ${tagColorClasses[tagColor]} hover:opacity-80 transition-opacity cursor-pointer`}
+              className={cn(
+                'text-xs px-2 py-1 rounded-full hover:opacity-80 transition-opacity cursor-pointer',
+                tagColorClasses[tagColor]
+              )}
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
@@ -170,7 +190,10 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
             </div>
           )}
           
-          <div className={`p-5 flex flex-col ${coverImage ? 'md:w-2/3' : 'w-full'}`}>
+          <div className={cn(
+            'p-5 flex flex-col',
+            coverImage ? 'md:w-2/3' : 'w-full'
+          )}>
             {renderTags()}
             
             <Typography variant="h3" className="mt-2">
@@ -205,7 +228,10 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
           </div>
         )}
         
-        <div className={`p-5 ${variant === 'featured' ? 'p-6' : ''}`}>
+        <div className={cn(
+          'p-5',
+          variant === 'featured' ? 'p-6' : ''
+        )}>
           {renderTags()}
           
           <Typography 
@@ -241,11 +267,15 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
   const cardPadding = 'none'; // Nous gérons le padding manuellement
   
   return (
-    <Link href={`/blog/${slug}`} passHref className={`block ${className}`}>
+    <Link href={`/blog/${slug}`} passHref className={cn('block', className)}>
       <Card
         variant={cardVariant}
         padding={cardPadding}
-        className={`overflow-hidden h-full transition-transform duration-300 ${variant === 'featured' ? 'hover:shadow-xl' : 'hover:shadow-md'} ${variant === 'featured' ? 'border-[var(--color-primary)]' : ''}`}
+        className={cn(
+          'overflow-hidden h-full transition-transform duration-300',
+          variant === 'featured' ? 'hover:shadow-xl' : 'hover:shadow-md',
+          variant === 'featured' ? 'border-[var(--color-primary)]' : ''
+        )}
         onClick={handleClick}
       >
         {cardContent()}
@@ -256,13 +286,21 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
 
 // Composant pour une grille d'articles
 export interface BlogPostGridProps {
+  /** Liste des articles à afficher */
   posts: BlogPostCardProps[];
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Nombre de colonnes dans la grille */
   columns?: 1 | 2 | 3 | 4;
+  /** Afficher un article en vedette */
   featuredPost?: boolean;
+  /** Titre de la section */
   title?: string;
+  /** Sous-titre de la section */
   subtitle?: string;
+  /** URL vers la page listant tous les articles */
   viewAllLink?: string;
+  /** Texte du lien "voir tout" */
   viewAllText?: string;
 }
 
@@ -287,7 +325,7 @@ export const BlogPostGrid: React.FC<BlogPostGridProps> = ({
   };
   
   return (
-    <div className={`blog-post-grid ${className}`}>
+    <div className={cn('blog-post-grid', className)}>
       {(title || subtitle) && (
         <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between">
           <div>
@@ -321,7 +359,7 @@ export const BlogPostGrid: React.FC<BlogPostGridProps> = ({
         )}
         
         {posts.length > (featuredPost ? 1 : 0) && (
-          <div className={`grid ${columnsClasses[columns]} gap-6`}>
+          <div className={cn('grid gap-6', columnsClasses[columns])}>
             {posts.slice(featuredPost ? 1 : 0).map(post => (
               <BlogPostCard key={post.id} {...post} />
             ))}

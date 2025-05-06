@@ -1,30 +1,47 @@
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
+  helpText?: string;
+  variant?: 'default' | 'primary' | 'accent';
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type = 'text', label, error, ...props }, ref) => {
+  ({ className, type = 'text', label, error, helpText, variant = 'default', ...props }, ref) => {
+    // Classes de style pour les différentes variantes
+    const variantClasses = {
+      default: "focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]",
+      primary: "border-[var(--color-primary)]/30 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]",
+      accent: "border-[var(--color-tertiary)]/30 focus:ring-[var(--color-tertiary)] focus:border-[var(--color-tertiary)]"
+    };
+    
     return (
       <div className="flex flex-col gap-1">
         {label && (
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-secondary mb-1">
             {label}
           </label>
         )}
         <input
           type={type}
-          className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-            error ? 'border-red-500' : 'border-gray-300'
-          } ${className || ''}`}
+          className={cn(
+            `w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2`,
+            error ? 'border-red-500 focus:ring-red-500' : `border-color ${variantClasses[variant]}`,
+            className
+          )}
           ref={ref}
           {...props}
         />
         {error && (
-          <span className="text-sm text-red-500">
+          <span className="text-sm text-red-500 mt-1">
             {error}
+          </span>
+        )}
+        {helpText && !error && (
+          <span className="text-xs text-tertiary mt-1">
+            {helpText}
           </span>
         )}
       </div>

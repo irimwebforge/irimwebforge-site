@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 export interface DividerProps {
   orientation?: 'horizontal' | 'vertical';
@@ -9,6 +10,7 @@ export interface DividerProps {
   label?: React.ReactNode;
   labelPosition?: 'start' | 'center' | 'end';
   spacing?: 'small' | 'medium' | 'large';
+  highlight?: boolean;
 }
 
 export const Divider: React.FC<DividerProps> = ({
@@ -20,6 +22,7 @@ export const Divider: React.FC<DividerProps> = ({
   label,
   labelPosition = 'center',
   spacing = 'medium',
+  highlight = false,
 }) => {
   // Détermination des classes de style
   const colorClasses = {
@@ -58,43 +61,52 @@ export const Divider: React.FC<DividerProps> = ({
   const baseClasses = orientation === 'horizontal'
     ? `w-full ${spacingClasses[spacing]}`
     : 'h-full self-stretch mx-2';
+    
+  // Classe de mise en évidence (background)
+  const highlightClass = highlight && color === 'tertiary' 
+    ? 'bg-amber-50 p-4 rounded-md' 
+    : '';
 
   // Classes combinées
-  const dividerClasses = `
-    ${baseClasses}
-    ${thicknessClasses[orientation][thickness]}
-    ${colorClasses[color]}
-    ${variantClasses[variant]}
-    ${className}
-  `.trim();
+  const dividerClasses = cn(
+    baseClasses,
+    thicknessClasses[orientation][thickness],
+    colorClasses[color],
+    variantClasses[variant],
+    className
+  );
 
   // Si un label est fourni et que l'orientation est horizontale
   if (label && orientation === 'horizontal') {
-    const labelPositionClasses = {
-      start: 'justify-start',
-      center: 'justify-center',
-      end: 'justify-end',
-    };
+    const labelColor = color !== 'default' 
+      ? `text-[var(--color-${color})]` 
+      : 'text-secondary';
 
     return (
-      <div className={`flex items-center ${spacingClasses[spacing]}`}>
+      <div className={cn('flex items-center', spacingClasses[spacing], highlightClass)}>
         {labelPosition === 'start' && (
-          <span className="pr-3 text-secondary text-sm">{label}</span>
+          <span className={cn('pr-3 text-sm font-medium', labelColor)}>
+            {label}
+          </span>
         )}
-        <div className={`flex-grow ${dividerClasses}`} />
+        <div className={dividerClasses} />
         {labelPosition === 'center' && (
-          <span className="px-3 text-secondary text-sm">{label}</span>
+          <span className={cn('px-3 text-sm font-medium', labelColor)}>
+            {label}
+          </span>
         )}
         {labelPosition !== 'start' && labelPosition !== 'center' && (
-          <div className={`flex-grow ${dividerClasses}`} />
+          <div className={dividerClasses} />
         )}
         {labelPosition === 'end' && (
-          <span className="pl-3 text-secondary text-sm">{label}</span>
+          <span className={cn('pl-3 text-sm font-medium', labelColor)}>
+            {label}
+          </span>
         )}
       </div>
     );
   }
 
   // Divider simple
-  return <div className={dividerClasses} />;
+  return <div className={cn(dividerClasses, highlightClass)} />;
 }; 

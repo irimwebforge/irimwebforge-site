@@ -2,23 +2,37 @@ import React from 'react';
 import { Typography } from '@/components/atoms/Typography';
 import Image from 'next/image';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 export interface ProjectTag {
+  /** Identifiant unique du tag */
   id: string;
+  /** Texte d'affichage du tag */
   label: string;
+  /** Couleur d'accentuation du tag */
   color?: 'primary' | 'secondary' | 'tertiary' | 'default';
 }
 
 export interface ProjectPreviewProps {
+  /** Identifiant unique du projet */
   id: string;
+  /** Titre du projet */
   title: string;
+  /** Slug pour l'URL du projet */
   slug: string;
+  /** URL de l'image de présentation du projet */
   imageSrc: string;
+  /** Tags associés au projet */
   tags?: ProjectTag[];
+  /** Description courte du projet */
   description?: string;
+  /** Classes CSS additionnelles */
   className?: string;
+  /** Style visuel de la prévisualisation */
   variant?: 'default' | 'compact' | 'featured';
+  /** Nom du client du projet */
   clientName?: string;
+  /** Année de réalisation du projet */
   year?: string;
 }
 
@@ -77,7 +91,10 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
           return (
             <span 
               key={tag.id} 
-              className={`text-xs px-2 py-1 rounded-full ${tagColorClasses[tag.color || 'default']}`}
+              className={cn(
+                'text-xs px-2 py-1 rounded-full',
+                tagColorClasses[tag.color || 'default']
+              )}
             >
               {tag.label}
             </span>
@@ -115,10 +132,17 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
   return (
     <Link 
       href={`/projets/${slug}`} 
-      className={`project-preview block surface-primary ${variantClasses.container} ${className}`}
+      className={cn(
+        'project-preview block surface-primary',
+        variantClasses.container,
+        className
+      )}
     >
       {/* Image du projet */}
-      <div className={`relative ${variantClasses.imageDimensions} overflow-hidden`}>
+      <div className={cn(
+        'relative overflow-hidden',
+        variantClasses.imageDimensions
+      )}>
         <Image
           src={imageSrc}
           alt={title}
@@ -128,7 +152,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
       </div>
       
       {/* Contenu texte */}
-      <div className={`${variantClasses.content}`}>
+      <div className={variantClasses.content}>
         <Typography 
           variant={variant === 'featured' ? 'h3' : 'h4'} 
           className="font-bold text-primary"
