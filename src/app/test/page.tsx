@@ -3,13 +3,14 @@
 import { useState } from 'react';
 import { Typography } from '@/components/atoms/Typography';
 import { Button } from '@/components/atoms/Button';
-import { Container } from '@/components/atoms/Container';
 import { NavLink } from '@/components/atoms/NavLink';
 import { Divider } from '@/components/atoms/Divider';
 import { Badge } from '@/components/atoms/Badge';
 import { Card } from '@/components/molecules/Card';
 import { Tabs } from '@/components/molecules/Tabs';
 import { Logo } from '@/components/atoms/Logo';
+import { Header } from '@/components/organisms/Header';
+import { Footer } from '@/components/organisms/Footer';
 import Link from 'next/link';
 
 // Types de composants pour l'organisation
@@ -240,6 +241,30 @@ export default function DesignSystemPage() {
     }
   ];
 
+  // Données des composants organismes
+  const organismComponents: ComponentType[] = [
+    {
+      id: 'header',
+      title: 'Header',
+      description: 'En-tête du site avec navigation et logo',
+      component: (
+        <div className="border border-color rounded-lg overflow-hidden">
+          <Header />
+        </div>
+      )
+    },
+    {
+      id: 'footer',
+      title: 'Footer',
+      description: 'Pied de page avec liens et informations',
+      component: (
+        <div className="border border-color rounded-lg overflow-hidden scale-90 origin-top">
+          <Footer />
+        </div>
+      )
+    }
+  ];
+
   // Données des templates 
   const templateComponents: ComponentType[] = [
     {
@@ -252,7 +277,7 @@ export default function DesignSystemPage() {
             Le template ProjectShowcase permet d'afficher une grille de projets avec filtrage par catégories et pagination.
           </Typography>
           <div className="mt-3">
-            <Link href="/templates/project-showcase">
+            <Link href="/templates">
               <Button variant="outline" size="sm">Voir le template</Button>
             </Link>
           </div>
@@ -269,7 +294,7 @@ export default function DesignSystemPage() {
             Le template ServiceOverview permet d'afficher les services avec différentes mises en page et options.
           </Typography>
           <div className="mt-3">
-            <Link href="/templates/service-overview">
+            <Link href="/templates">
               <Button variant="outline" size="sm">Voir le template</Button>
             </Link>
           </div>
@@ -286,7 +311,7 @@ export default function DesignSystemPage() {
             Le template CTASection permet de créer des sections d'appel à l'action avec différentes variantes.
           </Typography>
           <div className="mt-3">
-            <Link href="/templates/cta-section">
+            <Link href="/templates">
               <Button variant="outline" size="sm">Voir le template</Button>
             </Link>
           </div>
@@ -303,7 +328,7 @@ export default function DesignSystemPage() {
             Le template ValueProposition permet d'afficher les valeurs, statistiques et témoignages.
           </Typography>
           <div className="mt-3">
-            <Link href="/templates/value-proposition">
+            <Link href="/templates">
               <Button variant="outline" size="sm">Voir le template</Button>
             </Link>
           </div>
@@ -323,6 +348,11 @@ export default function DesignSystemPage() {
       id: 'molecules',
       title: 'Composants moléculaires',
       components: moleculeComponents
+    },
+    {
+      id: 'organisms',
+      title: 'Composants organismes',
+      components: organismComponents
     },
     {
       id: 'templates',
