@@ -1,8 +1,8 @@
 export default function BlogPage() {
-    return (
-      <div>
-        <h1>Blog</h1>
-        {/* Ton contenu de blog ici */}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h1>Blog</h1>
+      {/* Ton contenu de blog ici */}
+    </div>
+  );
+}

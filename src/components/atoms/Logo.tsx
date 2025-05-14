@@ -29,15 +29,15 @@ export const Logo = ({
     // Vérification initiale uniquement si le mode est auto
     if (typeof window !== 'undefined' && mode === 'auto') {
       setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
-      
+
       // Mise en place d'un écouteur pour les changements de préférence
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       const handleChange = (e: MediaQueryListEvent) => {
         setIsDarkMode(e.matches);
       };
-      
+
       mediaQuery.addEventListener('change', handleChange);
-      
+
       // Nettoyage lors du démontage du composant
       return () => {
         mediaQuery.removeEventListener('change', handleChange);
@@ -46,13 +46,11 @@ export const Logo = ({
   }, [mode]);
 
   // Détermine le mode d'affichage final (light, dark ou default)
-  const displayMode = mode === 'auto' 
-    ? (isDarkMode ? 'light' : 'dark') 
-    : mode;
+  const displayMode = mode === 'auto' ? (isDarkMode ? 'light' : 'dark') : mode;
 
   // Construit le chemin du fichier logo en fonction du variant et du mode
   let logoPath = '';
-  
+
   if (variant === 'banner') {
     // Les bannières sont uniquement en PNG
     logoPath = `/images/logo/banner_${displayMode}.png`;

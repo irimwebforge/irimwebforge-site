@@ -3,11 +3,13 @@
 Site web professionnel présentant les services de développement d'interfaces admin sur mesure.
 
 ## Technologies
+
 - Next.js 14
 - TypeScript
 - Tailwind CSS
 
 ## Commandes
+
 - `yarn dev` - Démarrer en mode développement
 - `yarn build` - Construire pour production
 - `yarn start` - Démarrer en mode production
@@ -15,11 +17,16 @@ Site web professionnel présentant les services de développement d'interfaces a
 - `yarn format` - Formater le code avec Prettier
 
 ## Structure
+
 - `app/` - Pages et routes (App Router)
 - `components/` - Composants réutilisables
 - `lib/` - Utilitaires et types
-- `public/` - Assets statiques# Updated on Mon May  5 11:27:06 CEST 2025
-# Updated on Mon May  5 11:30:20 CEST 2025#2
-# Updated on Mon May  5 11:33:06 CEST 2025#3
-# Updated on Mon May  5 11:38:37 CEST 2025#4
-# Updated on Mon May  5 11:44:26 CEST 2025
+- `public/` - Assets statiques# Updated on Mon May 5 11:27:06 CEST 2025
+
+# Updated on Mon May 5 11:30:20 CEST 2025#2
+
+# Updated on Mon May 5 11:33:06 CEST 2025#3
+
+# Updated on Mon May 5 11:38:37 CEST 2025#4
+
+# Updated on Mon May 5 11:44:26 CEST 2025

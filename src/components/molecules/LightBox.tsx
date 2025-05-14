@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { Typography } from '@/components/atoms/Typography';
-import { Icon } from '@/components/atoms/Icon';
+import { Typography } from '../atoms/Typography';
+import { Icon } from '../atoms/Icon';
 
 export interface LightBoxImage {
   id: string;
@@ -51,7 +51,7 @@ export const LightBox: React.FC<LightBoxProps> = ({
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
   const [zoomed, setZoomed] = useState(false);
-  
+
   // Synchroniser l'état isVisible avec la prop isOpen
   useEffect(() => {
     setIsVisible(isOpen);
@@ -62,101 +62,98 @@ export const LightBox: React.FC<LightBoxProps> = ({
       // Réactiver le défilement lorsqu'elle est fermée
       document.body.style.overflow = '';
     }
-    
+
     return () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
-  
+
   // Synchroniser l'index initial
   useEffect(() => {
     setCurrentIndex(initialIndex);
   }, [initialIndex]);
-  
-  // Effet pour les raccourcis clavier
-  useEffect(() => {
-    if (!isVisible || !enableKeyboard) return;
-    
-    const handleKeyDown = (e: KeyboardEvent) => {
-      switch (e.key) {
-        case 'ArrowLeft':
-          navigateToPrevious();
-          break;
-        case 'ArrowRight':
-          navigateToNext();
-          break;
-        case 'Escape':
-          handleClose();
-          break;
-        default:
-          break;
-      }
-    };
-    
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isVisible, currentIndex, enableKeyboard]);
-  
+
   // Gérer la fermeture
   const handleClose = useCallback(() => {
     setIsVisible(false);
     if (onClose) onClose();
     document.body.style.overflow = '';
   }, [onClose]);
-  
+
   // Naviguer à l'image précédente
   const navigateToPrevious = useCallback(() => {
     if (images.length <= 1) return;
     setLoading(true);
     setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : images.length - 1));
   }, [images.length]);
-  
+
   // Naviguer à l'image suivante
   const navigateToNext = useCallback(() => {
     if (images.length <= 1) return;
     setLoading(true);
     setCurrentIndex((prevIndex) => (prevIndex < images.length - 1 ? prevIndex + 1 : 0));
   }, [images.length]);
-  
+
+  // Effet pour les raccourcis clavier
+  useEffect(() => {
+    if (!isVisible || !enableKeyboard) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleClose();
+      if (e.key === 'ArrowLeft') navigateToPrevious();
+      if (e.key === 'ArrowRight') navigateToNext();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isVisible, currentIndex, enableKeyboard, handleClose, navigateToNext, navigateToPrevious]);
+
   // Naviguer à une image spécifique (pour les vignettes)
-  const navigateToIndex = useCallback((index: number) => {
-    if (index === currentIndex) return;
-    setLoading(true);
-    setCurrentIndex(index);
-  }, [currentIndex]);
-  
+  const navigateToIndex = useCallback(
+    (index: number) => {
+      if (index === currentIndex) return;
+      setLoading(true);
+      setCurrentIndex(index);
+    },
+    [currentIndex]
+  );
+
   // Gérer le swipe sur mobile
   const handleTouchStart = (e: React.TouchEvent) => {
     if (!enableSwipe) return;
     setTouchStartX(e.touches[0].clientX);
   };
-  
+
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!enableSwipe) return;
     setTouchEndX(e.touches[0].clientX);
   };
-  
+
   const handleTouchEnd = () => {
     if (!enableSwipe) return;
-    if (touchStartX - touchEndX > 100) { // Swipe vers la gauche
+    if (touchStartX - touchEndX > 100) {
+      // Swipe vers la gauche
       navigateToNext();
-    } else if (touchEndX - touchStartX > 100) { // Swipe vers la droite
+    } else if (touchEndX - touchStartX > 100) {
+      // Swipe vers la droite
       navigateToPrevious();
     }
   };
-  
+
   // Gérer le zoom
   const toggleZoom = () => {
     if (!enableZoom) return;
     setZoomed(!zoomed);
   };
-  
+
   // Ne rien rendre si la lightbox est fermée
   if (!isVisible || images.length === 0) return null;
-  
+
   // Image actuelle
   const currentImage = images[currentIndex];
-  
+
   // Classes pour les animations
   const animationClasses = {
     fade: 'animate-fade',
@@ -164,9 +161,9 @@ export const LightBox: React.FC<LightBoxProps> = ({
     zoom: 'animate-zoom',
     none: '',
   };
-  
+
   return (
-    <div 
+    <div
       className={`fixed inset-0 z-50 flex flex-col justify-center items-center ${className}`}
       style={{ backgroundColor: backdropColor }}
       onClick={handleClose}
@@ -174,17 +171,17 @@ export const LightBox: React.FC<LightBoxProps> = ({
       aria-modal="true"
     >
       {/* Bouton de fermeture */}
-      <button 
+      <button
         className="absolute top-4 right-4 z-10 text-white hover:text-gray-300 focus:outline-none"
         onClick={handleClose}
         aria-label="Fermer"
       >
         <Icon name="X" size={32} />
       </button>
-      
+
       {/* Navigation - Précédent */}
       {images.length > 1 && (
-        <button 
+        <button
           className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 text-white hover:text-gray-300 focus:outline-none"
           onClick={(e) => {
             e.stopPropagation();
@@ -195,10 +192,10 @@ export const LightBox: React.FC<LightBoxProps> = ({
           <Icon name="ChevronLeft" size={40} />
         </button>
       )}
-      
+
       {/* Navigation - Suivant */}
       {images.length > 1 && (
-        <button 
+        <button
           className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 text-white hover:text-gray-300 focus:outline-none"
           onClick={(e) => {
             e.stopPropagation();
@@ -209,21 +206,21 @@ export const LightBox: React.FC<LightBoxProps> = ({
           <Icon name="ChevronRight" size={40} />
         </button>
       )}
-      
+
       {/* Contenu principal */}
-      <div 
+      <div
         className="relative max-w-4xl w-full h-full flex items-center justify-center"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Image */}
-        <div 
+        <div
           className={`relative ${animationClasses[animation]} ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ${zoomed ? 'cursor-zoom-out scale-150' : 'cursor-zoom-in'} transition-transform`}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
           onClick={toggleZoom}
         >
-          <Image 
+          <Image
             src={currentImage.src}
             alt={currentImage.alt || `Image ${currentIndex + 1}`}
             width={currentImage.width || 900}
@@ -232,7 +229,7 @@ export const LightBox: React.FC<LightBoxProps> = ({
             onLoad={() => setLoading(false)}
             priority
           />
-          
+
           {/* Indicateur de chargement */}
           {loading && (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -241,7 +238,7 @@ export const LightBox: React.FC<LightBoxProps> = ({
           )}
         </div>
       </div>
-      
+
       {/* Footer : légende et compteur */}
       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
         <div className="flex justify-between items-center">
@@ -251,7 +248,7 @@ export const LightBox: React.FC<LightBoxProps> = ({
               {currentImage.caption}
             </Typography>
           )}
-          
+
           {/* Compteur */}
           {showCounter && images.length > 1 && (
             <div className="text-sm text-white">
@@ -259,7 +256,7 @@ export const LightBox: React.FC<LightBoxProps> = ({
             </div>
           )}
         </div>
-        
+
         {/* Vignettes */}
         {showThumbnails && images.length > 1 && (
           <div className="mt-4 flex justify-center space-x-2 overflow-x-auto pb-2">
@@ -271,7 +268,7 @@ export const LightBox: React.FC<LightBoxProps> = ({
                 aria-label={`Voir l'image ${index + 1}`}
                 aria-current={index === currentIndex}
               >
-                <Image 
+                <Image
                   src={image.src}
                   alt={image.alt || `Vignette ${index + 1}`}
                   fill
@@ -308,21 +305,21 @@ export const Gallery: React.FC<GalleryProps> = ({
 }) => {
   const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
   const [initialIndex, setInitialIndex] = useState(0);
-  
+
   // Classes pour les colonnes
   const columnsClasses = {
     2: 'grid-cols-1 sm:grid-cols-2',
     3: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
     4: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
   };
-  
+
   // Classes pour les espacements
   const gapClasses = {
     small: 'gap-2',
     medium: 'gap-4',
     large: 'gap-6',
   };
-  
+
   // Classes pour les ratios d'aspect
   const aspectRatioClasses = {
     square: 'aspect-square',
@@ -330,30 +327,30 @@ export const Gallery: React.FC<GalleryProps> = ({
     portrait: 'aspect-[3/4]',
     auto: '',
   };
-  
+
   // Ouvrir la lightbox
   const openLightBox = (index: number) => {
     setInitialIndex(index);
     setIsLightBoxOpen(true);
   };
-  
+
   return (
     <div className={`gallery ${className}`}>
       <div className={`grid ${columnsClasses[columns]} ${gapClasses[gap]}`}>
         {images.map((image, index) => (
           <div key={image.id} className="overflow-hidden">
-            <div 
+            <div
               className={`relative cursor-pointer overflow-hidden ${aspectRatioClasses[aspectRatio]} ${rounded ? 'rounded-lg' : ''} transition-transform hover:scale-[1.02]`}
               onClick={() => openLightBox(index)}
             >
-              <Image 
+              <Image
                 src={image.src}
                 alt={image.alt || `Image ${index + 1}`}
                 fill
                 className="object-cover transition-transform hover:scale-110 duration-500"
               />
             </div>
-            
+
             {showCaption && image.caption && (
               <Typography variant="small" className="mt-2 text-center text-secondary">
                 {image.caption}
@@ -362,8 +359,8 @@ export const Gallery: React.FC<GalleryProps> = ({
           </div>
         ))}
       </div>
-      
-      <LightBox 
+
+      <LightBox
         images={images}
         isOpen={isLightBoxOpen}
         initialIndex={initialIndex}
@@ -376,4 +373,4 @@ export const Gallery: React.FC<GalleryProps> = ({
       />
     </div>
   );
-}; 
+};

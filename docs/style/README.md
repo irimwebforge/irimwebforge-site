@@ -52,4 +52,4 @@ Pour ajouter une nouvelle section :
 1. Créer un nouveau fichier Markdown dans ce dossier
 2. L'ajouter à la liste dans [index.md](./index.md)
 3. L'ajouter à ce README.md
-4. Vérifier tous les renvois depuis les autres fichiers 
+4. Vérifier tous les renvois depuis les autres fichiers

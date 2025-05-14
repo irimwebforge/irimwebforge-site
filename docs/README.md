@@ -1,7 +1,7 @@
 ---
-title: "Documentation IrimWebForge"
-category: "index"
-status: "active"
+title: 'Documentation IrimWebForge'
+category: 'index'
+status: 'active'
 ---
 
 # Documentation IrimWebForge
@@ -11,6 +11,7 @@ status: "active"
 Le Design System Lab (`src/app/ds-lab`) est établi comme la source de vérité unique pour notre design system. Toute la documentation présente dans ce dossier doit être alignée avec les implémentations et les standards définis dans le DS-Lab.
 
 Pour plus d'informations sur les implémentations de référence, consultez :
+
 - Les templates validés : `/src/app/ds-lab/templates`
 - Les exemples de couleur tertiaire : `/src/app/ds-lab/color-tertiary`
 - Les données mockées de référence : `/src/app/ds-lab/mocks`
@@ -20,16 +21,19 @@ Bienvenue dans la documentation du projet IrimWebForge. Cette documentation cont
 ## Structure de la documentation
 
 ### Vision et stratégie
+
 - [00-sitemap-revised.md](./00-sitemap-revised.md) - Plan du site révisé
 - [01-positionnement-strategique.md](./01-positionnement-strategique.md) - Positionnement stratégique de la marque
 - [02-offres-commerciales.md](./02-offres-commerciales.md) - Détails des offres commerciales
 
 ### Architecture et contenu
+
 - [03-architecture-pages.md](./03-architecture-pages.md) - Architecture détaillée des pages
 - [04-guide-contenu-textuel.md](./04-guide-contenu-textuel.md) - Guide du contenu textuel
 - [amendement-ethique.md](./amendement-ethique.md) - Amendement éthique pour la communication
 
 ### Design system
+
 - [Guide de style](./style/index.md) - Documentation du design system
   - [Principes généraux](./style/principles.md) - Principes fondamentaux
   - [Couleurs](./style/colors.md) - Système de couleurs
@@ -41,10 +45,12 @@ Bienvenue dans la documentation du projet IrimWebForge. Cette documentation cont
   - [Composants organismes](./style/organisms.md) - Documentation des sections de page
 
 ### Structure technique
+
 - [07-structure-fichiers.md](./07-structure-fichiers.md) - Structure des fichiers du projet
 - [08-workflows.md](./08-workflows.md) - Workflows de développement
 
 ### Références
+
 - [09-glossaire.md](./09-glossaire.md) - Glossaire des termes techniques
 - [10-mapping-doc-implementation.md](./10-mapping-doc-implementation.md) - Correspondance entre documentation et implémentation
 
@@ -112,4 +118,4 @@ Pour améliorer cette documentation :
 - Privilégiez la clarté et la concision dans la documentation.
 - N'hésitez pas à proposer des variantes ou à remettre en question les guides existants.
 
-Cette approche vise à garder la documentation vivante, utile et adaptée à l'évolution du projet et de l'équipe. 
+Cette approche vise à garder la documentation vivante, utile et adaptée à l'évolution du projet et de l'équipe.

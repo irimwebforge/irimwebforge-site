@@ -1,0 +1,15 @@
+{
+  // 📦 Utiliser les SDK générés par Yarn Berry
+  "eslint.nodePath": ".yarn/sdks",
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  // 🧠 Exclure les fichiers Yarn de la recherche
+  "search.exclude": {
+    ".yarn": true,
+    ".pnp.*": true,
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  // ⚠️ Permet à VS Code de te demander si tu veux utiliser le SDK TypeScript local
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs"
+}

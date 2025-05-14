@@ -150,19 +150,19 @@ IrimWebForge
 
 ## Routes du site
 
-| Route | Description | Priorité |
-|-------|-------------|----------|
-| `/` | Page d'accueil | CRITIQUE |
-| `/services` | Présentation des 3 niveaux de services | ÉLEVÉE |
-| `/projets` | Liste des projets avec filtres | ÉLEVÉE |
-| `/projets/[slug]` | Page détaillée d'un projet | ÉLEVÉE |
-| `/processus` | Processus de travail | MOYENNE |
-| `/a-propos` | À propos d'Eric Zuber | MOYENNE |
-| `/contact` | Diagnostic Numérique Personnalisé | CRITIQUE |
-| `/blog` | Blog et ressources (futur) | BASSE |
-| `/blog/[slug]` | Article de blog individuel | BASSE |
-| `/mentions-legales` | Mentions légales | BASSE |
-| `/politique-confidentialite` | Politique de confidentialité | BASSE |
+| Route                        | Description                            | Priorité |
+| ---------------------------- | -------------------------------------- | -------- |
+| `/`                          | Page d'accueil                         | CRITIQUE |
+| `/services`                  | Présentation des 3 niveaux de services | ÉLEVÉE   |
+| `/projets`                   | Liste des projets avec filtres         | ÉLEVÉE   |
+| `/projets/[slug]`            | Page détaillée d'un projet             | ÉLEVÉE   |
+| `/processus`                 | Processus de travail                   | MOYENNE  |
+| `/a-propos`                  | À propos d'Eric Zuber                  | MOYENNE  |
+| `/contact`                   | Diagnostic Numérique Personnalisé      | CRITIQUE |
+| `/blog`                      | Blog et ressources (futur)             | BASSE    |
+| `/blog/[slug]`               | Article de blog individuel             | BASSE    |
+| `/mentions-legales`          | Mentions légales                       | BASSE    |
+| `/politique-confidentialite` | Politique de confidentialité           | BASSE    |
 
 ## Navigation principale
 
@@ -204,6 +204,7 @@ IrimWebForge
 ## Liens internes stratégiques
 
 1. **Depuis page d'accueil**:
+
    - Hero CTA → Contact (diagnostic numérique)
    - Projets mis en avant → Pages projets individuels
    - Temporalité duale → Page services
@@ -211,17 +212,20 @@ IrimWebForge
    - CTA final → Contact (diagnostic numérique)
 
 2. **Depuis page services**:
+
    - Solution Présence → Exemple Corps & Sens
    - Solution Intégrée → Exemple Mr&Mrs CBD
    - Solution Évolutive → Exemple Corps et Sens (collectif)
    - Diagnostic CTA → Contact
 
 3. **Depuis page projets**:
+
    - Projets → Études de cas détaillées
    - Transformations → Solutions associées
    - CTA → Contact (diagnostic numérique)
 
 4. **Depuis page processus**:
+
    - Phase Exploration → Diagnostic numérique
    - Garanties → Solutions
    - CTA → Contact (diagnostic numérique)
@@ -233,18 +237,22 @@ IrimWebForge
 ## Chemins de conversion principaux
 
 1. **Parcours Diagnostic**:
+
    - Accueil → CTA "Réserver mon diagnostic" → Page Contact → Formulaire conversationnel → Conversation découverte
 
 2. **Parcours Solution Présence**:
+
    - Accueil → Ma différence → Services → Solution Présence → Contact
 
 3. **Parcours Transformation**:
+
    - Accueil → Projets mis en avant (Corps & Sens) → Étude de cas détaillée → Solutions → Contact
 
 4. **Parcours de confiance**:
    - Accueil → Processus → Garanties → Services → Contact
 
 Cette architecture est conçue pour:
+
 1. Mettre en avant la triple promesse de libération, gain de temps et autonomie
 2. Démontrer les transformations concrètes via des exemples chiffrés
 3. Clarifier la double temporalité (compétences actuelles/futures)

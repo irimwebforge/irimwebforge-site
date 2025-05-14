@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Button } from '@/components/atoms/Button';
+import { Typography } from '../atoms/Typography';
+import { Button } from '../atoms/Button';
 import { createPortal } from 'react-dom';
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 
 export interface ModalProps {
   /** État d'ouverture de la modal */
@@ -54,9 +54,8 @@ export const Modal: React.FC<ModalProps> = ({
   preventScroll = true,
 }) => {
   const [isMounted, setIsMounted] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
-  
+
   // Classes pour les tailles
   const sizeClasses = {
     small: 'max-w-md',
@@ -64,7 +63,7 @@ export const Modal: React.FC<ModalProps> = ({
     large: 'max-w-2xl',
     fullscreen: 'max-w-full min-h-screen m-0 rounded-none',
   };
-  
+
   // Classes pour les animations
   const animationClasses = {
     fade: 'animate-fade',
@@ -72,37 +71,35 @@ export const Modal: React.FC<ModalProps> = ({
     zoom: 'animate-zoom',
     none: '',
   };
-  
+
   // Nettoyage des écouteurs d'événements et restauration du scroll
   const cleanup = useCallback(() => {
     if (preventScroll) {
       document.body.style.overflow = '';
     }
   }, [preventScroll]);
-  
+
   // Montage et démontage du modal
   useEffect(() => {
     setIsMounted(true);
-    
+
     return () => {
       setIsMounted(false);
       cleanup();
     };
   }, [cleanup]);
-  
+
   // Gérer l'ouverture/fermeture du modal
   useEffect(() => {
     if (isOpen) {
-      setIsVisible(true);
       if (preventScroll) {
         document.body.style.overflow = 'hidden';
       }
     } else {
-      setIsVisible(false);
       cleanup();
     }
   }, [isOpen, preventScroll, cleanup]);
-  
+
   // Gérer la touche Échap
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -110,39 +107,39 @@ export const Modal: React.FC<ModalProps> = ({
         onClose();
       }
     };
-    
+
     if (isOpen && closeOnEsc) {
       window.addEventListener('keydown', handleKeyDown);
     }
-    
+
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, closeOnEsc, onClose]);
-  
+
   // Gérer les clics à l'extérieur du modal
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (closeOnBackdropClick && e.target === e.currentTarget) {
       onClose();
     }
   };
-  
+
   // Focus trap
   useEffect(() => {
     if (!isOpen || !modalRef.current) return;
-    
+
     const focusableElements = modalRef.current.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     );
-    
+
     if (focusableElements.length === 0) return;
-    
+
     const firstElement = focusableElements[0] as HTMLElement;
     const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
-    
+
     const handleTabKey = (e: KeyboardEvent) => {
       if (e.key !== 'Tab') return;
-      
+
       if (e.shiftKey) {
         if (document.activeElement === firstElement) {
           lastElement.focus();
@@ -155,24 +152,26 @@ export const Modal: React.FC<ModalProps> = ({
         }
       }
     };
-    
+
     firstElement.focus();
     window.addEventListener('keydown', handleTabKey);
-    
+
     return () => {
       window.removeEventListener('keydown', handleTabKey);
     };
   }, [isOpen]);
-  
+
   // Ne pas rendre si le composant n'est pas monté ou si le modal n'est pas visible
   if (!isMounted || !isOpen) return null;
-  
+
   // Contenu du modal
   const modalContent = (
-    <div 
+    <div
       className={cn(
         'fixed inset-0 z-50 flex',
-        centered ? 'items-center justify-center' : 'items-start justify-center overflow-y-auto pt-10 pb-10',
+        centered
+          ? 'items-center justify-center'
+          : 'items-start justify-center overflow-y-auto pt-10 pb-10',
         backdropClassName
       )}
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
@@ -180,7 +179,7 @@ export const Modal: React.FC<ModalProps> = ({
       aria-modal="true"
       role="dialog"
     >
-      <div 
+      <div
         ref={modalRef}
         className={cn(
           'relative bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full m-4',
@@ -195,47 +194,48 @@ export const Modal: React.FC<ModalProps> = ({
           <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
             {title && (
               <div className="font-medium text-lg">
-                {typeof title === 'string' ? (
-                  <Typography variant="h3">{title}</Typography>
-                ) : (
-                  title
-                )}
+                {typeof title === 'string' ? <Typography variant="h3">{title}</Typography> : title}
               </div>
             )}
-            
+
             {showCloseButton && (
               <button
                 className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none"
                 onClick={onClose}
                 aria-label="Fermer"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
             )}
           </div>
         )}
-        
+
         {/* Corps du modal */}
-        <div className="p-4">
-          {children}
-        </div>
-        
+        <div className="p-4">{children}</div>
+
         {/* Pied du modal */}
         {footer && (
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-            {footer}
-          </div>
+          <div className="p-4 border-t border-gray-200 dark:border-gray-700">{footer}</div>
         )}
       </div>
     </div>
   );
-  
+
   // Utiliser createPortal pour monter le modal à la fin du body
-  return typeof document !== 'undefined' 
-    ? createPortal(modalContent, document.body) 
-    : null;
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : null;
 };
 
 // Composants auxiliaires pour les cas d'utilisation courants
@@ -275,7 +275,7 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
     onConfirm();
     onClose();
   };
-  
+
   const footer = (
     <div className="flex justify-end space-x-3">
       <Button variant="outline" onClick={onClose}>
@@ -286,20 +286,10 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
       </Button>
     </div>
   );
-  
+
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      title={title}
-      footer={footer}
-      size={size}
-    >
-      {typeof message === 'string' ? (
-        <Typography variant="p">{message}</Typography>
-      ) : (
-        message
-      )}
+    <Modal isOpen={isOpen} onClose={onClose} title={title} footer={footer} size={size}>
+      {typeof message === 'string' ? <Typography variant="p">{message}</Typography> : message}
     </Modal>
   );
 };
@@ -337,31 +327,75 @@ export const AlertModal: React.FC<AlertModalProps> = ({
     warning: 'text-yellow-600',
     danger: 'text-red-600',
   };
-  
+
   // Icônes pour les variantes
   const variantIcons = {
     info: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
       </svg>
     ),
     success: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
       </svg>
     ),
     warning: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+        />
       </svg>
     ),
     danger: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
       </svg>
     ),
   };
-  
+
   const footer = (
     <div className="flex justify-end">
       <Button variant="primary" onClick={onClose}>
@@ -369,27 +403,21 @@ export const AlertModal: React.FC<AlertModalProps> = ({
       </Button>
     </div>
   );
-  
+
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
       title={
         <div className="flex items-center">
-          <span className={cn('mr-2', variantClasses[variant])}>
-            {variantIcons[variant]}
-          </span>
+          <span className={cn('mr-2', variantClasses[variant])}>{variantIcons[variant]}</span>
           <span>{title}</span>
         </div>
       }
       footer={footer}
       size={size}
     >
-      {typeof message === 'string' ? (
-        <Typography variant="p">{message}</Typography>
-      ) : (
-        message
-      )}
+      {typeof message === 'string' ? <Typography variant="p">{message}</Typography> : message}
     </Modal>
   );
-}; 
+};

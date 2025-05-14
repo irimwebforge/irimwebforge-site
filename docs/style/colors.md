@@ -6,30 +6,30 @@
 
 Notre palette de couleurs est construite autour de trois couleurs principales qui définissent l'identité visuelle d'IrimWebForge :
 
-| Couleur | Code Hex | Variable CSS | Rôle |
-|---------|----------|--------------|------|
-| Turquoise | `#00B3B3` | `--color-primary` | Couleur principale pour les éléments interactifs |
-| Bleu foncé | `#004466` | `--color-secondary` | Couleur secondaire pour les titres et éléments d'autorité |
-| Orange | `#F06424` | `--color-tertiary` | Couleur tertiaire pour l'accentuation et la mise en valeur |
+| Couleur    | Code Hex  | Variable CSS        | Rôle                                                       |
+| ---------- | --------- | ------------------- | ---------------------------------------------------------- |
+| Turquoise  | `#00B3B3` | `--color-primary`   | Couleur principale pour les éléments interactifs           |
+| Bleu foncé | `#004466` | `--color-secondary` | Couleur secondaire pour les titres et éléments d'autorité  |
+| Orange     | `#F06424` | `--color-tertiary`  | Couleur tertiaire pour l'accentuation et la mise en valeur |
 
 ### Variables CSS
 
 ```css
 :root {
   /* Couleurs principales */
-  --color-primary: #00B3B3;
+  --color-primary: #00b3b3;
   --color-primary-rgb: 0, 179, 179;
-  
+
   --color-secondary: #004466;
   --color-secondary-rgb: 0, 68, 102;
-  
-  --color-tertiary: #F06424;
+
+  --color-tertiary: #f06424;
   --color-tertiary-rgb: 240, 100, 36;
-  
+
   /* Neutres */
   --color-black: #111111;
-  --color-white: #FEFEFE;
-  
+  --color-white: #fefefe;
+
   /* Dégradé signature */
   --gradient-primary: linear-gradient(to right, var(--color-primary), var(--color-secondary));
 }
@@ -106,12 +106,14 @@ Notre système de couleurs définit une hiérarchie visuelle claire pour guider 
 L'orange est notre couleur d'accentuation, à utiliser de manière stratégique et avec parcimonie.
 
 ### Utilisation recommandée
+
 - Badges et étiquettes "Nouveau"
 - Bordures latérales pour mettre en évidence des sections
 - Icônes importantes
 - Éléments d'accentuation (avec modération)
 
 ### À éviter
+
 - Grands aplats de couleur orange
 - Utilisation comme couleur principale de bouton
 - Texte orange sur fond orange (même avec transparence)
@@ -141,7 +143,7 @@ Notre dégradé signature (turquoise → bleu foncé) est utilisé spécifiqueme
   background: linear-gradient(
     to right,
     transparent 0%,
-    rgba(255,255,255,0.3) 50%,
+    rgba(255, 255, 255, 0.3) 50%,
     transparent 100%
   );
   transform: skewX(-25deg);
@@ -157,12 +159,12 @@ Notre dégradé signature (turquoise → bleu foncé) est utilisé spécifiqueme
 
 Toutes nos couleurs sont testées pour assurer un contraste suffisant conformément aux normes WCAG :
 
-| Combinaison | Ratio | Niveau WCAG |
-|-------------|-------|-------------|
-| Texte noir sur fond blanc | 14:1 | AAA |
-| Texte blanc sur turquoise | 4.5:1 | AA |
-| Texte blanc sur bleu foncé | 12:1 | AAA |
-| Texte blanc sur orange | 3:1 | AA (grands textes) |
+| Combinaison                | Ratio | Niveau WCAG        |
+| -------------------------- | ----- | ------------------ |
+| Texte noir sur fond blanc  | 14:1  | AAA                |
+| Texte blanc sur turquoise  | 4.5:1 | AA                 |
+| Texte blanc sur bleu foncé | 12:1  | AAA                |
+| Texte blanc sur orange     | 3:1   | AA (grands textes) |
 
 ## Couleurs sémantiques
 
@@ -171,10 +173,10 @@ En plus de notre palette principale, nous utilisons un ensemble de couleurs sém
 ```css
 :root {
   /* Couleurs sémantiques */
-  --color-success: #22C55E;
-  --color-error: #EF4444;
-  --color-warning: #F59E0B;
-  --color-info: #3B82F6;
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
 }
 ```
 
@@ -201,21 +203,21 @@ Bien que nous n'utilisions pas encore de dark mode, les variables CSS sont prép
 ```css
 :root {
   /* Light mode (défaut) */
-  --color-primary: #00B3B3;
+  --color-primary: #00b3b3;
   --color-secondary: #004466;
-  --color-tertiary: #F06424;
-  --color-background: #FFFFFF;
+  --color-tertiary: #f06424;
+  --color-background: #ffffff;
   --color-text: #111111;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     /* Dark mode (future implémentation) */
-    --color-primary: #1FDBDB;
-    --color-secondary: #0A7EAC;
-    --color-tertiary: #FF7D40;
+    --color-primary: #1fdbdb;
+    --color-secondary: #0a7eac;
+    --color-tertiary: #ff7d40;
     --color-background: #121212;
-    --color-text: #F0F0F0;
+    --color-text: #f0f0f0;
   }
 }
 ```
@@ -223,9 +225,10 @@ Bien que nous n'utilisions pas encore de dark mode, les variables CSS sont prép
 ## Implémentation de référence
 
 Pour une implémentation complète, consultez :
+
 - [Design System Lab Fundamentals](/src/app/ds-lab/fundamentals/page.tsx)
 - [Design System Lab Components](/src/app/ds-lab/components/page.tsx)
 
 ---
 
-> 🎨 **Documentation connexe** : Pour comprendre comment notre système de couleurs s'intègre à notre système typographique, consultez la [documentation typographique](./typography.md). 
+> 🎨 **Documentation connexe** : Pour comprendre comment notre système de couleurs s'intègre à notre système typographique, consultez la [documentation typographique](./typography.md).

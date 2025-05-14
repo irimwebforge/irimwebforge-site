@@ -1,68 +1,49 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Button } from '@/components/atoms/Button';
-import { NavLink } from '@/components/atoms/NavLink';
-import { Divider } from '@/components/atoms/Divider';
-import { Badge } from '@/components/atoms/Badge';
-import { Card } from '@/components/molecules/Card';
-import { Tabs } from '@/components/molecules/Tabs';
-import { Logo } from '@/components/atoms/Logo';
-import { Header } from '@/components/organisms/Header';
-import { Footer } from '@/components/organisms/Footer';
-import { HeroSection } from '@/components/organisms/HeroSection';
-import { PageHeader } from '@/components/organisms/PageHeader';
-import { FeatureSection } from '@/components/organisms/FeatureSection';
-import { EnhancedContactForm } from '@/components/organisms/EnhancedContactForm';
-import { Input } from '@/components/atoms/Input'; 
-import { Select } from '@/components/atoms/Select';
-import { Textarea } from '@/components/atoms/Textarea';
+import { Typography } from '../../../components/atoms/Typography';
+import { Button } from '../../../components/atoms/Button';
+import { NavLink } from '../../../components/atoms/NavLink';
+import { Divider } from '../../../components/atoms/Divider';
+import { Badge } from '../../../components/atoms/Badge';
+import { Card } from '../../../components/molecules/Card';
+import { Tabs } from '../../../components/molecules/Tabs';
+import { Logo } from '../../../components/atoms/Logo';
+import { Header } from '../../../components/organisms/Header';
+import { Footer } from '../../../components/organisms/Footer';
+import { HeroSection } from '../../../components/organisms/HeroSection';
+import { PageHeader } from '../../../components/organisms/PageHeader';
+import { FeatureSection } from '../../../components/organisms/FeatureSection';
+import { EnhancedContactForm } from '../../../components/organisms/EnhancedContactForm';
+import { Input } from '../../../components/atoms/Input';
+import { Select } from '../../../components/atoms/Select';
+import { Textarea } from '../../../components/atoms/Textarea';
 import Link from 'next/link';
-import { Icon } from '@/components/atoms/Icon';
+import { Icon } from '../../../components/atoms/Icon';
 // Import des composants moléculaires pour les exemples
-import { BlogPostCard } from '@/components/molecules/BlogPostCard';
-import { ComparativeTable } from '@/components/molecules/ComparativeTable';
-import { Modal } from '@/components/molecules/Modal';
-import { PricingPlan } from '@/components/molecules/PricingPlan';
-import { StatCard } from '@/components/molecules/StatCard';
-import { Testimonial } from '@/components/molecules/Testimonial';
-import { ServiceHighlight } from '@/components/molecules/ServiceHighlight';
-import { FeatureGrid } from '@/components/molecules/FeatureGrid';
-import { FAQ } from '@/components/molecules/FAQ';
-import { FormField } from '@/components/molecules/FormField';
-import { ProjectPreview } from '@/components/molecules/ProjectPreview';
-import { ConversationForm } from '@/components/molecules/ConversationForm';
+import { BlogPostCard } from '../../../components/molecules/BlogPostCard';
+import { ComparativeTable } from '../../../components/molecules/ComparativeTable';
+import { Modal } from '../../../components/molecules/Modal';
+import { PricingPlan } from '../../../components/molecules/PricingPlan';
+import { StatCard } from '../../../components/molecules/StatCard';
+import { Testimonial } from '../../../components/molecules/Testimonial';
+import { ServiceHighlight } from '../../../components/molecules/ServiceHighlight';
+import { FeatureGrid } from '../../../components/molecules/FeatureGrid';
+import { FAQ } from '../../../components/molecules/FAQ';
+import { FormField } from '../../../components/molecules/FormField';
+import { ProjectPreview } from '../../../components/molecules/ProjectPreview';
+import { ConversationForm } from '../../../components/molecules/ConversationForm';
 // Import des données de démonstration
-import { 
-  BLOG_POSTS, 
-  COMPARISON_COLUMNS, 
-  COMPARISON_ROWS, 
-  FAQ_ITEMS, 
-  FEATURES, 
-  PRICING_FEATURES, 
-  PROJECTS, 
-  TAB_ITEMS 
+import {
+  BLOG_POSTS,
+  COMPARISON_COLUMNS,
+  COMPARISON_ROWS,
+  FAQ_ITEMS,
+  FEATURES,
+  PRICING_FEATURES,
+  PROJECTS,
+  TAB_ITEMS,
 } from '../mocks/mockData.molecules';
-// Import des adaptateurs
-import { adaptProjects } from '@/utils/adapters';
-// Import des templates
-import { ValueProposition } from '@/templates/ValueProposition';
-import { ProjectShowcase } from '@/templates/ProjectShowcase';
-import { ServiceOverview } from '@/templates/ServiceOverview';
-import { CTASection } from '@/templates/CTASection';
-import { TestimonialSection } from '@/templates/TestimonialSection';
-import { StatsShowcase } from '@/templates/StatsShowcase';
-// Import des données mock
-import { mockProjects, mockServices, mockValues, mockStats, mockTestimonials, mockCTAVariants } from '../mocks/mockData.templates';
-// Import des adaptateurs
-import { 
-  adaptValues, 
-  adaptServices, 
-  adaptActions, 
-  adaptStats, 
-  adaptTestimonials 
-} from '@/utils/adapters';
 
 // Types de composants pour l'organisation
 type ComponentCategory = {
@@ -81,7 +62,7 @@ type ComponentType = {
 export default function DesignSystemPage() {
   // État pour suivre l'onglet actif
   const [activeCategory, setActiveCategory] = useState('atoms');
-  
+
   // Icônes pour les exemples
   const SampleIcon = () => <Icon name="Info" />;
 
@@ -90,70 +71,102 @@ export default function DesignSystemPage() {
     {
       id: 'typography',
       title: 'Typography',
-      description: 'Système de typographie avec titres en italique gras (h1, h2) et variantes de contenu',
+      description:
+        'Système de typographie avec titres en italique gras (h1, h2) et variantes de contenu',
       component: (
         <div className="space-y-4">
-          <Typography as="h1" variant="h1">Titre h1 (italique gras)</Typography>
-          <Typography as="h2" variant="h2">Titre h2 (italique gras)</Typography>
-          <Typography as="h3" variant="h3">Titre h3</Typography>
-          <Typography as="h4" variant="h4">Titre h4</Typography>
+          <Typography as="h1" variant="h1">
+            Titre h1 (italique gras)
+          </Typography>
+          <Typography as="h2" variant="h2">
+            Titre h2 (italique gras)
+          </Typography>
+          <Typography as="h3" variant="h3">
+            Titre h3
+          </Typography>
+          <Typography as="h4" variant="h4">
+            Titre h4
+          </Typography>
           <Typography variant="lead">Texte lead pour introduction</Typography>
           <Typography variant="p">Texte paragraphe standard</Typography>
           <Typography variant="small">Texte petit (small)</Typography>
           <Typography variant="subtle">Texte subtil (subtle)</Typography>
           <div className="p-4 border border-color rounded-md">
             <Typography variant="p" withAccentedWords>
-              Notre approche valorise l'authenticité, l'innovation et la créativité pour offrir une expérience digitale sur-mesure et unique. Nous privilégions un processus artisanal qui permet une immersion profonde dans l'univers de chaque client.
+              Notre approche valorise l'authenticité, l'innovation et la créativité pour offrir une
+              expérience digitale sur-mesure et unique. Nous privilégions un processus artisanal qui
+              permet une immersion profonde dans l'univers de chaque client.
             </Typography>
-            <Typography variant="small" className="mt-2 text-tertiary">Les mots clés sont automatiquement accentués avec la couleur tertiaire</Typography>
+            <Typography variant="small" className="mt-2 text-tertiary">
+              Les mots clés sont automatiquement accentués avec la couleur tertiaire
+            </Typography>
           </div>
           <Typography variant="accent">Texte accentué (orange)</Typography>
           <Typography variant="highlight">Texte mis en évidence</Typography>
         </div>
-      )
+      ),
     },
     {
       id: 'buttons',
       title: 'Button',
-      description: 'Boutons selon la hiérarchie visuelle validée : CTA dégradé, primaire turquoise, alternatives',
+      description:
+        'Boutons selon la hiérarchie visuelle validée : CTA dégradé, primaire turquoise, alternatives',
       component: (
         <div className="space-y-4">
           <div className="p-4 border-l-4 border-l-[var(--color-tertiary)] bg-amber-50/30 rounded-md">
-            <Typography variant="p" className="font-medium mb-3">Hiérarchie visuelle des boutons</Typography>
+            <Typography variant="p" className="font-medium mb-3">
+              Hiérarchie visuelle des boutons
+            </Typography>
             <div className="space-y-3">
               <div>
                 <Button variant="gradient" className="w-full shine-effect">
                   Bouton CTA principal (dégradé + brillance)
                 </Button>
-                <Typography variant="small" className="text-tertiary mt-1">Pour les actions principales, appels à l'action</Typography>
+                <Typography variant="small" className="text-tertiary mt-1">
+                  Pour les actions principales, appels à l'action
+                </Typography>
               </div>
               <div>
                 <Button variant="primary" className="w-full">
                   Bouton primaire (turquoise)
                 </Button>
-                <Typography variant="small" className="text-tertiary mt-1">Pour les actions secondaires importantes</Typography>
+                <Typography variant="small" className="text-tertiary mt-1">
+                  Pour les actions secondaires importantes
+                </Typography>
               </div>
               <div>
                 <Button variant="outline" className="w-full">
                   Bouton outline
                 </Button>
-                <Typography variant="small" className="text-tertiary mt-1">Pour les actions alternatives</Typography>
+                <Typography variant="small" className="text-tertiary mt-1">
+                  Pour les actions alternatives
+                </Typography>
               </div>
             </div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
             <div>
-              <Typography variant="small" className="font-medium mb-2">Variantes de taille</Typography>
+              <Typography variant="small" className="font-medium mb-2">
+                Variantes de taille
+              </Typography>
               <div className="flex flex-wrap gap-2">
-                <Button variant="primary" size="sm">Petit</Button>
-                <Button variant="primary" size="md">Moyen</Button>
-                <Button variant="primary" size="lg">Grand</Button>
+                <Button variant="primary" size="sm">
+                  Petit
+                </Button>
+                <Button variant="primary" size="md">
+                  Moyen
+                </Button>
+                <Button variant="primary" size="lg">
+                  Grand
+                </Button>
               </div>
             </div>
-            
+
             <div>
-              <Typography variant="small" className="font-medium mb-2">Variantes de couleur</Typography>
+              <Typography variant="small" className="font-medium mb-2">
+                Variantes de couleur
+              </Typography>
               <div className="flex flex-wrap gap-2">
                 <Button variant="primary">Primaire</Button>
                 <Button variant="secondary">Secondaire</Button>
@@ -161,36 +174,54 @@ export default function DesignSystemPage() {
               </div>
             </div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
-              <Typography variant="small" className="font-medium mb-2">Avec icônes</Typography>
+              <Typography variant="small" className="font-medium mb-2">
+                Avec icônes
+              </Typography>
               <div className="flex flex-wrap gap-2">
-                <Button variant="primary" icon={<SampleIcon />}>Icône gauche</Button>
-                <Button variant="primary" icon={<SampleIcon />} iconPosition="right">Icône droite</Button>
+                <Button variant="primary" icon={<SampleIcon />}>
+                  Icône gauche
+                </Button>
+                <Button variant="primary" icon={<SampleIcon />} iconPosition="right">
+                  Icône droite
+                </Button>
                 <Button variant="primary" icon={<SampleIcon />} iconOnly aria-label="Info" />
               </div>
             </div>
-            
+
             <div>
-              <Typography variant="small" className="font-medium mb-2">États</Typography>
+              <Typography variant="small" className="font-medium mb-2">
+                États
+              </Typography>
               <div className="flex flex-wrap gap-2">
-                <Button variant="primary" disabled>Désactivé</Button>
-                <Button variant="primary" loading>Chargement</Button>
+                <Button variant="primary" disabled>
+                  Désactivé
+                </Button>
+                <Button variant="primary" loading>
+                  Chargement
+                </Button>
                 <Button variant="ghost">Lien textuel →</Button>
               </div>
             </div>
-            
+
             <div>
-              <Typography variant="small" className="font-medium mb-2">Boutons lien</Typography>
+              <Typography variant="small" className="font-medium mb-2">
+                Boutons lien
+              </Typography>
               <div className="flex flex-wrap gap-2">
-                <Button variant="primary" href="/ds-lab">Lien interne</Button>
-                <Button variant="outline" href="https://example.com" target="_blank">Lien externe</Button>
+                <Button variant="primary" href="/ds-lab">
+                  Lien interne
+                </Button>
+                <Button variant="outline" href="https://example.com" target="_blank">
+                  Lien externe
+                </Button>
               </div>
             </div>
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'badge',
@@ -206,20 +237,34 @@ export default function DesignSystemPage() {
             <Badge variant="success">Success</Badge>
             <Badge variant="error">Error</Badge>
           </div>
-          
+
           <div className="p-4 border border-color rounded-md">
-            <Typography variant="small" className="font-medium mb-2">Variantes de style</Typography>
+            <Typography variant="small" className="font-medium mb-2">
+              Variantes de style
+            </Typography>
             <div className="flex flex-wrap gap-3">
-              <Badge variant="primary" isSolid>Solid</Badge>
-              <Badge variant="primary" isOutlined>Outlined</Badge>
-              <Badge variant="primary" count={5}>Compteur</Badge>
-              <Badge variant="tertiary" dot>Avec point</Badge>
-              <Badge variant="primary" size="small">Small</Badge>
-              <Badge variant="tertiary" size="large" shape="pill">Large pill</Badge>
+              <Badge variant="primary" isSolid>
+                Solid
+              </Badge>
+              <Badge variant="primary" isOutlined>
+                Outlined
+              </Badge>
+              <Badge variant="primary" count={5}>
+                Compteur
+              </Badge>
+              <Badge variant="tertiary" dot>
+                Avec point
+              </Badge>
+              <Badge variant="primary" size="small">
+                Small
+              </Badge>
+              <Badge variant="tertiary" size="large" shape="pill">
+                Large pill
+              </Badge>
             </div>
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'input',
@@ -228,32 +273,24 @@ export default function DesignSystemPage() {
       component: (
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input 
-              label="Champ standard" 
-              placeholder="Saisissez une valeur" 
+            <Input
+              label="Champ standard"
+              placeholder="Saisissez une valeur"
               helpText="Texte d'aide pour guider l'utilisateur"
             />
-            <Input 
-              label="Variante primaire" 
-              variant="primary" 
-              placeholder="Bordure turquoise" 
-            />
+            <Input label="Variante primaire" variant="primary" placeholder="Bordure turquoise" />
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input 
-              label="Variante tertiaire (orange)" 
-              variant="tertiary" 
-              placeholder="Bordure orange" 
+            <Input
+              label="Variante tertiaire (orange)"
+              variant="tertiary"
+              placeholder="Bordure orange"
             />
-            <Input 
-              label="Avec erreur" 
-              error="Ce champ est requis" 
-              placeholder="Valeur invalide" 
-            />
+            <Input label="Avec erreur" error="Ce champ est requis" placeholder="Valeur invalide" />
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'select',
@@ -262,51 +299,51 @@ export default function DesignSystemPage() {
       component: (
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Select 
-              label="Menu déroulant standard" 
+            <Select
+              label="Menu déroulant standard"
               defaultValue=""
               options={[
-                { value: "option1", label: "Option 1" },
-                { value: "option2", label: "Option 2" },
-                { value: "option3", label: "Option 3" }
+                { value: 'option1', label: 'Option 1' },
+                { value: 'option2', label: 'Option 2' },
+                { value: 'option3', label: 'Option 3' },
               ]}
               helpText="Texte d'aide pour guider l'utilisateur"
             />
-            <Select 
-              label="Variante primaire" 
+            <Select
+              label="Variante primaire"
               variant="primary"
               options={[
-                { value: "option1", label: "Option 1" },
-                { value: "option2", label: "Option 2" },
-                { value: "option3", label: "Option 3" }
+                { value: 'option1', label: 'Option 1' },
+                { value: 'option2', label: 'Option 2' },
+                { value: 'option3', label: 'Option 3' },
               ]}
               defaultValue=""
             />
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Select 
-              label="Variante tertiaire (orange)" 
+            <Select
+              label="Variante tertiaire (orange)"
               variant="tertiary"
               options={[
-                { value: "option1", label: "Option 1" },
-                { value: "option2", label: "Option 2" },
-                { value: "option3", label: "Option 3" }
+                { value: 'option1', label: 'Option 1' },
+                { value: 'option2', label: 'Option 2' },
+                { value: 'option3', label: 'Option 3' },
               ]}
               defaultValue=""
             />
-            <Select 
-              label="Avec erreur" 
+            <Select
+              label="Avec erreur"
               error="Ce champ est requis"
               options={[
-                { value: "option1", label: "Option 1" },
-                { value: "option2", label: "Option 2" },
-                { value: "option3", label: "Option 3" }
+                { value: 'option1', label: 'Option 1' },
+                { value: 'option2', label: 'Option 2' },
+                { value: 'option3', label: 'Option 3' },
               ]}
             />
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'textarea',
@@ -315,69 +352,77 @@ export default function DesignSystemPage() {
       component: (
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Textarea 
-              label="Zone de texte standard" 
-              placeholder="Saisissez votre message ici" 
+            <Textarea
+              label="Zone de texte standard"
+              placeholder="Saisissez votre message ici"
               helpText="Texte d'aide pour guider l'utilisateur"
             />
-            <Textarea 
-              label="Variante primaire" 
-              variant="primary" 
+            <Textarea
+              label="Variante primaire"
+              variant="primary"
               placeholder="Bordure turquoise"
               rows={3}
             />
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Textarea 
-              label="Variante tertiaire (orange)" 
-              variant="tertiary" 
+            <Textarea
+              label="Variante tertiaire (orange)"
+              variant="tertiary"
               placeholder="Bordure orange"
               rows={3}
             />
-            <Textarea 
-              label="Avec erreur" 
-              error="Ce champ est requis" 
+            <Textarea
+              label="Avec erreur"
+              error="Ce champ est requis"
               placeholder="Message invalide"
               rows={3}
             />
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'divider',
       title: 'Divider',
-      description: 'Séparateurs visuels avec styles et options d\'accentuation',
+      description: "Séparateurs visuels avec styles et options d'accentuation",
       component: (
         <div className="space-y-6">
           <div className="space-y-4">
-            <Typography variant="small" className="font-medium">Styles de ligne</Typography>
+            <Typography variant="small" className="font-medium">
+              Styles de ligne
+            </Typography>
             <Divider />
             <Divider variant="dashed" />
             <Divider variant="dotted" />
           </div>
-          
+
           <div className="space-y-4">
-            <Typography variant="small" className="font-medium">Avec labels</Typography>
+            <Typography variant="small" className="font-medium">
+              Avec labels
+            </Typography>
             <Divider label="Centré par défaut" />
             <Divider label="Aligné à gauche" labelPosition="start" />
             <Divider label="Aligné à droite" labelPosition="end" />
           </div>
-          
+
           <div className="space-y-4">
-            <Typography variant="small" className="font-medium">Couleurs et épaisseurs</Typography>
+            <Typography variant="small" className="font-medium">
+              Couleurs et épaisseurs
+            </Typography>
             <Divider color="primary" />
             <Divider color="secondary" thickness="medium" />
             <Divider color="tertiary" thickness="thick" />
           </div>
-          
+
           <div>
-            <Typography variant="small" className="font-medium mb-2">Mise en évidence</Typography>
+            <Typography variant="small" className="font-medium mb-2">
+              Mise en évidence
+            </Typography>
             <Divider color="tertiary" highlight label="Section importante" />
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'navlink',
@@ -391,45 +436,53 @@ export default function DesignSystemPage() {
               Note : Les liens de navigation ci-dessous démontrent plusieurs caractéristiques :
             </Typography>
             <ul className="ml-5 mt-2 list-disc text-yellow-800">
-              <li className="text-sm">Changement de couleur au survol selon le type (primaire, secondaire, tertiaire)</li>
-              <li className="text-sm">Animation de soulignement au survol (ajoutée pour rendre l'effet plus visible)</li>
-              <li className="text-sm">Effet de texte en dégradé pour les liens actifs avec useGradient</li>
+              <li className="text-sm">
+                Changement de couleur au survol selon le type (primaire, secondaire, tertiaire)
+              </li>
+              <li className="text-sm">
+                Animation de soulignement au survol (ajoutée pour rendre l'effet plus visible)
+              </li>
+              <li className="text-sm">
+                Effet de texte en dégradé pour les liens actifs avec useGradient
+              </li>
             </ul>
           </div>
-          
+
           <div className="p-4 border border-color rounded-md mb-4">
-            <Typography variant="small" className="font-medium mb-2">Styles de base</Typography>
+            <Typography variant="small" className="font-medium mb-2">
+              Styles de base
+            </Typography>
             <div className="flex gap-6 flex-wrap">
-              <NavLink 
-                href="#" 
+              <NavLink
+                href="#"
                 color="primary"
                 className="relative group px-3 py-1 hover:bg-blue-50"
               >
                 <span>Lien standard</span>
                 <span className="absolute bottom-0 left-0 w-0 h-1 bg-[var(--color-primary)] transition-all duration-300 group-hover:w-full bg-[repeating-linear-gradient(45deg,var(--color-primary),var(--color-primary)_5px,transparent_5px,transparent_10px)]"></span>
               </NavLink>
-              
-              <NavLink 
-                href="/ds-lab/components" 
-                exact 
+
+              <NavLink
+                href="/ds-lab/components"
+                exact
                 color="primary"
                 className="relative group px-3 py-1 hover:bg-blue-50"
               >
                 <span>Lien actif</span>
               </NavLink>
-              
-              <NavLink 
-                href="#" 
-                underline 
+
+              <NavLink
+                href="#"
+                underline
                 color="primary"
                 className="relative group px-3 py-1 hover:bg-blue-50"
               >
                 <span>Avec soulignement</span>
               </NavLink>
-              
-              <NavLink 
-                href="#" 
-                icon={<SampleIcon />} 
+
+              <NavLink
+                href="#"
+                icon={<SampleIcon />}
                 color="primary"
                 className="relative group px-3 py-1 hover:bg-blue-50"
               >
@@ -438,69 +491,67 @@ export default function DesignSystemPage() {
               </NavLink>
             </div>
           </div>
-          
+
           <div className="p-4 border border-color rounded-md">
-            <Typography variant="small" className="font-medium mb-2">Variations de couleur</Typography>
+            <Typography variant="small" className="font-medium mb-2">
+              Variations de couleur
+            </Typography>
             <div className="flex gap-6 flex-wrap">
               <div className="flex flex-col items-center">
-                <NavLink 
-                  href="#" 
-                  color="primary" 
-                  className="text-lg relative group"
-                >
+                <NavLink href="#" color="primary" className="text-lg relative group">
                   <span>Primaire</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-primary)] transition-all duration-300 group-hover:w-full"></span>
                 </NavLink>
                 <Typography variant="small" className="mt-1">
-                  <span className="text-xs bg-[var(--color-primary)] text-white px-1 rounded">#00B3B3</span>
+                  <span className="text-xs bg-[var(--color-primary)] text-white px-1 rounded">
+                    #00B3B3
+                  </span>
                 </Typography>
               </div>
-              
+
               <div className="flex flex-col items-center">
-                <NavLink 
-                  href="#" 
-                  color="secondary" 
-                  className="text-lg relative group"
-                >
+                <NavLink href="#" color="secondary" className="text-lg relative group">
                   <span>Secondaire</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-secondary)] transition-all duration-300 group-hover:w-full"></span>
                 </NavLink>
                 <Typography variant="small" className="mt-1">
-                  <span className="text-xs bg-[var(--color-secondary)] text-white px-1 rounded">#004466</span>
+                  <span className="text-xs bg-[var(--color-secondary)] text-white px-1 rounded">
+                    #004466
+                  </span>
                 </Typography>
               </div>
-              
+
               <div className="flex flex-col items-center">
-                <NavLink 
-                  href="#" 
-                  color="tertiary" 
-                  className="text-lg relative group"
-                >
+                <NavLink href="#" color="tertiary" className="text-lg relative group">
                   <span>Tertiaire</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-tertiary)] transition-all duration-300 group-hover:w-full"></span>
                 </NavLink>
                 <Typography variant="small" className="mt-1">
-                  <span className="text-xs bg-[var(--color-tertiary)] text-white px-1 rounded">#F06424</span>
+                  <span className="text-xs bg-[var(--color-tertiary)] text-white px-1 rounded">
+                    #F06424
+                  </span>
                 </Typography>
               </div>
-              
+
               <div className="flex flex-col items-center">
-                <NavLink 
-                  href="/ds-lab/components" 
-                  exact 
-                  useGradient 
+                <NavLink
+                  href="/ds-lab/components"
+                  exact
+                  useGradient
                   className="text-lg relative group"
                 >
                   <span>Dégradé</span>
                 </NavLink>
                 <Typography variant="small" className="mt-1">
-                  <span className="text-xs bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white px-1 rounded">Actif</span>
+                  <span className="text-xs bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white px-1 rounded">
+                    Actif
+                  </span>
                 </Typography>
               </div>
             </div>
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'logo',
@@ -509,51 +560,71 @@ export default function DesignSystemPage() {
       component: (
         <div className="space-y-6">
           <div>
-            <Typography variant="small" className="mb-2 font-semibold">Format SVG</Typography>
+            <Typography variant="small" className="mb-2 font-semibold">
+              Format SVG
+            </Typography>
             <div className="flex flex-wrap gap-6 items-center">
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">Light</Typography>
+                <Typography variant="small" className="mb-1 text-secondary">
+                  Light
+                </Typography>
                 <Logo width={150} mode="light" format="svg" />
               </div>
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">Dark</Typography>
+                <Typography variant="small" className="mb-1 text-secondary">
+                  Dark
+                </Typography>
                 <Logo width={150} mode="dark" format="svg" />
               </div>
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">Default</Typography>
+                <Typography variant="small" className="mb-1 text-secondary">
+                  Default
+                </Typography>
                 <Logo width={150} mode="default" format="svg" />
               </div>
             </div>
           </div>
           <div>
-            <Typography variant="small" className="mb-2 font-semibold">Format PNG</Typography>
+            <Typography variant="small" className="mb-2 font-semibold">
+              Format PNG
+            </Typography>
             <div className="flex flex-wrap gap-6 items-center">
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">Light</Typography>
+                <Typography variant="small" className="mb-1 text-secondary">
+                  Light
+                </Typography>
                 <Logo width={150} mode="light" format="png" />
               </div>
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">Dark</Typography>
+                <Typography variant="small" className="mb-1 text-secondary">
+                  Dark
+                </Typography>
                 <Logo width={150} mode="dark" format="png" />
               </div>
             </div>
           </div>
           <div>
-            <Typography variant="small" className="mb-2 font-semibold">Variante Banner</Typography>
+            <Typography variant="small" className="mb-2 font-semibold">
+              Variante Banner
+            </Typography>
             <div className="flex flex-wrap gap-6 items-center">
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">Light</Typography>
+                <Typography variant="small" className="mb-1 text-secondary">
+                  Light
+                </Typography>
                 <Logo width={200} mode="light" variant="banner" />
               </div>
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">Dark</Typography>
+                <Typography variant="small" className="mb-1 text-secondary">
+                  Dark
+                </Typography>
                 <Logo width={200} mode="dark" variant="banner" />
               </div>
             </div>
           </div>
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   // Données des composants moléculaires
@@ -561,59 +632,44 @@ export default function DesignSystemPage() {
     {
       id: 'card',
       title: 'Card',
-      description: 'Conteneurs de contenu avec différentes variantes et options de personnalisation',
+      description:
+        'Conteneurs de contenu avec différentes variantes et options de personnalisation',
       component: (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <Card 
-            title="Carte standard" 
-            subtitle="Avec sous-titre"
-          >
+          <Card title="Carte standard" subtitle="Avec sous-titre">
             <p>Contenu de la carte</p>
           </Card>
-          <Card 
-            title="Carte avec bordure" 
-            variant="outline"
-          >
+          <Card title="Carte avec bordure" variant="outline">
             <p>Variante avec bordure</p>
           </Card>
-          <Card 
-            title="Carte élevée" 
-            variant="elevated"
-          >
+          <Card title="Carte élevée" variant="elevated">
             <p>Avec ombre portée</p>
           </Card>
-          <Card 
-            title="Carte accent" 
-            variant="accent"
-            color="primary"
-          >
+          <Card title="Carte accent" variant="accent" color="primary">
             <p>Avec accent coloré</p>
           </Card>
         </div>
-      )
+      ),
     },
     {
       id: 'tabs',
       title: 'Tabs',
-      description: 'Onglets pour organiser le contenu en sections avec différentes variantes visuelles',
-      component: (
-        <Tabs
-          tabs={TAB_ITEMS}
-          variant="underlined"
-        />
-      )
+      description:
+        'Onglets pour organiser le contenu en sections avec différentes variantes visuelles',
+      component: <Tabs tabs={TAB_ITEMS} variant="underlined" />,
     },
     {
       id: 'blog-post-card',
       title: 'BlogPostCard',
-      description: 'Carte pour afficher des articles de blog avec image, titre, résumé et métadonnées',
+      description:
+        'Carte pour afficher des articles de blog avec image, titre, résumé et métadonnées',
       component: (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <BlogPostCard {...BLOG_POSTS[0]} />
           <BlogPostCard {...BLOG_POSTS[1]} variant="compact" />
           <BlogPostCard {...BLOG_POSTS[2]} />
         </div>
-      )
+      ),
     },
     {
       id: 'comparative-table',
@@ -626,26 +682,26 @@ export default function DesignSystemPage() {
           highlightRecommended={true}
           groupByCategory={true}
         />
-      )
+      ),
     },
     {
       id: 'modal',
       title: 'Modal',
-      description: 'Fenêtre modale pour afficher du contenu en superposition sur la page principale',
-      component: (
-        <ModalExample />
-      )
+      description:
+        'Fenêtre modale pour afficher du contenu en superposition sur la page principale',
+      component: <ModalExample />,
     },
     {
       id: 'pricing-plan',
       title: 'PricingPlan',
-      description: 'Carte de tarification pour présenter différents forfaits et leurs caractéristiques',
+      description:
+        'Carte de tarification pour présenter différents forfaits et leurs caractéristiques',
       component: (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <PricingPlan
             title="Basique"
             description="Pour les petits projets"
-            price={{ amount: 29, period: "mois" }}
+            price={{ amount: 29, period: 'mois' }}
             features={PRICING_FEATURES.basic}
             ctaText="Commencer"
             ctaLink="#"
@@ -654,7 +710,7 @@ export default function DesignSystemPage() {
           <PricingPlan
             title="Pro"
             description="Pour les professionnels"
-            price={{ amount: 79, period: "mois" }}
+            price={{ amount: 79, period: 'mois' }}
             features={PRICING_FEATURES.pro}
             ctaText="Essayer gratuitement"
             ctaLink="#"
@@ -665,19 +721,20 @@ export default function DesignSystemPage() {
           <PricingPlan
             title="Entreprise"
             description="Pour les grandes équipes"
-            price={{ amount: 149, period: "mois" }}
+            price={{ amount: 149, period: 'mois' }}
             features={PRICING_FEATURES.enterprise}
             ctaText="Contacter l'équipe"
             ctaLink="#"
             color="tertiary"
           />
         </div>
-      )
+      ),
     },
     {
       id: 'stat-card',
       title: 'StatCard',
-      description: 'Carte de statistique pour mettre en avant des chiffres clés avec icône et description',
+      description:
+        'Carte de statistique pour mettre en avant des chiffres clés avec icône et description',
       component: (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard
@@ -685,7 +742,7 @@ export default function DesignSystemPage() {
             value={342}
             icon={<Icon name="BarChart" />}
             color="primary"
-            trend={{ value: "+12%", direction: "up", label: "vs mois dernier" }}
+            trend={{ value: '+12%', direction: 'up', label: 'vs mois dernier' }}
           />
           <StatCard
             title="Clients satisfaits"
@@ -707,12 +764,12 @@ export default function DesignSystemPage() {
             title="Revenus mensuels"
             value="28K"
             valuePrefix="€"
-            trend={{ value: "+8%", direction: "up", label: "vs mois dernier" }}
+            trend={{ value: '+8%', direction: 'up', label: 'vs mois dernier' }}
             icon={<Icon name="TrendingUp" />}
             color="primary"
           />
         </div>
-      )
+      ),
     },
     {
       id: 'testimonial',
@@ -736,7 +793,7 @@ export default function DesignSystemPage() {
             projectName="App InnoTech"
           />
         </div>
-      )
+      ),
     },
     {
       id: 'service-highlight',
@@ -751,9 +808,9 @@ export default function DesignSystemPage() {
             color="primary"
             ctaLink="#"
             bulletPoints={[
-              "Design responsive pour tous appareils",
-              "Identité visuelle cohérente",
-              "Expérience utilisateur optimisée"
+              'Design responsive pour tous appareils',
+              'Identité visuelle cohérente',
+              'Expérience utilisateur optimisée',
             ]}
           />
           <ServiceHighlight
@@ -764,9 +821,9 @@ export default function DesignSystemPage() {
             variant="featured"
             ctaLink="#"
             bulletPoints={[
-              "Technologies front-end modernes",
-              "Architecture évolutive",
-              "Optimisation des performances"
+              'Technologies front-end modernes',
+              'Architecture évolutive',
+              'Optimisation des performances',
             ]}
           />
           <ServiceHighlight
@@ -776,13 +833,13 @@ export default function DesignSystemPage() {
             color="tertiary"
             ctaLink="#"
             bulletPoints={[
-              "Audit SEO complet",
-              "Optimisation du contenu",
-              "Suivi des performances"
+              'Audit SEO complet',
+              'Optimisation du contenu',
+              'Suivi des performances',
             ]}
           />
         </div>
-      )
+      ),
     },
     {
       id: 'feature-grid',
@@ -790,15 +847,27 @@ export default function DesignSystemPage() {
       description: 'Grille de fonctionnalités avec icônes et descriptions personnalisables',
       component: (
         <FeatureGrid
-          features={FEATURES.map(feature => ({
+          features={FEATURES.map((feature) => ({
             ...feature,
-            icon: <Icon name={feature.id === 'feature1' ? 'Palette' : feature.id === 'feature2' ? 'Code' : feature.id === 'feature3' ? 'Search' : 'Headphones'} />
+            icon: (
+              <Icon
+                name={
+                  feature.id === 'feature1'
+                    ? 'Palette'
+                    : feature.id === 'feature2'
+                      ? 'Code'
+                      : feature.id === 'feature3'
+                        ? 'Search'
+                        : 'Headphones'
+                }
+              />
+            ),
           }))}
           columns={2}
           variant="outline"
           gap="medium"
         />
-      )
+      ),
     },
     {
       id: 'faq',
@@ -812,12 +881,12 @@ export default function DesignSystemPage() {
           icon="chevron"
           allowMultiple={true}
         />
-      )
+      ),
     },
     {
       id: 'form-field',
       title: 'FormField',
-      description: 'Champ de formulaire avec label, validation et messages d\'erreur',
+      description: "Champ de formulaire avec label, validation et messages d'erreur",
       component: (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
@@ -840,10 +909,10 @@ export default function DesignSystemPage() {
             label="Service requis"
             type="select"
             options={[
-              { value: "design", label: "Design d'interface" },
-              { value: "development", label: "Développement web" },
-              { value: "seo", label: "Optimisation SEO" },
-              { value: "maintenance", label: "Maintenance" }
+              { value: 'design', label: "Design d'interface" },
+              { value: 'development', label: 'Développement web' },
+              { value: 'seo', label: 'Optimisation SEO' },
+              { value: 'maintenance', label: 'Maintenance' },
             ]}
             placeholder="Sélectionnez un service"
           />
@@ -855,7 +924,7 @@ export default function DesignSystemPage() {
             helperText="Partagez autant de détails que possible"
           />
         </div>
-      )
+      ),
     },
     {
       id: 'project-preview',
@@ -871,7 +940,7 @@ export default function DesignSystemPage() {
             />
           ))}
         </div>
-      )
+      ),
     },
     {
       id: 'conversation-form',
@@ -879,61 +948,61 @@ export default function DesignSystemPage() {
       description: 'Formulaire de conversation avec champs conditionnels et étapes',
       component: (
         <div className="space-y-4">
-          <ConversationForm 
+          <ConversationForm
             title="Parlons de votre projet"
             subtitle="Quelques informations pour démarrer"
             fields={[
               {
-                id: "name",
-                type: "text",
-                label: "Votre nom",
-                placeholder: "Prénom et nom",
-                required: true
+                id: 'name',
+                type: 'text',
+                label: 'Votre nom',
+                placeholder: 'Prénom et nom',
+                required: true,
               },
               {
-                id: "email",
-                type: "email",
-                label: "Adresse e-mail",
-                placeholder: "votre@email.com",
-                required: true
+                id: 'email',
+                type: 'email',
+                label: 'Adresse e-mail',
+                placeholder: 'votre@email.com',
+                required: true,
               },
               {
-                id: "service",
-                type: "select",
-                label: "Service requis",
+                id: 'service',
+                type: 'select',
+                label: 'Service requis',
                 options: [
-                  { value: "web", label: "Site web" },
-                  { value: "app", label: "Application" },
-                  { value: "design", label: "Design UI/UX" }
+                  { value: 'web', label: 'Site web' },
+                  { value: 'app', label: 'Application' },
+                  { value: 'design', label: 'Design UI/UX' },
                 ],
-                required: true
+                required: true,
               },
               {
-                id: "budget",
-                type: "select",
-                label: "Budget estimé",
+                id: 'budget',
+                type: 'select',
+                label: 'Budget estimé',
                 options: [
-                  { value: "small", label: "< 5 000 €" },
-                  { value: "medium", label: "5 000 € - 15 000 €" },
-                  { value: "large", label: "> 15 000 €" }
+                  { value: 'small', label: '< 5 000 €' },
+                  { value: 'medium', label: '5 000 € - 15 000 €' },
+                  { value: 'large', label: '> 15 000 €' },
                 ],
-                dependsOn: { field: "service", value: "web" }
+                dependsOn: { field: 'service', value: 'web' },
               },
               {
-                id: "message",
-                type: "textarea",
-                label: "Votre message",
-                placeholder: "Décrivez votre projet...",
-                required: true
-              }
+                id: 'message',
+                type: 'textarea',
+                label: 'Votre message',
+                placeholder: 'Décrivez votre projet...',
+                required: true,
+              },
             ]}
             submitButtonText="Envoyer ma demande"
             successMessage="Merci pour votre message ! Nous vous répondrons très rapidement."
             variant="card"
           />
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   // Données des composants organismes
@@ -941,23 +1010,26 @@ export default function DesignSystemPage() {
     {
       id: 'header',
       title: 'Header',
-      description: 'En-tête du site avec navigation et logo, utilisant le dégradé pour les liens actifs',
+      description:
+        'En-tête du site avec navigation et logo, utilisant le dégradé pour les liens actifs',
       component: (
         <div className="space-y-4">
           <div className="p-4 border-l-4 border-l-[var(--color-tertiary)] bg-amber-50/30 rounded-md mb-4">
-            <Typography variant="p" className="font-medium mb-2">Points clés du Header</Typography>
+            <Typography variant="p" className="font-medium mb-2">
+              Points clés du Header
+            </Typography>
             <ul className="ml-5 list-disc text-sm space-y-1">
               <li>NavLinks avec effet de dégradé pour les liens actifs (useGradient)</li>
               <li>Bouton de contact en CTA principal (gradient + effet brillance)</li>
               <li>Menu responsive avec maintien des styles visuels</li>
             </ul>
           </div>
-          
+
           <div className="border border-color rounded-lg overflow-hidden">
             <Header />
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'footer',
@@ -966,37 +1038,42 @@ export default function DesignSystemPage() {
       component: (
         <div className="space-y-4">
           <div className="p-4 border-l-4 border-l-[var(--color-primary)] bg-blue-50/30 rounded-md mb-4">
-            <Typography variant="p" className="font-medium mb-2">Éléments du Footer</Typography>
+            <Typography variant="p" className="font-medium mb-2">
+              Éléments du Footer
+            </Typography>
             <ul className="ml-5 list-disc text-sm space-y-1">
               <li>Utilisation du composant NavLink pour tous les liens</li>
               <li>Typographie hiérarchisée avec composant Typography</li>
               <li>Organisation claire des sections de navigation</li>
             </ul>
           </div>
-          
+
           <div className="border border-color rounded-lg overflow-hidden scale-90 origin-top">
             <Footer />
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'hero-section',
       title: 'HeroSection',
-      description: 'Section d\'en-tête principale avec titre en italique gras et CTA principal brillant',
+      description:
+        "Section d'en-tête principale avec titre en italique gras et CTA principal brillant",
       component: (
         <div className="space-y-4">
           <div className="p-4 border-l-4 border-l-[var(--color-secondary)] bg-cyan-50/30 rounded-md mb-4">
-            <Typography variant="p" className="font-medium mb-2">Caractéristiques de la HeroSection</Typography>
+            <Typography variant="p" className="font-medium mb-2">
+              Caractéristiques de la HeroSection
+            </Typography>
             <ul className="ml-5 list-disc text-sm space-y-1">
               <li>Titre principal (h1) en italique gras selon la hiérarchie visuelle</li>
               <li>CTA principal avec dégradé et effet brillance</li>
               <li>CTA secondaire en variante outline pour la hiérarchie d'actions</li>
             </ul>
           </div>
-          
+
           <div className="border border-color rounded-lg overflow-hidden">
-            <HeroSection 
+            <HeroSection
               title="Créez des interfaces exceptionnelles"
               subtitle="Design system complet pour des expériences utilisateur cohérentes et professionnelles"
               ctaText="Explorer nos services"
@@ -1007,7 +1084,7 @@ export default function DesignSystemPage() {
             />
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'page-header',
@@ -1016,7 +1093,9 @@ export default function DesignSystemPage() {
       component: (
         <div className="space-y-4">
           <div className="p-4 border-l-4 border-l-[var(--color-primary)] bg-blue-50/30 rounded-md mb-4">
-            <Typography variant="p" className="font-medium mb-2">Options du PageHeader</Typography>
+            <Typography variant="p" className="font-medium mb-2">
+              Options du PageHeader
+            </Typography>
             <ul className="ml-5 list-disc text-sm space-y-1">
               <li>Titre h1 en italique gras pour respecter la hiérarchie visuelle</li>
               <li>CTA avec effet brillance pour les actions principales</li>
@@ -1024,36 +1103,39 @@ export default function DesignSystemPage() {
               <li>Plusieurs variantes de taille et d'apparence</li>
             </ul>
           </div>
-          
+
           <div className="border border-color rounded-lg overflow-hidden">
-            <PageHeader 
+            <PageHeader
               title="Votre projet mérite le meilleur"
               subtitle="Découvrez notre approche"
-              badge={{ text: "Nouveau", variant: "tertiary" }}
+              badge={{ text: 'Nouveau', variant: 'tertiary' }}
               breadcrumbs={[
-                { label: "Accueil", href: "/" },
-                { label: "Services", href: "/services" },
-                { label: "Développement web", href: "#" }
+                { label: 'Accueil', href: '/' },
+                { label: 'Services', href: '/services' },
+                { label: 'Développement web', href: '#' },
               ]}
               actions={[
-                { label: "Demander un devis", href: "#", variant: "gradient", isMainCta: true },
-                { label: "Nos références", href: "#", variant: "outline" }
+                { label: 'Demander un devis', href: '#', variant: 'gradient', isMainCta: true },
+                { label: 'Nos références', href: '#', variant: 'outline' },
               ]}
               size="medium"
               align="left"
             />
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'feature-section',
       title: 'FeatureSection',
-      description: 'Section pour présenter les fonctionnalités ou avantages avec différents layouts',
+      description:
+        'Section pour présenter les fonctionnalités ou avantages avec différents layouts',
       component: (
         <div className="space-y-4">
           <div className="p-4 border-l-4 border-l-[var(--color-tertiary)] bg-amber-50/30 rounded-md mb-4">
-            <Typography variant="p" className="font-medium mb-2">Caractéristiques du FeatureSection</Typography>
+            <Typography variant="p" className="font-medium mb-2">
+              Caractéristiques du FeatureSection
+            </Typography>
             <ul className="ml-5 list-disc text-sm space-y-1">
               <li>Titre h2 en italique gras conforme à la hiérarchie typographique</li>
               <li>CTA principal avec effet brillance si marqué comme tel</li>
@@ -1061,46 +1143,46 @@ export default function DesignSystemPage() {
               <li>Styles d'icônes et numérotation personnalisables</li>
             </ul>
           </div>
-          
+
           <div className="border border-color rounded-lg overflow-hidden">
-            <FeatureSection 
+            <FeatureSection
               title="Nos services"
               subtitle="Solutions sur mesure pour vos besoins digitaux"
               features={[
                 {
-                  id: "feature1",
+                  id: 'feature1',
                   title: "Design d'interface",
-                  description: "Interfaces utilisateur intuitives et attrayantes",
-                  icon: "Palette"
+                  description: 'Interfaces utilisateur intuitives et attrayantes',
+                  icon: 'Palette',
                 },
                 {
-                  id: "feature2",
-                  title: "Développement web",
-                  description: "Sites et applications web performants",
-                  icon: "Code"
+                  id: 'feature2',
+                  title: 'Développement web',
+                  description: 'Sites et applications web performants',
+                  icon: 'Code',
                 },
                 {
-                  id: "feature3",
-                  title: "Optimisation SEO",
-                  description: "Améliorez votre visibilité en ligne",
-                  icon: "Search"
-                }
+                  id: 'feature3',
+                  title: 'Optimisation SEO',
+                  description: 'Améliorez votre visibilité en ligne',
+                  icon: 'Search',
+                },
               ]}
               columns={3}
               layout="grid"
               backgroundColor="light"
               cta={{
-                text: "Tous nos services",
-                href: "#",
-                variant: "gradient",
-                isMainCta: true
+                text: 'Tous nos services',
+                href: '#',
+                variant: 'gradient',
+                isMainCta: true,
               }}
               textAlign="center"
               className="py-8"
             />
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'enhanced-contact-form',
@@ -1109,7 +1191,9 @@ export default function DesignSystemPage() {
       component: (
         <div className="space-y-4">
           <div className="p-4 border-l-4 border-l-[var(--color-secondary)] bg-cyan-50/30 rounded-md mb-4">
-            <Typography variant="p" className="font-medium mb-2">Éléments du formulaire de contact</Typography>
+            <Typography variant="p" className="font-medium mb-2">
+              Éléments du formulaire de contact
+            </Typography>
             <ul className="ml-5 list-disc text-sm space-y-1">
               <li>Titre h2 en italique gras pour la cohérence typographique</li>
               <li>Utilisation mesurée des accents de couleur</li>
@@ -1117,43 +1201,44 @@ export default function DesignSystemPage() {
               <li>Adaptation responsive du formulaire</li>
             </ul>
           </div>
-          
+
           <div className="border border-color rounded-lg overflow-hidden">
-            <EnhancedContactForm 
+            <EnhancedContactForm
               title="Discutons de votre projet"
               subtitle="Nous vous répondrons sous 24h"
               accentColor="primary"
               style="card"
               showImage={true}
               testimonial={{
-                quote: "IrimWebForge a transformé notre vision en une interface utilisateur exceptionnelle. Leur équipe a été à l'écoute et proactive tout au long du projet.",
-                author: "Marie Dumas",
-                company: "DirecteurTech",
-                avatar: "/images/testimonials/avatar-1.svg"
+                quote:
+                  "IrimWebForge a transformé notre vision en une interface utilisateur exceptionnelle. Leur équipe a été à l'écoute et proactive tout au long du projet.",
+                author: 'Marie Dumas',
+                company: 'DirecteurTech',
+                avatar: '/images/testimonials/avatar-1.svg',
               }}
               services={[
                 {
                   icon: '/icons/website.svg',
                   title: 'Site web sur mesure',
-                  description: 'Des sites web personnalisés et performants.'
+                  description: 'Des sites web personnalisés et performants.',
                 },
                 {
                   icon: '/icons/admin.svg',
-                  title: 'Interfaces d\'administration',
-                  description: 'Des tableaux de bord efficaces pour gérer vos données.'
+                  title: "Interfaces d'administration",
+                  description: 'Des tableaux de bord efficaces pour gérer vos données.',
                 },
                 {
                   icon: '/icons/support.svg',
                   title: 'Support réactif',
-                  description: 'Une assistance continue pour tous vos besoins.'
-                }
+                  description: 'Une assistance continue pour tous vos besoins.',
+                },
               ]}
               className="max-w-4xl mx-auto"
             />
           </div>
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   // Organisation des catégories
@@ -1161,18 +1246,18 @@ export default function DesignSystemPage() {
     {
       id: 'atoms',
       title: 'Composants atomiques',
-      components: atomComponents
+      components: atomComponents,
     },
     {
       id: 'molecules',
       title: 'Composants moléculaires',
-      components: moleculeComponents
+      components: moleculeComponents,
     },
     {
       id: 'organisms',
       title: 'Composants organismes',
-      components: organismComponents
-    }
+      components: organismComponents,
+    },
   ];
 
   // Fonction pour afficher une catégorie de composants
@@ -1182,9 +1267,9 @@ export default function DesignSystemPage() {
         <Typography as="h2" variant="h2" className="mb-6 pb-2 border-b border-color">
           {category.title}
         </Typography>
-        
+
         <div className="grid grid-cols-1 gap-8">
-          {category.components.map(comp => (
+          {category.components.map((comp) => (
             <div key={comp.id} className="p-6 surface-secondary rounded-lg">
               <Typography as="h3" variant="h3" className="mb-2">
                 {comp.title}
@@ -1192,10 +1277,8 @@ export default function DesignSystemPage() {
               <Typography variant="p" className="mb-4 text-secondary">
                 {comp.description}
               </Typography>
-              
-              <div className="p-4 surface-primary rounded-lg">
-                {comp.component}
-              </div>
+
+              <div className="p-4 surface-primary rounded-lg">{comp.component}</div>
             </div>
           ))}
         </div>
@@ -1205,21 +1288,21 @@ export default function DesignSystemPage() {
 
   // Filtrer les catégories selon l'onglet actif
   const activeCategories = categories.filter(
-    cat => activeCategory === 'all' || cat.id === activeCategory
+    (cat) => activeCategory === 'all' || cat.id === activeCategory
   );
 
   // Créer les onglets pour la navigation
   const categoryTabs = [
     { id: 'all', label: 'Tous' },
-    ...categories.map(cat => ({ id: cat.id, label: cat.title }))
+    ...categories.map((cat) => ({ id: cat.id, label: cat.title })),
   ];
-  
+
   return (
     <div className="container mx-auto p-6 max-w-5xl">
       <Typography as="h1" variant="h1" className="mb-4 text-center">
         Design System IrimWebForge
       </Typography>
-      
+
       <Typography as="p" variant="lead" className="mb-8 text-center max-w-2xl mx-auto">
         Bibliothèque de composants et système de design pour les projets IrimWebForge
       </Typography>
@@ -1227,10 +1310,10 @@ export default function DesignSystemPage() {
       {/* Navigation par onglets */}
       <div className="mb-8">
         <div className="flex justify-center overflow-x-auto pb-2 gap-2">
-          {categoryTabs.map(tab => (
-            <Button 
+          {categoryTabs.map((tab) => (
+            <Button
               key={tab.id}
-              variant={activeCategory === tab.id ? "primary" : "outline"}
+              variant={activeCategory === tab.id ? 'primary' : 'outline'}
               size="sm"
               onClick={() => setActiveCategory(tab.id)}
             >
@@ -1243,10 +1326,12 @@ export default function DesignSystemPage() {
       {/* Affichage des catégories de composants */}
       {activeCategories.map(renderCategory)}
 
-
       {/* Lien retour */}
       <div className="text-center mt-12">
-        <Link href="/ds-lab" className="inline-flex items-center text-primary hover:text-primary/80 border-b-2 border-[var(--color-tertiary)]">
+        <Link
+          href="/ds-lab"
+          className="inline-flex items-center text-primary hover:text-primary/80 border-b-2 border-[var(--color-tertiary)]"
+        >
           <Icon name="ArrowLeft" size={16} className="mr-2" />
           Retour au DS Lab
         </Link>
@@ -1258,16 +1343,13 @@ export default function DesignSystemPage() {
 // Composant exemple pour la Modal qui doit être défini en dehors du tableau
 function ModalExample() {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <>
-      <Button 
-        variant="primary" 
-        onClick={() => setIsOpen(true)}
-      >
+      <Button variant="primary" onClick={() => setIsOpen(true)}>
         Ouvrir la modal
       </Button>
-      
+
       <Modal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -1286,13 +1368,11 @@ function ModalExample() {
       >
         <div className="py-4">
           <Typography variant="p">
-            Ceci est un exemple de contenu dans une modal. Les modals sont utiles pour afficher des informations supplémentaires sans quitter la page actuelle.
+            Ceci est un exemple de contenu dans une modal. Les modals sont utiles pour afficher des
+            informations supplémentaires sans quitter la page actuelle.
           </Typography>
           <div className="mt-4">
-            <Input
-              label="Exemple de champ"
-              placeholder="Saisissez une valeur"
-            />
+            <Input label="Exemple de champ" placeholder="Saisissez une valeur" />
           </div>
         </div>
       </Modal>

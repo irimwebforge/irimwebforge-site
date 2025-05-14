@@ -1,7 +1,6 @@
 import React from 'react';
-import { Input } from '@/components/atoms/Input';
-import { Typography } from '@/components/atoms/Typography';
-import { cn } from '@/lib/utils';
+import { Typography } from '../atoms/Typography';
+import { cn } from '../../lib/utils';
 
 export interface FormFieldProps {
   /** ID unique du champ, utilisé aussi comme attribut htmlFor du label */
@@ -21,7 +20,9 @@ export interface FormFieldProps {
   /** Valeur du champ */
   value?: string;
   /** Fonction appelée lors du changement de valeur */
-  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+  onChange?: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => void;
   /** Texte d'aide affiché sous le champ */
   helperText?: string;
   /** Options pour le champ select */
@@ -54,11 +55,8 @@ export const FormField: React.FC<FormFieldProps> = ({
   fullWidth = true,
 }) => {
   const fieldId = id;
-  const baseClasses = cn(
-    fullWidth ? 'w-full' : '',
-    className
-  );
-  
+  const baseClasses = cn(fullWidth ? 'w-full' : '', className);
+
   // Champ textarea
   if (type === 'textarea') {
     return (
@@ -91,7 +89,7 @@ export const FormField: React.FC<FormFieldProps> = ({
       </div>
     );
   }
-  
+
   // Champ select
   if (type === 'select') {
     return (
@@ -133,7 +131,7 @@ export const FormField: React.FC<FormFieldProps> = ({
       </div>
     );
   }
-  
+
   // Champ input standard
   return (
     <div className={cn('flex flex-col gap-1', baseClasses)}>
@@ -164,4 +162,4 @@ export const FormField: React.FC<FormFieldProps> = ({
       ) : null}
     </div>
   );
-}; 
+};

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
 import { useState, useEffect } from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Button } from '@/components/atoms/Button';
-import { ProjectPreview } from '@/components/molecules/ProjectPreview';
-import { Container } from '@/components/atoms/Container';
-import { Tabs } from '@/components/molecules/Tabs';
+import { Typography } from '../components/atoms/Typography';
+import { Button } from '../components/atoms/Button';
+import { ProjectPreview } from '../components/molecules/ProjectPreview';
+import { Container } from '../components/atoms/Container';
+import { Tabs } from '../components/molecules/Tabs';
 import Link from 'next/link';
 
 // Types pour les projets
@@ -58,25 +58,24 @@ export const ProjectShowcase = ({
   className = '',
 }: ProjectShowcaseProps) => {
   // Extraire toutes les catégories uniques des tags de projets si aucune n'est fournie
-  const projectCategories = categories.length > 0 
-    ? categories 
-    : [...new Set(projects.flatMap(project => project.tags.map(tag => tag.label)))];
-  
+  const projectCategories =
+    categories.length > 0
+      ? categories
+      : [...new Set(projects.flatMap((project) => project.tags.map((tag) => tag.label)))];
+
   // État pour la catégorie sélectionnée
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   // État pour suivre l'onglet par défaut
   const [defaultTabId, setDefaultTabId] = useState<string>('all');
-  
+
   // Filtrer les projets en fonction de la catégorie sélectionnée
-  const filteredProjects = selectedCategory 
-    ? projects.filter(project => 
-        project.tags.some(tag => tag.label === selectedCategory)
-      )
+  const filteredProjects = selectedCategory
+    ? projects.filter((project) => project.tags.some((tag) => tag.label === selectedCategory))
     : projects;
-  
+
   // Limiter le nombre de projets affichés
   const displayedProjects = filteredProjects.slice(0, maxProjects);
-  
+
   // Fonction pour générer les onglets à partir des catégories
   const generateTabs = () => {
     return [
@@ -85,20 +84,20 @@ export const ProjectShowcase = ({
         label: 'Tous',
         content: null,
       },
-      ...projectCategories.map(category => ({
+      ...projectCategories.map((category) => ({
         id: category,
         label: category,
         content: null,
       })),
     ];
   };
-  
+
   // Gérer le changement d'onglet
   const handleTabChange = (tabId: string) => {
     setSelectedCategory(tabId === 'all' ? null : tabId);
     setDefaultTabId(tabId);
   };
-  
+
   // Mettre à jour defaultTabId quand selectedCategory change
   useEffect(() => {
     setDefaultTabId(selectedCategory || 'all');
@@ -112,20 +111,20 @@ export const ProjectShowcase = ({
           <Typography as="h2" variant="h2" className="mb-3 font-bold italic">
             {title}
           </Typography>
-          
+
           {subtitle && (
             <Typography as="h3" variant="h3" className="mb-4">
               {subtitle}
             </Typography>
           )}
-          
+
           {description && (
             <Typography variant="lead" className="max-w-3xl mx-auto">
               {description}
             </Typography>
           )}
         </div>
-        
+
         {/* Filtres */}
         {showFilters && projectCategories.length > 0 && (
           <div className="mb-8">
@@ -139,7 +138,7 @@ export const ProjectShowcase = ({
             />
           </div>
         )}
-        
+
         {/* Grille de projets */}
         <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10`}>
           {displayedProjects.map((project) => (
@@ -157,14 +156,12 @@ export const ProjectShowcase = ({
             />
           ))}
         </div>
-        
+
         {/* Bouton "Voir plus" */}
         {showMoreButton && filteredProjects.length > maxProjects && (
           <div className="text-center">
             <Link href={moreButtonLink}>
-              <Button variant="secondary">
-                {moreButtonText}
-              </Button>
+              <Button variant="secondary">{moreButtonText}</Button>
             </Link>
           </div>
         )}
@@ -173,4 +170,4 @@ export const ProjectShowcase = ({
   );
 };
 
-export default ProjectShowcase; 
+export default ProjectShowcase;

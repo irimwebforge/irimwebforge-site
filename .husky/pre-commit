@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Exécute le lint mais ne bloque pas le commit si des erreurs sont trouvées
+yarn lint || true
+yarn format 

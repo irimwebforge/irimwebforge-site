@@ -1,8 +1,8 @@
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
+import { Typography } from '../atoms/Typography';
 import Link from 'next/link';
-import { Button } from '@/components/atoms/Button';
-import { cn } from '@/lib/utils';
+import { Button } from '../atoms/Button';
+import { cn } from '../../lib/utils';
 
 export interface ServiceHighlightProps {
   /** Titre du service */
@@ -64,7 +64,7 @@ export const ServiceHighlight: React.FC<ServiceHighlightProps> = ({
   };
 
   const variantClasses = getVariantClasses();
-  
+
   // Couleur associée au service
   const colorClasses = {
     bg: `bg-[var(--color-${color})] bg-opacity-10`,
@@ -73,14 +73,10 @@ export const ServiceHighlight: React.FC<ServiceHighlightProps> = ({
   };
 
   return (
-    <div className={cn(
-      'service-highlight surface-primary',
-      variantClasses.container,
-      className
-    )}>
+    <div className={cn('service-highlight surface-primary', variantClasses.container, className)}>
       {/* Icône */}
       {icon && (
-        <div 
+        <div
           className={cn(
             variantClasses.iconContainer,
             colorClasses.bg,
@@ -91,7 +87,7 @@ export const ServiceHighlight: React.FC<ServiceHighlightProps> = ({
           {icon}
         </div>
       )}
-      
+
       {/* Titre */}
       <Typography
         variant={variant === 'featured' ? 'h3' : 'h4'}
@@ -104,29 +100,28 @@ export const ServiceHighlight: React.FC<ServiceHighlightProps> = ({
       >
         {title}
       </Typography>
-      
+
       {/* Description */}
       <Typography
         variant="p"
-        className={cn(
-          'text-secondary',
-          bulletPoints.length > 0 ? 'mb-4' : ''
-        )}
+        className={cn('text-secondary', bulletPoints.length > 0 ? 'mb-4' : '')}
       >
         {description}
       </Typography>
-      
+
       {/* Points clés */}
       {bulletPoints.length > 0 && (
         <ul className="mt-3 mb-4 space-y-2">
           {bulletPoints.map((point, index) => (
             <li key={index} className="flex items-start">
-              <span className={cn(
-                'mr-2 mt-1 inline-block w-1.5 h-1.5 rounded-full',
-                colorClasses.bg,
-                colorClasses.border,
-                'border'
-              )}></span>
+              <span
+                className={cn(
+                  'mr-2 mt-1 inline-block w-1.5 h-1.5 rounded-full',
+                  colorClasses.bg,
+                  colorClasses.border,
+                  'border'
+                )}
+              ></span>
               <Typography variant="small" className="text-secondary flex-1">
                 {point}
               </Typography>
@@ -134,7 +129,7 @@ export const ServiceHighlight: React.FC<ServiceHighlightProps> = ({
           ))}
         </ul>
       )}
-      
+
       {/* CTA */}
       {ctaLink && (
         <div className="mt-4">
@@ -151,4 +146,4 @@ export const ServiceHighlight: React.FC<ServiceHighlightProps> = ({
       )}
     </div>
   );
-}; 
+};

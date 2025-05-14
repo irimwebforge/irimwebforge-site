@@ -5,6 +5,7 @@ Les composants moléculaires combinent plusieurs composants atomiques pour crée
 ## Principes de conception
 
 Les composants moléculaires respectent les principes suivants :
+
 - **Composition** : Assemblage cohérent de composants atomiques
 - **Réutilisabilité** : Conçus pour être utilisés dans diverses sections du site
 - **Personnalisation** : Options flexibles via des props bien définies
@@ -16,11 +17,13 @@ Les composants moléculaires respectent les principes suivants :
 Nos composants moléculaires suivent la même hiérarchie visuelle que les composants atomiques :
 
 ### Couleurs
+
 - **Primaire (Turquoise)** : `#00B3B3` - Éléments interactifs, accentuation, focus
 - **Secondaire (Bleu foncé)** : `#004466` - Éléments de structure, en-têtes
 - **Tertiaire (Orange)** : `#F06424` - Éléments d'accentuation limités (badges, alertes, mise en évidence de textes clés)
 
 ### Effets spéciaux
+
 - **Effet brillance** : Exclusivement utilisé sur les CTA principaux avec le dégradé
 - **Dégradé** : Réservé aux CTA principaux et éléments importants d'appel à l'action
 - **Typographie en italique gras** : Pour les titres principaux (h1, h2)
@@ -29,13 +32,14 @@ Nos composants moléculaires suivent la même hiérarchie visuelle que les compo
 ## Composants principaux
 
 ### Card
+
 Conteneur polyvalent pour présenter du contenu structuré avec différentes variantes visuelles.
 
 ```jsx
-<Card 
+<Card
   title="Titre de la carte"
   subtitle="Sous-titre optionnel"
-  variant="accent" 
+  variant="accent"
   color="tertiary"
   hover={true}
 >
@@ -43,7 +47,7 @@ Conteneur polyvalent pour présenter du contenu structuré avec différentes var
 </Card>
 
 // Avec dégradé et effet brillance pour CTA principal
-<Card 
+<Card
   title="Carte premium"
   gradient={true}
   footer={<Button variant="gradient" className="shine-effect">Action principale</Button>}
@@ -56,6 +60,7 @@ Conteneur polyvalent pour présenter du contenu structuré avec différentes var
 **Fonctionnalités** : En-tête en dégradé, accentuation colorée, effets de survol
 
 ### Tabs
+
 Système d'onglets pour organiser le contenu en sections accessibles.
 
 ```jsx
@@ -83,17 +88,18 @@ Système d'onglets pour organiser le contenu en sections accessibles.
 **Fonctionnalités** : Orientation verticale/horizontale, badges, icônes, animation, liens actifs en dégradé
 
 ### FAQ
+
 Accordéon optimisé pour les sections de questions/réponses avec animations fluides.
 
 ```jsx
-<FAQ 
+<FAQ
   items={[
-    { 
-      question: 'Comment fonctionne le service ?', 
-      answer: 'Notre service fonctionne en trois étapes simples...'
+    {
+      question: 'Comment fonctionne le service ?',
+      answer: 'Notre service fonctionne en trois étapes simples...',
     },
     // Autres questions
-  ]} 
+  ]}
   allowMultiple={true}
   color="tertiary"
 />
@@ -103,6 +109,7 @@ Accordéon optimisé pour les sections de questions/réponses avec animations fl
 **Fonctionnalités** : Ouverture multiple/unique, icônes personnalisables, accentuation
 
 ### CallToAction
+
 Bannière d'appel à l'action pour encourager l'engagement des utilisateurs.
 
 ```jsx
@@ -110,10 +117,10 @@ Bannière d'appel à l'action pour encourager l'engagement des utilisateurs.
   title="Prêt à démarrer votre projet ?"
   description="Nous vous accompagnons de la conception au déploiement"
   primaryAction={{
-    text: "Contactez-nous",
-    url: "/contact",
-    variant: "gradient",
-    className: "shine-effect"
+    text: 'Contactez-nous',
+    url: '/contact',
+    variant: 'gradient',
+    className: 'shine-effect',
   }}
   variant="card"
   color="primary"
@@ -125,15 +132,16 @@ Bannière d'appel à l'action pour encourager l'engagement des utilisateurs.
 **Fonctionnalités** : Arrière-plan en dégradé, effet de brillance sur le CTA, image d'illustration
 
 ### FeatureGrid
+
 Grille de fonctionnalités avec icônes pour présenter les avantages du service.
 
 ```jsx
 <FeatureGrid
   features={[
     {
-      title: "Développement web",
-      description: "Sites et applications web sur mesure",
-      icon: <Icon name="Code" />
+      title: 'Développement web',
+      description: 'Sites et applications web sur mesure',
+      icon: <Icon name="Code" />,
     },
     // Autres fonctionnalités
   ]}
@@ -187,26 +195,26 @@ export default function ServicePage() {
       <Typography as="h1" variant="h1" className="font-bold italic">
         Nos services
       </Typography>
-      
+
       <Tabs variant="underlined" className="mt-6">
         <Tab id="web" label="Développement web">
           <Card variant="accent" color="tertiary" className="mt-4">
             <Typography variant="lead">
               Développement de sites et applications web sur mesure
             </Typography>
-            
+
             <FeatureGrid
               features={[
                 {
-                  title: "Applications React/Next.js",
-                  description: "Sites modernes et performants",
-                  icon: <Icon name="Code" />
+                  title: 'Applications React/Next.js',
+                  description: 'Sites modernes et performants',
+                  icon: <Icon name="Code" />,
                 },
                 // Autres fonctionnalités
               ]}
               columns={2}
             />
-            
+
             <div className="mt-6">
               <Button variant="gradient" className="shine-effect">
                 Découvrir nos projets
@@ -214,7 +222,7 @@ export default function ServicePage() {
             </div>
           </Card>
         </Tab>
-        
+
         <Tab id="design" label="Design UX/UI">
           {/* Contenu de l'onglet Design */}
         </Tab>
@@ -235,4 +243,4 @@ export default function ServicePage() {
 4. **Accessibilité** - Assurez-vous que tous les éléments interactifs sont accessibles
 5. **Cohérence** - Maintenez une expérience utilisateur cohérente entre les sections
 6. **Documentation** - Ajoutez des commentaires JSDoc aux props pour une meilleure auto-documentation
-7. **Utilisation de l'utilitaire cn** - Utilisez systématiquement la fonction `cn` pour composer les classes CSS 
+7. **Utilisation de l'utilitaire cn** - Utilisez systématiquement la fonction `cn` pour composer les classes CSS

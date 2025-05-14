@@ -5,6 +5,7 @@ Ce dossier contient les composants atomiques qui constituent les éléments fond
 ## Principes généraux
 
 Les composants atomiques suivent les principes suivants :
+
 - **Simplicité** : Chaque composant fait une seule chose et la fait bien
 - **Réutilisabilité** : Conçus pour être utilisés dans de nombreux contextes
 - **Personnalisation** : Flexibles via les props mais avec des valeurs par défaut sensées
@@ -16,11 +17,13 @@ Les composants atomiques suivent les principes suivants :
 Notre design system utilise une hiérarchie visuelle claire avec les principes suivants :
 
 ### Couleurs
+
 - **Primaire (Turquoise)** : `#00B3B3` - Éléments interactifs, liens et accents
 - **Secondaire (Bleu foncé)** : `#004466` - Titres, textes importants, éléments d'autorité
 - **Tertiaire (Orange)** : `#F06424` - Uniquement pour accentuation (bordures, badges, icônes)
 
 ### Boutons
+
 - **CTA principal** : Gradient avec effet brillance - Actions principales
 - **Bouton primaire** : Turquoise - Actions secondaires importantes
 - **Bouton outline** : Bordure turquoise - Actions alternatives
@@ -28,6 +31,7 @@ Notre design system utilise une hiérarchie visuelle claire avec les principes s
 ## Composants disponibles
 
 ### Button
+
 Composant pour les actions interactives.
 
 ```jsx
@@ -40,6 +44,7 @@ Composant pour les actions interactives.
 **Effets** : La variante `gradient` utilise l'effet de brillance au survol
 
 ### Typography
+
 Composant pour le texte, avec support pour différents niveaux hiérarchiques.
 
 ```jsx
@@ -52,6 +57,7 @@ Composant pour le texte, avec support pour différents niveaux hiérarchiques.
 **Fonctionnalités** : Support pour mettre en évidence automatiquement certains mots avec `withAccentedWords`
 
 ### Badge
+
 Étiquettes et indicateurs visuels.
 
 ```jsx
@@ -62,6 +68,7 @@ Composant pour le texte, avec support pour différents niveaux hiérarchiques.
 **Variantes** : `primary`, `secondary`, `tertiary`, `success`, `warning`, `error`, `info`, `default`
 
 ### NavLink
+
 Liens de navigation stylisés avec gestion des états actifs.
 
 ```jsx
@@ -72,6 +79,7 @@ Liens de navigation stylisés avec gestion des états actifs.
 **Options** : Support pour icônes, soulignement, dégradé pour les liens actifs
 
 ### Input
+
 Champs de saisie stylisés.
 
 ```jsx
@@ -81,6 +89,7 @@ Champs de saisie stylisés.
 **Variantes** : `default`, `primary`, `accent`
 
 ### Divider
+
 Séparateurs visuels avec options étendues.
 
 ```jsx
@@ -90,6 +99,7 @@ Séparateurs visuels avec options étendues.
 **Options** : Couleur, épaisseur, style de ligne, orientation, label
 
 ### Icon
+
 Composant pour afficher des icônes de la bibliothèque Lucide.
 
 ```jsx
@@ -97,25 +107,33 @@ Composant pour afficher des icônes de la bibliothèque Lucide.
 ```
 
 ### 6. Input
+
 Champs de saisie texte et numériques.
+
 - Variants: `standard`, `outlined`, `filled`
 - Props: `id`, `value`, `onChange`, `type`, `placeholder`, `disabled`, `error`
 
 ### 7. Select
+
 Menu déroulant pour sélectionner parmi une liste d'options.
+
 - Variants: `default`, `primary`, `accent`
 - Props: `options`, `value`, `onChange`, `label`, `error`, `helpText`
 - Utilisation: Formulaires, filtres, paramètres
 
 ### 8. Textarea
+
 Zone de texte multi-ligne pour saisir des contenus plus longs.
+
 - Variants: `default`, `primary`, `accent`
 - Props: `rows`, `value`, `onChange`, `label`, `error`, `helpText`
 - Utilisation: Formulaires, commentaires, descriptions
 
 ### 9. NavLink
+
 Liens de navigation avec détection automatique de la route active et effet visuel au survol.
-- Props: 
+
+- Props:
   - `href` - URL cible du lien
   - `children` - Contenu du lien
   - `color` - "primary", "secondary" ou "tertiary" - Définit la couleur du lien en état actif et au survol
@@ -144,15 +162,21 @@ Liens de navigation avec détection automatique de la route active et effet visu
 ```
 
 ### 10. Divider
+
 Lignes de séparation visuelles personnalisables.
+
 - Props: `orientation` (horizontal, vertical), `variant` (solid, dashed, dotted), `color`, `thickness`, `label`, `labelPosition`
 
 ### 11. Badge
+
 Affiche des indicateurs numériques ou des étiquettes en forme de pastilles.
+
 - Props: `variant`, `size`, `shape`, `isSolid`, `isOutlined`, `dot`, `count`, `maxCount`
 
 ### 12. Avatar
+
 Représentation visuelle d'un utilisateur ou d'une entité.
+
 - Props: `src`, `alt`, `size`, `shape`, `name` (pour générer des initiales), `icon`, `status`, `badge`
 
 ## Conventions d'utilisation
@@ -180,26 +204,40 @@ import { NavLink } from '@/components/atoms/NavLink';
 export default function MyComponent() {
   return (
     <div>
-      <Typography variant="h2" className="font-bold italic">Titre de section</Typography>
+      <Typography variant="h2" className="font-bold italic">
+        Titre de section
+      </Typography>
       <Typography variant="p">Contenu de paragraphe</Typography>
-      
+
       {/* Navigation */}
       <nav className="flex gap-4 my-4">
-        <NavLink href="/" exact color="primary">Accueil</NavLink>
-        <NavLink href="/services" color="secondary">Services</NavLink>
-        <NavLink href="/contact" color="tertiary">Contact</NavLink>
-        <NavLink href="/featured" useGradient>Notre mission</NavLink>
+        <NavLink href="/" exact color="primary">
+          Accueil
+        </NavLink>
+        <NavLink href="/services" color="secondary">
+          Services
+        </NavLink>
+        <NavLink href="/contact" color="tertiary">
+          Contact
+        </NavLink>
+        <NavLink href="/featured" useGradient>
+          Notre mission
+        </NavLink>
       </nav>
-      
+
       {/* Bouton standard */}
       <Button variant="primary">Cliquez ici</Button>
-      
+
       {/* Bouton CTA avec effet brillance */}
-      <Button variant="gradient" className="shine-effect">Action principale</Button>
-      
+      <Button variant="gradient" className="shine-effect">
+        Action principale
+      </Button>
+
       {/* Bouton avec icône */}
-      <Button variant="primary" icon={<Icon name="ArrowRight" />}>Continuer</Button>
-      
+      <Button variant="primary" icon={<Icon name="ArrowRight" />}>
+        Continuer
+      </Button>
+
       {/* Bouton icône uniquement */}
       <Button variant="icon" iconOnly icon={<Icon name="Search" />} aria-label="Rechercher" />
     </div>

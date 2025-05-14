@@ -10,26 +10,43 @@ Notre design system suit l'architecture Atomic Design, qui organise les composan
 const componentStructure = {
   // Atomes : composants fondamentaux indivisibles
   atoms: [
-    'Button', 'Input', 'Select', 'Textarea', 'Typography', 
-    'Icon', 'Badge', 'Divider', 'NavLink', 'Logo'
+    'Button',
+    'Input',
+    'Select',
+    'Textarea',
+    'Typography',
+    'Icon',
+    'Badge',
+    'Divider',
+    'NavLink',
+    'Logo',
   ],
-  
+
   // Molécules : combinaisons d'atomes formant des composants fonctionnels
   molecules: [
-    'Card', 'FormField', 'Tabs', 'BlogPostCard', 'StatCard',
-    'PricingPlan', 'ConversationForm', 'FAQ', 'FeatureGrid'
+    'Card',
+    'FormField',
+    'Tabs',
+    'BlogPostCard',
+    'StatCard',
+    'PricingPlan',
+    'ConversationForm',
+    'FAQ',
+    'FeatureGrid',
   ],
-  
+
   // Organismes : sections complètes de l'interface
   organisms: [
-    'Header', 'Footer', 'HeroSection', 'PageHeader',
-    'FeatureSection', 'EnhancedContactForm'
+    'Header',
+    'Footer',
+    'HeroSection',
+    'PageHeader',
+    'FeatureSection',
+    'EnhancedContactForm',
   ],
-  
+
   // Templates : squelettes de pages
-  templates: [
-    'ProjectShowcase', 'ServiceOverview', 'CTASection', 'ValueProposition'
-  ]
+  templates: ['ProjectShowcase', 'ServiceOverview', 'CTASection', 'ValueProposition'],
 };
 ```
 
@@ -40,6 +57,7 @@ const componentStructure = {
 Les atomes sont les composants de base, les plus petits éléments indivisibles de notre design system.
 
 **Caractéristiques** :
+
 - Ne dépendent pas d'autres composants
 - Hautement réutilisables
 - Axés sur une fonction spécifique
@@ -53,6 +71,7 @@ Les atomes sont les composants de base, les plus petits éléments indivisibles 
 Les molécules combinent plusieurs atomes pour former des composants fonctionnels plus complexes.
 
 **Caractéristiques** :
+
 - Assemblent plusieurs atomes
 - Remplissent une fonction utilisateur spécifique
 - Moyennement complexes
@@ -66,6 +85,7 @@ Les molécules combinent plusieurs atomes pour former des composants fonctionnel
 Les organismes sont des assemblages complexes de molécules et atomes formant des sections complètes de l'interface.
 
 **Caractéristiques** :
+
 - Combinent plusieurs molécules et atomes
 - Forment des sections complètes de page
 - Peuvent contenir une logique métier
@@ -79,6 +99,7 @@ Les organismes sont des assemblages complexes de molécules et atomes formant de
 Les templates sont des squelettes de pages qui définissent la structure et le placement des organismes.
 
 **Caractéristiques** :
+
 - Définissent la structure globale
 - Placent les organismes dans un contexte
 - Coordonnent le flux d'information
@@ -90,6 +111,7 @@ Les templates sont des squelettes de pages qui définissent la structure et le p
 ### Principes de conception
 
 1. **Composition**
+
    - Privilégier la composition plutôt que l'héritage
    - Utiliser les props pour la personnalisation
    - Un composant = une responsabilité unique
@@ -115,7 +137,7 @@ export interface ExampleProps {
 export const Example = React.forwardRef<HTMLDivElement, ExampleProps>(
   ({ className, variant = 'default', ...props }, ref) => {
     // Logique du composant
-    
+
     return (
       <div
         ref={ref}
@@ -158,13 +180,13 @@ Pour transformer les données brutes en format compatible avec les composants, n
 import { ProjectData } from '@/types';
 
 export function adaptProjects(projects: ProjectData[]) {
-  return projects.map(project => ({
+  return projects.map((project) => ({
     id: project.id,
     title: project.name,
     description: project.shortDescription,
     image: project.coverImage,
     tags: project.technologies,
-    link: `/projects/${project.slug}`
+    link: `/projects/${project.slug}`,
   }));
 }
 ```
@@ -173,4 +195,4 @@ Consultez les adaptateurs dans `/src/app/ds-lab/templates/` (projectAdapter.ts, 
 
 ---
 
-> 📚 **Documentation détaillée** : Pour des informations plus spécifiques sur chaque niveau de composants, consultez les documents [Atomes](./atoms.md), [Molécules](./molecules.md), et [Organismes](./organisms.md). 
+> 📚 **Documentation détaillée** : Pour des informations plus spécifiques sur chaque niveau de composants, consultez les documents [Atomes](./atoms.md), [Molécules](./molecules.md), et [Organismes](./organisms.md).

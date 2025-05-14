@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Container } from '@/components/atoms/Container';
-import { ServiceHighlight } from '@/components/molecules/ServiceHighlight';
-import { FeatureGrid } from '@/components/molecules/FeatureGrid';
-import { Button } from '@/components/atoms/Button';
-import { Icon } from '@/components/atoms/Icon';
-import { IconName } from '@/components/atoms/Icon';
+import { Typography } from '../components/atoms/Typography';
+import { Container } from '../components/atoms/Container';
+import { ServiceHighlight } from '../components/molecules/ServiceHighlight';
+import { FeatureGrid } from '../components/molecules/FeatureGrid';
+import { Button } from '../components/atoms/Button';
+import { Icon } from '../components/atoms/Icon';
+import { IconName } from '../components/atoms/Icon';
 import Link from 'next/link';
 
 // Types pour les services
@@ -93,20 +93,20 @@ export const ServiceOverview = ({
           <Typography as="h2" variant="h2" className="mb-3 font-bold italic">
             {title}
           </Typography>
-          
+
           {subtitle && (
             <Typography as="h3" variant="h3" className="mb-4">
               {subtitle}
             </Typography>
           )}
-          
+
           {description && (
             <Typography variant="lead" className="max-w-3xl mx-auto">
               {description}
             </Typography>
           )}
         </div>
-        
+
         {/* Présentation des services */}
         {variant === 'grid' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
@@ -125,16 +125,18 @@ export const ServiceOverview = ({
             ))}
           </div>
         )}
-        
+
         {variant === 'alternating' && (
           <div className="space-y-16 mb-12">
             {services.map((service, index) => (
-              <div 
-                key={service.id} 
+              <div
+                key={service.id}
                 className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8`}
               >
                 <div className="flex-1">
-                  <div className={`w-16 h-16 flex items-center justify-center rounded-full mb-4 bg-[var(--color-${service.color || 'primary'}-100)]`}>
+                  <div
+                    className={`w-16 h-16 flex items-center justify-center rounded-full mb-4 bg-[var(--color-${service.color || 'primary'}-100)]`}
+                  >
                     {renderIcon(service.icon, 32)}
                   </div>
                   <Typography as="h3" variant="h3" className="mb-3">
@@ -143,18 +145,21 @@ export const ServiceOverview = ({
                   <Typography variant="p" className="mb-4">
                     {service.description}
                   </Typography>
-                  
+
                   {service.bulletPoints && service.bulletPoints.length > 0 && (
                     <ul className="space-y-2 mb-4">
                       {service.bulletPoints.map((point, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <Icon name="Check" className={`text-[var(--color-${service.color || 'primary'})]`} />
+                          <Icon
+                            name="Check"
+                            className={`text-[var(--color-${service.color || 'primary'})]`}
+                          />
                           <Typography variant="p">{point}</Typography>
                         </li>
                       ))}
                     </ul>
                   )}
-                  
+
                   {service.slug && (
                     <Link href={`/services/${service.slug}`}>
                       <Button variant="secondary" size="sm">
@@ -173,15 +178,17 @@ export const ServiceOverview = ({
             ))}
           </div>
         )}
-        
+
         {variant === 'cards' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {services.map((service) => (
-              <div 
-                key={service.id} 
+              <div
+                key={service.id}
                 className="rounded-lg p-6 border border-gray-200 dark:border-gray-700 transition-all hover:shadow-md"
               >
-                <div className={`w-12 h-12 flex items-center justify-center rounded-full mb-4 bg-[var(--color-${service.color || 'primary'}-100)]`}>
+                <div
+                  className={`w-12 h-12 flex items-center justify-center rounded-full mb-4 bg-[var(--color-${service.color || 'primary'}-100)]`}
+                >
                   {renderIcon(service.icon)}
                 </div>
                 <Typography as="h3" variant="h4" className="mb-3">
@@ -190,9 +197,9 @@ export const ServiceOverview = ({
                 <Typography variant="p" className="mb-4">
                   {service.description}
                 </Typography>
-                
+
                 {service.slug && (
-                  <Link 
+                  <Link
                     href={`/services/${service.slug}`}
                     className="text-[var(--color-primary)] hover:underline inline-flex items-center gap-1"
                   >
@@ -204,27 +211,28 @@ export const ServiceOverview = ({
             ))}
           </div>
         )}
-        
+
         {/* Caractéristiques supplémentaires */}
         {showFeatures && features.length > 0 && (
           <div className="mt-16">
             <Typography as="h3" variant="h3" className="text-center mb-8">
               Pourquoi me choisir?
             </Typography>
-            
+
             <FeatureGrid
-              features={features.map(feature => ({
+              features={features.map((feature) => ({
                 ...feature,
-                icon: typeof feature.icon === 'string' 
-                  ? renderIcon(feature.icon as IconName) 
-                  : feature.icon
+                icon:
+                  typeof feature.icon === 'string'
+                    ? renderIcon(feature.icon as IconName)
+                    : feature.icon,
               }))}
-              variant="bordered"
+              variant="outline"
               columns={3}
             />
           </div>
         )}
-        
+
         {/* Bouton d'appel à l'action */}
         {showCtaButton && (
           <div className="text-center mt-12">
@@ -240,4 +248,4 @@ export const ServiceOverview = ({
   );
 };
 
-export default ServiceOverview; 
+export default ServiceOverview;

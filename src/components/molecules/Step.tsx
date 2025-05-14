@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
+import { Typography } from '../atoms/Typography';
 
 export interface StepProps {
   number: number;
@@ -31,7 +31,7 @@ export const Step: React.FC<StepProps> = ({
         title: 'text-[var(--color-primary)]',
       };
     }
-    
+
     if (isActive) {
       return {
         circle: 'bg-[var(--color-tertiary)] text-white',
@@ -39,51 +39,46 @@ export const Step: React.FC<StepProps> = ({
         title: 'text-[var(--color-tertiary)]',
       };
     }
-    
+
     return {
       circle: 'surface-tertiary text-primary',
       border: 'border-color',
       title: 'text-primary',
     };
   };
-  
+
   const stateClasses = getStateClasses();
   const isClickable = !!onClick;
-  
+
   return (
-    <div 
+    <div
       className={`step relative ${className} ${isClickable ? 'cursor-pointer hover:opacity-90' : ''}`}
       onClick={onClick}
     >
       <div className="flex items-start">
         {/* Cercle numéroté ou icône */}
-        <div 
+        <div
           className={`flex-shrink-0 w-10 h-10 rounded-full ${stateClasses.circle} flex items-center justify-center font-bold text-lg z-10`}
         >
           {icon || number}
         </div>
-        
+
         {/* Contenu */}
         <div className="ml-4 pt-1">
-          <Typography 
-            as="h3" 
-            className={`font-bold ${stateClasses.title} text-lg`}
-          >
+          <Typography as="h3" className={`font-bold ${stateClasses.title} text-lg`}>
             {title}
           </Typography>
-          
-          <Typography 
-            as="p" 
-            variant="p" 
-            className="mt-1 text-secondary"
-          >
+
+          <Typography as="p" variant="p" className="mt-1 text-secondary">
             {description}
           </Typography>
         </div>
       </div>
-      
+
       {/* Ligne de connexion verticale (sauf pour le dernier élément) */}
-      <div className={`absolute top-10 left-5 w-0.5 h-full -ml-px ${stateClasses.border} bg-gray-100`}></div>
+      <div
+        className={`absolute top-10 left-5 w-0.5 h-full -ml-px ${stateClasses.border} bg-gray-100`}
+      ></div>
     </div>
   );
 };
@@ -105,8 +100,8 @@ export const StepList: React.FC<StepListProps> = ({
   return (
     <div className={`steps-list ${className}`}>
       {steps.map((step, index) => (
-        <div 
-          key={index} 
+        <div
+          key={index}
           className={`${verticalConnect && index < steps.length - 1 ? 'mb-8 pb-4' : ''}`}
         >
           <Step
@@ -119,4 +114,4 @@ export const StepList: React.FC<StepListProps> = ({
       ))}
     </div>
   );
-}; 
+};

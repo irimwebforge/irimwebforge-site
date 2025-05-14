@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Container } from '@/components/atoms/Container';
-import { FeatureGrid } from '@/components/molecules/FeatureGrid';
-import { StatGroup } from '@/components/molecules/StatCard';
-import { Testimonial } from '@/components/molecules/Testimonial';
+import { Typography } from '../components/atoms/Typography';
+import { Container } from '../components/atoms/Container';
+import { FeatureGrid } from '../components/molecules/FeatureGrid';
+import { StatGroup } from '../components/molecules/StatCard';
+import { Testimonial } from '../components/molecules/Testimonial';
 import Image from 'next/image';
 
 // Types pour les valeurs
@@ -88,7 +88,9 @@ export const ValueProposition = ({
     <section className={`py-16 ${backgroundClasses[backgroundColor]} ${className}`}>
       <Container>
         {/* En-tête de la section */}
-        <div className={`text-center mb-12 ${imageUrl && imagePosition === 'top' ? 'grid gap-8' : ''}`}>
+        <div
+          className={`text-center mb-12 ${imageUrl && imagePosition === 'top' ? 'grid gap-8' : ''}`}
+        >
           {imageUrl && imagePosition === 'top' && (
             <div className="max-w-md mx-auto relative h-64">
               <Image
@@ -100,18 +102,18 @@ export const ValueProposition = ({
               />
             </div>
           )}
-          
+
           <div>
             <Typography as="h2" variant="h2" className="mb-3 font-bold italic">
               {title}
             </Typography>
-            
+
             {subtitle && (
               <Typography as="h3" variant="h3" className="mb-4">
                 {subtitle}
               </Typography>
             )}
-            
+
             {description && (
               <Typography variant="lead" className="max-w-3xl mx-auto">
                 {description}
@@ -122,7 +124,9 @@ export const ValueProposition = ({
 
         {/* Image + Valeurs en disposition côte à côte */}
         {imageUrl && (imagePosition === 'left' || imagePosition === 'right') ? (
-          <div className={`flex flex-col ${imagePosition === 'left' ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 mb-16`}>
+          <div
+            className={`flex flex-col ${imagePosition === 'left' ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 mb-16`}
+          >
             <div className="md:w-2/5 relative">
               <div className="relative h-64 md:h-96 w-full overflow-hidden rounded-lg">
                 <Image
@@ -134,17 +138,19 @@ export const ValueProposition = ({
                 />
               </div>
             </div>
-            
+
             <div className="md:w-3/5">
               <FeatureGrid
-                features={values.map(value => ({
+                features={values.map((value) => ({
                   id: value.id,
                   title: value.title,
                   description: value.description,
                   icon: value.icon,
                   color: value.color,
                 }))}
-                variant={valueLayout === 'cards' ? 'card' : valueLayout === 'list' ? 'minimal' : 'bordered'}
+                variant={
+                  valueLayout === 'cards' ? 'card' : valueLayout === 'list' ? 'ghost' : 'outline'
+                }
                 columns={2}
               />
             </div>
@@ -152,19 +158,21 @@ export const ValueProposition = ({
         ) : (
           <div className="mb-16">
             <FeatureGrid
-              features={values.map(value => ({
+              features={values.map((value) => ({
                 id: value.id,
                 title: value.title,
                 description: value.description,
                 icon: value.icon,
                 color: value.color,
               }))}
-              variant={valueLayout === 'cards' ? 'card' : valueLayout === 'list' ? 'minimal' : 'bordered'}
+              variant={
+                valueLayout === 'cards' ? 'card' : valueLayout === 'list' ? 'ghost' : 'outline'
+              }
               columns={3}
             />
           </div>
         )}
-        
+
         {/* Statistiques */}
         {showStats && stats.length > 0 && (
           <div className="mb-16">
@@ -175,14 +183,14 @@ export const ValueProposition = ({
             />
           </div>
         )}
-        
+
         {/* Témoignages */}
         {showTestimonials && testimonials.length > 0 && (
           <div className="mt-16">
             <Typography as="h3" variant="h3" className="text-center mb-8">
               Ce qu&apos;en disent nos clients
             </Typography>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {testimonials.map((testimonial, index) => (
                 <Testimonial
@@ -203,4 +211,4 @@ export const ValueProposition = ({
   );
 };
 
-export default ValueProposition; 
+export default ValueProposition;

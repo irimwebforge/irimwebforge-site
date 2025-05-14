@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Icon } from '@/components/atoms/Icon';
-import { cn } from '@/lib/utils';
+import { Typography } from '../atoms/Typography';
+import { Icon } from '../atoms/Icon';
+import { cn } from '../../lib/utils';
 
 export interface FAQItem {
   /** Identifiant unique de l'élément FAQ */
@@ -47,96 +47,94 @@ export const FAQ: React.FC<FAQProps> = ({
 }) => {
   // État pour suivre les éléments ouverts
   const [openItems, setOpenItems] = useState<Record<string, boolean>>(
-    items.reduce((acc, item) => {
-      acc[item.id] = item.isOpen || false;
-      return acc;
-    }, {} as Record<string, boolean>)
+    items.reduce(
+      (acc, item) => {
+        acc[item.id] = item.isOpen || false;
+        return acc;
+      },
+      {} as Record<string, boolean>
+    )
   );
-  
+
   // Gérer le clic sur un élément
   const handleItemClick = (itemId: string) => {
     if (allowMultiple) {
-      setOpenItems(prev => ({
+      setOpenItems((prev) => ({
         ...prev,
-        [itemId]: !prev[itemId]
+        [itemId]: !prev[itemId],
       }));
     } else {
       const newOpenItems: Record<string, boolean> = {};
-      items.forEach(item => {
+      items.forEach((item) => {
         newOpenItems[item.id] = item.id === itemId && !openItems[itemId];
       });
       setOpenItems(newOpenItems);
     }
   };
-  
+
   // Classes pour les variantes
   const variantClasses = {
     default: '',
     separated: 'space-y-4',
     bordered: 'divide-y divide-gray-200',
   };
-  
+
   // Icônes de toggle
-  const renderIcon = (isOpen: boolean, itemId: string) => {
+  const renderIcon = (isOpen: boolean, _itemId: string) => {
     const iconColor = `text-[var(--color-${color})]`;
-    
+
     switch (icon) {
       case 'plus':
         return (
-          <div className={cn(
-            'transition-transform duration-200',
-            iconColor
-          )}>
-            {isOpen ? (
-              <Icon name="Minus" size={20} />
-            ) : (
-              <Icon name="Plus" size={20} />
-            )}
+          <div className={cn('transition-transform duration-200', iconColor)}>
+            {isOpen ? <Icon name="Minus" size={20} /> : <Icon name="Plus" size={20} />}
           </div>
         );
       case 'arrow':
         return (
-          <div className={cn(
-            'transition-transform duration-200',
-            isOpen ? 'rotate-180' : 'rotate-0',
-            iconColor
-          )}>
+          <div
+            className={cn(
+              'transition-transform duration-200',
+              isOpen ? 'rotate-180' : 'rotate-0',
+              iconColor
+            )}
+          >
             <Icon name="ChevronDown" size={20} />
           </div>
         );
       case 'chevron':
       default:
         return (
-          <div className={cn(
-            'transition-transform duration-200',
-            isOpen ? 'rotate-90' : 'rotate-0',
-            iconColor
-          )}>
+          <div
+            className={cn(
+              'transition-transform duration-200',
+              isOpen ? 'rotate-90' : 'rotate-0',
+              iconColor
+            )}
+          >
             <Icon name="ChevronRight" size={20} />
           </div>
         );
     }
   };
-  
+
   // Rendu d'un élément FAQ
-  const renderFAQItem = (item: FAQItem, index: number) => {
+  const renderFAQItem = (item: FAQItem) => {
     const isOpen = openItems[item.id];
-    
+
     // Classes spécifiques par variante
     const itemClasses = {
       default: 'border-b border-gray-200 last:border-b-0',
       separated: 'border border-gray-200 rounded-lg',
       bordered: '',
     };
-    
+
     return (
-      <div 
-        key={item.id} 
-        className={cn(
-          variant === 'default' || variant === 'bordered' ? itemClasses[variant] : ''
-        )}
+      <div
+        key={item.id}
+        className={cn(variant === 'default' || variant === 'bordered' ? itemClasses[variant] : '')}
       >
-        <div 
+        <div
           className={cn(
             'flex justify-between items-center gap-4 w-full cursor-pointer py-4 px-2',
             variant === 'separated' ? itemClasses[variant] : '',
@@ -146,20 +144,17 @@ export const FAQ: React.FC<FAQProps> = ({
           aria-expanded={isOpen}
           aria-controls={`faq-answer-${item.id}`}
         >
-          <Typography 
+          <Typography
             variant="h4"
-            className={cn(
-              'flex-1',
-              isOpen ? `text-[var(--color-${color})]` : ''
-            )}
+            className={cn('flex-1', isOpen ? `text-[var(--color-${color})]` : '')}
           >
             {item.question}
           </Typography>
-          
+
           {renderIcon(isOpen, item.id)}
         </div>
-        
-        <div 
+
+        <div
           id={`faq-answer-${item.id}`}
           className={cn(
             'overflow-hidden transition-all duration-300',
@@ -179,7 +174,7 @@ export const FAQ: React.FC<FAQProps> = ({
       </div>
     );
   };
-  
+
   return (
     <div className={cn('faq-container', className)}>
       {(title || subtitle) && (
@@ -189,7 +184,7 @@ export const FAQ: React.FC<FAQProps> = ({
               {title}
             </Typography>
           )}
-          
+
           {subtitle && (
             <Typography variant="lead" className="text-secondary">
               {subtitle}
@@ -197,10 +192,8 @@ export const FAQ: React.FC<FAQProps> = ({
           )}
         </div>
       )}
-      
-      <div className={cn('space-y-0', variantClasses[variant])}>
-        {items.map(renderFAQItem)}
-      </div>
+
+      <div className={cn('space-y-0', variantClasses[variant])}>{items.map(renderFAQItem)}</div>
     </div>
   );
 };
@@ -227,33 +220,32 @@ export const FAQItemComponent: React.FC<FAQItemComponentProps> = ({
   color = 'primary',
 }) => {
   const [isExpanded, setIsExpanded] = useState(isOpen);
-  
+
   return (
     <div className={cn('border-b border-gray-200 last:border-b-0', className)}>
-      <div 
+      <div
         className={cn(
           'flex justify-between items-center gap-4 cursor-pointer py-4 px-2',
           isExpanded ? `text-[var(--color-${color})]` : ''
         )}
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <Typography 
-          variant="h4"
-          className={isExpanded ? `text-[var(--color-${color})]` : ''}
-        >
+        <Typography variant="h4" className={isExpanded ? `text-[var(--color-${color})]` : ''}>
           {question}
         </Typography>
-        
-        <div className={cn(
-          'transition-transform duration-200',
-          isExpanded ? 'rotate-180' : 'rotate-0',
-          `text-[var(--color-${color})]`
-        )}>
+
+        <div
+          className={cn(
+            'transition-transform duration-200',
+            isExpanded ? 'rotate-180' : 'rotate-0',
+            `text-[var(--color-${color})]`
+          )}
+        >
           <Icon name="ChevronDown" size={20} />
         </div>
       </div>
-      
-      <div 
+
+      <div
         className={cn(
           'overflow-hidden transition-all duration-300',
           isExpanded ? 'max-h-96 py-4' : 'max-h-0 py-0',
@@ -270,4 +262,4 @@ export const FAQItemComponent: React.FC<FAQItemComponentProps> = ({
       </div>
     </div>
   );
-}; 
+};

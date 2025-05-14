@@ -31,7 +31,7 @@ const serviceProps = serviceAdapter(mockData);
 // Avec configuration
 const config: BaseAdapterConfig = {
   locale: 'fr',
-  variant: 'featured'
+  variant: 'featured',
 };
 const customServiceProps = serviceAdapter(mockData, config);
 ```
@@ -41,4 +41,4 @@ const customServiceProps = serviceAdapter(mockData, config);
 1. Toujours utiliser les adaptateurs via l'import depuis `index.ts`
 2. Ne pas dupliquer la logique d'adaptation
 3. Étendre les adaptateurs existants plutôt que d'en créer de nouveaux
-4. Documenter les nouvelles variantes dans les fichiers d'adaptateurs 
+4. Documenter les nouvelles variantes dans les fichiers d'adaptateurs

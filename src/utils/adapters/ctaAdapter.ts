@@ -9,13 +9,13 @@ export const adaptAction = (mockAction: MockAction, isPrimary: boolean = false):
   return {
     text: mockAction.label,
     url: mockAction.href,
-    variant: isPrimary ? 'gradient' : 'secondary'
+    variant: isPrimary ? 'gradient' : 'secondary',
   };
 };
 
 export const adaptActions = (primary: MockAction, secondary?: MockAction) => {
   return {
     primaryAction: adaptAction(primary, true),
-    secondaryAction: secondary ? adaptAction(secondary) : undefined
+    secondaryAction: secondary ? adaptAction(secondary) : undefined,
   };
-}; 
+};

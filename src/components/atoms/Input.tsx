@@ -12,18 +12,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type = 'text', label, error, helpText, variant = 'default', ...props }, ref) => {
     // Classes de style pour les différentes variantes
     const variantClasses = {
-      default: "focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]",
-      primary: "border-[var(--color-primary)]/30 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]",
-      tertiary: "border-[var(--color-tertiary)]/30 focus:ring-[var(--color-tertiary)] focus:border-[var(--color-tertiary)]"
+      default: 'focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]',
+      primary:
+        'border-[var(--color-primary)]/30 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]',
+      tertiary:
+        'border-[var(--color-tertiary)]/30 focus:ring-[var(--color-tertiary)] focus:border-[var(--color-tertiary)]',
     };
-    
+
     return (
       <div className="flex flex-col gap-1">
-        {label && (
-          <label className="text-sm font-medium text-secondary mb-1">
-            {label}
-          </label>
-        )}
+        {label && <label className="text-sm font-medium text-secondary mb-1">{label}</label>}
         <input
           type={type}
           className={cn(
@@ -34,20 +32,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-        {error && (
-          <span className="text-sm text-red-500 mt-1">
-            {error}
-          </span>
-        )}
-        {helpText && !error && (
-          <span className="text-xs text-tertiary mt-1">
-            {helpText}
-          </span>
-        )}
+        {error && <span className="text-sm text-red-500 mt-1">{error}</span>}
+        {helpText && !error && <span className="text-xs text-tertiary mt-1">{helpText}</span>}
       </div>
     );
   }
 );
-Input.displayName = "Input";
+Input.displayName = 'Input';
 
 export { Input };

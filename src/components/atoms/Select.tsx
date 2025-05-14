@@ -18,18 +18,16 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   ({ className, label, error, helpText, variant = 'default', options, ...props }, ref) => {
     // Classes de style pour les différentes variantes
     const variantClasses = {
-      default: "focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]",
-      primary: "border-[var(--color-primary)]/30 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]",
-      tertiary: "border-[var(--color-tertiary)]/30 focus:ring-[var(--color-tertiary)] focus:border-[var(--color-tertiary)]"
+      default: 'focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]',
+      primary:
+        'border-[var(--color-primary)]/30 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]',
+      tertiary:
+        'border-[var(--color-tertiary)]/30 focus:ring-[var(--color-tertiary)] focus:border-[var(--color-tertiary)]',
     };
-    
+
     return (
       <div className="flex flex-col gap-1">
-        {label && (
-          <label className="text-sm font-medium text-secondary mb-1">
-            {label}
-          </label>
-        )}
+        {label && <label className="text-sm font-medium text-secondary mb-1">{label}</label>}
         <select
           className={cn(
             `w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 bg-white appearance-none`,
@@ -39,27 +37,21 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           ref={ref}
           {...props}
         >
-          <option value="" disabled>Sélectionnez une option</option>
+          <option value="" disabled>
+            Sélectionnez une option
+          </option>
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
         </select>
-        {error && (
-          <span className="text-sm text-red-500 mt-1">
-            {error}
-          </span>
-        )}
-        {helpText && !error && (
-          <span className="text-xs text-tertiary mt-1">
-            {helpText}
-          </span>
-        )}
+        {error && <span className="text-sm text-red-500 mt-1">{error}</span>}
+        {helpText && !error && <span className="text-xs text-tertiary mt-1">{helpText}</span>}
       </div>
     );
   }
 );
-Select.displayName = "Select";
+Select.displayName = 'Select';
 
-export { Select }; 
+export { Select };

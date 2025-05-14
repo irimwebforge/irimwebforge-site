@@ -12,4 +12,4 @@ export interface BaseAdapterConfig {
 }
 
 // Type utilitaire pour les fonctions d'adaptation
-export type AdapterFunction<T, U> = (data: T, config?: BaseAdapterConfig) => U; 
+export type AdapterFunction<T, U> = (data: T, config?: BaseAdapterConfig) => U;

@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Container } from '@/components/atoms/Container';
-import { Divider } from '@/components/atoms/Divider';
-import { Card } from '@/components/molecules/Card';
-import { Button } from '@/components/atoms/Button';
-import { FeatureGrid } from '@/components/molecules/FeatureGrid';
-import { Badge } from '@/components/atoms/Badge';
-import { Icon } from '@/components/atoms/Icon';
+import { Typography } from '../atoms/Typography';
+import { Container } from '../atoms/Container';
+import { Divider } from '../atoms/Divider';
+import { Card } from '../molecules/Card';
+import { Button } from '../atoms/Button';
+import { FeatureGrid } from '../molecules/FeatureGrid';
+import { Badge } from '../atoms/Badge';
+import { Icon, type IconName } from '../atoms/Icon';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -56,6 +56,20 @@ export interface FeatureSectionProps {
   };
 }
 
+// Utilisez un type spécifique à la place de any
+type IconType = IconName | React.ReactNode;
+
+export interface FeatureActionProps {
+  text?: string;
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  isMainCta?: boolean;
+  icon?: IconType;
+  iconPosition?: 'left' | 'right';
+  onClickAction?: (featureId: string) => void;
+}
+
 export const FeatureSection: React.FC<FeatureSectionProps> = ({
   title,
   subtitle,
@@ -80,7 +94,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
     center: 'text-center',
     right: 'text-right',
   };
-  
+
   // Classes basées sur la couleur de fond
   const bgClasses = {
     none: '',
@@ -90,7 +104,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
     secondary: 'bg-[var(--color-secondary)] bg-opacity-5',
     tertiary: 'bg-[var(--color-tertiary)] bg-opacity-5',
   };
-  
+
   // Classes basées sur le nombre de colonnes
   const columnClasses = {
     1: 'grid-cols-1',
@@ -98,23 +112,24 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
     3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
     4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
   };
-  
+
   // Adapter les caractéristiques pour FeatureGrid
   const adaptFeaturesForGrid = (features: Feature[]) => {
-    return features.map(feature => ({
+    return features.map((feature) => ({
       ...feature,
       // Convertir le lien si nécessaire
-      link: feature.link ? {
-        text: feature.link.text,
-        url: feature.link.href,
-      } : undefined,
+      link: feature.link
+        ? {
+            text: feature.link.text,
+            url: feature.link.href,
+          }
+        : undefined,
       // Convertir l'icône string en composant Icon si nécessaire
-      icon: typeof feature.icon === 'string' 
-        ? <Icon name={feature.icon as any} />
-        : feature.icon
+      icon:
+        typeof feature.icon === 'string' ? <Icon name={feature.icon as IconName} /> : feature.icon,
     }));
   };
-  
+
   // Rendu des fonctionnalités selon le layout choisi
   const renderFeatures = () => {
     switch (layout) {
@@ -129,43 +144,42 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       default:
         // Grid layout (default)
         return (
-          <FeatureGrid 
+          <FeatureGrid
             features={adaptFeaturesForGrid(features)}
             columns={columns}
-            variant={withNumbers ? 'bordered' : 'card'}
+            variant={withNumbers ? 'outline' : 'card'}
           />
         );
     }
   };
-  
+
   // Layout de type cartes
   const renderCardsLayout = () => {
     return (
       <div className={`grid ${columnClasses[columns]} gap-6 mt-8`}>
         {features.map((feature, index) => (
-          <Card 
-            key={feature.id} 
-            className="p-6"
-            hover
-          >
+          <Card key={feature.id} className="p-6" hover>
             <div className="flex flex-col h-full">
               {/* Icône ou index */}
-              {renderFeatureIcon(feature, index)}
-              
+              {renderFeatureIcon(feature.icon as IconType, index)}
+
               {/* Titre */}
               <Typography variant="h3" className="text-xl font-bold mt-4 mb-2">
                 {feature.title}
               </Typography>
-              
+
               {/* Description */}
               <Typography variant="p" className="text-secondary flex-grow">
                 {feature.description}
               </Typography>
-              
+
               {/* Lien (optionnel) */}
               {feature.link && (
                 <div className="mt-4">
-                  <Link href={feature.link.href} className="text-[var(--color-primary)] hover:underline font-medium">
+                  <Link
+                    href={feature.link.href}
+                    className="text-[var(--color-primary)] hover:underline font-medium"
+                  >
                     {feature.link.text}
                   </Link>
                 </div>
@@ -176,7 +190,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       </div>
     );
   };
-  
+
   // Layout de type liste
   const renderListLayout = () => {
     return (
@@ -185,24 +199,27 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
           <div key={feature.id} className="flex items-start gap-4">
             {/* Icône ou index */}
             <div className="flex-shrink-0 mt-1">
-              {renderFeatureIcon(feature, index, 'large')}
+              {renderFeatureIcon(feature.icon as IconType, index, 'large')}
             </div>
-            
+
             <div>
               {/* Titre */}
               <Typography variant="h3" className="text-xl font-bold mb-2">
                 {feature.title}
               </Typography>
-              
+
               {/* Description */}
               <Typography variant="p" className="text-secondary">
                 {feature.description}
               </Typography>
-              
+
               {/* Lien (optionnel) */}
               {feature.link && (
                 <div className="mt-2">
-                  <Link href={feature.link.href} className="text-[var(--color-primary)] hover:underline font-medium">
+                  <Link
+                    href={feature.link.href}
+                    className="text-[var(--color-primary)] hover:underline font-medium"
+                  >
                     {feature.link.text}
                   </Link>
                 </div>
@@ -213,7 +230,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       </div>
     );
   };
-  
+
   // Layout en alternance (texte/image)
   const renderAlternatingLayout = () => {
     return (
@@ -221,24 +238,27 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
         {features.map((feature, index) => {
           // Alterner la position de l'image
           const isImageRight = (index % 2 === 0) === (imageSide === 'right');
-          
+
           return (
-            <div key={feature.id} className={`flex flex-col ${isImageRight ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8`}>
+            <div
+              key={feature.id}
+              className={`flex flex-col ${isImageRight ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8`}
+            >
               {/* Contenu textuel */}
               <div className="flex-1">
                 {/* Numéro ou icône */}
-                {renderFeatureIcon(feature, index, 'large')}
-                
+                {renderFeatureIcon(feature.icon as IconType, index, 'large')}
+
                 {/* Titre */}
                 <Typography variant="h3" className="text-2xl font-bold mt-4 mb-3">
                   {feature.title}
                 </Typography>
-                
+
                 {/* Description */}
                 <Typography variant="p" className="text-secondary">
                   {feature.description}
                 </Typography>
-                
+
                 {/* Lien (optionnel) */}
                 {feature.link && (
                   <div className="mt-4">
@@ -250,13 +270,13 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
                   </div>
                 )}
               </div>
-              
+
               {/* Image */}
               {withImages && (
                 <div className="flex-1">
                   <div className="relative aspect-video w-full">
                     <Image
-                      src={getImageSource(feature)}
+                      src={getImageSource(feature.icon as IconType)}
                       alt={feature.title}
                       fill
                       className="object-cover rounded-lg shadow-md"
@@ -270,20 +290,19 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       </div>
     );
   };
-  
+
   // Helper pour obtenir la source d'image
-  const getImageSource = (feature: Feature) => {
-    if (typeof feature.icon === 'string') {
-      const isImageUrl = feature.icon.startsWith('http://') || 
-                       feature.icon.startsWith('https://') || 
-                       feature.icon.startsWith('/');
+  const getImageSource = (icon: IconType) => {
+    if (typeof icon === 'string') {
+      const isImageUrl =
+        icon.startsWith('http://') || icon.startsWith('https://') || icon.startsWith('/');
       if (isImageUrl) {
-        return feature.icon;
+        return icon;
       }
     }
     return '/images/placeholder-feature.svg';
   };
-  
+
   // Layout compact
   const renderCompactLayout = () => {
     return (
@@ -291,14 +310,14 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
         {features.map((feature, index) => (
           <div key={feature.id} className="flex items-start gap-3">
             {/* Icône ou numéro */}
-            {renderFeatureIcon(feature, index, 'small')}
-            
+            {renderFeatureIcon(feature.icon as IconType, index, 'small')}
+
             <div>
               {/* Titre */}
               <Typography variant="h4" className="font-semibold mb-1">
                 {feature.title}
               </Typography>
-              
+
               {/* Description */}
               <Typography variant="small" className="text-secondary">
                 {feature.description}
@@ -309,16 +328,20 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       </div>
     );
   };
-  
+
   // Fonction utilitaire pour rendre l'icône ou le numéro de la fonctionnalité
-  const renderFeatureIcon = (feature: Feature, index: number, size: 'small' | 'medium' | 'large' = 'medium') => {
+  const renderFeatureIcon = (
+    icon: IconType,
+    index: number,
+    size: 'small' | 'medium' | 'large' = 'medium'
+  ) => {
     // Dimensions selon la taille
     const dimensions = {
       small: 'w-6 h-6',
       medium: 'w-10 h-10',
       large: 'w-12 h-12',
     };
-    
+
     // Classes CSS selon la taille
     const iconClasses = `
       ${dimensions[size]}
@@ -327,38 +350,38 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       ${withNumbers ? 'bg-[var(--color-primary)]' : 'bg-[var(--color-primary)] bg-opacity-10'}
       ${withNumbers ? 'text-white' : 'text-[var(--color-primary)]'}
     `;
-    
+
     // Si une icône est fournie
-    if (feature.icon) {
-      if (typeof feature.icon === 'string') {
+    if (icon) {
+      if (typeof icon === 'string') {
         // Vérifier si c'est une URL d'image ou un nom d'icône
-        const isImageUrl = feature.icon.startsWith('http://') || 
-                          feature.icon.startsWith('https://') || 
-                          feature.icon.startsWith('/');
-        
+        const isImageUrl =
+          icon.startsWith('http://') || icon.startsWith('https://') || icon.startsWith('/');
+
         if (isImageUrl) {
           return (
             <div className={iconClasses}>
-              <Image src={feature.icon} alt="" width={size === 'small' ? 16 : 24} height={size === 'small' ? 16 : 24} />
+              <Image
+                src={icon}
+                alt=""
+                width={size === 'small' ? 16 : 24}
+                height={size === 'small' ? 16 : 24}
+              />
             </div>
           );
         } else {
           // C'est un nom d'icône Lucide
           return (
             <div className={iconClasses}>
-              <Icon name={feature.icon as any} size={size === 'small' ? 16 : 24} />
+              <Icon name={icon as IconName} size={size === 'small' ? 16 : 24} />
             </div>
           );
         }
       } else {
-        return (
-          <div className={iconClasses}>
-            {feature.icon}
-          </div>
-        );
+        return <div className={iconClasses}>{icon}</div>;
       }
     }
-    
+
     // Si on utilise des numéros
     if (withNumbers) {
       return (
@@ -369,7 +392,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
         </div>
       );
     }
-    
+
     // Par défaut, retourner un espace réservé
     return (
       <div className={iconClasses}>
@@ -377,33 +400,32 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       </div>
     );
   };
-  
+
   return (
     <section className={`py-12 ${bgClasses[backgroundColor]} ${className}`}>
       <Container>
-        <div className={`${alignClasses[textAlign]} ${textAlign === 'center' ? 'max-w-3xl mx-auto' : ''}`}>
+        <div
+          className={`${alignClasses[textAlign]} ${textAlign === 'center' ? 'max-w-3xl mx-auto' : ''}`}
+        >
           {/* Badge (optionnel) */}
           {badge && (
             <Badge variant={badge.variant || 'primary'} className="mb-4" size="medium">
               {badge.text}
             </Badge>
           )}
-          
+
           {/* Titre de section */}
-          <Typography
-            variant="h2"
-            className="text-3xl md:text-4xl font-bold italic mb-4"
-          >
+          <Typography variant="h2" className="text-3xl md:text-4xl font-bold italic mb-4">
             {title}
           </Typography>
-          
+
           {/* Sous-titre (optionnel) */}
           {subtitle && (
             <Typography variant="lead" className="text-xl text-foreground-secondary mb-3">
               {subtitle}
             </Typography>
           )}
-          
+
           {/* Description (optionnelle) */}
           {description && (
             <Typography
@@ -413,11 +435,11 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
               {description}
             </Typography>
           )}
-          
+
           {/* Séparateur (optionnel) */}
           {withDividers && <Divider className="my-8" />}
         </div>
-        
+
         {/* Image principale (optionnelle) */}
         {mainImage && (
           <div className="mt-8 mb-12">
@@ -430,15 +452,15 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
             />
           </div>
         )}
-        
+
         {/* Affichage des fonctionnalités */}
         {renderFeatures()}
-        
+
         {/* CTA (optionnel) */}
         {cta && (
           <div className={`mt-12 ${textAlign === 'center' ? 'text-center' : ''}`}>
             <Link href={cta.href}>
-              <Button 
+              <Button
                 variant={cta.variant || 'primary'}
                 className={cta.variant === 'gradient' || cta.isMainCta ? 'shine-effect' : ''}
               >
@@ -450,4 +472,4 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       </Container>
     </section>
   );
-}; 
+};

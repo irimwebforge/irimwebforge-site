@@ -12,12 +12,12 @@ Le projet IrimWebForge est composé de trois parties distinctes :
 
 ### Sections du DS-Lab
 
-| Section | Description | Statut |
-|---------|-------------|--------|
-| [Fondamentaux](/src/app/ds-lab/fundamentals/) | Couleurs, typographie, et fondamentaux du design system | Développé |
-| [Composants](/src/app/ds-lab/components/) | Bibliothèque de composants (atomic design) | Développé |
-| [Templates](/src/app/ds-lab/templates/) | Modèles de pages et sections réutilisables | Développé |
-| [Icônes](/src/app/ds-lab/icons/) | Bibliothèque d'icônes intégrée | **En développement** |
+| Section                                       | Description                                             | Statut               |
+| --------------------------------------------- | ------------------------------------------------------- | -------------------- |
+| [Fondamentaux](/src/app/ds-lab/fundamentals/) | Couleurs, typographie, et fondamentaux du design system | Développé            |
+| [Composants](/src/app/ds-lab/components/)     | Bibliothèque de composants (atomic design)              | Développé            |
+| [Templates](/src/app/ds-lab/templates/)       | Modèles de pages et sections réutilisables              | Développé            |
+| [Icônes](/src/app/ds-lab/icons/)              | Bibliothèque d'icônes intégrée                          | **En développement** |
 
 ## Guide de documentation
 
@@ -57,4 +57,4 @@ Le design system n'est pas statique. Pour proposer des améliorations :
 
 ---
 
-> 🔍 **Pour plus de détails techniques** sur l'implémentation des composants et du design system, consultez directement les fichiers dans `/src/app/ds-lab/`. 
+> 🔍 **Pour plus de détails techniques** sur l'implémentation des composants et du design system, consultez directement les fichiers dans `/src/app/ds-lab/`.

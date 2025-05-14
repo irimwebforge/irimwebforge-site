@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import _Link from 'next/link';
 import { Logo } from '../atoms/Logo';
 import { NavLink } from '../atoms/NavLink';
 import { Typography } from '../atoms/Typography';
@@ -20,30 +20,104 @@ export function Footer() {
 
           {/* Liens rapides */}
           <div>
-            <Typography variant="p" className="font-semibold text-base mb-4 text-primary">Navigation</Typography>
+            <Typography variant="p" className="font-semibold text-base mb-4 text-primary">
+              Navigation
+            </Typography>
             <ul className="space-y-2 text-sm">
-              <li><NavLink href="/" color="secondary" className="hover:text-[var(--color-primary)]">Accueil</NavLink></li>
-              <li><NavLink href="/services" color="secondary" className="hover:text-[var(--color-primary)]">Services</NavLink></li>
-              <li><NavLink href="/projets" color="secondary" className="hover:text-[var(--color-primary)]">Projets</NavLink></li>
-              <li><NavLink href="/a-propos" color="secondary" className="hover:text-[var(--color-primary)]">À propos</NavLink></li>
-              <li><NavLink href="/contact" color="secondary" className="hover:text-[var(--color-primary)]">Contact</NavLink></li>
+              <li>
+                <NavLink href="/" color="secondary" className="hover:text-[var(--color-primary)]">
+                  Accueil
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  href="/services"
+                  color="secondary"
+                  className="hover:text-[var(--color-primary)]"
+                >
+                  Services
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  href="/projets"
+                  color="secondary"
+                  className="hover:text-[var(--color-primary)]"
+                >
+                  Projets
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  href="/a-propos"
+                  color="secondary"
+                  className="hover:text-[var(--color-primary)]"
+                >
+                  À propos
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  href="/contact"
+                  color="secondary"
+                  className="hover:text-[var(--color-primary)]"
+                >
+                  Contact
+                </NavLink>
+              </li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <Typography variant="p" className="font-semibold text-base mb-4 text-primary">Services</Typography>
+            <Typography variant="p" className="font-semibold text-base mb-4 text-primary">
+              Services
+            </Typography>
             <ul className="space-y-2 text-sm">
-              <li><NavLink href="/services/site-web" color="secondary" className="hover:text-[var(--color-primary)]">Sites web</NavLink></li>
-              <li><NavLink href="/services/applications" color="secondary" className="hover:text-[var(--color-primary)]">Applications</NavLink></li>
-              <li><NavLink href="/services/interfaces" color="secondary" className="hover:text-[var(--color-primary)]">Interfaces</NavLink></li>
-              <li><NavLink href="/services/maintenance" color="secondary" className="hover:text-[var(--color-primary)]">Maintenance</NavLink></li>
+              <li>
+                <NavLink
+                  href="/services/site-web"
+                  color="secondary"
+                  className="hover:text-[var(--color-primary)]"
+                >
+                  Sites web
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  href="/services/applications"
+                  color="secondary"
+                  className="hover:text-[var(--color-primary)]"
+                >
+                  Applications
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  href="/services/interfaces"
+                  color="secondary"
+                  className="hover:text-[var(--color-primary)]"
+                >
+                  Interfaces
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  href="/services/maintenance"
+                  color="secondary"
+                  className="hover:text-[var(--color-primary)]"
+                >
+                  Maintenance
+                </NavLink>
+              </li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <Typography variant="p" className="font-semibold text-base mb-4 text-primary">Contact</Typography>
+            <Typography variant="p" className="font-semibold text-base mb-4 text-primary">
+              Contact
+            </Typography>
             <ul className="space-y-2 text-sm">
               <li className="text-secondary">contact@irimwebforge.com</li>
               <li className="text-secondary">06 00 00 00 00</li>
@@ -57,10 +131,16 @@ export function Footer() {
             &copy; {currentYear} IRIM Webforge. Tous droits réservés.
           </Typography>
           <div className="flex space-x-4">
-            <NavLink href="/mentions-legales" className="text-xs text-tertiary hover:text-secondary">
+            <NavLink
+              href="/mentions-legales"
+              className="text-xs text-tertiary hover:text-secondary"
+            >
               Mentions légales
             </NavLink>
-            <NavLink href="/politique-confidentialite" className="text-xs text-tertiary hover:text-secondary">
+            <NavLink
+              href="/politique-confidentialite"
+              className="text-xs text-tertiary hover:text-secondary"
+            >
               Politique de confidentialité
             </NavLink>
           </div>
@@ -68,4 +148,4 @@ export function Footer() {
       </div>
     </footer>
   );
-} 
+}

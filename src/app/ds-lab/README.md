@@ -5,6 +5,7 @@ Le Design System Lab est un environnement dédié au développement, à la docum
 ## 🎯 Objectif
 
 L'objectif du DS-Lab est de :
+
 - Fournir un environnement de développement isolé pour le design system
 - Documenter visuellement tous les composants et leurs variations
 - Permettre de tester les composants dans différents contextes
@@ -14,6 +15,7 @@ L'objectif du DS-Lab est de :
 ## 💫 Source de Vérité
 
 Le DS-Lab est établi comme la source de vérité unique pour le design system d'IrimWebForge. Cela signifie que :
+
 - Tous les composants doivent être développés et testés ici en premier
 - Les données mockées dans `/mocks` servent de référence pour l'implémentation
 - Les templates `/templates` et `/color-tertiary` sont des exemples validés d'implémentation
@@ -37,38 +39,50 @@ ds-lab/
 ## 📑 Sections principales
 
 ### 1. Fondamentaux
+
 Cette section présente les éléments fondamentaux du design system :
+
 - Palette de couleurs (primaire, secondaire, tertiaire)
 - Typographie (polices, tailles, styles)
 - Espacement et grille
 - Ombres et élévations
 
 ### 2. Icônes
+
 Documentation complète de la bibliothèque d'icônes Lucide intégrée au design system :
+
 - Recherche et navigation par catégories
 - Exemples d'utilisation et de personnalisation
 - Guide d'intégration des icônes dans les composants
 
 ### 3. Atomic Design
+
 Présentation des composants suivant la méthodologie Atomic Design :
+
 - **Atomes** : boutons, badges, icônes, typographie, etc.
 - **Molécules** : formulaires, cartes, bannières, etc.
 - **Organismes** : headers, footers, sections complexes, etc.
 
 ### 4. Templates
+
 Démonstration des templates prédéfinis avec des données mock :
+
 - Pages standards
 - Layouts réutilisables
 - Composants de page assemblés
 
 ### 5. Couleur Tertiaire
+
 Documentation sur l'utilisation de la couleur tertiaire (orange) :
+
 - Règles d'utilisation
 - Exemples d'accentuation
 - Accessibilité et contraste
 
 ### 6. Mocks
+
 Documentation des données factices utilisées dans les démonstrations :
+
 - Structure et format des données
 - Utilisation dans les composants
 - Exemples d'intégration
@@ -104,21 +118,25 @@ Pour contribuer au DS-Lab :
 ## Hiérarchie Atomic Design
 
 ### 1. Atoms (`/components/atoms`)
+
 - Composants de base indivisibles
 - Exemples : Button, Typography, Icon
 - Pas de dépendance à d'autres composants
 
 ### 2. Molecules (`/components/molecules`)
+
 - Combinaisons d'atomes
 - Exemples : Card, Navigation, Form fields
 - Fonctionnalité unique et réutilisable
 
 ### 3. Organisms (`/components/organisms`)
+
 - Assemblages de molécules et atomes
 - Exemples : Header, Footer, Feature sections
 - Sections complètes mais génériques
 
 ### 4. Templates (`/components/templates`)
+
 - Assemblages d'organismes
 - Pas de duplication de logique
 - Utilisation des adaptateurs pour les données
@@ -126,11 +144,13 @@ Pour contribuer au DS-Lab :
 ## Gestion des données mock
 
 ### Source unique
+
 - Toutes les données mock dans `/ds-lab/mocks`
 - Pas de duplication des données
 - Utilisation des adaptateurs pour la transformation
 
 ### Structure des mocks
+
 ```
 mocks/
 ├── data.ts      # Données de base
@@ -141,10 +161,12 @@ mocks/
 ## Développement progressif
 
 1. **Étape 1** : Variantes des composants existants
+
    - Utiliser les adaptateurs existants
    - Documenter les nouvelles variantes
 
 2. **Étape 2** : Pages complètes
+
    - Assembler les composants existants
    - Réutiliser les adaptateurs
    - Éviter la duplication

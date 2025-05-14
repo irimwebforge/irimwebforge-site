@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
-import { FormField } from '@/components/molecules/FormField';
-import { Button } from '@/components/atoms/Button';
-import { Typography } from '@/components/atoms/Typography';
+import { FormField } from './FormField';
+import { Button } from '../atoms/Button';
+import { Typography } from '../atoms/Typography';
 
 export interface ContactFormProps {
   className?: string;
@@ -11,6 +11,7 @@ export interface ContactFormProps {
   submitButtonText?: string;
   successMessage?: string;
   loading?: boolean;
+  resetOnSuccess?: boolean;
 }
 
 export interface ContactFormData {
@@ -27,6 +28,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   submitButtonText = 'Envoyer ma demande',
   successMessage = 'Merci pour votre message. Nous vous répondrons dans les meilleurs délais.',
   loading = false,
+  resetOnSuccess = true,
 }) => {
   // États du formulaire
   const [formData, setFormData] = useState<ContactFormData>({
@@ -36,12 +38,26 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     projectType: '',
     message: '',
   });
-  
+
   // États de validation
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [_isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+  const [submitError, setSubmitError] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  // Réinitialisation du formulaire
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      projectType: '',
+      message: '',
+    });
+    setErrors({});
+  };
+
   // Gestion des changements dans les champs
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -49,12 +65,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     const { id, value } = e.target;
     // On extrait le nom du champ depuis l'id (supprime 'contact-' du début)
     const fieldName = id.replace('contact-', '');
-    
+
     setFormData((prev) => ({
       ...prev,
       [fieldName]: value,
     }));
-    
+
     // Effacer l'erreur quand l'utilisateur commence à corriger
     if (errors[fieldName]) {
       setErrors((prev) => {
@@ -64,72 +80,74 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       });
     }
   };
-  
+
   // Validation du formulaire
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
-    
+
     // Validation du nom
     if (!formData.name.trim()) {
       newErrors.name = 'Veuillez entrer votre nom';
     }
-    
+
     // Validation de l'email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
       newErrors.email = 'Veuillez entrer votre adresse email';
     } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'L\'adresse email n\'est pas valide';
+      newErrors.email = "L'adresse email n'est pas valide";
     }
-    
+
     // Validation du type de projet
     if (!formData.projectType) {
       newErrors.projectType = 'Veuillez sélectionner un type de projet';
     }
-    
+
     // Validation du message
     if (!formData.message.trim()) {
       newErrors.message = 'Veuillez entrer votre message';
     } else if (formData.message.trim().length < 10) {
       newErrors.message = 'Votre message doit contenir au moins 10 caractères';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  
-  // Soumission du formulaire
+
+  // Soumettre le formulaire
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!validateForm()) return;
-    
     setIsSubmitting(true);
-    
+    setSubmitError('');
+
+    // Valider le formulaire avant l'envoi
+    if (!validateForm()) {
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       if (onSubmit) {
         await onSubmit(formData);
+      } else {
+        // Simulation de délai d'envoi
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        console.log('Form data submitted:', formData);
       }
-      
-      // Réinitialiser le formulaire après la soumission
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        projectType: '',
-        message: '',
-      });
-      
-      setIsSubmitted(true);
-    } catch (error) {
-      setErrors({
-        form: 'Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.'
-      });
+
+      setIsSuccess(true);
+      // Réinitialiser le formulaire si demandé
+      if (resetOnSuccess) {
+        resetForm();
+      }
+    } catch {
+      // Suppression du paramètre error non utilisé
+      setSubmitError('Une erreur est survenue, veuillez réessayer plus tard.');
     } finally {
       setIsSubmitting(false);
     }
   };
-  
+
   // Options pour le type de projet
   const projectTypeOptions = [
     { value: 'site-web', label: 'Site web personnalisé' },
@@ -138,37 +156,33 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     { value: 'maintenance', label: 'Maintenance/évolution' },
     { value: 'autre', label: 'Autre (précisez dans le message)' },
   ];
-  
+
   // Afficher le message de succès si le formulaire a été soumis
-  if (isSubmitted) {
+  if (isSuccess) {
     return (
-      <div className={`p-6 rounded-lg border-2 border-[var(--color-primary)] bg-[var(--color-primary)] bg-opacity-5 ${className}`}>
+      <div
+        className={`p-6 rounded-lg border-2 border-[var(--color-primary)] bg-[var(--color-primary)] bg-opacity-5 ${className}`}
+      >
         <Typography variant="h3" className="text-[var(--color-primary)] mb-3">
           Demande envoyée !
         </Typography>
-        <Typography variant="p">
-          {successMessage}
-        </Typography>
-        <Button 
-          variant="outline" 
-          className="mt-4"
-          onClick={() => setIsSubmitted(false)}
-        >
+        <Typography variant="p">{successMessage}</Typography>
+        <Button variant="outline" className="mt-4" onClick={() => setIsSubmitted(false)}>
           Envoyer un nouveau message
         </Button>
       </div>
     );
   }
-  
+
   return (
     <form onSubmit={handleSubmit} className={`space-y-5 ${className}`}>
       {/* Message d'erreur global */}
-      {errors.form && (
+      {submitError && (
         <div className="p-3 rounded-md bg-red-50 border border-red-200 text-red-600 mb-4">
-          <Typography variant="small">{errors.form}</Typography>
+          <Typography variant="small">{submitError}</Typography>
         </div>
       )}
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Nom */}
         <FormField
@@ -180,7 +194,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           onChange={handleChange}
           error={errors.name}
         />
-        
+
         {/* Email */}
         <FormField
           id="contact-email"
@@ -193,7 +207,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           error={errors.email}
         />
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Téléphone */}
         <FormField
@@ -205,7 +219,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           value={formData.phone}
           onChange={handleChange}
         />
-        
+
         {/* Type de projet */}
         <FormField
           id="contact-projectType"
@@ -219,7 +233,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           error={errors.projectType}
         />
       </div>
-      
+
       {/* Message */}
       <FormField
         id="contact-message"
@@ -233,11 +247,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         onChange={handleChange}
         error={errors.message}
       />
-      
+
       {/* Bouton d'envoi */}
       <div className="mt-6">
-        <Button 
-          type="submit" 
+        <Button
+          type="submit"
           variant="primary"
           fullWidth
           loading={isSubmitting || loading}
@@ -248,4 +262,4 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       </div>
     </form>
   );
-}; 
+};

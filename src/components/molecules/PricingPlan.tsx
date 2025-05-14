@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Button } from '@/components/atoms/Button';
-import { Card } from '@/components/molecules/Card';
+import { Typography } from '../atoms/Typography';
+import { Button } from '../atoms/Button';
+import { Card } from './Card';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 
 export interface PricingFeature {
   /** Identifiant unique de la fonctionnalité */
@@ -65,17 +65,19 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
   // Classes pour les couleurs d'accent
   const colorClasses = {
     primary: 'text-[var(--color-primary)] border-[var(--color-primary)] bg-[var(--color-primary)]',
-    secondary: 'text-[var(--color-secondary)] border-[var(--color-secondary)] bg-[var(--color-secondary)]',
-    tertiary: 'text-[var(--color-tertiary)] border-[var(--color-tertiary)] bg-[var(--color-tertiary)]',
+    secondary:
+      'text-[var(--color-secondary)] border-[var(--color-secondary)] bg-[var(--color-secondary)]',
+    tertiary:
+      'text-[var(--color-tertiary)] border-[var(--color-tertiary)] bg-[var(--color-tertiary)]',
   };
-  
+
   // Formatage du prix
   const formattedPrice = () => {
     const currency = price.currency || '€';
     const period = price.period ? `/${price.period}` : '';
     const prefix = price.prefix || '';
     const suffix = price.suffix || '';
-    
+
     return (
       <div className="flex items-baseline justify-center">
         {prefix && <span className="text-lg mr-1">{prefix}</span>}
@@ -88,58 +90,80 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
       </div>
     );
   };
-  
+
   // Classes pour les variantes
   const variantClasses = {
     default: '',
     featured: `border-2 ${colorClasses[color].split(' ')[1]} shadow-md`,
     compact: 'p-4',
   };
-  
+
   // Rendu du badge
   const renderBadge = () => {
     if (!badge) return null;
-    
+
     return (
-      <div className={cn(
-        'absolute -top-3 right-4 text-white text-xs font-bold px-3 py-1 rounded-full bg-opacity-90',
-        colorClasses[color].split(' ')[2]
-      )}>
+      <div
+        className={cn(
+          'absolute -top-3 right-4 text-white text-xs font-bold px-3 py-1 rounded-full bg-opacity-90',
+          colorClasses[color].split(' ')[2]
+        )}
+      >
         {badge}
       </div>
     );
   };
-  
+
   // Rendu des fonctionnalités
   const renderFeatures = () => {
     return (
-      <ul className={cn(
-        'my-6 space-y-3',
-        variant === 'compact' ? 'text-sm' : ''
-      )}>
+      <ul className={cn('my-6 space-y-3', variant === 'compact' ? 'text-sm' : '')}>
         {features.map((feature) => (
-          <li key={feature.id} className={cn(
-            'flex items-start',
-            feature.highlight ? 'font-medium' : ''
-          )}>
-            <span className={cn(
-              'mr-2 mt-1',
-              feature.included ? `text-[var(--color-${color})]` : 'text-gray-400'
-            )}>
+          <li
+            key={feature.id}
+            className={cn('flex items-start', feature.highlight ? 'font-medium' : '')}
+          >
+            <span
+              className={cn(
+                'mr-2 mt-1',
+                feature.included ? `text-[var(--color-${color})]` : 'text-gray-400'
+              )}
+            >
               {feature.included ? (
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
               )}
             </span>
-            <Typography variant="small" className={cn(
-              !feature.included ? 'text-gray-400 line-through' : ''
-            )}>
+            <Typography
+              variant="small"
+              className={cn(!feature.included ? 'text-gray-400 line-through' : '')}
+            >
               {feature.text}
             </Typography>
           </li>
@@ -147,52 +171,51 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
       </ul>
     );
   };
-  
+
   // Contenu principal
   const content = (
     <div className="relative h-full flex flex-col">
       {renderBadge()}
-      
-      <div className={cn(
-        'text-center',
-        variant === 'compact' ? 'mb-3' : 'mb-6'
-      )}>
+
+      <div className={cn('text-center', variant === 'compact' ? 'mb-3' : 'mb-6')}>
         <Typography variant={variant === 'compact' ? 'h4' : 'h3'} className="mb-2">
           {title}
         </Typography>
-        
+
         {description && (
           <Typography variant="small" className="text-gray-500">
             {description}
           </Typography>
         )}
       </div>
-      
-      <div className={cn(
-        'text-center',
-        variant === 'compact' ? 'py-2' : 'py-4',
-        colorClasses[color].split(' ')[0]
-      )}>
+
+      <div
+        className={cn(
+          'text-center',
+          variant === 'compact' ? 'py-2' : 'py-4',
+          colorClasses[color].split(' ')[0]
+        )}
+      >
         {formattedPrice()}
       </div>
-      
+
       {renderFeatures()}
-      
+
       <div className="mt-auto pt-4">
         {ctaLink ? (
           <Link href={ctaLink} className="block w-full">
-            <Button 
+            <Button
               variant={variant === 'featured' ? 'primary' : 'outline'}
-              fullWidth 
+              fullWidth
               onClick={onCtaClick}
             >
               {ctaText}
             </Button>
           </Link>
         ) : (
-          <Button 
+          <Button
             variant={variant === 'featured' ? 'primary' : 'outline'}
-            fullWidth 
+            fullWidth
             onClick={onCtaClick}
           >
             {ctaText}
@@ -201,30 +224,20 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
       </div>
     </div>
   );
-  
+
   // Si la variante est 'featured', on wrap avec une Card
   if (variant === 'featured') {
     return (
-      <Card
-        className={cn(
-          'overflow-visible',
-          variantClasses[variant],
-          className
-        )}
-        padding="large"
-      >
+      <Card className={cn('overflow-visible', variantClasses[variant], className)} padding="large">
         {content}
       </Card>
     );
   }
-  
+
   // Sinon, on utilise une Card standard
   return (
     <Card
-      className={cn(
-        variantClasses[variant],
-        className
-      )}
+      className={cn(variantClasses[variant], className)}
       padding={variant === 'compact' ? 'small' : 'normal'}
     >
       {content}
@@ -259,7 +272,7 @@ export const PricingGrid: React.FC<PricingGridProps> = ({
     3: 'md:grid-cols-3',
     4: 'md:grid-cols-2 lg:grid-cols-4',
   };
-  
+
   return (
     <div className={cn('pricing-grid', className)}>
       {(title || subtitle) && (
@@ -269,7 +282,7 @@ export const PricingGrid: React.FC<PricingGridProps> = ({
               {title}
             </Typography>
           )}
-          
+
           {subtitle && (
             <Typography variant="lead" className="mx-auto max-w-3xl">
               {subtitle}
@@ -277,15 +290,12 @@ export const PricingGrid: React.FC<PricingGridProps> = ({
           )}
         </div>
       )}
-      
-      <div className={cn(
-        'grid grid-cols-1 gap-6',
-        columnClasses[columns]
-      )}>
+
+      <div className={cn('grid grid-cols-1 gap-6', columnClasses[columns])}>
         {plans.map((plan, index) => (
           <PricingPlan key={`${plan.title}-${index}`} {...plan} />
         ))}
       </div>
     </div>
   );
-}; 
+};

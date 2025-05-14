@@ -20,15 +20,15 @@ export const adaptProject = (mockProject: MockProject): Project => {
     slug: mockProject.url.replace(/^#/, ''),
     imageUrl: mockProject.imageUrl,
     description: mockProject.description,
-    tags: mockProject.tags.map(tag => ({
+    tags: mockProject.tags.map((tag) => ({
       ...tag,
-      color: 'primary' as const
+      color: 'primary' as const,
     })),
     year: new Date().getFullYear().toString(),
-    featured: mockProject.featured
+    featured: mockProject.featured,
   };
 };
 
 export const adaptProjects = (mockProjects: MockProject[]): Project[] => {
   return mockProjects.map(adaptProject);
-}; 
+};

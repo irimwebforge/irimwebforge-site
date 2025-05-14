@@ -1,8 +1,8 @@
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { StatCard } from '@/components/molecules/StatCard';
-import { Icon, IconName } from '@/components/atoms/Icon';
-import { Button } from '@/components/atoms/Button';
+import { Typography } from '../components/atoms/Typography';
+import { StatCard } from '../components/molecules/StatCard';
+import { Icon, IconName } from '../components/atoms/Icon';
+import { Button } from '../components/atoms/Button';
 
 export interface Stat {
   id?: string;
@@ -35,27 +35,28 @@ export function StatsShowcase({
   className = '',
   backgroundColor = 'light',
   layout = 'grid',
-  columns = 4
+  columns = 4,
 }: StatsShowcaseProps) {
   // Déterminer la classe de fond en fonction de backgroundColor
-  const bgClass = 
-    backgroundColor === 'dark' ? 'bg-secondary text-white' : 
-    backgroundColor === 'primary' ? 'bg-primary-50' :
-    backgroundColor === 'secondary' ? 'bg-secondary-50' : 
-    'bg-white';
-  
+  const bgClass =
+    backgroundColor === 'dark'
+      ? 'bg-secondary text-white'
+      : backgroundColor === 'primary'
+        ? 'bg-primary-50'
+        : backgroundColor === 'secondary'
+          ? 'bg-secondary-50'
+          : 'bg-white';
+
   // Nombre de colonnes dans la grille
-  const gridColsClass = 
-    columns === 2 ? 'md:grid-cols-2' :
-    columns === 3 ? 'md:grid-cols-3' :
-    'md:grid-cols-4';
-  
+  const gridColsClass =
+    columns === 2 ? 'md:grid-cols-2' : columns === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4';
+
   // Fonction pour générer les icônes
   const getIcon = (stat: Stat) => {
     if (!stat.icon) return <Icon name="BarChart" />;
     return typeof stat.icon === 'string' ? <Icon name={stat.icon as IconName} /> : null;
   };
-  
+
   // Layout horizontal (pour les bannières de statistiques)
   if (layout === 'horizontal') {
     return (
@@ -75,10 +76,13 @@ export function StatsShowcase({
               )}
             </div>
           )}
-          
+
           <div className="flex flex-col md:flex-row justify-between items-center divide-y md:divide-y-0 md:divide-x divide-gray-200">
             {stats.map((stat, index) => (
-              <div key={stat.id || `stat-${index}`} className="py-6 md:py-0 md:px-6 text-center flex-1">
+              <div
+                key={stat.id || `stat-${index}`}
+                className="py-6 md:py-0 md:px-6 text-center flex-1"
+              >
                 <Typography variant="h3" className="text-3xl font-bold text-primary mb-2">
                   {stat.value}
                 </Typography>
@@ -91,13 +95,10 @@ export function StatsShowcase({
               </div>
             ))}
           </div>
-          
+
           {cta && (
             <div className="mt-8 text-center">
-              <Button 
-                variant="primary" 
-                href={cta.url}
-              >
+              <Button variant="primary" href={cta.url}>
                 {cta.text}
               </Button>
             </div>
@@ -106,7 +107,7 @@ export function StatsShowcase({
       </section>
     );
   }
-  
+
   // Layout cards (utilisant le composant StatCard)
   if (layout === 'cards') {
     return (
@@ -126,7 +127,7 @@ export function StatsShowcase({
               )}
             </div>
           )}
-          
+
           <div className={`grid grid-cols-1 ${gridColsClass} gap-6`}>
             {stats.map((stat, index) => (
               <StatCard
@@ -140,11 +141,11 @@ export function StatsShowcase({
               />
             ))}
           </div>
-          
+
           {cta && (
             <div className="mt-10 text-center">
-              <Button 
-                variant="primary" 
+              <Button
+                variant="primary"
                 href={cta.url}
                 icon={<Icon name="ArrowRight" />}
                 iconPosition="right"
@@ -157,7 +158,7 @@ export function StatsShowcase({
       </section>
     );
   }
-  
+
   // Layout grid (par défaut)
   return (
     <section className={`py-12 ${bgClass} ${className}`}>
@@ -176,26 +177,22 @@ export function StatsShowcase({
             )}
           </div>
         )}
-        
+
         <div className={`grid grid-cols-1 ${gridColsClass} gap-6 max-w-5xl mx-auto`}>
           {stats.map((stat, index) => (
-            <div 
-              key={stat.id || `stat-${index}`} 
+            <div
+              key={stat.id || `stat-${index}`}
               className={`p-6 rounded-lg text-center border ${
-                index === 0 
-                  ? 'border-primary bg-primary-50/30' 
-                  : 'border-gray-200'
+                index === 0 ? 'border-primary bg-primary-50/30' : 'border-gray-200'
               }`}
             >
               {stat.icon && (
                 <div className="flex justify-center mb-3">
-                  <div className={`text-${stat.color || 'primary'} text-2xl`}>
-                    {getIcon(stat)}
-                  </div>
+                  <div className={`text-${stat.color || 'primary'} text-2xl`}>{getIcon(stat)}</div>
                 </div>
               )}
-              <Typography 
-                variant="h3" 
+              <Typography
+                variant="h3"
                 className={`text-3xl font-bold mb-2 text-${stat.color || 'primary'}`}
               >
                 {stat.value}
@@ -203,19 +200,14 @@ export function StatsShowcase({
               <Typography variant="p" className="font-medium text-secondary mb-1">
                 {stat.label}
               </Typography>
-              <Typography variant="subtle">
-                {stat.description}
-              </Typography>
+              <Typography variant="subtle">{stat.description}</Typography>
             </div>
           ))}
         </div>
-        
+
         {cta && (
           <div className="mt-10 text-center">
-            <Button 
-              variant="primary" 
-              href={cta.url}
-            >
+            <Button variant="primary" href={cta.url}>
               {cta.text}
             </Button>
           </div>
@@ -223,4 +215,4 @@ export function StatsShowcase({
       </div>
     </section>
   );
-} 
+}

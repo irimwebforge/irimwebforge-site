@@ -8,23 +8,23 @@
  * - StatsShowcase
  * - TestimonialSection
  * - CTASection
- * 
+ *
  * IMPORTANT: Ces données brutes ne doivent pas être utilisées directement dans les templates.
  * Utilisez toujours les adaptateurs appropriés pour transformer ces données en props compatibles :
- * 
+ *
  * import { mockProjects } from '@/app/ds-lab/mocks/mockData.templates';
  * import { projectAdapter } from '@/utils/adapters';
- * 
+ *
  * // Transformation des données brutes en props pour le template
  * const projectProps = projectAdapter(mockProjects);
- * 
+ *
  * // Avec configuration personnalisée
  * const customProjectProps = projectAdapter(mockProjects, {
  *   withCta: true,
  *   ctaText: "Voir tous les projets",
  *   ctaUrl: "/projets"
  * });
- * 
+ *
  * Adaptateurs disponibles:
  * - projectAdapter: pour ProjectShowcase
  * - serviceAdapter: pour ServiceOverview
@@ -90,24 +90,20 @@ type TestimonialItem = {
   projectUrl?: string;
 };
 
-type Action = {
-  label: string;
-  href: string;
-};
-
 // Projects mock data
 export const mockProjects: ProjectType[] = [
   {
     id: 'proj-1',
     title: 'MisterCBD E-commerce',
-    description: 'Boutique en ligne moderne de produits CBD avec interface d\'administration personnalisée',
+    description:
+      "Boutique en ligne moderne de produits CBD avec interface d'administration personnalisée",
     imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [
       { id: 'tag-1', label: 'E-commerce' },
-      { id: 'tag-2', label: 'Interface Admin' }
+      { id: 'tag-2', label: 'Interface Admin' },
     ],
     url: '#',
-    featured: true
+    featured: true,
   },
   {
     id: 'proj-2',
@@ -116,22 +112,22 @@ export const mockProjects: ProjectType[] = [
     imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [
       { id: 'tag-3', label: 'Site Vitrine' },
-      { id: 'tag-4', label: 'Artisanat' }
+      { id: 'tag-4', label: 'Artisanat' },
     ],
     url: '#',
-    featured: true
+    featured: true,
   },
   {
     id: 'proj-3',
     title: 'MoodCycle App',
-    description: 'Application mobile de suivi d\'humeur avec visualisation de données',
+    description: "Application mobile de suivi d'humeur avec visualisation de données",
     imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [
       { id: 'tag-5', label: 'Application' },
-      { id: 'tag-6', label: 'Santé' }
+      { id: 'tag-6', label: 'Santé' },
     ],
     url: '#',
-    featured: false
+    featured: false,
   },
   {
     id: 'proj-4',
@@ -140,22 +136,22 @@ export const mockProjects: ProjectType[] = [
     imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [
       { id: 'tag-7', label: 'CRM' },
-      { id: 'tag-2', label: 'Interface Admin' }
+      { id: 'tag-2', label: 'Interface Admin' },
     ],
     url: '#',
-    featured: false
+    featured: false,
   },
   {
     id: 'proj-5',
     title: 'TechConf Landing',
-    description: 'Landing page pour une conférence tech avec système d\'inscription',
+    description: "Landing page pour une conférence tech avec système d'inscription",
     imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [
       { id: 'tag-8', label: 'Landing Page' },
-      { id: 'tag-9', label: 'Événementiel' }
+      { id: 'tag-9', label: 'Événementiel' },
     ],
     url: '#',
-    featured: false
+    featured: false,
   },
   {
     id: 'proj-6',
@@ -164,11 +160,11 @@ export const mockProjects: ProjectType[] = [
     imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [
       { id: 'tag-10', label: 'Plateforme' },
-      { id: 'tag-11', label: 'Food' }
+      { id: 'tag-11', label: 'Food' },
     ],
     url: '#',
-    featured: false
-  }
+    featured: false,
+  },
 ];
 
 // Services mock data
@@ -176,69 +172,72 @@ export const mockServices: ServiceType[] = [
   {
     id: 'service-1',
     title: 'Sites Web sur Mesure',
-    description: 'Des sites web professionnels adaptés à votre image de marque et optimisés pour la conversion.',
+    description:
+      'Des sites web professionnels adaptés à votre image de marque et optimisés pour la conversion.',
     icon: 'Globe',
     features: [
       'Design personnalisé selon votre identité visuelle',
       'Optimisé pour le référencement SEO',
       'Compatible mobile et tablette',
       'Performances optimisées',
-      'Sécurité renforcée'
+      'Sécurité renforcée',
     ],
     imageUrl: '/images/projects/project-placeholder.jpg',
     callToAction: {
       label: 'Découvrir cette offre',
-      href: '#'
+      href: '#',
     },
     price: {
       amount: 'À partir de 1800€',
-      details: 'Prix incluant design, développement et mise en ligne'
-    }
+      details: 'Prix incluant design, développement et mise en ligne',
+    },
   },
   {
     id: 'service-2',
     title: 'Applications Web',
-    description: 'Applications web intuitives et performantes pour améliorer vos processus métiers.',
+    description:
+      'Applications web intuitives et performantes pour améliorer vos processus métiers.',
     icon: 'Smartphone',
     features: [
       'Interface utilisateur intuitive',
       'Synchronisation temps réel',
       'Fonctionnement hors ligne',
       'Sécurité avancée',
-      'Évolutivité garantie'
+      'Évolutivité garantie',
     ],
     imageUrl: '/images/projects/project-placeholder.jpg',
     callToAction: {
       label: 'Découvrir cette offre',
-      href: '#'
+      href: '#',
     },
     price: {
       amount: 'À partir de 2900€',
-      details: 'Prix selon complexité et fonctionnalités'
-    }
+      details: 'Prix selon complexité et fonctionnalités',
+    },
   },
   {
     id: 'service-3',
     title: 'Interfaces Admin',
-    description: 'Des interfaces d\'administration sur mesure pour gérer efficacement votre contenu et vos données.',
+    description:
+      "Des interfaces d'administration sur mesure pour gérer efficacement votre contenu et vos données.",
     icon: 'Settings',
     features: [
       'Tableau de bord personnalisé',
       'Gestion de contenu intuitive',
       'Statistiques et rapports détaillés',
       'Gestion des utilisateurs et permissions',
-      'Automatisation des tâches répétitives'
+      'Automatisation des tâches répétitives',
     ],
     imageUrl: '/images/projects/project-placeholder.jpg',
     callToAction: {
       label: 'Découvrir cette offre',
-      href: '#'
+      href: '#',
     },
     price: {
       amount: 'À partir de 1200€',
-      details: 'Prix dépendant de la complexité'
-    }
-  }
+      details: 'Prix dépendant de la complexité',
+    },
+  },
 ];
 
 // Values mock data
@@ -248,29 +247,29 @@ export const mockValues: Value[] = [
     title: 'Artisanat Digital',
     description: 'Chaque ligne de code est écrite avec soin, comme un artisan façonne son œuvre.',
     icon: 'Hammer',
-    color: 'primary'
+    color: 'primary',
   },
   {
     id: 'value-2',
     title: 'Simplicité Efficace',
-    description: 'Des solutions qui vont à l\'essentiel, sans complexité inutile.',
+    description: "Des solutions qui vont à l'essentiel, sans complexité inutile.",
     icon: 'Sparkles',
-    color: 'secondary'
+    color: 'secondary',
   },
   {
     id: 'value-3',
     title: 'Authenticité',
     description: 'Des interfaces qui reflètent fidèlement votre identité et vos valeurs.',
     icon: 'Search',
-    color: 'tertiary'
+    color: 'tertiary',
   },
   {
     id: 'value-4',
     title: 'Sur-mesure',
     description: 'Chaque projet est unique et mérite une approche personnalisée.',
     icon: 'Scissors',
-    color: 'primary'
-  }
+    color: 'primary',
+  },
 ];
 
 // Stats mock data
@@ -279,85 +278,89 @@ export const mockStats: Stat[] = [
     id: 'stat-1',
     value: '98%',
     label: 'Satisfaction client',
-    description: 'Nos clients sont pleinement satisfaits de nos livrables'
+    description: 'Nos clients sont pleinement satisfaits de nos livrables',
   },
   {
     id: 'stat-2',
     value: '45+',
     label: 'Projets livrés',
-    description: 'Des projets variés dans différents secteurs'
+    description: 'Des projets variés dans différents secteurs',
   },
   {
     id: 'stat-3',
     value: '15min',
     label: 'Temps de réponse',
-    description: 'Un support réactif pour répondre à vos questions'
+    description: 'Un support réactif pour répondre à vos questions',
   },
   {
     id: 'stat-4',
     value: '87%',
     label: 'Taux de conversion',
-    description: 'Augmentation moyenne des conversions après refonte'
-  }
+    description: 'Augmentation moyenne des conversions après refonte',
+  },
 ];
 
 // Testimonials mock data
 export const mockTestimonials: TestimonialItem[] = [
   {
-    quote: "IrimWebForge a transformé notre vision en une interface utilisateur exceptionnelle. Leur équipe a été à l'écoute et proactive tout au long du projet.",
-    author: "Marie Dumas",
-    company: "DirecteurTech",
-    projectName: "Plateforme CRM",
-    projectUrl: "#"
+    quote:
+      "IrimWebForge a transformé notre vision en une interface utilisateur exceptionnelle. Leur équipe a été à l'écoute et proactive tout au long du projet.",
+    author: 'Marie Dumas',
+    company: 'DirecteurTech',
+    projectName: 'Plateforme CRM',
+    projectUrl: '#',
   },
   {
-    quote: "Enfin un site qui nous ressemble vraiment, sans nous ruiner chaque mois. L'interface d'administration est si intuitive que même notre stagiaire peut l'utiliser!",
-    author: "Thomas B.",
-    company: "Mister & Misses CBD",
-    projectName: "E-commerce CBD",
-    projectUrl: "#"
+    quote:
+      "Enfin un site qui nous ressemble vraiment, sans nous ruiner chaque mois. L'interface d'administration est si intuitive que même notre stagiaire peut l'utiliser!",
+    author: 'Thomas B.',
+    company: 'Mister & Misses CBD',
+    projectName: 'E-commerce CBD',
+    projectUrl: '#',
   },
   {
-    quote: "La qualité du code et de l'expérience utilisateur est remarquable. Notre taux de conversion a augmenté de 35% depuis la mise en ligne du nouveau site.",
-    author: "Julie Martin",
-    company: "Echo des Rêves",
-    projectName: "Boutique en ligne",
-    projectUrl: "#"
-  }
+    quote:
+      "La qualité du code et de l'expérience utilisateur est remarquable. Notre taux de conversion a augmenté de 35% depuis la mise en ligne du nouveau site.",
+    author: 'Julie Martin',
+    company: 'Echo des Rêves',
+    projectName: 'Boutique en ligne',
+    projectUrl: '#',
+  },
 ];
 
 // CTA mock data
 export const mockCTAVariants = {
   simple: {
-    title: "Prêt à transformer votre présence numérique ?",
-    description: "Réservez une consultation gratuite de 45 minutes pour discuter de votre projet.",
+    title: 'Prêt à transformer votre présence numérique ?',
+    description: 'Réservez une consultation gratuite de 45 minutes pour discuter de votre projet.',
     primaryAction: {
-      label: "Réserver ma consultation",
-      href: "#contact"
+      label: 'Réserver ma consultation',
+      href: '#contact',
     },
     secondaryAction: {
-      label: "En savoir plus",
-      href: "#services"
-    }
+      label: 'En savoir plus',
+      href: '#services',
+    },
   },
   withImage: {
-    title: "Créons ensemble votre projet digital",
-    description: "Un site qui vous ressemble, une interface qui simplifie votre quotidien.",
+    title: 'Créons ensemble votre projet digital',
+    description: 'Un site qui vous ressemble, une interface qui simplifie votre quotidien.',
     primaryAction: {
-      label: "Démarrer mon projet",
-      href: "#contact"
+      label: 'Démarrer mon projet',
+      href: '#contact',
     },
     secondaryAction: {
-      label: "Voir nos réalisations",
-      href: "#projets"
+      label: 'Voir nos réalisations',
+      href: '#projets',
     },
-    imageUrl: "/images/projects/project-placeholder.jpg"
+    imageUrl: '/images/projects/project-placeholder.jpg',
   },
   newsletter: {
-    title: "Restez informé des dernières tendances",
-    description: "Inscrivez-vous à notre newsletter mensuelle pour recevoir nos conseils et actualités.",
-    inputPlaceholder: "Votre adresse email",
+    title: 'Restez informé des dernières tendances',
+    description:
+      'Inscrivez-vous à notre newsletter mensuelle pour recevoir nos conseils et actualités.',
+    inputPlaceholder: 'Votre adresse email',
     buttonLabel: "S'inscrire",
-    disclaimerText: "Nous respectons votre vie privée. Désabonnement possible à tout moment."
-  }
-}; 
+    disclaimerText: 'Nous respectons votre vie privée. Désabonnement possible à tout moment.',
+  },
+};

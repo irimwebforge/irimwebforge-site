@@ -1,7 +1,7 @@
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Card } from '@/components/molecules/Card';
-import { cn } from '@/lib/utils';
+import { Typography } from '../atoms/Typography';
+import { Card } from './Card';
+import { cn } from '../../lib/utils';
 
 export interface Feature {
   /** Identifiant unique de la fonctionnalité */
@@ -95,7 +95,7 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
     const featureContent = (
       <>
         {feature.icon && (
-          <div 
+          <div
             className={cn(
               colorClass.bg,
               'rounded-full p-3 flex-shrink-0 flex items-center justify-center',
@@ -107,8 +107,8 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
           </div>
         )}
         <div className={feature.icon ? 'mt-4' : ''}>
-          <Typography 
-            variant={variant === 'ghost' ? 'h4' : 'h3'} 
+          <Typography
+            variant={variant === 'ghost' ? 'h4' : 'h3'}
             className={cn('font-bold mb-2', colorClass.text)}
           >
             {feature.title}
@@ -117,12 +117,9 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
             {feature.description}
           </Typography>
           {feature.link && (
-            <a 
-              href={feature.link.url} 
-              className={cn(
-                'inline-block mt-3 font-medium hover:underline',
-                colorClass.text
-              )}
+            <a
+              href={feature.link.url}
+              className={cn('inline-block mt-3 font-medium hover:underline', colorClass.text)}
             >
               {feature.link.text}
             </a>
@@ -135,32 +132,29 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
     switch (variant) {
       case 'card':
         return (
-          <Card 
-            key={feature.id}
-            variant="elevated"
-            padding="large"
-            className="h-full"
-          >
-            <div className={cn(
-              'flex flex-col',
-              iconAlignmentClasses[alignIcon as keyof typeof iconAlignmentClasses]
-            )}>
+          <Card key={feature.id} variant="elevated" padding="large" className="h-full">
+            <div
+              className={cn(
+                'flex flex-col',
+                iconAlignmentClasses[alignIcon as keyof typeof iconAlignmentClasses]
+              )}
+            >
               {featureContent}
             </div>
           </Card>
         );
       case 'outline':
         return (
-          <div 
-            key={feature.id} 
-            className={cn(
-              'border border-color rounded-lg p-5 h-full surface-primary'
-            )}
+          <div
+            key={feature.id}
+            className={cn('border border-color rounded-lg p-5 h-full surface-primary')}
           >
-            <div className={cn(
-              'flex flex-col',
-              iconAlignmentClasses[alignIcon as keyof typeof iconAlignmentClasses]
-            )}>
+            <div
+              className={cn(
+                'flex flex-col',
+                iconAlignmentClasses[alignIcon as keyof typeof iconAlignmentClasses]
+              )}
+            >
               {featureContent}
             </div>
           </div>
@@ -169,10 +163,12 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
       default:
         return (
           <div key={feature.id} className="h-full">
-            <div className={cn(
-              'flex flex-col',
-              iconAlignmentClasses[alignIcon as keyof typeof iconAlignmentClasses]
-            )}>
+            <div
+              className={cn(
+                'flex flex-col',
+                iconAlignmentClasses[alignIcon as keyof typeof iconAlignmentClasses]
+              )}
+            >
               {featureContent}
             </div>
           </div>
@@ -181,12 +177,7 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
   };
 
   return (
-    <div className={cn(
-      'grid',
-      gridColumnClasses[columns],
-      gapClasses[gap],
-      className
-    )}>
+    <div className={cn('grid', gridColumnClasses[columns], gapClasses[gap], className)}>
       {features.map(renderFeature)}
     </div>
   );
@@ -222,19 +213,15 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
         <Typography variant="h2" className="mb-3">
           {title}
         </Typography>
-        
+
         {subtitle && (
           <Typography variant="lead" className="mx-auto max-w-3xl">
             {subtitle}
           </Typography>
         )}
       </div>
-      
-      <FeatureGrid 
-        features={features} 
-        columns={columns} 
-        variant={variant} 
-      />
+
+      <FeatureGrid features={features} columns={columns} variant={variant} />
     </section>
   );
-}; 
+};

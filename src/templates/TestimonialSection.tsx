@@ -1,8 +1,8 @@
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Testimonial } from '@/components/molecules/Testimonial';
-import { Button } from '@/components/atoms/Button';
-import { Icon } from '@/components/atoms/Icon';
+import { Typography } from '../components/atoms/Typography';
+import { Testimonial } from '../components/molecules/Testimonial';
+import { Button } from '../components/atoms/Button';
+import { Icon } from '../components/atoms/Icon';
 
 export interface TestimonialItem {
   quote: string;
@@ -33,20 +33,23 @@ export function TestimonialSection({
   cta,
   className = '',
   variant = 'grid',
-  backgroundColor = 'light'
+  backgroundColor = 'light',
 }: TestimonialSectionProps) {
   // Déterminer la classe de fond en fonction de backgroundColor
-  const bgClass = 
-    backgroundColor === 'dark' ? 'bg-secondary text-white' : 
-    backgroundColor === 'primary' ? 'bg-primary-50' :
-    backgroundColor === 'secondary' ? 'bg-secondary-50' : 
-    'bg-white';
-  
+  const bgClass =
+    backgroundColor === 'dark'
+      ? 'bg-secondary text-white'
+      : backgroundColor === 'primary'
+        ? 'bg-primary-50'
+        : backgroundColor === 'secondary'
+          ? 'bg-secondary-50'
+          : 'bg-white';
+
   // Variante featured: Un témoignage principal et les autres plus petits
   if (variant === 'featured' && testimonials.length > 0) {
     const featuredTestimonial = testimonials[0];
     const otherTestimonials = testimonials.slice(1);
-    
+
     return (
       <section className={`py-12 ${bgClass} ${className}`}>
         <div className="container mx-auto px-4">
@@ -60,7 +63,7 @@ export function TestimonialSection({
               </Typography>
             )}
           </div>
-          
+
           <div className="mb-8">
             <Testimonial
               quote={featuredTestimonial.quote}
@@ -71,7 +74,7 @@ export function TestimonialSection({
               variant="featured"
             />
           </div>
-          
+
           {otherTestimonials.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
               {otherTestimonials.map((testimonial, index) => (
@@ -86,11 +89,11 @@ export function TestimonialSection({
               ))}
             </div>
           )}
-          
+
           {cta && (
             <div className="mt-10 text-center">
-              <Button 
-                variant="primary" 
+              <Button
+                variant="primary"
                 href={cta.url}
                 icon={<Icon name="ArrowRight" />}
                 iconPosition="right"
@@ -103,7 +106,7 @@ export function TestimonialSection({
       </section>
     );
   }
-  
+
   // Variante Grid: Une grille de tous les témoignages
   if (variant === 'grid') {
     return (
@@ -119,7 +122,7 @@ export function TestimonialSection({
               </Typography>
             )}
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
               <Testimonial
@@ -133,11 +136,11 @@ export function TestimonialSection({
               />
             ))}
           </div>
-          
+
           {cta && (
             <div className="mt-10 text-center">
-              <Button 
-                variant="primary" 
+              <Button
+                variant="primary"
                 href={cta.url}
                 icon={<Icon name="ArrowRight" />}
                 iconPosition="right"
@@ -150,7 +153,7 @@ export function TestimonialSection({
       </section>
     );
   }
-  
+
   // Variante Carousel: par défaut, affichage simple
   return (
     <section className={`py-12 ${bgClass} ${className}`}>
@@ -165,7 +168,7 @@ export function TestimonialSection({
             </Typography>
           )}
         </div>
-        
+
         <div className="max-w-4xl mx-auto">
           {testimonials.length > 0 && (
             <Testimonial
@@ -177,24 +180,22 @@ export function TestimonialSection({
               variant="featured"
             />
           )}
-          
+
           <div className="flex justify-center mt-6 gap-2">
             {testimonials.map((_, index) => (
               <button
                 key={`dot-${index}`}
-                className={`w-3 h-3 rounded-full ${
-                  index === 0 ? 'bg-primary' : 'bg-gray-300'
-                }`}
+                className={`w-3 h-3 rounded-full ${index === 0 ? 'bg-primary' : 'bg-gray-300'}`}
                 aria-label={`Voir témoignage ${index + 1}`}
               />
             ))}
           </div>
         </div>
-        
+
         {cta && (
           <div className="mt-10 text-center">
-            <Button 
-              variant="primary" 
+            <Button
+              variant="primary"
               href={cta.url}
               icon={<Icon name="ArrowRight" />}
               iconPosition="right"
@@ -206,4 +207,4 @@ export function TestimonialSection({
       </div>
     </section>
   );
-} 
+}

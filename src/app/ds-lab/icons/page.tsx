@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Typography } from "@/components/atoms/Typography";
-import { Icon } from "@/components/atoms/Icon";
-import Link from "next/link";
+import React from 'react';
+import { Typography } from '@/components/atoms/Typography';
+import { Icon } from '@/components/atoms/Icon';
+import Link from 'next/link';
 
 export default function IconAssistantPage() {
   return (
@@ -20,11 +20,14 @@ export default function IconAssistantPage() {
 
       {/* Lien retour */}
       <div className="text-center mt-12">
-        <Link href="/ds-lab" className="inline-flex items-center text-primary hover:text-primary/80 border-b-2 border-[var(--color-tertiary)]">
+        <Link
+          href="/ds-lab"
+          className="inline-flex items-center text-primary hover:text-primary/80 border-b-2 border-[var(--color-tertiary)]"
+        >
           <Icon name="ArrowLeft" size={16} className="mr-2" />
           Retour au DS Lab
         </Link>
       </div>
     </div>
   );
-} 
+}

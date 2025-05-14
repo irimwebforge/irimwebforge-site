@@ -12,7 +12,7 @@ type MockTestimonial = {
 
 export interface TestimonialAdapterConfig extends BaseAdapterConfig {
   withCta?: boolean;
-  ctaText?: string; 
+  ctaText?: string;
   ctaUrl?: string;
 }
 
@@ -23,12 +23,12 @@ export const adaptTestimonial = (testimonial: MockTestimonial): TestimonialItem 
     company: testimonial.company,
     projectName: testimonial.projectName,
     projectUrl: testimonial.projectUrl,
-    avatarSrc: testimonial.avatarSrc
+    avatarSrc: testimonial.avatarSrc,
   };
 };
 
 export const adaptTestimonials = (
-  mockTestimonials: MockTestimonial[], 
+  mockTestimonials: MockTestimonial[],
   config?: TestimonialAdapterConfig
 ) => {
   const testimonials = mockTestimonials.map(adaptTestimonial);
@@ -36,14 +36,14 @@ export const adaptTestimonials = (
     testimonials: TestimonialItem[];
     cta?: { text: string; url: string };
   } = { testimonials };
-  
+
   // Ajouter un CTA si demandé
   if (config?.withCta && config.ctaText && config.ctaUrl) {
     result.cta = {
       text: config.ctaText,
-      url: config.ctaUrl
+      url: config.ctaUrl,
     };
   }
-  
+
   return result;
-}; 
+};

@@ -16,30 +16,30 @@ Notre système typographique utilise deux polices principales :
 ```css
 h1 {
   font-family: 'Noto Sans', system-ui, sans-serif;
-  font-size: 2.25rem;  /* 36px */
+  font-size: 2.25rem; /* 36px */
   line-height: 1.25;
   font-weight: 700;
-  font-style: italic;  /* Spécificité du DS : titres principaux en italique gras */
+  font-style: italic; /* Spécificité du DS : titres principaux en italique gras */
 }
 
 h2 {
   font-family: 'Noto Sans', system-ui, sans-serif;
-  font-size: 1.875rem;  /* 30px */
+  font-size: 1.875rem; /* 30px */
   line-height: 1.25;
   font-weight: 700;
-  font-style: italic;  /* Spécificité du DS : titres h2 en italique gras */
+  font-style: italic; /* Spécificité du DS : titres h2 en italique gras */
 }
 
 h3 {
   font-family: 'Noto Sans', system-ui, sans-serif;
-  font-size: 1.5rem;  /* 24px */
+  font-size: 1.5rem; /* 24px */
   line-height: 1.375;
   font-weight: 700;
 }
 
 h4 {
   font-family: 'Noto Sans', system-ui, sans-serif;
-  font-size: 1.25rem;  /* 20px */
+  font-size: 1.25rem; /* 20px */
   line-height: 1.375;
   font-weight: 600;
 }
@@ -51,7 +51,7 @@ h4 {
 /* Texte principal */
 p {
   font-family: 'Questrial', sans-serif;
-  font-size: 1rem;  /* 16px */
+  font-size: 1rem; /* 16px */
   line-height: 1.5;
   font-weight: 400;
 }
@@ -59,7 +59,7 @@ p {
 /* Texte d'introduction (lead) */
 .lead {
   font-family: 'Questrial', sans-serif;
-  font-size: 1.125rem;  /* 18px */
+  font-size: 1.125rem; /* 18px */
   line-height: 1.625;
   font-weight: 400;
 }
@@ -67,7 +67,7 @@ p {
 /* Petit texte */
 .small {
   font-family: 'Questrial', sans-serif;
-  font-size: 0.875rem;  /* 14px */
+  font-size: 0.875rem; /* 14px */
   line-height: 1.5;
   font-weight: 400;
 }
@@ -75,7 +75,7 @@ p {
 /* Texte subtil (secondaire) */
 .subtle {
   font-family: 'Questrial', sans-serif;
-  font-size: 0.875rem;  /* 14px */
+  font-size: 0.875rem; /* 14px */
   line-height: 1.5;
   font-weight: 400;
   color: var(--color-secondary);
@@ -161,14 +161,14 @@ export interface TypographyProps {
 
 Le système typographique s'adapte aux différentes tailles d'écran :
 
-| Variante | Mobile | Tablette | Desktop |
-|----------|--------|----------|---------|
-| h1 | 1.875rem (30px) | 2rem (32px) | 2.25rem (36px) |
-| h2 | 1.5rem (24px) | 1.75rem (28px) | 1.875rem (30px) |
-| h3 | 1.25rem (20px) | 1.375rem (22px) | 1.5rem (24px) |
-| h4 | 1.125rem (18px) | 1.125rem (18px) | 1.25rem (20px) |
-| lead | 1.0625rem (17px) | 1.0625rem (17px) | 1.125rem (18px) |
-| p | 1rem (16px) | 1rem (16px) | 1rem (16px) |
+| Variante | Mobile           | Tablette         | Desktop         |
+| -------- | ---------------- | ---------------- | --------------- |
+| h1       | 1.875rem (30px)  | 2rem (32px)      | 2.25rem (36px)  |
+| h2       | 1.5rem (24px)    | 1.75rem (28px)   | 1.875rem (30px) |
+| h3       | 1.25rem (20px)   | 1.375rem (22px)  | 1.5rem (24px)   |
+| h4       | 1.125rem (18px)  | 1.125rem (18px)  | 1.25rem (20px)  |
+| lead     | 1.0625rem (17px) | 1.0625rem (17px) | 1.125rem (18px) |
+| p        | 1rem (16px)      | 1rem (16px)      | 1rem (16px)     |
 
 ## Accessibilité
 
@@ -179,9 +179,10 @@ Le système typographique s'adapte aux différentes tailles d'écran :
 ## Implémentation de référence
 
 Pour une implémentation complète, consultez :
+
 - Le composant [Typography](/src/components/atoms/Typography.tsx)
 - L'utilisation dans [DS-Lab Fundamentals](/src/app/ds-lab/fundamentals/page.tsx)
 
 ---
 
-> 📏 **Documentation connexe** : Pour comprendre comment le système typographique interagit avec le système d'espacement, consultez la [documentation d'espacement](./spacing.md). 
+> 📏 **Documentation connexe** : Pour comprendre comment le système typographique interagit avec le système d'espacement, consultez la [documentation d'espacement](./spacing.md).

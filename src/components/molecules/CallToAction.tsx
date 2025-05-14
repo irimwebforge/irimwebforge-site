@@ -1,8 +1,8 @@
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Button } from '@/components/atoms/Button';
+import { Typography } from '../atoms/Typography';
+import { Button } from '../atoms/Button';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 
 export interface CallToActionProps {
   /** Titre principal de la bannière d'appel à l'action */
@@ -68,17 +68,15 @@ export const CallToAction: React.FC<CallToActionProps> = ({
   };
 
   // Classes pour le fond
-  const backgroundClasses = withBackground 
-    ? `bg-[var(--color-${color})] bg-opacity-5` 
+  const backgroundClasses = withBackground
+    ? `bg-[var(--color-${color})] bg-opacity-5`
     : 'surface-primary';
 
   // Classes pour la bordure gauche personnalisée
-  const borderLeftClass = borderLeft 
-    ? `border-l-4 border-l-[${borderLeft}]` 
-    : '';
+  const borderLeftClass = borderLeft ? `border-l-4 border-l-[${borderLeft}]` : '';
 
   return (
-    <div 
+    <div
       className={cn(
         'call-to-action',
         variantClasses[variant],
@@ -87,34 +85,27 @@ export const CallToAction: React.FC<CallToActionProps> = ({
         className
       )}
     >
-      <div className={cn(
-        'max-w-3xl',
-        alignClasses[align]
-      )}>
-        <Typography 
-          variant="h2" 
-          className={cn(
-            'mb-4',
-            variant === 'accent' ? `text-[var(--color-${color})]` : ''
-          )}
+      <div className={cn('max-w-3xl', alignClasses[align])}>
+        <Typography
+          variant="h2"
+          className={cn('mb-4', variant === 'accent' ? `text-[var(--color-${color})]` : '')}
         >
           {title}
         </Typography>
-        
+
         {description && (
-          <Typography 
-            variant="lead" 
-            className="mb-6 text-secondary"
-          >
+          <Typography variant="lead" className="mb-6 text-secondary">
             {description}
           </Typography>
         )}
-        
-        <div className={cn(
-          'flex flex-wrap gap-4',
-          align === 'center' ? 'justify-center' : 'justify-start',
-          'mt-6'
-        )}>
+
+        <div
+          className={cn(
+            'flex flex-wrap gap-4',
+            align === 'center' ? 'justify-center' : 'justify-start',
+            'mt-6'
+          )}
+        >
           {primaryAction && (
             <Link href={primaryAction.url}>
               <Button variant={primaryAction.variant || 'gradient'} size="lg">
@@ -122,7 +113,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
               </Button>
             </Link>
           )}
-          
+
           {secondaryAction && (
             <Link href={secondaryAction.url}>
               <Button variant={secondaryAction.variant || 'secondary'} size="lg">
@@ -134,4 +125,4 @@ export const CallToAction: React.FC<CallToActionProps> = ({
       </div>
     </div>
   );
-}; 
+};

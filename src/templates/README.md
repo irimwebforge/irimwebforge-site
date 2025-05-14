@@ -5,6 +5,7 @@ Les templates sont des composants de niveau supérieur qui assemblent des organi
 ## Objectif
 
 Dans notre architecture Atomic Design, les templates :
+
 - Organisent la disposition des organismes sur une page complète
 - Définissent la structure et la mise en page globale
 - Servent de squelette pour les pages spécifiques
@@ -14,16 +15,19 @@ Dans notre architecture Atomic Design, les templates :
 
 Pour maintenir la cohérence visuelle dans tous les templates, voici les principes à respecter :
 
-1. **Typographie** : 
+1. **Typographie** :
+
    - Utiliser l'italique gras pour les titres h1 et h2 avec la classe `font-bold italic`
    - Respecter la hiérarchie des tailles de texte définies dans le composant Typography
 
 2. **Appels à l'action (CTA)** :
+
    - Réserver l'effet de brillance (`shine-effect`) exclusivement aux CTA principaux
    - Utiliser la variante `gradient` pour les boutons d'action principaux
    - Utiliser la variante `secondary` ou `outline` pour les actions secondaires
 
 3. **Couleurs** :
+
    - Limiter l'usage de la couleur tertiaire (orange) à des accents visuels spécifiques
    - Utiliser principalement les couleurs primaire et secondaire pour les éléments d'interface
    - Appliquer des dégradés pour les CTA principaux et les liens actifs
@@ -47,12 +51,7 @@ Les templates sont importés dans les pages et servent de structure pour affiche
 import { ProjectShowcase } from '@/components/templates/ProjectShowcase';
 
 export default function PortfolioPage() {
-  return (
-    <ProjectShowcase 
-      title="Mes projets récents"
-      projects={projectsData}
-    />
-  );
+  return <ProjectShowcase title="Mes projets récents" projects={projectsData} />;
 }
 ```
 
@@ -60,4 +59,4 @@ export default function PortfolioPage() {
 
 Les organismes sont des composants autonomes qui combinent des molécules et des atomes pour former une section fonctionnelle indépendante (comme un formulaire de contact avancé).
 
-Les templates, quant à eux, organisent ces organismes dans une structure cohérente pour former des pages complètes ou des sections majeures de pages. 
+Les templates, quant à eux, organisent ces organismes dans une structure cohérente pour former des pages complètes ou des sections majeures de pages.

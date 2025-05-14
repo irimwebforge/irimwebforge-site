@@ -15,7 +15,7 @@ type MockService = {
 
 export const adaptService = (service: MockService, index: number): Service => {
   const colors: Array<'primary' | 'secondary' | 'tertiary'> = ['primary', 'secondary', 'primary'];
-  
+
   return {
     id: service.id,
     title: service.title,
@@ -25,10 +25,10 @@ export const adaptService = (service: MockService, index: number): Service => {
     ctaText: service.callToAction.label,
     slug: service.id,
     color: colors[index % colors.length],
-    featured: index === 1
+    featured: index === 1,
   };
 };
 
 export const adaptServices = (mockServices: MockService[]): Service[] => {
   return mockServices.map((service, index) => adaptService(service, index));
-}; 
+};

@@ -24,22 +24,24 @@ Toute évolution des animations doit d'abord être testée et validée dans le D
 ```css
 /* Dans @layer base */
 :root {
---duration-instant: 0ms;     /* Changements instantanés */
---duration-fast: 150ms;      /* Micro-interactions */
---duration-normal: 300ms;    /* Transitions standard */
---duration-slow: 500ms;      /* Animations complexes */
---duration-slower: 1000ms;   /* Animations de page */
+  --duration-instant: 0ms; /* Changements instantanés */
+  --duration-fast: 150ms; /* Micro-interactions */
+  --duration-normal: 300ms; /* Transitions standard */
+  --duration-slow: 500ms; /* Animations complexes */
+  --duration-slower: 1000ms; /* Animations de page */
 }
 ```
 
 ### Règles d'Usage
 
 1. **Micro-interactions (150ms)**
+
    - Hover sur les boutons
    - Focus sur les inputs
    - Changements d'état subtils
 
 2. **Transitions Standard (300ms)**
+
    - Apparition/disparition d'éléments
    - Changements de couleur
    - Transformations simples
@@ -54,26 +56,29 @@ Toute évolution des animations doit d'abord être testée et validée dans le D
 ```css
 /* Dans @layer base */
 :root {
---ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
---ease-out: cubic-bezier(0, 0, 0.2, 1);
---ease-in: cubic-bezier(0.4, 0, 1, 1);
---ease-linear: linear;
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-linear: linear;
 }
 ```
 
 ### Règles d'Usage
 
 1. **ease-in-out**
+
    - Transitions d'interface
    - Changements d'état
    - Animations de navigation
 
 2. **ease-out**
+
    - Apparitions d'éléments
    - Entrées de modals
    - Notifications
 
 3. **ease-in**
+
    - Disparitions d'éléments
    - Sorties de modals
    - Fermetures de menus
@@ -232,8 +237,12 @@ Toute évolution des animations doit d'abord être testée et validée dans le D
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 ```
 
@@ -242,6 +251,7 @@ Toute évolution des animations doit d'abord être testée et validée dans le D
 ### Règles Générales
 
 1. **Respect des Préférences**
+
    ```css
    /* En fin de fichier CSS */
    @media (prefers-reduced-motion: reduce) {
@@ -255,6 +265,7 @@ Toute évolution des animations doit d'abord être testée et validée dans le D
    ```
 
 2. **Contrôle de l'Utilisateur**
+
    - Éviter les animations automatiques
    - Permettre l'arrêt des animations
    - Fournir des alternatives statiques
@@ -267,10 +278,12 @@ Toute évolution des animations doit d'abord être testée et validée dans le D
 ### Bonnes Pratiques
 
 1. **Durée Maximale**
+
    - Ne pas dépasser 500ms pour les animations d'interface
    - Limiter les animations continues à 5 secondes
 
 2. **Feedback Visuel**
+
    - Assurer un contraste suffisant
    - Fournir des indicateurs non-animés
    - Maintenir la lisibilité pendant les animations
@@ -288,4 +301,4 @@ Pour visualiser ces animations en action :
 2. Examinez les transitions des boutons dans `src/app/ds-lab/templates/page.tsx`
 3. Vérifiez l'effet de "shine" (brillance) sur les CTA dans les templates validés
 
-Ces implémentations servent de référence et doivent être suivies pour maintenir la cohérence dans tout le projet. 
+Ces implémentations servent de référence et doivent être suivies pour maintenir la cohérence dans tout le projet.

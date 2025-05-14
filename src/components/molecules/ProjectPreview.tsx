@@ -1,8 +1,8 @@
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
+import { Typography } from '../atoms/Typography';
 import Image from 'next/image';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 
 export interface ProjectTag {
   /** Identifiant unique du tag */
@@ -37,7 +37,6 @@ export interface ProjectPreviewProps {
 }
 
 export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
-  id,
   title,
   slug,
   imageSrc,
@@ -53,19 +52,22 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
     switch (variant) {
       case 'compact':
         return {
-          container: 'rounded-md overflow-hidden shadow-sm hover:shadow transition-all duration-300',
+          container:
+            'rounded-md overflow-hidden shadow-sm hover:shadow transition-all duration-300',
           imageDimensions: 'aspect-video',
           content: 'p-3',
         };
       case 'featured':
         return {
-          container: 'rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-2 border-[var(--color-primary)]',
+          container:
+            'rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-2 border-[var(--color-primary)]',
           imageDimensions: 'aspect-[4/3]',
           content: 'p-6',
         };
       default:
         return {
-          container: 'rounded-md overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-color',
+          container:
+            'rounded-md overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-color',
           imageDimensions: 'aspect-[3/2]',
           content: 'p-4',
         };
@@ -87,10 +89,10 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
             tertiary: 'bg-[var(--color-tertiary)] bg-opacity-10 text-[var(--color-tertiary)]',
             default: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300',
           };
-          
+
           return (
-            <span 
-              key={tag.id} 
+            <span
+              key={tag.id}
               className={cn(
                 'text-xs px-2 py-1 rounded-full',
                 tagColorClasses[tag.color || 'default']
@@ -107,7 +109,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
   // Informations client et année
   const renderMeta = () => {
     if (!clientName && !year) return null;
-    
+
     return (
       <div className="mt-2 flex items-center text-tertiary">
         {clientName && (
@@ -115,11 +117,9 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
             {clientName}
           </Typography>
         )}
-        
-        {clientName && year && (
-          <span className="mx-2">•</span>
-        )}
-        
+
+        {clientName && year && <span className="mx-2">•</span>}
+
         {year && (
           <Typography variant="small" className="text-tertiary">
             {year}
@@ -130,19 +130,12 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
   };
 
   return (
-    <Link 
-      href={`/projets/${slug}`} 
-      className={cn(
-        'project-preview block surface-primary',
-        variantClasses.container,
-        className
-      )}
+    <Link
+      href={`/projets/${slug}`}
+      className={cn('project-preview block surface-primary', variantClasses.container, className)}
     >
       {/* Image du projet */}
-      <div className={cn(
-        'relative overflow-hidden',
-        variantClasses.imageDimensions
-      )}>
+      <div className={cn('relative overflow-hidden', variantClasses.imageDimensions)}>
         <Image
           src={imageSrc}
           alt={title}
@@ -150,26 +143,26 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
           className="object-cover transition-transform duration-500 hover:scale-105"
         />
       </div>
-      
+
       {/* Contenu texte */}
       <div className={variantClasses.content}>
-        <Typography 
-          variant={variant === 'featured' ? 'h3' : 'h4'} 
+        <Typography
+          variant={variant === 'featured' ? 'h3' : 'h4'}
           className="font-bold text-primary"
         >
           {title}
         </Typography>
-        
+
         {renderMeta()}
-        
+
         {description && variant !== 'compact' && (
           <Typography variant="small" className="mt-2 text-secondary line-clamp-2">
             {description}
           </Typography>
         )}
-        
+
         {renderTags()}
       </div>
     </Link>
   );
-}; 
+};

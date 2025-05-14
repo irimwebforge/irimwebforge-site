@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from '@/components/atoms/Button';
-import { Typography } from '@/components/atoms/Typography';
+import { Button } from '../atoms/Button';
+import { Typography } from '../atoms/Typography';
 
 interface HeroSectionProps {
   title: string;
@@ -23,14 +23,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundImage,
   className = '',
 }) => {
-  const style = backgroundImage ? {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  } : {};
+  const style = backgroundImage
+    ? {
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }
+    : {};
 
   return (
-    <section 
+    <section
       className={`py-20 px-4 flex items-center justify-center relative ${className}`}
       style={style}
     >
@@ -38,21 +40,26 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <Typography as="h1" variant="h1" className="mb-4 font-bold italic">
           {title}
         </Typography>
-        
+
         <Typography as="p" variant="lead" className="mb-8 max-w-2xl mx-auto">
           {subtitle}
         </Typography>
-        
+
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button variant="gradient" size="lg" className="shine-effect" onClick={() => window.location.href = ctaHref}>
+          <Button
+            variant="gradient"
+            size="lg"
+            className="shine-effect"
+            onClick={() => (window.location.href = ctaHref)}
+          >
             {ctaText}
           </Button>
-          
+
           {secondaryCtaText && (
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="lg"
-              onClick={() => window.location.href = secondaryCtaHref || ''}
+              onClick={() => (window.location.href = secondaryCtaHref || '')}
             >
               {secondaryCtaText}
             </Button>

@@ -1,12 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Button } from '@/components/atoms/Button';
-import { Container } from '@/components/atoms/Container';
-import { Divider } from '@/components/atoms/Divider';
-import { Badge } from '@/components/atoms/Badge';
-import { NavLink } from '@/components/atoms/NavLink';
+import { Typography } from '../atoms/Typography';
+import { Button } from '../atoms/Button';
+import { Container } from '../atoms/Container';
+import { Badge } from '../atoms/Badge';
+import { NavLink } from '../atoms/NavLink';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -71,7 +70,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
     center: 'text-center mx-auto',
     right: 'text-right ml-auto',
   };
-  
+
   // Classes de taille basées sur la taille
   const sizeClasses = {
     small: {
@@ -95,7 +94,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       maxWidth: 'max-w-6xl',
     },
   };
-  
+
   // Classes de thème basées sur le thème
   const themeClasses = {
     light: 'bg-white dark:bg-gray-900 text-foreground',
@@ -103,11 +102,11 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
     primary: 'bg-[var(--color-primary)] text-white',
     secondary: 'bg-[var(--color-secondary)] text-white',
   };
-  
+
   // Rendu des breadcrumbs
   const renderBreadcrumbs = () => {
     if (breadcrumbs.length === 0) return null;
-    
+
     return (
       <nav className="mb-4" aria-label="Breadcrumb">
         <ol className="flex flex-wrap items-center space-x-1 text-sm">
@@ -129,18 +128,20 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       </nav>
     );
   };
-  
+
   // Rendu des actions
   const renderActions = () => {
     if (actions.length === 0) return null;
-    
+
     return (
-      <div className={`mt-8 flex flex-wrap gap-3 ${align === 'center' ? 'justify-center' : align === 'right' ? 'justify-end' : 'justify-start'}`}>
+      <div
+        className={`mt-8 flex flex-wrap gap-3 ${align === 'center' ? 'justify-center' : align === 'right' ? 'justify-end' : 'justify-start'}`}
+      >
         {actions.map((action, index) => {
           // Détermine si c'est un CTA principal (pour l'effet brillance)
           const isMainCTA = action.variant === 'gradient' || action.isMainCta;
           const buttonClassName = isMainCTA ? 'shine-effect' : '';
-          
+
           return action.href ? (
             <Link key={index} href={action.href}>
               <Button variant={action.variant || 'primary'} className={buttonClassName}>
@@ -148,8 +149,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
               </Button>
             </Link>
           ) : (
-            <Button 
-              key={index} 
+            <Button
+              key={index}
               variant={action.variant || 'primary'}
               className={buttonClassName}
               onClick={action.onClick}
@@ -161,40 +162,38 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       </div>
     );
   };
-  
+
   // Style pour l'image de fond
-  const backgroundStyle = backgroundImage ? {
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    position: 'relative' as const,
-  } : {};
-  
+  const backgroundStyle = backgroundImage
+    ? {
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        position: 'relative' as const,
+      }
+    : {};
+
   // Rendu de l'overlay si nécessaire
   const renderOverlay = () => {
     if (!backgroundImage || !backgroundOverlay) return null;
-    
+
     // Choisir la couleur de l'overlay en fonction du thème
-    const overlayColor = theme === 'light' 
-      ? `rgba(255, 255, 255, ${backgroundOpacity})`
-      : theme === 'dark'
-        ? `rgba(17, 24, 39, ${backgroundOpacity})`
-        : theme === 'primary'
-          ? `var(--color-primary-rgb, 59, 130, 246), ${backgroundOpacity})`
-          : `var(--color-secondary-rgb, 107, 114, 128), ${backgroundOpacity})`;
-    
-    return (
-      <div 
-        className="absolute inset-0 z-0" 
-        style={{ backgroundColor: overlayColor }}
-      />
-    );
+    const overlayColor =
+      theme === 'light'
+        ? `rgba(255, 255, 255, ${backgroundOpacity})`
+        : theme === 'dark'
+          ? `rgba(17, 24, 39, ${backgroundOpacity})`
+          : theme === 'primary'
+            ? `var(--color-primary-rgb, 59, 130, 246), ${backgroundOpacity})`
+            : `var(--color-secondary-rgb, 107, 114, 128), ${backgroundOpacity})`;
+
+    return <div className="absolute inset-0 z-0" style={{ backgroundColor: overlayColor }} />;
   };
-  
+
   // Rendu du motif en arrière-plan
   const renderPattern = () => {
     if (!pattern) return null;
-    
+
     return (
       <div className="absolute inset-0 z-0 opacity-10">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -208,11 +207,11 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       </div>
     );
   };
-  
+
   // Rendu de la vague en bas
   const renderWaveBottom = () => {
     if (!waveBottom) return null;
-    
+
     return (
       <div className="absolute bottom-0 left-0 right-0 overflow-hidden">
         <svg
@@ -230,13 +229,15 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       </div>
     );
   };
-  
+
   // Rendu de l'image
   const renderImage = () => {
     if (!image) return null;
-    
+
     return (
-      <div className={`hidden lg:block ${image.position === 'left' ? 'order-first mr-8' : 'order-last ml-8'}`}>
+      <div
+        className={`hidden lg:block ${image.position === 'left' ? 'order-first mr-8' : 'order-last ml-8'}`}
+      >
         <Image
           src={image.src}
           alt={image.alt}
@@ -247,7 +248,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       </div>
     );
   };
-  
+
   // Classes CSS combinées
   const headerClasses = `
     relative
@@ -255,62 +256,54 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
     ${themeClasses[theme]}
     ${className}
   `.trim();
-  
+
   return (
     <header className={headerClasses} style={backgroundStyle}>
       {renderOverlay()}
       {renderPattern()}
-      
+
       <Container>
         <div className={`relative z-10 ${image ? 'flex items-center' : ''}`}>
           {image && image.position === 'left' && renderImage()}
-          
-          <div className={`${alignClasses[align]} ${sizeClasses[size].maxWidth} ${align === 'center' ? 'mx-auto' : ''}`}>
+
+          <div
+            className={`${alignClasses[align]} ${sizeClasses[size].maxWidth} ${align === 'center' ? 'mx-auto' : ''}`}
+          >
             {renderBreadcrumbs()}
-            
+
             {badge && (
-              <Badge
-                variant={badge.variant || 'primary'}
-                className="mb-4"
-                size="medium"
-              >
+              <Badge variant={badge.variant || 'primary'} className="mb-4" size="medium">
                 {badge.text}
               </Badge>
             )}
-            
-            <Typography 
-              variant="h1" 
+
+            <Typography
+              variant="h1"
               className={`${sizeClasses[size].titleSize} font-bold italic mb-4`}
             >
               {title}
             </Typography>
-            
+
             {subtitle && (
-              <Typography 
-                variant="lead" 
-                className="text-xl md:text-2xl mb-4 opacity-90"
-              >
+              <Typography variant="lead" className="text-xl md:text-2xl mb-4 opacity-90">
                 {subtitle}
               </Typography>
             )}
-            
+
             {description && (
-              <Typography 
-                variant="p" 
-                className="mb-6 max-w-prose opacity-80"
-              >
+              <Typography variant="p" className="mb-6 max-w-prose opacity-80">
                 {description}
               </Typography>
             )}
-            
+
             {renderActions()}
           </div>
-          
+
           {image && image.position === 'right' && renderImage()}
         </div>
       </Container>
-      
+
       {renderWaveBottom()}
     </header>
   );
-}; 
+};

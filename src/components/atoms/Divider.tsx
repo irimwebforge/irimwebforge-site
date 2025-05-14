@@ -58,14 +58,11 @@ export const Divider: React.FC<DividerProps> = ({
   };
 
   // Classe de base selon l'orientation
-  const baseClasses = orientation === 'horizontal'
-    ? `w-full ${spacingClasses[spacing]}`
-    : 'h-full self-stretch mx-2';
-    
+  const baseClasses =
+    orientation === 'horizontal' ? `w-full ${spacingClasses[spacing]}` : 'h-full self-stretch mx-2';
+
   // Classe de mise en évidence (background)
-  const highlightClass = highlight && color === 'tertiary' 
-    ? 'bg-amber-50 p-4 rounded-md' 
-    : '';
+  const highlightClass = highlight && color === 'tertiary' ? 'bg-amber-50 p-4 rounded-md' : '';
 
   // Classes combinées
   const dividerClasses = cn(
@@ -78,30 +75,22 @@ export const Divider: React.FC<DividerProps> = ({
 
   // Si un label est fourni et que l'orientation est horizontale
   if (label && orientation === 'horizontal') {
-    const labelColor = color !== 'default' 
-      ? `text-[var(--color-${color})]` 
-      : 'text-secondary';
+    const labelColor = color !== 'default' ? `text-[var(--color-${color})]` : 'text-secondary';
 
     return (
       <div className={cn('flex items-center', spacingClasses[spacing], highlightClass)}>
         {labelPosition === 'start' && (
-          <span className={cn('pr-3 text-sm font-medium', labelColor)}>
-            {label}
-          </span>
+          <span className={cn('pr-3 text-sm font-medium', labelColor)}>{label}</span>
         )}
         <div className={dividerClasses} />
         {labelPosition === 'center' && (
-          <span className={cn('px-3 text-sm font-medium', labelColor)}>
-            {label}
-          </span>
+          <span className={cn('px-3 text-sm font-medium', labelColor)}>{label}</span>
         )}
         {labelPosition !== 'start' && labelPosition !== 'center' && (
           <div className={dividerClasses} />
         )}
         {labelPosition === 'end' && (
-          <span className={cn('pl-3 text-sm font-medium', labelColor)}>
-            {label}
-          </span>
+          <span className={cn('pl-3 text-sm font-medium', labelColor)}>{label}</span>
         )}
       </div>
     );
@@ -109,4 +98,4 @@ export const Divider: React.FC<DividerProps> = ({
 
   // Divider simple
   return <div className={cn(dividerClasses, highlightClass)} />;
-}; 
+};

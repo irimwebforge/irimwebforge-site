@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -20,16 +21,21 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@next/eslint-plugin-next": "^15.3.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint": "^9.26.0",
     "eslint-config-next": "15.3.1",
     "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.7",
     "prettier": "^3.5.3",
     "tailwindcss": "^4.1.5",
     "typescript": "^5"
   },
-  "packageManager": "yarn@4.6.0+sha512.5383cc12567a95f1d668fbe762dfe0075c595b4bfff433be478dbbe24e05251a8e8c3eb992a986667c1d53b6c3a9c85b8398c35a960587fbd9fa3a0915406728"
+  "packageManager": "yarn@4.9.1"
 }

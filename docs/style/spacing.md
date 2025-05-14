@@ -10,19 +10,19 @@ Notre système d'espacement est basé sur une échelle progressive multiple de 4
 
 ```css
 /* Espacements (basés sur des multiples de 4px) */
---space-0: 0;              /* 0px */
---space-1: 0.25rem;        /* 4px */
---space-2: 0.5rem;         /* 8px */
---space-3: 0.75rem;        /* 12px */
---space-4: 1rem;           /* 16px */
---space-5: 1.25rem;        /* 20px */
---space-6: 1.5rem;         /* 24px */
---space-8: 2rem;           /* 32px */
---space-10: 2.5rem;        /* 40px */
---space-12: 3rem;          /* 48px */
---space-16: 4rem;          /* 64px */
---space-20: 5rem;          /* 80px */
---space-24: 6rem;          /* 96px */
+--space-0: 0; /* 0px */
+--space-1: 0.25rem; /* 4px */
+--space-2: 0.5rem; /* 8px */
+--space-3: 0.75rem; /* 12px */
+--space-4: 1rem; /* 16px */
+--space-5: 1.25rem; /* 20px */
+--space-6: 1.5rem; /* 24px */
+--space-8: 2rem; /* 32px */
+--space-10: 2.5rem; /* 40px */
+--space-12: 3rem; /* 48px */
+--space-16: 4rem; /* 64px */
+--space-20: 5rem; /* 80px */
+--space-24: 6rem; /* 96px */
 ```
 
 ## Espacements sémantiques
@@ -31,35 +31,35 @@ Pour simplifier l'utilisation, nous définissons des tailles sémantiques :
 
 ```css
 /* Espacements sémantiques */
---spacing-xs: var(--space-1);    /* 4px - Espacement très petit */
---spacing-sm: var(--space-2);    /* 8px - Espacement petit */
---spacing-md: var(--space-4);    /* 16px - Espacement moyen */
---spacing-lg: var(--space-6);    /* 24px - Espacement large */
---spacing-xl: var(--space-8);    /* 32px - Espacement très large */
---spacing-2xl: var(--space-12);  /* 48px - Espacement énorme */
+--spacing-xs: var(--space-1); /* 4px - Espacement très petit */
+--spacing-sm: var(--space-2); /* 8px - Espacement petit */
+--spacing-md: var(--space-4); /* 16px - Espacement moyen */
+--spacing-lg: var(--space-6); /* 24px - Espacement large */
+--spacing-xl: var(--space-8); /* 32px - Espacement très large */
+--spacing-2xl: var(--space-12); /* 48px - Espacement énorme */
 ```
 
 ## Application aux composants
 
 ### Espacement interne (padding)
 
-| Composant | Padding horizontal | Padding vertical | Notes |
-|-----------|-------------------|------------------|-------|
-| Button | --spacing-md (16px) | --spacing-sm (8px) | Grand: +4px, Petit: -4px |
-| Card | --spacing-md (16px) | --spacing-md (16px) | Variante compact: --spacing-sm (8px) |
-| Input | --spacing-md (16px) | --spacing-sm (8px) | Entre label et input: --spacing-xs (4px) |
-| Select | --spacing-md (16px) | --spacing-sm (8px) | Entre label et select: --spacing-xs (4px) |
-| Modal | --spacing-lg (24px) | --spacing-md (16px) | Header/footer: --spacing-md (16px) |
+| Composant | Padding horizontal  | Padding vertical    | Notes                                     |
+| --------- | ------------------- | ------------------- | ----------------------------------------- |
+| Button    | --spacing-md (16px) | --spacing-sm (8px)  | Grand: +4px, Petit: -4px                  |
+| Card      | --spacing-md (16px) | --spacing-md (16px) | Variante compact: --spacing-sm (8px)      |
+| Input     | --spacing-md (16px) | --spacing-sm (8px)  | Entre label et input: --spacing-xs (4px)  |
+| Select    | --spacing-md (16px) | --spacing-sm (8px)  | Entre label et select: --spacing-xs (4px) |
+| Modal     | --spacing-lg (24px) | --spacing-md (16px) | Header/footer: --spacing-md (16px)        |
 
 ### Espacement externe (margin)
 
-| Composant | Margin par défaut | Notes |
-|-----------|-------------------|-------|
-| Paragraphe | bottom: --spacing-md (16px) | |
-| Heading (h1-h4) | bottom: --spacing-md (16px) | Entre titres consécutifs: --spacing-sm (8px) |
-| Form fields | bottom: --spacing-md (16px) | |
-| Sections | top/bottom: --spacing-xl (32px) | Sections principales de page |
-| Card grid | gap: --spacing-md (16px) | Entre les cartes |
+| Composant       | Margin par défaut               | Notes                                        |
+| --------------- | ------------------------------- | -------------------------------------------- |
+| Paragraphe      | bottom: --spacing-md (16px)     |                                              |
+| Heading (h1-h4) | bottom: --spacing-md (16px)     | Entre titres consécutifs: --spacing-sm (8px) |
+| Form fields     | bottom: --spacing-md (16px)     |                                              |
+| Sections        | top/bottom: --spacing-xl (32px) | Sections principales de page                 |
+| Card grid       | gap: --spacing-md (16px)        | Entre les cartes                             |
 
 ## Utilisation
 
@@ -118,7 +118,7 @@ Les éléments liés doivent être regroupés avec un espacement réduit, tandis
     <p>Élément lié au groupe 1</p>
     <p>Autre élément lié au groupe 1</p>
   </div>
-  
+
   {/* Deuxième groupe - éléments rapprochés mais séparés du premier groupe */}
   <div className="space-y-2">
     <h3>Groupe 2</h3>
@@ -163,10 +163,12 @@ Les espacements s'adaptent à différentes tailles d'écran :
 ## Bonnes pratiques
 
 1. **Cohérence**
+
    - Utiliser exclusivement l'échelle d'espacement définie
    - Maintenir des ratios constants (par exemple, espacements internes/externes)
 
 2. **Hiérarchie visuelle**
+
    - Utiliser l'espacement pour renforcer les relations entre éléments
    - Créer des zones distinctes avec des espacements plus grands
 
@@ -177,9 +179,10 @@ Les espacements s'adaptent à différentes tailles d'écran :
 ## Implémentation de référence
 
 Pour une implémentation complète, consultez :
+
 - [Design System Lab Fundamentals](/src/app/ds-lab/fundamentals/page.tsx)
 - [Design System Lab Components](/src/app/ds-lab/components/page.tsx)
 
 ---
 
-> 📱 **Documentation connexe** : Pour comprendre comment le système d'espacement s'applique aux différentes tailles d'écran, consultez la [documentation responsive](./responsive.md). 
+> 📱 **Documentation connexe** : Pour comprendre comment le système d'espacement s'applique aux différentes tailles d'écran, consultez la [documentation responsive](./responsive.md).

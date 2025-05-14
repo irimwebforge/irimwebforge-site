@@ -7,6 +7,7 @@ Ce document rassemble les éléments textuels principaux et les directives réda
 **Promesse fondamentale:** "Des sites web qui vous ressemblent vraiment"
 
 **Sous-promesses:**
+
 - "Interfaces digitales personnalisées qui capturent l'essence de votre identité"
 - "L'artisanat digital à l'ère de l'automatisation"
 - "Libérez-vous des solutions standardisées"
@@ -14,6 +15,7 @@ Ce document rassemble les éléments textuels principaux et les directives réda
 ## Ton et style rédactionnel
 
 ### Ton général
+
 - **Personnel** mais **professionnel**
 - **Chaleureux** sans être familier
 - **Passionné** pour l'artisanat digital
@@ -21,6 +23,7 @@ Ce document rassemble les éléments textuels principaux et les directives réda
 - **Pédagogue** sur les aspects techniques
 
 ### Style d'écriture
+
 - Phrases de longueur moyenne (15-20 mots maximum)
 - Vocabulaire accessible mais précis
 - Structure claire avec intertitres et puces
@@ -29,6 +32,7 @@ Ce document rassemble les éléments textuels principaux et les directives réda
 - Exemples concrets pour illustrer les concepts abstraits
 
 ### Vocabulaire identitaire à utiliser
+
 - Personnalisation
 - Authenticité digitale
 - Sur-mesure
@@ -44,6 +48,7 @@ Ce document rassemble les éléments textuels principaux et les directives réda
 ### Page d'accueil
 
 **HeroSection:**
+
 ```
 Des sites web qui vous ressemblent vraiment
 
@@ -53,6 +58,7 @@ Interfaces digitales personnalisées qui capturent l'essence de votre identité
 ```
 
 **ValueProposition:**
+
 ```
 Une approche artisanale du développement web
 
@@ -63,6 +69,7 @@ Une approche artisanale du développement web
 ```
 
 **Testimonial:**
+
 ```
 "Enfin un site qui nous ressemble vraiment, sans nous ruiner chaque mois. L'interface d'administration est si intuitive que même notre stagiaire peut l'utiliser!"
 
@@ -70,6 +77,7 @@ Une approche artisanale du développement web
 ```
 
 **CTASection:**
+
 ```
 Prêt à créer un site qui vous ressemble vraiment?
 
@@ -81,6 +89,7 @@ Réservez une consultation découverte gratuite de 45 minutes
 ### Page Services
 
 **Introduction Services:**
+
 ```
 Des services sur-mesure pour votre présence digitale
 
@@ -88,6 +97,7 @@ Découvrez comment IrimWebForge peut vous aider à créer une expérience digita
 ```
 
 **Forfaits d'accompagnement:**
+
 ```
 Un accompagnement adapté à vos besoins
 
@@ -114,6 +124,7 @@ Veille concurrentielle personnalisée (rapport trimestriel)
 ```
 
 **Programme Partenaires:**
+
 ```
 Programme "Premiers Partenaires"
 
@@ -127,6 +138,7 @@ Réservé aux 5 premiers clients souscrivant à un forfait annuel:
 ### Page Processus
 
 **Introduction Processus:**
+
 ```
 L'artisanat digital à l'ère de l'automatisation
 
@@ -134,6 +146,7 @@ Je rejette l'uniformisation des expériences web pour créer des interfaces qui 
 ```
 
 **Garanties:**
+
 ```
 Mes engagements
 
@@ -145,6 +158,7 @@ Mes engagements
 ```
 
 **Citation Signature:**
+
 ```
 "Je conçois votre présence digitale comme un artisan façonne une œuvre unique - avec attention, passion et respect de la matière première que constitue votre identité."
 ```
@@ -152,6 +166,7 @@ Mes engagements
 ### Page Contact
 
 **Introduction Contact:**
+
 ```
 Discutons de votre projet
 
@@ -159,6 +174,7 @@ Prenez contact pour une consultation découverte gratuite de 45 minutes ou pour 
 ```
 
 **Processus après contact:**
+
 ```
 Et ensuite?
 
@@ -171,12 +187,14 @@ Et ensuite?
 ## Appels à l'action (CTAs)
 
 ### Principaux
+
 - "Réservez votre consultation découverte"
 - "Discutons de votre projet"
 - "Parlons de votre identité digitale"
 - "Explorez mes réalisations"
 
 ### Secondaires
+
 - "Découvrez mes forfaits d'accompagnement"
 - "En savoir plus sur ma méthode"
 - "Voir mes compétences techniques"
@@ -204,12 +222,14 @@ Je me spécialise dans les solutions sur-mesure, développées sans CMS standard
 ## Mots-clés SEO stratégiques
 
 ### Mots-clés primaires
+
 - Développeur web Alsace personnalisé
 - Sites web sur-mesure Strasbourg
 - Création site authentique Ittenheim
 - Développeur freelance interface personnalisée
 
 ### Mots-clés secondaires
+
 - Interfaces admin sur mesure
 - Développement application React Native
 - Artisan développeur web

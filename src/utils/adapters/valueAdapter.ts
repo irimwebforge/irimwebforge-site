@@ -14,10 +14,13 @@ export const adaptValue = (value: MockValue): Value => ({
   id: value.id,
   title: value.title,
   description: value.description,
-  icon: typeof value.icon === 'string' ? React.createElement(Icon, { name: value.icon as IconName }) : value.icon,
-  color: value.color || 'primary'
+  icon:
+    typeof value.icon === 'string'
+      ? React.createElement(Icon, { name: value.icon as IconName })
+      : value.icon,
+  color: value.color || 'primary',
 });
 
 export const adaptValues = (mockValues: MockValue[]): Value[] => {
   return mockValues.map(adaptValue);
-}; 
+};

@@ -13,15 +13,16 @@ export default function HomePage() {
           <div className="flex justify-center mb-8">
             <Logo width={200} height={80} format="svg" />
           </div>
-          
+
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
             Interfaces admin sur mesure
           </h1>
-          
+
           <p className="text-xl text-secondary mb-8">
-            Des interfaces administratives personnalisées qui reflètent l'essence de votre marque et optimisent votre flux de travail.
+            Des interfaces administratives personnalisées qui reflètent l'essence de votre marque et
+            optimisent votre flux de travail.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button variant="gradient" size="lg" className="w-full sm:w-auto">
               Découvrir nos services
@@ -32,7 +33,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      
+
       {/* Explication du fonctionnement */}
       <section className="py-12 text-center">
         <div className="inline-block mb-4">
@@ -45,7 +46,7 @@ export default function HomePage() {
           Essayez de passer du mode clair au mode sombre pour voir le changement
         </p>
       </section>
-      
+
       {/* Liens de développement */}
       <section className="py-12 border-t border-color">
         <div className="max-w-2xl mx-auto border-l-4 border-l-[var(--color-tertiary)] pl-6 py-4">
@@ -54,11 +55,7 @@ export default function HomePage() {
           </h3>
           <div className="flex justify-center">
             <Link href="/ds-lab" className="w-full sm:w-auto">
-              <Button 
-                variant="gradient" 
-                size="md" 
-                className="w-full"
-              >
+              <Button variant="gradient" size="md" className="w-full">
                 <Icon name="Palette" className="mr-2" /> Ouvrir le DS-Lab
               </Button>
             </Link>
@@ -70,4 +67,4 @@ export default function HomePage() {
       </section>
     </div>
   );
-} 
+}

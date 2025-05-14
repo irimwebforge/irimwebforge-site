@@ -13,6 +13,7 @@ Pour assurer la cohérence avec le design system, toute implémentation doit se 
 Les spécifications dans ce document doivent être suivies en conjonction avec les exemples du DS-Lab pour garantir la cohérence visuelle et fonctionnelle.
 
 ### Référence d'Implémentation
+
 - **Template de base** : Voir `src/app/ds-lab/templates/page.tsx` pour l'implémentation de référence
 - **Adaptateurs de données** : Utiliser les adaptateurs appropriés (projectAdapter.ts, serviceAdapter.ts, etc.)
 - **Composants** : Se référer à `src/app/ds-lab/components/page.tsx` pour les styles et variantes
@@ -20,6 +21,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 ## 1. Page d'accueil
 
 ### Structure globale
+
 - **Rôle** : Premier contact, présentation de la promesse unique de valeur, différenciation et transformation concrète
 - **URL** : `/`
 - **Balise title** : "IrimWebForge | Des sites web qui libèrent votre temps et votre énergie"
@@ -28,6 +30,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 ### Sections (dans l'ordre)
 
 #### 1.1 Hero Section
+
 - **Composant** : `HeroSection`
 - **Hiérarchie** :
   - H1 : "Des sites web qui libèrent votre temps et votre énergie"
@@ -44,6 +47,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Le CTA principal doit avoir l'effet "shine-effect" sur le dégradé
 
 #### 1.2 Ma différence
+
 - **Composant** : `FeatureSection` (avec layout="cards" et columns=3)
 - **Hiérarchie** :
   - H2 : "Le pont entre votre vision et sa concrétisation digitale"
@@ -64,6 +68,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Icônes Lucide-React (Translate, EarListen, Brain)
 
 #### 1.3 Proposition de valeur
+
 - **Composant** : `FeatureSection` (avec layout="grid" et columns=4)
 - **Hiérarchie** :
   - H2 : "Une approche qui transforme concrètement votre quotidien"
@@ -83,6 +88,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Animations subtiles au survol
 
 #### 1.4 Tableau comparatif
+
 - **Composant** : `ComparativeTable`
 - **Hiérarchie** :
   - H2 : "Solutions standards vs IrimWebForge"
@@ -105,6 +111,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Point critique à ne pas omettre
 
 #### 1.5 Temporalité duale
+
 - **Composant** : `TemporalSplit`
 - **Hiérarchie** :
   - H2 : "Mon parcours d'évolution"
@@ -128,6 +135,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Structure temporelle duale explicite à ne pas omettre
 
 #### 1.6 Projets mis en avant
+
 - **Composant** : `ProjectShowcase`
 - **Hiérarchie** :
   - H2 : "Des transformations concrètes plutôt que des prouesses techniques"
@@ -153,6 +161,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Badges ou icônes pour indiquer les gains (temps, coût, autonomie)
 
 #### 1.7 Témoignage principal
+
 - **Composant** : `Testimonial` variant="featured"
 - **Hiérarchie** :
   - H2 visually-hidden : "Ce que disent mes clients"
@@ -168,6 +177,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Animation texte lente si plusieurs témoignages
 
 #### 1.8 Call-to-action final
+
 - **Composant** : `CTASection`
 - **Hiérarchie** :
   - H2 : "Prêt à libérer votre temps et votre énergie créative?"
@@ -184,6 +194,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 ## 2. Page Services
 
 ### Structure globale
+
 - **Rôle** : Présenter les services avec clarté et distinction temporelle
 - **URL** : `/services`
 - **Balise title** : "Services | IrimWebForge - Des services qui évoluent avec vous"
@@ -192,6 +203,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 ### Sections (dans l'ordre)
 
 #### 2.1 Services Header
+
 - **Composant** : `PageHeader`
 - **Hiérarchie** :
   - H1 : "Des services qui évoluent avec vous"
@@ -206,6 +218,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Fond avec subtil dégradé ou image d'arrière-plan désaturée
 
 #### 2.2 Solution Présence
+
 - **Composant** : `ServiceCard` variant="featured"
 - **Hiérarchie** :
   - H2 : "Solution Présence : Autonomie Numérique Simplifiée"
@@ -236,6 +249,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Distinction visuelle entre résultats et inclusions
 
 #### 2.3 Solution Intégrée
+
 - **Composant** : `ServiceCard` variant="standard"
 - **Hiérarchie** :
   - H2 : "Solution Intégrée : Unification & Fluidité"
@@ -263,6 +277,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Même structure de données pour faciliter la comparaison
 
 #### 2.4 Solution Évolutive
+
 - **Composant** : `ServiceCard` variant="premium"
 - **Hiérarchie** :
   - H2 : "Solution Évolutive : Croissance Sans Contrainte"
@@ -290,6 +305,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Identique en structure aux autres services pour faciliter comparaison
 
 #### 2.5 Mes différenciateurs
+
 - **Composant** : `FeatureGrid`
 - **Hiérarchie** :
   - H2 : "Comment je travaille différemment des autres développeurs"
@@ -308,6 +324,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Style cohérent avec l'identité visuelle
 
 #### 2.6 Garanties concrètes
+
 - **Composant** : `GuaranteesSection`
 - **Hiérarchie** :
   - H2 : "Garanties concrètes"
@@ -328,6 +345,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Style visuel distinct (encadré, fond différent)
 
 #### 2.7 Options de financement
+
 - **Composant** : `FinancingOptions`
 - **Hiérarchie** :
   - H2 : "Options de financement"
@@ -343,6 +361,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Icônes financières appropriées
 
 #### 2.8 Diagnostic Numérique
+
 - **Composant** : `DiagnosticCTA`
 - **Hiérarchie** :
   - H2 : "Votre premier pas : Diagnostic Numérique Personnalisé (Offert)"
@@ -359,6 +378,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 ## 3. Page Contact
 
 ### Structure globale
+
 - **Rôle** : Faciliter la prise de contact et initier la conversation
 - **URL** : `/contact`
 - **Balise title** : "Contact | IrimWebForge - Discutons de vos aspirations digitales"
@@ -367,6 +387,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 ### Sections (dans l'ordre)
 
 #### 3.1 Contact Header
+
 - **Composant** : `PageHeader` variant="small"
 - **Hiérarchie** :
   - H1 : "Discutons de vos aspirations digitales"
@@ -381,6 +402,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Style épuré pour mettre en avant le formulaire
 
 #### 3.2 Structure Contact
+
 - **Composant** : `TwoColumnLayout`
 - **Hiérarchie** :
   - Formulaire à gauche
@@ -394,6 +416,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Assurer la lisibilité sur tous les appareils
 
 #### 3.3 Formulaire conversationnel
+
 - **Composant** : `ConversationForm`
 - **Hiérarchie** :
   - H2 : "Réservez votre diagnostic numérique personnalisé"
@@ -418,6 +441,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Messages d'erreur clairs
 
 #### 3.4 Informations de contact
+
 - **Composant** : `ContactInfo`
 - **Hiérarchie** :
   - H2 : "Informations directes"
@@ -432,6 +456,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Liens cliquables (mailto, tel)
 
 #### 3.5 Processus après contact
+
 - **Composant** : `ProcessSteps`
 - **Hiérarchie** :
   - H2 : "Et ensuite?"
@@ -451,6 +476,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 ## 4. Page Projets
 
 ### Structure globale
+
 - **Rôle** : Présenter les projets réalisés avec accent sur les transformations
 - **URL** : `/projets`
 - **Balise title** : "Projets | IrimWebForge - Des transformations concrètes"
@@ -459,6 +485,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 ### Sections (dans l'ordre)
 
 #### 4.1 Projects Header
+
 - **Composant** : `PageHeader`
 - **Hiérarchie** :
   - H1 : "Des transformations concrètes plutôt que des prouesses techniques"
@@ -473,6 +500,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Fond avec subtil dégradé ou image d'arrière-plan
 
 #### 4.2 Filtres de projets
+
 - **Composant** : `ProjectsFilter`
 - **Hiérarchie** :
   - Pas de titre visible (rôle fonctionnel)
@@ -494,6 +522,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Accessibilité (rôle, aria-current, etc.)
 
 #### 4.3 Grille de projets
+
 - **Composant** : `ProjectsGrid`
 - **Hiérarchie** :
   - Pas de titre visible (contenu principal)
@@ -520,6 +549,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Focus sur les transformations, pas sur les technologies
 
 #### 4.4 Matrice de transformation
+
 - **Composant** : `TransformationMatrix`
 - **Hiérarchie** :
   - H2 : "Impact mesurable sur votre activité"
@@ -536,6 +566,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Inclure une légende claire
 
 #### 4.5 Call-to-action final
+
 - **Composant** : `CTASection`
 - **Hiérarchie** :
   - H2 : "Votre projet pourrait être le prochain"
@@ -551,6 +582,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 ## Notes générales d'implémentation
 
 ### Hiérarchie typographique
+
 - **H1** : `text-4xl md:text-5xl lg:text-6xl font-bold italic text-secondary`
 - **H2** : `text-3xl md:text-4xl font-bold italic text-secondary`
 - **H3** : `text-2xl md:text-3xl font-bold text-secondary`
@@ -559,6 +591,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 - **Paragraphes standards** : `text-base text-gray-600`
 
 ### Système de couleurs
+
 - **Primaire** (Turquoise) : `#00A0A0` - Éléments interactifs, accentuation
 - **Secondaire** (Bleu foncé) : `#004466` - Textes d'en-tête, éléments structurants
 - **Tertiaire** (Orange) : `#F06424` - Éléments d'accentuation limités
@@ -567,14 +600,17 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 - **Blanc** : `#FFFFFF` - Fonds et textes inversés
 
 ### Composants globaux
+
 - **Container** : Largeur maximale et marges latérales automatiques
 - **Buttons** : Variantes "primary", "secondary", "outline", "gradient"
 - **NavLink** : Liens avec état actif (dégradé ou soulignement)
 - **Typography** : Composant pour gestion cohérente des textes
 
 ### Effets et animations
+
 - **Effet "shine-effect"** : Animation subtile de brillance sur les boutons dégradés
 - **Hover** : Transition douce
 
 ### Conformité avec le Design System Lab
+
 Toute l'implémentation doit suivre les principes et patterns établis dans le DS-Lab. En cas de divergence entre ce document et le DS-Lab, le DS-Lab fait autorité. Toute modification nécessaire doit d'abord être validée et implémentée dans le DS-Lab avant d'être appliquée au site principal.

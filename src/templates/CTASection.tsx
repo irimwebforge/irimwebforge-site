@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
 import React from 'react';
-import { Typography } from '@/components/atoms/Typography';
-import { Button } from '@/components/atoms/Button';
-import { Container } from '@/components/atoms/Container';
-import { CallToAction } from '@/components/molecules/CallToAction';
+import { Typography } from '../components/atoms/Typography';
+import { Button } from '../components/atoms/Button';
+import { Container } from '../components/atoms/Container';
+import { CallToAction } from '../components/molecules/CallToAction';
 import Image from 'next/image';
 
 // Types pour les actions
@@ -98,7 +98,8 @@ export const CTASection = ({
     light: 'bg-gray-50 dark:bg-gray-900',
     dark: 'bg-gray-900 text-white',
     primary: 'bg-[var(--color-primary-50)] dark:bg-[var(--color-primary-900)]',
-    gradient: 'bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-secondary-500)] text-white',
+    gradient:
+      'bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-secondary-500)] text-white',
     transparent: '',
   };
 
@@ -119,34 +120,32 @@ export const CTASection = ({
   // Rendu pour la variante 'banner'
   if (variant === 'banner') {
     return (
-      <section 
+      <section
         className={`py-12 px-4 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className}`}
       >
         <Container>
-          <div className={`flex flex-col md:flex-row items-center justify-between gap-6 ${alignClasses[align]}`}>
+          <div
+            className={`flex flex-col md:flex-row items-center justify-between gap-6 ${alignClasses[align]}`}
+          >
             <div className="md:w-2/3">
               <Typography as="h2" variant="h2" className="mb-2 font-bold italic">
                 {title}
               </Typography>
-              {description && (
-                <Typography variant="lead">
-                  {description}
-                </Typography>
-              )}
+              {description && <Typography variant="lead">{description}</Typography>}
             </div>
             <div className="md:w-1/3 flex justify-center md:justify-end gap-4">
-              <Button 
-                variant={primaryAction.variant || 'gradient'} 
+              <Button
+                variant={primaryAction.variant || 'gradient'}
                 size={primaryAction.size || 'lg'}
-                onClick={() => window.location.href = primaryAction.url}
+                onClick={() => (window.location.href = primaryAction.url)}
               >
                 {primaryAction.text}
               </Button>
               {secondaryAction && (
-                <Button 
-                  variant={secondaryAction.variant || 'secondary'} 
+                <Button
+                  variant={secondaryAction.variant || 'secondary'}
                   size={secondaryAction.size || 'lg'}
-                  onClick={() => window.location.href = secondaryAction.url}
+                  onClick={() => (window.location.href = secondaryAction.url)}
                 >
                   {secondaryAction.text}
                 </Button>
@@ -161,9 +160,13 @@ export const CTASection = ({
   // Rendu pour la variante 'split' (image + texte)
   if (variant === 'split') {
     return (
-      <section className={`py-16 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className}`}>
+      <section
+        className={`py-16 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className}`}
+      >
         <Container>
-          <div className={`flex flex-col ${imagePosition === 'left' ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8`}>
+          <div
+            className={`flex flex-col ${imagePosition === 'left' ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8`}
+          >
             {/* Image */}
             {imageSrc && (
               <div className="md:w-1/2 relative">
@@ -178,7 +181,7 @@ export const CTASection = ({
                 </div>
               </div>
             )}
-            
+
             {/* Contenu */}
             <div className={`md:w-1/2 ${alignClasses[align]}`}>
               {subtitle && (
@@ -194,7 +197,7 @@ export const CTASection = ({
                   {description}
                 </Typography>
               )}
-              
+
               {/* Témoignage */}
               {testimonial && (
                 <div className="mb-6 p-4 bg-white bg-opacity-10 backdrop-blur-sm rounded-lg">
@@ -202,25 +205,26 @@ export const CTASection = ({
                     &quot;{testimonial.quote}&quot;
                   </Typography>
                   <Typography variant="subtle">
-                    — {testimonial.author}{testimonial.role ? `, ${testimonial.role}` : ''}
+                    — {testimonial.author}
+                    {testimonial.role ? `, ${testimonial.role}` : ''}
                   </Typography>
                 </div>
               )}
-              
+
               <div className="flex flex-wrap gap-4 mt-6 justify-center md:justify-start">
-                <Button 
-                  variant={primaryAction.variant || 'gradient'} 
+                <Button
+                  variant={primaryAction.variant || 'gradient'}
                   size={primaryAction.size || 'lg'}
-                  onClick={() => window.location.href = primaryAction.url}
+                  onClick={() => (window.location.href = primaryAction.url)}
                   className="shine-effect"
                 >
                   {primaryAction.text}
                 </Button>
                 {secondaryAction && (
-                  <Button 
-                    variant={secondaryAction.variant || 'secondary'} 
+                  <Button
+                    variant={secondaryAction.variant || 'secondary'}
                     size={secondaryAction.size || 'lg'}
-                    onClick={() => window.location.href = secondaryAction.url}
+                    onClick={() => (window.location.href = secondaryAction.url)}
                   >
                     {secondaryAction.text}
                   </Button>
@@ -237,24 +241,21 @@ export const CTASection = ({
   if (variant === 'card') {
     // Classe pour la bordure colorée si elle est spécifiée
     const borderClass = borderColor ? `border-2 border-[${borderColor}]` : '';
-    
+
     return (
       <section className={`py-16 ${className}`}>
         <Container>
-          <div className={`max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${borderClass}`}>
+          <div
+            className={`max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${borderClass}`}
+          >
             {/* Image de fond (si fournie) */}
             {imageSrc && imagePosition === 'background' && (
               <div className="relative h-64 w-full">
-                <Image
-                  src={imageSrc}
-                  alt={imageAlt}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
+                <Image src={imageSrc} alt={imageAlt} fill style={{ objectFit: 'cover' }} />
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
               </div>
             )}
-            
+
             <div className="p-8 md:p-12">
               <div className={alignClasses[align]}>
                 {subtitle && (
@@ -270,21 +271,21 @@ export const CTASection = ({
                     {description}
                   </Typography>
                 )}
-                
+
                 <div className="flex flex-wrap gap-4 mt-6 justify-center">
-                  <Button 
-                    variant={primaryAction.variant || 'gradient'} 
+                  <Button
+                    variant={primaryAction.variant || 'gradient'}
                     size={primaryAction.size || 'lg'}
-                    onClick={() => window.location.href = primaryAction.url}
+                    onClick={() => (window.location.href = primaryAction.url)}
                     className="shine-effect"
                   >
                     {primaryAction.text}
                   </Button>
                   {secondaryAction && (
-                    <Button 
-                      variant={secondaryAction.variant || 'secondary'} 
+                    <Button
+                      variant={secondaryAction.variant || 'secondary'}
                       size={secondaryAction.size || 'lg'}
-                      onClick={() => window.location.href = secondaryAction.url}
+                      onClick={() => (window.location.href = secondaryAction.url)}
                     >
                       {secondaryAction.text}
                     </Button>
@@ -302,4 +303,4 @@ export const CTASection = ({
   return null;
 };
 
-export default CTASection; 
+export default CTASection;

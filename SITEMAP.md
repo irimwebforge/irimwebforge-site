@@ -81,24 +81,24 @@ IrimWebForge
 
 ## Routes du site
 
-| Route | Description | Priorité |
-|-------|-------------|----------|
-| `/` | Page d'accueil | CRITIQUE |
-| `/services` | Vue d'ensemble des services | ÉLEVÉE |
-| `/services/sites-web` | Détail services sites web | MOYENNE |
-| `/services/applications` | Détail services applications | MOYENNE |
-| `/services/interfaces-admin` | Détail services interfaces admin | MOYENNE |
-| `/services/forfaits` | Forfaits d'accompagnement | ÉLEVÉE |
-| `/projets` | Liste des projets | ÉLEVÉE |
-| `/projets/[slug]` | Page détaillée d'un projet | ÉLEVÉE |
-| `/processus` | Processus de travail | MOYENNE |
-| `/a-propos` | À propos d'Eric Zuber | MOYENNE |
-| `/contact` | Page de contact | CRITIQUE |
-| `/blog` | Blog et ressources (futur) | BASSE |
-| `/blog/[slug]` | Article de blog individuel | BASSE |
-| `/ressources` | Ressources téléchargeables | BASSE |
-| `/mentions-legales` | Mentions légales | BASSE |
-| `/politique-confidentialite` | Politique de confidentialité | BASSE |
+| Route                        | Description                      | Priorité |
+| ---------------------------- | -------------------------------- | -------- |
+| `/`                          | Page d'accueil                   | CRITIQUE |
+| `/services`                  | Vue d'ensemble des services      | ÉLEVÉE   |
+| `/services/sites-web`        | Détail services sites web        | MOYENNE  |
+| `/services/applications`     | Détail services applications     | MOYENNE  |
+| `/services/interfaces-admin` | Détail services interfaces admin | MOYENNE  |
+| `/services/forfaits`         | Forfaits d'accompagnement        | ÉLEVÉE   |
+| `/projets`                   | Liste des projets                | ÉLEVÉE   |
+| `/projets/[slug]`            | Page détaillée d'un projet       | ÉLEVÉE   |
+| `/processus`                 | Processus de travail             | MOYENNE  |
+| `/a-propos`                  | À propos d'Eric Zuber            | MOYENNE  |
+| `/contact`                   | Page de contact                  | CRITIQUE |
+| `/blog`                      | Blog et ressources (futur)       | BASSE    |
+| `/blog/[slug]`               | Article de blog individuel       | BASSE    |
+| `/ressources`                | Ressources téléchargeables       | BASSE    |
+| `/mentions-legales`          | Mentions légales                 | BASSE    |
+| `/politique-confidentialite` | Politique de confidentialité     | BASSE    |
 
 ## Navigation principale
 
@@ -140,16 +140,19 @@ IrimWebForge
 ## Liens internes stratégiques
 
 1. **Depuis page d'accueil**:
+
    - Hero CTA → Contact (consultation gratuite)
    - Projets mis en avant → Pages projets individuels
    - Services → Page services
    - Témoignage → Projet concerné
 
 2. **Depuis page services**:
+
    - Exemples de réalisations → Projets spécifiques
    - CTA → Contact
 
 3. **Depuis page projets**:
+
    - Étude de cas → Service correspondant
    - CTA → Contact (projet similaire)
 
@@ -159,6 +162,7 @@ IrimWebForge
    - CTA → Contact
 
 Cette architecture est conçue pour:
+
 1. Présenter clairement l'offre de services
 2. Mettre en valeur les projets comme preuves de compétence
 3. Expliquer le processus pour rassurer le prospect
