@@ -29,11 +29,11 @@ export interface FeatureGridProps {
   /** Nombre de colonnes dans la grille */
   columns?: 2 | 3 | 4;
   /** Style visuel des fonctionnalités */
-  variant?: 'card' | 'minimal' | 'bordered';
+  variant?: 'card' | 'ghost' | 'outline';
   /** Espacement entre les éléments */
   gap?: 'small' | 'medium' | 'large';
-  /** Alignement de l'icône */
-  alignIcon?: 'top' | 'center';
+  /** Position de l'icône */
+  alignIcon?: 'left' | 'center' | 'top';
   /** Utiliser des icônes tertiaires par défaut */
   withDefaultTertiaryIcons?: boolean;
 }
@@ -100,7 +100,7 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
               colorClass.bg,
               'rounded-full p-3 flex-shrink-0 flex items-center justify-center',
               colorClass.text,
-              variant === 'minimal' ? 'w-12 h-12' : 'w-14 h-14'
+              variant === 'ghost' ? 'w-12 h-12' : 'w-14 h-14'
             )}
           >
             {feature.icon}
@@ -108,7 +108,7 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
         )}
         <div className={feature.icon ? 'mt-4' : ''}>
           <Typography 
-            variant={variant === 'minimal' ? 'h4' : 'h3'} 
+            variant={variant === 'ghost' ? 'h4' : 'h3'} 
             className={cn('font-bold mb-2', colorClass.text)}
           >
             {feature.title}
@@ -143,13 +143,13 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
           >
             <div className={cn(
               'flex flex-col',
-              iconAlignmentClasses[alignIcon]
+              iconAlignmentClasses[alignIcon as keyof typeof iconAlignmentClasses]
             )}>
               {featureContent}
             </div>
           </Card>
         );
-      case 'bordered':
+      case 'outline':
         return (
           <div 
             key={feature.id} 
@@ -159,19 +159,19 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
           >
             <div className={cn(
               'flex flex-col',
-              iconAlignmentClasses[alignIcon]
+              iconAlignmentClasses[alignIcon as keyof typeof iconAlignmentClasses]
             )}>
               {featureContent}
             </div>
           </div>
         );
-      case 'minimal':
+      case 'ghost':
       default:
         return (
           <div key={feature.id} className="h-full">
             <div className={cn(
               'flex flex-col',
-              iconAlignmentClasses[alignIcon]
+              iconAlignmentClasses[alignIcon as keyof typeof iconAlignmentClasses]
             )}>
               {featureContent}
             </div>
@@ -205,7 +205,7 @@ export interface FeatureSectionProps {
   /** Nombre de colonnes dans la grille */
   columns?: 2 | 3 | 4;
   /** Style visuel des fonctionnalités */
-  variant?: 'card' | 'minimal' | 'bordered';
+  variant?: 'card' | 'ghost' | 'outline';
 }
 
 export const FeatureSection: React.FC<FeatureSectionProps> = ({

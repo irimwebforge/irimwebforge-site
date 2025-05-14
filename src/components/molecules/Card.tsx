@@ -11,7 +11,7 @@ export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 't
   /** Contenu du pied de carte (boutons, liens d'action) */
   footer?: React.ReactNode;
   /** Style visuel de la carte */
-  variant?: 'default' | 'outlined' | 'elevated' | 'accent' | 'highlight';
+  variant?: 'default' | 'outline' | 'elevated' | 'accent' | 'highlight';
   /** Couleur d'accentuation utilisée pour les bordures et éléments visuels */
   color?: 'primary' | 'secondary' | 'tertiary';
   /** Position de l'élément d'accentuation (pour la variante 'accent') */
@@ -46,7 +46,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     // Variant classes
     const variantClasses = {
       default: "border border-color",
-      outlined: "border border-color",
+      outline: "border border-color",
       elevated: "shadow-md",
       accent: "border border-color",
       highlight: "border border-color border-l-4 border-l-[var(--color-tertiary)] bg-amber-50/30"

@@ -23,7 +23,7 @@ export interface StatCardProps {
   /** Classes CSS additionnelles */
   className?: string;
   /** Style visuel de la carte */
-  variant?: 'default' | 'bordered' | 'minimal' | 'accent';
+  variant?: 'default' | 'outline' | 'ghost' | 'accent';
   /** Couleur d'accentuation utilisée */
   color?: 'primary' | 'secondary' | 'tertiary';
   /** Disposition des éléments */
@@ -83,8 +83,8 @@ export const StatCard: React.FC<StatCardProps> = ({
   // Classes pour la variante
   const variantClasses = {
     default: '',
-    bordered: 'border-2',
-    minimal: 'shadow-none border-0',
+    outline: 'border-2',
+    ghost: 'shadow-none border-0',
     accent: `${accentBgClass} border-l-4 ${accentBorderClass}`,
   };
   
@@ -201,7 +201,7 @@ export const StatCard: React.FC<StatCardProps> = ({
   );
   
   // Rendu avec ou sans Card (variante minimale)
-  if (variant === 'minimal') {
+  if (variant === 'ghost') {
     return (
       <div className={className}>
         {content}
@@ -212,7 +212,7 @@ export const StatCard: React.FC<StatCardProps> = ({
   // Rendu avec Card
   return (
     <Card 
-      variant={variant === 'accent' ? 'default' : variant === 'bordered' ? 'outlined' : 'default'}
+      variant={variant === 'accent' ? 'default' : variant === 'outline' ? 'outline' : 'default'}
       padding="none"
       className={cn(
         'overflow-hidden',
@@ -240,7 +240,7 @@ export interface StatGroupProps {
   /** Hauteur égale pour toutes les cartes */
   equalHeight?: boolean;
   /** Style visuel des cartes */
-  variant?: 'default' | 'bordered' | 'minimal' | 'accent';
+  variant?: 'default' | 'outline' | 'ghost' | 'accent';
   /** Disposition des éléments */
   layout?: 'vertical' | 'horizontal';
 }

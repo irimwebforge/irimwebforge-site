@@ -96,78 +96,24 @@ Composant pour afficher des icônes de la bibliothèque Lucide.
 <Icon name="Star" color="var(--color-tertiary)" size={24} />
 ```
 
-## Utilisation de l'effet de brillance
-
-Pour utiliser l'effet de brillance sur un élément, vous pouvez appliquer la classe `shine-effect` :
-
-```jsx
-<Button variant="gradient" className="shine-effect">
-  Bouton avec effet brillance
-</Button>
-
-// Ou sur un autre élément
-<div className="shine-effect relative overflow-hidden">
-  Contenu avec effet brillance au survol
-</div>
-```
-
-## Accentuation avec la couleur tertiaire
-
-La couleur tertiaire (orange) doit être utilisée uniquement pour l'accentuation :
-
-```jsx
-<div className="border-l-4 border-l-[var(--color-tertiary)] bg-amber-50/30 p-4">
-  Élément mis en évidence avec bordure orange
-</div>
-
-// Alternative avec classe utilitaire
-<div className="accent-tertiary bg-amber-50/30 p-4">
-  Élément mis en évidence avec bordure orange
-</div>
-```
-
-## Bonnes pratiques
-
-1. Utilisez le dégradé avec effet brillance uniquement pour les appels à l'action principaux
-2. Limitez l'utilisation de l'orange aux éléments d'accentuation (bordures, badges)
-3. Privilégiez l'italique gras pour les titres principaux (h1, h2)
-4. Maintenez un bon contraste texte/fond
-5. Appliquez l'orange avec parcimonie pour maintenir son impact
-
-## Liste des composants
-
-### 1. Logo
-Un composant adaptable qui affiche le logo IrimWebForge. S'adapte automatiquement au thème clair/sombre.
-- Props: `width`, `height`, `mode` (auto, light, dark), `variant` (standard, banner), `format` (svg, png)
-
-### 2. Typography
-Système typographique cohérent avec différentes variantes pour les titres et textes.
-- Variantes de titres: `h1`, `h2`, `h3`, `h4`
-- Variantes de texte: `p` (paragraphe), `lead` (mise en avant), `small` (texte réduit), `subtle` (subtil)
-- Props: `variant`, `as` (élément HTML), `className`
-
-### 3. Button
-Boutons interactifs avec plusieurs variantes et états.
-- Variantes: `primary`, `secondary`, `tertiary`, `outline`, `ghost`, `link`, `icon`
-- États: `default`, `hover`, `focus`, `disabled`, `loading`
-- Props: `variant`, `size`, `disabled`, `loading`, `icon`, `iconPosition`, `iconOnly`
-
-### 4. Icon
-Wrapper pour les icônes Lucide avec support complet de la bibliothèque d'icônes.
-- Props: `name` (nom de l'icône Lucide), `size`, `color`, `className`
-- Catégories: Navigation, Services, Processus, Communication, Social
-- S'intègre parfaitement avec le composant Button (via `icon` et `iconOnly`)
-
-### 5. Container
-Conteneur responsive pour aligner et centrer le contenu de la page.
-- Props: `children`, `size` (xs, sm, md, lg, xl, full), `className`, `as`
-
 ### 6. Input
 Champs de saisie texte et numériques.
 - Variants: `standard`, `outlined`, `filled`
 - Props: `id`, `value`, `onChange`, `type`, `placeholder`, `disabled`, `error`
 
-### 7. NavLink
+### 7. Select
+Menu déroulant pour sélectionner parmi une liste d'options.
+- Variants: `default`, `primary`, `accent`
+- Props: `options`, `value`, `onChange`, `label`, `error`, `helpText`
+- Utilisation: Formulaires, filtres, paramètres
+
+### 8. Textarea
+Zone de texte multi-ligne pour saisir des contenus plus longs.
+- Variants: `default`, `primary`, `accent`
+- Props: `rows`, `value`, `onChange`, `label`, `error`, `helpText`
+- Utilisation: Formulaires, commentaires, descriptions
+
+### 9. NavLink
 Liens de navigation avec détection automatique de la route active et effet visuel au survol.
 - Props: 
   - `href` - URL cible du lien
@@ -197,15 +143,15 @@ Liens de navigation avec détection automatique de la route active et effet visu
 <NavLink href="/page" icon={<Icon name="ArrowRight" />}>Continuer</NavLink>
 ```
 
-### 8. Divider
+### 10. Divider
 Lignes de séparation visuelles personnalisables.
 - Props: `orientation` (horizontal, vertical), `variant` (solid, dashed, dotted), `color`, `thickness`, `label`, `labelPosition`
 
-### 9. Badge
+### 11. Badge
 Affiche des indicateurs numériques ou des étiquettes en forme de pastilles.
 - Props: `variant`, `size`, `shape`, `isSolid`, `isOutlined`, `dot`, `count`, `maxCount`
 
-### 10. Avatar
+### 12. Avatar
 Représentation visuelle d'un utilisateur ou d'une entité.
 - Props: `src`, `alt`, `size`, `shape`, `name` (pour générer des initiales), `icon`, `status`, `badge`
 

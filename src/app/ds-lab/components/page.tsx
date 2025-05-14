@@ -16,6 +16,8 @@ import { PageHeader } from '@/components/organisms/PageHeader';
 import { FeatureSection } from '@/components/organisms/FeatureSection';
 import { EnhancedContactForm } from '@/components/organisms/EnhancedContactForm';
 import { Input } from '@/components/atoms/Input'; 
+import { Select } from '@/components/atoms/Select';
+import { Textarea } from '@/components/atoms/Textarea';
 import Link from 'next/link';
 import { Icon } from '@/components/atoms/Icon';
 // Import des composants moléculaires pour les exemples
@@ -30,6 +32,7 @@ import { FeatureGrid } from '@/components/molecules/FeatureGrid';
 import { FAQ } from '@/components/molecules/FAQ';
 import { FormField } from '@/components/molecules/FormField';
 import { ProjectPreview } from '@/components/molecules/ProjectPreview';
+import { ConversationForm } from '@/components/molecules/ConversationForm';
 // Import des données de démonstration
 import { 
   BLOG_POSTS, 
@@ -40,7 +43,26 @@ import {
   PRICING_FEATURES, 
   PROJECTS, 
   TAB_ITEMS 
-} from '../mocks/molecules';
+} from '../mocks/mockData.molecules';
+// Import des adaptateurs
+import { adaptProjects } from '@/utils/adapters';
+// Import des templates
+import { ValueProposition } from '@/templates/ValueProposition';
+import { ProjectShowcase } from '@/templates/ProjectShowcase';
+import { ServiceOverview } from '@/templates/ServiceOverview';
+import { CTASection } from '@/templates/CTASection';
+import { TestimonialSection } from '@/templates/TestimonialSection';
+import { StatsShowcase } from '@/templates/StatsShowcase';
+// Import des données mock
+import { mockProjects, mockServices, mockValues, mockStats, mockTestimonials, mockCTAVariants } from '../mocks/mockData.templates';
+// Import des adaptateurs
+import { 
+  adaptValues, 
+  adaptServices, 
+  adaptActions, 
+  adaptStats, 
+  adaptTestimonials 
+} from '@/utils/adapters';
 
 // Types de composants pour l'organisation
 type ComponentCategory = {
@@ -158,6 +180,14 @@ export default function DesignSystemPage() {
                 <Button variant="ghost">Lien textuel →</Button>
               </div>
             </div>
+            
+            <div>
+              <Typography variant="small" className="font-medium mb-2">Boutons lien</Typography>
+              <div className="flex flex-wrap gap-2">
+                <Button variant="primary" href="/ds-lab">Lien interne</Button>
+                <Button variant="outline" href="https://example.com" target="_blank">Lien externe</Button>
+              </div>
+            </div>
           </div>
         </div>
       )
@@ -212,14 +242,104 @@ export default function DesignSystemPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input 
-              label="Variante accent (orange)" 
-              variant="accent" 
+              label="Variante tertiaire (orange)" 
+              variant="tertiary" 
               placeholder="Bordure orange" 
             />
             <Input 
               label="Avec erreur" 
               error="Ce champ est requis" 
               placeholder="Valeur invalide" 
+            />
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'select',
+      title: 'Select',
+      description: 'Menus déroulants avec différentes variantes et états',
+      component: (
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Select 
+              label="Menu déroulant standard" 
+              defaultValue=""
+              options={[
+                { value: "option1", label: "Option 1" },
+                { value: "option2", label: "Option 2" },
+                { value: "option3", label: "Option 3" }
+              ]}
+              helpText="Texte d'aide pour guider l'utilisateur"
+            />
+            <Select 
+              label="Variante primaire" 
+              variant="primary"
+              options={[
+                { value: "option1", label: "Option 1" },
+                { value: "option2", label: "Option 2" },
+                { value: "option3", label: "Option 3" }
+              ]}
+              defaultValue=""
+            />
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Select 
+              label="Variante tertiaire (orange)" 
+              variant="tertiary"
+              options={[
+                { value: "option1", label: "Option 1" },
+                { value: "option2", label: "Option 2" },
+                { value: "option3", label: "Option 3" }
+              ]}
+              defaultValue=""
+            />
+            <Select 
+              label="Avec erreur" 
+              error="Ce champ est requis"
+              options={[
+                { value: "option1", label: "Option 1" },
+                { value: "option2", label: "Option 2" },
+                { value: "option3", label: "Option 3" }
+              ]}
+            />
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'textarea',
+      title: 'Textarea',
+      description: 'Zones de texte multi-lignes avec différentes variantes et états',
+      component: (
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Textarea 
+              label="Zone de texte standard" 
+              placeholder="Saisissez votre message ici" 
+              helpText="Texte d'aide pour guider l'utilisateur"
+            />
+            <Textarea 
+              label="Variante primaire" 
+              variant="primary" 
+              placeholder="Bordure turquoise"
+              rows={3}
+            />
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Textarea 
+              label="Variante tertiaire (orange)" 
+              variant="tertiary" 
+              placeholder="Bordure orange"
+              rows={3}
+            />
+            <Textarea 
+              label="Avec erreur" 
+              error="Ce champ est requis" 
+              placeholder="Message invalide"
+              rows={3}
             />
           </div>
         </div>
@@ -452,7 +572,7 @@ export default function DesignSystemPage() {
           </Card>
           <Card 
             title="Carte avec bordure" 
-            variant="outlined"
+            variant="outline"
           >
             <p>Variante avec bordure</p>
           </Card>
@@ -580,7 +700,7 @@ export default function DesignSystemPage() {
             value="2h"
             subtitle="Temps moyen de réponse support"
             icon={<Icon name="Clock" />}
-            variant="bordered"
+            variant="outline"
             color="secondary"
           />
           <StatCard
@@ -675,7 +795,7 @@ export default function DesignSystemPage() {
             icon: <Icon name={feature.id === 'feature1' ? 'Palette' : feature.id === 'feature2' ? 'Code' : feature.id === 'feature3' ? 'Search' : 'Headphones'} />
           }))}
           columns={2}
-          variant="bordered"
+          variant="outline"
           gap="medium"
         />
       )
@@ -750,6 +870,67 @@ export default function DesignSystemPage() {
               variant={index === 0 ? 'featured' : 'default'}
             />
           ))}
+        </div>
+      )
+    },
+    {
+      id: 'conversation-form',
+      title: 'ConversationForm',
+      description: 'Formulaire de conversation avec champs conditionnels et étapes',
+      component: (
+        <div className="space-y-4">
+          <ConversationForm 
+            title="Parlons de votre projet"
+            subtitle="Quelques informations pour démarrer"
+            fields={[
+              {
+                id: "name",
+                type: "text",
+                label: "Votre nom",
+                placeholder: "Prénom et nom",
+                required: true
+              },
+              {
+                id: "email",
+                type: "email",
+                label: "Adresse e-mail",
+                placeholder: "votre@email.com",
+                required: true
+              },
+              {
+                id: "service",
+                type: "select",
+                label: "Service requis",
+                options: [
+                  { value: "web", label: "Site web" },
+                  { value: "app", label: "Application" },
+                  { value: "design", label: "Design UI/UX" }
+                ],
+                required: true
+              },
+              {
+                id: "budget",
+                type: "select",
+                label: "Budget estimé",
+                options: [
+                  { value: "small", label: "< 5 000 €" },
+                  { value: "medium", label: "5 000 € - 15 000 €" },
+                  { value: "large", label: "> 15 000 €" }
+                ],
+                dependsOn: { field: "service", value: "web" }
+              },
+              {
+                id: "message",
+                type: "textarea",
+                label: "Votre message",
+                placeholder: "Décrivez votre projet...",
+                required: true
+              }
+            ]}
+            submitButtonText="Envoyer ma demande"
+            successMessage="Merci pour votre message ! Nous vous répondrons très rapidement."
+            variant="card"
+          />
         </div>
       )
     }
@@ -975,78 +1156,6 @@ export default function DesignSystemPage() {
     }
   ];
 
-  // Données des templates 
-  const templateComponents: ComponentType[] = [
-    {
-      id: 'project-showcase',
-      title: 'ProjectShowcase',
-      description: 'Template pour présenter les projets réalisés',
-      component: (
-        <Card>
-          <Typography variant="p">
-            Le template ProjectShowcase permet d'afficher une grille de projets avec filtrage par catégories et pagination.
-          </Typography>
-          <div className="mt-3">
-            <Link href="/ds-lab/templates">
-              <Button variant="secondary" size="sm">Voir le template</Button>
-            </Link>
-          </div>
-        </Card>
-      )
-    },
-    {
-      id: 'service-overview',
-      title: 'ServiceOverview',
-      description: 'Template pour présenter les services offerts',
-      component: (
-        <Card>
-          <Typography variant="p">
-            Le template ServiceOverview permet d'afficher les services avec différentes mises en page et options.
-          </Typography>
-          <div className="mt-3">
-            <Link href="/ds-lab/templates">
-              <Button variant="secondary" size="sm">Voir le template</Button>
-            </Link>
-          </div>
-        </Card>
-      )
-    },
-    {
-      id: 'cta-section',
-      title: 'CTASection',
-      description: 'Template pour les appels à l\'action',
-      component: (
-        <Card>
-          <Typography variant="p">
-            Le template CTASection permet de créer des sections d'appel à l'action avec différentes variantes.
-          </Typography>
-          <div className="mt-3">
-            <Link href="/ds-lab/templates">
-              <Button variant="secondary" size="sm">Voir le template</Button>
-            </Link>
-          </div>
-        </Card>
-      )
-    },
-    {
-      id: 'value-proposition',
-      title: 'ValueProposition',
-      description: 'Template pour présenter les valeurs et avantages',
-      component: (
-        <Card>
-          <Typography variant="p">
-            Le template ValueProposition permet d'afficher les valeurs, statistiques et témoignages.
-          </Typography>
-          <div className="mt-3">
-            <Link href="/ds-lab/templates">
-              <Button variant="secondary" size="sm">Voir le template</Button>
-            </Link>
-          </div>
-        </Card>
-      )
-    }
-  ];
-
   // Organisation des catégories
   const categories: ComponentCategory[] = [
     {
@@ -1063,11 +1172,6 @@ export default function DesignSystemPage() {
       id: 'organisms',
       title: 'Composants organismes',
       components: organismComponents
-    },
-    {
-      id: 'templates',
-      title: 'Templates',
-      components: templateComponents
     }
   ];
 
@@ -1122,7 +1226,7 @@ export default function DesignSystemPage() {
 
       {/* Navigation par onglets */}
       <div className="mb-8">
-        <div className="flex overflow-x-auto pb-2 gap-2">
+        <div className="flex justify-center overflow-x-auto pb-2 gap-2">
           {categoryTabs.map(tab => (
             <Button 
               key={tab.id}
@@ -1141,10 +1245,10 @@ export default function DesignSystemPage() {
 
 
       {/* Lien retour */}
-      <div className="mt-16 text-center">
-        <Link href="/ds-lab" className="text-primary hover:underline inline-flex items-center gap-2">
-          <Icon name="ArrowLeft" size={16} />
-          Retour au Design System Lab
+      <div className="text-center mt-12">
+        <Link href="/ds-lab" className="inline-flex items-center text-primary hover:text-primary/80 border-b-2 border-[var(--color-tertiary)]">
+          <Icon name="ArrowLeft" size={16} className="mr-2" />
+          Retour au DS Lab
         </Link>
       </div>
     </div>

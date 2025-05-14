@@ -6,7 +6,6 @@ import { Typography } from '@/components/atoms/Typography';
 import { Card } from '@/components/molecules/Card';
 import { Logo } from '@/components/atoms/Logo';
 import { Icon, type IconName } from '@/components/atoms/Icon';
-import { Badge } from '@/components/atoms/Badge';
 import { Button } from '@/components/atoms/Button';
 
 interface PageItem {
@@ -14,8 +13,7 @@ interface PageItem {
   description: string;
   href: string;
   iconName: IconName;
-  badge?: string;
-  variant: 'default' | 'outlined' | 'elevated' | 'accent' | 'highlight';
+  variant: 'default' | 'outlined' | 'elevated' | 'accent';
 }
 
 const pages: PageItem[] = [
@@ -27,39 +25,24 @@ const pages: PageItem[] = [
     variant: 'default'
   },
   {
-    title: 'Icônes',
-    description: 'Bibliothèque Lucide Icons intégrée au design system',
-    href: '/ds-lab/icons',
-    iconName: 'Sparkles',
-    variant: 'default'
-  },
-  {
     title: 'Atomic Design',
     description: 'Bibliothèque de composants atomiques, moléculaires et organismes',
     href: '/ds-lab/components',
-    iconName: 'Layout',
+    iconName: 'Atom',
     variant: 'default'
   },
   {
     title: 'Templates',
-    description: 'Démonstration des templates avec données mock',
+    description: 'Modèles de pages et sections réutilisables',
     href: '/ds-lab/templates',
     iconName: 'FileText',
     variant: 'default'
   },
   {
-    title: 'Couleur Tertiaire',
-    description: 'Utilisation de l\'orange comme élément d\'accentuation et de contraste',
-    href: '/ds-lab/color-tertiary',
-    iconName: 'Square',
-    badge: 'Nouveau',
-    variant: 'highlight'
-  },
-  {
-    title: 'Mocks',
-    description: 'Données factices utilisées dans les démonstrations',
-    href: '/ds-lab/mocks',
-    iconName: 'BarChart2',
+    title: 'Icônes',
+    description: 'Bibliothèque Lucide Icons intégrée au design system',
+    href: '/ds-lab/icons',
+    iconName: 'Sparkles',
     variant: 'default'
   }
 ];
@@ -80,21 +63,6 @@ export default function DSLabHomePage() {
           Environnement de développement et de test pour le design system IrimWebForge
         </Typography>
         
-        <div className="mt-6 text-center">
-          <Button 
-            variant="gradient" 
-            className="shine-effect"
-            icon={<Icon name="Sparkles" />}
-            aria-label="Explorer le Design System"
-          >
-            Explorer le Design System
-          </Button>
-        </div>
-        
-        <div className="mt-4 py-1 px-3 text-xs text-center bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full flex items-center gap-1.5">
-          <Icon name="AlertTriangle" size={12} />
-          Environnement de développement uniquement
-        </div>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -110,9 +78,8 @@ export default function DSLabHomePage() {
             onBlur={() => setHoveredCardIndex(null)}
           >
             <Card 
-              variant={page.variant} 
+              variant={page.variant === 'outlined' ? 'outline' : page.variant}
               className="h-full transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-md"
-              color={page.variant === "highlight" ? "tertiary" : "primary"}
             >
               <div className="flex items-start p-4">
                 <div className="text-3xl mr-4 flex items-center">
@@ -125,16 +92,9 @@ export default function DSLabHomePage() {
                   />
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center justify-between mb-2">
-                    <Typography as="h2" variant="h4">
-                      {page.title}
-                    </Typography>
-                    {page.badge && (
-                      <Badge variant="tertiary" size="small" className="animate-pulse-slow">
-                        {page.badge}
-                      </Badge>
-                    )}
-                  </div>
+                  <Typography as="h2" variant="h4" className="mb-2">
+                    {page.title}
+                  </Typography>
                   <Typography variant="p" className="text-secondary">
                     {page.description}
                   </Typography>

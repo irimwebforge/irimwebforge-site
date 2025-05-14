@@ -1,15 +1,15 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   error?: string;
   helpText?: string;
   variant?: 'default' | 'primary' | 'tertiary';
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type = 'text', label, error, helpText, variant = 'default', ...props }, ref) => {
+const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ className, label, error, helpText, variant = 'default', rows = 4, ...props }, ref) => {
     // Classes de style pour les différentes variantes
     const variantClasses = {
       default: "focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]",
@@ -24,10 +24,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {label}
           </label>
         )}
-        <input
-          type={type}
+        <textarea
+          rows={rows}
           className={cn(
-            `w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2`,
+            `w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 resize-y`,
             error ? 'border-red-500 focus:ring-red-500' : `border-color ${variantClasses[variant]}`,
             className
           )}
@@ -48,6 +48,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
-Input.displayName = "Input";
+Textarea.displayName = "Textarea";
 
-export { Input };
+export { Textarea }; 

@@ -1,4 +1,38 @@
-// Mock data pour les templates
+// mockData.templates.ts
+/**
+ * Données mockées pour les templates (composants de plus haut niveau)
+ * Utilisé dans :
+ * - ProjectShowcase
+ * - ServiceOverview
+ * - ValueProposition
+ * - StatsShowcase
+ * - TestimonialSection
+ * - CTASection
+ * 
+ * IMPORTANT: Ces données brutes ne doivent pas être utilisées directement dans les templates.
+ * Utilisez toujours les adaptateurs appropriés pour transformer ces données en props compatibles :
+ * 
+ * import { mockProjects } from '@/app/ds-lab/mocks/mockData.templates';
+ * import { projectAdapter } from '@/utils/adapters';
+ * 
+ * // Transformation des données brutes en props pour le template
+ * const projectProps = projectAdapter(mockProjects);
+ * 
+ * // Avec configuration personnalisée
+ * const customProjectProps = projectAdapter(mockProjects, {
+ *   withCta: true,
+ *   ctaText: "Voir tous les projets",
+ *   ctaUrl: "/projets"
+ * });
+ * 
+ * Adaptateurs disponibles:
+ * - projectAdapter: pour ProjectShowcase
+ * - serviceAdapter: pour ServiceOverview
+ * - valueAdapter: pour ValueProposition
+ * - statsAdapter: pour StatsShowcase
+ * - testimonialAdapter: pour TestimonialSection
+ * - ctaAdapter: pour CTASection
+ */
 
 // Types - Définis localement pour éviter les erreurs d'import
 type Tag = {

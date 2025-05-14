@@ -157,17 +157,18 @@ Grille de fonctionnalités avec icônes pour présenter les avantages du service
 8. **ProcessTimeline** - Visualisation des étapes d'un processus ou d'un parcours client avec indicateurs d'étapes, jalons et descriptions. Supporte les orientations verticale et horizontale.
 9. **FormField** - Champ de formulaire avancé combinant label, input, validation et messages d'aide. Centralise la gestion des états des formulaires et des retours utilisateur.
 10. **ContactForm** - Formulaire de contact complet avec validation, reCAPTCHA et messages de succès/erreur. Inclut des champs configurables et une gestion des soumissions.
-11. **BlogPostCard** - Carte pour présenter un article de blog avec image mise en avant, date, auteur, catégories et résumé. Inclut des éléments de métadonnées et temps de lecture.
-12. **LightBox** - Visionneuse d'images en plein écran avec navigation, zoom, légendes et contrôles. Supporte les galeries d'images et la navigation tactile.
-13. **Carousel** - Diaporama interactif pour présenter du contenu séquentiel avec contrôles de navigation, pagination et différentes transitions. Supporte l'autoplay et les interactions tactiles.
-14. **Modal** - Fenêtre de dialogue modale avec gestion d'ouverture/fermeture, focus piégé et animations. Inclut des variantes pour différents types de dialogues (alerte, confirmation, formulaire).
-15. **Pagination** - Contrôles de navigation paginée avec indicateurs de page actuelle, boutons précédent/suivant et accès direct aux pages. S'adapte automatiquement au nombre total de pages.
-16. **ComparativeTable** - Tableau comparatif pour présenter différentes options ou forfaits côte à côte. Inclut la mise en évidence des différences et des avantages de chaque option.
-17. **TechnologyStack** - Présentation visuelle des technologies, frameworks et outils utilisés avec logos, descriptions et niveaux d'expertise. Organisation par catégories.
-18. **StatCard** - Carte pour présenter des métriques, statistiques et indicateurs clés avec visualisations, tendances et comparaisons. Supporte différents formats de données.
-19. **ServiceHighlight** - Mise en valeur visuelle d'un service spécifique avec icône, titre, description et appel à l'action. Utilisé pour attirer l'attention sur des services phares.
-20. **ProjectPreview** - Aperçu de projet ou étude de cas avec image, titre, description courte et lien vers le projet complet. Inclut des indicateurs de technologies utilisées.
-21. **Step** - Représentation visuelle d'une étape individuelle dans un processus, avec numéro, titre, description et indicateur de statut. Peut être utilisé seul ou au sein d'un ProcessTimeline.
+11. **ConversationForm** - Formulaire conversationnel par étapes qui guide l'utilisateur à travers une série de questions. Inclut une gestion de progression, des dépendances entre questions et différentes variantes d'affichage.
+12. **BlogPostCard** - Carte pour présenter un article de blog avec image mise en avant, date, auteur, catégories et résumé. Inclut des éléments de métadonnées et temps de lecture.
+13. **LightBox** - Visionneuse d'images en plein écran avec navigation, zoom, légendes et contrôles. Supporte les galeries d'images et la navigation tactile.
+14. **Carousel** - Diaporama interactif pour présenter du contenu séquentiel avec contrôles de navigation, pagination et différentes transitions. Supporte l'autoplay et les interactions tactiles.
+15. **Modal** - Fenêtre de dialogue modale avec gestion d'ouverture/fermeture, focus piégé et animations. Inclut des variantes pour différents types de dialogues (alerte, confirmation, formulaire).
+16. **Pagination** - Contrôles de navigation paginée avec indicateurs de page actuelle, boutons précédent/suivant et accès direct aux pages. S'adapte automatiquement au nombre total de pages.
+17. **ComparativeTable** - Tableau comparatif pour présenter différentes options ou forfaits côte à côte. Inclut la mise en évidence des différences et des avantages de chaque option.
+18. **TechnologyStack** - Présentation visuelle des technologies, frameworks et outils utilisés avec logos, descriptions et niveaux d'expertise. Organisation par catégories.
+19. **StatCard** - Carte pour présenter des métriques, statistiques et indicateurs clés avec visualisations, tendances et comparaisons. Supporte différents formats de données.
+20. **ServiceHighlight** - Mise en valeur visuelle d'un service spécifique avec icône, titre, description et appel à l'action. Utilisé pour attirer l'attention sur des services phares.
+21. **ProjectPreview** - Aperçu de projet ou étude de cas avec image, titre, description courte et lien vers le projet complet. Inclut des indicateurs de technologies utilisées.
+22. **Step** - Représentation visuelle d'une étape individuelle dans un processus, avec numéro, titre, description et indicateur de statut. Peut être utilisé seul ou au sein d'un ProcessTimeline.
 
 ## Utilisation avec les composants atomiques
 

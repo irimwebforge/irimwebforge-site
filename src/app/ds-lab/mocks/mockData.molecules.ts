@@ -1,3 +1,28 @@
+// mockData.molecules.ts
+/**
+ * Données mockées pour les composants moléculaires
+ * Utilisé dans :
+ * - BlogPostCard
+ * - ComparativeTable
+ * - FAQ
+ * - FeatureGrid
+ * - PricingPlan
+ * - ProjectPreview
+ * - Tabs
+ * 
+ * NOTE: Contrairement aux templates qui nécessitent des adaptateurs,
+ * ces données peuvent être utilisées directement dans les composants moléculaires
+ * car elles correspondent déjà à la structure attendue par ces composants.
+ * 
+ * Exemple d'utilisation:
+ * 
+ * import { FEATURES } from '@/app/ds-lab/mocks/mockData.molecules';
+ * import { FeatureGrid } from '@/components/molecules/FeatureGrid';
+ * 
+ * // Utilisation directe des données mockées
+ * <FeatureGrid features={FEATURES} />
+ */
+
 import { BlogTag } from '@/components/molecules/BlogPostCard';
 import { ComparisonColumn, ComparisonRow } from '@/components/molecules/ComparativeTable';
 import { FAQItem } from '@/components/molecules/FAQ';

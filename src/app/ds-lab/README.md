@@ -11,6 +11,15 @@ L'objectif du DS-Lab est de :
 - Assurer la cohérence visuelle et fonctionnelle de l'interface utilisateur
 - Faciliter l'adoption des standards du design system par toute l'équipe
 
+## 💫 Source de Vérité
+
+Le DS-Lab est établi comme la source de vérité unique pour le design system d'IrimWebForge. Cela signifie que :
+- Tous les composants doivent être développés et testés ici en premier
+- Les données mockées dans `/mocks` servent de référence pour l'implémentation
+- Les templates `/templates` et `/color-tertiary` sont des exemples validés d'implémentation
+- Toute modification du design system doit être d'abord reflétée dans le DS-Lab
+- La documentation dans ce dossier fait autorité sur les autres sources
+
 ## 📁 Structure du dossier
 
 ```
@@ -89,3 +98,65 @@ Pour contribuer au DS-Lab :
 ---
 
 © IrimWebForge - Documentation interne
+
+# Design System Lab - Structure
+
+## Hiérarchie Atomic Design
+
+### 1. Atoms (`/components/atoms`)
+- Composants de base indivisibles
+- Exemples : Button, Typography, Icon
+- Pas de dépendance à d'autres composants
+
+### 2. Molecules (`/components/molecules`)
+- Combinaisons d'atomes
+- Exemples : Card, Navigation, Form fields
+- Fonctionnalité unique et réutilisable
+
+### 3. Organisms (`/components/organisms`)
+- Assemblages de molécules et atomes
+- Exemples : Header, Footer, Feature sections
+- Sections complètes mais génériques
+
+### 4. Templates (`/components/templates`)
+- Assemblages d'organismes
+- Pas de duplication de logique
+- Utilisation des adaptateurs pour les données
+
+## Gestion des données mock
+
+### Source unique
+- Toutes les données mock dans `/ds-lab/mocks`
+- Pas de duplication des données
+- Utilisation des adaptateurs pour la transformation
+
+### Structure des mocks
+```
+mocks/
+├── data.ts      # Données de base
+├── molecules.ts # Données pour molécules
+└── pages/       # Données pour pages complètes
+```
+
+## Développement progressif
+
+1. **Étape 1** : Variantes des composants existants
+   - Utiliser les adaptateurs existants
+   - Documenter les nouvelles variantes
+
+2. **Étape 2** : Pages complètes
+   - Assembler les composants existants
+   - Réutiliser les adaptateurs
+   - Éviter la duplication
+
+3. **Étape 3** : Documentation
+   - Cas d'utilisation
+   - Options et variantes
+   - Exemples côte à côte
+
+## Validation
+
+- [ ] Pas de duplication de logique
+- [ ] Utilisation correcte des adaptateurs
+- [ ] Documentation à jour
+- [ ] Tests pour les nouvelles variantes

@@ -1,8 +1,9 @@
 'use client';
 
+'use client';
+
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-
 interface LogoProps {
   className?: string;
   width?: number;
@@ -13,11 +14,9 @@ interface LogoProps {
   onClick?: () => void;
   priority?: boolean;
 }
-
 export const Logo = ({
   className = '',
   width = 150,
-  height = 50,
   format = 'svg',
   variant = 'logo',
   mode = 'auto',
@@ -67,31 +66,28 @@ export const Logo = ({
   }
 
   // Assurez-vous que les dimensions sont appropriées pour le variant
-  const finalWidth = width || 200;
-  const finalHeight = variant === 'banner' ? Math.round(finalWidth * 0.3) : Math.round(finalWidth * 0.3);
+  const finalWidth = width;
+  const finalHeight = Math.round(width * 0.3);
 
   return (
-    <div 
-      className={`logo-container ${className}`} 
+    <div
+      className={`relative logo-container ${className}`}
       onClick={onClick}
-      style={{ 
-        width: finalWidth ? `${finalWidth}px` : 'auto',
+      style={{
+        // tu peux aussi utiliser Tailwind : className="relative w-[150px] h-[45px]"
+        width: `${finalWidth}px`,
+        height: `${finalHeight}px`,
         maxWidth: '100%',
       }}
     >
       <Image
         src={logoPath}
         alt="IRIM Webforge"
-        width={finalWidth}
-        height={finalHeight}
+        fill
+        style={{ objectFit: 'contain' }}
         quality={90}
         priority={priority}
-        className="logo-image"
-        style={{ 
-          maxWidth: '100%',
-          height: 'auto'
-        }}
       />
     </div>
   );
-}; 
+};

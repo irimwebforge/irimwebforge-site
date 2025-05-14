@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Icon } from '@/components/atoms/Icon';
 import { cn } from '@/lib/utils';
@@ -33,17 +34,24 @@ const buttonVariants = cva(
   }
 );
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+// Props de base pour le bouton
+type ButtonBaseProps = {
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
   iconOnly?: boolean;
   loading?: boolean;
-}
+  href?: string;
+} & VariantProps<typeof buttonVariants>;
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, fullWidth, icon, iconPosition = 'left', iconOnly, loading, children, ...props }, ref) => {
+// Union type pour permettre soit les props de button soit les props de lien
+export type ButtonProps = ButtonBaseProps & 
+  (
+    | React.ButtonHTMLAttributes<HTMLButtonElement>
+    | (Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>)
+  );
+
+const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+  ({ className, variant, size, fullWidth, icon, iconPosition = 'left', iconOnly, loading, href, children, ...props }, ref) => {
     // Utiliser la variante 'icon' automatiquement si iconOnly est true
     const computedVariant = iconOnly ? 'icon' : variant;
     // Classe conditionnelle pour le bouton d'icône seulement
@@ -53,17 +61,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       iconOnly && size === 'lg' ? 'p-3' : ''
     );
 
-    return (
-      <button
-        className={buttonVariants({ 
-          variant: computedVariant, 
-          size: iconOnly ? undefined : size, 
-          fullWidth: iconOnly ? false : fullWidth, 
-          className: iconButtonClass 
-        })}
-        ref={ref}
-        {...props}
-      >
+    const buttonClasses = buttonVariants({ 
+      variant: computedVariant, 
+      size: iconOnly ? undefined : size, 
+      fullWidth: iconOnly ? false : fullWidth, 
+      className: iconButtonClass 
+    });
+
+    // Contenu du bouton (pour éviter la duplication)
+    const content = (
+      <>
         {loading ? (
           <Icon name="Loader2" className="animate-spin mr-2" />
         ) : icon && iconPosition === 'left' && !iconOnly ? (
@@ -79,6 +86,31 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ) : iconOnly ? (
           icon
         ) : null}
+      </>
+    );
+
+    // Si href est fourni, rendre un lien Next.js
+    if (href) {
+      return (
+        <Link 
+          href={href} 
+          className={buttonClasses}
+          ref={ref as React.Ref<HTMLAnchorElement>}
+          {...props as React.AnchorHTMLAttributes<HTMLAnchorElement>}
+        >
+          {content}
+        </Link>
+      );
+    }
+
+    // Sinon, rendre un bouton normal
+    return (
+      <button
+        className={buttonClasses}
+        ref={ref as React.Ref<HTMLButtonElement>}
+        {...props as React.ButtonHTMLAttributes<HTMLButtonElement>}
+      >
+        {content}
       </button>
     );
   }
