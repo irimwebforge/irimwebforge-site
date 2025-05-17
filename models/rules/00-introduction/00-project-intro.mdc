@@ -1,0 +1,50 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: "Project overview for Vocalis: mobile language learning app through audio discussions"
+alwaysApply: true
+---
+
+# Project Context
+Backend of Vocalis. 
+
+Vocalis is a mobile language-learning application focused exclusively on listening and speaking.  
+The goal is to enable real-time practice by connecting users in audio “rooms” where they can converse and improve their oral comprehension and expression.
+
+# Key Features
+1. **Authentication**  
+   - Account creation & login
+
+2. **Public Room Management**  
+   - Create a room by specifying:  
+     - Title and description
+     - Spoken languages  
+     - Mood (tone/ambiance)  
+     - Levels of profiency
+
+3. **Browse & Filter**  
+   - View a list of all public rooms  
+   - Filter by language, mood and levels of profiency
+
+4. **Room Participation**  
+   - Roles within each room:  
+     - **Admin**: room creator; manages permissions and has the same permission like Talkers  
+     - **Talkers**: can speak and listen  
+     - **Spectators**: can only listen  
+   - Spectators request “talker” permission; only the admin can approve or reject  
+   - Admin can promote or demote talkers at any time
+
+5. **User Profile**  
+   - “My Account” page: personal info
+
+# Main Tech Stacks
+- NodeJS with NestJS
+- Docker
+- Typeorm
+- MySQL
+- Socket.io
+- Livekit for WebRTC
+- Hexagonal Architecture

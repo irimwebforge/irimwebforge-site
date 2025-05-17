@@ -1,0 +1,139 @@
+---
+description: How to integrate API call
+globs: 
+alwaysApply: false
+---
+---
+description: "How to integrate API call"
+alwaysApply: true
+---
+
+### 5.2 API Gateway Pattern with RTK Query
+For any REST API integration, follow these steps:
+
+1. **Define RTK Query Endpoints** (`rtk-{feature}.gateway.ts`):
+   - Create endpoints using RTK Query
+   - Define response and request types
+   - Set up caching with provideTags/invalidateTags
+
+```typescript
+// Example: rtk-feature.gateway.ts
+import { FeatureResponse } from '../interfaces/feature.interface';
+import apiStore from '@shared/store/api-store';
+
+export const rtkFeatureGateway = apiStore.injectEndpoints({
+    endpoints: (build) => ({
+        getFeature: build.query<FeatureResponse, RequestParams>({
+            query: (params) => ({
+                url: '/feature-path',
+                method: 'GET',
+                params,
+            }),
+            providesTags: ['FeatureTag'],
+        }),
+        updateFeature: build.mutation<Response, Request>({
+            query: (data) => ({
+                url: '/feature-path',
+                method: 'POST',
+                body: data,
+            }),
+            invalidatesTags: ['FeatureTag'],
+        }),
+    }),
+});
+
+export const {
+    getFeature: getFeatureEndpoint,
+    updateFeature: updateFeatureEndpoint,
+} = rtkFeatureGateway.endpoints;
+```
+
+2. **Create API Client** (`rtk-{feature}-api-client.gateway.ts`):
+   - Implements API client interface
+   - Uses RTK Query endpoints
+   - Handles store dispatch and unwrapping
+
+```typescript
+// Example: rtk-feature-api-client.gateway.ts
+import { IFeatureApiClient } from '@module-feature/ports/feature-api-client.interface';
+import { store } from '@shared/store/store';
+import { getFeatureEndpoint } from './rtk-feature.gateway';
+
+export class RtkFeatureApiClientGateway implements IFeatureApiClient {
+    async getFeature(params: Params): Promise<Response> {
+        return await store
+            .dispatch(getFeatureEndpoint.initiate(params))
+            .unwrap();
+    }
+}
+```
+
+3. **Define API Client Interface** (`feature-api-client.interface.ts`):
+   - Define contract for API operations
+   - Use domain types for parameters and responses
+
+```typescript
+// Example: feature-api-client.interface.ts
+export interface IFeatureApiClient {
+    getFeature(params: Params): Promise<Response>;
+    updateFeature(data: Request): Promise<Response>;
+}
+```
+
+4. **Create Repository** (`feature.repository.ts`):
+   - Implements repository interface
+   - Uses API client through dependency injection
+   - Maps between API and domain types
+
+```typescript
+// Example: feature.repository.ts
+export class FeatureRepository implements IFeatureRepository {
+    constructor(
+        private readonly apiClient: IFeatureApiClient,
+        private readonly mapper: IFeatureMapper,
+    ) {}
+
+    async getFeature(params: DomainParams): Promise<DomainResponse> {
+        const response = await this.apiClient.getFeature(params);
+        return this.mapper.toDomain(response);
+    }
+}
+```
+
+5. **Register Dependencies** (`dependencies.tsx`):
+   - Create instances in the correct order
+   - Follow dependency injection pattern
+   - Group related dependencies together
+
+```typescript
+// Example: dependencies.tsx
+// Feature Dependencies
+const featureApiClient = new RtkFeatureApiClientGateway();
+const featureMapper = new FeatureMapper();
+const featureRepository = new FeatureRepository(
+    featureApiClient,
+    featureMapper,
+);
+const featureUseCase = new FeatureUseCase(featureRepository);
+```
+
+### Best Practices
+1. **Type Safety**
+   - Define explicit types for all API responses and requests
+   - Use interfaces in the ports layer
+   - Avoid using `any` or ignoring TypeScript errors
+
+2. **Error Handling**
+   - Handle API errors at the repository level
+   - Transform API errors to domain errors
+   - Use custom error types for better error handling
+
+3. **Caching Strategy**
+   - Use RTK Query tags for cache invalidation
+   - Group related endpoints under the same tags
+   - Consider cache lifetime for different types of data
+
+4. **Testing**
+   - Mock API client in repository tests
+   - Test error cases and edge conditions
+   - Verify mapping between API and domain types

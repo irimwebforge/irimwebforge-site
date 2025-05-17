@@ -12,14 +12,14 @@ export function Header() {
   const _pathname = usePathname();
 
   return (
-    <header className="py-4 border-b border-color surface-primary">
+    <header className="py-4 border-b border-color surface-primary" role="banner">
       <div className="mx-auto px-4 sm:px-6 max-w-6xl">
         <div className="flex justify-between items-center">
           <Link href="/">
             <Logo width={120} height={40} />
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-6" role="navigation">
             <NavLink href="/" exact color="primary" useGradient>
               Accueil
             </NavLink>
@@ -33,7 +33,7 @@ export function Header() {
               À propos
             </NavLink>
             <Button variant="gradient" size="sm" className="shine-effect">
-              Contact
+              Discuttons de votre projet
             </Button>
           </nav>
 
@@ -61,7 +61,7 @@ export function Header() {
 
         {isMobileMenuOpen && (
           <div className="mt-4 py-4 border-t md:hidden">
-            <nav className="flex flex-col space-y-4">
+            <nav className="flex flex-col space-y-4" role="navigation">
               <NavLink href="/" exact color="primary" useGradient>
                 Accueil
               </NavLink>
@@ -75,7 +75,7 @@ export function Header() {
                 À propos
               </NavLink>
               <Button variant="gradient" fullWidth className="shine-effect">
-                Contact
+                Discuttons de votre projet
               </Button>
             </nav>
           </div>

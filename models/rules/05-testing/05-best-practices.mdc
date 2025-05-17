@@ -1,0 +1,262 @@
+---
+description: 
+globs: *.spec.ts,*.e2e-spec.ts
+alwaysApply: false
+---
+---
+name: "Vocalis Testing Standards"
+description: "Comprehensive testing standards for the Vocalis backend application"
+globs: "src/**/*.spec.ts", "src/**/*.e2e-spec.ts"
+alwaysApply: true
+---
+
+## Core Testing Principles
+
+### Test Coverage Requirements
+- **Rule**: Almost everything must be tested
+- **When to Test**:
+  - All use cases
+  - Complex business logic
+  - Edge cases
+  - Error handling
+  - Real-time events
+  - Repository operations
+  - Domain logic
+  - API endpoints
+
+### Test Types Organization
+```typescript
+src/
+├── modules/
+│   └── [module]/
+│       ├── tests/
+│       │   ├── e2e/              # End-to-end tests
+│       │   ├── seeds/            # Test data seeds
+│       │   └── factories/        # Test factories
+│       └── application/
+│           └── usecases/
+│               ├── *.usecase.ts
+│               └── *.usecase.spec.ts  # Unit tests
+```
+
+## Unit Testing Standards
+
+### Test Structure
+- **Rule**: Use descriptive BDD-style testing
+- **Pattern**:
+```typescript
+describe('Feature: [feature name]', () => {
+    // Setup
+    let useCase: YourUseCase;
+    let repository: InMemoryRepository;
+    
+    beforeEach(() => {
+        // Initialize with seeds and in-memory repositories
+    });
+
+    describe('Scenario: [specific scenario]', () => {
+        it('should [expected behavior]', async () => {
+            // Arrange
+            // Act
+            // Assert
+        });
+    });
+});
+```
+
+### Test Data Management
+- **Rule**: Use seeds and in-memory repositories instead of mocks
+- **Pattern**:
+```typescript
+// Seeds
+export const userSeeds = {
+    alex: new User({
+        id: 'alex-id',
+        username: 'alex',
+        // ... other properties
+    }),
+    // ... other seeds
+};
+
+// In-Memory Repository
+export class InMemoryUserRepository implements IUserRepository {
+    constructor(private database: User[] = []) {}
+    
+    async findById(id: string): Promise<User | null> {
+        return this.database.find(u => u.props.id === id) || null;
+    }
+    // ... other methods
+}
+```
+
+### Use Case Testing
+- **Rule**: Test all possible scenarios and edge cases
+- **Example**:
+```typescript
+describe('Feature: admin accepting to move spectator to talker', () => {
+    // Happy path
+    describe('Scenario: happy path', () => {
+        it('should move the spectator to the talker', async () => {
+            // Test implementation
+        });
+
+        it('should send an event to the room', async () => {
+            // Test real-time events
+        });
+    });
+
+    // Error cases
+    describe('Scenario: bad path', () => {
+        describe('Scenario: the participation of the user affected not found', () => {
+            it('should throw an error', async () => {
+                // Test error handling
+            });
+        });
+    })
+});
+```
+
+## Integration Testing Standards
+
+### E2E Test Structure
+- **Rule**: Test complete user flows and API endpoints
+- **Pattern**:
+```typescript
+describe('Feature: [feature name]', () => {
+    let app: TestApp;
+    let testRealtimeService: TestRealtimeService;
+    beforeEach(async () => {
+        app = new TestApp();
+        await app.setup();
+        await app.loadFixtures([
+            // Load required test data
+        ]);
+    });
+
+    describe('Scenario: happy path', () => {
+        it('should [expected behavior]', async () => {
+            const result = await request(app.getHttpServer())
+                .put('/endpoint')
+                .set('Authorization', token)
+                .send(payload);
+            
+            // Assert HTTP response
+            // Assert database state
+            // Assert real-time events
+        });
+    });
+
+    describe('Scenario: bad path', () => {
+        it('should [expected behavior]', async () => {
+            const result = await request(app.getHttpServer())
+                .put('/endpoint')
+                .set('Authorization', 'invalid-token')
+                .send(payload);
+            
+            // Assert HTTP response
+            // Assert database state
+            // Assert real-time events
+        });
+    });
+});
+```
+
+### Real-Time Testing
+- **Rule**: Test all real-time events and connections
+- **Pattern**:
+```typescript
+it('should emit correct events', async () => {
+    const eventPromise = new Promise((resolve) => {
+        testRealtimeService.clientSocket.on(
+            RoomRealTime.Events.EVENT_NAME,
+            (data) => resolve(data)
+        );
+    });
+
+    // Trigger the action
+    await performAction();
+
+    // Assert the event payload
+    const receivedEventPayload = await eventPromise;
+    expect(receivedEventPayload).toEqual({
+        // Expected event data
+    });
+});
+```
+
+## Test Data Management
+
+### Seeds
+- **Rule**: Create comprehensive test data seeds and use real implementations
+- **Pattern**:
+```typescript
+import { Room } from '@modules/rooms/domain/entities/room'
+
+export const roomSeedsE2E = {
+    roomEnglishIsCool: {
+        entity: new Room({
+            id: 'room-id',
+            title: 'English is Cool',
+            // ... other properties
+        }),
+        // ... related data
+    }
+};
+```
+
+### In-Memory Repositories
+- **Rule**: Implement full in-memory repositories for testing
+- **Pattern**:
+```typescript
+export class InMemoryParticipationRepository implements IParticipationRepository {
+    constructor(private database: Participation[] = []) {}
+
+    async findByUserIdAndRoomId(userId: string, roomId: string): Promise<Participation | null> {
+        return this.database.find(
+            p => p.props.userId === userId && p.props.roomId === roomId
+        ) || null;
+    }
+    // ... other methods
+}
+```
+
+## Testing Best Practices
+
+### Avoid Mocks
+- **Rule**: Use in-memory implementations instead of mocks
+- **Why**: More realistic testing and better maintenance
+- **Exception**: External services that cannot be easily replicated
+
+### Test Isolation
+- **Rule**: Each test should be independent
+- **Practice**:
+  - Reset database before each test
+  - Clean up real-time connections
+  - Use fresh instances of repositories
+
+### Error Testing
+- **Rule**: Test all error cases
+- **Coverage**:
+  - Not found scenarios
+  - Unauthorized access
+  - Invalid input
+  - Business rule violations
+  - Edge cases
+
+### Real-Time Testing
+- **Rule**: Test all real-time features
+- **Coverage**:
+  - Connection handling
+  - Event emission
+  - Event reception
+  - Room management
+  - Disconnection handling
+
+### HTTP Testing
+- **Rule**: Test all API endpoints
+- **Coverage**:
+  - Success responses
+  - Error responses
+  - Authentication
+  - Authorization
+  - Input validation

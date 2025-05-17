@@ -1,0 +1,13 @@
+---
+description: Respecter les standards du design system (couleurs, typographie, composants) et documenter toute innovation dans le DS Lab.
+globs: src/app/ds-lab/**/*.{ts,tsx}
+alwaysApply: true
+category: design-system
+---
+
+# Design system & innovation
+- Palette de couleurs : base turquoise, bleu, orange, variations de 10% autorisées.
+- Typographie : Noto Sans (titres), Questrial (texte), autres polices à tester dans le playground.
+- Commencer par les composants existants, les adapter si besoin, puis partager les innovations.
+- Toute évolution doit être testée et validée dans le DS Lab avant intégration.
+- Documenter toute découverte ou variation dans le DS Lab.

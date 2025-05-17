@@ -32,11 +32,11 @@ export interface ConversationFormProps {
 export const ConversationForm: React.FC<ConversationFormProps> = ({
   className = '',
   title = 'Parlons de votre projet',
-  subtitle = 'Répondez à quelques questions pour nous aider à mieux comprendre vos besoins',
+  subtitle = 'Répondez à quelques questions pour m\'aider à mieux comprendre vos besoins',
   fields,
   onSubmit,
   submitButtonText = 'Envoyer ma demande',
-  successMessage = 'Merci pour votre message. Nous vous répondrons dans les meilleurs délais.',
+  successMessage = 'Merci pour votre message. Je vous répondrai dans les meilleurs délais.',
   loading = false,
   variant = 'default',
 }) => {

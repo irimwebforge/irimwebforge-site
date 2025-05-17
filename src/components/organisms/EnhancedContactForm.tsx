@@ -36,7 +36,7 @@ export interface EnhancedContactFormProps {
 export const EnhancedContactForm: React.FC<EnhancedContactFormProps> = ({
   className = '',
   title = 'Discutons de votre projet',
-  subtitle = 'Complétez le formulaire ci-dessous pour nous parler de votre projet. Nous vous répondrons dans les 24 heures.',
+  subtitle = 'Complétez le formulaire ci-dessous pour me parler de votre projet. Je vous répondrai dans les 24 heures.',
   services = [],
   testimonial,
   showTestimonial = true,
@@ -123,7 +123,7 @@ export const EnhancedContactForm: React.FC<EnhancedContactFormProps> = ({
       <div className="relative hidden lg:block flex-1 h-auto">
         <Image
           src={imageUrl}
-          alt="Contactez-nous"
+          alt="Contactez-moi"
           width={500}
           height={500}
           className="object-contain w-full"

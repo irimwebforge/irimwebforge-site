@@ -1,0 +1,18 @@
+---
+description: Appliquer les patterns d’animation standard, respecter la performance et l’accessibilité sur tous les composants interactifs.
+globs: src/app/**/*.{ts,tsx,css}
+alwaysApply: true
+category: animation
+---
+# Animations & accessibilité
+- Utiliser les durées standardisées : instant (0ms), rapide (150ms), normal (300ms), lent (500ms), très lent (1000ms).
+- Micro-interactions : 150ms (hover, focus, changements subtils).
+- Transitions standard : 300ms (apparition/disparition, couleur, transformations simples).
+- Animations complexes : 500ms (modals, menus, transitions de page).
+- Utiliser les timing functions standard : ease-in-out, ease-out, ease-in, linear.
+- Patterns d'animation à privilégier : fade, slide, scale (voir DS Lab pour l'implémentation CSS).
+- Respecter les préférences utilisateurs (prefers-reduced-motion).
+- Éviter les animations automatiques non contrôlables, proposer des alternatives statiques.
+- Privilégier `transform` et `opacity` pour la performance, éviter `width` et `height`.
+- Limiter la durée des animations d'interface à 500ms, les animations continues à 5s max.
+- Assurer un contraste suffisant et la lisibilité pendant les animations.

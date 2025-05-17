@@ -1,0 +1,16 @@
+
+---
+description: Règles de rédaction, structuration du contenu et UX éditoriale pour garantir la clarté et l'impact des pages.
+globs: src/app/**/*.{tsx,md,mdx}
+alwaysApply: true
+category: contenu
+---
+
+# Rédaction & contenu
+- Un message clé, une émotion dominante, une action principale par page.
+- Privilégier l'authenticité et la voix naturelle.
+- Structurer chaque page avec une hiérarchie claire (titres, sous-titres, CTA).
+- Adapter le ton et la formulation selon le public cible, tester et mesurer les résultats.
+- Les interfaces d'administration doivent être aussi intuitives et agréables que la partie visible.
+- Utiliser des témoignages et des cas concrets pour illustrer l'impact.
+- S'engager sur des résultats mesurables et concrets.

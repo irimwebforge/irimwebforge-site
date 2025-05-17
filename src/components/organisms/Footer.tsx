@@ -7,7 +7,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 border-t border-color surface-primary">
+    <footer className="py-12 border-t border-color surface-primary" role="contentinfo">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo et description */}
@@ -16,6 +16,30 @@ export function Footer() {
             <Typography variant="small" className="mt-4 text-secondary">
               Studio de création digitale spécialisé dans la conception d'interfaces sur mesure.
             </Typography>
+            {/* Réseaux sociaux */}
+            <div className="mt-6">
+              <Typography variant="p" className="font-semibold text-base mb-4 text-primary">
+                Suivez-moi
+              </Typography>
+              <div className="flex space-x-4">
+                <a
+                  href="https://www.linkedin.com/in/eric-zuber-b9060650/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-secondary hover:text-[var(--color-primary)]"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://github.com/Ricomaldo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-secondary hover:text-[var(--color-primary)]"
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Liens rapides */}

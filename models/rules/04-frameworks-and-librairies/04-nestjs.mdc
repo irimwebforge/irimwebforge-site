@@ -1,0 +1,12 @@
+---
+description: 
+globs: *ts
+alwaysApply: false
+---
+---
+description: APPLY NestJS framework standards WHEN developing with NestJS
+globs: src/**/.ts
+alwaysApply: false
+---
+
+NestJs will never manipulate business logic. The framework is decoupled from the logic, which is pure typescript.

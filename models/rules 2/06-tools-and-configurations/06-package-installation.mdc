@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: APPLY package installation rules WHEN installation new package
+alwaysApply: false
+---
+
+- Use Yarn as package manager
+- Never install new package directly
+- Always ask user
+- Check existing packages before proposing new
+- Prefer stable versions

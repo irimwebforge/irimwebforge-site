@@ -26,7 +26,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   className = '',
   onSubmit,
   submitButtonText = 'Envoyer ma demande',
-  successMessage = 'Merci pour votre message. Nous vous répondrons dans les meilleurs délais.',
+  successMessage = 'Merci pour votre message. Je vous répondrai dans les meilleurs délais.',
   loading = false,
   resetOnSuccess = true,
 }) => {

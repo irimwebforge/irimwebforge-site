@@ -1,0 +1,72 @@
+---
+description: Enforce full internationalization: extract all UI texts into per-feature JSON files and use useTranslation
+globs: 
+alwaysApply: false
+---
+---
+description: "Enforce full internationalization: extract all UI texts into per-feature JSON files and use useTranslation"
+alwaysApply: true
+---
+
+# Internationalization (i18n) Requirements
+
+1. **No hard-coded strings**  
+   - All visible text (labels, titles, placeholders, alt text, aria-labels, error messages, etc.) must be extracted and never hard-coded in JSX or TypeScript code.
+
+2. **Per-feature JSON files**  
+   - Translation file structure:  
+     ```
+     src/
+       shared/
+         i18n/
+           locales/
+             <lang>/
+               <featureName>.json
+     ```
+   - Each JSON contains a flat or nested key/value object:  
+     ```json
+     {
+       "placeholder_search": "Search...",
+       "back": "Back",
+       "languages": {
+         "en": "English",
+         "fr": "French",
+         "nl": "Dutch"
+       },
+       "languages_with_flag": {
+         "en": "🇬🇧 English",
+         "fr": "🇫🇷 French",
+         "nl": "🇳🇱 Dutch"
+       }
+     }
+     ```
+
+3. **Key naming convention**  
+   - Prefix each key with the feature name (snake_case):  
+     ```json
+     {
+       "your_name": "Your name"
+     }
+     ```
+
+4. **Using the `useTranslation` hook**  
+   - Import and initialize in each component or screen:  
+     ```ts
+     import { useTranslation } from 'react-i18next';
+     const { t } = useTranslation('<featureName>');
+     ```
+   - Replace all text with `t('key')`:  
+     ```tsx
+     <Text>{t('auth.login.title')}</Text>
+     <Button>{t('auth.login.button')}</Button>
+     ```
+
+5. **Automatic detection and verification by the agent**  
+   - The agent must scan all JS/TS/TSX files to identify string literals and suggest extracting them into the appropriate i18n key.  
+   - For each new string detected:  
+     - Generate a key prefixed by the feature.  
+     - Add the entry to **<lang>/<featureName>.json** (with the original text) and create placeholders in other languages if not yet translated.  
+     - Replace the literal with `t('…')`.
+
+6. **Updates and maintenance**  
+   - When adding new features or pages, automatically create the `locales/<lang>` folder and the corresponding JSON file.  

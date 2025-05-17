@@ -1,0 +1,272 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: APPLY Clean Code principles WHENEVER writing code
+alwaysApply: true
+---
+
+# Conventions and Best Practices
+
+## 1. File Organization & Naming
+
+### 1.1 Directory Structure and architecture
+- Architecture is Hexagonal Architecture. We try to separate the responsabilities
+- Use always SOLID practices. Use Injection principlae and Inversion principales in [dependencies.tsx](mdc:vocalis-mobile-app/vocalis-mobile-app/vocalis-mobile-app/vocalis-mobile-app/vocalis-mobile-app/vocalis-mobile-app/vocalis-mobile-app/vocalis-mobile-app/src/di/dependencies.tsx)
+- Don't put logic inside a component React but separate the logic in a view-model and call this view-model to get variables for the component linked
+- Modules are organized by feature/domain (e.g., `rooms`, `core`)
+- Each module follows a clean architecture pattern:
+  ```
+  modules/
+    ├── domain/         # Business logic, entities
+    ├── application/    # Use cases
+    ├── infrastructure/ # External implementations
+    ├── ports/         # Interfaces/contracts
+    └── presentation/  # UI components, view models
+  ```
+
+### 1.2 File Naming
+- Use kebab-case for file names: `card-room.tsx`, `use-cards-room.view-model.ts`
+- Suffix files based on their role:
+  - Components: `.tsx`
+  - View Models: `.view-model.ts`
+  - Use Cases: `.usecase.ts`
+  - Repositories: `.repository.ts`
+  - Gateways: `.gateway.ts`
+  - Design tokens: `.ts`
+
+## 2. Component Architecture
+
+### 2.1 Component Structure
+```typescript
+// Example from card-room.tsx
+type Props = {
+    data: RoomWithTags;
+};
+
+const CardRoom = ({ data }: Props) => {
+    // 1. Hooks at the top
+    const { t } = useTranslation('roomList');
+
+    // 2. Get variables from the view-model linked
+    
+    // 3. Render
+    return (
+        <Component>
+            {/* JSX */}
+        </Component>
+    );
+};
+```
+
+### 2.2 Compound Components Pattern
+```typescript
+// Example from card.tsx
+interface CardComponent extends React.FC<CardProps> {
+    Title: typeof CardTitle;
+    Description: typeof CardDescription;
+    // ... other subcomponents
+}
+
+const Card = ({ style, children }: CardProps) => {
+    // Implementation
+};
+
+const CardWithSubComponents = Card as CardComponent;
+CardWithSubComponents.Title = CardTitle;
+// ... register other subcomponents
+```
+
+## 3. State Management & Data Flow
+
+### 3.1 View Models
+```typescript
+// Example from use-cards-room.view-model.ts
+const useCardsRoomViewModel = () => {
+    // 1. Dependencies and state
+    const { getRoomsUseCase } = useDependencies();
+    const [state, setState] = useState();
+
+    // 2. Effects and callbacks
+    useEffect(() => {
+        // Side effects
+    }, [dependencies]);
+
+    // 3. Event handlers
+    const handleEvent = () => {
+        // Logic
+    };
+
+    // 4. Return interface
+    return {
+        data,
+        handlers,
+        state
+    };
+};
+```
+
+### 3.2 Use Cases
+```typescript
+// Example from get-rooms.usecase.ts
+export class GetRoomsUsecase implements Executable<Request, Response> {
+    constructor(
+        private readonly dependencies: Dependencies
+    ) {}
+
+    async execute(data: Request): Promise<Response> {
+        try {
+            // Implementation
+        } catch (error) {
+            // Error handling
+        }
+    }
+}
+```
+
+## 4. Design System
+
+### 4.1 Token Organization
+```typescript
+// Example from colors.ts
+const colors = {
+    light: {
+        primary: '#1A99B3',
+        text: '#252525',
+        // ... other colors
+    },
+    dark: {
+        primary: '#1A99B3',
+        text: '#F0F0F0',
+        // ... other colors
+    }
+} as const;
+```
+
+### 4.2 Component Styling
+- Use StyleSheet.create for styles
+- Theme-aware styling using useTheme hook
+- Consistent spacing and sizing using design tokens
+- Always have the style in the component file and not create a separate file just for the style
+
+## 5. API Integration
+
+### 5.1 Repository Pattern
+```typescript
+// Example from rooms.repository.ts
+export class RoomsRepository implements IRoomsRepository {
+    constructor(
+        private readonly apiClient: IRoomApiClient,
+        private readonly mapper: IRoomMapper
+    ) {}
+
+    async method(): Promise<Domain> {
+        const data = await this.apiClient.method();
+        return this.mapper.toDomain(data);
+    }
+}
+```
+### 5.2 API Gateway Pattern
+```typescript
+// Example from rtk-rooms.gateway.ts
+export const rtkRoomsGateway = apiStore.injectEndpoints({
+    endpoints: (build) => ({
+        endpoint: build.query/mutation({
+            query: (params) => ({
+                url: '/path',
+                method: 'METHOD',
+                body: data
+            }),
+            transformResponse: (response) => transform(response),
+            providesTags: [...],
+            invalidatesTags: [...]
+        })
+    })
+});
+```
+
+## 6. Testing Guidelines
+
+### 6.1 Unit Tests
+- Test business logic in use cases
+- Test view models in isolation
+- Mock external dependencies
+
+### 6.2 Integration Tests
+- Test components with React Testing Library
+- Focus on user interactions
+- Test real component integration
+
+## 7. Code Style
+
+### 7.1 TypeScript
+- Use strict type checking
+- Define interfaces for all data structures
+- Use type inference when obvious
+- Export types and interfaces when shared
+
+### 7.2 Imports
+- Use absolute imports with aliases or relative imports
+- Watch [tsconfig.json](mdc:vocalis-mobile-app/vocalis-mobile-app/vocalis-mobile-app/tsconfig.json) to know alias available
+- Group imports by:
+  1. React/External libraries
+  2. Internal shared utilities
+  3. Local components/hooks
+  4. Types/interfaces
+
+### 7.3 Error Handling
+- Use try/catch in use cases
+- Proper error transformation
+- Consistent error messaging
+
+## 8. Requirements
+
+### 8.1 General Principles
+- Follow eslintrc.js file to avoid lint issues
+- Names must be descriptive and reveal intent
+- Names should be searchable and not too short
+- Avoid abbreviations except for widely accepted ones (e.g., `id`, `http`, `url`)
+- Avoid redundant or meaningless words (e.g., `data`, `info`)
+- Maximum name length: 50 characters
+- Maintain consistent casing patterns as defined below
+- A file should never has more than 200 lines. You need to separate the code
+
+### 8.2 Variables
+- **Regular Variables**: `camelCase` (e.g., `userProfile`)
+- **Boolean Variables**: `isPrefixed` or `hasPrefixed` (e.g., `isValid`, `hasErrors`)
+
+### 8.3 Constants and Enums
+- **Module-level Constants**: `SCREAMING_SNAKE_CASE` (e.g., `MAX_FILE_SIZE`)
+- **Class Constants**: `SCREAMING_SNAKE_CASE` (e.g., `static readonly MAX_ENTRIES = 50`)
+- **Enum Constants**: `SCREAMING_SNAKE_CASE` (e.g., `ERROR_TYPES.VALIDATION`)
+
+### 8.4 Functions & Methods
+- **Regular Functions/Methods**: `camelCase` (e.g., `calculateTotal()`)
+- **Private Class Methods**: `_camelCase` (e.g., `_validateInput()`)
+- **Boolean-returning Functions**: `isPrefixed` or `hasPrefixed` (e.g., `isValidEmail()`)
+- **Factory Functions**: `createPrefixed` (e.g., `createUserProfile()`)
+- **Event Handlers**: `handlePrefixed` (e.g., `handleSubmit()`)
+
+### 8.5 Classes
+- **Class Names**: `PascalCase` (e.g., `ResumeBuilder`)
+- **Abstract Classes**: `IPascalCase` (e.g., `IPascalCase`)
+- **Service Classes**: `PascalCaseService` (e.g., `ValidationService`)
+- **Repository Classes**: `PascalCaseRepository` (e.g., `ResumeRepository`)
+- **Controller Classes**: `PascalCaseController` (e.g., `ResumeController`)
+
+### 8.6 Interfaces & Types
+- **Interfaces**: `IPascalCase` (e.g., `IResumeData`)
+- **Type Aliases**: `PascalCaseType`  (e.g., `ResumeTemplateType` or `TResumeTemplateType`)
+- **Type Parameters/Generics**: Single uppercase letter or `PascalCaseType` (e.g., `T` or `EntityType`)
+- **Prop Types**: `PascalCaseProps` (e.g., `ResumeFormProps`)
+
+### 8.7 React Specific
+- **Component Names**: `PascalCase` (e.g., `ResumeForm`)
+- **Custom Hooks**: `useCamelCase` (e.g., `useFormValidation`)
+- **Context Providers**: `PascalCaseProvider` (e.g., `ResumeProvider`)
+- **Higher-Order Components**: `withPascalCase` (e.g., `withAuthentication`)
+
+### 8.8 Zod Schema
+- **Schema name** : `PascaleCaseSchema` (e.g., `NameSchema`)

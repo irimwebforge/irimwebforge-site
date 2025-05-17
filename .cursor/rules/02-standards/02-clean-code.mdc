@@ -1,0 +1,20 @@
+
+---
+description: Appliquer les principes de clean code, de simplicité, de typage strict et de conventions de nommage sur tout le code source.
+globs: src/**/*.{ts,tsx}
+alwaysApply: true
+category: standards
+---
+
+# Clean code & conventions
+- Privilégier la simplicité dans chaque choix d'implémentation.
+- Utiliser en priorité les composants du DS Lab (`src/app/ds-lab`).
+- Toute expérimentation doit passer par le DS Lab avant intégration.
+- Documenter toute innovation ou variation dans le DS Lab.
+- Les composants doivent être réutilisables, configurables par props, et nommés en PascalCase.
+- Props : camelCase (ex : `onClick`, `backgroundColor`).
+- Variables CSS : kebab-case précédées de `--` (ex : `--color-primary`).
+- Classes Tailwind : kebab-case (ex : `text-primary`).
+- Fichiers de composants : PascalCase (ex : `Button.tsx`).
+- S'engager sur des résultats mesurables (temps gagné, capacité, réduction d'erreurs).
+- Garantir l'autonomie progressive de l'utilisateur (pas de dépendance technique).

@@ -1,0 +1,18 @@
+
+---
+description: Respecter l'architecture modulaire, la séparation des responsabilités et la hiérarchie Atomic Design pour garantir la maintenabilité et la cohérence du projet.
+globs: src/app/**
+alwaysApply: true
+category: architecture
+---
+
+# Architecture générale
+- Se référer systématiquement au DS Lab pour l'architecture des pages et composants.
+- Utiliser les templates et adaptateurs validés dans `src/app/ds-lab/templates/`.
+- Respecter la hiérarchie Atomic Design : atomes, molécules, organismes, templates, pages.
+- Les composants doivent être réutilisables, configurables par props, et nommés en PascalCase.
+- Les variables CSS sont en kebab-case précédées de `--`.
+- Les classes Tailwind suivent la convention kebab-case.
+- Les pages doivent respecter la structure et l'ordre des sections définis dans le guide d'architecture.
+- Responsive : toujours prévoir le comportement desktop, tablette, mobile.
+- Les sections critiques (ex : différenciateurs, garanties, CTA) ne doivent jamais être omises.

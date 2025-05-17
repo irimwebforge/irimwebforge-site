@@ -85,11 +85,11 @@ export const contactPageMock = {
       },
       {
         number: 2,
-        description: 'Nous planifions une conversation découverte de 45 minutes',
+        description: 'Je planifie une conversation découverte de 45 minutes',
       },
       {
         number: 3,
-        description: 'Nous explorons ensemble vos besoins et aspirations sans jargon technique',
+        description: 'J\'explore avec vous vos besoins et aspirations sans jargon technique',
       },
       {
         number: 4,
