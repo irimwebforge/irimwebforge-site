@@ -26,15 +26,13 @@ export function Header() {
     <>
       {/* Spacer pour compenser la hauteur du header fixe */}
       <div className="h-[72px]" />
-      
-      <header 
+
+      <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 py-4 border-b border-color",
-          "transition-all duration-300 backdrop-blur-sm",
-          isScrolled 
-            ? "bg-white/80 dark:bg-gray-900/80 shadow-sm" 
-            : "bg-white dark:bg-gray-900"
-        )} 
+          'fixed top-0 left-0 right-0 z-50 py-4 border-b border-color',
+          'transition-all duration-300 backdrop-blur-sm',
+          isScrolled ? 'bg-white/80 dark:bg-gray-900/80 shadow-sm' : 'bg-white dark:bg-gray-900'
+        )}
         role="banner"
       >
         <div className="mx-auto px-4 sm:px-6 max-w-6xl">

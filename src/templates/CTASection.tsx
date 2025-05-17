@@ -171,7 +171,10 @@ export const CTASection = ({
           >
             {/* Image */}
             {imageSrc && (
-              <div className="md:w-1/2 relative animate-fade-in" style={{ animationDelay: '150ms' }}>
+              <div
+                className="md:w-1/2 relative animate-fade-in"
+                style={{ animationDelay: '150ms' }}
+              >
                 <div className="relative h-64 md:h-96 w-full overflow-hidden rounded-lg transition-all duration-300 hover:shadow-xl">
                   <Image
                     src={imageSrc}
@@ -185,7 +188,10 @@ export const CTASection = ({
             )}
 
             {/* Contenu */}
-            <div className={`md:w-1/2 ${alignClasses[align]} animate-fade-in`} style={{ animationDelay: '300ms' }}>
+            <div
+              className={`md:w-1/2 ${alignClasses[align]} animate-fade-in`}
+              style={{ animationDelay: '300ms' }}
+            >
               {subtitle && (
                 <Typography as="span" variant="subtle" className="mb-2 inline-block">
                   {subtitle}
@@ -213,7 +219,10 @@ export const CTASection = ({
                 </div>
               )}
 
-              <div className="flex flex-wrap gap-4 mt-6 justify-center md:justify-start animate-fade-in" style={{ animationDelay: '450ms' }}>
+              <div
+                className="flex flex-wrap gap-4 mt-6 justify-center md:justify-start animate-fade-in"
+                style={{ animationDelay: '450ms' }}
+              >
                 <Button
                   variant={primaryAction.variant || 'gradient'}
                   size={primaryAction.size || 'lg'}
@@ -266,22 +275,39 @@ export const CTASection = ({
 
             <div className="relative z-10 p-10">
               {subtitle && (
-                <Typography as="span" variant="subtle" className="mb-2 inline-block animate-fade-in" style={{ animationDelay: '150ms' }}>
+                <Typography
+                  as="span"
+                  variant="subtle"
+                  className="mb-2 inline-block animate-fade-in"
+                  style={{ animationDelay: '150ms' }}
+                >
                   {subtitle}
                 </Typography>
               )}
-              <Typography as="h2" variant="h2" className="mb-4 font-bold italic animate-fade-in" style={{ animationDelay: '300ms' }}>
+              <Typography
+                as="h2"
+                variant="h2"
+                className="mb-4 font-bold italic animate-fade-in"
+                style={{ animationDelay: '300ms' }}
+              >
                 {title}
               </Typography>
               {description && (
-                <Typography variant="lead" className="mb-6 animate-fade-in" style={{ animationDelay: '450ms' }}>
+                <Typography
+                  variant="lead"
+                  className="mb-6 animate-fade-in"
+                  style={{ animationDelay: '450ms' }}
+                >
                   {description}
                 </Typography>
               )}
 
               {/* Témoignage */}
               {testimonial && (
-                <div className="mb-6 p-4 bg-white bg-opacity-10 backdrop-blur-sm rounded-lg transition-all duration-300 hover:bg-opacity-20 animate-fade-in" style={{ animationDelay: '600ms' }}>
+                <div
+                  className="mb-6 p-4 bg-white bg-opacity-10 backdrop-blur-sm rounded-lg transition-all duration-300 hover:bg-opacity-20 animate-fade-in"
+                  style={{ animationDelay: '600ms' }}
+                >
                   <Typography variant="p" className="italic mb-2">
                     &quot;{testimonial.quote}&quot;
                   </Typography>
@@ -292,7 +318,10 @@ export const CTASection = ({
                 </div>
               )}
 
-              <div className="flex flex-wrap gap-4 mt-6 justify-center animate-fade-in" style={{ animationDelay: '750ms' }}>
+              <div
+                className="flex flex-wrap gap-4 mt-6 justify-center animate-fade-in"
+                style={{ animationDelay: '750ms' }}
+              >
                 <Button
                   variant={primaryAction.variant || 'gradient'}
                   size={primaryAction.size || 'lg'}
@@ -321,7 +350,9 @@ export const CTASection = ({
 
   // Rendu par défaut si aucune variante ne correspond
   return (
-    <section className={`py-16 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className}`}>
+    <section
+      className={`py-16 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className}`}
+    >
       <Container>
         <div className={`max-w-3xl mx-auto ${alignClasses[align]}`}>
           <Typography as="h2" variant="h2" className="mb-4 font-bold">

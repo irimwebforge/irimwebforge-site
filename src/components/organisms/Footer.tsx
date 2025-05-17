@@ -14,7 +14,8 @@ export function Footer() {
           <div className="md:col-span-1">
             <Logo width={100} height={33} />
             <Typography variant="small" className="mt-4 text-secondary">
-              Studio de création digitale spécialisé dans la conception d'interfaces sur mesure libérant votre temps et votre énergie.
+              Studio de création digitale spécialisé dans la conception d'interfaces sur mesure
+              libérant votre temps et votre énergie.
             </Typography>
             {/* Réseaux sociaux */}
             <div className="mt-6">

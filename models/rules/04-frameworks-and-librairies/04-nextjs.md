@@ -7,10 +7,12 @@ Dans Next.js 13+, tous les composants React sont par défaut des Server Componen
 ### Règles essentielles
 
 1. **Directive "use client"** :
+
    - Ajoutez `"use client";` en haut d'un fichier pour marquer un composant et tous ses enfants importés comme Client Components.
    - Cette directive doit être placée au tout début du fichier, avant les imports.
 
 2. **Server Components - Ce qu'ils ne peuvent PAS faire** :
+
    - Utiliser des hooks React (`useState`, `useEffect`, etc.)
    - Ajouter des gestionnaires d'événements (`onClick`, `onChange`, etc.)
    - Utiliser des APIs navigateur (localStorage, window, etc.)
@@ -18,12 +20,14 @@ Dans Next.js 13+, tous les composants React sont par défaut des Server Componen
    - Utiliser des effets ou du cycle de vie côté client
 
 3. **Server Components - Ce qu'ils peuvent faire** :
+
    - Accéder directement à la base de données, système de fichiers, etc.
    - Garder les secrets API côté serveur (ils ne sont pas exposés au client)
    - Réduire la taille du bundle JavaScript
    - Effectuer des rendus côté serveur pour une meilleure performance
 
 4. **Où placer la directive "use client"** :
+
    - Créez un "boundary" au niveau le plus haut possible où l'interactivité est nécessaire
    - Ne marquez pas les composants individuellement si possible, préférez la cascade
 
@@ -53,34 +57,32 @@ Dans Next.js 13+, tous les composants React sont par défaut des Server Componen
 ## Exemple de correction typique
 
 ### Problème - Server Component avec gestionnaire d'événement :
+
 ```tsx
 // HeroSection.tsx (Server Component par défaut)
-<Button 
-  onClick={() => window.location.href = ctaHref}
->
-  {ctaText}
-</Button>
+<Button onClick={() => (window.location.href = ctaHref)}>{ctaText}</Button>
 ```
 
 ### Solution 1 - Convertir en Client Component :
+
 ```tsx
 // HeroSection.tsx
-"use client";
+'use client';
 
 // ... reste du composant avec l'onClick
 ```
 
 ### Solution 2 - Utiliser les props appropriées :
+
 ```tsx
 // HeroSection.tsx (reste Server Component)
-<Button href={ctaHref}>
-  {ctaText}
-</Button>
+<Button href={ctaHref}>{ctaText}</Button>
 ```
 
 ## Résolution des erreurs courantes
 
 Si vous voyez cette erreur :
+
 ```
 Error: Event handlers cannot be passed to Client Component props.
   <button onClick={function onClick} ...>
@@ -90,4 +92,4 @@ C'est que vous essayez de passer un gestionnaire d'événement d'un Server Compo
 
 1. Convertissez le composant parent en Client Component en ajoutant `"use client";`
 2. Utilisez des propriétés alternatives (comme `href` au lieu de `onClick`)
-3. Déplacez la logique interactive dans un composant Client séparé 
+3. Déplacez la logique interactive dans un composant Client séparé

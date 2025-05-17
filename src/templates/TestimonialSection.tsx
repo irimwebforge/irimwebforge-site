@@ -80,10 +80,10 @@ export function TestimonialSection({
           {otherTestimonials.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
               {otherTestimonials.map((testimonial, index) => (
-                <div 
-                  key={`testimonial-${index}`} 
+                <div
+                  key={`testimonial-${index}`}
                   className="animate-fade-in transition-all duration-300 hover:shadow-md hover:-translate-y-1"
-                  style={{ animationDelay: `${300 + (index * 150)}ms` }}
+                  style={{ animationDelay: `${300 + index * 150}ms` }}
                 >
                   <Testimonial
                     quote={testimonial.quote}
@@ -133,10 +133,10 @@ export function TestimonialSection({
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
-              <div 
+              <div
                 key={`testimonial-${index}`}
                 className="animate-fade-in transition-all duration-300 hover:shadow-md hover:-translate-y-1"
-                style={{ animationDelay: `${150 + (index * 150)}ms` }}
+                style={{ animationDelay: `${150 + index * 150}ms` }}
               >
                 <Testimonial
                   quote={testimonial.quote}
@@ -185,7 +185,10 @@ export function TestimonialSection({
 
         <div className="max-w-4xl mx-auto">
           {testimonials.length > 0 && (
-            <div className="animate-fade-in transition-all duration-300 hover:shadow-lg" style={{ animationDelay: '150ms' }}>
+            <div
+              className="animate-fade-in transition-all duration-300 hover:shadow-lg"
+              style={{ animationDelay: '150ms' }}
+            >
               <Testimonial
                 quote={testimonials[0].quote}
                 author={testimonials[0].author}
@@ -197,7 +200,10 @@ export function TestimonialSection({
             </div>
           )}
 
-          <div className="flex justify-center mt-6 gap-2 animate-fade-in" style={{ animationDelay: '300ms' }}>
+          <div
+            className="flex justify-center mt-6 gap-2 animate-fade-in"
+            style={{ animationDelay: '300ms' }}
+          >
             {testimonials.map((_, index) => (
               <button
                 key={`dot-${index}`}

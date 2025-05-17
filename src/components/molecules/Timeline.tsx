@@ -58,9 +58,8 @@ export const Timeline = ({
     return colorConfig[color];
   };
 
-  const timelineClasses = orientation === 'horizontal' 
-    ? 'flex flex-row overflow-x-auto space-x-8 pb-4' 
-    : 'space-y-8';
+  const timelineClasses =
+    orientation === 'horizontal' ? 'flex flex-row overflow-x-auto space-x-8 pb-4' : 'space-y-8';
 
   return (
     <div className={`${timelineClasses} ${className}`}>
@@ -79,9 +78,10 @@ export const Timeline = ({
               <div
                 className={`
                   absolute 
-                  ${orientation === 'vertical' 
-                    ? 'left-[15px] top-[30px] w-0.5 h-full' 
-                    : 'top-[15px] left-[30px] h-0.5 w-full'
+                  ${
+                    orientation === 'vertical'
+                      ? 'left-[15px] top-[30px] w-0.5 h-full'
+                      : 'top-[15px] left-[30px] h-0.5 w-full'
                   }
                   -ml-px ${colorClasses.bg} opacity-20
                 `}
@@ -99,21 +99,14 @@ export const Timeline = ({
                 transition-transform duration-normal hover:scale-110
               `}
             >
-              <Icon
-                name={step.icon || 'Circle'}
-                size={20}
-                className={colorClasses.text}
-              />
+              <Icon name={step.icon || 'Circle'} size={20} className={colorClasses.text} />
             </div>
 
             {/* Contenu */}
             <div className={orientation === 'vertical' ? 'pt-1' : 'pt-12'}>
               {/* Date */}
               {withDates && (
-                <Typography
-                  variant="small"
-                  className={`font-medium mb-1 ${colorClasses.text}`}
-                >
+                <Typography variant="small" className={`font-medium mb-1 ${colorClasses.text}`}>
                   {step.date}
                 </Typography>
               )}
@@ -127,10 +120,7 @@ export const Timeline = ({
               </Typography>
 
               {/* Description */}
-              <Typography
-                variant="p"
-                className="text-gray-600 dark:text-gray-300 mb-3"
-              >
+              <Typography variant="p" className="text-gray-600 dark:text-gray-300 mb-3">
                 {step.description}
               </Typography>
 
@@ -157,4 +147,4 @@ export const Timeline = ({
   );
 };
 
-export default Timeline; 
+export default Timeline;

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from 'react';
 import { Button } from '../atoms/Button';
@@ -32,10 +32,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         position: 'relative' as const,
-        color: 'white'
+        color: 'white',
       }
     : {
-        position: 'relative' as const
+        position: 'relative' as const,
       };
 
   return (
@@ -46,37 +46,33 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       {!backgroundImage && <HeroPattern />}
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <Typography 
-          as="h1" 
-          variant="h1" 
+        <Typography
+          as="h1"
+          variant="h1"
           className={`mb-4 font-bold italic ${backgroundImage ? 'text-white' : ''}`}
         >
           {title}
         </Typography>
 
-        <Typography 
-          as="p" 
-          variant="lead" 
+        <Typography
+          as="p"
+          variant="lead"
           className={`mb-8 max-w-2xl mx-auto ${backgroundImage ? 'text-white' : ''}`}
         >
           {subtitle}
         </Typography>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button
-            variant="gradient"
-            size="lg"
-            href={ctaHref}
-            className="shine-effect"          >
+          <Button variant="gradient" size="lg" href={ctaHref} className="shine-effect">
             {ctaText}
           </Button>
 
           {secondaryCtaText && (
             <Button
-              variant={backgroundImage ? "outline" : "outline"}
+              variant={backgroundImage ? 'outline' : 'outline'}
               size="lg"
               href={secondaryCtaHref || ''}
-              className={backgroundImage ? "text-white border-white hover:bg-white/20" : ""}
+              className={backgroundImage ? 'text-white border-white hover:bg-white/20' : ''}
             >
               {secondaryCtaText}
             </Button>

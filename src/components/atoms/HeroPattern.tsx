@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState } from 'react';
 
@@ -9,12 +9,12 @@ const HeroPattern: React.FC<{ className?: string }> = ({ className = '' }) => {
     // Détecter le mode sombre au chargement
     if (typeof window !== 'undefined') {
       setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
-      
+
       // Surveiller les changements de thème
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       const handleChange = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
       mediaQuery.addEventListener('change', handleChange);
-      
+
       return () => mediaQuery.removeEventListener('change', handleChange);
     }
   }, []);
@@ -33,14 +33,16 @@ const HeroPattern: React.FC<{ className?: string }> = ({ className = '' }) => {
   const darkModeColor = encodeURIComponent(svgPattern.replace('currentColor', '#00AA00'));
 
   return (
-    <div 
+    <div
       className={`w-full h-full absolute inset-0 ${className}`}
-      style={{
-        backgroundImage: `url("data:image/svg+xml,${isDarkMode ? darkModeColor : lightModeColor}")`,
-        backgroundRepeat: "repeat",
-        opacity: isDarkMode ? 0.18 : 0.07, // Légèrement plus visible en mode sombre
-        zIndex: 0
-      } as React.CSSProperties}
+      style={
+        {
+          backgroundImage: `url("data:image/svg+xml,${isDarkMode ? darkModeColor : lightModeColor}")`,
+          backgroundRepeat: 'repeat',
+          opacity: isDarkMode ? 0.18 : 0.07, // Légèrement plus visible en mode sombre
+          zIndex: 0,
+        } as React.CSSProperties
+      }
     />
   );
 };

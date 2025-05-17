@@ -293,7 +293,10 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             )}
 
             {description && (
-              <Typography variant="p" className={`mb-6 opacity-80 ${align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : ''}`}>
+              <Typography
+                variant="p"
+                className={`mb-6 opacity-80 ${align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : ''}`}
+              >
                 {description}
               </Typography>
             )}

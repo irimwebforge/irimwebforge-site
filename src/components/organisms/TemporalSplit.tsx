@@ -110,4 +110,4 @@ export const TemporalSplit: React.FC<TemporalSplitProps> = ({
       </Container>
     </section>
   );
-}; 
+};

@@ -58,9 +58,10 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
       ),
       imageDimensions: 'aspect-[4/3] min-h-[280px]',
       content: 'p-4 transition-all duration-300 ease-in-out group-hover:p-6',
-      title: variant === 'featured' 
-        ? 'text-lg md:text-xl font-bold text-primary transition-all duration-300 ease-in-out group-hover:text-xl md:group-hover:text-2xl'
-        : 'text-base md:text-lg font-bold text-primary transition-all duration-300 ease-in-out group-hover:text-lg md:group-hover:text-xl'
+      title:
+        variant === 'featured'
+          ? 'text-lg md:text-xl font-bold text-primary transition-all duration-300 ease-in-out group-hover:text-xl md:group-hover:text-2xl'
+          : 'text-base md:text-lg font-bold text-primary transition-all duration-300 ease-in-out group-hover:text-lg md:group-hover:text-xl',
     };
 
     return baseClasses;
@@ -124,7 +125,11 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
   return (
     <Link
       href={`/projets/${slug}`}
-      className={cn('project-preview block surface-primary min-h-[500px]', variantClasses.container, className)}
+      className={cn(
+        'project-preview block surface-primary min-h-[500px]',
+        variantClasses.container,
+        className
+      )}
     >
       {/* Image du projet */}
       <div className={cn('relative overflow-hidden', variantClasses.imageDimensions)}>
@@ -149,11 +154,13 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
         {renderMeta()}
 
         {description && (
-          <Typography 
-            variant="small" 
+          <Typography
+            variant="small"
             className={cn(
-              "mt-2 text-secondary line-clamp-2",
-              variant === 'featured' ? 'text-sm group-hover:text-base' : 'text-xs group-hover:text-sm'
+              'mt-2 text-secondary line-clamp-2',
+              variant === 'featured'
+                ? 'text-sm group-hover:text-base'
+                : 'text-xs group-hover:text-sm'
             )}
           >
             {description}

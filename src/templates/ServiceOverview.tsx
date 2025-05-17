@@ -111,8 +111,8 @@ export const ServiceOverview = ({
         {variant === 'grid' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {services.map((service, index) => (
-              <div 
-                key={service.id} 
+              <div
+                key={service.id}
                 className="animate-fade-in"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
@@ -155,7 +155,10 @@ export const ServiceOverview = ({
                   {service.bulletPoints && service.bulletPoints.length > 0 && (
                     <ul className="space-y-2 mb-4">
                       {service.bulletPoints.map((point, i) => (
-                        <li key={i} className="flex items-start gap-2 transition-transform duration-150 hover:-translate-x-1">
+                        <li
+                          key={i}
+                          className="flex items-start gap-2 transition-transform duration-150 hover:-translate-x-1"
+                        >
                           <Icon
                             name="Check"
                             className={`text-[var(--color-${service.color || 'primary'})]`}
@@ -168,7 +171,11 @@ export const ServiceOverview = ({
 
                   {service.slug && (
                     <Link href={`/services/${service.slug}`}>
-                      <Button variant="secondary" size="sm" className="transition-transform duration-150 hover:scale-105">
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        className="transition-transform duration-150 hover:scale-105"
+                      >
                         {service.ctaText || 'En savoir plus'}
                       </Button>
                     </Link>
@@ -177,7 +184,9 @@ export const ServiceOverview = ({
                 <div className="flex-1 relative h-64 md:h-full rounded-lg bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 transition-all duration-300 hover:shadow-lg">
                   {/* Emplacement pour une image ou illustration du service */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-4xl p-6 transition-transform duration-300 hover:scale-110">{renderIcon(service.icon, 64)}</div>
+                    <div className="text-4xl p-6 transition-transform duration-300 hover:scale-110">
+                      {renderIcon(service.icon, 64)}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -211,7 +220,11 @@ export const ServiceOverview = ({
                     className="text-[var(--color-primary)] hover:underline inline-flex items-center gap-1 transition-all duration-150 group"
                   >
                     {service.ctaText || 'En savoir plus'}
-                    <Icon name="ArrowRight" className="ml-1 transition-transform duration-150 group-hover:translate-x-1" size={16} />
+                    <Icon
+                      name="ArrowRight"
+                      className="ml-1 transition-transform duration-150 group-hover:translate-x-1"
+                      size={16}
+                    />
                   </Link>
                 )}
               </div>
@@ -234,7 +247,7 @@ export const ServiceOverview = ({
                     ? renderIcon(feature.icon as IconName)
                     : feature.icon,
                 className: `animate-fade-in`,
-                style: { animationDelay: `${400 + (index * 150)}ms` }
+                style: { animationDelay: `${400 + index * 150}ms` },
               }))}
               variant="outline"
               columns={3}
@@ -246,7 +259,11 @@ export const ServiceOverview = ({
         {showCtaButton && (
           <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '750ms' }}>
             <Link href={ctaButtonLink}>
-              <Button variant="gradient" size="lg" className="shine-effect transition-transform duration-150 hover:scale-105">
+              <Button
+                variant="gradient"
+                size="lg"
+                className="shine-effect transition-transform duration-150 hover:scale-105"
+              >
                 {ctaButtonText}
               </Button>
             </Link>
