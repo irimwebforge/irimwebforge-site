@@ -121,7 +121,7 @@ export const CTASection = ({
   if (variant === 'banner') {
     return (
       <section
-        className={`py-12 px-4 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className}`}
+        className={`py-12 px-4 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className} transition-all duration-300 hover:shadow-lg animate-fade-in`}
       >
         <Container>
           <div
@@ -138,6 +138,7 @@ export const CTASection = ({
                 variant={primaryAction.variant || 'gradient'}
                 size={primaryAction.size || 'lg'}
                 onClick={() => (window.location.href = primaryAction.url)}
+                className="transition-transform duration-150 hover:scale-105 shine-effect"
               >
                 {primaryAction.text}
               </Button>
@@ -146,6 +147,7 @@ export const CTASection = ({
                   variant={secondaryAction.variant || 'secondary'}
                   size={secondaryAction.size || 'lg'}
                   onClick={() => (window.location.href = secondaryAction.url)}
+                  className="transition-transform duration-150 hover:scale-105"
                 >
                   {secondaryAction.text}
                 </Button>
@@ -161,7 +163,7 @@ export const CTASection = ({
   if (variant === 'split') {
     return (
       <section
-        className={`py-16 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className}`}
+        className={`py-16 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className} animate-fade-in`}
       >
         <Container>
           <div
@@ -169,21 +171,21 @@ export const CTASection = ({
           >
             {/* Image */}
             {imageSrc && (
-              <div className="md:w-1/2 relative">
-                <div className="relative h-64 md:h-96 w-full overflow-hidden rounded-lg">
+              <div className="md:w-1/2 relative animate-fade-in" style={{ animationDelay: '150ms' }}>
+                <div className="relative h-64 md:h-96 w-full overflow-hidden rounded-lg transition-all duration-300 hover:shadow-xl">
                   <Image
                     src={imageSrc}
                     alt={imageAlt}
                     fill
                     style={{ objectFit: 'cover' }}
-                    className="rounded-lg"
+                    className="rounded-lg transition-transform duration-500 hover:scale-105"
                   />
                 </div>
               </div>
             )}
 
             {/* Contenu */}
-            <div className={`md:w-1/2 ${alignClasses[align]}`}>
+            <div className={`md:w-1/2 ${alignClasses[align]} animate-fade-in`} style={{ animationDelay: '300ms' }}>
               {subtitle && (
                 <Typography as="span" variant="subtle" className="mb-2 inline-block">
                   {subtitle}
@@ -200,7 +202,7 @@ export const CTASection = ({
 
               {/* Témoignage */}
               {testimonial && (
-                <div className="mb-6 p-4 bg-white bg-opacity-10 backdrop-blur-sm rounded-lg">
+                <div className="mb-6 p-4 bg-white bg-opacity-10 backdrop-blur-sm rounded-lg transition-all duration-300 hover:bg-opacity-20">
                   <Typography variant="p" className="italic mb-2">
                     &quot;{testimonial.quote}&quot;
                   </Typography>
@@ -211,12 +213,12 @@ export const CTASection = ({
                 </div>
               )}
 
-              <div className="flex flex-wrap gap-4 mt-6 justify-center md:justify-start">
+              <div className="flex flex-wrap gap-4 mt-6 justify-center md:justify-start animate-fade-in" style={{ animationDelay: '450ms' }}>
                 <Button
                   variant={primaryAction.variant || 'gradient'}
                   size={primaryAction.size || 'lg'}
                   onClick={() => (window.location.href = primaryAction.url)}
-                  className="shine-effect"
+                  className="shine-effect transition-transform duration-150 hover:scale-105"
                 >
                   {primaryAction.text}
                 </Button>
@@ -225,6 +227,7 @@ export const CTASection = ({
                     variant={secondaryAction.variant || 'secondary'}
                     size={secondaryAction.size || 'lg'}
                     onClick={() => (window.location.href = secondaryAction.url)}
+                    className="transition-transform duration-150 hover:scale-105"
                   >
                     {secondaryAction.text}
                   </Button>
@@ -246,51 +249,68 @@ export const CTASection = ({
       <section className={`py-16 ${className}`}>
         <Container>
           <div
-            className={`max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${borderClass}`}
+            className={`max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${borderClass} transition-all duration-300 hover:shadow-2xl animate-fade-in`}
           >
-            {/* Image de fond (si fournie) */}
+            {/* Background Image */}
             {imageSrc && imagePosition === 'background' && (
-              <div className="relative h-64 w-full">
-                <Image src={imageSrc} alt={imageAlt} fill style={{ objectFit: 'cover' }} />
-                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+              <div className="absolute inset-0 z-0 opacity-20">
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  className="transition-transform duration-500 hover:scale-105"
+                />
               </div>
             )}
 
-            <div className="p-8 md:p-12">
-              <div className={alignClasses[align]}>
-                {subtitle && (
-                  <Typography as="span" variant="subtle" className="mb-2 inline-block">
-                    {subtitle}
-                  </Typography>
-                )}
-                <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
-                  {title}
+            <div className="relative z-10 p-10">
+              {subtitle && (
+                <Typography as="span" variant="subtle" className="mb-2 inline-block animate-fade-in" style={{ animationDelay: '150ms' }}>
+                  {subtitle}
                 </Typography>
-                {description && (
-                  <Typography variant="lead" className="mb-6">
-                    {description}
-                  </Typography>
-                )}
+              )}
+              <Typography as="h2" variant="h2" className="mb-4 font-bold italic animate-fade-in" style={{ animationDelay: '300ms' }}>
+                {title}
+              </Typography>
+              {description && (
+                <Typography variant="lead" className="mb-6 animate-fade-in" style={{ animationDelay: '450ms' }}>
+                  {description}
+                </Typography>
+              )}
 
-                <div className="flex flex-wrap gap-4 mt-6 justify-center">
-                  <Button
-                    variant={primaryAction.variant || 'gradient'}
-                    size={primaryAction.size || 'lg'}
-                    onClick={() => (window.location.href = primaryAction.url)}
-                    className="shine-effect"
-                  >
-                    {primaryAction.text}
-                  </Button>
-                  {secondaryAction && (
-                    <Button
-                      variant={secondaryAction.variant || 'secondary'}
-                      size={secondaryAction.size || 'lg'}
-                      onClick={() => (window.location.href = secondaryAction.url)}
-                    >
-                      {secondaryAction.text}
-                    </Button>
-                  )}
+              {/* Témoignage */}
+              {testimonial && (
+                <div className="mb-6 p-4 bg-white bg-opacity-10 backdrop-blur-sm rounded-lg transition-all duration-300 hover:bg-opacity-20 animate-fade-in" style={{ animationDelay: '600ms' }}>
+                  <Typography variant="p" className="italic mb-2">
+                    &quot;{testimonial.quote}&quot;
+                  </Typography>
+                  <Typography variant="subtle">
+                    — {testimonial.author}
+                    {testimonial.role ? `, ${testimonial.role}` : ''}
+                  </Typography>
                 </div>
+              )}
+
+              <div className="flex flex-wrap gap-4 mt-6 justify-center animate-fade-in" style={{ animationDelay: '750ms' }}>
+                <Button
+                  variant={primaryAction.variant || 'gradient'}
+                  size={primaryAction.size || 'lg'}
+                  onClick={() => (window.location.href = primaryAction.url)}
+                  className="shine-effect transition-transform duration-150 hover:scale-105"
+                >
+                  {primaryAction.text}
+                </Button>
+                {secondaryAction && (
+                  <Button
+                    variant={secondaryAction.variant || 'secondary'}
+                    size={secondaryAction.size || 'lg'}
+                    onClick={() => (window.location.href = secondaryAction.url)}
+                    className="transition-transform duration-150 hover:scale-105"
+                  >
+                    {secondaryAction.text}
+                  </Button>
+                )}
               </div>
             </div>
           </div>
@@ -299,8 +319,43 @@ export const CTASection = ({
     );
   }
 
-  // Fallback - ne devrait jamais arriver grâce aux valeurs par défaut
-  return null;
+  // Rendu par défaut si aucune variante ne correspond
+  return (
+    <section className={`py-16 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className}`}>
+      <Container>
+        <div className={`max-w-3xl mx-auto ${alignClasses[align]}`}>
+          <Typography as="h2" variant="h2" className="mb-4 font-bold">
+            {title}
+          </Typography>
+          {description && (
+            <Typography variant="lead" className="mb-6">
+              {description}
+            </Typography>
+          )}
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button
+              variant={primaryAction.variant || 'gradient'}
+              size={primaryAction.size || 'lg'}
+              onClick={() => (window.location.href = primaryAction.url)}
+              className="shine-effect transition-transform duration-150 hover:scale-105"
+            >
+              {primaryAction.text}
+            </Button>
+            {secondaryAction && (
+              <Button
+                variant={secondaryAction.variant || 'secondary'}
+                size={secondaryAction.size || 'lg'}
+                onClick={() => (window.location.href = secondaryAction.url)}
+                className="transition-transform duration-150 hover:scale-105"
+              >
+                {secondaryAction.text}
+              </Button>
+            )}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
 };
 
 export default CTASection;

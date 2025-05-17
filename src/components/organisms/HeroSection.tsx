@@ -1,6 +1,9 @@
+"use client";
+
 import React from 'react';
 import { Button } from '../atoms/Button';
 import { Typography } from '../atoms/Typography';
+import { HeroPattern } from '../atoms/HeroPattern';
 
 interface HeroSectionProps {
   title: string;
@@ -23,25 +26,39 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundImage,
   className = '',
 }) => {
-  const style = backgroundImage
+  const backgroundStyle = backgroundImage
     ? {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        position: 'relative' as const,
+        color: 'white'
       }
-    : {};
+    : {
+        position: 'relative' as const
+      };
 
   return (
     <section
-      className={`py-20 px-4 flex items-center justify-center relative ${className}`}
-      style={style}
+      className={`py-20 px-4 flex items-center justify-center ${className}`}
+      style={backgroundStyle}
     >
-      <div className="max-w-4xl mx-auto text-center">
-        <Typography as="h1" variant="h1" className="mb-4 font-bold italic">
+      {!backgroundImage && <HeroPattern />}
+
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+        <Typography 
+          as="h1" 
+          variant="h1" 
+          className={`mb-4 font-bold italic ${backgroundImage ? 'text-white' : ''}`}
+        >
           {title}
         </Typography>
 
-        <Typography as="p" variant="lead" className="mb-8 max-w-2xl mx-auto">
+        <Typography 
+          as="p" 
+          variant="lead" 
+          className={`mb-8 max-w-2xl mx-auto ${backgroundImage ? 'text-white' : ''}`}
+        >
           {subtitle}
         </Typography>
 
@@ -49,17 +66,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           <Button
             variant="gradient"
             size="lg"
-            className="shine-effect"
-            onClick={() => (window.location.href = ctaHref)}
-          >
+            href={ctaHref}
+            className="shine-effect"          >
             {ctaText}
           </Button>
 
           {secondaryCtaText && (
             <Button
-              variant="outline"
+              variant={backgroundImage ? "outline" : "outline"}
               size="lg"
-              onClick={() => (window.location.href = secondaryCtaHref || '')}
+              href={secondaryCtaHref || ''}
+              className={backgroundImage ? "text-white border-white hover:bg-white/20" : ""}
             >
               {secondaryCtaText}
             </Button>

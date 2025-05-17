@@ -53,7 +53,7 @@ export function TestimonialSection({
     return (
       <section className={`py-12 ${bgClass} ${className}`}>
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-in">
             <Typography as="h2" variant="h2" className="mb-3">
               {title}
             </Typography>
@@ -64,39 +64,47 @@ export function TestimonialSection({
             )}
           </div>
 
-          <div className="mb-8">
-            <Testimonial
-              quote={featuredTestimonial.quote}
-              author={featuredTestimonial.author}
-              company={featuredTestimonial.company}
-              avatarSrc={featuredTestimonial.avatarSrc}
-              projectName={featuredTestimonial.projectName}
-              variant="featured"
-            />
+          <div className="mb-8 animate-fade-in" style={{ animationDelay: '150ms' }}>
+            <div className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <Testimonial
+                quote={featuredTestimonial.quote}
+                author={featuredTestimonial.author}
+                company={featuredTestimonial.company}
+                avatarSrc={featuredTestimonial.avatarSrc}
+                projectName={featuredTestimonial.projectName}
+                variant="featured"
+              />
+            </div>
           </div>
 
           {otherTestimonials.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
               {otherTestimonials.map((testimonial, index) => (
-                <Testimonial
-                  key={`testimonial-${index}`}
-                  quote={testimonial.quote}
-                  author={testimonial.author}
-                  company={testimonial.company}
-                  avatarSrc={testimonial.avatarSrc}
-                  projectName={testimonial.projectName}
-                />
+                <div 
+                  key={`testimonial-${index}`} 
+                  className="animate-fade-in transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+                  style={{ animationDelay: `${300 + (index * 150)}ms` }}
+                >
+                  <Testimonial
+                    quote={testimonial.quote}
+                    author={testimonial.author}
+                    company={testimonial.company}
+                    avatarSrc={testimonial.avatarSrc}
+                    projectName={testimonial.projectName}
+                  />
+                </div>
               ))}
             </div>
           )}
 
           {cta && (
-            <div className="mt-10 text-center">
+            <div className="mt-10 text-center animate-fade-in" style={{ animationDelay: '600ms' }}>
               <Button
                 variant="primary"
                 href={cta.url}
                 icon={<Icon name="ArrowRight" />}
                 iconPosition="right"
+                className="transition-transform duration-150 hover:scale-105"
               >
                 {cta.text}
               </Button>
@@ -112,7 +120,7 @@ export function TestimonialSection({
     return (
       <section className={`py-12 ${bgClass} ${className}`}>
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-in">
             <Typography as="h2" variant="h2" className="mb-3">
               {title}
             </Typography>
@@ -125,25 +133,31 @@ export function TestimonialSection({
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
-              <Testimonial
+              <div 
                 key={`testimonial-${index}`}
-                quote={testimonial.quote}
-                author={testimonial.author}
-                company={testimonial.company}
-                avatarSrc={testimonial.avatarSrc}
-                projectName={testimonial.projectName}
-                variant={index === 0 ? 'featured' : 'default'}
-              />
+                className="animate-fade-in transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+                style={{ animationDelay: `${150 + (index * 150)}ms` }}
+              >
+                <Testimonial
+                  quote={testimonial.quote}
+                  author={testimonial.author}
+                  company={testimonial.company}
+                  avatarSrc={testimonial.avatarSrc}
+                  projectName={testimonial.projectName}
+                  variant={index === 0 ? 'featured' : 'default'}
+                />
+              </div>
             ))}
           </div>
 
           {cta && (
-            <div className="mt-10 text-center">
+            <div className="mt-10 text-center animate-fade-in" style={{ animationDelay: '600ms' }}>
               <Button
                 variant="primary"
                 href={cta.url}
                 icon={<Icon name="ArrowRight" />}
                 iconPosition="right"
+                className="transition-transform duration-150 hover:scale-105"
               >
                 {cta.text}
               </Button>
@@ -158,7 +172,7 @@ export function TestimonialSection({
   return (
     <section className={`py-12 ${bgClass} ${className}`}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-fade-in">
           <Typography as="h2" variant="h2" className="mb-3">
             {title}
           </Typography>
@@ -171,21 +185,23 @@ export function TestimonialSection({
 
         <div className="max-w-4xl mx-auto">
           {testimonials.length > 0 && (
-            <Testimonial
-              quote={testimonials[0].quote}
-              author={testimonials[0].author}
-              company={testimonials[0].company}
-              avatarSrc={testimonials[0].avatarSrc}
-              projectName={testimonials[0].projectName}
-              variant="featured"
-            />
+            <div className="animate-fade-in transition-all duration-300 hover:shadow-lg" style={{ animationDelay: '150ms' }}>
+              <Testimonial
+                quote={testimonials[0].quote}
+                author={testimonials[0].author}
+                company={testimonials[0].company}
+                avatarSrc={testimonials[0].avatarSrc}
+                projectName={testimonials[0].projectName}
+                variant="featured"
+              />
+            </div>
           )}
 
-          <div className="flex justify-center mt-6 gap-2">
+          <div className="flex justify-center mt-6 gap-2 animate-fade-in" style={{ animationDelay: '300ms' }}>
             {testimonials.map((_, index) => (
               <button
                 key={`dot-${index}`}
-                className={`w-3 h-3 rounded-full ${index === 0 ? 'bg-primary' : 'bg-gray-300'}`}
+                className={`w-3 h-3 rounded-full transition-all duration-150 ${index === 0 ? 'bg-primary' : 'bg-gray-300'} hover:scale-125`}
                 aria-label={`Voir témoignage ${index + 1}`}
               />
             ))}
@@ -193,12 +209,13 @@ export function TestimonialSection({
         </div>
 
         {cta && (
-          <div className="mt-10 text-center">
+          <div className="mt-10 text-center animate-fade-in" style={{ animationDelay: '450ms' }}>
             <Button
               variant="primary"
               href={cta.url}
               icon={<Icon name="ArrowRight" />}
               iconPosition="right"
+              className="transition-transform duration-150 hover:scale-105"
             >
               {cta.text}
             </Button>

@@ -89,7 +89,7 @@ export const ServiceOverview = ({
     <section className={`py-16 ${backgroundClasses[backgroundColor]} ${className}`}>
       <Container>
         {/* En-tête de la section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-fade-in">
           <Typography as="h2" variant="h2" className="mb-3 font-bold italic">
             {title}
           </Typography>
@@ -110,18 +110,23 @@ export const ServiceOverview = ({
         {/* Présentation des services */}
         {variant === 'grid' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {services.map((service) => (
-              <ServiceHighlight
-                key={service.id}
-                title={service.title}
-                description={service.description}
-                icon={renderIcon(service.icon)}
-                color={service.color || 'primary'}
-                variant={service.featured ? 'featured' : 'default'}
-                ctaLink={service.slug ? `/services/${service.slug}` : undefined}
-                ctaText={service.ctaText || 'En savoir plus'}
-                bulletPoints={service.bulletPoints}
-              />
+            {services.map((service, index) => (
+              <div 
+                key={service.id} 
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <ServiceHighlight
+                  title={service.title}
+                  description={service.description}
+                  icon={renderIcon(service.icon)}
+                  color={service.color || 'primary'}
+                  variant={service.featured ? 'featured' : 'default'}
+                  ctaLink={service.slug ? `/services/${service.slug}` : undefined}
+                  ctaText={service.ctaText || 'En savoir plus'}
+                  bulletPoints={service.bulletPoints}
+                />
+              </div>
             ))}
           </div>
         )}
@@ -131,11 +136,12 @@ export const ServiceOverview = ({
             {services.map((service, index) => (
               <div
                 key={service.id}
-                className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8`}
+                className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 animate-fade-in`}
+                style={{ animationDelay: `${index * 300}ms` }}
               >
                 <div className="flex-1">
                   <div
-                    className={`w-16 h-16 flex items-center justify-center rounded-full mb-4 bg-[var(--color-${service.color || 'primary'}-100)]`}
+                    className={`w-16 h-16 flex items-center justify-center rounded-full mb-4 bg-[var(--color-${service.color || 'primary'}-100)] transition-transform duration-300 hover:scale-110`}
                   >
                     {renderIcon(service.icon, 32)}
                   </div>
@@ -149,7 +155,7 @@ export const ServiceOverview = ({
                   {service.bulletPoints && service.bulletPoints.length > 0 && (
                     <ul className="space-y-2 mb-4">
                       {service.bulletPoints.map((point, i) => (
-                        <li key={i} className="flex items-start gap-2">
+                        <li key={i} className="flex items-start gap-2 transition-transform duration-150 hover:-translate-x-1">
                           <Icon
                             name="Check"
                             className={`text-[var(--color-${service.color || 'primary'})]`}
@@ -162,16 +168,16 @@ export const ServiceOverview = ({
 
                   {service.slug && (
                     <Link href={`/services/${service.slug}`}>
-                      <Button variant="secondary" size="sm">
+                      <Button variant="secondary" size="sm" className="transition-transform duration-150 hover:scale-105">
                         {service.ctaText || 'En savoir plus'}
                       </Button>
                     </Link>
                   )}
                 </div>
-                <div className="flex-1 relative h-64 md:h-full rounded-lg bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700">
+                <div className="flex-1 relative h-64 md:h-full rounded-lg bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 transition-all duration-300 hover:shadow-lg">
                   {/* Emplacement pour une image ou illustration du service */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-4xl p-6">{renderIcon(service.icon, 64)}</div>
+                    <div className="text-4xl p-6 transition-transform duration-300 hover:scale-110">{renderIcon(service.icon, 64)}</div>
                   </div>
                 </div>
               </div>
@@ -181,13 +187,14 @@ export const ServiceOverview = ({
 
         {variant === 'cards' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {services.map((service) => (
+            {services.map((service, index) => (
               <div
                 key={service.id}
-                className="rounded-lg p-6 border border-gray-200 dark:border-gray-700 transition-all hover:shadow-md"
+                className="rounded-lg p-6 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-md animate-fade-in"
+                style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div
-                  className={`w-12 h-12 flex items-center justify-center rounded-full mb-4 bg-[var(--color-${service.color || 'primary'}-100)]`}
+                  className={`w-12 h-12 flex items-center justify-center rounded-full mb-4 bg-[var(--color-${service.color || 'primary'}-100)] transition-transform duration-300 hover:scale-110`}
                 >
                   {renderIcon(service.icon)}
                 </div>
@@ -201,10 +208,10 @@ export const ServiceOverview = ({
                 {service.slug && (
                   <Link
                     href={`/services/${service.slug}`}
-                    className="text-[var(--color-primary)] hover:underline inline-flex items-center gap-1"
+                    className="text-[var(--color-primary)] hover:underline inline-flex items-center gap-1 transition-all duration-150 group"
                   >
                     {service.ctaText || 'En savoir plus'}
-                    <Icon name="ArrowRight" className="ml-1" size={16} />
+                    <Icon name="ArrowRight" className="ml-1 transition-transform duration-150 group-hover:translate-x-1" size={16} />
                   </Link>
                 )}
               </div>
@@ -214,18 +221,20 @@ export const ServiceOverview = ({
 
         {/* Caractéristiques supplémentaires */}
         {showFeatures && features.length > 0 && (
-          <div className="mt-16">
+          <div className="mt-16 animate-fade-in" style={{ animationDelay: '300ms' }}>
             <Typography as="h3" variant="h3" className="text-center mb-8">
               Pourquoi me choisir?
             </Typography>
 
             <FeatureGrid
-              features={features.map((feature) => ({
+              features={features.map((feature, index) => ({
                 ...feature,
                 icon:
                   typeof feature.icon === 'string'
                     ? renderIcon(feature.icon as IconName)
                     : feature.icon,
+                className: `animate-fade-in`,
+                style: { animationDelay: `${400 + (index * 150)}ms` }
               }))}
               variant="outline"
               columns={3}
@@ -235,9 +244,9 @@ export const ServiceOverview = ({
 
         {/* Bouton d'appel à l'action */}
         {showCtaButton && (
-          <div className="text-center mt-12">
+          <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '750ms' }}>
             <Link href={ctaButtonLink}>
-              <Button variant="gradient" size="lg" className="shine-effect">
+              <Button variant="gradient" size="lg" className="shine-effect transition-transform duration-150 hover:scale-105">
                 {ctaButtonText}
               </Button>
             </Link>

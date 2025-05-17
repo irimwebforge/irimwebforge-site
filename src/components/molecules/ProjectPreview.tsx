@@ -49,29 +49,21 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
 }) => {
   // Styles selon variante
   const getVariantClasses = () => {
-    switch (variant) {
-      case 'compact':
-        return {
-          container:
-            'rounded-md overflow-hidden shadow-sm hover:shadow transition-all duration-300',
-          imageDimensions: 'aspect-video',
-          content: 'p-3',
-        };
-      case 'featured':
-        return {
-          container:
-            'rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-2 border-[var(--color-primary)]',
-          imageDimensions: 'aspect-[4/3]',
-          content: 'p-6',
-        };
-      default:
-        return {
-          container:
-            'rounded-md overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-color',
-          imageDimensions: 'aspect-[3/2]',
-          content: 'p-4',
-        };
-    }
+    const baseClasses = {
+      container: cn(
+        'rounded-md overflow-hidden shadow-sm',
+        'border border-color hover:border-2 hover:border-[var(--color-primary)]',
+        'hover:shadow-lg group',
+        'transition-all duration-300 ease-in-out'
+      ),
+      imageDimensions: 'aspect-[4/3] min-h-[280px]',
+      content: 'p-4 transition-all duration-300 ease-in-out group-hover:p-6',
+      title: variant === 'featured' 
+        ? 'text-lg md:text-xl font-bold text-primary transition-all duration-300 ease-in-out group-hover:text-xl md:group-hover:text-2xl'
+        : 'text-base md:text-lg font-bold text-primary transition-all duration-300 ease-in-out group-hover:text-lg md:group-hover:text-xl'
+    };
+
+    return baseClasses;
   };
 
   const variantClasses = getVariantClasses();
@@ -132,7 +124,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
   return (
     <Link
       href={`/projets/${slug}`}
-      className={cn('project-preview block surface-primary', variantClasses.container, className)}
+      className={cn('project-preview block surface-primary min-h-[500px]', variantClasses.container, className)}
     >
       {/* Image du projet */}
       <div className={cn('relative overflow-hidden', variantClasses.imageDimensions)}>
@@ -140,23 +132,30 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
           src={imageSrc}
           alt={title}
           fill
-          className="object-cover transition-transform duration-500 hover:scale-105"
+          className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
         />
       </div>
 
       {/* Contenu texte */}
       <div className={variantClasses.content}>
         <Typography
+          as="h3"
           variant={variant === 'featured' ? 'h3' : 'h4'}
-          className="font-bold text-primary"
+          className={variantClasses.title}
         >
           {title}
         </Typography>
 
         {renderMeta()}
 
-        {description && variant !== 'compact' && (
-          <Typography variant="small" className="mt-2 text-secondary line-clamp-2">
+        {description && (
+          <Typography 
+            variant="small" 
+            className={cn(
+              "mt-2 text-secondary line-clamp-2",
+              variant === 'featured' ? 'text-sm group-hover:text-base' : 'text-xs group-hover:text-sm'
+            )}
+          >
             {description}
           </Typography>
         )}

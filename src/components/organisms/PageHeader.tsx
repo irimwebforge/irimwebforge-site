@@ -108,7 +108,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
     if (breadcrumbs.length === 0) return null;
 
     return (
-      <nav className="mb-4" aria-label="Breadcrumb">
+      <nav className={`mb-4 ${alignClasses[align]}`} aria-label="Breadcrumb">
         <ol className="flex flex-wrap items-center space-x-1 text-sm">
           {breadcrumbs.map((crumb, index) => (
             <React.Fragment key={index}>
@@ -272,9 +272,11 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             {renderBreadcrumbs()}
 
             {badge && (
-              <Badge variant={badge.variant || 'primary'} className="mb-4" size="medium">
-                {badge.text}
-              </Badge>
+              <div className={`${alignClasses[align]}`}>
+                <Badge variant={badge.variant || 'primary'} className="mb-4" size="medium">
+                  {badge.text}
+                </Badge>
+              </div>
             )}
 
             <Typography
@@ -291,7 +293,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             )}
 
             {description && (
-              <Typography variant="p" className="mb-6 max-w-prose opacity-80">
+              <Typography variant="p" className={`mb-6 opacity-80 ${align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : ''}`}>
                 {description}
               </Typography>
             )}

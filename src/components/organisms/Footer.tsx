@@ -14,7 +14,7 @@ export function Footer() {
           <div className="md:col-span-1">
             <Logo width={100} height={33} />
             <Typography variant="small" className="mt-4 text-secondary">
-              Studio de création digitale spécialisé dans la conception d'interfaces sur mesure.
+              Studio de création digitale spécialisé dans la conception d'interfaces sur mesure libérant votre temps et votre énergie.
             </Typography>
             {/* Réseaux sociaux */}
             <div className="mt-6">
@@ -73,6 +73,15 @@ export function Footer() {
               </li>
               <li>
                 <NavLink
+                  href="/processus"
+                  color="secondary"
+                  className="hover:text-[var(--color-primary)]"
+                >
+                  Processus
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
                   href="/a-propos"
                   color="secondary"
                   className="hover:text-[var(--color-primary)]"
@@ -95,43 +104,43 @@ export function Footer() {
           {/* Services */}
           <div>
             <Typography variant="p" className="font-semibold text-base mb-4 text-primary">
-              Services
+              Solutions
             </Typography>
             <ul className="space-y-2 text-sm">
               <li>
                 <NavLink
-                  href="/services/site-web"
+                  href="/services/presence"
                   color="secondary"
                   className="hover:text-[var(--color-primary)]"
                 >
-                  Sites web
+                  Solution Présence
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  href="/services/applications"
+                  href="/services/integree"
                   color="secondary"
                   className="hover:text-[var(--color-primary)]"
                 >
-                  Applications
+                  Solution Intégrée
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  href="/services/interfaces"
+                  href="/services/evolutive"
                   color="secondary"
                   className="hover:text-[var(--color-primary)]"
                 >
-                  Interfaces
+                  Solution Évolutive
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  href="/services/maintenance"
+                  href="/services#diagnostic"
                   color="secondary"
                   className="hover:text-[var(--color-primary)]"
                 >
-                  Maintenance
+                  Diagnostic Numérique
                 </NavLink>
               </li>
             </ul>
@@ -144,8 +153,8 @@ export function Footer() {
             </Typography>
             <ul className="space-y-2 text-sm">
               <li className="text-secondary">contact@irimwebforge.com</li>
-              <li className="text-secondary">06 00 00 00 00</li>
-              <li className="text-secondary">Lyon, France</li>
+              <li className="text-secondary">06 78 76 45 59</li>
+              <li className="text-secondary">11 route de Paris, 67117 Ittenheim</li>
             </ul>
           </div>
         </div>

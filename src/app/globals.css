@@ -82,7 +82,6 @@ h6 {
 }
 
 a {
-  color: var(--color-primary);
   transition-property: color;
   transition-duration: 200ms;
 }
