@@ -16,8 +16,7 @@ export default function Page() {
   const VisionBanner = () => (
     <Alert variant="info" title="" className="mb-8 mx-auto max-w-5xl">
       <p className="text-sm text-blue-800 dark:text-blue-200">
-        Cette page présente ma vision des projets que j'aimerais réaliser. Elle mélange projets
-        personnels réels et projections de réalisations futures pour illustrer mon approche.
+        Cette page présente mon projet fondateur (Corps & Sens) ainsi que des projets en développement et conceptuels qui illustrent ma vision. Je privilégie la transparence sur mon parcours entrepreneurial.
       </p>
     </Alert>
   );
@@ -139,11 +138,10 @@ export default function Page() {
         <Container>
           <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
-              Réalisations et aspirations
+              Mon portfolio: entre réalisations et vision
             </Typography>
             <Typography variant="lead" className="mb-8 max-w-3xl mx-auto">
-              Un mélange de projets réalisés, en cours et conceptuels qui illustrent ma vision pour
-              mes futurs clients.
+              Un mélange de projets qui raconte mon parcours et illustre ma direction professionnelle.
             </Typography>
 
             <div className="bg-white dark:bg-gray-800 p-6 border border-gray-100 dark:border-gray-700 rounded-lg mb-8 max-w-3xl mx-auto">
@@ -156,9 +154,10 @@ export default function Page() {
                     Comment lire cette galerie de projets
                   </Typography>
                   <Typography variant="p" className="text-gray-600 dark:text-gray-300 text-sm">
-                    Les projets sont clairement identifiés comme "Réalisés", "En développement" ou
-                    "Concepts" pour distinguer les expériences réelles des aspirations. Ils sont
-                    tous inspirés par ma vision d'interfaces qui libèrent du temps et de l'énergie.
+                    Guide de lecture du portfolio
+                  </Typography>
+                  <Typography variant="p" className="text-gray-600 dark:text-gray-300 text-sm">
+                    Mon parcours se reflète dans ce portfolio: un projet personnel fondateur qui a révélé ma passion, des projets en développement qui élargissent mes compétences, et des concepts qui matérialisent ma vision. Chaque élément répond à des besoins réels observés.
                   </Typography>
                 </div>
               </div>
@@ -222,11 +221,10 @@ export default function Page() {
         <Container>
           <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
-              Les transformations que j'aimerais rendre possibles
+              Impacts concrets au-delà de la technique
             </Typography>
             <Typography variant="lead" className="mb-8 max-w-3xl mx-auto">
-              Au-delà des aspects techniques, ce sont ces changements concrets dans votre quotidien
-              professionnel qui m'inspirent.
+              Ces changements dans votre quotidien professionnel sont ma véritable motivation.
             </Typography>
           </div>
 
@@ -352,8 +350,8 @@ export default function Page() {
       </section>
 
       <CTASection
-        title="Vous aussi, transformez votre expérience administrative"
-        description="Discutons de votre activité et de ce qui vous prend du temps inutilement. Ensemble, imaginons comment vous pourriez récupérer des heures précieuses."
+        title="Échangeons sur vos défis quotidiens"
+        description="Au début de mon parcours freelance, je serais ravi de comprendre vos besoins spécifiques - même si c'est simplement pour partager des perspectives sur vos défis actuels."
         primaryAction={{
           text: 'Échanger sur votre projet',
           url: '/contact',

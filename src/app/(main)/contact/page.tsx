@@ -9,6 +9,7 @@ import { Alert } from '@/components/molecules/Alert';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/atoms/Button';
 import Link from 'next/link';
+import { CTASection } from '@/templates/CTASection';
 
 export default function Page() {
   // États pour le formulaire
@@ -22,8 +23,7 @@ export default function Page() {
   const VisionBanner = () => (
     <Alert variant="info" title="" className="mb-8 mx-auto max-w-5xl">
       <p className="text-sm text-blue-800 dark:text-blue-200">
-        Ce formulaire est conçu pour nous aider à mieux nous connaître. Je souhaite comprendre vos
-        défis quotidiens avant d'évoquer toute solution technique.
+        Cette page vous propose un échange sans engagement pour explorer vos défis quotidiens. Ma démarche est transparente: je débute mon aventure freelance avec une expérience fondatrice et une vision claire.
       </p>
     </Alert>
   );
@@ -254,8 +254,8 @@ export default function Page() {
   return (
     <main className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
       <PageHeader
-        title="Parlons de votre activité"
-        description="Cet échange nous permettra de mieux nous connaître, de comprendre vos défis quotidiens et d'explorer ensemble des pistes d'amélioration sans engagement."
+        title="Échange sans obligation"
+        description="Parlons de votre activité"
         theme="primary"
         align="center"
         size="medium"
@@ -270,11 +270,10 @@ export default function Page() {
         <Container>
           <div className="max-w-4xl mx-auto mb-8 text-center">
             <Typography as="h2" variant="h2" className="mb-6 font-bold">
-              Comment se déroule notre conversation
+              Un échange constructif en 4 étapes
             </Typography>
             <Typography variant="lead" className="mb-12">
-              Une discussion de 45 minutes pour explorer vos défis quotidiens et voir si je pourrais
-              vous aider à libérer du temps pour votre cœur de métier.
+              Une discussion de 45 minutes pour explorer vos défis et voir comment libérer du temps pour votre cœur de métier.
             </Typography>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -300,13 +299,11 @@ export default function Page() {
               <div className="flex items-center gap-2 mb-3 justify-center">
                 <Icon name="Info" size={20} className="text-[var(--color-primary)]" />
                 <Typography variant="p" className="font-semibold text-[var(--color-primary)]">
-                  Un échange sans pression commerciale
+                  Une conversation authentique
                 </Typography>
               </div>
               <Typography variant="p" className="text-center mb-4">
-                Cette conversation est avant tout une opportunité de mieux nous connaître. Vous
-                repartirez avec quelques pistes de réflexion, que nous décidions de travailler
-                ensemble ou non.
+                Cet échange est avant tout une opportunité de mieux nous connaître. Vous repartirez avec des pistes de réflexion concrètes, que nous décidions de collaborer ou non.
               </Typography>
             </div>
           </div>
@@ -493,8 +490,34 @@ export default function Page() {
               </div>
             </div>
           </div>
+          <div className="max-w-2xl mx-auto mt-12 text-center">
+            <Typography as="h2" variant="h2" className="mb-6 font-bold">
+              Préparons notre conversation
+            </Typography>
+            <Typography variant="p" className="mb-8">
+              Pour que notre échange soit le plus productif possible, partagez quelques informations sur vous et votre activité.
+            </Typography>
+          </div>
         </Container>
       </section>
+
+      <CTASection
+        title="Échangeons sur vos défis quotidiens"
+        description="Je suis au début de mon parcours freelance et serais ravi de comprendre vos besoins spécifiques, sans aucune obligation."
+        primaryAction={{
+          text: "Prendre contact",
+          url: "/contact",
+          variant: "gradient"
+        }}
+        secondaryAction={{
+          text: "Découvrir mes projets",
+          url: "/projets",
+          variant: "secondary"
+        }}
+        variant="default"
+        backgroundColor="primary"
+        textColor="light"
+      />
 
       <style jsx global>{`
         @keyframes fade-in {

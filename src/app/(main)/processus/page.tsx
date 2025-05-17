@@ -15,9 +15,7 @@ export default function Page() {
   const VisionBanner = () => (
     <Alert variant="info" title="" className="mb-8 mx-auto max-w-5xl">
       <p className="text-sm text-blue-800 dark:text-blue-200">
-        Cette page présente ma vision du processus que j'aimerais mettre en place pour mes clients.
-        Elle est basée sur mon expérience personnelle et sur ma compréhension des besoins des
-        indépendants.
+        Cette page présente ma vision d'un processus idéal, inspiré par mon expérience avec le projet Corps & Sens. Je privilégie la transparence sur mon approche en développement.
       </p>
     </Alert>
   );
@@ -78,31 +76,31 @@ export default function Page() {
       id: 'faq-1',
       question: 'Comment se déroulerait une conversation découverte?',
       answer:
-        "Ce serait un échange de 45 minutes, gratuit et sans engagement, où nous explorerions ensemble vos aspirations et vos frustrations quotidiennes. Je poserais des questions centrées sur votre métier plutôt que sur la technique. L'objectif serait de comprendre vos vrais besoins, pas de vous vendre une solution standardisée.",
+        "Un échange de 45 minutes où j'écouterais plus que je ne parlerais. L'objectif: comprendre votre activité, vos frustrations actuelles et vos aspirations, sans jargon technique.",
     },
     {
       id: 'faq-2',
       question: 'Combien de temps faudrait-il pour développer un site?',
       answer:
-        "La durée varierait selon la complexité de votre projet et votre disponibilité pour les échanges. Pour un site avec interface d'administration sur mesure, il faudrait probablement entre 4 et 8 semaines. L'immersion dans votre métier représenterait environ 25% du temps total, car c'est l'élément clé pour créer une solution qui vous corresponde vraiment.",
+        "Cela dépend de la complexité du projet, mais l'accent est mis sur la compréhension de votre métier avant tout. En général, il faut compter entre 4 et 8 semaines pour un site sur mesure.",
     },
     {
       id: 'faq-3',
       question: 'Pourrais-je vraiment mettre à jour mon site moi-même?',
       answer:
-        "Absolument, ce serait même l'objectif principal! L'idée est de créer des interfaces spécialement adaptées à votre façon de travailler et à votre niveau de confort technique. Mon expérience avec mon épouse thérapeute a montré qu'une interface bien pensée peut transformer 7h de travail administratif en 45min. La formation serait personnalisée pour vous rendre totalement autonome.",
+        "Absolument, c'est la raison d'être de mon approche. L'interface administrative serait conçue spécifiquement pour votre façon de travailler, avec une formation personnalisée incluse.",
     },
     {
       id: 'faq-4',
       question: "Utiliseriez-vous WordPress ou d'autres CMS?",
       answer:
-        "Mon approche serait plutôt de créer des solutions sur mesure qui vous libèrent des contraintes des CMS standards. Cela permettrait une personnalisation totale et surtout des interfaces d'administration parfaitement adaptées à VOTRE façon de travailler, plutôt que de vous obliger à vous adapter à un système générique avec des fonctionnalités superflues.",
+        "Je privilégie des solutions sur mesure pour une adaptation totale à vos besoins, sans vous imposer les contraintes d'un CMS standard.",
     },
     {
       id: 'faq-5',
       question: 'Que se passerait-il si mon activité évolue?',
       answer:
-        "C'est tout l'intérêt d'un partenariat évolutif! Les solutions seraient conçues pour s'adapter et grandir avec vous. Les forfaits d'accompagnement permettraient d'ajuster régulièrement votre présence digitale sans avoir à tout reconstruire. L'objectif serait d'évoluer ensemble, en fonction de vos besoins changeants.",
+        "Les solutions sont pensées pour évoluer avec vous, grâce à un accompagnement régulier et des ajustements continus.",
     },
   ];
 
@@ -132,8 +130,8 @@ export default function Page() {
   return (
     <main>
       <PageHeader
-        title="Une approche centrée sur votre métier"
-        description="Ma vision d'un processus qui vous accompagnerait de l'idée à l'autonomie complète, en mettant l'accent sur la compréhension de votre activité avant toute considération technique."
+        title="Une approche qui place votre métier au centre"
+        description="Ma vision: vous accompagner de l'idée à l'autonomie en comprenant d'abord votre activité avant toute considération technique."
         theme="primary"
         align="center"
         size="medium"
@@ -147,11 +145,10 @@ export default function Page() {
         <Container>
           <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
-              De l'idée à l'autonomie en 6 étapes
+              Un processus en 6 étapes, de la compréhension à l'autonomie
             </Typography>
             <Typography variant="lead" className="max-w-3xl mx-auto">
-              Une vision d'un processus qui pourrait garantir un résultat parfaitement adapté à vos
-              besoins spécifiques et une véritable appropriation de votre outil.
+              Une méthode pensée pour créer des solutions véritablement adaptées à vos besoins spécifiques.
             </Typography>
           </div>
 
@@ -165,8 +162,8 @@ export default function Page() {
       </section>
 
       <StatsShowcase
-        title="Les engagements que je souhaiterais prendre"
-        description="Des principes clairs pour une collaboration sereine"
+        title="Mes engagements pour une collaboration de qualité"
+        description="Des principes fondamentaux qui guideraient notre travail ensemble"
         stats={stats}
         layout="horizontal"
         backgroundColor="light"
@@ -189,13 +186,11 @@ export default function Page() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <Typography as="h2" variant="h2" className="mb-6 font-bold italic">
-                Comment démarrer ?
+                Première étape: une conversation sans engagement
               </Typography>
 
               <Typography variant="p" className="mb-4">
-                La première étape serait simple : une conversation découverte gratuite et sans
-                engagement. Nous explorerions ensemble vos besoins et vos aspirations pour votre
-                présence digitale.
+                Un échange de 45 minutes gratuit et sans obligation qui vous apportera déjà des perspectives nouvelles sur votre présence digitale, que nous travaillions ensemble ou non.
               </Typography>
 
               <Typography variant="p" className="mb-6">
@@ -249,8 +244,8 @@ export default function Page() {
       </section>
 
       <CTASection
-        title="Intéressé par cette approche centrée sur vos besoins?"
-        description="La première étape serait une simple conversation pour clarifier vos défis quotidiens et vos objectifs."
+        title="Échangeons sur vos défis numériques"
+        description="Au début de mon parcours freelance, je serais ravi de comprendre vos besoins et de partager ma perspective - sans aucune obligation."
         primaryAction={{
           text: "Réserver un temps d'échange",
           url: '/contact',

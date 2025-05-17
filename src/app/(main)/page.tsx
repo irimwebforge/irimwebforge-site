@@ -4,15 +4,15 @@ import { CTASection } from '@/templates/CTASection';
 import { Container } from '@/components/atoms/Container';
 import { Typography } from '@/components/atoms/Typography';
 import Image from 'next/image';
+import { Icon } from '@/components/atoms/Icon';
 
 export default function HomePage() {
-  // Bandeau explicatif de vision
+  // Bannière explicative de vision
   const VisionNotice = () => (
     <div className="bg-blue-50 dark:bg-blue-900 border-b border-blue-200 dark:border-blue-800 py-2">
       <Container>
         <p className="text-sm text-blue-800 dark:text-blue-200 text-center">
-          Ce site présente ma vision professionnelle et les résultats que j'aspire à créer pour mes
-          clients. Certains éléments représentent des projections basées sur mon expérience.
+          Cette page présente mon parcours: de l'expérience fondatrice avec mon épouse thérapeute à ma vision pour aider d'autres indépendants à libérer leur temps administratif.
         </p>
       </Container>
     </div>
@@ -24,8 +24,8 @@ export default function HomePage() {
       id: 'time',
       title: 'Récupérez vos dimanches et vos soirées',
       description:
-        "L'expérience réussie avec mon épouse thérapeute (7h → 45min) montre qu'une interface bien conçue peut libérer significativement votre temps. Imaginez modifier votre planning en quelques clics.",
-      icon: 'Clock',
+        "L'expérience réussie avec mon épouse thérapeute montre qu'une interface bien conçue peut libérer significativement votre temps. Imaginez modifier votre planning en quelques clics.",
+      icon: '🧘‍♀ ',
       color: 'primary',
     },
     {
@@ -33,7 +33,7 @@ export default function HomePage() {
       title: 'Un site que vous pourriez enfin contrôler',
       description:
         'Fini les appels au "neveu qui s\'y connaît" ou l\'attente d\'un prestataire. Avec des interfaces pensées pour vous, mettez à jour votre site sans risquer de "tout casser" - même si la technologie vous intimide.',
-      icon: 'Smile',
+      icon: '🪄',
       color: 'secondary',
     },
     {
@@ -41,7 +41,7 @@ export default function HomePage() {
       title: 'Une image à la hauteur de votre expertise',
       description:
         "Votre site devrait refléter fidèlement votre niveau d'excellence, rassurant vos prospects et fidélisant vos clients. Il peut devenir un accélérateur plutôt qu'un frein pour votre activité.",
-      icon: 'Award',
+      icon: '🌟',
       color: 'tertiary',
     },
   ];
@@ -82,9 +82,9 @@ export default function HomePage() {
           />
         </div>
         <HeroSection
-          title="Des sites web qui pourraient libérer votre temps"
-          subtitle="Mon objectif: créer des sites que vous pourriez gérer vous-même, sans compétence technique et sans stress. Un projet personnel a déjà transformé 7h de gestion en 45min par semaine."
-          ctaText="Discuter de votre projet"
+          title="Des interfaces qui comprennent votre métier"
+          subtitle="Je conçois des espaces administratifs intuitifs où vous retrouvez vos processus métier, pas du jargon technique. Un premier projet a déjà transformé 7h de gestion hebdomadaire en 45min pour un cabinet thérapeutique."
+          ctaText="Parlez-moi de vos défis quotidiens"
           ctaHref="/contact"
           secondaryCtaText="Découvrir ma vision"
           secondaryCtaHref="#vision"
@@ -101,10 +101,7 @@ export default function HomePage() {
             Ma vision et mon parcours
           </Typography>
           <Typography variant="lead" className="text-gray-700 dark:text-gray-200 leading-relaxed">
-            "En créant une solution numérique adaptée pour mon épouse thérapeute, j'ai transformé
-            ses 7 heures de lutte administrative hebdomadaire en seulement 45 minutes d'interactions
-            fluides. Cette expérience personnelle a inspiré ma vision des solutions que je souhaite
-            proposer."
+            "En observant mon épouse thérapeute lutter avec son interface administrative, j'ai compris que le problème n'était pas son niveau technique, mais des outils qui ignoraient sa réalité métier. Cette prise de conscience a défini ma mission: créer des interfaces qui respectent votre façon de travailler."
           </Typography>
           <div className="flex items-center justify-center space-x-3 mt-6">
             <div className="h-10 w-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
@@ -125,43 +122,50 @@ export default function HomePage() {
         <Container className="relative z-10 mb-16">
           <div className="text-center mb-24">
             <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
-              Ce que je souhaite créer pour mes clients
+              Ce que mes solutions apportent concrètement
             </Typography>
             <Typography
               variant="lead"
               className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
             >
-              Basé sur mon expérience personnelle et ma compréhension des défis des indépendants,
-              voici les transformations que j'aspire à réaliser:
+              Voici l'impact que je souhaite créer pour mes clients :
             </Typography>
           </div>
 
           <div className="grid md:grid-cols-3 gap-12">
-            {clientBenefits.map((benefit) => (
-              <div
-                key={benefit.id}
-                className="bg-white dark:bg-gray-800 rounded-lg p-10 shadow-md hover:shadow-lg transition-shadow"
-              >
-                <div
-                  className={`h-16 w-16 rounded-full bg-${benefit.color}-100 dark:bg-${benefit.color}-900 flex items-center justify-center mb-4`}
-                >
-                  <span
-                    className={`text-${benefit.color}-600 dark:text-${benefit.color}-400 text-xl`}
-                  >
-                    {benefit.icon}
-                  </span>
-                </div>
-                <Typography variant="h3" className="font-bold mb-3 text-xl tracking-wide">
-                  {benefit.title}
-                </Typography>
-                <Typography
-                  variant="p"
-                  className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed"
-                >
-                  {benefit.description}
-                </Typography>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-10 shadow-md hover:shadow-lg transition-shadow">
+              <div className="h-16 w-16 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mb-4">
+                <span className="text-3xl text-primary-600 dark:text-primary-400" aria-hidden="true">🧘‍♀️</span>
               </div>
-            ))}
+              <Typography variant="h3" className="font-bold mb-3 text-xl tracking-wide">
+                Récupérez le temps pour votre cœur de métier
+              </Typography>
+              <Typography variant="p" className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+                Plus de temps pour vos clients, votre expertise, votre créativité.
+              </Typography>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-10 shadow-md hover:shadow-lg transition-shadow">
+              <div className="h-16 w-16 rounded-full bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center mb-4">
+                <span className="text-3xl text-secondary-600 dark:text-secondary-400" aria-hidden="true">🪄</span>
+              </div>
+              <Typography variant="h3" className="font-bold mb-3 text-xl tracking-wide">
+                Une présence en ligne que vous contrôlez vraiment
+              </Typography>
+              <Typography variant="p" className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+                Mettez à jour sans dépendre d'un expert externe.
+              </Typography>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-10 shadow-md hover:shadow-lg transition-shadow">
+              <div className="h-16 w-16 rounded-full bg-tertiary-100 dark:bg-tertiary-900 flex items-center justify-center mb-4">
+                <span className="text-3xl text-tertiary-600 dark:text-tertiary-400" aria-hidden="true">🌟</span>
+              </div>
+              <Typography variant="h3" className="font-bold mb-3 text-xl tracking-wide">
+                Une cohérence qui renforce votre crédibilité
+              </Typography>
+              <Typography variant="p" className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+                Une image professionnelle alignée avec votre niveau d'excellence.
+              </Typography>
+            </div>
           </div>
         </Container>
         {/* Transition vers la section suivante */}
@@ -254,19 +258,18 @@ export default function HomePage() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-white dark:from-gray-900 to-gray-50 dark:to-gray-900" />
       </section>
 
-      {/* 5. Ma vision future */}
+      {/* 5. Mon parcours d'évolution professionnelle */}
       <section className="py-32 bg-gray-50 dark:bg-gray-900 relative">
         <Container className="mb-16">
           <div className="text-center mb-24">
             <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
-              Mon parcours d'évolution professionnelle
+              Mon parcours à vos côtés
             </Typography>
             <Typography
               variant="p"
               className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
             >
-              Par transparence, je présente à la fois mes compétences actuelles et ma vision
-              d'évolution. Les solutions présentées reflètent des services actuels et futurs.
+              Je débute mon aventure freelance avec une expérience fondatrice et une vision claire. Découvrez où j'en suis aujourd'hui et comment nous pourrions évoluer ensemble.
             </Typography>
           </div>
 
@@ -276,31 +279,19 @@ export default function HomePage() {
                 variant="h3"
                 className="font-bold mb-4 text-primary-600 dark:text-primary-400 tracking-wide"
               >
-                Ce que je réalise actuellement
+                Ce que je réalise aujourd'hui
               </Typography>
               <Typography
                 variant="p"
                 className="text-gray-700 dark:text-gray-300 mb-8 leading-relaxed"
               >
-                Sites web personnalisés avec interfaces de gestion sur mesure. Des sites qui vous
-                ressemblent vraiment, associés à des interfaces d'administration que vous pouvez
-                utiliser sans compétence technique.
+                Sites web avec interfaces administratives intuitives qui respectent vos processus métier. L'expérience Corps & Sens montre qu'une interface bien conçue peut transformer 7h d'administration en 45min hebdomadaires.
               </Typography>
-              <div className="p-6 bg-primary-50 dark:bg-primary-950 rounded-md mb-8">
-                <Typography
-                  variant="subtle"
-                  className="font-medium text-gray-800 dark:text-gray-200"
-                >
-                  L'exemple de Corps & Sens montre qu'une interface bien conçue peut transformer 7h
-                  d'administration en 45min hebdomadaires.
-                </Typography>
-              </div>
               <Typography
                 variant="p"
                 className="text-gray-700 dark:text-gray-300 mt-4 leading-relaxed"
               >
-                Particulièrement adapté aux thérapeutes, artisans et professionnels qui cherchent à
-                reprendre le contrôle de leur présence en ligne sans y consacrer trop de temps.
+                Idéal pour les indépendants qui veulent reprendre le contrôle de leur présence en ligne sans y consacrer trop de temps.
               </Typography>
             </div>
 
@@ -309,7 +300,7 @@ export default function HomePage() {
                 variant="h3"
                 className="font-bold mb-4 text-secondary-600 dark:text-secondary-400 tracking-wide"
               >
-                Ce que je développe pour l'avenir
+                Ce que je développe activement
               </Typography>
               <Typography
                 variant="p"
@@ -343,8 +334,8 @@ export default function HomePage() {
       {/* 6. CTA honnête et direct */}
       <section className="py-32 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)]">
         <CTASection
-          title="Discutons de votre projet et de ma vision"
-          description="Explorons ensemble comment je pourrais créer pour vous une solution qui libère votre temps et votre énergie"
+          title="Échangeons sur vos défis quotidiens"
+          description="Une conversation de 45 minutes qui vous apportera des perspectives nouvelles, sans jargon technique, juste une écoute attentive."
           primaryAction={{
             text: 'Prendre contact',
             url: '/contact',

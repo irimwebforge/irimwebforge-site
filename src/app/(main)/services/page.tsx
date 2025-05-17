@@ -11,13 +11,11 @@ import { IconName } from '@/components/atoms/Icon';
 import { Alert } from '@/components/molecules/Alert';
 
 export default function Page() {
-  // Bannière de vision
+  // Bannière explicative de vision
   const VisionBanner = () => (
     <Alert variant="info" title="" className="mb-8 mx-auto max-w-5xl">
       <p className="text-sm text-blue-800 dark:text-blue-200">
-        Cette page présente ma vision de service et les résultats que j'aspire à créer pour mes
-        clients. Certains éléments représentent des projections basées sur mon expérience
-        personnelle avec mon épouse thérapeute.
+        Cette page présente ma vision de services inspirée par une expérience réelle avec mon épouse thérapeute. Je développe ces offres progressivement en privilégiant la transparence dans mon parcours entrepreneurial.
       </p>
     </Alert>
   );
@@ -143,9 +141,19 @@ export default function Page() {
       </Container>
 
       <ServiceOverview
-        title="Solutions envisagées"
-        description="Des approches que j'aimerais développer pour répondre à vos besoins spécifiques"
-        services={services}
+        title="Solutions ancrées dans l'expérience réelle"
+        description="Ces offres sont structurées selon les besoins concrets identifiés avec le projet Corps & Sens et s'affinent continuellement pour répondre aux défis quotidiens des indépendants."
+        services={services.map(service => ({
+          ...service,
+          description:
+            service.id === 'presence'
+              ? "Pour les indépendants qui veulent gérer facilement leur site sans dépendance technique."
+              : service.id === 'integree'
+              ? "Pour les professionnels qui jonglent entre plusieurs outils et cherchent un système unifié."
+              : service.id === 'evolutive'
+              ? "Pour les entrepreneurs établis prêts à faire évoluer leur infrastructure numérique."
+              : service.description,
+        }))}
         features={features}
         showFeatures={true}
       />
@@ -154,38 +162,59 @@ export default function Page() {
         <Container>
           <div className="text-center mb-8">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
-              Transformations que j'aspire à créer
+              Résultats concrets que je vise
             </Typography>
             <Typography variant="lead" className="mb-6 max-w-3xl mx-auto">
-              Basé sur mon expérience personnelle avec mon épouse thérapeute et ma compréhension des
-              défis des indépendants, voici les résultats que j'aimerais pouvoir offrir à mes futurs
-              clients.
+              Basé sur mon expérience avec mon épouse thérapeute, voici les transformations que j'aspire à créer pour différents types de professionnels:
             </Typography>
           </div>
 
           <div className="grid gap-8 md:grid-cols-3 mt-8">
-            {projections.map((item, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-700"
-              >
-                <div className="mb-4 text-[var(--color-primary)] opacity-70">
-                  <Icon name="Quote" size={24} />
-                </div>
-                <Typography variant="p" className="italic mb-4">
-                  "{item.quote}"
-                </Typography>
-                <Divider className="my-4" />
-                <div>
-                  <Typography variant="p" className="font-semibold text-[var(--color-primary)]">
-                    {item.author}
-                  </Typography>
-                  <Typography variant="small" className="text-gray-500 dark:text-gray-400">
-                    {item.company}
-                  </Typography>
-                </div>
-              </div>
-            ))}
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+              <Typography as="h3" variant="h4" className="mb-3 text-[var(--color-primary)]">
+                Pour les thérapeutes:
+              </Typography>
+              <Typography variant="p" className="italic mb-4">
+                "Passer d'une mise à jour bimensuelle anxiogène à une gestion hebdomadaire rapide (5 minutes) et sereine du planning."
+              </Typography>
+              <Divider className="my-4" />
+              <Typography variant="p" className="font-semibold text-[var(--color-primary)]">
+                Projection pour thérapeutes
+              </Typography>
+              <Typography variant="small" className="text-gray-500 dark:text-gray-400">
+                Basée sur mon expérience personnelle
+              </Typography>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+              <Typography as="h3" variant="h4" className="mb-3 text-[var(--color-primary)]">
+                Pour les artisans et commerçants:
+              </Typography>
+              <Typography variant="p" className="italic mb-4">
+                "Économiser plusieurs heures par semaine en éliminant la synchronisation manuelle entre agenda, site web et facturation."
+              </Typography>
+              <Divider className="my-4" />
+              <Typography variant="p" className="font-semibold text-[var(--color-primary)]">
+                Projection pour artisans
+              </Typography>
+              <Typography variant="small" className="text-gray-500 dark:text-gray-400">
+                Basée sur l'analyse des besoins
+              </Typography>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+              <Typography as="h3" variant="h4" className="mb-3 text-[var(--color-primary)]">
+                Pour les structures en croissance:
+              </Typography>
+              <Typography variant="p" className="italic mb-4">
+                "Intégrer facilement de nouveaux membres sans friction administrative, supportant une croissance sans charge supplémentaire."
+              </Typography>
+              <Divider className="my-4" />
+              <Typography variant="p" className="font-semibold text-[var(--color-primary)]">
+                Projection pour structures en croissance
+              </Typography>
+              <Typography variant="small" className="text-gray-500 dark:text-gray-400">
+                Vision d'accompagnement futur
+              </Typography>
+            </div>
           </div>
         </Container>
       </section>
@@ -195,11 +224,10 @@ export default function Page() {
         <Container>
           <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
-              Approche financière envisagée
+              Investissement et retour envisagés
             </Typography>
             <Typography variant="lead" className="mb-6 max-w-3xl mx-auto">
-              Transparence sur les modèles économiques que je souhaite proposer, basés sur une juste
-              valorisation du temps libéré pour vous.
+              Une transparence complète sur les modèles économiques, basés sur la valorisation du temps récupéré.
             </Typography>
           </div>
 
@@ -315,8 +343,8 @@ export default function Page() {
       </section>
 
       <CTASection
-        title="Discutons de vos besoins et de ce que je pourrais créer pour vous"
-        description="Explorons ensemble comment une solution adaptée pourrait transformer votre quotidien administratif"
+        title="Échangeons sur vos défis et mon approche"
+        description="Je débute mon aventure freelance et souhaite comprendre vos besoins spécifiques - même si c'est juste pour partager des perspectives sur vos défis actuels."
         primaryAction={{
           text: "Réserver un temps d'échange",
           url: '/contact',
