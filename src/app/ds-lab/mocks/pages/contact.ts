@@ -89,7 +89,7 @@ export const contactPageMock = {
       },
       {
         number: 3,
-        description: 'J\'explore avec vous vos besoins et aspirations sans jargon technique',
+        description: "J'explore avec vous vos besoins et aspirations sans jargon technique",
       },
       {
         number: 4,
