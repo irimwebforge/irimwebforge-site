@@ -33,7 +33,8 @@ export default function Page() {
       color: 'primary' as const,
       price: '1 500–2 200€',
       support: '70€/mois',
-      description: 'Pour les indépendants qui veulent gérer facilement leur site sans dépendance technique.',
+      description:
+        'Pour les indépendants qui veulent gérer facilement leur site sans dépendance technique.',
       features: [
         'Site web professionnel responsive',
         "Interface d'administration simplifiée",
@@ -52,13 +53,14 @@ export default function Page() {
       color: 'secondary' as const,
       price: '2 800–3 800€',
       support: '140€/mois',
-      description: 'Pour les professionnels qui jonglent entre plusieurs outils et cherchent un système unifié.',
+      description:
+        'Pour les professionnels qui jonglent entre plusieurs outils et cherchent un système unifié.',
       features: [
         'Écosystème numérique unifié',
         'Intégration agenda, facturation, CRM',
         'Automatisations intelligentes',
         'Formation progressive (4h)',
-        '8 sessions d\'assistance prioritaire',
+        "8 sessions d'assistance prioritaire",
         'Garantie de réduction de 70% du temps administratif',
       ],
       cta: 'Découvrir la formule',
@@ -71,14 +73,15 @@ export default function Page() {
       color: 'tertiary' as const,
       price: '5 200–7 500€',
       support: '280€/mois',
-      description: 'Pour les entrepreneurs établis prêts à faire évoluer leur infrastructure numérique.',
+      description:
+        'Pour les entrepreneurs établis prêts à faire évoluer leur infrastructure numérique.',
       features: [
         'Architecture évolutive & scalable',
         'Espace client/membre personnalisé',
         'Automatisations avancées',
         'Formation complète (6h)',
         'Support prioritaire illimité 90j',
-        'Garantie d\'augmentation de capacité de 25%',
+        "Garantie d'augmentation de capacité de 25%",
       ],
       cta: 'Découvrir la formule',
       href: '/services/evolutive',
@@ -172,22 +175,35 @@ export default function Page() {
                 accentPosition="top"
               >
                 <div className="flex items-center justify-center mb-4">
-                  <Icon name={service.icon} className={`w-10 h-10 text-[var(--color-${service.color})]`} />
+                  <Icon
+                    name={service.icon}
+                    className={`w-10 h-10 text-[var(--color-${service.color})]`}
+                  />
                 </div>
                 <Typography as="h3" variant="h4" className="mb-2 text-center font-bold">
                   {service.title}
                 </Typography>
-                <Typography variant="p" className="mb-4 text-center text-gray-700 dark:text-gray-300">
+                <Typography
+                  variant="p"
+                  className="mb-4 text-center text-gray-700 dark:text-gray-300"
+                >
                   {service.description}
                 </Typography>
                 <div className="flex justify-center gap-2 mb-4">
-                  <Badge variant={service.color as any} className="text-base">{service.price}</Badge>
-                  <Badge variant="default" className="text-base">{service.support} support</Badge>
+                  <Badge variant={service.color as any} className="text-base">
+                    {service.price}
+                  </Badge>
+                  <Badge variant="default" className="text-base">
+                    {service.support} support
+                  </Badge>
                 </div>
                 <ul className="mb-6 space-y-2 text-sm flex-1">
                   {service.features.map((f, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <Icon name="Check" className={`w-4 h-4 text-[var(--color-${service.color})] mt-1`} />
+                      <Icon
+                        name="Check"
+                        className={`w-4 h-4 text-[var(--color-${service.color})] mt-1`}
+                      />
                       <span>{f}</span>
                     </li>
                   ))}
@@ -233,27 +249,38 @@ export default function Page() {
 
           <div className="grid gap-8 md:grid-cols-3 mt-8">
             {projections.map((projection, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="group bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-xl hover:scale-105"
               >
                 <div className="flex justify-center mb-6">
-                  <div className={`w-16 h-16 rounded-full bg-[var(--color-${projection.color}-100)] dark:bg-[var(--color-${projection.color}-900)] flex items-center justify-center transition-transform duration-150 group-hover:scale-110 group-hover:shadow-lg`}>
-                    <Icon 
+                  <div
+                    className={`w-16 h-16 rounded-full bg-[var(--color-${projection.color}-100)] dark:bg-[var(--color-${projection.color}-900)] flex items-center justify-center transition-transform duration-150 group-hover:scale-110 group-hover:shadow-lg`}
+                  >
+                    <Icon
                       name={projection.icon}
-                      className={`w-8 h-8 text-[var(--color-${projection.color}-600)] dark:text-[var(--color-${projection.color}-400)]`} 
+                      className={`w-8 h-8 text-[var(--color-${projection.color}-600)] dark:text-[var(--color-${projection.color}-400)]`}
                     />
                   </div>
                 </div>
-                <Typography as="h3" variant="h4" className={`mb-3 text-[var(--color-${projection.color})] text-center`}>
+                <Typography
+                  as="h3"
+                  variant="h4"
+                  className={`mb-3 text-[var(--color-${projection.color})] text-center`}
+                >
                   Pour les {projection.author.replace('Projection pour ', '')}:
                 </Typography>
                 <Typography variant="p" className="italic mb-4 text-center">
-                  {projection.quote.replace(/Pour un |Pour une /, '').replace("l'objectif serait", "l'objectif est")}
+                  {projection.quote
+                    .replace(/Pour un |Pour une /, '')
+                    .replace("l'objectif serait", "l'objectif est")}
                 </Typography>
                 <Divider className="my-4" />
                 <div className="text-center">
-                  <Typography variant="p" className={`font-semibold text-[var(--color-${projection.color})]`}>
+                  <Typography
+                    variant="p"
+                    className={`font-semibold text-[var(--color-${projection.color})]`}
+                  >
                     {projection.author}
                   </Typography>
                   <Typography variant="small" className="text-gray-500 dark:text-gray-400">
@@ -283,7 +310,7 @@ export default function Page() {
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-100 dark:border-gray-700 mb-8">
               <div className="grid grid-cols-4 gap-6">
                 <div className="col-span-1"></div>
-                
+
                 {/* En-têtes des colonnes */}
                 <div className="col-span-1">
                   <div className="text-center p-4 rounded-t-lg bg-[var(--color-primary-100)] dark:bg-[var(--color-primary-900)]">
@@ -295,7 +322,7 @@ export default function Page() {
                     </Typography>
                   </div>
                 </div>
-                
+
                 <div className="col-span-1">
                   <div className="text-center p-4 rounded-t-lg bg-[var(--color-secondary-100)] dark:bg-[var(--color-secondary-900)]">
                     <Typography variant="h4" className="text-[var(--color-secondary)]">
@@ -306,7 +333,7 @@ export default function Page() {
                     </Typography>
                   </div>
                 </div>
-                
+
                 <div className="col-span-1">
                   <div className="text-center p-4 rounded-t-lg bg-[var(--color-tertiary-100)] dark:bg-[var(--color-tertiary-900)]">
                     <Typography variant="h4" className="text-[var(--color-tertiary)]">
@@ -317,7 +344,7 @@ export default function Page() {
                     </Typography>
                   </div>
                 </div>
-                
+
                 {/* Lignes de données */}
                 <div className="col-span-1 p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
                   <Typography variant="p" className="font-semibold">
@@ -333,7 +360,7 @@ export default function Page() {
                 <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
                   <span className="text-[var(--color-tertiary)]">5200-7500€</span>
                 </div>
-                
+
                 <div className="col-span-1 p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
                   <Typography variant="p" className="font-semibold">
                     Support
@@ -348,7 +375,7 @@ export default function Page() {
                 <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
                   280€/mois
                 </div>
-                
+
                 <div className="col-span-1 p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
                   <Typography variant="p" className="font-semibold">
                     Temps gagné (objectif)
@@ -363,7 +390,7 @@ export default function Page() {
                 <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
                   <span className="text-green-600 dark:text-green-400 font-medium">75%+</span>
                 </div>
-                
+
                 <div className="col-span-1 p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
                   <Typography variant="p" className="font-semibold">
                     Adapté pour
