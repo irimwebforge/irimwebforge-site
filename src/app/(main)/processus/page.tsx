@@ -15,7 +15,8 @@ export default function Page() {
   const VisionBanner = () => (
     <Alert variant="info" title="" className="mb-8 mx-auto max-w-5xl">
       <p className="text-sm text-blue-800 dark:text-blue-200">
-        Cette page présente ma vision d'un processus idéal, inspiré par mon expérience avec le projet Corps & Sens. Je privilégie la transparence sur mon approche en développement.
+        Cette page présente ma vision d'un processus idéal, inspiré par mon expérience avec le
+        projet Corps & Sens. Je privilégie la transparence sur mon approche en développement.
       </p>
     </Alert>
   );
@@ -100,7 +101,7 @@ export default function Page() {
       id: 'faq-5',
       question: 'Que se passerait-il si mon activité évolue?',
       answer:
-        "Les solutions sont pensées pour évoluer avec vous, grâce à un accompagnement régulier et des ajustements continus.",
+        'Les solutions sont pensées pour évoluer avec vous, grâce à un accompagnement régulier et des ajustements continus.',
     },
   ];
 
@@ -148,7 +149,8 @@ export default function Page() {
               Un processus en 6 étapes, de la compréhension à l'autonomie
             </Typography>
             <Typography variant="lead" className="max-w-3xl mx-auto">
-              Une méthode pensée pour créer des solutions véritablement adaptées à vos besoins spécifiques.
+              Une méthode pensée pour créer des solutions véritablement adaptées à vos besoins
+              spécifiques.
             </Typography>
           </div>
 
@@ -190,7 +192,9 @@ export default function Page() {
               </Typography>
 
               <Typography variant="p" className="mb-4">
-                Un échange de 45 minutes gratuit et sans obligation qui vous apportera déjà des perspectives nouvelles sur votre présence digitale, que nous travaillions ensemble ou non.
+                Un échange de 45 minutes gratuit et sans obligation qui vous apportera déjà des
+                perspectives nouvelles sur votre présence digitale, que nous travaillions ensemble
+                ou non.
               </Typography>
 
               <Typography variant="p" className="mb-6">

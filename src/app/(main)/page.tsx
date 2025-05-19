@@ -12,7 +12,8 @@ export default function HomePage() {
     <div className="bg-amber-50 dark:bg-[var(--color-tertiary)]/10 border-b border-amber-200 dark:border-[var(--color-tertiary)]/30 py-2">
       <Container>
         <p className="text-sm text-[var(--color-tertiary)] text-center">
-          Cette page présente mon parcours: de l'expérience fondatrice avec mon épouse thérapeute à ma vision pour aider d'autres indépendants à libérer leur temps administratif.
+          Cette page présente mon parcours: de l'expérience fondatrice avec mon épouse thérapeute à
+          ma vision pour aider d'autres indépendants à libérer leur temps administratif.
         </p>
       </Container>
     </div>
@@ -101,7 +102,10 @@ export default function HomePage() {
             Ma vision et mon parcours
           </Typography>
           <Typography variant="lead" className="text-gray-700 dark:text-gray-200 leading-relaxed">
-            "En observant mon épouse thérapeute lutter avec son interface administrative, j'ai compris que le problème n'était pas son niveau technique, mais des outils qui ignoraient sa réalité métier. Cette prise de conscience a défini ma mission: créer des interfaces qui respectent votre façon de travailler."
+            "En observant mon épouse thérapeute lutter avec son interface administrative, j'ai
+            compris que le problème n'était pas son niveau technique, mais des outils qui ignoraient
+            sa réalité métier. Cette prise de conscience a défini ma mission: créer des interfaces
+            qui respectent votre façon de travailler."
           </Typography>
           <div className="flex items-center justify-center space-x-3 mt-6">
             <div className="h-10 w-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
@@ -135,34 +139,58 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-12">
             <div className="bg-white dark:bg-gray-800 rounded-lg p-10 shadow-md hover:shadow-lg transition-shadow">
               <div className="h-16 w-16 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mb-4">
-                <span className="text-3xl text-primary-600 dark:text-primary-400" aria-hidden="true">🧘‍♀️</span>
+                <span
+                  className="text-3xl text-primary-600 dark:text-primary-400"
+                  aria-hidden="true"
+                >
+                  🧘‍♀️
+                </span>
               </div>
               <Typography variant="h3" className="font-bold mb-3 text-xl tracking-wide">
                 Récupérez le temps pour votre cœur de métier
               </Typography>
-              <Typography variant="p" className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+              <Typography
+                variant="p"
+                className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed"
+              >
                 Plus de temps pour vos clients, votre expertise, votre créativité.
               </Typography>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg p-10 shadow-md hover:shadow-lg transition-shadow">
               <div className="h-16 w-16 rounded-full bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center mb-4">
-                <span className="text-3xl text-secondary-600 dark:text-secondary-400" aria-hidden="true">🪄</span>
+                <span
+                  className="text-3xl text-secondary-600 dark:text-secondary-400"
+                  aria-hidden="true"
+                >
+                  🪄
+                </span>
               </div>
               <Typography variant="h3" className="font-bold mb-3 text-xl tracking-wide">
                 Une présence en ligne que vous contrôlez vraiment
               </Typography>
-              <Typography variant="p" className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+              <Typography
+                variant="p"
+                className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed"
+              >
                 Mettez à jour sans dépendre d'un expert externe.
               </Typography>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg p-10 shadow-md hover:shadow-lg transition-shadow">
               <div className="h-16 w-16 rounded-full bg-tertiary-100 dark:bg-tertiary-900 flex items-center justify-center mb-4">
-                <span className="text-3xl text-tertiary-600 dark:text-tertiary-400" aria-hidden="true">🌟</span>
+                <span
+                  className="text-3xl text-tertiary-600 dark:text-tertiary-400"
+                  aria-hidden="true"
+                >
+                  🌟
+                </span>
               </div>
               <Typography variant="h3" className="font-bold mb-3 text-xl tracking-wide">
                 Une cohérence qui renforce votre crédibilité
               </Typography>
-              <Typography variant="p" className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+              <Typography
+                variant="p"
+                className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed"
+              >
                 Une image professionnelle alignée avec votre niveau d'excellence.
               </Typography>
             </div>
@@ -269,7 +297,8 @@ export default function HomePage() {
               variant="p"
               className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
             >
-              Je débute mon aventure freelance avec une expérience fondatrice et une vision claire. Découvrez où j'en suis aujourd'hui et comment nous pourrions évoluer ensemble.
+              Je débute mon aventure freelance avec une expérience fondatrice et une vision claire.
+              Découvrez où j'en suis aujourd'hui et comment nous pourrions évoluer ensemble.
             </Typography>
           </div>
 
@@ -285,13 +314,16 @@ export default function HomePage() {
                 variant="p"
                 className="text-gray-700 dark:text-gray-300 mb-8 leading-relaxed"
               >
-                Sites web avec interfaces administratives intuitives qui respectent vos processus métier. L'expérience Corps & Sens montre qu'une interface bien conçue peut transformer 7h d'administration en 45min hebdomadaires.
+                Sites web avec interfaces administratives intuitives qui respectent vos processus
+                métier. L'expérience Corps & Sens montre qu'une interface bien conçue peut
+                transformer 7h d'administration en 45min hebdomadaires.
               </Typography>
               <Typography
                 variant="p"
                 className="text-gray-700 dark:text-gray-300 mt-4 leading-relaxed"
               >
-                Idéal pour les indépendants qui veulent reprendre le contrôle de leur présence en ligne sans y consacrer trop de temps.
+                Idéal pour les indépendants qui veulent reprendre le contrôle de leur présence en
+                ligne sans y consacrer trop de temps.
               </Typography>
             </div>
 

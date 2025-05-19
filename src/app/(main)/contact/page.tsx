@@ -23,7 +23,9 @@ export default function Page() {
   const VisionBanner = () => (
     <Alert variant="info" title="" className="mb-8 mx-auto max-w-5xl">
       <p className="text-sm text-blue-800 dark:text-blue-200">
-        Cette page vous propose un échange sans engagement pour explorer vos défis quotidiens. Ma démarche est transparente: je débute mon aventure freelance avec une expérience fondatrice et une vision claire.
+        Cette page vous propose un échange sans engagement pour explorer vos défis quotidiens. Ma
+        démarche est transparente: je débute mon aventure freelance avec une expérience fondatrice
+        et une vision claire.
       </p>
     </Alert>
   );
@@ -273,7 +275,8 @@ export default function Page() {
               Un échange constructif en 4 étapes
             </Typography>
             <Typography variant="lead" className="mb-12">
-              Une discussion de 45 minutes pour explorer vos défis et voir comment libérer du temps pour votre cœur de métier.
+              Une discussion de 45 minutes pour explorer vos défis et voir comment libérer du temps
+              pour votre cœur de métier.
             </Typography>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -303,7 +306,8 @@ export default function Page() {
                 </Typography>
               </div>
               <Typography variant="p" className="text-center mb-4">
-                Cet échange est avant tout une opportunité de mieux nous connaître. Vous repartirez avec des pistes de réflexion concrètes, que nous décidions de collaborer ou non.
+                Cet échange est avant tout une opportunité de mieux nous connaître. Vous repartirez
+                avec des pistes de réflexion concrètes, que nous décidions de collaborer ou non.
               </Typography>
             </div>
           </div>
@@ -495,7 +499,8 @@ export default function Page() {
               Préparons notre conversation
             </Typography>
             <Typography variant="p" className="mb-8">
-              Pour que notre échange soit le plus productif possible, partagez quelques informations sur vous et votre activité.
+              Pour que notre échange soit le plus productif possible, partagez quelques informations
+              sur vous et votre activité.
             </Typography>
           </div>
         </Container>
@@ -505,14 +510,14 @@ export default function Page() {
         title="Échangeons sur vos défis quotidiens"
         description="Je suis au début de mon parcours freelance et serais ravi de comprendre vos besoins spécifiques, sans aucune obligation."
         primaryAction={{
-          text: "Prendre contact",
-          url: "/contact",
-          variant: "gradient"
+          text: 'Prendre contact',
+          url: '/contact',
+          variant: 'gradient',
         }}
         secondaryAction={{
-          text: "Découvrir mes projets",
-          url: "/projets",
-          variant: "secondary"
+          text: 'Découvrir mes projets',
+          url: '/projets',
+          variant: 'secondary',
         }}
         variant="default"
         backgroundColor="primary"

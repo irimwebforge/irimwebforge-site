@@ -15,7 +15,9 @@ export default function Page() {
   const VisionBanner = () => (
     <Alert variant="info" title="" className="mb-8 mx-auto max-w-5xl">
       <p className="text-sm text-blue-800 dark:text-blue-200">
-        Cette page présente ma vision de services inspirée par une expérience réelle avec mon épouse thérapeute. Je développe ces offres progressivement en privilégiant la transparence dans mon parcours entrepreneurial.
+        Cette page présente ma vision de services inspirée par une expérience réelle avec mon épouse
+        thérapeute. Je développe ces offres progressivement en privilégiant la transparence dans mon
+        parcours entrepreneurial.
       </p>
     </Alert>
   );
@@ -143,16 +145,16 @@ export default function Page() {
       <ServiceOverview
         title="Solutions ancrées dans l'expérience réelle"
         description="Ces offres sont structurées selon les besoins concrets identifiés avec le projet Corps & Sens et s'affinent continuellement pour répondre aux défis quotidiens des indépendants."
-        services={services.map(service => ({
+        services={services.map((service) => ({
           ...service,
           description:
             service.id === 'presence'
-              ? "Pour les indépendants qui veulent gérer facilement leur site sans dépendance technique."
+              ? 'Pour les indépendants qui veulent gérer facilement leur site sans dépendance technique.'
               : service.id === 'integree'
-              ? "Pour les professionnels qui jonglent entre plusieurs outils et cherchent un système unifié."
-              : service.id === 'evolutive'
-              ? "Pour les entrepreneurs établis prêts à faire évoluer leur infrastructure numérique."
-              : service.description,
+                ? 'Pour les professionnels qui jonglent entre plusieurs outils et cherchent un système unifié.'
+                : service.id === 'evolutive'
+                  ? 'Pour les entrepreneurs établis prêts à faire évoluer leur infrastructure numérique.'
+                  : service.description,
         }))}
         features={features}
         showFeatures={true}
@@ -165,7 +167,8 @@ export default function Page() {
               Résultats concrets que je vise
             </Typography>
             <Typography variant="lead" className="mb-6 max-w-3xl mx-auto">
-              Basé sur mon expérience avec mon épouse thérapeute, voici les transformations que j'aspire à créer pour différents types de professionnels:
+              Basé sur mon expérience avec mon épouse thérapeute, voici les transformations que
+              j'aspire à créer pour différents types de professionnels:
             </Typography>
           </div>
 
@@ -175,7 +178,8 @@ export default function Page() {
                 Pour les thérapeutes:
               </Typography>
               <Typography variant="p" className="italic mb-4">
-                "Passer d'une mise à jour bimensuelle anxiogène à une gestion hebdomadaire rapide (5 minutes) et sereine du planning."
+                "Passer d'une mise à jour bimensuelle anxiogène à une gestion hebdomadaire rapide (5
+                minutes) et sereine du planning."
               </Typography>
               <Divider className="my-4" />
               <Typography variant="p" className="font-semibold text-[var(--color-primary)]">
@@ -190,7 +194,8 @@ export default function Page() {
                 Pour les artisans et commerçants:
               </Typography>
               <Typography variant="p" className="italic mb-4">
-                "Économiser plusieurs heures par semaine en éliminant la synchronisation manuelle entre agenda, site web et facturation."
+                "Économiser plusieurs heures par semaine en éliminant la synchronisation manuelle
+                entre agenda, site web et facturation."
               </Typography>
               <Divider className="my-4" />
               <Typography variant="p" className="font-semibold text-[var(--color-primary)]">
@@ -205,7 +210,8 @@ export default function Page() {
                 Pour les structures en croissance:
               </Typography>
               <Typography variant="p" className="italic mb-4">
-                "Intégrer facilement de nouveaux membres sans friction administrative, supportant une croissance sans charge supplémentaire."
+                "Intégrer facilement de nouveaux membres sans friction administrative, supportant
+                une croissance sans charge supplémentaire."
               </Typography>
               <Divider className="my-4" />
               <Typography variant="p" className="font-semibold text-[var(--color-primary)]">
@@ -227,7 +233,8 @@ export default function Page() {
               Investissement et retour envisagés
             </Typography>
             <Typography variant="lead" className="mb-6 max-w-3xl mx-auto">
-              Une transparence complète sur les modèles économiques, basés sur la valorisation du temps récupéré.
+              Une transparence complète sur les modèles économiques, basés sur la valorisation du
+              temps récupéré.
             </Typography>
           </div>
 
