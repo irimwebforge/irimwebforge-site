@@ -117,13 +117,14 @@ export default function Page() {
       <section className="py-16">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-lg order-2 md:order-1">
-              <Image 
-                src="/images/about/eric-profile.jpg" 
-                alt="Eric Zuber" 
+            <div className="relative aspect-square w-full max-w-xs md:max-w-sm lg:max-w-md rounded-lg overflow-hidden shadow-lg order-2 md:order-1">
+              <Image
+                src="/images/about/eric-profile.png"
+                alt="Eric Zuber"
                 fill
                 style={{objectFit: 'cover'}}
                 className="hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 400px"
               />
             </div>
             

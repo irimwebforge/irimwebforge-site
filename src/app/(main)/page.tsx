@@ -9,9 +9,9 @@ import { Icon } from '@/components/atoms/Icon';
 export default function HomePage() {
   // Bannière explicative de vision
   const VisionNotice = () => (
-    <div className="bg-blue-50 dark:bg-blue-900 border-b border-blue-200 dark:border-blue-800 py-2">
+    <div className="bg-amber-50 dark:bg-[var(--color-tertiary)]/10 border-b border-amber-200 dark:border-[var(--color-tertiary)]/30 py-2">
       <Container>
-        <p className="text-sm text-blue-800 dark:text-blue-200 text-center">
+        <p className="text-sm text-[var(--color-tertiary)] text-center">
           Cette page présente mon parcours: de l'expérience fondatrice avec mon épouse thérapeute à ma vision pour aider d'autres indépendants à libérer leur temps administratif.
         </p>
       </Container>
@@ -68,7 +68,7 @@ export default function HomePage() {
   return (
     <main className="overflow-x-hidden">
       {/* Bandeau de vision */}
-      <VisionNotice />
+      {/* <VisionNotice /> */}
 
       {/* 1. HeroSection simplifiée et transparente */}
       <section className="min-h-[90vh] flex items-center relative">

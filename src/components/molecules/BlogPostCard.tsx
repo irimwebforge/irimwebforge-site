@@ -50,7 +50,6 @@ export interface BlogPostCardProps {
 }
 
 export const BlogPostCard: React.FC<BlogPostCardProps> = ({
-  _id,
   title,
   slug,
   excerpt,
