@@ -9,6 +9,9 @@ import { Typography } from '@/components/atoms/Typography';
 import { Divider } from '@/components/atoms/Divider';
 import { IconName } from '@/components/atoms/Icon';
 import { Alert } from '@/components/molecules/Alert';
+import { Card } from '@/components/molecules/Card';
+import { Button } from '@/components/atoms/Button';
+import { Badge } from '@/components/atoms/Badge';
 
 export default function Page() {
   // Bannière explicative de vision
@@ -26,48 +29,59 @@ export default function Page() {
     {
       id: 'presence',
       title: 'Solution Présence',
-      description:
-        "Autonomie Numérique Simplifiée pour les indépendants qui souhaitent gérer facilement leur site sans dépendre d'un technicien.",
       icon: 'Laptop' as IconName,
       color: 'primary' as const,
-      bulletPoints: [
-        'Site web professionnel responsive adapté à votre métier spécifique',
-        "Interface d'administration simplifiée avec uniquement les fonctions dont vous avez besoin",
-        'Formation pratique individuelle (2h) avec supports visuels',
+      price: '1 500–2 200€',
+      support: '70€/mois',
+      description: 'Pour les indépendants qui veulent gérer facilement leur site sans dépendance technique.',
+      features: [
+        'Site web professionnel responsive',
+        "Interface d'administration simplifiée",
+        'Formation individuelle (2h) + supports visuels',
+        'Transfert de contenus inclus',
+        "4 sessions d'assistance prioritaire",
+        'Garantie de réduction de 60% du temps administratif',
       ],
-      featured: true,
-      ctaText: 'En savoir plus',
-      slug: 'presence',
+      cta: 'Découvrir la formule',
+      href: '/services/presence',
     },
     {
       id: 'integree',
       title: 'Solution Intégrée',
-      description:
-        'Unification & Fluidité pour les professionnels qui jonglent entre plusieurs outils et cherchent un système unifié.',
       icon: 'Zap' as IconName,
       color: 'secondary' as const,
-      bulletPoints: [
-        'Écosystème numérique unifié remplaçant vos outils fragmentés',
-        'Intégration avec vos outils existants essentiels',
-        'Formation progressive adaptée à votre niveau technique',
+      price: '2 800–3 800€',
+      support: '140€/mois',
+      description: 'Pour les professionnels qui jonglent entre plusieurs outils et cherchent un système unifié.',
+      features: [
+        'Écosystème numérique unifié',
+        'Intégration agenda, facturation, CRM',
+        'Automatisations intelligentes',
+        'Formation progressive (4h)',
+        '8 sessions d\'assistance prioritaire',
+        'Garantie de réduction de 70% du temps administratif',
       ],
-      ctaText: 'Explorer cette solution',
-      slug: 'integree',
+      cta: 'Découvrir la formule',
+      href: '/services/integree',
     },
     {
       id: 'evolutive',
       title: 'Solution Évolutive',
-      description:
-        'Croissance Sans Contrainte pour les entrepreneurs établis souhaitant faire évoluer leur infrastructure numérique.',
       icon: 'TrendingUp' as IconName,
       color: 'tertiary' as const,
-      bulletPoints: [
-        'Architecture numérique évolutive pour soutenir votre croissance',
-        'Revue stratégique trimestrielle avec recommandations',
-        'Support prioritaire pendant la phase de transition',
+      price: '5 200–7 500€',
+      support: '280€/mois',
+      description: 'Pour les entrepreneurs établis prêts à faire évoluer leur infrastructure numérique.',
+      features: [
+        'Architecture évolutive & scalable',
+        'Espace client/membre personnalisé',
+        'Automatisations avancées',
+        'Formation complète (6h)',
+        'Support prioritaire illimité 90j',
+        'Garantie d\'augmentation de capacité de 25%',
       ],
-      ctaText: 'Découvrir cette solution',
-      slug: 'evolutive',
+      cta: 'Découvrir la formule',
+      href: '/services/evolutive',
     },
   ];
 
@@ -113,38 +127,83 @@ export default function Page() {
         "Pour un thérapeute holistique, l'objectif serait de passer d'une mise à jour bimensuelle anxiogène à une gestion hebdomadaire rapide (5 minutes) et sereine du planning, améliorant ainsi la fiabilité des informations pour les clients.",
       author: 'Projection pour thérapeutes',
       company: 'Basée sur mon expérience personnelle',
+      icon: 'HeartPulse' as IconName,
+      color: 'primary' as const,
     },
     {
       quote:
         'Un artisan ou commerçant local pourrait économiser plusieurs heures par semaine en éliminant la synchronisation manuelle entre agenda, site web et facturation, réduisant significativement les erreurs de mise à jour.',
       author: 'Projection pour artisans',
       company: "Basée sur l'analyse des besoins",
+      icon: 'Hammer' as IconName,
+      color: 'secondary' as const,
     },
     {
       quote:
         "Pour un collectif ou une entreprise en expansion, une solution évolutive permettrait d'intégrer facilement de nouveaux membres sans friction administrative, supportant une croissance sans charge supplémentaire.",
       author: 'Projection pour structures en croissance',
       company: "Vision d'accompagnement futur",
+      icon: 'Users' as IconName,
+      color: 'tertiary' as const,
     },
   ];
 
   return (
-    <main className="transition-all duration-300">
+    <main className="overflow-x-hidden transition-all duration-300">
       <PageHeader
-        title="Ma vision de service pour vous"
-        description="Je vous présente avec transparence ce que je souhaite créer pour mes clients, inspiré par mon expérience personnelle avec mon épouse thérapeute et sa transformation digitale."
-        theme="primary"
+        title="Des solutions numériques pour libérer votre temps"
+        description="Des offres concrètes, pensées pour les indépendants, artisans et entrepreneurs qui veulent se concentrer sur leur métier, pas sur la technique."
         align="center"
         size="large"
+        pattern
+        badge={{ text: 'Offres 2025', variant: 'primary' }}
       />
 
-      <Container>
-        <VisionBanner />
-      </Container>
+      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900">
+        <Container>
+          <div className="grid gap-8 md:grid-cols-3">
+            {services.map((service) => (
+              <Card
+                key={service.id}
+                className="flex flex-col h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                padding="large"
+                variant="accent"
+                color={service.color}
+                accentPosition="top"
+              >
+                <div className="flex items-center justify-center mb-4">
+                  <Icon name={service.icon} className={`w-10 h-10 text-[var(--color-${service.color})]`} />
+                </div>
+                <Typography as="h3" variant="h4" className="mb-2 text-center font-bold">
+                  {service.title}
+                </Typography>
+                <Typography variant="p" className="mb-4 text-center text-gray-700 dark:text-gray-300">
+                  {service.description}
+                </Typography>
+                <div className="flex justify-center gap-2 mb-4">
+                  <Badge variant={service.color as any} className="text-base">{service.price}</Badge>
+                  <Badge variant="default" className="text-base">{service.support} support</Badge>
+                </div>
+                <ul className="mb-6 space-y-2 text-sm flex-1">
+                  {service.features.map((f, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <Icon name="Check" className={`w-4 h-4 text-[var(--color-${service.color})] mt-1`} />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button href={service.href} variant="gradient" className="w-full mt-auto">
+                  {service.cta}
+                </Button>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       <ServiceOverview
-        title="Solutions ancrées dans l'expérience réelle"
-        description="Ces offres sont structurées selon les besoins concrets identifiés avec le projet Corps & Sens et s'affinent continuellement pour répondre aux défis quotidiens des indépendants."
+        title=""
+        description=""
         services={services.map((service) => ({
           ...service,
           description:
@@ -162,7 +221,7 @@ export default function Page() {
 
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <Container>
-          <div className="text-center mb-8">
+          <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
               Résultats concrets que je vise
             </Typography>
@@ -173,54 +232,36 @@ export default function Page() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-3 mt-8">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-700">
-              <Typography as="h3" variant="h4" className="mb-3 text-[var(--color-primary)]">
-                Pour les thérapeutes:
-              </Typography>
-              <Typography variant="p" className="italic mb-4">
-                "Passer d'une mise à jour bimensuelle anxiogène à une gestion hebdomadaire rapide (5
-                minutes) et sereine du planning."
-              </Typography>
-              <Divider className="my-4" />
-              <Typography variant="p" className="font-semibold text-[var(--color-primary)]">
-                Projection pour thérapeutes
-              </Typography>
-              <Typography variant="small" className="text-gray-500 dark:text-gray-400">
-                Basée sur mon expérience personnelle
-              </Typography>
-            </div>
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-700">
-              <Typography as="h3" variant="h4" className="mb-3 text-[var(--color-primary)]">
-                Pour les artisans et commerçants:
-              </Typography>
-              <Typography variant="p" className="italic mb-4">
-                "Économiser plusieurs heures par semaine en éliminant la synchronisation manuelle
-                entre agenda, site web et facturation."
-              </Typography>
-              <Divider className="my-4" />
-              <Typography variant="p" className="font-semibold text-[var(--color-primary)]">
-                Projection pour artisans
-              </Typography>
-              <Typography variant="small" className="text-gray-500 dark:text-gray-400">
-                Basée sur l'analyse des besoins
-              </Typography>
-            </div>
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-700">
-              <Typography as="h3" variant="h4" className="mb-3 text-[var(--color-primary)]">
-                Pour les structures en croissance:
-              </Typography>
-              <Typography variant="p" className="italic mb-4">
-                "Intégrer facilement de nouveaux membres sans friction administrative, supportant
-                une croissance sans charge supplémentaire."
-              </Typography>
-              <Divider className="my-4" />
-              <Typography variant="p" className="font-semibold text-[var(--color-primary)]">
-                Projection pour structures en croissance
-              </Typography>
-              <Typography variant="small" className="text-gray-500 dark:text-gray-400">
-                Vision d'accompagnement futur
-              </Typography>
-            </div>
+            {projections.map((projection, index) => (
+              <div 
+                key={index} 
+                className="group bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-xl hover:scale-105"
+              >
+                <div className="flex justify-center mb-6">
+                  <div className={`w-16 h-16 rounded-full bg-[var(--color-${projection.color}-100)] dark:bg-[var(--color-${projection.color}-900)] flex items-center justify-center transition-transform duration-150 group-hover:scale-110 group-hover:shadow-lg`}>
+                    <Icon 
+                      name={projection.icon}
+                      className={`w-8 h-8 text-[var(--color-${projection.color}-600)] dark:text-[var(--color-${projection.color}-400)]`} 
+                    />
+                  </div>
+                </div>
+                <Typography as="h3" variant="h4" className={`mb-3 text-[var(--color-${projection.color})] text-center`}>
+                  Pour les {projection.author.replace('Projection pour ', '')}:
+                </Typography>
+                <Typography variant="p" className="italic mb-4 text-center">
+                  {projection.quote.replace(/Pour un |Pour une /, '').replace("l'objectif serait", "l'objectif est")}
+                </Typography>
+                <Divider className="my-4" />
+                <div className="text-center">
+                  <Typography variant="p" className={`font-semibold text-[var(--color-${projection.color})]`}>
+                    {projection.author}
+                  </Typography>
+                  <Typography variant="small" className="text-gray-500 dark:text-gray-400">
+                    {projection.company}
+                  </Typography>
+                </div>
+              </div>
+            ))}
           </div>
         </Container>
       </section>
@@ -239,106 +280,109 @@ export default function Page() {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="bg-gray-50 dark:bg-gray-800">
-                  <th className="p-4 text-left border-b border-gray-200 dark:border-gray-700"></th>
-                  <th className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-100 dark:border-gray-700 mb-8">
+              <div className="grid grid-cols-4 gap-6">
+                <div className="col-span-1"></div>
+                
+                {/* En-têtes des colonnes */}
+                <div className="col-span-1">
+                  <div className="text-center p-4 rounded-t-lg bg-[var(--color-primary-100)] dark:bg-[var(--color-primary-900)]">
                     <Typography variant="h4" className="text-[var(--color-primary)]">
                       Solution Présence
                     </Typography>
                     <Typography variant="small" className="text-gray-500 dark:text-gray-400">
                       Autonomie numérique
                     </Typography>
-                  </th>
-                  <th className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
+                  </div>
+                </div>
+                
+                <div className="col-span-1">
+                  <div className="text-center p-4 rounded-t-lg bg-[var(--color-secondary-100)] dark:bg-[var(--color-secondary-900)]">
                     <Typography variant="h4" className="text-[var(--color-secondary)]">
                       Solution Intégrée
                     </Typography>
                     <Typography variant="small" className="text-gray-500 dark:text-gray-400">
                       Unification des outils
                     </Typography>
-                  </th>
-                  <th className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
+                  </div>
+                </div>
+                
+                <div className="col-span-1">
+                  <div className="text-center p-4 rounded-t-lg bg-[var(--color-tertiary-100)] dark:bg-[var(--color-tertiary-900)]">
                     <Typography variant="h4" className="text-[var(--color-tertiary)]">
                       Solution Évolutive
                     </Typography>
                     <Typography variant="small" className="text-gray-500 dark:text-gray-400">
                       Croissance optimisée
                     </Typography>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="p-4 border-b border-gray-200 dark:border-gray-700">
-                    <Typography variant="p" className="font-semibold">
-                      Fourchette d'investissement envisagée
-                    </Typography>
-                  </td>
-                  <td className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
-                    1500-2200€
-                  </td>
-                  <td className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
-                    2800-3800€
-                  </td>
-                  <td className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
-                    5200-7500€
-                  </td>
-                </tr>
-                <tr>
-                  <td className="p-4 border-b border-gray-200 dark:border-gray-700">
-                    <Typography variant="p" className="font-semibold">
-                      Support envisagé
-                    </Typography>
-                  </td>
-                  <td className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
-                    70€/mois
-                  </td>
-                  <td className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
-                    140€/mois
-                  </td>
-                  <td className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
-                    280€/mois
-                  </td>
-                </tr>
-                <tr>
-                  <td className="p-4 border-b border-gray-200 dark:border-gray-700">
-                    <Typography variant="p" className="font-semibold">
-                      Temps d'administration économisé (objectif)
-                    </Typography>
-                  </td>
-                  <td className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
-                    60%
-                  </td>
-                  <td className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
-                    70%
-                  </td>
-                  <td className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
-                    75%+
-                  </td>
-                </tr>
-                <tr>
-                  <td className="p-4 border-b border-gray-200 dark:border-gray-700">
-                    <Typography variant="p" className="font-semibold">
-                      Adapté particulièrement pour
-                    </Typography>
-                  </td>
-                  <td className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
-                    Indépendants, thérapeutes, artisans en solo
-                  </td>
-                  <td className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
-                    Professionnels avec gestion multi-outils
-                  </td>
-                  <td className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
-                    Structures en croissance, collectifs
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                  </div>
+                </div>
+                
+                {/* Lignes de données */}
+                <div className="col-span-1 p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+                  <Typography variant="p" className="font-semibold">
+                    Fourchette d'investissement
+                  </Typography>
+                </div>
+                <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                  <span className="text-[var(--color-primary)]">1500-2200€</span>
+                </div>
+                <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                  <span className="text-[var(--color-secondary)]">2800-3800€</span>
+                </div>
+                <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                  <span className="text-[var(--color-tertiary)]">5200-7500€</span>
+                </div>
+                
+                <div className="col-span-1 p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+                  <Typography variant="p" className="font-semibold">
+                    Support
+                  </Typography>
+                </div>
+                <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                  70€/mois
+                </div>
+                <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                  140€/mois
+                </div>
+                <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                  280€/mois
+                </div>
+                
+                <div className="col-span-1 p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+                  <Typography variant="p" className="font-semibold">
+                    Temps gagné (objectif)
+                  </Typography>
+                </div>
+                <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                  <span className="text-green-600 dark:text-green-400 font-medium">60%</span>
+                </div>
+                <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                  <span className="text-green-600 dark:text-green-400 font-medium">70%</span>
+                </div>
+                <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                  <span className="text-green-600 dark:text-green-400 font-medium">75%+</span>
+                </div>
+                
+                <div className="col-span-1 p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+                  <Typography variant="p" className="font-semibold">
+                    Adapté pour
+                  </Typography>
+                </div>
+                <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                  Indépendants, thérapeutes, artisans en solo
+                </div>
+                <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                  Professionnels avec gestion multi-outils
+                </div>
+                <div className="col-span-1 p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                  Structures en croissance, collectifs
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mt-8 max-w-3xl mx-auto">
+          <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mt-8 max-w-3xl mx-auto group transition-all duration-300 hover:shadow-md">
             <Typography variant="p" className="italic text-center">
               "Toute transformation numérique nécessite un investissement adapté à ses ambitions.
               Mon objectif est de créer des solutions où le temps récupéré représente rapidement un
@@ -351,7 +395,7 @@ export default function Page() {
 
       <CTASection
         title="Échangeons sur vos défis et mon approche"
-        description="Je débute mon aventure freelance et souhaite comprendre vos besoins spécifiques - même si c'est juste pour partager des perspectives sur vos défis actuels."
+        description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
         primaryAction={{
           text: "Réserver un temps d'échange",
           url: '/contact',

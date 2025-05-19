@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { FormField } from './FormField';
 import { Button } from '../atoms/Button';
 import { Typography } from '../atoms/Typography';
@@ -15,6 +15,7 @@ export interface ConversationFormField {
   options?: { value: string; label: string }[];
   dependsOn?: { field: string; value: string };
   helperText?: string;
+  rows?: number;
 }
 
 export interface ConversationFormProps {
@@ -27,6 +28,7 @@ export interface ConversationFormProps {
   successMessage?: string;
   loading?: boolean;
   variant?: 'default' | 'card' | 'minimal';
+  steps?: { title: string; description: string }[];
 }
 
 export const ConversationForm: React.FC<ConversationFormProps> = ({
@@ -39,46 +41,96 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
   successMessage = 'Merci pour votre message. Je vous répondrai dans les meilleurs délais.',
   loading = false,
   variant = 'default',
+  steps,
 }) => {
-  // État pour suivre l'étape actuelle
+  // Regrouper les champs par étapes
   const [currentStep, setCurrentStep] = useState(0);
-
-  // États du formulaire
   const [formData, setFormData] = useState<Record<string, unknown>>({});
-
-  // États de validation
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [stepDirection, setStepDirection] = useState<'forward' | 'backward'>('forward');
 
-  // Filtrer les champs pour ne montrer que ceux qui sont pertinents à l'étape actuelle
-  const visibleFields = fields.filter((field, index) => {
-    // Si le champ dépend d'un autre champ, vérifier si la condition est remplie
-    if (field.dependsOn) {
-      return formData[field.dependsOn.field] === field.dependsOn.value;
+  // Détecter si nous sommes dans un mode multi-étapes
+  const isMultiStep = Boolean(steps && steps.length > 1);
+
+  // Gérer les champs de l'étape courante
+  const fieldsPerStep = useMemo(() => {
+    // Si pas de steps, tous les champs sont dans une seule étape
+    if (!isMultiStep) return [fields];
+
+    // On considère que les champs sont regroupés par chunk de même taille
+    const stepCount = steps?.length || 1;
+    const result: ConversationFormField[][] = [];
+
+    // Diviser les champs par étape
+    const chunkSize = Math.ceil(fields.length / stepCount);
+    for (let i = 0; i < fields.length; i += chunkSize) {
+      result.push(fields.slice(i, i + chunkSize));
     }
 
-    // Sinon, vérifier si c'est l'étape actuelle
-    return index === currentStep;
-  });
+    return result;
+  }, [fields, steps, isMultiStep]);
+
+  // Les champs visibles sont ceux de l'étape courante
+  const visibleFields = fieldsPerStep[currentStep] || [];
+
+  // Validation de tous les champs visibles de l'étape actuelle
+  const validateCurrentStep = (): boolean => {
+    const newErrors: Record<string, string> = {};
+    visibleFields.forEach((field) => {
+      const value = formData[field.id];
+      if (field.required && (!value || (typeof value === 'string' && !value.trim()))) {
+        newErrors[field.id] = `Ce champ est requis`;
+      }
+      if (field.type === 'email' && value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (typeof value === 'string' && !emailRegex.test(value)) {
+          newErrors[field.id] = `L'adresse email n'est pas valide`;
+        }
+      }
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Passer à l'étape suivante
+  const handleNext = () => {
+    if (validateCurrentStep()) {
+      if (isMultiStep && currentStep < fieldsPerStep.length - 1) {
+        setStepDirection('forward');
+        setCurrentStep(currentStep + 1);
+      } else {
+        // C'est la dernière étape, soumettre le formulaire
+        if (onSubmit) {
+          setIsSubmitting(true);
+          onSubmit(formData);
+          setIsSubmitting(false);
+        }
+        setIsSubmitted(true);
+      }
+    }
+  };
+
+  // Revenir à l'étape précédente
+  const handlePrevious = () => {
+    if (currentStep > 0) {
+      setStepDirection('backward');
+      setCurrentStep(currentStep - 1);
+    }
+  };
 
   // Gestion des changements dans les champs
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { id, value, type } = e.target as HTMLInputElement;
-    // On extrait le nom du champ depuis l'id
     const fieldName = id.replace('conversation-', '');
-
-    // Gestion spéciale pour les checkboxes
     const fieldValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
-
     setFormData((prev) => ({
       ...prev,
       [fieldName]: fieldValue,
     }));
-
-    // Effacer l'erreur quand l'utilisateur commence à corriger
     if (errors[fieldName]) {
       setErrors((prev) => {
         const newErrors = { ...prev };
@@ -88,73 +140,13 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
     }
   };
 
-  // Validation du champ actuel
-  const validateCurrentField = (): boolean => {
-    const currentField = fields[currentStep];
-    if (!currentField) return true;
-
-    const newErrors: Record<string, string> = {};
-    const fieldName = currentField.id;
-    const value = formData[fieldName];
-
-    // Vérifier si le champ est requis et vide
-    if (currentField.required && (!value || (typeof value === 'string' && !value.trim()))) {
-      newErrors[fieldName] = `Ce champ est requis`;
-    }
-
-    // Validation spécifique pour l'email
-    if (currentField.type === 'email' && value) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (typeof value === 'string' && !emailRegex.test(value)) {
-        newErrors[fieldName] = `L'adresse email n'est pas valide`;
-      }
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  // Passer à l'étape suivante
-  const handleNext = () => {
-    if (validateCurrentField()) {
-      if (currentStep < fields.length - 1) {
-        setCurrentStep(currentStep + 1);
-      } else {
-        handleSubmit();
-      }
+  // Gestion de la touche Enter pour valider
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && e.target instanceof HTMLInputElement) {
+      e.preventDefault();
+      handleNext();
     }
   };
-
-  // Revenir à l'étape précédente
-  const handlePrevious = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
-
-  // Soumission du formulaire
-  const handleSubmit = async () => {
-    if (!validateCurrentField()) return;
-
-    setIsSubmitting(true);
-
-    try {
-      if (onSubmit) {
-        await onSubmit(formData);
-      }
-
-      setIsSubmitted(true);
-    } catch {
-      setErrors({
-        form: "Une erreur est survenue lors de l'envoi du formulaire. Veuillez réessayer.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  // Déterminer si c'est la dernière étape
-  const isLastStep = currentStep === fields.length - 1;
 
   // Afficher le message de succès si le formulaire a été soumis
   if (isSubmitted) {
@@ -165,7 +157,10 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
         <Typography variant="h3" className="text-[var(--color-primary)] mb-3">
           Merci pour votre message !
         </Typography>
-        <Typography variant="p">{successMessage}</Typography>
+        <Typography variant="p">
+          Votre demande a bien été enregistrée. Je vous contacterai rapidement pour organiser notre
+          conversation.
+        </Typography>
         <Button
           variant="outline"
           className="mt-4"
@@ -175,15 +170,81 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
             setFormData({});
           }}
         >
-          Commencer une nouvelle conversation
+          Démarrer une nouvelle conversation
         </Button>
       </div>
     );
   }
 
+  // Indicateur d'étape
+  const stepIndicator = isMultiStep ? (
+    <div className="flex items-center justify-center mt-6">
+      <Typography variant="small" className="text-gray-500">
+        Étape {currentStep + 1}/{fieldsPerStep.length}
+      </Typography>
+    </div>
+  ) : null;
+
+  // En-tête de l'étape actuelle
+  const stepHeader =
+    isMultiStep && steps ? (
+      <div className="mb-6">
+        <Typography variant="h4" className="font-bold text-[var(--color-primary)]">
+          {steps[currentStep].title}
+        </Typography>
+        {steps[currentStep].description && (
+          <Typography variant="p" className="text-gray-600 dark:text-gray-300 mt-2">
+            {steps[currentStep].description}
+          </Typography>
+        )}
+      </div>
+    ) : null;
+
+  // Contenu animé de l'étape
+  const animatedStepContent = (
+    <div
+      key={currentStep}
+      className={`transition-transform duration-500 ease-in-out will-change-transform animate-fade-slide-${stepDirection}`}
+    >
+      {/* En-tête de l'étape */}
+      {stepHeader}
+      {/* Tous les champs de l'étape courante */}
+      {visibleFields.map((field) => (
+        <FormField
+          key={field.id}
+          id={`conversation-${field.id}`}
+          label={field.label}
+          type={field.type}
+          placeholder={field.placeholder}
+          options={
+            field.type === 'select'
+              ? [
+                  { value: '', label: 'Faites votre choix...', disabled: true },
+                  ...(field.options || []),
+                ]
+              : field.options
+          }
+          required={field.required}
+          value={typeof formData[field.id] === 'string' ? (formData[field.id] as string) : ''}
+          onChange={handleChange}
+          error={errors[field.id]}
+          rows={field.rows}
+          helperText={field.helperText}
+        />
+      ))}
+    </div>
+  );
+
   // Contenu du formulaire
   const formContent = (
-    <div className="space-y-6">
+    <form
+      className="space-y-6"
+      onKeyDown={handleKeyDown}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleNext();
+      }}
+    >
       {/* Message d'erreur global */}
       {errors.form && (
         <div className="p-3 rounded-md bg-red-50 border border-red-200 text-red-600">
@@ -191,71 +252,71 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
         </div>
       )}
 
-      {/* Titre de l'étape actuelle */}
-      {visibleFields.length > 0 && (
-        <div className="mb-6">
-          <Typography variant="h4" className="mb-1">
-            {visibleFields[0].label}
-          </Typography>
-          {visibleFields[0].helperText && (
-            <Typography variant="small" className="text-tertiary">
-              {visibleFields[0].helperText}
-            </Typography>
-          )}
-        </div>
-      )}
-
-      {/* Champ actuel */}
-      {visibleFields.map((field) => (
-        <FormField
-          key={field.id}
-          id={`conversation-${field.id}`}
-          label=""
-          type={field.type}
-          placeholder={field.placeholder}
-          options={field.options}
-          required={field.required}
-          value={typeof formData[field.id] === 'string' ? (formData[field.id] as string) : ''}
-          onChange={handleChange}
-          error={errors[field.id]}
-        />
-      ))}
+      {/* Contenu animé de l'étape */}
+      <div className="relative min-h-[200px]">{animatedStepContent}</div>
 
       {/* Navigation entre les étapes */}
-      <div className="flex justify-between mt-6">
-        {currentStep > 0 && (
-          <Button variant="outline" onClick={handlePrevious} disabled={isSubmitting || loading}>
+      <div className="flex justify-between mt-8">
+        {currentStep > 0 ? (
+          <Button
+            variant="outline"
+            onClick={handlePrevious}
+            disabled={isSubmitting || loading}
+            type="button"
+          >
             Précédent
           </Button>
+        ) : (
+          <div></div>
         )}
 
         <Button
-          variant={isLastStep ? 'primary' : 'secondary'}
-          onClick={handleNext}
+          variant={isMultiStep && currentStep < fieldsPerStep.length - 1 ? 'secondary' : 'primary'}
+          type="submit"
           loading={isSubmitting || loading}
           disabled={isSubmitting || loading}
-          className={currentStep === 0 ? 'ml-auto' : ''}
         >
-          {isLastStep ? submitButtonText : 'Continuer'}
+          {isMultiStep && currentStep < fieldsPerStep.length - 1 ? 'Continuer' : submitButtonText}
         </Button>
       </div>
 
-      {/* Indicateur de progression */}
-      <div className="flex items-center justify-center mt-6">
-        {fields.map((_, index) => (
-          <div
-            key={index}
-            className={`h-2 w-2 rounded-full mx-1 ${
-              index === currentStep
-                ? 'bg-[var(--color-primary)]'
-                : index < currentStep
-                  ? 'bg-[var(--color-tertiary)]'
-                  : 'bg-gray-200'
-            }`}
-          />
-        ))}
-      </div>
-    </div>
+      {stepIndicator}
+      <style jsx global>{`
+        @keyframes fade-slide-forward {
+          from {
+            opacity: 0;
+            transform: translateX(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        @keyframes fade-slide-backward {
+          from {
+            opacity: 0;
+            transform: translateX(-40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        .animate-fade-slide-forward {
+          animation: fade-slide-forward 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .animate-fade-slide-backward {
+          animation: fade-slide-backward 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-fade-slide-forward,
+          .animate-fade-slide-backward {
+            animation: none !important;
+            transition: none !important;
+          }
+        }
+      `}</style>
+    </form>
   );
 
   // Rendu du formulaire selon la variante

@@ -759,12 +759,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:*":
+  version: 22.15.19
+  resolution: "@types/node@npm:22.15.19"
+  dependencies:
+    undici-types: "npm:~6.21.0"
+  checksum: 10c0/8ef52fa1a91b1c8891616d46f3921a9f3c65ad1c6bb62db7899c8c28643c13bf9d607a2403b1e5aceb3e6fa6749efc9e0ba5c39618a4872da6946437b0edbfbe
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:^20":
-  version: 20.17.47
-  resolution: "@types/node@npm:20.17.47"
+  version: 20.17.48
+  resolution: "@types/node@npm:20.17.48"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10c0/df336ed7897177214d1c0f2c7e2f94bbc19da28bffd150ad67dfdb373ca55167479a266c836f99450ab6b6a71799a53583b3f4f159c5424255e9f3851cc9d431
+  checksum: 10c0/fc7031f9cdee25b3ff9a0e7cbb97d58b9e19107ce28ffa8c22f1bbb2d84e8328e08343d261784160c9b7f01174c39fe1c31207451815824745c500f2934a86d3
+  languageName: node
+  linkType: hard
+
+"@types/nodemailer@npm:^6.4.17":
+  version: 6.4.17
+  resolution: "@types/nodemailer@npm:6.4.17"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10c0/689abb3005cf36cf89c2abe56f0aa4469a37e0814633a73fbeb35732e856f4b0d7ab32b6d91585038b6941f5b70db58ec2bd147ebe9f73e528eb6c99604f4e82
   languageName: node
   linkType: hard
 
@@ -2344,6 +2362,7 @@ __metadata:
     "@next/eslint-plugin-next": "npm:^15.3.2"
     "@tailwindcss/postcss": "npm:^4"
     "@types/node": "npm:^20"
+    "@types/nodemailer": "npm:^6.4.17"
     "@types/react": "npm:^19"
     "@types/react-dom": "npm:^19"
     "@typescript-eslint/eslint-plugin": "npm:^8.32.1"
@@ -2356,7 +2375,8 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^5.2.0"
     husky: "npm:^9.1.7"
     lucide-react: "npm:^0.510.0"
-    next: "npm:^15.3.1"
+    next: "npm:^15.3.2"
+    nodemailer: "npm:^7.0.3"
     prettier: "npm:^3.5.3"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
@@ -3002,7 +3022,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^15.3.1":
+"next@npm:^15.3.2":
   version: 15.3.2
   resolution: "next@npm:15.3.2"
   dependencies:
@@ -3060,6 +3080,13 @@ __metadata:
   bin:
     next: dist/bin/next
   checksum: 10c0/81bc21e7853cd19ba0dbfedda8a0221819a12286146f43752cb6ecaeed7a8e5f1f3027bdd89e70ee1fd793d2be0f7e181f1944d2ffe8ee0aefef4c312aed4e27
+  languageName: node
+  linkType: hard
+
+"nodemailer@npm:^7.0.3":
+  version: 7.0.3
+  resolution: "nodemailer@npm:7.0.3"
+  checksum: 10c0/835492262328471b94a080cea43ea20f4232e19a915400cd71c7f4f4ab93a7d361775154eebe30a8fc40379eecf11a0bbc73e6cf4bbee9dccb6dd1cf7a1dc792
   languageName: node
   linkType: hard
 
@@ -4014,6 +4041,13 @@ __metadata:
   version: 6.19.8
   resolution: "undici-types@npm:6.19.8"
   checksum: 10c0/078afa5990fba110f6824823ace86073b4638f1d5112ee26e790155f481f2a868cc3e0615505b6f4282bdf74a3d8caad715fd809e870c2bb0704e3ea6082f344
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~6.21.0":
+  version: 6.21.0
+  resolution: "undici-types@npm:6.21.0"
+  checksum: 10c0/c01ed51829b10aa72fc3ce64b747f8e74ae9b60eafa19a7b46ef624403508a54c526ffab06a14a26b3120d055e1104d7abe7c9017e83ced038ea5cf52f8d5e04
   languageName: node
   linkType: hard
 

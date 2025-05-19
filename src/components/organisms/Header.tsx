@@ -59,7 +59,7 @@ export function Header() {
               </NavLink>
               <Link href="/contact">
                 <Button variant="gradient" size="sm" className="shine-effect">
-                  Discutons de votre projet
+                  Parlons de votre projet
                 </Button>
               </Link>
             </nav>

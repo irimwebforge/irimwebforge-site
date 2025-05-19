@@ -26,7 +26,7 @@ export default function Page() {
       id: 'step-1',
       title: 'Conversation découverte',
       description:
-        'Un échange sans engagement de 45 minutes pour explorer vos frustrations quotidiennes et vos aspirations. Je ne parle pas technique, mais je cherche à comprendre votre métier et vos contraintes réelles.',
+        'Un échange de 45 minutes pour explorer vos frustrations quotidiennes et vos aspirations. Je cherche à comprendre votre métier et vos contraintes réelles.',
       icon: 'Users' as IconName,
       color: 'primary' as const,
     },
@@ -34,7 +34,7 @@ export default function Page() {
       id: 'step-2',
       title: 'Immersion dans votre métier',
       description:
-        'Je souhaite consacrer environ 25% du temps total du projet à comprendre votre activité, vos spécificités et vos processus avant même de commencer à parler de solutions techniques.',
+        'Je consacre environ 25% du temps total du projet à comprendre votre activité et vos processus avant même de commencer à parler de solutions techniques.',
       icon: 'Glasses' as IconName,
       color: 'primary' as const,
     },
@@ -42,7 +42,7 @@ export default function Page() {
       id: 'step-3',
       title: 'Conception adaptée à vos besoins',
       description:
-        'À partir de cette immersion, nous définirions ensemble les fonctionnalités essentielles dont vous avez besoin dans votre quotidien, sans surcharge technique inutile.',
+        'Nous définissons ensemble les fonctionnalités essentielles dont vous avez besoin dans votre quotidien, sans surcharge technique inutile.',
       icon: 'Pen' as IconName,
       color: 'secondary' as const,
     },
@@ -50,7 +50,7 @@ export default function Page() {
       id: 'step-4',
       title: 'Développement par étapes',
       description:
-        "La création se ferait par cycles courts avec des retours fréquents. Vous verriez votre solution prendre forme progressivement et pourriez l'ajuster en fonction de vos sensations.",
+        "La création se fait par cycles courts avec des retours fréquents. Vous voyez votre solution prendre forme progressivement et pouvez l'ajuster selon vos sensations.",
       icon: 'Code' as IconName,
       color: 'secondary' as const,
     },
@@ -58,7 +58,7 @@ export default function Page() {
       id: 'step-5',
       title: 'Formation personnalisée',
       description:
-        "Une fois la solution créée, vous bénéficieriez d'une formation sur mesure adaptée à votre aisance technique, avec des supports visuels que vous pourriez consulter à votre rythme.",
+        "Vous bénéficiez d'une formation adaptée à votre aisance technique, avec des supports visuels que vous pouvez consulter à votre rythme.",
       icon: 'GraduationCap' as IconName,
       color: 'tertiary' as const,
     },
@@ -66,7 +66,7 @@ export default function Page() {
       id: 'step-6',
       title: 'Accompagnement progressif',
       description:
-        "L'objectif serait d'établir une relation qui vous rendrait progressivement autonome, tout en restant disponible pour les évolutions futures et l'adaptation à votre croissance.",
+        "L'objectif est de vous rendre progressivement autonome, tout en restant disponible pour les évolutions futures et l'adaptation à votre croissance.",
       icon: 'Rocket' as IconName,
       color: 'tertiary' as const,
     },
@@ -77,19 +77,19 @@ export default function Page() {
       id: 'faq-1',
       question: 'Comment se déroulerait une conversation découverte?',
       answer:
-        "Un échange de 45 minutes où j'écouterais plus que je ne parlerais. L'objectif: comprendre votre activité, vos frustrations actuelles et vos aspirations, sans jargon technique.",
+        "Un échange de 45 minutes où j'écoute plus que je ne parle. L'objectif: comprendre votre activité, vos frustrations actuelles et vos aspirations, sans jargon technique.",
     },
     {
       id: 'faq-2',
       question: 'Combien de temps faudrait-il pour développer un site?',
       answer:
-        "Cela dépend de la complexité du projet, mais l'accent est mis sur la compréhension de votre métier avant tout. En général, il faut compter entre 4 et 8 semaines pour un site sur mesure.",
+        'Entre 4 et 8 semaines pour un site sur mesure, avec une phase importante de compréhension de votre métier avant la réalisation technique.',
     },
     {
       id: 'faq-3',
       question: 'Pourrais-je vraiment mettre à jour mon site moi-même?',
       answer:
-        "Absolument, c'est la raison d'être de mon approche. L'interface administrative serait conçue spécifiquement pour votre façon de travailler, avec une formation personnalisée incluse.",
+        "Absolument, c'est la raison d'être de mon approche. L'interface administrative est conçue spécifiquement pour votre façon de travailler, avec une formation personnalisée incluse.",
     },
     {
       id: 'faq-4',
@@ -129,18 +129,18 @@ export default function Page() {
   ];
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <PageHeader
         title="Une approche qui place votre métier au centre"
         description="Ma vision: vous accompagner de l'idée à l'autonomie en comprenant d'abord votre activité avant toute considération technique."
-        theme="primary"
         align="center"
         size="medium"
+        pattern={true}
       />
 
-      <Container>
+      {/* <Container>
         <VisionBanner />
-      </Container>
+      </Container> */}
 
       <section className="py-12">
         <Container>
@@ -159,6 +159,7 @@ export default function Page() {
             orientation="vertical"
             accentColor="primary"
             withNumbers={true}
+            className="transition-all duration-300 hover:opacity-95"
           />
         </Container>
       </section>
@@ -178,7 +179,13 @@ export default function Page() {
               Questions fréquentes
             </Typography>
 
-            <FAQ items={faqItems} variant="default" color="primary" icon="plus" />
+            <FAQ
+              items={faqItems}
+              variant="default"
+              color="primary"
+              icon="plus"
+              className="space-y-4"
+            />
           </div>
         </Container>
       </section>
@@ -192,14 +199,8 @@ export default function Page() {
               </Typography>
 
               <Typography variant="p" className="mb-4">
-                Un échange de 45 minutes gratuit et sans obligation qui vous apportera déjà des
-                perspectives nouvelles sur votre présence digitale, que nous travaillions ensemble
-                ou non.
-              </Typography>
-
-              <Typography variant="p" className="mb-6">
-                Que nous décidions de travailler ensemble ou non, cette conversation vous
-                apporterait déjà des pistes de réflexion concrètes pour votre projet.
+                Un échange de 45 minutes gratuit et sans obligation qui vous apporte déjà des
+                perspectives nouvelles sur votre présence digitale.
               </Typography>
 
               <ul className="space-y-4 mb-8">
@@ -220,9 +221,11 @@ export default function Page() {
               </ul>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl group">
               <div className="flex items-center mb-6">
-                <Icon name="Calendar" size={32} className="text-[var(--color-primary)] mr-4" />
+                <div className="w-12 h-12 rounded-full bg-[var(--color-primary-100)] dark:bg-[var(--color-primary-900)] flex items-center justify-center mr-4 transition-transform duration-150 group-hover:scale-110">
+                  <Icon name="Calendar" size={24} className="text-[var(--color-primary)]" />
+                </div>
                 <Typography as="h3" variant="h3">
                   Réservez un temps d'échange
                 </Typography>
@@ -236,7 +239,7 @@ export default function Page() {
               <div className="flex justify-center">
                 <a
                   href="/contact"
-                  className="inline-flex items-center px-6 py-3 text-white rounded-md bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] hover:opacity-90 transition"
+                  className="inline-flex items-center px-6 py-3 text-white rounded-md bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] hover:opacity-90 transition-all duration-300 hover:scale-105"
                 >
                   <Icon name="CalendarPlus" className="mr-2" />
                   Réserver maintenant
@@ -249,7 +252,7 @@ export default function Page() {
 
       <CTASection
         title="Échangeons sur vos défis numériques"
-        description="Au début de mon parcours freelance, je serais ravi de comprendre vos besoins et de partager ma perspective - sans aucune obligation."
+        description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
         primaryAction={{
           text: "Réserver un temps d'échange",
           url: '/contact',

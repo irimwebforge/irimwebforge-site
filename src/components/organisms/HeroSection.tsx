@@ -58,6 +58,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           as="p"
           variant="lead"
           className={`mb-8 max-w-2xl mx-auto ${backgroundImage ? 'text-white' : ''}`}
+          style={{ whiteSpace: 'pre-line' }}
         >
           {subtitle}
         </Typography>

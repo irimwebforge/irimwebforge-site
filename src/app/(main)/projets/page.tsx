@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { PageHeader } from '@/components/organisms/PageHeader';
 import { Typography } from '@/components/atoms/Typography';
 import { Container } from '@/components/atoms/Container';
@@ -10,6 +11,8 @@ import { Alert } from '@/components/molecules/Alert';
 import { Divider } from '@/components/atoms/Divider';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Card } from '@/components/molecules/Card';
+import { Badge } from '@/components/atoms/Badge';
 
 export default function Page() {
   // Bannière de vision
@@ -28,7 +31,7 @@ export default function Page() {
       id: 'corps-et-sens',
       title: 'Corps & Sens',
       slug: 'corps-et-sens',
-      imageUrl: '/images/projects/corps-et-sens.jpg',
+      imageUrl: 'images/projects/corps-et-sens.jpg',
       thumbnailSrc: '/images/projects/corps-et-sens-thumb.jpg',
       tags: [
         { id: 'personnel', label: 'Projet Personnel', color: 'primary' as const },
@@ -51,7 +54,7 @@ export default function Page() {
       ],
       description:
         "Concept d'interface intuitive permettant à un onirologue de gérer ses contenus sans intervention technique externe. Une vision de l'autonomie numérique que je souhaite permettre.",
-      status: 'Concept',
+      status: 'Réalisé',
     },
     {
       id: 'mr-mrs-cbd',
@@ -65,7 +68,7 @@ export default function Page() {
       ],
       description:
         "Projet en développement visant à libérer un commerce local de ses abonnements coûteux. L'objectif est une économie annuelle de 2640€ et une reprise de contrôle totale sur l'évolution du site.",
-      status: 'En développement',
+      status: 'Concept',
     },
     {
       id: 'moodcycle',
@@ -123,18 +126,18 @@ export default function Page() {
   ];
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <PageHeader
         title="Des projets qui racontent une vision"
         description="Basés sur mon expérience personnelle avec mon épouse thérapeute, voici les types de transformations numériques que j'aimerais rendre possibles."
-        theme="primary"
         align="center"
         size="medium"
+        pattern={true}
       />
 
-      <Container>
+      {/* <Container>
         <VisionBanner />
-      </Container>
+      </Container> */}
 
       <section className="py-16">
         <Container>
@@ -146,79 +149,70 @@ export default function Page() {
               Un mélange de projets qui raconte mon parcours et illustre ma direction
               professionnelle.
             </Typography>
-
-            <div className="bg-white dark:bg-gray-800 p-6 border border-gray-100 dark:border-gray-700 rounded-lg mb-8 max-w-3xl mx-auto">
-              <div className="flex items-start gap-3">
-                <div className="text-[var(--color-primary)] mt-1">
-                  <Icon name="Info" size={24} />
-                </div>
-                <div>
-                  <Typography variant="p" className="font-medium mb-2">
-                    Comment lire cette galerie de projets
-                  </Typography>
-                  <Typography variant="p" className="text-gray-600 dark:text-gray-300 text-sm">
-                    Guide de lecture du portfolio
-                  </Typography>
-                  <Typography variant="p" className="text-gray-600 dark:text-gray-300 text-sm">
-                    Mon parcours se reflète dans ce portfolio: un projet personnel fondateur qui a
-                    révélé ma passion, des projets en développement qui élargissent mes compétences,
-                    et des concepts qui matérialisent ma vision. Chaque élément répond à des besoins
-                    réels observés.
-                  </Typography>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {projects.map((project, index) => (
-              <div
-                key={project.id}
-                className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-lg"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={project.imageUrl || '/images/placeholder.jpg'}
-                    alt={project.title}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    className="transition-transform duration-500 hover:scale-105"
-                  />
-                  <div className="absolute top-2 right-2 bg-white dark:bg-gray-800 px-3 py-1 rounded-full text-xs font-medium shadow-sm">
-                    {project.status}
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <div className="flex gap-2 mb-3">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag.id}
-                        className={`inline-block px-2 py-1 text-xs font-medium rounded-full bg-[var(--color-${tag.color}-100)] dark:bg-[var(--color-${tag.color}-900)] text-[var(--color-${tag.color}-700)] dark:text-[var(--color-${tag.color}-300)]`}
-                      >
-                        {tag.label}
-                      </span>
-                    ))}
-                  </div>
-
-                  <Typography as="h3" variant="h3" className="mb-2">
-                    {project.title}
-                  </Typography>
-
+            {projects.map((project) => {
+              const mainColor = project.tags[0]?.color || 'primary';
+              return (
+                <Card
+                  key={project.id}
+                  variant="accent"
+                  color={mainColor as 'primary' | 'secondary' | 'tertiary'}
+                  accentPosition="top"
+                  padding="large"
+                  hover
+                  className={`
+                    group flex flex-col h-full
+                    transition-transform duration-150 ease-in-out
+                    hover:scale-105 hover:shadow-xl
+                  `}
+                  title={
+                    <div>
+                      <div className="relative h-48 overflow-hidden rounded-t-lg mb-4">
+                        <Image
+                          src={project.imageUrl || '/images/placeholder.jpg'}
+                          alt={project.title}
+                          fill
+                          style={{ objectFit: 'cover' }}
+                          className="transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute top-2 right-2 bg-white dark:bg-gray-800 px-3 py-1 rounded-full text-xs font-medium shadow-sm">
+                          {project.status}
+                        </div>
+                      </div>
+                      <div className="flex gap-2 mb-3">
+                        {project.tags.map((tag) => (
+                          <Badge
+                            key={tag.id}
+                            variant={tag.color as 'primary' | 'secondary' | 'tertiary'}
+                            className="transition-colors duration-150 group-hover:bg-opacity-80"
+                          >
+                            {tag.label}
+                          </Badge>
+                        ))}
+                      </div>
+                      <Typography as="h3" variant="h3" className="mb-2">
+                        {project.title}
+                      </Typography>
+                    </div>
+                  }
+                >
                   <Typography variant="p" className="text-gray-600 dark:text-gray-300 mb-4">
                     {project.description}
                   </Typography>
-
-                  <Link
-                    href={`/projets/${project.slug}`}
-                    className="inline-flex items-center text-[var(--color-primary)] hover:text-[var(--color-primary-600)] transition-colors duration-normal"
-                  >
-                    En savoir plus
-                    <Icon name="ArrowRight" className="ml-1" size={16} />
-                  </Link>
-                </div>
-              </div>
-            ))}
+                  <div className="mt-auto pt-4">
+                    <Link
+                      href={`/projets/${project.slug}`}
+                      className="inline-flex items-center text-[var(--color-primary)] hover:text-[var(--color-primary-600)] transition-colors duration-normal"
+                    >
+                      En savoir plus
+                      <Icon name="ArrowRight" className="ml-1" size={16} />
+                    </Link>
+                  </div>
+                </Card>
+              );
+            })}
           </div>
         </Container>
       </section>
@@ -236,24 +230,35 @@ export default function Page() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {transformationCategories.map((category, index) => (
-              <div
+              <Card
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-lg"
+                variant="accent"
+                color={category.color as 'primary' | 'secondary' | 'tertiary'}
+                accentPosition="top"
+                padding="large"
+                hover
+                className="group transition-transform duration-150 ease-in-out hover:scale-105 hover:shadow-xl"
               >
-                <div
-                  className={`w-12 h-12 rounded-full bg-[var(--color-${category.color}-100)] dark:bg-[var(--color-${category.color}-900)] flex items-center justify-center mb-4`}
-                >
-                  <Icon
-                    name={category.icon}
-                    className={`text-[var(--color-${category.color}-700)] dark:text-[var(--color-${category.color}-300)]`}
-                  />
+                <div className="mb-4 flex justify-center">
+                  <div
+                    className={`w-16 h-16 rounded-full flex items-center justify-center transition-transform duration-150 group-hover:scale-110 group-hover:shadow-lg bg-[var(--color-${category.color}-100)] dark:bg-[var(--color-${category.color}-900)]`}
+                  >
+                    <Icon
+                      name={category.icon}
+                      className={`w-8 h-8 text-[var(--color-${category.color}-600)] dark:text-[var(--color-${category.color}-400)]`}
+                      aria-hidden="true"
+                    />
+                  </div>
                 </div>
 
-                <Typography as="h3" variant="h3" className="mb-3">
+                <Typography as="h3" variant="h3" className="mb-3 text-center">
                   {category.title}
                 </Typography>
 
-                <Typography variant="p" className="text-gray-600 dark:text-gray-300 mb-4">
+                <Typography
+                  variant="p"
+                  className="text-gray-600 dark:text-gray-300 mb-4 text-center"
+                >
                   {category.description}
                 </Typography>
 
@@ -281,7 +286,7 @@ export default function Page() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Card>
             ))}
           </div>
         </Container>
@@ -289,7 +294,7 @@ export default function Page() {
 
       <section className="py-16">
         <Container>
-          <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-xl">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="p-8">
                 <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
@@ -304,7 +309,7 @@ export default function Page() {
                   En créant une interface adaptée à ses besoins spécifiques, j'ai pu transformer:
                 </Typography>
 
-                <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border-l-4 border-red-500 dark:border-red-700">
+                <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border-l-4 border-red-500 dark:border-red-700 transition-all duration-300 hover:bg-red-100 dark:hover:bg-red-900/30">
                   <Typography variant="p" className="font-medium text-red-700 dark:text-red-400">
                     AVANT
                   </Typography>
@@ -314,7 +319,7 @@ export default function Page() {
                   </Typography>
                 </div>
 
-                <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border-l-4 border-green-500 dark:border-green-700">
+                <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border-l-4 border-green-500 dark:border-green-700 transition-all duration-300 hover:bg-green-100 dark:hover:bg-green-900/30">
                   <Typography
                     variant="p"
                     className="font-medium text-green-700 dark:text-green-400"
@@ -348,6 +353,7 @@ export default function Page() {
                   alt="Interface Corps & Sens"
                   fill
                   style={{ objectFit: 'cover' }}
+                  className="transition-transform duration-500 hover:scale-105"
                 />
               </div>
             </div>
@@ -357,7 +363,7 @@ export default function Page() {
 
       <CTASection
         title="Échangeons sur vos défis quotidiens"
-        description="Au début de mon parcours freelance, je serais ravi de comprendre vos besoins spécifiques - même si c'est simplement pour partager des perspectives sur vos défis actuels."
+        description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
         primaryAction={{
           text: 'Échanger sur votre projet',
           url: '/contact',

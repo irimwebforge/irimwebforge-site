@@ -29,6 +29,7 @@ export interface FormFieldProps {
   options?: Array<{
     value: string;
     label: string;
+    disabled?: boolean;
   }>;
   /** Nombre de lignes pour le textarea */
   rows?: number;

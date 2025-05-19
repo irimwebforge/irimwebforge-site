@@ -14,10 +14,9 @@ import { CTASection } from '@/templates/CTASection';
 export default function Page() {
   // États pour le formulaire
   const [formData, setFormData] = useState({});
-  const [currentStep, setCurrentStep] = useState(0);
   const [formComplete, setFormComplete] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [motivationalMessage, setMotivationalMessage] = useState('');
+  const [submitError, setSubmitError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Bannière de vision
   const VisionBanner = () => (
@@ -30,39 +29,41 @@ export default function Page() {
     </Alert>
   );
 
-  const handleStepComplete = (stepData: Record<string, any>) => {
-    setFormData((prev) => ({ ...prev, ...stepData }));
-    setIsTransitioning(true);
+  // Fonction pour soumettre le formulaire complet
+  const handleFormSubmit = async (completeData: Record<string, any>) => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(completeData),
+      });
 
-    setTimeout(() => {
-      if (currentStep < conversationSteps.length - 1) {
-        setCurrentStep((prev) => prev + 1);
-        setIsTransitioning(false);
-      } else {
-        setFormComplete(true);
-        console.log('Form completed:', { ...formData, ...stepData });
+      if (!response.ok) {
+        throw new Error("Erreur lors de l'envoi du formulaire");
       }
-    }, 800);
+
+      // Si tout se passe bien, marquer le formulaire comme complet
+      setFormComplete(true);
+      console.log('Form data sent successfully:', completeData);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitError(
+        "Une erreur est survenue lors de l'envoi du formulaire. Veuillez réessayer ou me contacter directement par email."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  useEffect(() => {
-    const messages = [
-      "Merci pour ces informations. J'aimerais maintenant mieux comprendre votre activité...",
-      'Parfait. Explorons ensemble vos défis administratifs quotidiens...',
-      'Très bien. Précisons vos besoins spécifiques...',
-      'Dernière étape pour préparer notre conversation...',
-    ];
-
-    if (isTransitioning && currentStep < messages.length) {
-      setMotivationalMessage(messages[currentStep]);
-    }
-  }, [isTransitioning, currentStep]);
-
+  // Définition des étapes de conversation
   const conversationSteps = [
     {
       title: 'Faisons connaissance',
       description:
-        "Pour préparer notre conversation, j'aimerais en savoir un peu plus sur vous et votre activité.",
+        "Pour préparer notre échange, j'aimerais en savoir un peu plus sur vous et votre activité.",
       fields: [
         {
           id: 'fullName',
@@ -93,56 +94,17 @@ export default function Page() {
         },
         {
           id: 'phone',
-          label: 'Votre téléphone (si vous préférez échanger par ce biais)',
+          label: 'Votre téléphone (facultatif)',
           type: 'tel' as const,
-          placeholder: 'Votre numéro mobile de préférence',
+          placeholder: 'Numéro de téléphone',
           required: false,
         },
       ],
     },
     {
-      title: 'Votre activité',
+      title: 'Vos défis quotidiens',
       description:
-        'Aidez-moi à comprendre votre contexte professionnel pour mieux saisir vos défis quotidiens.',
-      fields: [
-        {
-          id: 'experience',
-          label: 'Depuis combien de temps exercez-vous cette activité ?',
-          type: 'select' as const,
-          options: [
-            { value: 'starting', label: 'Je me lance tout juste' },
-            { value: 'less-1y', label: "Moins d'un an" },
-            { value: '1-3y', label: 'Entre 1 et 3 ans' },
-            { value: '3-5y', label: 'Entre 3 et 5 ans' },
-            { value: 'more-5y', label: 'Plus de 5 ans' },
-          ],
-          required: true,
-        },
-        {
-          id: 'clients',
-          label: 'Environ combien de clients accompagnez-vous chaque mois ?',
-          type: 'select' as const,
-          options: [
-            { value: 'less-10', label: 'Moins de 10' },
-            { value: '10-30', label: 'Entre 10 et 30' },
-            { value: '30-50', label: 'Entre 30 et 50' },
-            { value: 'more-50', label: 'Plus de 50' },
-          ],
-          required: true,
-        },
-        {
-          id: 'activityDescription',
-          label: 'Parlez-moi un peu de votre activité et de ce qui vous passionne',
-          type: 'textarea' as const,
-          placeholder: 'Votre métier, vos services, votre clientèle, ce qui vous anime...',
-          required: true,
-        },
-      ],
-    },
-    {
-      title: 'Vos défis administratifs',
-      description:
-        "Comprenons ensemble ce qui vous prend du temps et de l'énergie dans la gestion de votre activité.",
+        "Parlons de ce qui vous prend du temps et de l'énergie dans la gestion de votre activité.",
       fields: [
         {
           id: 'timeWasted',
@@ -174,7 +136,7 @@ export default function Page() {
         {
           id: 'frustration',
           label:
-            'Quelle est votre plus grande source de frustration ou perte de temps dans votre quotidien professionnel ?',
+            'Quelle est votre plus grande source de frustration dans votre quotidien professionnel ?',
           type: 'textarea' as const,
           placeholder: 'Ce qui vous empêche de vous concentrer sur votre cœur de métier...',
           required: true,
@@ -182,48 +144,76 @@ export default function Page() {
       ],
     },
     {
-      title: 'Vos outils actuels',
+      title: 'Votre projet en détail',
       description:
-        "Parlez-moi de votre situation numérique actuelle pour identifier ensemble des pistes d'amélioration.",
+        'Décrivez-moi votre projet, vos idées ou vos besoins. Plus vous serez précis, mieux je pourrai préparer notre échange.',
       fields: [
         {
-          id: 'currentTools',
-          label: 'Comment gérez-vous actuellement votre activité en ligne ?',
+          id: 'projectType',
+          label: 'Quel type de projet envisagez-vous ?',
           type: 'select' as const,
           options: [
-            { value: 'none', label: "Je n'ai pas de présence en ligne / tout est manuel" },
-            { value: 'basic', label: "J'ai un site simple mais sans fonctionnalités spéciales" },
-            {
-              value: 'multiple',
-              label: "J'utilise plusieurs outils séparés (site, agenda, facturation...)",
-            },
-            {
-              value: 'integrated',
-              label: "J'ai une solution tout-en-un, mais pas idéale pour moi",
-            },
+            { value: 'site-vitrine', label: 'Site vitrine pour présenter mon activité' },
+            { value: 'site-admin', label: "Site avec interface d'administration sur mesure" },
+            { value: 'amelioration', label: "Amélioration d'un site existant" },
+            { value: 'application', label: 'Application web/mobile spécifique' },
+            { value: 'conseil', label: 'Conseil sur ma présence numérique' },
+            { value: 'autre', label: 'Autre / Je ne sais pas encore précisément' },
           ],
           required: true,
         },
         {
-          id: 'techComfort',
-          label: 'Quel est votre rapport avec la technologie ?',
+          id: 'projectTimeline',
+          label: 'Quel est votre calendrier pour ce projet ?',
           type: 'select' as const,
           options: [
-            { value: 'low', label: "Je l'évite autant que possible" },
-            { value: 'medium', label: "Je me débrouille mais c'est parfois compliqué" },
-            { value: 'good', label: "À l'aise avec des interfaces simples et intuitives" },
-            { value: 'excellent', label: "Très à l'aise, j'apprends facilement" },
+            { value: 'urgent', label: "Urgent (moins d'un mois)" },
+            { value: 'soon', label: 'Dans les 1 à 3 mois' },
+            { value: 'later', label: "Plus tard dans l'année" },
+            { value: 'no-rush', label: 'Pas de contrainte de temps particulière' },
           ],
           required: true,
+        },
+        {
+          id: 'projectDescription',
+          label: 'Décrivez librement votre projet et vos attentes',
+          type: 'textarea' as const,
+          placeholder:
+            'Partagez ici tous les détails qui vous semblent pertinents pour notre discussion. Vos besoins spécifiques, vos inspirations, des exemples que vous aimez...',
+          required: true,
+          rows: 6,
         },
         {
           id: 'additionalInfo',
-          label: 'Y a-t-il autre chose que vous aimeriez me partager avant notre conversation ?',
+          label: 'Y a-t-il autre chose que vous souhaitez partager avant notre échange ?',
           type: 'textarea' as const,
-          placeholder: 'Besoins spécifiques, contraintes, questions...',
+          placeholder: 'Questions, précisions, préférences pour le rendez-vous...',
           required: false,
         },
       ],
+    },
+  ];
+
+  // Les champs organisés par étapes
+  const allFields = [
+    ...conversationSteps[0].fields,
+    ...conversationSteps[1].fields,
+    ...conversationSteps[2].fields,
+  ];
+
+  // Les étapes pour le formulaire
+  const steps = [
+    {
+      title: conversationSteps[0].title,
+      description: conversationSteps[0].description,
+    },
+    {
+      title: conversationSteps[1].title,
+      description: conversationSteps[1].description,
+    },
+    {
+      title: conversationSteps[2].title,
+      description: conversationSteps[2].description,
     },
   ];
 
@@ -254,24 +244,24 @@ export default function Page() {
   ];
 
   return (
-    <main className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
+    <main className="overflow-x-hidden bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
       <PageHeader
         title="Échange sans obligation"
-        description="Parlons de votre activité"
-        theme="primary"
+        description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
         align="center"
         size="medium"
+        pattern={true}
         badge={{ text: 'Conversation sans engagement', variant: 'primary' }}
       />
 
-      <Container>
+      {/* <Container>
         <VisionBanner />
-      </Container>
+      </Container> */}
 
       <section id="conversation" className="py-16">
         <Container>
           <div className="max-w-4xl mx-auto mb-8 text-center">
-            <Typography as="h2" variant="h2" className="mb-6 font-bold">
+            <Typography as="h2" variant="h2" className="mb-6 font-bold italic">
               Un échange constructif en 4 étapes
             </Typography>
             <Typography variant="lead" className="mb-12">
@@ -283,9 +273,9 @@ export default function Page() {
               {conversationTopics.map((topic, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border-t-4 border-[var(--color-primary)] transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                  className="group bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border-t-4 border-[var(--color-primary)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-md"
                 >
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--color-primary-100)] mb-4 mx-auto">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--color-primary-100)] mb-4 mx-auto transition-transform duration-150 group-hover:scale-110">
                     <Icon name={topic.icon} className="text-[var(--color-primary)]" />
                   </div>
                   <Typography as="h3" variant="h4" className="mb-2 text-center">
@@ -316,6 +306,16 @@ export default function Page() {
 
       <section id="form-section" className="py-16 bg-gray-50 dark:bg-gray-900">
         <Container>
+          <div className="max-w-2xl mx-auto mb-12 text-center">
+            <Typography as="h2" variant="h2" className="mb-6 font-bold italic">
+              Préparons notre conversation
+            </Typography>
+            <Typography variant="p" className="mb-8">
+              Pour que notre échange soit le plus productif possible, partagez quelques informations
+              sur vous et votre activité.
+            </Typography>
+          </div>
+
           <div className="flex flex-col lg:flex-row gap-10 items-stretch">
             <div className="lg:w-1/3 order-2 lg:order-1">
               <div className="sticky top-24 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-100 dark:border-gray-700">
@@ -390,48 +390,26 @@ export default function Page() {
 
             <div className="lg:w-2/3 order-1 lg:order-2">
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-100 dark:border-gray-700">
-                {isTransitioning ? (
-                  <div className="text-center py-16">
-                    <div className="w-16 h-16 mx-auto border-4 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin mb-6"></div>
-                    <Typography variant="h3" className="mb-4 font-bold text-[var(--color-primary)]">
-                      Merci !
-                    </Typography>
-                    <Typography variant="lead" className="mb-2">
-                      {motivationalMessage}
-                    </Typography>
-                  </div>
-                ) : !formComplete ? (
+                {!formComplete ? (
                   <>
-                    <div className="mb-8">
-                      <div className="flex justify-between mb-6">
-                        {conversationSteps.map((_, idx) => (
-                          <div
-                            key={idx}
-                            className={`w-[18%] h-1.5 rounded-full transition-all duration-500 ease-out ${currentStep >= idx ? 'bg-[var(--color-primary)]' : 'bg-gray-200 dark:bg-gray-700'}`}
-                          />
-                        ))}
-                      </div>
-                      <Typography
-                        as="h3"
-                        variant="h3"
-                        className="font-bold mb-2 text-[var(--color-primary)]"
-                      >
-                        {conversationSteps[currentStep].title}
-                      </Typography>
-                      <Typography variant="p" className="text-gray-600 dark:text-gray-300 mb-8">
-                        {conversationSteps[currentStep].description}
-                      </Typography>
+                    {/* Indicateur visuel de progression */}
+                    <div className="flex justify-between mb-8">
+                      {conversationSteps.map((_, idx) => (
+                        <div
+                          key={idx}
+                          className={`w-[30%] h-1.5 rounded-full transition-all duration-500 ease-out bg-gray-200 dark:bg-gray-700`}
+                        />
+                      ))}
                     </div>
 
+                    {/* Nouveau formulaire avec étapes */}
                     <ConversationForm
-                      fields={conversationSteps[currentStep].fields}
-                      onSubmit={handleStepComplete}
-                      submitButtonText={
-                        currentStep < conversationSteps.length - 1
-                          ? 'Continuer'
-                          : 'Planifier notre conversation'
-                      }
+                      fields={allFields}
+                      steps={steps}
+                      onSubmit={handleFormSubmit}
+                      submitButtonText="Planifier notre conversation"
                       className="space-y-6"
+                      loading={isSubmitting}
                     />
                   </>
                 ) : (
@@ -477,12 +455,22 @@ export default function Page() {
                       </Link>{' '}
                       pour mieux comprendre mon approche.
                     </Typography>
+                    {submitError && (
+                      <div
+                        className="bg-red-50 dark:bg-red-900/20 p-4 rounded-md mb-6 animate-fade-in"
+                        style={{ animationDelay: '300ms' }}
+                      >
+                        <Typography variant="p" className="text-red-600 dark:text-red-400">
+                          {submitError}
+                        </Typography>
+                      </div>
+                    )}
                     <Button
                       variant="outline"
                       onClick={() => {
                         setFormComplete(false);
-                        setCurrentStep(0);
                         setFormData({});
+                        setSubmitError('');
                       }}
                       className="animate-fade-in"
                       style={{ animationDelay: '750ms' }}
@@ -494,35 +482,8 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <div className="max-w-2xl mx-auto mt-12 text-center">
-            <Typography as="h2" variant="h2" className="mb-6 font-bold">
-              Préparons notre conversation
-            </Typography>
-            <Typography variant="p" className="mb-8">
-              Pour que notre échange soit le plus productif possible, partagez quelques informations
-              sur vous et votre activité.
-            </Typography>
-          </div>
         </Container>
       </section>
-
-      <CTASection
-        title="Échangeons sur vos défis quotidiens"
-        description="Je suis au début de mon parcours freelance et serais ravi de comprendre vos besoins spécifiques, sans aucune obligation."
-        primaryAction={{
-          text: 'Prendre contact',
-          url: '/contact',
-          variant: 'gradient',
-        }}
-        secondaryAction={{
-          text: 'Découvrir mes projets',
-          url: '/projets',
-          variant: 'secondary',
-        }}
-        variant="default"
-        backgroundColor="primary"
-        textColor="light"
-      />
 
       <style jsx global>{`
         @keyframes fade-in {

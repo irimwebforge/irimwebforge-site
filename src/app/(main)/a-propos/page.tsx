@@ -88,40 +88,44 @@ export default function Page() {
       description:
         "Je préfère être honnête sur mes capacités actuelles et mes ambitions futures, tout en veillant à rester à l'écoute de vos besoins réels.",
       icon: 'Heart' as IconName,
+      color: 'primary' as const,
     },
     {
       title: 'Autonomie et liberté',
       description:
         'Je crois fermement que la technologie doit vous libérer, pas vous contraindre. Chaque solution que je conçois vise à vous rendre plus autonome.',
       icon: 'Unlock' as IconName,
+      color: 'secondary' as const,
     },
     {
       title: 'Artisanat digital',
       description:
         'Je privilégie la qualité à la quantité, en concevant des interfaces soignées et sur mesure, comme un artisan qui façonne une pièce unique.',
       icon: 'Tool' as IconName,
+      color: 'tertiary' as const,
     },
     {
       title: 'Évolution constante',
       description:
         "Je m'engage dans un processus d'apprentissage continu et d'amélioration, pour vous offrir des solutions toujours plus adaptées à vos besoins.",
       icon: 'TrendingUp' as IconName,
+      color: 'primary' as const,
     },
   ];
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <PageHeader
         title="Mon parcours au service de votre autonomie"
         description="Développeur en reconversion guidé par une expérience personnelle transformatrice et des valeurs d'écoute et d'autonomie."
-        theme="primary"
         align="center"
         size="medium"
+        pattern={true}
       />
 
-      <Container>
+      {/* <Container>
         <VisionBanner />
-      </Container>
+      </Container> */}
 
       <section className="py-16">
         <Container>
@@ -187,7 +191,12 @@ export default function Page() {
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <Timeline steps={journeySteps} orientation="vertical" withDates={true} />
+            <Timeline
+              steps={journeySteps}
+              orientation="vertical"
+              withDates={true}
+              className="transition-all duration-300 hover:opacity-95"
+            />
           </div>
         </Container>
       </section>
@@ -208,22 +217,28 @@ export default function Page() {
             {transferredSkills.map((skill, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-lg"
+                className="group bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-xl hover:scale-105"
               >
-                <div
-                  className={`w-12 h-12 rounded-full bg-[var(--color-${skill.color}-100)] dark:bg-[var(--color-${skill.color}-900)] flex items-center justify-center mb-4`}
-                >
-                  <Icon
-                    name={skill.icon}
-                    className={`text-[var(--color-${skill.color}-700)] dark:text-[var(--color-${skill.color}-300)]`}
-                  />
+                <div className="flex justify-center mb-4">
+                  <div
+                    className={`w-16 h-16 rounded-full bg-[var(--color-${skill.color}-100)] dark:bg-[var(--color-${skill.color}-900)] flex items-center justify-center transition-transform duration-150 group-hover:scale-110 group-hover:shadow-lg`}
+                  >
+                    <Icon
+                      name={skill.icon}
+                      className={`w-8 h-8 text-[var(--color-${skill.color}-600)] dark:text-[var(--color-${skill.color}-400)]`}
+                      aria-hidden="true"
+                    />
+                  </div>
                 </div>
 
-                <Typography as="h3" variant="h3" className="mb-3">
+                <Typography as="h3" variant="h3" className="mb-3 text-center">
                   {skill.title}
                 </Typography>
 
-                <Typography variant="p" className="text-gray-600 dark:text-gray-300 mb-4">
+                <Typography
+                  variant="p"
+                  className="text-gray-600 dark:text-gray-300 mb-4 text-center"
+                >
                   {skill.description}
                 </Typography>
               </div>
@@ -232,7 +247,7 @@ export default function Page() {
         </Container>
       </section>
 
-      <section className="py-16 bg-white dark:bg-gray-900">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <Container>
           <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
@@ -247,11 +262,17 @@ export default function Page() {
             {values.map((value, index) => (
               <div
                 key={index}
-                className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                className="group bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-md"
               >
                 <div className="flex justify-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-[var(--color-primary-100)] dark:bg-[var(--color-primary-900)] flex items-center justify-center">
-                    <Icon name={value.icon} className="text-[var(--color-primary)]" />
+                  <div
+                    className={`w-16 h-16 rounded-full bg-[var(--color-${value.color}-100)] dark:bg-[var(--color-${value.color}-900)] flex items-center justify-center transition-transform duration-150 group-hover:scale-110 group-hover:shadow-lg`}
+                  >
+                    <Icon
+                      name={value.icon}
+                      className={`w-8 h-8 text-[var(--color-${value.color}-600)] dark:text-[var(--color-${value.color}-400)]`}
+                      aria-hidden="true"
+                    />
                   </div>
                 </div>
 
@@ -268,7 +289,7 @@ export default function Page() {
         </Container>
       </section>
 
-      <section className="py-16 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
@@ -317,7 +338,7 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+            <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg group transition-all duration-300 hover:shadow-xl">
               <Typography as="h3" variant="h3" className="mb-4 text-[var(--color-primary)]">
                 Formation et compétences techniques
               </Typography>
@@ -342,60 +363,60 @@ export default function Page() {
                     Technologies maîtrisées
                   </Typography>
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 group">
                       <Icon
                         name="Check"
-                        className="text-[var(--color-primary)] flex-shrink-0"
+                        className="text-[var(--color-primary)] flex-shrink-0 transition-transform duration-150 group-hover:scale-110"
                         size={16}
                       />
                       <Typography variant="p" className="text-sm">
                         HTML/CSS/SCSS
                       </Typography>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 group">
                       <Icon
                         name="Check"
-                        className="text-[var(--color-primary)] flex-shrink-0"
+                        className="text-[var(--color-primary)] flex-shrink-0 transition-transform duration-150 group-hover:scale-110"
                         size={16}
                       />
                       <Typography variant="p" className="text-sm">
                         JavaScript/TypeScript
                       </Typography>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 group">
                       <Icon
                         name="Check"
-                        className="text-[var(--color-primary)] flex-shrink-0"
+                        className="text-[var(--color-primary)] flex-shrink-0 transition-transform duration-150 group-hover:scale-110"
                         size={16}
                       />
                       <Typography variant="p" className="text-sm">
                         React/Next.js
                       </Typography>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 group">
                       <Icon
                         name="Check"
-                        className="text-[var(--color-primary)] flex-shrink-0"
+                        className="text-[var(--color-primary)] flex-shrink-0 transition-transform duration-150 group-hover:scale-110"
                         size={16}
                       />
                       <Typography variant="p" className="text-sm">
                         React Native
                       </Typography>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 group">
                       <Icon
                         name="Check"
-                        className="text-[var(--color-primary)] flex-shrink-0"
+                        className="text-[var(--color-primary)] flex-shrink-0 transition-transform duration-150 group-hover:scale-110"
                         size={16}
                       />
                       <Typography variant="p" className="text-sm">
                         Node.js/Express
                       </Typography>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 group">
                       <Icon
                         name="Check"
-                        className="text-[var(--color-primary)] flex-shrink-0"
+                        className="text-[var(--color-primary)] flex-shrink-0 transition-transform duration-150 group-hover:scale-110"
                         size={16}
                       />
                       <Typography variant="p" className="text-sm">
@@ -426,7 +447,7 @@ export default function Page() {
 
       <CTASection
         title="Échangeons sur vos défis quotidiens"
-        description="Je serais ravi de comprendre comment mon approche pourrait vous aider à libérer du temps pour votre cœur de métier."
+        description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
         primaryAction={{
           text: 'Prendre contact',
           url: '/contact',

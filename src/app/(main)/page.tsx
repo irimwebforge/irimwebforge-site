@@ -5,6 +5,69 @@ import { Container } from '@/components/atoms/Container';
 import { Typography } from '@/components/atoms/Typography';
 import Image from 'next/image';
 import { Icon } from '@/components/atoms/Icon';
+import { Badge } from '@/components/atoms/Badge';
+import { Card } from '@/components/molecules/Card';
+import { Timeline } from '@/components/molecules/Timeline';
+
+const colorMap = {
+  primary: {
+    bg: 'bg-primary-100 dark:bg-primary-900',
+    text: 'text-primary-600 dark:text-primary-400',
+    title: 'text-primary-700 dark:text-primary-300',
+    badge: 'primary',
+    border: 'border-[var(--color-primary)]',
+  },
+  secondary: {
+    bg: 'bg-secondary-100 dark:bg-secondary-900',
+    text: 'text-secondary-600 dark:text-secondary-400',
+    title: 'text-secondary-700 dark:text-secondary-300',
+    badge: 'secondary',
+    border: 'border-[var(--color-secondary)]',
+  },
+  tertiary: {
+    bg: 'bg-tertiary-100 dark:bg-tertiary-900',
+    text: 'text-tertiary-600 dark:text-tertiary-400',
+    title: 'text-tertiary-700 dark:text-tertiary-300',
+    badge: 'tertiary',
+    border: 'border-[var(--color-tertiary)]',
+  },
+};
+
+// Blocs pour la section "Mon parcours à vos côtés"
+const parcoursBlocks = [
+  {
+    id: 'now',
+    badge: 'Actuel',
+    badgeColor: 'primary',
+    title: 'Ce que je fais maintenant',
+    titleColor: 'primary-600',
+    borderColor: 'primary-500',
+    bgBadge: 'primary-100',
+    bgBadgeDark: 'primary-900',
+    textBadge: 'primary-700',
+    textBadgeDark: 'primary-300',
+    content: [
+      "Je conçois des sites web où vous vous sentez vraiment chez vous. Chaque interface est pensée pour s'adapter à votre quotidien, avec une attention particulière à la simplicité et à l'autonomie.",
+      'Idéal si vous souhaitez un site professionnel, élégant et facile à gérer vous-même, sans stress technique ni dépendance extérieure.',
+    ],
+  },
+  {
+    id: 'develop',
+    badge: 'En développement',
+    badgeColor: 'secondary',
+    title: 'Ce que je développe activement',
+    titleColor: 'secondary-600',
+    borderColor: 'secondary-500',
+    bgBadge: 'secondary-100',
+    bgBadgeDark: 'secondary-900',
+    textBadge: 'secondary-700',
+    textBadgeDark: 'secondary-300',
+    content: [
+      'Je crée des applications qui vont plus loin que le site vitrine. Par exemple, MoodCycle, une application de suivi en cours de création, ou des outils pour connecter naturellement vos données et vos services.',
+      "Mon objectif : bâtir, à terme, des systèmes où tout communique naturellement – votre site, vos outils, vos données – pour une expérience fluide, sans complications techniques. Cette vision se construit main dans la main avec des personnes qui, comme vous, valorisent la simplicité et l'indépendance.",
+    ],
+  },
+];
 
 export default function HomePage() {
   // Bannière explicative de vision
@@ -19,31 +82,34 @@ export default function HomePage() {
     </div>
   );
 
-  // Données pour la section "Transformations possibles"
+  // Données mises à jour pour la section "Transformations concrètes"
   const clientBenefits = [
     {
       id: 'time',
-      title: 'Récupérez vos dimanches et vos soirées',
+      title: "Du temps retrouvé pour l'essentiel",
       description:
-        "L'expérience réussie avec mon épouse thérapeute montre qu'une interface bien conçue peut libérer significativement votre temps. Imaginez modifier votre planning en quelques clics.",
-      icon: '🧘‍♀ ',
+        "Concentrez-vous sur vos clients et votre expertise, pas sur votre site web. Mon épouse thérapeute est passée de 7h à 45min d'administration hebdomadaire.",
+      iconName: 'Clock',
       color: 'primary',
+      badge: 'Temps',
     },
     {
-      id: 'simplicity',
-      title: 'Un site que vous pourriez enfin contrôler',
+      id: 'autonomy',
+      title: 'Une autonomie numérique sereine',
       description:
-        'Fini les appels au "neveu qui s\'y connaît" ou l\'attente d\'un prestataire. Avec des interfaces pensées pour vous, mettez à jour votre site sans risquer de "tout casser" - même si la technologie vous intimide.',
-      icon: '🪄',
+        "Modifiez vos contenus sans crainte ni dépendance technique. Fini les appels au \"neveu qui s'y connaît\" ou l'attente d'un prestataire externe.",
+      iconName: 'CircleUser',
       color: 'secondary',
+      badge: 'Autonomie',
     },
     {
-      id: 'identity',
-      title: 'Une image à la hauteur de votre expertise',
+      id: 'authenticity',
+      title: 'Une présence qui vous ressemble vraiment',
       description:
-        "Votre site devrait refléter fidèlement votre niveau d'excellence, rassurant vos prospects et fidélisant vos clients. Il peut devenir un accélérateur plutôt qu'un frein pour votre activité.",
-      icon: '🌟',
+        "Votre site reflète authentiquement qui vous êtes et comment vous travaillez. Une image professionnelle alignée avec votre niveau d'excellence.",
+      iconName: 'Sparkles',
       color: 'tertiary',
+      badge: 'Authenticité',
     },
   ];
 
@@ -61,8 +127,8 @@ export default function HomePage() {
     ],
     clientName: 'Projet personnel',
     transformation: {
-      before: '7 heures de frustration hebdomadaire',
-      after: "45 minutes d'interactions fluides",
+      before: 'LE DEFI',
+      after: 'LE RESULTAT',
     },
   };
 
@@ -83,11 +149,13 @@ export default function HomePage() {
           />
         </div>
         <HeroSection
-          title="Des interfaces qui comprennent votre métier"
-          subtitle="Je conçois des espaces administratifs intuitifs où vous retrouvez vos processus métier, pas du jargon technique. Un premier projet a déjà transformé 7h de gestion hebdomadaire en 45min pour un cabinet thérapeutique."
-          ctaText="Parlez-moi de vos défis quotidiens"
+          title="Le pont entre votre vision et sa concrétisation digitale"
+          subtitle={
+            "Je crée des espaces numériques où vous vous sentez chez vous des interfaces pensées pour votre quotidien.   Parce que votre temps mérite d'être consacré à votre passion, pas à votre site web."
+          }
+          ctaText="Parlons de votre projet"
           ctaHref="/contact"
-          secondaryCtaText="Découvrir ma vision"
+          secondaryCtaText="Comment je travaille"
           secondaryCtaHref="#vision"
           className="w-full space-y-12"
         />
@@ -96,23 +164,20 @@ export default function HomePage() {
       </section>
 
       {/* 2. Histoire authentique et vision professionnelle */}
-      <section className="py-28 bg-gray-50 dark:bg-gray-900 relative" id="vision">
-        <Container className="max-w-4xl text-center space-y-10 mb-16 relative z-10">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900 relative" id="vision">
+        <Container className="max-w-4xl text-center space-y-10 mb-12 relative z-10">
           <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
-            Ma vision et mon parcours
+            Un guide, pas un simple technicien
           </Typography>
           <Typography variant="lead" className="text-gray-700 dark:text-gray-200 leading-relaxed">
-            "En observant mon épouse thérapeute lutter avec son interface administrative, j'ai
-            compris que le problème n'était pas son niveau technique, mais des outils qui ignoraient
-            sa réalité métier. Cette prise de conscience a défini ma mission: créer des interfaces
-            qui respectent votre façon de travailler."
+            {`En regardant mon épouse thérapeute lutter avec son site web chaque dimanche, j'ai compris l'évidence : ce n'est pas à vous de vous adapter aux outils, mais aux outils de s'adapter à vous. Cette conviction guide chacun de mes projets aujourd'hui.`}
           </Typography>
           <div className="flex items-center justify-center space-x-3 mt-6">
             <div className="h-10 w-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
               <span className="text-primary-600 dark:text-primary-400 font-bold">EZ</span>
             </div>
             <Typography variant="subtle" className="text-gray-700 dark:text-gray-300">
-              Eric Zuber, développeur spécialisé en interfaces sur mesure
+              Eric Zuber, créateur d'espaces numériques sur mesure
             </Typography>
           </div>
         </Container>
@@ -121,10 +186,10 @@ export default function HomePage() {
       </section>
 
       {/* 3. Transformations possibles avec transparence */}
-      <section className="py-32 relative overflow-hidden" id="transformation">
+      <section className="py-12 sm:py-16 lg:py-20 relative overflow-hidden" id="transformation">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-50 to-transparent opacity-20 dark:from-primary-900 dark:opacity-10"></div>
-        <Container className="relative z-10 mb-16">
-          <div className="text-center mb-24">
+        <Container className="relative z-10 mb-12">
+          <div className="text-center mb-12">
             <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
               Ce que mes solutions apportent concrètement
             </Typography>
@@ -132,151 +197,219 @@ export default function HomePage() {
               variant="lead"
               className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
             >
-              Voici l'impact que je souhaite créer pour mes clients :
+              Pour vous libérer, concrètement :
             </Typography>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-10 shadow-md hover:shadow-lg transition-shadow">
-              <div className="h-16 w-16 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mb-4">
-                <span
-                  className="text-3xl text-primary-600 dark:text-primary-400"
-                  aria-hidden="true"
+          <div className="grid md:grid-cols-3 gap-12 items-stretch">
+            {clientBenefits.map((benefit) => {
+              const color = benefit.color as 'primary' | 'secondary' | 'tertiary';
+              return (
+                <Card
+                  key={benefit.id}
+                  variant="accent"
+                  color={color}
+                  accentPosition="top"
+                  padding="large"
+                  hover
+                  className={`
+              group flex flex-col items-center text-center h-full
+              transition-transform duration-150 ease-in-out
+              hover:scale-105 hover:shadow-xl
+              ${colorMap[color].border}
+            `}
+                  title={
+                    <div>
+                      <Badge
+                        variant={colorMap[color].badge as 'primary' | 'secondary' | 'tertiary'}
+                        className="mb-2 transition-colors duration-150 group-hover:bg-opacity-80"
+                      >
+                        {benefit.badge}
+                      </Badge>
+                      <div className="mb-4 flex justify-center">
+                        <div
+                          className={`w-16 h-16 rounded-full flex items-center justify-center transition-transform duration-150 group-hover:scale-110 group-hover:shadow-lg ${colorMap[color].bg}`}
+                        >
+                          <Icon
+                            name={benefit.iconName as import('@/components/atoms/Icon').IconName}
+                            className={`w-8 h-8 ${colorMap[color].text}`}
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </div>
+                      <span className={`text-xl font-bold ${colorMap[color].title}`}>
+                        {benefit.title}
+                      </span>
+                    </div>
+                  }
                 >
-                  🧘‍♀️
-                </span>
-              </div>
-              <Typography variant="h3" className="font-bold mb-3 text-xl tracking-wide">
-                Récupérez le temps pour votre cœur de métier
-              </Typography>
-              <Typography
-                variant="p"
-                className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed"
-              >
-                Plus de temps pour vos clients, votre expertise, votre créativité.
-              </Typography>
-            </div>
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-10 shadow-md hover:shadow-lg transition-shadow">
-              <div className="h-16 w-16 rounded-full bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center mb-4">
-                <span
-                  className="text-3xl text-secondary-600 dark:text-secondary-400"
-                  aria-hidden="true"
-                >
-                  🪄
-                </span>
-              </div>
-              <Typography variant="h3" className="font-bold mb-3 text-xl tracking-wide">
-                Une présence en ligne que vous contrôlez vraiment
-              </Typography>
-              <Typography
-                variant="p"
-                className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed"
-              >
-                Mettez à jour sans dépendre d'un expert externe.
-              </Typography>
-            </div>
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-10 shadow-md hover:shadow-lg transition-shadow">
-              <div className="h-16 w-16 rounded-full bg-tertiary-100 dark:bg-tertiary-900 flex items-center justify-center mb-4">
-                <span
-                  className="text-3xl text-tertiary-600 dark:text-tertiary-400"
-                  aria-hidden="true"
-                >
-                  🌟
-                </span>
-              </div>
-              <Typography variant="h3" className="font-bold mb-3 text-xl tracking-wide">
-                Une cohérence qui renforce votre crédibilité
-              </Typography>
-              <Typography
-                variant="p"
-                className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed"
-              >
-                Une image professionnelle alignée avec votre niveau d'excellence.
-              </Typography>
-            </div>
+                  <Typography
+                    variant="p"
+                    className="text-gray-700 dark:text-gray-300 mt-4 leading-relaxed"
+                  >
+                    {benefit.description}
+                  </Typography>
+                </Card>
+              );
+            })}
           </div>
         </Container>
-        {/* Transition vers la section suivante */}
+
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-white dark:to-gray-900" />
       </section>
 
       {/* 4. Cas réel Corps & Sens avec transparence */}
-      <section className="py-32 bg-white dark:bg-gray-900 relative" id="cas-concret">
-        <Container className="mb-16">
-          <div className="text-center mb-24">
+      <section
+        className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 relative"
+        id="cas-concret"
+      >
+        <Container className="mb-12">
+          <div className="text-center mb-12">
             <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
-              Un cas réel qui a inspiré ma démarche
+              {featuredProject.title}
             </Typography>
+            <div className="flex flex-wrap justify-center gap-2 mb-4">
+              {featuredProject.tags.map((tag) => (
+                <Badge
+                  key={tag.id}
+                  variant={tag.color as 'primary' | 'secondary' | 'tertiary'}
+                  className="text-sm font-medium"
+                >
+                  {tag.label}
+                </Badge>
+              ))}
+            </div>
             <Typography
               variant="p"
               className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
             >
-              Le projet personnel réalisé pour mon épouse thérapeute a transformé sa gestion
-              administrative. Cette expérience concrète guide ma vision pour mes futurs clients.
+              {featuredProject.description}
             </Typography>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src={featuredProject.imageUrl}
-                alt="Corps & Sens - Interface simplifiée"
-                fill
-                style={{ objectFit: 'cover' }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
-                <span className="inline-block px-3 py-1 bg-primary-500 text-white rounded-full text-sm font-medium mb-2">
-                  Projet personnel: De 7h à 45min par semaine
-                </span>
-                <Typography variant="h3" className="text-white font-bold mb-2 tracking-wide">
+            {/* Image projet */}
+            <div className="flex flex-col rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl bg-white dark:bg-gray-800">
+              {/* Image avec effet de zoom au survol */}
+              <div className="relative h-[300px] overflow-hidden">
+                <Image
+                  src={featuredProject.imageUrl}
+                  alt={featuredProject.title}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  className="transition-transform duration-500 hover:scale-105"
+                />
+                {/* Petit badge en superposition (reste visible) */}
+                <div className="absolute top-4 right-4">
+                  <span className="inline-block px-3 py-1 bg-tertiary-500 text-white rounded-full text-sm font-medium shadow">
+                    7h → 45min
+                  </span>
+                </div>
+              </div>
+
+              {/* Texte sous l'image */}
+              <div className="p-6 flex-grow flex flex-col">
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {featuredProject.tags.map((tag) => (
+                    <span
+                      key={tag.id}
+                      className={`inline-block px-2 py-1 bg-${tag.color}-100 text-${tag.color}-700 dark:bg-${tag.color}-900 dark:text-${tag.color}-300 rounded-md text-xs font-medium`}
+                    >
+                      {tag.label}
+                    </span>
+                  ))}
+                </div>
+                <Typography
+                  variant="h3"
+                  className={`text-secondary-700 dark:text-secondary-300 font-bold mb-3 tracking-wide`}
+                >
                   {featuredProject.title}
+                </Typography>
+                <Typography variant="p" className="text-gray-600 dark:text-gray-300 mt-2">
+                  {featuredProject.description}
                 </Typography>
               </div>
             </div>
-
+            {/* Timeline transformation */}
             <div className="space-y-10">
-              <div className="bg-red-50 dark:bg-red-950 p-8 rounded-lg border-l-4 border-red-500">
-                <Typography
-                  variant="h4"
-                  className="text-red-700 dark:text-red-400 font-bold mb-2 tracking-wide"
-                >
-                  SITUATION INITIALE
-                </Typography>
+              {/* Avant */}
+              <div className="bg-secondary-50 dark:bg-secondary-900/30 p-8 rounded-xl border-l-4 border-secondary-500 transition-all duration-300 hover:shadow-2xl">
+                <div className="flex items-center mb-4">
+                  <Badge variant="secondary" className="mr-3">
+                    Avant
+                  </Badge>
+                  <Icon
+                    name="Clock"
+                    className="h-5 w-5 text-secondary-600 dark:text-secondary-400 opacity-70"
+                  />
+                  <Typography
+                    variant="h4"
+                    className="ml-3 text-secondary-700 dark:text-secondary-300 font-bold tracking-wide"
+                  >
+                    {featuredProject.transformation.before}
+                  </Typography>
+                </div>
                 <Typography
                   variant="p"
                   className="text-gray-700 dark:text-gray-300 leading-relaxed"
                 >
-                  Un site créé sur Wix avec une interface administrative complexe. Mettre à jour le
-                  planning prenait des heures et créait de la frustration. La maintenance
-                  hebdomadaire nécessitait environ 7 heures.
+                  Chaque dimanche perdu à lutter avec une interface qui ignorait la réalité d'un
+                  cabinet thérapeutique. Des heures de frustration pour modifier un simple planning,
+                  au détriment du temps créatif et personnel.
                 </Typography>
               </div>
 
-              <div className="bg-green-50 dark:bg-green-950 p-8 rounded-lg border-l-4 border-green-500">
-                <Typography
-                  variant="h4"
-                  className="text-green-700 dark:text-green-400 font-bold mb-2 tracking-wide"
-                >
-                  SOLUTION CRÉÉE
-                </Typography>
+              {/* Après */}
+              <div className="bg-primary-50 dark:bg-primary-900/30 p-8 rounded-xl border-l-4 border-primary-500 transition-all duration-300 hover:shadow-2xl">
+                <div className="flex items-center mb-4">
+                  <Badge variant="primary" className="mr-3">
+                    Après
+                  </Badge>
+                  <Icon
+                    name="Sparkles"
+                    className="h-5 w-5 text-primary-600 dark:text-primary-400 opacity-70"
+                  />
+                  <Typography
+                    variant="h4"
+                    className="ml-3 text-primary-700 dark:text-primary-300 font-bold tracking-wide"
+                  >
+                    {featuredProject.transformation.after}
+                  </Typography>
+                </div>
                 <Typography
                   variant="p"
                   className="text-gray-700 dark:text-gray-300 leading-relaxed"
                 >
-                  Une interface administrative sur mesure, intuitive et adaptée aux besoins
-                  spécifiques d'un cabinet thérapeutique. Mise à jour simplifiée du planning et
-                  gestion facilitée des contenus.
+                  Une interface qui parle le langage d'un thérapeute, pas celui d'un développeur.
+                  Des flux de travail simplifiés qui suivent les processus naturels du cabinet, avec
+                  juste les options nécessaires, rien de plus.
                 </Typography>
               </div>
 
-              <div className="bg-primary-50 dark:bg-primary-950 p-8 rounded-lg mt-12">
+              {/* Résultat */}
+              <div className="bg-tertiary-50 dark:bg-tertiary-900/20 p-8 rounded-xl border border-tertiary-200 dark:border-tertiary-800 mt-12 transition-all duration-300 hover:shadow-2xl">
+                <div className="flex items-center mb-4">
+                  <Badge variant="tertiary" className="mr-3">
+                    Transformation
+                  </Badge>
+                  <Icon
+                    name="ArrowRight"
+                    className="h-5 w-5 text-tertiary-600 dark:text-tertiary-400 opacity-70"
+                  />
+                  <Typography
+                    variant="h4"
+                    className="ml-3 text-tertiary-700 dark:text-tertiary-300 font-bold tracking-wide"
+                  >
+                    L'IMPACT
+                  </Typography>
+                </div>
                 <Typography
                   variant="p"
                   className="text-gray-700 dark:text-gray-300 leading-relaxed"
                 >
-                  <strong>Résultat:</strong> Réduction du temps administratif de 7h à environ 45min
-                  par semaine. Cette transformation a permis de libérer du temps pour la formation
-                  continue et l'accompagnement des clients.
+                  Au-delà des 6h15 hebdomadaires récupérées, c'est une relation transformée avec la
+                  technologie. Plus de stress dominical, plus de dépendance technique - juste une
+                  autonomie sereine et un temps retrouvé pour l'essentiel.
                 </Typography>
               </div>
             </div>
@@ -287,87 +420,138 @@ export default function HomePage() {
       </section>
 
       {/* 5. Mon parcours d'évolution professionnelle */}
-      <section className="py-32 bg-gray-50 dark:bg-gray-900 relative">
-        <Container className="mb-16">
-          <div className="text-center mb-24">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50/90 via-white/80 to-secondary-50 dark:from-gray-900 dark:via-gray-900/80 dark:to-secondary-900/30 relative">
+        <Container className="mb-12">
+          <div className="text-center mb-12">
             <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
               Mon parcours à vos côtés
             </Typography>
             <Typography
-              variant="p"
-              className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
+              variant="lead"
+              className="text-gray-700 dark:text-gray-200 max-w-2xl mx-auto leading-relaxed"
             >
-              Je débute mon aventure freelance avec une expérience fondatrice et une vision claire.
-              Découvrez où j'en suis aujourd'hui et comment nous pourrions évoluer ensemble.
+              Mon chemin, étape par étape, pour mieux vous accompagner.
             </Typography>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16">
-            <div className="bg-white dark:bg-gray-800 p-10 rounded-lg shadow-md">
-              <Typography
-                variant="h3"
-                className="font-bold mb-4 text-primary-600 dark:text-primary-400 tracking-wide"
-              >
-                Ce que je réalise aujourd'hui
-              </Typography>
-              <Typography
-                variant="p"
-                className="text-gray-700 dark:text-gray-300 mb-8 leading-relaxed"
-              >
-                Sites web avec interfaces administratives intuitives qui respectent vos processus
-                métier. L'expérience Corps & Sens montre qu'une interface bien conçue peut
-                transformer 7h d'administration en 45min hebdomadaires.
-              </Typography>
-              <Typography
-                variant="p"
-                className="text-gray-700 dark:text-gray-300 mt-4 leading-relaxed"
-              >
-                Idéal pour les indépendants qui veulent reprendre le contrôle de leur présence en
-                ligne sans y consacrer trop de temps.
-              </Typography>
-            </div>
+          {/* Timeline centrée */}
+          <div className="max-w-2xl mx-auto mb-16">
+            <Timeline
+              steps={[
+                {
+                  id: 'step-1',
+                  title: 'Reconversion & formation',
+                  description:
+                    '13 mois pour maîtriser le développement web et comprendre les besoins réels des indépendants.',
+                  date: '2023',
+                  icon: 'Code',
+                  color: 'primary',
+                },
+                {
+                  id: 'step-2',
+                  title: 'Premier projet transformateur',
+                  description:
+                    "Une interface sur-mesure pour mon épouse thérapeute : 7h d'administration réduites à 45min.",
+                  date: '2024',
+                  icon: 'Lightbulb',
+                  color: 'secondary',
+                },
+                {
+                  id: 'step-3',
+                  title: "Lancement d'IrimWebForge",
+                  description:
+                    "Aider d'autres indépendants à retrouver du temps et de l'autonomie.",
+                  date: '2024',
+                  icon: 'Rocket',
+                  color: 'tertiary',
+                },
+                {
+                  id: 'step-4',
+                  title: 'Outils sur-mesure en évolution',
+                  description:
+                    'Des applications pensées pour évoluer avec vos besoins, étape par étape.',
+                  date: '2025+',
+                  icon: 'TrendingUp',
+                  color: 'primary',
+                },
+              ]}
+              orientation="vertical"
+              withDates={true}
+              className="transition-all duration-300 hover:opacity-95"
+            />
+          </div>
 
-            <div className="bg-white dark:bg-gray-800 p-10 rounded-lg shadow-md">
-              <Typography
-                variant="h3"
-                className="font-bold mb-4 text-secondary-600 dark:text-secondary-400 tracking-wide"
+          {/* Titre de contexte pour les blocs */}
+          <div className="text-center mb-8">
+            <Typography
+              variant="h3"
+              className="font-bold italic tracking-wide text-secondary-700 dark:text-secondary-300"
+            >
+              Aujourd'hui & Demain
+            </Typography>
+          </div>
+
+          {/* Blocs allégés */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {parcoursBlocks.map((block, idx) => (
+              <div
+                key={block.id}
+                className={`bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-l-4 border-${block.borderColor} group transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-fade-in`}
+                style={{ animationDelay: `${150 + idx * 150}ms` }}
               >
-                Ce que je développe activement
-              </Typography>
-              <Typography
-                variant="p"
-                className="text-gray-700 dark:text-gray-300 mb-8 leading-relaxed"
-              >
-                Applications web/mobiles personnalisées pour étendre votre impact au-delà de votre
-                site web. Actuellement en développement avec le projet MoodCycle, une application de
-                suivi de cycle.
-              </Typography>
-              <div className="p-6 bg-secondary-50 dark:bg-secondary-900 rounded-md mb-8">
-                <Typography
-                  variant="subtle"
-                  className="font-medium text-gray-800 dark:text-gray-200"
-                >
-                  Écosystèmes digitaux complets pour une intégration fluide entre site, gestion,
-                  application et plus encore.
-                </Typography>
+                <div className="flex items-center mb-4">
+                  <Badge
+                    variant={block.badgeColor as 'primary' | 'secondary'}
+                    className="mr-3 text-xs font-semibold"
+                  >
+                    {block.badge}
+                  </Badge>
+                  <Typography
+                    variant="h3"
+                    className={`font-bold text-${block.titleColor} dark:text-${block.titleColor.replace('600', '400')} tracking-wide`}
+                  >
+                    {block.title}
+                  </Typography>
+                </div>
+                {/* Texte allégé */}
+                {block.id === 'now' ? (
+                  <>
+                    <Typography
+                      variant="p"
+                      className="text-gray-700 dark:text-gray-300 mb-2 leading-relaxed"
+                    >
+                      Sites web sur-mesure, pensés pour votre quotidien et votre autonomie.
+                    </Typography>
+                    <ul className="list-disc pl-5 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>Interface simple, élégante et personnalisée</li>
+                      <li>Gestion facile, sans stress technique</li>
+                    </ul>
+                  </>
+                ) : (
+                  <>
+                    <Typography
+                      variant="p"
+                      className="text-gray-700 dark:text-gray-300 mb-2 leading-relaxed"
+                    >
+                      Applications et outils qui vont plus loin que le site vitrine.
+                    </Typography>
+                    <ul className="list-disc pl-5 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>MoodCycle : application de suivi en cours</li>
+                      <li>Connexion naturelle entre vos outils et vos données</li>
+                    </ul>
+                  </>
+                )}
               </div>
-              <Typography
-                variant="p"
-                className="text-gray-700 dark:text-gray-300 mt-4 leading-relaxed"
-              >
-                Ma vision pour les clients avec qui j'aurai établi une relation de confiance
-                durable. Je vous invite à rejoindre mon parcours d'évolution pour grandir ensemble.
-              </Typography>
-            </div>
+            ))}
           </div>
         </Container>
       </section>
 
       {/* 6. CTA honnête et direct */}
-      <section className="py-32 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)]">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)]">
         <CTASection
           title="Échangeons sur vos défis quotidiens"
-          description="Une conversation de 45 minutes qui vous apportera des perspectives nouvelles, sans jargon technique, juste une écoute attentive."
+          description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
           primaryAction={{
             text: 'Prendre contact',
             url: '/contact',

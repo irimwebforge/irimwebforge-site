@@ -99,7 +99,12 @@ const Typography = React.forwardRef<HTMLElement, TypographyProps>(
     }
 
     return (
-      <Component ref={ref} className={typographyVariants({ variant, className })} {...props}>
+      <Component
+        ref={ref}
+        className={typographyVariants({ variant, className })}
+        style={{ whiteSpace: props.style?.whiteSpace || 'pre-line', ...props.style }}
+        {...props}
+      >
         {content}
       </Component>
     );

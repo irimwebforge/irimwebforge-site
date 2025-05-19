@@ -8,6 +8,7 @@ import { Badge } from '../atoms/Badge';
 import { NavLink } from '../atoms/NavLink';
 import Image from 'next/image';
 import Link from 'next/link';
+import { HeroPattern } from '../atoms/HeroPattern';
 
 export interface PageHeaderProps {
   title: string;
@@ -190,24 +191,6 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
     return <div className="absolute inset-0 z-0" style={{ backgroundColor: overlayColor }} />;
   };
 
-  // Rendu du motif en arrière-plan
-  const renderPattern = () => {
-    if (!pattern) return null;
-
-    return (
-      <div className="absolute inset-0 z-0 opacity-10">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="0.5" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#smallGrid)" />
-        </svg>
-      </div>
-    );
-  };
-
   // Rendu de la vague en bas
   const renderWaveBottom = () => {
     if (!waveBottom) return null;
@@ -253,14 +236,14 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   const headerClasses = `
     relative
     ${sizeClasses[size].padding}
-    ${themeClasses[theme]}
+    ${pattern && !backgroundImage ? 'bg-transparent' : themeClasses[theme]}
     ${className}
   `.trim();
 
   return (
     <header className={headerClasses} style={backgroundStyle}>
       {renderOverlay()}
-      {renderPattern()}
+      {pattern && !backgroundImage && <HeroPattern />}
 
       <Container>
         <div className={`relative z-10 ${image ? 'flex items-center' : ''}`}>
