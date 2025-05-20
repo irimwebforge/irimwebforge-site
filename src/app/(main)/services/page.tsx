@@ -12,6 +12,8 @@ import { Alert } from '@/components/molecules/Alert';
 import { Card } from '@/components/molecules/Card';
 import { Button } from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
+import { ComparativeTable } from '@/components/molecules/ComparativeTable';
+import { NavLink } from '@/components/atoms/NavLink';
 
 export default function Page() {
   // Bannière explicative de vision

@@ -10,6 +10,7 @@ import { Alert } from '@/components/molecules/Alert';
 import { Divider } from '@/components/atoms/Divider';
 import Image from 'next/image';
 import Link from 'next/link';
+import { NavLink } from '@/components/atoms/NavLink';
 
 export default function Page() {
   // Bannière de vision

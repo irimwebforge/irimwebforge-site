@@ -13,6 +13,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Card } from '@/components/molecules/Card';
 import { Badge } from '@/components/atoms/Badge';
+import { NavLink } from '@/components/atoms/NavLink';
+import { LightBox } from '@/components/molecules/LightBox';
+import { Carousel } from '@/components/molecules/Carousel';
 
 export default function Page() {
   // Bannière de vision
@@ -202,13 +205,13 @@ export default function Page() {
                     {project.description}
                   </Typography>
                   <div className="mt-auto pt-4">
-                    <Link
+                    <NavLink
                       href={`/projets/${project.slug}`}
                       className="inline-flex items-center text-[var(--color-primary)] hover:text-[var(--color-primary-600)] transition-colors duration-normal"
                     >
                       En savoir plus
                       <Icon name="ArrowRight" className="ml-1" size={16} />
-                    </Link>
+                    </NavLink>
                   </div>
                 </Card>
               );
@@ -338,13 +341,13 @@ export default function Page() {
                   j'aimerais rendre possible pour d'autres professionnels.
                 </Typography>
 
-                <Link
+                <NavLink
                   href="/projets/corps-et-sens"
                   className="inline-flex items-center px-6 py-3 rounded-md bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-600)] transition-colors duration-normal"
                 >
                   Découvrir ce projet
                   <Icon name="ArrowRight" className="ml-2" />
-                </Link>
+                </NavLink>
               </div>
 
               <div className="relative h-full min-h-[400px]">

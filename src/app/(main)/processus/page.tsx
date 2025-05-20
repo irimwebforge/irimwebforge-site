@@ -9,6 +9,7 @@ import { FAQ } from '@/components/molecules/FAQ';
 import { CTASection } from '@/templates/CTASection';
 import { StatsShowcase } from '@/templates/StatsShowcase';
 import { Alert } from '@/components/molecules/Alert';
+import { NavLink } from '@/components/atoms/NavLink';
 
 export default function Page() {
   // Bannière de vision
@@ -237,13 +238,13 @@ export default function Page() {
               </Typography>
 
               <div className="flex justify-center">
-                <a
+                <NavLink
                   href="/contact"
                   className="inline-flex items-center px-6 py-3 text-white rounded-md bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] hover:opacity-90 transition-all duration-300 hover:scale-105"
                 >
                   <Icon name="CalendarPlus" className="mr-2" />
                   Réserver maintenant
-                </a>
+                </NavLink>
               </div>
             </div>
           </div>

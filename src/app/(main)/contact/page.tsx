@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/atoms/Button';
 import Link from 'next/link';
 import { CTASection } from '@/templates/CTASection';
+import { NavLink } from '@/components/atoms/NavLink';
 
 export default function Page() {
   // États pour le formulaire
@@ -447,12 +448,12 @@ export default function Page() {
                       style={{ animationDelay: '600ms' }}
                     >
                       En attendant, vous pouvez consulter ma{' '}
-                      <Link
+                      <NavLink
                         href="/processus"
                         className="text-[var(--color-primary)] underline font-medium hover:text-[var(--color-primary-600)]"
                       >
                         vision du processus
-                      </Link>{' '}
+                      </NavLink>{' '}
                       pour mieux comprendre mon approche.
                     </Typography>
                     {submitError && (
