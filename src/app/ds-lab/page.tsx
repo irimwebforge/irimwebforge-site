@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -24,65 +24,65 @@ const pages: PageItem[] = [
     description: 'Couleurs, typographie et fondamentaux du design system',
     href: '/ds-lab/fundamentals',
     iconName: 'Palette',
-    variant: 'default'
+    variant: 'default',
   },
   {
     title: 'Icônes',
     description: 'Bibliothèque Lucide Icons intégrée au design system',
     href: '/ds-lab/icons',
     iconName: 'Sparkles',
-    variant: 'default'
+    variant: 'default',
   },
   {
     title: 'Atomic Design',
     description: 'Bibliothèque de composants atomiques, moléculaires et organismes',
     href: '/ds-lab/components',
     iconName: 'Layout',
-    variant: 'default'
+    variant: 'default',
   },
   {
     title: 'Templates',
     description: 'Démonstration des templates avec données mock',
     href: '/ds-lab/templates',
     iconName: 'FileText',
-    variant: 'default'
+    variant: 'default',
   },
   {
     title: 'Couleur Tertiaire',
-    description: 'Utilisation de l\'orange comme élément d\'accentuation et de contraste',
+    description: "Utilisation de l'orange comme élément d'accentuation et de contraste",
     href: '/ds-lab/color-tertiary',
     iconName: 'Square',
     badge: 'Nouveau',
-    variant: 'highlight'
+    variant: 'highlight',
   },
   {
     title: 'Mocks',
     description: 'Données factices utilisées dans les démonstrations',
     href: '/ds-lab/mocks',
     iconName: 'BarChart2',
-    variant: 'default'
-  }
+    variant: 'default',
+  },
 ];
 
 export default function DSLabHomePage() {
   const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
-  
+
   return (
     <div className="container mx-auto px-4 py-12 animate-fadeIn">
       <div className="flex flex-col items-center mb-12">
         <Logo width={150} height={50} className="mb-6 animate-pulse-subtle" />
-        
+
         <Typography as="h1" variant="h1" className="mb-3 text-center font-bold italic">
           Design System Lab
         </Typography>
-        
+
         <Typography variant="lead" className="max-w-2xl text-center">
           Environnement de développement et de test pour le design system IrimWebForge
         </Typography>
-        
+
         <div className="mt-6 text-center">
-          <Button 
-            variant="gradient" 
+          <Button
+            variant="gradient"
             className="shine-effect"
             icon={<Icon name="Sparkles" />}
             aria-label="Explorer le Design System"
@@ -90,38 +90,38 @@ export default function DSLabHomePage() {
             Explorer le Design System
           </Button>
         </div>
-        
+
         <div className="mt-4 py-1 px-3 text-xs text-center bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full flex items-center gap-1.5">
           <Icon name="AlertTriangle" size={12} />
           Environnement de développement uniquement
         </div>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         {pages.map((page, index) => (
-          <Link 
-            href={page.href} 
-            key={index} 
-            className="block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] rounded-md" 
+          <Link
+            href={page.href}
+            key={index}
+            className="block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] rounded-md"
             aria-label={`Accéder à la section ${page.title}`}
             onMouseEnter={() => setHoveredCardIndex(index)}
             onMouseLeave={() => setHoveredCardIndex(null)}
             onFocus={() => setHoveredCardIndex(index)}
             onBlur={() => setHoveredCardIndex(null)}
           >
-            <Card 
-              variant={page.variant} 
+            <Card
+              variant={page.variant}
               className="h-full transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-md"
-              color={page.variant === "highlight" ? "tertiary" : "primary"}
+              color={page.variant === 'highlight' ? 'tertiary' : 'primary'}
             >
               <div className="flex items-start p-4">
                 <div className="text-3xl mr-4 flex items-center">
-                  <Icon 
-                    name={page.iconName} 
-                    size={24} 
+                  <Icon
+                    name={page.iconName}
+                    size={24}
                     className={`text-primary transition-all duration-300 ${
                       hoveredCardIndex === index ? 'scale-110' : 'scale-100'
-                    }`} 
+                    }`}
                   />
                 </div>
                 <div className="flex-1">
@@ -142,12 +142,12 @@ export default function DSLabHomePage() {
               </div>
               <div className="px-4 pb-2">
                 <div className="flex justify-end">
-                  <Icon 
-                    name="ArrowRight" 
-                    size={16} 
+                  <Icon
+                    name="ArrowRight"
+                    size={16}
                     className={`text-primary transition-all duration-300 ${
                       hoveredCardIndex === index ? 'translate-x-1 opacity-100' : 'opacity-50'
-                    }`} 
+                    }`}
                   />
                 </div>
               </div>
@@ -155,7 +155,7 @@ export default function DSLabHomePage() {
           </Link>
         ))}
       </div>
-      
+
       <div className="mt-16 text-center">
         <Link href="/" className="text-primary hover:underline inline-flex items-center gap-2">
           <Icon name="ArrowLeft" size={16} />
@@ -164,4 +164,4 @@ export default function DSLabHomePage() {
       </div>
     </div>
   );
-} 
+}
