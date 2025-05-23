@@ -413,12 +413,17 @@ export default function Page() {
                       <div className="flex justify-between items-center mb-2">
                         {conversationSteps.map((step, idx) => (
                           <div key={idx} className="flex-1 flex flex-col items-center">
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white transition-all duration-500
+                            <div
+                              className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white transition-all duration-500
                               ${currentStep === idx ? 'bg-[var(--color-primary)] scale-110 shadow-lg' : 'bg-gray-300 dark:bg-gray-700'}`}
                             >
                               {idx + 1}
                             </div>
-                            <span className={`mt-2 text-xs ${currentStep === idx ? 'text-[var(--color-primary)] font-semibold' : 'text-gray-500 dark:text-gray-400'}`}>{step.title}</span>
+                            <span
+                              className={`mt-2 text-xs ${currentStep === idx ? 'text-[var(--color-primary)] font-semibold' : 'text-gray-500 dark:text-gray-400'}`}
+                            >
+                              {step.title}
+                            </span>
                           </div>
                         ))}
                       </div>

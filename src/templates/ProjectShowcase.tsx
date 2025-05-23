@@ -119,9 +119,7 @@ export const ProjectShowcase = ({
   // Nouvelle fonction de gestion de sélection/désélection
   const handleCategoryToggle = (category: string) => {
     setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category]
+      prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category]
     );
   };
 
@@ -129,9 +127,7 @@ export const ProjectShowcase = ({
   const filteredProjects =
     selectedCategories.length > 0
       ? projects.filter((project) =>
-          selectedCategories.every((cat) =>
-            project.tags.some((tag) => tag.label === cat)
-          )
+          selectedCategories.every((cat) => project.tags.some((tag) => tag.label === cat))
         )
       : projects;
 
@@ -199,7 +195,9 @@ export const ProjectShowcase = ({
                       : 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)] hover:bg-[var(--color-primary)]/20'
                   }`}
                 >
-                  {tag.replace('Site + Interface Admin', 'Admin').replace('Application Mobile', 'Mobile')}
+                  {tag
+                    .replace('Site + Interface Admin', 'Admin')
+                    .replace('Application Mobile', 'Mobile')}
                 </button>
               ))}
               {/* Clientèle - couleur secondaire */}
@@ -251,12 +249,7 @@ export const ProjectShowcase = ({
 
         {/* Grille de projets paginée */}
         {filteredProjects.length > 0 && (
-          <div
-            className={cn(
-              'grid gap-8 mb-8',
-              'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3'
-            )}
-          >
+          <div className={cn('grid gap-8 mb-8', 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3')}>
             {paginatedProjects.map((project) => (
               <ProjectPreview
                 key={project.id}

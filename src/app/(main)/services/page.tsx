@@ -238,7 +238,7 @@ export default function Page() {
         title="Échangeons sur vos défis et mon approche"
         description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
         primaryAction={{
-          text: "Prendre contact",
+          text: 'Prendre contact',
           url: '/contact',
           variant: 'gradient',
         }}

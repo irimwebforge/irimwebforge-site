@@ -266,7 +266,12 @@ export default function HomePage() {
             Exemple concret : Corps & Sens
           </Typography>
           <Typography variant="p" className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
-            J'ai aidé mon épouse thérapeute à passer de 7h à 45min d'administration hebdomadaire grâce à une interface sur-mesure. Découvrez l'étude de cas complète dans la section <a href="/projets" className="underline text-[var(--color-primary)]">Projets</a>.
+            J'ai aidé mon épouse thérapeute à passer de 7h à 45min d'administration hebdomadaire
+            grâce à une interface sur-mesure. Découvrez l'étude de cas complète dans la section{' '}
+            <a href="/projets" className="underline text-[var(--color-primary)]">
+              Projets
+            </a>
+            .
           </Typography>
         </Container>
       </section>
@@ -349,7 +354,10 @@ export default function HomePage() {
               <div
                 key={block.id}
                 className={`bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-l-4 group transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-fade-in`}
-                style={{ borderColor: `var${block.borderColor}`, animationDelay: `${150 + idx * 150}ms` }}
+                style={{
+                  borderColor: `var${block.borderColor}`,
+                  animationDelay: `${150 + idx * 150}ms`,
+                }}
               >
                 <div className="flex items-center mb-4">
                   <Badge
