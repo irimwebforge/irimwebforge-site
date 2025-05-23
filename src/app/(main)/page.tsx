@@ -41,7 +41,7 @@ const parcoursBlocks = [
     badgeColor: 'primary',
     title: 'Ce que je fais maintenant',
     titleColor: 'primary-600',
-    borderColor: 'primary-500',
+    borderColor: '[var(--color-primary)]',
     bgBadge: 'primary-100',
     bgBadgeDark: 'primary-900',
     textBadge: 'primary-700',
@@ -57,7 +57,7 @@ const parcoursBlocks = [
     badgeColor: 'secondary',
     title: 'Ce que je développe activement',
     titleColor: 'secondary-600',
-    borderColor: 'secondary-500',
+    borderColor: '[var(--color-secondary)]',
     bgBadge: 'secondary-100',
     bgBadgeDark: 'secondary-900',
     textBadge: 'secondary-700',
@@ -260,181 +260,15 @@ export default function HomePage() {
       </section>
 
       {/* 4. Cas réel Corps & Sens avec transparence */}
-      <section
-        className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 relative"
-        id="cas-concret"
-      >
-        <Container className="mb-12">
-          <div className="text-center mb-12">
-            <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
-              {featuredProject.title}
-            </Typography>
-            <div className="flex flex-wrap justify-center gap-2 mb-4">
-              {featuredProject.tags.map((tag) => (
-                <Badge
-                  key={tag.id}
-                  variant={tag.color as 'primary' | 'secondary' | 'tertiary'}
-                  className="text-sm font-medium"
-                >
-                  {tag.label}
-                </Badge>
-              ))}
-            </div>
-            <Typography
-              variant="p"
-              className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
-            >
-              {featuredProject.description}
-            </Typography>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Image projet */}
-            <div className="flex flex-col rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl bg-white dark:bg-gray-800">
-              {/* Image avec effet de zoom au survol */}
-              <div className="relative h-[300px] overflow-hidden">
-                <Image
-                  src={featuredProject.imageUrl}
-                  alt={featuredProject.title}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  className="transition-transform duration-500 hover:scale-105"
-                  loading="lazy"
-                />
-                {/* Petit badge en superposition (reste visible) */}
-                <div className="absolute top-4 right-4">
-                  <span className="inline-block px-3 py-1 bg-[var(--color-tertiary)] text-white rounded-full text-sm font-medium shadow">
-                    7h → 45min
-                  </span>
-                </div>
-              </div>
-
-              {/* Texte sous l'image */}
-              <div className="p-6 flex-grow flex flex-col">
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {featuredProject.tags.map((tag) => {
-                    // Fonction pour obtenir les classes de couleur correctes
-                    const getTagClasses = (color: string) => {
-                      switch (color) {
-                        case 'primary':
-                          return 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] dark:bg-[var(--color-primary)]/20 dark:text-[var(--color-primary)]';
-                        case 'secondary':
-                          return 'bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] dark:bg-[var(--color-secondary)]/20 dark:text-[var(--color-secondary)]';
-                        case 'tertiary':
-                          return 'bg-[var(--color-tertiary)]/10 text-[var(--color-tertiary)] dark:bg-[var(--color-tertiary)]/20 dark:text-[var(--color-tertiary)]';
-                        default:
-                          return 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300';
-                      }
-                    };
-                    
-                    return (
-                      <span
-                        key={tag.id}
-                        className={`inline-block px-2 py-1 rounded-md text-xs font-medium ${getTagClasses(tag.color)}`}
-                      >
-                        {tag.label}
-                      </span>
-                    );
-                  })}
-                </div>
-                <Typography
-                  variant="h3"
-                  className={`text-secondary-700 dark:text-secondary-300 font-bold mb-3 tracking-wide`}
-                >
-                  {featuredProject.title}
-                </Typography>
-                <Typography variant="p" className="text-gray-600 dark:text-gray-300 mt-2">
-                  {featuredProject.description}
-                </Typography>
-              </div>
-            </div>
-            {/* Timeline transformation */}
-            <div className="space-y-10">
-              {/* Avant */}
-              <div className="bg-[var(--color-secondary)]/10 dark:bg-[var(--color-secondary)]/20 p-8 rounded-xl border-l-4 border-[var(--color-secondary)] transition-all duration-300 hover:shadow-2xl">
-                <div className="flex items-center mb-4">
-                  <Badge variant="secondary" className="mr-3">
-                    Avant
-                  </Badge>
-                  <Icon
-                    name="Clock"
-                    className="h-5 w-5 text-secondary-600 dark:text-secondary-400 opacity-70"
-                  />
-                  <Typography
-                    variant="h4"
-                    className="ml-3 text-secondary-700 dark:text-secondary-300 font-bold tracking-wide"
-                  >
-                    {featuredProject.transformation.before}
-                  </Typography>
-                </div>
-                <Typography
-                  variant="p"
-                  className="text-gray-700 dark:text-gray-300 leading-relaxed"
-                >
-                  Chaque dimanche perdu à lutter avec une interface qui ignorait la réalité d'un
-                  cabinet thérapeutique. Des heures de frustration pour modifier un simple planning,
-                  au détriment du temps créatif et personnel.
-                </Typography>
-              </div>
-
-              {/* Après */}
-              <div className="bg-[var(--color-primary)]/10 dark:bg-[var(--color-primary)]/20 p-8 rounded-xl border-l-4 border-[var(--color-primary)] transition-all duration-300 hover:shadow-2xl">
-                <div className="flex items-center mb-4">
-                  <Badge variant="primary" className="mr-3">
-                    Après
-                  </Badge>
-                  <Icon
-                    name="Sparkles"
-                    className="h-5 w-5 text-primary-600 dark:text-primary-400 opacity-70"
-                  />
-                  <Typography
-                    variant="h4"
-                    className="ml-3 text-primary-700 dark:text-primary-300 font-bold tracking-wide"
-                  >
-                    {featuredProject.transformation.after}
-                  </Typography>
-                </div>
-                <Typography
-                  variant="p"
-                  className="text-gray-700 dark:text-gray-300 leading-relaxed"
-                >
-                  Une interface qui parle le langage d'un thérapeute, pas celui d'un développeur.
-                  Des flux de travail simplifiés qui suivent les processus naturels du cabinet, avec
-                  juste les options nécessaires, rien de plus.
-                </Typography>
-              </div>
-
-              {/* Résultat */}
-              <div className="bg-[var(--color-tertiary)]/10 dark:bg-[var(--color-tertiary)]/20 p-8 rounded-xl border border-[var(--color-tertiary)]/30 dark:border-[var(--color-tertiary)]/50 mt-12 transition-all duration-300 hover:shadow-2xl">
-                <div className="flex items-center mb-4">
-                  <Badge variant="tertiary" className="mr-3">
-                    Transformation
-                  </Badge>
-                  <Icon
-                    name="ArrowRight"
-                    className="h-5 w-5 text-tertiary-600 dark:text-tertiary-400 opacity-70"
-                  />
-                  <Typography
-                    variant="h4"
-                    className="ml-3 text-tertiary-700 dark:text-tertiary-300 font-bold tracking-wide"
-                  >
-                    L'IMPACT
-                  </Typography>
-                </div>
-                <Typography
-                  variant="p"
-                  className="text-gray-700 dark:text-gray-300 leading-relaxed"
-                >
-                  Au-delà des 6h15 hebdomadaires récupérées, c'est une relation transformée avec la
-                  technologie. Plus de stress dominical, plus de dépendance technique - juste une
-                  autonomie sereine et un temps retrouvé pour l'essentiel.
-                </Typography>
-              </div>
-            </div>
-          </div>
+      <section className="py-8 bg-gray-50 dark:bg-gray-900">
+        <Container className="text-center">
+          <Typography variant="h3" className="font-bold italic mb-2">
+            Exemple concret : Corps & Sens
+          </Typography>
+          <Typography variant="p" className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
+            J'ai aidé mon épouse thérapeute à passer de 7h à 45min d'administration hebdomadaire grâce à une interface sur-mesure. Découvrez l'étude de cas complète dans la section <a href="/projets" className="underline text-[var(--color-primary)]">Projets</a>.
+          </Typography>
         </Container>
-        {/* Transition vers la section suivante */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-white dark:from-gray-900 to-gray-50 dark:to-gray-900" />
       </section>
 
       {/* 5. Mon parcours d'évolution professionnelle */}
@@ -514,8 +348,8 @@ export default function HomePage() {
             {parcoursBlocks.map((block, idx) => (
               <div
                 key={block.id}
-                className={`bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-l-4 border-${block.borderColor} group transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-fade-in`}
-                style={{ animationDelay: `${150 + idx * 150}ms` }}
+                className={`bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-l-4 group transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-fade-in`}
+                style={{ borderColor: `var${block.borderColor}`, animationDelay: `${150 + idx * 150}ms` }}
               >
                 <div className="flex items-center mb-4">
                   <Badge

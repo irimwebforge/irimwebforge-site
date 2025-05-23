@@ -98,8 +98,7 @@ export const CTASection = ({
     light: 'bg-gray-50 dark:bg-gray-900',
     dark: 'bg-gray-900 text-white',
     primary: 'bg-[var(--color-primary)]/10 dark:bg-[var(--color-primary)]/20',
-    gradient:
-      'bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white',
+    gradient: 'bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white',
     transparent: '',
   };
 

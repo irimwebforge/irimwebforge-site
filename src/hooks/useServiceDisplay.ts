@@ -13,7 +13,7 @@ export const useServiceDisplay = () => {
   // Détecte si on est sur mobile
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    
+
     const checkMobile = () => {
       setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     };
@@ -28,7 +28,7 @@ export const useServiceDisplay = () => {
 
   const openService = (serviceId: ServiceId) => {
     setSelectedServiceId(serviceId);
-    
+
     if (isMobile) {
       // Sur mobile, on redirige vers la page dédiée
       router.push(`/services/${serviceId}`);
@@ -48,6 +48,6 @@ export const useServiceDisplay = () => {
     selectedServiceId,
     isMobile,
     openService,
-    closeService
+    closeService,
   };
-}; 
+};

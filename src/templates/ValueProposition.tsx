@@ -85,7 +85,9 @@ export const ValueProposition = ({
   };
 
   return (
-    <section className={`py-12 sm:py-16 lg:py-20 ${backgroundClasses[backgroundColor]} ${className}`}>
+    <section
+      className={`py-12 sm:py-16 lg:py-20 ${backgroundClasses[backgroundColor]} ${className}`}
+    >
       <Container>
         {/* En-tête de la section */}
         <div

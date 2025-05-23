@@ -19,7 +19,7 @@ const iconWithColorVariants = cva('inline-block', {
     },
     size: {
       xs: 'w-3 h-3',
-      sm: 'w-4 h-4', 
+      sm: 'w-4 h-4',
       md: 'w-5 h-5',
       lg: 'w-6 h-6',
       xl: 'w-8 h-8',
@@ -38,31 +38,33 @@ export interface IconWithColorProps extends VariantProps<typeof iconWithColorVar
   className?: string;
 }
 
-export const IconWithColor: React.FC<IconWithColorProps> = ({ 
-  name, 
-  color, 
-  variant, 
-  size, 
-  className, 
-  ...props 
+export const IconWithColor: React.FC<IconWithColorProps> = ({
+  name,
+  color,
+  variant,
+  size,
+  className,
+  ...props
 }) => {
   const iconClasses = iconWithColorVariants({ color, variant, size });
-  
-  return (
-    <Icon
-      name={name}
-      className={`${iconClasses} ${className || ''}`}
-      {...props}
-    />
-  );
+
+  return <Icon name={name} className={`${iconClasses} ${className || ''}`} {...props} />;
 };
 
 // Helper functions pour des usages courants
-export const CheckIcon = ({ color = 'primary', size = 'md', ...props }: Omit<IconWithColorProps, 'name'>) => (
+export const CheckIcon = ({
+  color = 'primary',
+  size = 'md',
+  ...props
+}: Omit<IconWithColorProps, 'name'>) => (
   <IconWithColor name="Check" color={color} size={size} {...props} />
 );
 
-export const ArrowRightIcon = ({ color = 'primary', size = 'sm', ...props }: Omit<IconWithColorProps, 'name'>) => (
+export const ArrowRightIcon = ({
+  color = 'primary',
+  size = 'sm',
+  ...props
+}: Omit<IconWithColorProps, 'name'>) => (
   <IconWithColor name="ArrowRight" color={color} size={size} {...props} />
 );
 
@@ -84,4 +86,4 @@ export const getServiceColorClasses = (color: 'primary' | 'secondary' | 'tertiar
     iconText: classes.text,
     link: `${classes.text} hover:${classes.text} dark:hover:${classes.text}`,
   };
-}; 
+};

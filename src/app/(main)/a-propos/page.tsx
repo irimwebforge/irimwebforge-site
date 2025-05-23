@@ -14,49 +14,56 @@ export default function Page() {
     {
       id: 'step-1',
       title: 'Formation et accompagnement',
-      description: 'Formation d\'animateurs et directeurs de centres de loisirs. Accompagnement dans la prise de fonction, l\'identification des valeurs et la maîtrise d\'outils concrets. Formation en gestion de conflit et médiation.',
+      description:
+        "Formation d'animateurs et directeurs de centres de loisirs. Accompagnement dans la prise de fonction, l'identification des valeurs et la maîtrise d'outils concrets. Formation en gestion de conflit et médiation.",
       date: 'Avant 2023',
       icon: 'Users' as IconName,
     },
     {
       id: 'step-2',
       title: 'Révélation personnelle',
-      description: 'En créant une solution pour mon épouse thérapeute, je redécouvre ma passion pour la programmation, endormie depuis 20 ans. L\'évidence : j\'adore concevoir des interfaces qui simplifient le quotidien.',
+      description:
+        "En créant une solution pour mon épouse thérapeute, je redécouvre ma passion pour la programmation, endormie depuis 20 ans. L'évidence : j'adore concevoir des interfaces qui simplifient le quotidien.",
       date: 'Janvier 2024',
       icon: 'Lightbulb' as IconName,
     },
     {
       id: 'step-3',
       title: 'Formation aux outils modernes',
-      description: 'OpenClassrooms me forme aux technologies actuelles et au design. Projets concrets et mentorat pour maîtriser React, Next.js et l\'art de créer des interfaces intuitives.',
+      description:
+        "OpenClassrooms me forme aux technologies actuelles et au design. Projets concrets et mentorat pour maîtriser React, Next.js et l'art de créer des interfaces intuitives.",
       date: '2024-2025',
       icon: 'Code' as IconName,
     },
     {
       id: 'step-4',
       title: 'Lancement IrimWebForge',
-      description: 'Création officielle de mon activité pour accompagner les indépendants, en combinant mes compétences d\'accompagnement et ma passion retrouvée pour le code.',
+      description:
+        "Création officielle de mon activité pour accompagner les indépendants, en combinant mes compétences d'accompagnement et ma passion retrouvée pour le code.",
       date: 'Mars 2025',
       icon: 'Rocket' as IconName,
     },
-   ];
+  ];
 
   const approach = [
     {
       title: 'Je comprends votre quotidien',
-      description: 'Mon expérience en formation m\'a appris à vraiment écouter. Je cherche à comprendre vos défis réels avant de proposer des solutions.',
+      description:
+        "Mon expérience en formation m'a appris à vraiment écouter. Je cherche à comprendre vos défis réels avant de proposer des solutions.",
       icon: 'Headphones' as IconName,
       color: 'primary' as const,
     },
     {
       title: 'Autonomie progressive',
-      description: 'Je vous rends autonome sans créer de dépendance. Vous maîtrisez votre outil à votre rythme.',
+      description:
+        'Je vous rends autonome sans créer de dépendance. Vous maîtrisez votre outil à votre rythme.',
       icon: 'Key' as IconName,
       color: 'secondary' as const,
     },
     {
       title: 'Artisanat digital',
-      description: 'Chaque interface est conçue sur mesure, comme un artisan façonne une pièce unique.',
+      description:
+        'Chaque interface est conçue sur mesure, comme un artisan façonne une pièce unique.',
       icon: 'Tool' as IconName,
       color: 'tertiary' as const,
     },
@@ -99,23 +106,28 @@ export default function Page() {
               </Typography>
 
               <Typography variant="p" className="mb-4">
-                Développeur freelance en reconversion, mon parcours atypique me permet d'apporter une perspective différente à vos défis digitaux.
+                Développeur freelance en reconversion, mon parcours atypique me permet d'apporter
+                une perspective différente à vos défis digitaux.
               </Typography>
 
               <Typography variant="p" className="mb-4">
-                Ma conviction : 
+                Ma conviction :
                 <span className="font-medium text-[var(--color-primary)] italic block mt-2 mb-2">
-                  "Les outils numériques devraient libérer du temps pour l'humain, pas en consommer."
+                  "Les outils numériques devraient libérer du temps pour l'humain, pas en
+                  consommer."
                 </span>
               </Typography>
 
               <Typography variant="p" className="mb-6">
-                Cette conviction s'est renforcée en créant une interface pour mon épouse thérapeute, transformant 7h d'administration en 45 minutes. Cette expérience a déclenché ma démarche actuelle.
+                Cette conviction s'est renforcée en créant une interface pour mon épouse thérapeute,
+                transformant 7h d'administration en 45 minutes. Cette expérience a déclenché ma
+                démarche actuelle.
               </Typography>
 
               <div className="p-4 bg-[var(--color-primary)]/10 rounded-lg border-l-4 border-[var(--color-primary)]">
                 <Typography variant="p" className="italic">
-                  "Je crée des ponts entre votre expertise métier et les possibilités du numérique, pour que vous puissiez vous concentrer sur l'essentiel."
+                  "Je crée des ponts entre votre expertise métier et les possibilités du numérique,
+                  pour que vous puissiez vous concentrer sur l'essentiel."
                 </Typography>
               </div>
             </div>
@@ -136,11 +148,7 @@ export default function Page() {
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <Timeline
-              steps={journeySteps}
-              orientation="vertical"
-              withDates={true}
-            />
+            <Timeline steps={journeySteps} orientation="vertical" withDates={true} />
           </div>
         </Container>
       </section>
@@ -178,7 +186,10 @@ export default function Page() {
                   {item.title}
                 </Typography>
 
-                <Typography variant="p" className="text-gray-600 dark:text-gray-300 text-center text-sm">
+                <Typography
+                  variant="p"
+                  className="text-gray-600 dark:text-gray-300 text-center text-sm"
+                >
                   {item.description}
                 </Typography>
               </div>
@@ -197,24 +208,28 @@ export default function Page() {
               </Typography>
 
               <Typography variant="p" className="mb-4">
-                Je débute avec transparence. Cette jeunesse professionnelle est ma force : un regard neuf, sans solutions préconçues.
+                Je débute avec transparence. Cette jeunesse professionnelle est ma force : un regard
+                neuf, sans solutions préconçues.
               </Typography>
 
               <Typography variant="p" className="mb-6">
-                Mon objectif : me spécialiser dans les interfaces administratives qui libèrent du temps, en grandissant avec mes clients.
+                Mon objectif : me spécialiser dans les interfaces administratives qui libèrent du
+                temps, en grandissant avec mes clients.
               </Typography>
 
               <div className="space-y-3">
                 <div className="flex items-start gap-2">
                   <Icon name="Check" className="text-[var(--color-primary)] mt-1 flex-shrink-0" />
                   <Typography variant="p" className="text-sm">
-                    <span className="font-medium">Actuellement :</span> Sites web + interfaces admin sur mesure
+                    <span className="font-medium">Actuellement :</span> Sites web + interfaces admin
+                    sur mesure
                   </Typography>
                 </div>
                 <div className="flex items-start gap-2">
                   <Icon name="Check" className="text-[var(--color-primary)] mt-1 flex-shrink-0" />
                   <Typography variant="p" className="text-sm">
-                    <span className="font-medium">En développement :</span> Applications web/mobiles personnalisées
+                    <span className="font-medium">En développement :</span> Applications web/mobiles
+                    personnalisées
                   </Typography>
                 </div>
                 <div className="flex items-start gap-2">
@@ -248,10 +263,23 @@ export default function Page() {
                     Technologies maîtrisées
                   </Typography>
                   <div className="grid grid-cols-2 gap-2">
-                    {['JavaScript/TypeScript', 'React/Next.js', 'Node.js/Express', 'React Native', 'HTML/CSS/SCSS', 'Design UI/UX'].map((tech) => (
+                    {[
+                      'JavaScript/TypeScript',
+                      'React/Next.js',
+                      'Node.js/Express',
+                      'React Native',
+                      'HTML/CSS/SCSS',
+                      'Design UI/UX',
+                    ].map((tech) => (
                       <div key={tech} className="flex items-center gap-2">
-                        <Icon name="Check" className="text-[var(--color-primary)] flex-shrink-0" size={16} />
-                        <Typography variant="p" className="text-sm">{tech}</Typography>
+                        <Icon
+                          name="Check"
+                          className="text-[var(--color-primary)] flex-shrink-0"
+                          size={16}
+                        />
+                        <Typography variant="p" className="text-sm">
+                          {tech}
+                        </Typography>
                       </div>
                     ))}
                   </div>

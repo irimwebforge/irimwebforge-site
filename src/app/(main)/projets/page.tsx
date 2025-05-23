@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from 'react';
 import { PageHeader } from '@/components/organisms/PageHeader';
 import { Typography } from '@/components/atoms/Typography';
@@ -35,35 +37,35 @@ export default function ProjetsPage() {
       { id: 'site-gestion', label: 'Site + Interface Admin', color: 'primary' as const },
       { id: 'app-mobile', label: 'Application Mobile', color: 'secondary' as const },
       { id: 'site-vitrine', label: 'Site Vitrine', color: 'tertiary' as const },
-      { id: 'prototype', label: 'Prototype/Concept', color: 'info' as const }
+      { id: 'prototype', label: 'Prototype/Concept', color: 'info' as const },
     ],
     clientele: [
       { id: 'therapeutes', label: 'Thérapeutes', color: 'primary' as const },
       { id: 'artisans', label: 'Artisans & Commerçants', color: 'secondary' as const },
       { id: 'creatifs', label: 'Créatifs & Artistes', color: 'tertiary' as const },
       { id: 'associations', label: 'Associations', color: 'info' as const },
-      { id: 'personnel', label: 'Projet Personnel', color: 'success' as const }
+      { id: 'personnel', label: 'Projet Personnel', color: 'success' as const },
     ],
     statut: [
       { id: 'realise', label: 'Réalisé', color: 'success' as const },
       { id: 'en-cours', label: 'En Développement', color: 'warning' as const },
       { id: 'concept', label: 'Concept', color: 'info' as const },
-      { id: 'formation', label: 'Formation', color: 'default' as const }
-    ]
+      { id: 'formation', label: 'Formation', color: 'default' as const },
+    ],
   };
 
   const getTagsForProject = (solutionId: string, clienteleId?: string, statutId?: string) => {
     const tags = [];
     if (solutionId) {
-      const tag = projectTags.solution.find(t => t.id === solutionId);
+      const tag = projectTags.solution.find((t) => t.id === solutionId);
       if (tag) tags.push(tag);
     }
     if (clienteleId) {
-      const tag = projectTags.clientele.find(t => t.id === clienteleId);
+      const tag = projectTags.clientele.find((t) => t.id === clienteleId);
       if (tag) tags.push(tag);
     }
     if (statutId) {
-      const tag = projectTags.statut.find(t => t.id === statutId);
+      const tag = projectTags.statut.find((t) => t.id === statutId);
       if (tag) tags.push(tag);
     }
     return tags;
@@ -127,7 +129,8 @@ export default function ProjetsPage() {
       slug: 'corps-et-sens',
       imageUrl: 'images/projects/corps-et-sens.jpg',
       tags: getTagsForProject('site-gestion', 'therapeutes', 'realise'),
-      description: "Projet réalisé pour mon épouse thérapeute qui a transformé 7h d'administration hebdomadaire en 45min. Une interface simplifiée pour la gestion du planning et des contenus.",
+      description:
+        "Projet réalisé pour mon épouse thérapeute qui a transformé 7h d'administration hebdomadaire en 45min. Une interface simplifiée pour la gestion du planning et des contenus.",
       featured: true,
       year: '2024',
       onlineUrl: 'https://corpsetsenstherapie.com/',
@@ -138,17 +141,19 @@ export default function ProjetsPage() {
       slug: 'Riding-Cities',
       imageUrl: '/images/projects/Riding-Cities.webp',
       tags: getTagsForProject('site-vitrine', 'associations', 'formation'),
-      description: "Intégration de la page d'accueil d'une association avec HTML & CSS à partir d'une maquette Figma.",
+      description:
+        "Intégration de la page d'accueil d'une association avec HTML & CSS à partir d'une maquette Figma.",
       year: '2024',
       onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P2_Riding-Cities/',
     },
     {
       id: 'booki',
       title: 'Booki – Agence de voyage',
-      slug: 'booki', 
+      slug: 'booki',
       imageUrl: '/images/projects/booki.webp',
       tags: getTagsForProject('site-vitrine', 'artisans', 'formation'),
-      description: "Intégration de la page d'accueil d'une agence de voyage avec HTML & CSS à partir d'une maquette Figma.",
+      description:
+        "Intégration de la page d'accueil d'une agence de voyage avec HTML & CSS à partir d'une maquette Figma.",
       year: '2024',
       onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P3_Booki',
     },
@@ -158,7 +163,8 @@ export default function ProjetsPage() {
       slug: 'ohmyfood',
       imageUrl: '/images/projects/ohmyfood.webp',
       tags: getTagsForProject('site-vitrine', 'artisans', 'formation'),
-      description: "Implémentation d'un site foodtech mobile-first avec animations CSS avancées (Sass).",
+      description:
+        "Implémentation d'un site foodtech mobile-first avec animations CSS avancées (Sass).",
       year: '2024',
       onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P4_Ohmyfood',
     },
@@ -178,7 +184,8 @@ export default function ProjetsPage() {
       slug: 'sophie-bluel',
       imageUrl: '/images/projects/sophie-bluel.webp',
       tags: getTagsForProject('site-gestion', 'creatifs', 'formation'),
-      description: "Création d'un site dynamique pour une architecte, intégration d'une API et gestion des événements utilisateur.",
+      description:
+        "Création d'un site dynamique pour une architecte, intégration d'une API et gestion des événements utilisateur.",
       year: '2024',
       onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P6_Sophie-Bluel/FrontEnd',
     },
@@ -188,7 +195,8 @@ export default function ProjetsPage() {
       slug: 'kasa',
       imageUrl: '/images/projects/kasa.webp',
       tags: getTagsForProject('site-vitrine', 'artisans', 'formation'),
-      description: "Développement du front-end de Kasa, application de location immobilière, avec React et React Router.",
+      description:
+        'Développement du front-end de Kasa, application de location immobilière, avec React et React Router.',
       year: '2024',
       onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P7_Kasa',
     },
@@ -198,7 +206,8 @@ export default function ProjetsPage() {
       slug: 'echos-des-reves',
       imageUrl: '/images/projects/echos-des-reves.jpg',
       tags: getTagsForProject('app-mobile', 'personnel', 'realise'),
-      description: "Premiers pas sur le langage HTML et CSS en analysant et complétant une page web.",
+      description:
+        'Premiers pas sur le langage HTML et CSS en analysant et complétant une page web.',
       year: '2024',
     },
   ];
@@ -258,7 +267,7 @@ export default function ProjetsPage() {
       </Container> */}
 
       <section className="py-8">
-          {/* <div className="text-center mb-12">
+        {/* <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
               Mon portfolio: entre réalisations et vision
             </Typography>
@@ -268,22 +277,22 @@ export default function ProjetsPage() {
             </Typography>
           </div> */}
 
-          <ProjectShowcase
-            title=""
-            projects={projects}
-            showFilters={true}
-            _showMoreButton={false}
-            className="projects-showcase"
-            onProjectClick={(project) => {
-              if (project.onlineUrl) {
-                setSelectedDemo({
-                  title: project.title,
-                  url: project.onlineUrl,
-                  description: project.description
-                });
-              }
-            }}
-          />
+        <ProjectShowcase
+          title=""
+          projects={projects}
+          showFilters={true}
+          _showMoreButton={false}
+          className="projects-showcase"
+          onProjectClick={(project) => {
+            if (project.onlineUrl) {
+              setSelectedDemo({
+                title: project.title,
+                url: project.onlineUrl,
+                description: project.description,
+              });
+            }
+          }}
+        />
       </section>
 
       <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900">

@@ -36,7 +36,7 @@ export interface Service {
   color: ColorVariant;
   price: string;
   support: string;
-  
+
   // Pour qui ?
   targetAudience: {
     description: string;
@@ -45,20 +45,20 @@ export interface Service {
       icon: IconName;
     }>;
   };
-  
+
   // Résultats attendus
   transformations: BeforeAfterItem[];
-  
+
   // Ce que ça inclut
   features: ServiceFeature[];
-  
+
   // Comment ça se passe
   processSteps: ProcessStep[];
-  
+
   // Témoignage
   testimonial: ServiceTestimonial;
-  
+
   cta: string;
   seoDescription: string;
   seoKeywords: string[];
-} 
+}

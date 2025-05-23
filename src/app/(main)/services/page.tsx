@@ -17,52 +17,59 @@ export default function Page() {
     {
       id: 'comprehension',
       title: 'Je connais votre quotidien',
-      description: 'J\'ai aidé mon épouse thérapeute. Je sais ce que c\'est de jongler entre clients et administratif. Je comprends vos vraies priorités.',
+      description:
+        "J'ai aidé mon épouse thérapeute. Je sais ce que c'est de jongler entre clients et administratif. Je comprends vos vraies priorités.",
       icon: 'Brain' as IconName,
       color: 'primary' as const,
     },
     {
       id: 'interfaces',
       title: 'Conçu pour vous, pas pour les informaticiens',
-      description: 'Votre interface est aussi simple que votre téléphone. Vous cliquez, ça marche. Pas de manuels de 50 pages.',
+      description:
+        'Votre interface est aussi simple que votre téléphone. Vous cliquez, ça marche. Pas de manuels de 50 pages.',
       icon: 'UserCheck' as IconName,
       color: 'secondary' as const,
     },
     {
       id: 'autonomie',
       title: 'Vous devenez autonome progressivement',
-      description: 'Je vous montre à votre rythme. Après, vous gérez tout seul. Plus besoin de moi pour les mises à jour.',
+      description:
+        'Je vous montre à votre rythme. Après, vous gérez tout seul. Plus besoin de moi pour les mises à jour.',
       icon: 'Key' as IconName,
       color: 'tertiary' as const,
     },
     {
       id: 'resultats',
       title: 'Résultats mesurables',
-      description: 'Mon épouse a gagné 6h par semaine. Je mesure vos gains avant et après. Pas de promesses en l\'air.',
+      description:
+        "Exemple réel : mon épouse thérapeute a retrouvé 6h par semaine grâce à une interface adaptée. Voir l'étude de cas complète dans la section Projets.",
       icon: 'BarChart' as IconName,
       color: 'primary' as const,
     },
   ];
-  
+
   const projections = [
     {
-      quote: 'Vous mettez à jour votre planning en 5 minutes chaque semaine. Vos clients voient toujours vos vraies disponibilités. Fini le stress du dimanche soir.',
+      quote:
+        'Vous mettez à jour votre planning en 5 minutes chaque semaine. Vos clients voient toujours vos vraies disponibilités. Fini le stress du dimanche soir.',
       author: 'Pour les thérapeutes',
       company: 'Inspiré de mon expérience personnelle',
       icon: 'HeartPulse' as IconName,
       color: 'primary' as const,
     },
     {
-      quote: 'Vous changez un prix, ça se met à jour partout. Votre planning et vos factures se parlent. Vous récupérez vos soirées.',
+      quote:
+        'Vous changez un prix, ça se met à jour partout. Votre planning et vos factures se parlent. Vous récupérez vos soirées.',
       author: 'Pour les artisans et commerçants',
       company: 'Basé sur les besoins observés',
       icon: 'Hammer' as IconName,
       color: 'secondary' as const,
     },
     {
-      quote: 'Vous intégrez trois nouveaux collaborateurs. Votre système absorbe cette croissance sans vous rajouter de travail.',
+      quote:
+        'Vous intégrez trois nouveaux collaborateurs. Votre système absorbe cette croissance sans vous rajouter de travail.',
       author: 'Pour les structures qui grandissent',
-      company: 'Vision d\'accompagnement future',
+      company: "Vision d'accompagnement future",
       icon: 'Users' as IconName,
       color: 'tertiary' as const,
     },
@@ -71,12 +78,12 @@ export default function Page() {
   return (
     <main className="overflow-x-hidden transition-all duration-300">
       <PageHeader
-        title="Des formules numériques pour libérer votre temps"
-        description="Des formules concrètes, pensées pour les indépendants, artisans et entrepreneurs qui veulent se concentrer sur leur métier, pas sur la technique."
+        title="Des solutions numériques pour libérer votre temps"
+        description="Des solutions concrètes, pensées pour les indépendants, artisans et entrepreneurs qui veulent se concentrer sur leur métier, pas sur la technique."
         align="center"
         size="large"
         pattern
-        badge={{ text: 'Formules 2025', variant: 'primary' }}
+        badge={{ text: 'Solutions 2025', variant: 'primary' }}
       />
 
       <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900">
@@ -125,8 +132,8 @@ export default function Page() {
                     </li>
                   ))}
                 </ul>
-                <Button 
-                  variant="gradient" 
+                <Button
+                  variant="gradient"
                   className="w-full mt-auto"
                   href={`/services/${service.id}`}
                 >
@@ -156,7 +163,9 @@ export default function Page() {
                 className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-lg"
               >
                 <div className="flex justify-center mb-4">
-                  <div className={`w-12 h-12 rounded-full bg-[var(--color-${feature.color}-100)] dark:bg-[var(--color-${feature.color}-900)] flex items-center justify-center`}>
+                  <div
+                    className={`w-12 h-12 rounded-full bg-[var(--color-${feature.color}-100)] dark:bg-[var(--color-${feature.color}-900)] flex items-center justify-center`}
+                  >
                     <Icon
                       name={feature.icon}
                       className={`w-6 h-6 text-[var(--color-${feature.color})]`}
@@ -229,7 +238,7 @@ export default function Page() {
         title="Échangeons sur vos défis et mon approche"
         description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
         primaryAction={{
-          text: "Réserver un temps d'échange",
+          text: "Prendre contact",
           url: '/contact',
           variant: 'gradient',
         }}

@@ -11,7 +11,14 @@ export type AlignmentVariant = 'left' | 'center' | 'right';
 export type PositionVariant = 'left' | 'right' | 'top' | 'bottom';
 
 // Types de background
-export type BackgroundVariant = 'light' | 'dark' | 'primary' | 'secondary' | 'tertiary' | 'transparent' | 'none';
+export type BackgroundVariant =
+  | 'light'
+  | 'dark'
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'transparent'
+  | 'none';
 
 // Types d'animation
 export type AnimationVariant = 'fade' | 'slide' | 'scale' | 'zoom' | 'none';
@@ -39,4 +46,4 @@ export interface BaseAction {
 export interface BadgeElement {
   text: string;
   variant?: ColorVariant | StatusVariant;
-} 
+}

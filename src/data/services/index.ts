@@ -20,24 +20,24 @@ export const getAllServices = async (): Promise<Service[]> => {
       return service;
     })
   );
-  
+
   return services.filter((service): service is Service => service !== undefined);
 };
 
 // Fonction pour obtenir uniquement les métadonnées des services (pour les listes rapides)
 export const getServicesMetadata = async () => {
   const services = await getAllServices();
-  return services.map(service => ({
+  return services.map((service) => ({
     id: service.id,
     title: service.title,
     shortDescription: service.shortDescription,
     icon: service.icon,
     color: service.color,
-    price: service.price
+    price: service.price,
   }));
 };
 
 // Fonctions utilitaires maintenues pour la compatibilité
 export const getAllServiceIds = (): ServiceId[] => {
   return ['presence', 'integree', 'evolutive'];
-}; 
+};

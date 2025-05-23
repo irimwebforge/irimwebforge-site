@@ -302,14 +302,16 @@ a:hover {
 
 .footer-arrow::before {
   pointer-events: none;
-  content: "→";
+  content: '→';
   opacity: 0;
   position: absolute;
   top: 0;
   left: 0;
   display: block;
   transform: translateX(-1.5em) translateZ(0);
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
 }
 
 .footer-arrow:hover,

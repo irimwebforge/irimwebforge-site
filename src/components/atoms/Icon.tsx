@@ -15,7 +15,7 @@ const icons: Record<string, React.FC<LucideProps>> = {
   ExternalLink: LucideIcons.ExternalLink,
   Plus: LucideIcons.Plus,
   Search: LucideIcons.Search,
-  
+
   // Interface utilisateur
   Check: LucideIcons.Check,
   X: LucideIcons.X,
@@ -26,35 +26,35 @@ const icons: Record<string, React.FC<LucideProps>> = {
   Coffee: LucideIcons.Coffee,
   Key: LucideIcons.Key,
   Tool: LucideIcons.Wrench,
-  
+
   // Contenu & Média
   Calendar: LucideIcons.Calendar,
   CalendarPlus: LucideIcons.CalendarPlus,
   Image: LucideIcons.Image,
-  
+
   // Développement & Design
   Code: LucideIcons.Code,
   Code2: LucideIcons.Code2,
   PenTool: LucideIcons.PenTool,
   Palette: LucideIcons.Palette,
-  
+
   // Business & Education
   GraduationCap: LucideIcons.GraduationCap,
   Rocket: LucideIcons.Rocket,
   UserPlus: LucideIcons.UserPlus,
   CircleUser: LucideIcons.CircleUser,
-  
+
   // État & Notifications
   AlertCircle: LucideIcons.AlertCircle,
   CheckCircle: LucideIcons.CheckCircle,
   Construction: LucideIcons.Construction,
   Clock: LucideIcons.Clock,
-  
+
   // Communication
   Mail: LucideIcons.Mail,
   MessageCircle: LucideIcons.MessageCircle,
   Phone: LucideIcons.Phone,
-  
+
   // Autres
   Headphones: LucideIcons.Headphones,
   Heart: LucideIcons.Heart,
@@ -62,7 +62,7 @@ const icons: Record<string, React.FC<LucideProps>> = {
   Sparkles: LucideIcons.Sparkles,
   TrendingUp: LucideIcons.TrendingUp,
   Lightbulb: LucideIcons.Lightbulb,
-  
+
   // Processus
   FileCheck: LucideIcons.FileCheck,
   Settings: LucideIcons.Settings,
@@ -73,7 +73,7 @@ const icons: Record<string, React.FC<LucideProps>> = {
   Briefcase: LucideIcons.Briefcase,
   BarChart: LucideIcons.BarChart,
   Award: LucideIcons.Award,
-  Gauge: LucideIcons.Gauge
+  Gauge: LucideIcons.Gauge,
 };
 
 export type IconName = keyof typeof icons;
@@ -85,12 +85,12 @@ export interface IconProps extends Omit<LucideProps, 'ref'> {
 
 export const Icon = ({ name, className, size = 24, ...props }: IconProps) => {
   const IconComponent = icons[name];
-  
+
   if (!IconComponent) {
     console.warn(`Icon "${name}" not found`);
     return null;
   }
-  
+
   return (
     <IconComponent
       size={size}

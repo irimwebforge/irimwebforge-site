@@ -83,11 +83,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
                 <div
                   className={`w-12 h-12 flex items-center justify-center rounded-full border-2 ${stateClass}`}
                 >
-                  <Icon 
-                    name={step.icon} 
-                    size={24} 
-                    className={isCompleted ? 'text-white' : ''}
-                  />
+                  <Icon name={step.icon} size={24} className={isCompleted ? 'text-white' : ''} />
                 </div>
               ) : (
                 <div
@@ -142,11 +138,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
             <div
               className={`w-10 h-10 flex items-center justify-center rounded-full border-2 ${stateClass}`}
             >
-              <Icon 
-                name={step.icon} 
-                size={20} 
-                className={isCompleted ? 'text-white' : ''}
-              />
+              <Icon name={step.icon} size={20} className={isCompleted ? 'text-white' : ''} />
             </div>
           ) : (
             <div

@@ -17,7 +17,15 @@ export type Project = {
   tags: Array<{
     id: string;
     label: string;
-    color?: 'primary' | 'secondary' | 'tertiary' | 'info' | 'success' | 'warning' | 'default' | 'error';
+    color?:
+      | 'primary'
+      | 'secondary'
+      | 'tertiary'
+      | 'info'
+      | 'success'
+      | 'warning'
+      | 'default'
+      | 'error';
   }>;
   description?: string;
   clientName?: string;
@@ -67,17 +75,20 @@ export const ProjectShowcase = ({
   const tagCategories = useMemo(() => {
     const allTags = [
       ...new Set(
-        projects.flatMap(project =>
-          (project.tags ?? []).filter(Boolean).map(tag => tag.label)
-        )
+        projects.flatMap((project) => (project.tags ?? []).filter(Boolean).map((tag) => tag.label))
       ),
     ];
-    
+
     // Regrouper les tags par catégories logiques (solution, clientèle, statut)
-    const solutionTags = allTags.filter(tag => 
-      ['Site + Interface Admin', 'Application Mobile', 'Site Vitrine', 'Prototype/Concept'].includes(tag)
+    const solutionTags = allTags.filter((tag) =>
+      [
+        'Site + Interface Admin',
+        'Application Mobile',
+        'Site Vitrine',
+        'Prototype/Concept',
+      ].includes(tag)
     );
-    
+
     // Récupère tous les labels de la source projectTags.clientele
     const clienteleLabels = [
       'Thérapeutes',
@@ -86,31 +97,43 @@ export const ProjectShowcase = ({
       'Projet Personnel',
       'Associations',
     ];
-    const clienteleTags = allTags.filter(tag => clienteleLabels.includes(tag));
-    
-    const statutTags = allTags.filter(tag => 
+    const clienteleTags = allTags.filter((tag) => clienteleLabels.includes(tag));
+
+    const statutTags = allTags.filter((tag) =>
       ['Réalisé', 'En Développement', 'Concept', 'Formation'].includes(tag)
     );
-    
+
     return {
       solution: solutionTags,
-      clientele: clienteleTags, 
+      clientele: clienteleTags,
       statut: statutTags,
-      autres: allTags.filter(tag => 
-        ![...solutionTags, ...clienteleTags, ...statutTags].includes(tag)
-      )
+      autres: allTags.filter(
+        (tag) => ![...solutionTags, ...clienteleTags, ...statutTags].includes(tag)
+      ),
     };
   }, [projects]);
-  
-  // État pour la catégorie sélectionnée
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  // État pour suivre l'onglet par défaut
-  const [_defaultTabId, setDefaultTabId] = useState<string>('all');
 
-  // Filtrer les projets en fonction de la catégorie sélectionnée
-  const filteredProjects = selectedCategory
-    ? projects.filter((project) => project.tags.some((tag) => tag.label === selectedCategory))
-    : projects;
+  // Remplacer l'état selectedCategory par un tableau pour la multi-sélection
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  // Nouvelle fonction de gestion de sélection/désélection
+  const handleCategoryToggle = (category: string) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((c) => c !== category)
+        : [...prev, category]
+    );
+  };
+
+  // Filtrer les projets selon les catégories sélectionnées (ET logique)
+  const filteredProjects =
+    selectedCategories.length > 0
+      ? projects.filter((project) =>
+          selectedCategories.every((cat) =>
+            project.tags.some((tag) => tag.label === cat)
+          )
+        )
+      : projects;
 
   // Pagination par flèches
   const projectsPerPage = 3;
@@ -126,13 +149,7 @@ export const ProjectShowcase = ({
   // Remise à zéro de la page si le filtre change
   useEffect(() => {
     setCurrentPage(0);
-  }, [selectedCategory]);
-
-  // Gérer le changement d'onglet
-  const handleCategorySelect = (category: string | null) => {
-    setSelectedCategory(category);
-    setDefaultTabId(category || 'all');
-  };
+  }, [selectedCategories]);
 
   return (
     <section className={`py-${variant === 'compact' ? '8' : '16'} ${className}`}>
@@ -158,186 +175,63 @@ export const ProjectShowcase = ({
 
         {/* Filtres adaptés au style demandé */}
         {showFilters && (
-          <>
-            {filterStyle === 'simple' ? (
-              // Version simplifiée des filtres pour un impact visuel réduit
-              <div className="mb-6">
-                <div className="flex flex-wrap justify-center gap-2 mb-4">
-                  <button
-                    onClick={() => handleCategorySelect(null)}
-                    className={`px-3 py-1 text-sm rounded-full transition-all ${
-                      selectedCategory === null
-                        ? 'bg-[var(--color-primary)] text-white'
-                        : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
-                    }`}
-                  >
-                    Tous
-                  </button>
-                  
-                  {/* Filtre Type Solution - version compacte */}
-                  {tagCategories.solution.map((tag) => (
-                    <button
-                      key={`solution-${tag}`}
-                      onClick={() => handleCategorySelect(tag)}
-                      className={`px-3 py-1 text-sm rounded-full transition-all ${
-                        selectedCategory === tag
-                          ? 'bg-[var(--color-primary)] text-white'
-                          : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
-                      }`}
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                  
-                  {/* Filtre Clientèle - version compacte */}
-                  {tagCategories.clientele.map((tag) => (
-                    <button
-                      key={`client-${tag}`}
-                      onClick={() => handleCategorySelect(tag)}
-                      className={`px-3 py-1 text-sm rounded-full transition-all ${
-                        selectedCategory === tag
-                          ? 'bg-[var(--color-secondary)] text-white'
-                          : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
-                      }`}
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                  
-                  {/* Filtre Statut - version compacte */}
-                  {tagCategories.statut.map((tag) => (
-                    <button
-                      key={`statut-${tag}`}
-                      onClick={() => handleCategorySelect(tag)}
-                      className={`px-3 py-1 text-sm rounded-full transition-all ${
-                        selectedCategory === tag
-                          ? 'bg-[var(--color-tertiary)] text-white'
-                          : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
-                      }`}
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              // Version complète des filtres (code existant)
-              <div className="mb-10">
-                {/* Tous les projets + réinitialiser filtre */}
-                <div className="flex justify-center mb-4">
-                  <button
-                    onClick={() => handleCategorySelect(null)}
-                    className={`px-4 py-2 rounded-full transition-all ${
-                      selectedCategory === null
-                        ? 'bg-[var(--color-primary)] text-white font-medium'
-                        : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
-                    }`}
-                  >
-                    Tous les projets
-                  </button>
-                </div>
-                
-                {/* Filtres par catégories */}
-                <div className="space-y-5">
-                  {/* Filtres par type de solution */}
-                  {tagCategories.solution.length > 0 && (
-                    <div className="filter-group">
-                      <Typography variant="h4" className="mb-2 text-center text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                        Type de solution
-                      </Typography>
-                      <div className="flex flex-wrap justify-center gap-2">
-                        {tagCategories.solution.map((tag) => (
-                          <button
-                            key={tag}
-                            onClick={() => handleCategorySelect(tag)}
-                            className={`px-3 py-1.5 rounded-full text-sm transition-all ${
-                              selectedCategory === tag
-                                ? 'bg-[var(--color-primary)] text-white font-medium shadow-md'
-                                : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
-                            }`}
-                          >
-                            {tag}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Filtres par clientèle */}
-                  {tagCategories.clientele.length > 0 && (
-                    <div className="filter-group">
-                      <Typography variant="h4" className="mb-2 text-center text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                        Clientèle
-                      </Typography>
-                      <div className="flex flex-wrap justify-center gap-2">
-                        {tagCategories.clientele.map((tag) => (
-                          <button
-                            key={tag}
-                            onClick={() => handleCategorySelect(tag)}
-                            className={`px-3 py-1.5 rounded-full text-sm transition-all ${
-                              selectedCategory === tag
-                                ? 'bg-[var(--color-secondary)] text-white font-medium shadow-md'
-                                : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
-                            }`}
-                          >
-                            {tag}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Filtres par statut */}
-                  {tagCategories.statut.length > 0 && (
-                    <div className="filter-group">
-                      <Typography variant="h4" className="mb-2 text-center text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                        Statut
-                      </Typography>
-                      <div className="flex flex-wrap justify-center gap-2">
-                        {tagCategories.statut.map((tag) => (
-                          <button
-                            key={tag}
-                            onClick={() => handleCategorySelect(tag)}
-                            className={`px-3 py-1.5 rounded-full text-sm transition-all ${
-                              selectedCategory === tag
-                                ? 'bg-[var(--color-tertiary)] text-white font-medium shadow-md'
-                                : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
-                            }`}
-                          >
-                            {tag}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Autres filtres si existants */}
-                  {tagCategories.autres.length > 0 && (
-                    <div className="filter-group">
-                      <Typography variant="h4" className="mb-2 text-center text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                        Autres catégories
-                      </Typography>
-                      <div className="flex flex-wrap justify-center gap-2">
-                        {tagCategories.autres.map((tag) => (
-                          <button
-                            key={tag}
-                            onClick={() => handleCategorySelect(tag)}
-                            className={`px-3 py-1.5 rounded-full text-sm transition-all ${
-                              selectedCategory === tag
-                                ? 'bg-gray-700 dark:bg-gray-600 text-white font-medium shadow-md'
-                                : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
-                            }`}
-                          >
-                            {tag}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-          </>
+          <div className="mb-6">
+            <div className="flex flex-wrap justify-center gap-1.5 max-w-4xl mx-auto">
+              {/* Bouton Tous */}
+              <button
+                onClick={() => setSelectedCategories([])}
+                className={`px-3 py-1 text-sm rounded-full border transition-all font-medium ${
+                  selectedCategories.length === 0
+                    ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] shadow'
+                    : 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)] hover:bg-[var(--color-primary)]/20'
+                }`}
+              >
+                Tous
+              </button>
+              {/* Solutions - couleur primaire */}
+              {tagCategories.solution.map((tag) => (
+                <button
+                  key={`solution-${tag}`}
+                  onClick={() => handleCategoryToggle(tag)}
+                  className={`px-3 py-1 text-sm rounded-full border transition-all font-medium ${
+                    selectedCategories.includes(tag)
+                      ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] shadow'
+                      : 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)] hover:bg-[var(--color-primary)]/20'
+                  }`}
+                >
+                  {tag.replace('Site + Interface Admin', 'Admin').replace('Application Mobile', 'Mobile')}
+                </button>
+              ))}
+              {/* Clientèle - couleur secondaire */}
+              {tagCategories.clientele.map((tag) => (
+                <button
+                  key={`clientele-${tag}`}
+                  onClick={() => handleCategoryToggle(tag)}
+                  className={`px-3 py-1 text-sm rounded-full border transition-all font-medium ${
+                    selectedCategories.includes(tag)
+                      ? 'bg-[var(--color-secondary)] text-white border-[var(--color-secondary)] shadow'
+                      : 'bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] border-[var(--color-secondary)] hover:bg-[var(--color-secondary)]/20'
+                  }`}
+                >
+                  {tag.replace('Artisans & Commerçants', 'Artisans')}
+                </button>
+              ))}
+              {/* Statut - couleur tertiaire */}
+              {tagCategories.statut.map((tag) => (
+                <button
+                  key={`statut-${tag}`}
+                  onClick={() => handleCategoryToggle(tag)}
+                  className={`px-3 py-1 text-sm rounded-full border transition-all font-medium ${
+                    selectedCategories.includes(tag)
+                      ? 'bg-[var(--color-tertiary)] text-white border-[var(--color-tertiary)] shadow'
+                      : 'bg-[var(--color-tertiary)]/10 text-[var(--color-tertiary)] border-[var(--color-tertiary)] hover:bg-[var(--color-tertiary)]/20'
+                  }`}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          </div>
         )}
 
         {/* Message si aucun projet ne correspond au filtre */}
@@ -349,7 +243,7 @@ export const ProjectShowcase = ({
             <Typography variant="p" className="mb-4">
               Essayez un autre filtre ou réinitialisez pour voir tous les projets.
             </Typography>
-            <Button onClick={() => handleCategorySelect(null)} variant="secondary">
+            <Button onClick={() => setSelectedCategories([])} variant="secondary">
               Afficher tous les projets
             </Button>
           </div>
@@ -357,12 +251,12 @@ export const ProjectShowcase = ({
 
         {/* Grille de projets paginée */}
         {filteredProjects.length > 0 && (
-          <div className={cn(
-            'grid gap-8 mb-8',
-            variant === 'compact' 
-              ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' 
-              : 'grid-cols-1 md:grid-cols-2'
-          )}>
+          <div
+            className={cn(
+              'grid gap-8 mb-8',
+              'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3'
+            )}
+          >
             {paginatedProjects.map((project) => (
               <ProjectPreview
                 key={project.id}

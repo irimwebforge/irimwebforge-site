@@ -30,7 +30,10 @@ export const TemporalSplit: React.FC<TemporalSplitProps> = ({
   className = '',
 }) => {
   return (
-    <section className={`py-12 sm:py-16 lg:py-20 ${className}`} aria-labelledby="temporal-split-title">
+    <section
+      className={`py-12 sm:py-16 lg:py-20 ${className}`}
+      aria-labelledby="temporal-split-title"
+    >
       <Container>
         {/* Titre principal */}
         <Typography

@@ -73,7 +73,10 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
   }, [fields, steps, isMultiStep]);
 
   // Les champs visibles sont ceux de l'étape courante - OPTIMISÉ avec useMemo
-  const visibleFields = useMemo(() => fieldsPerStep[currentStep] || [], [fieldsPerStep, currentStep]);
+  const visibleFields = useMemo(
+    () => fieldsPerStep[currentStep] || [],
+    [fieldsPerStep, currentStep]
+  );
 
   // Validation de tous les champs visibles de l'étape actuelle - OPTIMISÉ avec useCallback
   const validateCurrentStep = useCallback((): boolean => {
@@ -121,32 +124,36 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
   }, [currentStep]);
 
   // Gestion des changements dans les champs - OPTIMISÉ avec useCallback
-  const handleChange = useCallback((
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { id, value, type } = e.target as HTMLInputElement;
-    const fieldName = id.replace('conversation-', '');
-    const fieldValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
-    setFormData((prev) => ({
-      ...prev,
-      [fieldName]: fieldValue,
-    }));
-    if (errors[fieldName]) {
-      setErrors((prev) => {
-        const newErrors = { ...prev };
-        delete newErrors[fieldName];
-        return newErrors;
-      });
-    }
-  }, [errors]);
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+      const { id, value, type } = e.target as HTMLInputElement;
+      const fieldName = id.replace('conversation-', '');
+      const fieldValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+      setFormData((prev) => ({
+        ...prev,
+        [fieldName]: fieldValue,
+      }));
+      if (errors[fieldName]) {
+        setErrors((prev) => {
+          const newErrors = { ...prev };
+          delete newErrors[fieldName];
+          return newErrors;
+        });
+      }
+    },
+    [errors]
+  );
 
   // Gestion de la touche Enter pour valider - OPTIMISÉ avec useCallback
-  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && e.target instanceof HTMLInputElement) {
-      e.preventDefault();
-      handleNext();
-    }
-  }, [handleNext]);
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter' && e.target instanceof HTMLInputElement) {
+        e.preventDefault();
+        handleNext();
+      }
+    },
+    [handleNext]
+  );
 
   // Afficher le message de succès si le formulaire a été soumis
   if (isSubmitted) {

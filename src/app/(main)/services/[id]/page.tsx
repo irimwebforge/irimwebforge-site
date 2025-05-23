@@ -50,8 +50,13 @@ export default function ServicePage() {
             <Card className="mb-12" padding="large">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 <div className="flex items-center gap-4">
-                  <div className={`p-3 rounded-lg bg-[var(--color-${service.color}-100)] dark:bg-[var(--color-${service.color}-900)]`}>
-                    <Icon name={service.icon} className={`w-8 h-8 text-[var(--color-${service.color})]`} />
+                  <div
+                    className={`p-3 rounded-lg bg-[var(--color-${service.color}-100)] dark:bg-[var(--color-${service.color}-900)]`}
+                  >
+                    <Icon
+                      name={service.icon}
+                      className={`w-8 h-8 text-[var(--color-${service.color})]`}
+                    />
                   </div>
                   <div>
                     <Typography variant="h3" className="mb-2">
@@ -76,21 +81,19 @@ export default function ServicePage() {
             {/* Redirection */}
             <div className="text-center">
               <Typography variant="lead" className="mb-8">
-                Pour découvrir en détail cette offre et voir comment elle peut vous aider, consultez la page dédiée :
+                Pour découvrir en détail cette offre et voir comment elle peut vous aider, consultez
+                la page dédiée :
               </Typography>
-              <Button 
-                href={`/services/${service.id}`} 
-                variant="gradient" 
-                size="large" 
+              <Button
+                href={`/services/${service.id}`}
+                variant="gradient"
+                size="large"
                 className="shine-effect mb-4"
               >
                 Découvrir {service.title}
               </Button>
               <div className="mt-4">
-                <Button 
-                  href="/contact" 
-                  variant="secondary"
-                >
+                <Button href="/contact" variant="secondary">
                   Prendre rendez-vous
                 </Button>
               </div>
@@ -103,5 +106,5 @@ export default function ServicePage() {
 }
 
 export async function generateStaticParams() {
-  return getAllServiceIds().map(id => ({ id }));
-} 
+  return getAllServiceIds().map((id) => ({ id }));
+}

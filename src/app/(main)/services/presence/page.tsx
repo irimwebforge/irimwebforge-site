@@ -11,7 +11,7 @@ import { BeforeAfterCard } from '@/components/molecules/BeforeAfterCard';
 import { services } from '@/data/services';
 
 export default function PresencePage() {
-  const service = services.find(s => s.id === 'presence')!;
+  const service = services.find((s) => s.id === 'presence')!;
   const colorClasses = getServiceColorClasses('primary');
 
   return (
@@ -40,11 +40,12 @@ export default function PresencePage() {
 
             <div className="grid gap-4 md:grid-cols-2">
               {service.targetAudience.points.map((point, index) => (
-                <div key={index} className="flex items-start gap-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <div
+                  key={index}
+                  className="flex items-start gap-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg"
+                >
                   <IconWithColor name={point.icon} color="primary" size="lg" className="mt-1" />
-                  <Typography variant="p">
-                    {point.text}
-                  </Typography>
+                  <Typography variant="p">{point.text}</Typography>
                 </div>
               ))}
             </div>
@@ -67,12 +68,7 @@ export default function PresencePage() {
 
             <div className="space-y-6">
               {service.transformations.map((item, index) => (
-                <BeforeAfterCard
-                  key={index}
-                  item={item}
-                  index={index}
-                  color={service.color}
-                />
+                <BeforeAfterCard key={index} item={item} index={index} color={service.color} />
               ))}
             </div>
           </div>
@@ -106,7 +102,9 @@ export default function PresencePage() {
                   <div key={index} className="flex items-start gap-3">
                     <CheckIcon color="primary" className="mt-1" />
                     <div>
-                      <Typography variant="h4" className="mb-1">{feature.title}</Typography>
+                      <Typography variant="h4" className="mb-1">
+                        {feature.title}
+                      </Typography>
                       <Typography variant="p" className="text-gray-600 dark:text-gray-300">
                         {feature.description}
                       </Typography>
@@ -135,7 +133,9 @@ export default function PresencePage() {
             <div className="space-y-6">
               {service.processSteps.map((step, index) => (
                 <div key={index} className="flex gap-4 items-start">
-                  <div className={`flex-shrink-0 w-12 h-12 rounded-full ${colorClasses.iconContainer} flex items-center justify-center`}>
+                  <div
+                    className={`flex-shrink-0 w-12 h-12 rounded-full ${colorClasses.iconContainer} flex items-center justify-center`}
+                  >
                     <IconWithColor name={step.icon} color="primary" size="lg" />
                   </div>
                   <div>
@@ -151,7 +151,10 @@ export default function PresencePage() {
             </div>
 
             <div className="mt-8 text-center">
-              <NavLink href="/processus" className="text-[var(--color-primary)] hover:text-[var(--color-primary)] dark:hover:text-[var(--color-primary)] inline-flex items-center gap-2">
+              <NavLink
+                href="/processus"
+                className="text-[var(--color-primary)] hover:text-[var(--color-primary)] dark:hover:text-[var(--color-primary)] inline-flex items-center gap-2"
+              >
                 <span>Découvrir ma méthode complète</span>
                 <Icon name="ArrowRight" className="w-4 h-4" />
               </NavLink>

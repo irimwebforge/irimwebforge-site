@@ -16,6 +16,7 @@ export default function Page() {
   const [formComplete, setFormComplete] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [currentStep, setCurrentStep] = useState(0);
 
   // Bannière de vision
   const _VisionBanner = () => (
@@ -313,15 +314,20 @@ export default function Page() {
               Pour que notre échange soit le plus productif possible, partagez quelques informations
               sur vous et votre activité.
             </Typography>
-            
+
             {/* Contact direct visible */}
             <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-8">
               <Typography variant="p" className="text-blue-800 dark:text-blue-200 mb-3">
                 <strong>Préférez l'échange direct ?</strong>
               </Typography>
               <Typography variant="p" className="text-blue-700 dark:text-blue-300">
-                <a href="mailto:contact@irimwebforge.com" className="font-medium hover:underline">contact@irimwebforge.com</a> | 
-                <a href="tel:0678764559" className="font-medium hover:underline ml-2">06 78 76 45 59</a>
+                <a href="mailto:contact@irimwebforge.com" className="font-medium hover:underline">
+                  contact@irimwebforge.com
+                </a>{' '}
+                |
+                <a href="tel:0678764559" className="font-medium hover:underline ml-2">
+                  06 78 76 45 59
+                </a>
               </Typography>
             </div>
           </div>
@@ -402,14 +408,29 @@ export default function Page() {
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-100 dark:border-gray-700">
                 {!formComplete ? (
                   <>
-                    {/* Indicateur visuel de progression */}
-                    <div className="flex justify-between mb-8">
-                      {conversationSteps.map((_, idx) => (
-                        <div
-                          key={idx}
-                          className={`w-[30%] h-1.5 rounded-full transition-all duration-500 ease-out bg-gray-200 dark:bg-gray-700`}
-                        />
-                      ))}
+                    {/* Indicateur visuel de progression amélioré */}
+                    <div className="mb-8">
+                      <div className="flex justify-between items-center mb-2">
+                        {conversationSteps.map((step, idx) => (
+                          <div key={idx} className="flex-1 flex flex-col items-center">
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white transition-all duration-500
+                              ${currentStep === idx ? 'bg-[var(--color-primary)] scale-110 shadow-lg' : 'bg-gray-300 dark:bg-gray-700'}`}
+                            >
+                              {idx + 1}
+                            </div>
+                            <span className={`mt-2 text-xs ${currentStep === idx ? 'text-[var(--color-primary)] font-semibold' : 'text-gray-500 dark:text-gray-400'}`}>{step.title}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex justify-between">
+                        {conversationSteps.map((_, idx) => (
+                          <div
+                            key={idx}
+                            className={`h-1 rounded-full flex-1 mx-1 transition-all duration-500
+                              ${currentStep > idx ? 'bg-[var(--color-primary)]' : 'bg-gray-200 dark:bg-gray-700'}`}
+                          />
+                        ))}
+                      </div>
                     </div>
 
                     {/* Nouveau formulaire avec étapes */}

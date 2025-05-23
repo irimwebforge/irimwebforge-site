@@ -442,14 +442,14 @@ export const DemoModal: React.FC<DemoModalProps> = ({
   onClose,
   siteUrl,
   title,
-  description
+  description,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <Modal 
-      isOpen={isOpen} 
-      onClose={onClose} 
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
       title={
         <div className="flex items-center justify-between w-full gap-4">
           <Typography as="h3" variant="h3" className="font-medium flex-1">
@@ -485,7 +485,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({
               <div className="w-12 h-12 border-4 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin"></div>
             </div>
           )}
-          <iframe 
+          <iframe
             src={siteUrl}
             className="absolute inset-0 w-full h-full border-0 z-0"
             style={{ minHeight: '500px' }}
@@ -525,15 +525,11 @@ export interface ServiceModalProps {
   };
 }
 
-export const ServiceModal: React.FC<ServiceModalProps> = ({
-  isOpen,
-  onClose,
-  service
-}) => {
+export const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service }) => {
   return (
-    <Modal 
-      isOpen={isOpen} 
-      onClose={onClose} 
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
       title={
         <div className="flex items-center gap-3">
           <Icon name={service.icon} className={`w-8 h-8 text-[var(--color-${service.color})]`} />
@@ -568,10 +564,12 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({
           <div className="grid gap-6 md:grid-cols-2">
             {service.features.map((feature, index) => (
               <div key={index} className="flex gap-4">
-                <div className={`p-2 h-fit rounded-lg bg-[var(--color-${service.color}-100)] dark:bg-[var(--color-${service.color}-900)]`}>
-                  <Icon 
-                    name={feature.icon || 'Check'} 
-                    className={`w-5 h-5 text-[var(--color-${service.color})]`} 
+                <div
+                  className={`p-2 h-fit rounded-lg bg-[var(--color-${service.color}-100)] dark:bg-[var(--color-${service.color}-900)]`}
+                >
+                  <Icon
+                    name={feature.icon || 'Check'}
+                    className={`w-5 h-5 text-[var(--color-${service.color})]`}
                   />
                 </div>
                 <div>
@@ -611,11 +609,7 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({
           <Button variant="outline" onClick={onClose}>
             Retour
           </Button>
-          <Button 
-            variant="gradient" 
-            href="/contact"
-            className="shine-effect"
-          >
+          <Button variant="gradient" href="/contact" className="shine-effect">
             Prendre rendez-vous
           </Button>
         </div>

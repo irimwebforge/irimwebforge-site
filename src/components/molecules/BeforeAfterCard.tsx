@@ -18,93 +18,75 @@ interface BeforeAfterCardProps {
 
 export function BeforeAfterCard({ item, index, color, showIndex = true }: BeforeAfterCardProps) {
   return (
-    <div 
+    <div
       className={cn(
-        "bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg",
-        "transform transition-all duration-300 hover:scale-[1.02]",
-        "border border-gray-100 dark:border-gray-700"
+        'bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg',
+        'transform transition-all duration-300 hover:scale-[1.02]',
+        'border border-gray-100 dark:border-gray-700'
       )}
     >
       <div className="flex items-center gap-4 mb-6">
-        <div 
+        <div
           className={cn(
             `p-3 bg-[var(--color-${color}-100)] dark:bg-[var(--color-${color}-900)]`,
-            "rounded-xl shadow-sm",
-            "transform transition-all duration-300 group-hover:scale-110"
+            'rounded-xl shadow-sm',
+            'transform transition-all duration-300 group-hover:scale-110'
           )}
         >
-          <Icon 
-            name={item.icon} 
-            className={`w-6 h-6 text-[var(--color-${color})]`} 
-          />
+          <Icon name={item.icon} className={`w-6 h-6 text-[var(--color-${color})]`} />
         </div>
         {showIndex && (
           <div>
-            <Typography 
-              variant="small" 
-              className={`text-[var(--color-${color})] mb-1`}
-            >
+            <Typography variant="small" className={`text-[var(--color-${color})] mb-1`}>
               Transformation {index! + 1}
             </Typography>
             <Typography variant="h4" className="font-bold">
-              {item.icon === 'Clock' ? 'Gain de temps' : 
-               item.icon === 'Users' ? 'Expérience client' :
-               item.icon === 'Shield' ? 'Sécurité' : 
-               'Amélioration'}
+              {item.icon === 'Clock'
+                ? 'Gain de temps'
+                : item.icon === 'Users'
+                  ? 'Expérience client'
+                  : item.icon === 'Shield'
+                    ? 'Sécurité'
+                    : 'Amélioration'}
             </Typography>
           </div>
         )}
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        <div 
+        <div
           className={cn(
-            "p-4 bg-gray-50 dark:bg-gray-700 rounded-xl",
-            "transform transition-all duration-300",
-            "border border-gray-200 dark:border-gray-600"
+            'p-4 bg-gray-50 dark:bg-gray-700 rounded-xl',
+            'transform transition-all duration-300',
+            'border border-gray-200 dark:border-gray-600'
           )}
         >
           <div className="flex items-center gap-2 mb-3">
-            <Icon 
-              name="X" 
-              className="w-4 h-4 text-gray-400 dark:text-gray-500" 
-            />
-            <Typography 
-              variant="small" 
-              className="font-medium text-gray-500 dark:text-gray-400"
-            >
+            <Icon name="X" className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+            <Typography variant="small" className="font-medium text-gray-500 dark:text-gray-400">
               Avant
             </Typography>
           </div>
-          <Typography 
-            variant="p" 
-            className="text-gray-600 dark:text-gray-300"
-          >
+          <Typography variant="p" className="text-gray-600 dark:text-gray-300">
             {item.before}
           </Typography>
         </div>
 
-        <div 
+        <div
           className={cn(
             `p-4 bg-[var(--color-${color})]/10 dark:bg-[var(--color-${color})]/20`,
-            "rounded-xl transform transition-all duration-300",
+            'rounded-xl transform transition-all duration-300',
             `border border-[var(--color-${color})]/30 dark:border-[var(--color-${color})]/50`
           )}
         >
           <div className="flex items-center gap-2 mb-3">
-            <Icon 
-              name="Check" 
-              className={`w-4 h-4 text-[var(--color-${color})]`} 
-            />
-            <Typography 
-              variant="small" 
-              className={`font-medium text-[var(--color-${color})]`}
-            >
+            <Icon name="Check" className={`w-4 h-4 text-[var(--color-${color})]`} />
+            <Typography variant="small" className={`font-medium text-[var(--color-${color})]`}>
               Après
             </Typography>
           </div>
-          <Typography 
-            variant="p" 
+          <Typography
+            variant="p"
             className={`text-[var(--color-${color}-700)] dark:text-[var(--color-${color}-300)]`}
           >
             {item.after}
@@ -113,4 +95,4 @@ export function BeforeAfterCard({ item, index, color, showIndex = true }: Before
       </div>
     </div>
   );
-} 
+}

@@ -63,7 +63,7 @@ export const Badge: React.FC<BadgeProps> = ({
       : 'bg-[var(--color-secondary)]/10 text-[var(--color-secondary)]',
     tertiary: isSolid
       ? 'bg-[var(--color-tertiary)] text-white'
-      : 'bg-amber-50 text-[var(--color-tertiary)]',
+      : 'bg-[var(--color-tertiary)]/10 text-[var(--color-tertiary)]',
     success: isSolid
       ? 'bg-green-600 text-white'
       : 'bg-green-100 text-green-800 dark:bg-green-900 dark:bg-opacity-20 dark:text-green-400',

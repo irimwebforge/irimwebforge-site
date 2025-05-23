@@ -12,7 +12,15 @@ export interface ProjectTag {
   /** Texte d'affichage du tag */
   label: string;
   /** Couleur d'accentuation du tag */
-  color?: 'primary' | 'secondary' | 'tertiary' | 'info' | 'success' | 'warning' | 'default' | 'error';
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'default'
+    | 'error';
 }
 
 export interface ProjectPreviewProps {
@@ -24,20 +32,12 @@ export interface ProjectPreviewProps {
 export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
   project,
   variant = 'default',
-  onClick
+  onClick,
 }) => {
-  const {
-    title,
-    description,
-    imageUrl,
-    tags,
-    clientName,
-    year,
-    onlineUrl
-  } = project;
+  const { title, description, imageUrl, tags, clientName, year, onlineUrl } = project;
 
   return (
-    <article 
+    <article
       className={cn(
         'group bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-normal',
         variant === 'compact' ? 'h-full' : ''
@@ -47,10 +47,12 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
     >
       {/* Image du projet */}
       <div className="p-3">
-        <div className={cn(
-          'relative overflow-hidden rounded-lg',
-          variant === 'compact' ? 'aspect-[4/3]' : 'aspect-[16/9]'
-        )}>
+        <div
+          className={cn(
+            'relative overflow-hidden rounded-lg',
+            variant === 'compact' ? 'aspect-[4/3]' : 'aspect-[16/9]'
+          )}
+        >
           <Image
             src={imageUrl}
             alt={title}
@@ -60,14 +62,11 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
               onlineUrl && 'group-hover:scale-105'
             )}
           />
-          
+
           {/* Indicateur de démo disponible */}
           {onlineUrl && (
             <div className="absolute top-4 right-4 bg-white/90 dark:bg-gray-800/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-normal">
-              <Icon 
-                name="ExternalLink" 
-                className="w-4 h-4 text-[var(--color-primary)]" 
-              />
+              <Icon name="ExternalLink" className="w-4 h-4 text-[var(--color-primary)]" />
             </div>
           )}
         </div>
@@ -75,19 +74,12 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
 
       {/* Contenu */}
       <div className="px-4 pb-4">
-        <Typography 
-          as="h3" 
-          variant="h3" 
-          className="mb-2 group-hover:text-[var(--color-primary)]"
-        >
+        <Typography as="h3" variant="h3" className="mb-2 group-hover:text-[var(--color-primary)]">
           {title}
         </Typography>
 
         {variant !== 'compact' && description && (
-          <Typography 
-            variant="p" 
-            className="mb-4 line-clamp-2 text-gray-600 dark:text-gray-300"
-          >
+          <Typography variant="p" className="mb-4 line-clamp-2 text-gray-600 dark:text-gray-300">
             {description}
           </Typography>
         )}
@@ -104,12 +96,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
         {/* Tags */}
         <div className="flex flex-wrap items-center gap-2">
           {tags?.map((tag: ProjectTag, index: number) => (
-            <Badge
-              key={index}
-              variant={tag.color || 'default'}
-              size="small"
-              shape="pill"
-            >
+            <Badge key={index} variant={tag.color || 'default'} size="small" shape="pill">
               {tag.label}
             </Badge>
           ))}

@@ -32,21 +32,24 @@ export default function Page() {
     {
       id: 'step-2',
       title: 'Immersion dans votre métier',
-      description: 'Je prends le temps de comprendre comment vous travaillez avant de proposer des solutions.',
+      description:
+        'Je prends le temps de comprendre comment vous travaillez avant de proposer des solutions.',
       icon: 'Search' as IconName,
       color: 'primary' as const,
     },
     {
       id: 'step-3',
       title: 'Conception sur mesure',
-      description: 'Nous définissons ensemble ce dont vous avez vraiment besoin, sans complications inutiles.',
+      description:
+        'Nous définissons ensemble ce dont vous avez vraiment besoin, sans complications inutiles.',
       icon: 'PenTool' as IconName,
       color: 'secondary' as const,
     },
     {
       id: 'step-4',
       title: 'Développement par étapes',
-      description: 'Vous voyez votre solution prendre forme progressivement et pouvez donner votre avis.',
+      description:
+        'Vous voyez votre solution prendre forme progressivement et pouvez donner votre avis.',
       icon: 'Code2' as IconName,
       color: 'secondary' as const,
     },
@@ -60,7 +63,8 @@ export default function Page() {
     {
       id: 'step-6',
       title: 'Accompagnement progressif',
-      description: 'Vous devenez autonome progressivement, je reste disponible pour les évolutions.',
+      description:
+        'Vous devenez autonome progressivement, je reste disponible pour les évolutions.',
       icon: 'Rocket' as IconName,
       color: 'tertiary' as const,
     },
@@ -70,27 +74,32 @@ export default function Page() {
     {
       id: 'faq-1',
       question: 'Comment se déroule une conversation découverte?',
-      answer: "Un échange de 45 minutes où j'écoute plus que je ne parle. L'objectif: comprendre votre activité, vos besoins actuels et vos aspirations, sans jargon technique.",
+      answer:
+        "Un échange de 45 minutes où j'écoute plus que je ne parle. L'objectif: comprendre votre activité, vos besoins actuels et vos aspirations, sans jargon technique.",
     },
     {
       id: 'faq-2',
       question: 'Combien de temps faut-il pour développer un site?',
-      answer: 'Entre 4 et 8 semaines pour un site sur mesure, avec une phase importante de compréhension de votre métier avant la réalisation technique.',
+      answer:
+        'Entre 4 et 8 semaines pour un site sur mesure, avec une phase importante de compréhension de votre métier avant la réalisation technique.',
     },
     {
       id: 'faq-3',
       question: 'Pourrai-je vraiment mettre à jour mon site moi-même?',
-      answer: "Absolument, c'est la raison d'être de mon approche. L'interface administrative est conçue spécifiquement pour votre façon de travailler, avec une formation personnalisée incluse.",
+      answer:
+        "Absolument, c'est la raison d'être de mon approche. L'interface administrative est conçue spécifiquement pour votre façon de travailler, avec une formation personnalisée incluse.",
     },
     {
       id: 'faq-4',
       question: "Utilisez-vous WordPress ou d'autres CMS?",
-      answer: "Je privilégie des solutions sur mesure pour une adaptation totale à vos besoins, sans vous imposer les contraintes d'un CMS standard.",
+      answer:
+        "Je privilégie des solutions sur mesure pour une adaptation totale à vos besoins, sans vous imposer les contraintes d'un CMS standard.",
     },
     {
       id: 'faq-5',
       question: 'Que se passe-t-il si mon activité évolue?',
-      answer: 'Les solutions sont pensées pour évoluer avec vous, grâce à un accompagnement régulier et des ajustements selon vos besoins.',
+      answer:
+        'Les solutions sont pensées pour évoluer avec vous, grâce à un accompagnement régulier et des ajustements selon vos besoins.',
     },
   ];
 

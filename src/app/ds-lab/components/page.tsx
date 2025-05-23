@@ -933,10 +933,7 @@ export default function DesignSystemPage() {
       component: (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {PROJECTS.map((project, _index) => (
-            <ProjectPreview
-              key={project.id}
-              project={project}
-            />
+            <ProjectPreview key={project.id} project={project} />
           ))}
         </div>
       ),
