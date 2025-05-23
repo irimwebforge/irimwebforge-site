@@ -178,7 +178,7 @@ export default function Page() {
             {approach.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-xl hover:scale-105"
+                className="group surface-primary rounded-lg p-6 shadow-md border border-color transition-all duration-300 hover:shadow-xl hover:scale-105"
               >
                 <div className="flex justify-center mb-4">
                   <div
@@ -197,7 +197,7 @@ export default function Page() {
 
                 <Typography
                   variant="p"
-                  className="text-gray-600 dark:text-gray-300 text-center text-sm"
+                  className="text-tertiary text-center text-sm"
                 >
                   {item.description}
                 </Typography>
@@ -250,7 +250,7 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+            <div className="p-6 surface-primary rounded-lg shadow-lg">
               <Typography as="h3" variant="h3" className="mb-4 text-[var(--color-primary)]">
                 Formation et compétences
               </Typography>
@@ -260,7 +260,7 @@ export default function Page() {
                   <Typography as="h4" variant="h4" className="mb-2">
                     Développeur Web Full-Stack
                   </Typography>
-                  <Typography variant="p" className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                  <Typography variant="p" className="text-sm text-tertiary mb-2">
                     OpenClassrooms | 2023-2024
                   </Typography>
                 </div>

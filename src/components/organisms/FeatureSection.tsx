@@ -99,7 +99,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
   const bgClasses = {
     none: '',
     light: 'bg-section-primary',
-    dark: 'bg-section-secondary text-[var(--text-primary)]',
+    dark: 'bg-section-secondary text-[var(--foreground)]',
     primary: 'bg-[var(--color-primary)] bg-opacity-5',
     secondary: 'bg-[var(--color-secondary)] bg-opacity-5',
     tertiary: 'bg-[var(--color-tertiary)] bg-opacity-5',

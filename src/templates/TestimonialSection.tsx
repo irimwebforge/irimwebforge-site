@@ -38,12 +38,12 @@ export function TestimonialSection({
   // Déterminer la classe de fond en fonction de backgroundColor
   const bgClass =
     backgroundColor === 'dark'
-      ? 'bg-secondary text-white'
+      ? 'surface-secondary text-[var(--foreground)]'
       : backgroundColor === 'primary'
         ? 'bg-[var(--color-primary)]/10'
         : backgroundColor === 'secondary'
           ? 'bg-[var(--color-secondary)]/10'
-          : 'bg-white';
+          : 'bg-section-primary';
 
   // Variante featured: Un témoignage principal et les autres plus petits
   if (variant === 'featured' && testimonials.length > 0) {
@@ -207,7 +207,7 @@ export function TestimonialSection({
             {testimonials.map((_, index) => (
               <button
                 key={`dot-${index}`}
-                className={`w-3 h-3 rounded-full transition-all duration-150 ${index === 0 ? 'bg-primary' : 'bg-gray-300'} hover:scale-125`}
+                className={`w-3 h-3 rounded-full transition-all duration-150 ${index === 0 ? 'bg-[var(--color-primary)]' : 'bg-[var(--color-border)]'} hover:scale-125`}
                 aria-label={`Voir témoignage ${index + 1}`}
               />
             ))}

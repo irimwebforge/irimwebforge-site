@@ -290,13 +290,13 @@ export default function ProjetsClient() {
                           </Typography>
                           <Typography
                             variant="small"
-                            className="text-gray-500 dark:text-gray-400 mb-3"
+                            className="text-tertiary mb-3"
                           >
                             {project.year}
                           </Typography>
                           <Typography
                             variant={isCorpsEtSens ? 'lead' : 'p'}
-                            className="text-gray-700 dark:text-gray-300 mb-4"
+                            className="text-secondary mb-4"
                           >
                             {project.description}
                           </Typography>
@@ -323,7 +323,7 @@ export default function ProjetsClient() {
                                   description: project.description,
                                 })
                               }
-                              className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 text-sm font-medium"
+                              className="inline-flex items-center gap-2 px-4 py-2 border border-color text-secondary rounded-lg hover:surface-secondary transition-colors duration-200 text-sm font-medium"
                             >
                               <Icon name="Eye" className="w-4 h-4" />
                               Aperçu

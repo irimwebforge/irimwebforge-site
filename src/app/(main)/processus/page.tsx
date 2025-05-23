@@ -220,7 +220,7 @@ export default function Page() {
               </ul>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl group">
+            <div className="surface-primary p-8 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl group">
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 rounded-full bg-[var(--color-primary-100)] dark:bg-[var(--color-primary-900)] flex items-center justify-center mr-4 transition-transform duration-150 group-hover:scale-110">
                   <Icon name="Calendar" size={24} className="text-[var(--color-primary)]" />

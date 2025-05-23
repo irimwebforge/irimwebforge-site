@@ -18,7 +18,7 @@ import dynamic from 'next/dynamic';
 const CTASection = dynamic(
   () => import('@/templates/CTASection').then((mod) => ({ default: mod.CTASection })),
   {
-    loading: () => <div className="animate-pulse h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>,
+    loading: () => <div className="animate-pulse h-48 surface-secondary rounded"></div>,
   }
 );
 
@@ -117,14 +117,14 @@ export default function HomePage() {
           <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
             Ce que j'ai appris en chemin
           </Typography>
-          <Typography variant="lead" className="text-gray-700 dark:text-gray-200 leading-relaxed">
+          <Typography variant="lead" className="text-secondary leading-relaxed">
             {`En regardant mon épouse thérapeute lutter avec son site web chaque dimanche, j'ai compris l'évidence : ce n'est pas à vous de vous adapter aux outils, mais aux outils de s'adapter à vous. Cette conviction guide chacun de mes projets aujourd'hui.`}
           </Typography>
           <div className="flex items-center justify-center space-x-3 mt-6">
             <div className="h-10 w-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
               <span className="text-primary-600 dark:text-primary-400 font-bold">EZ</span>
             </div>
-            <Typography variant="subtle" className="text-gray-700 dark:text-gray-300">
+            <Typography variant="subtle" className="text-secondary">
               Eric Zuber, créateur d'espaces numériques sur mesure
             </Typography>
           </div>
@@ -140,7 +140,7 @@ export default function HomePage() {
             </Typography>
             <Typography
               variant="lead"
-              className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
+              className="text-secondary max-w-2xl mx-auto leading-relaxed"
             >
               Ce que vous gagnez vraiment :
             </Typography>
@@ -188,7 +188,7 @@ export default function HomePage() {
                 >
                   <Typography
                     variant="p"
-                    className="text-gray-700 dark:text-gray-300 mt-4 leading-relaxed"
+                    className="text-secondary mt-4 leading-relaxed"
                   >
                     {benefit.description}
                   </Typography>
@@ -205,7 +205,7 @@ export default function HomePage() {
           <Typography variant="h3" className="font-bold italic mb-2">
             Exemple concret : Corps & Sens
           </Typography>
-          <Typography variant="p" className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
+          <Typography variant="p" className="text-secondary max-w-xl mx-auto">
             J'ai aidé mon épouse thérapeute à passer de 7h à 45min d'administration hebdomadaire
             grâce à une interface sur-mesure. Découvrez l'étude de cas complète dans la section{' '}
             <a href="/projets" className="underline text-[var(--color-primary)]">
@@ -225,7 +225,7 @@ export default function HomePage() {
             </Typography>
             <Typography
               variant="lead"
-              className="text-gray-700 dark:text-gray-200 max-w-2xl mx-auto leading-relaxed"
+              className="text-secondary max-w-2xl mx-auto leading-relaxed"
             >
               Mon chemin, étape par étape, pour mieux vous accompagner.
             </Typography>
@@ -246,7 +246,7 @@ export default function HomePage() {
             {parcoursBlocks.map((block, idx) => (
               <div
                 key={block.id}
-                className={`bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-l-4 group transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-fade-in`}
+                className={`surface-primary p-8 rounded-xl shadow-lg border-l-4 group transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-fade-in`}
                 style={{
                   borderColor: `var${block.borderColor}`,
                   animationDelay: `${150 + idx * 150}ms`,
@@ -271,11 +271,11 @@ export default function HomePage() {
                   <>
                     <Typography
                       variant="p"
-                      className="text-gray-700 dark:text-gray-300 mb-2 leading-relaxed"
+                      className="text-secondary mb-2 leading-relaxed"
                     >
                       Sites web sur-mesure, pensés pour votre quotidien et votre autonomie.
                     </Typography>
-                    <ul className="list-disc pl-5 text-gray-600 dark:text-gray-400 text-sm">
+                    <ul className="list-disc pl-5 text-tertiary text-sm">
                       <li>Interface simple, élégante et personnalisée</li>
                       <li>Gestion facile, sans stress technique</li>
                     </ul>
@@ -284,11 +284,11 @@ export default function HomePage() {
                   <>
                     <Typography
                       variant="p"
-                      className="text-gray-700 dark:text-gray-300 mb-2 leading-relaxed"
+                      className="text-secondary mb-2 leading-relaxed"
                     >
                       Applications et outils qui vont plus loin que le site vitrine.
                     </Typography>
-                    <ul className="list-disc pl-5 text-gray-600 dark:text-gray-400 text-sm">
+                    <ul className="list-disc pl-5 text-tertiary text-sm">
                       <li>MoodCycle : application de suivi en cours</li>
                       <li>Connexion naturelle entre vos outils et vos données</li>
                     </ul>

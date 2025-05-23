@@ -96,7 +96,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
             primary: 'bg-[var(--color-primary)] bg-opacity-10 text-[var(--color-primary)]',
             secondary: 'bg-[var(--color-secondary)] bg-opacity-10 text-[var(--color-secondary)]',
             tertiary: 'bg-[var(--color-tertiary)] bg-opacity-10 text-[var(--color-tertiary)]',
-            default: 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300',
+            default: 'surface-secondary text-secondary',
           };
 
           return (
@@ -143,7 +143,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
             {author.name}
           </Typography>
           {author.role && (
-            <Typography variant="small" className="text-gray-500 text-xs">
+            <Typography variant="small" className="text-tertiary text-xs">
               {author.role}
             </Typography>
           )}
@@ -155,7 +155,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
   // Rendu de la méta-information (date et temps de lecture)
   const renderMeta = () => {
     return (
-      <div className="flex items-center text-gray-500 text-sm mt-2">
+      <div className="flex items-center text-tertiary text-sm mt-2">
         <time dateTime={new Date(publishedAt).toISOString()}>{formatDate(publishedAt)}</time>
 
         {readTime && (

@@ -21,7 +21,7 @@ export default function NotFound() {
 
           <Typography
             variant="lead"
-            className="mb-8 text-gray-600 dark:text-gray-300 animate-fade-in-up"
+            className="mb-8 text-secondary animate-fade-in-up"
           >
             Désolé, la page que vous recherchez semble avoir été déplacée ou n'existe plus.
             <br />
@@ -41,7 +41,7 @@ export default function NotFound() {
           </div>
 
           <div
-            className="mt-12 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg animate-fade-in-up"
+            className="mt-12 p-6 surface-secondary rounded-lg animate-fade-in-up"
             style={{ animationDelay: '400ms' }}
           >
             <Typography variant="h4" className="mb-4">
@@ -50,28 +50,28 @@ export default function NotFound() {
             <div className="grid gap-4 sm:grid-cols-2">
               <Link
                 href="/services"
-                className="flex items-center gap-2 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-700 transition-colors duration-300"
+                className="flex items-center gap-2 p-3 rounded-lg hover:surface-primary transition-colors duration-300"
               >
                 <Icon name="Zap" className="w-5 h-5 text-primary" />
                 <span>Découvrir mes services</span>
               </Link>
               <Link
                 href="/processus"
-                className="flex items-center gap-2 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-700 transition-colors duration-300"
+                className="flex items-center gap-2 p-3 rounded-lg hover:surface-primary transition-colors duration-300"
               >
                 <Icon name="GitBranch" className="w-5 h-5 text-primary" />
                 <span>Explorer ma méthode</span>
               </Link>
               <Link
                 href="/a-propos"
-                className="flex items-center gap-2 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-700 transition-colors duration-300"
+                className="flex items-center gap-2 p-3 rounded-lg hover:surface-primary transition-colors duration-300"
               >
                 <Icon name="User" className="w-5 h-5 text-primary" />
                 <span>En savoir plus sur moi</span>
               </Link>
               <Link
                 href="/projets"
-                className="flex items-center gap-2 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-700 transition-colors duration-300"
+                className="flex items-center gap-2 p-3 rounded-lg hover:surface-primary transition-colors duration-300"
               >
                 <Icon name="Folder" className="w-5 h-5 text-primary" />
                 <span>Voir mes réalisations</span>

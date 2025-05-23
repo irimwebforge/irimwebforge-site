@@ -124,8 +124,8 @@ export const FAQ: React.FC<FAQProps> = ({
 
     // Classes spécifiques par variante
     const itemClasses = {
-      default: 'border-b border-gray-200 last:border-b-0',
-      separated: 'border border-gray-200 rounded-lg',
+      default: 'border-b border-color last:border-b-0',
+      separated: 'border border-color rounded-lg',
       bordered: '',
     };
 
@@ -222,7 +222,7 @@ export const FAQItemComponent: React.FC<FAQItemComponentProps> = ({
   const [isExpanded, setIsExpanded] = useState(isOpen);
 
   return (
-    <div className={cn('border-b border-gray-200 last:border-b-0', className)}>
+    <div className={cn('border-b border-color last:border-b-0', className)}>
       <div
         className={cn(
           'flex justify-between items-center gap-4 cursor-pointer py-4 px-2',

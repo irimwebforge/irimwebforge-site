@@ -95,8 +95,8 @@ export const CTASection = ({
 
   // Classes pour le fond
   const backgroundClasses = {
-    light: 'bg-gray-50 dark:bg-gray-900',
-    dark: 'bg-gray-900 text-white',
+    light: 'bg-section-secondary',
+    dark: 'surface-secondary text-[var(--foreground)]',
     primary: 'bg-[var(--color-primary)]/10 dark:bg-[var(--color-primary)]/20',
     gradient: 'bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white',
     transparent: '',
@@ -111,7 +111,7 @@ export const CTASection = ({
 
   // Classes pour la couleur du texte
   const textClasses = {
-    dark: 'text-gray-900 dark:text-gray-900',
+    dark: 'text-[var(--foreground)]',
     light: 'text-white',
     auto: backgroundColor === 'dark' || backgroundColor === 'gradient' ? 'text-white' : '',
   };

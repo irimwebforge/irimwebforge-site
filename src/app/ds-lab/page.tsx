@@ -91,9 +91,16 @@ export default function DSLabHomePage() {
           </Button>
         </div>
 
-        <div className="mt-4 py-1 px-3 text-xs text-center bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full flex items-center gap-1.5">
-          <Icon name="AlertTriangle" size={12} />
-          Environnement de développement uniquement
+        <div className="flex flex-col gap-2 mt-4">
+          <div className="py-1 px-3 text-xs text-center bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full flex items-center gap-1.5">
+            <Icon name="AlertTriangle" size={12} />
+            Environnement de développement uniquement
+          </div>
+          
+          <div className="py-1 px-3 text-xs text-center bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full flex items-center gap-1.5">
+            <Icon name="Monitor" size={12} />
+            Interface adaptative au thème système (clair/sombre)
+          </div>
         </div>
       </div>
 

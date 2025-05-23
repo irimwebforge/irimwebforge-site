@@ -65,7 +65,7 @@ export default function PresencePage() {
               {service.targetAudience.points.map((point, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 p-4 bg-white/80 dark:bg-gray-800/80 rounded-lg backdrop-blur-sm"
+                  className="flex items-start gap-3 p-4 surface-primary/80 rounded-lg backdrop-blur-sm"
                 >
                   <IconWithColor name={point.icon} color="primary" size="lg" className="mt-1" />
                   <Typography variant="p">{point.text}</Typography>
@@ -128,7 +128,7 @@ export default function PresencePage() {
                       <Typography variant="h4" className="mb-1">
                         {feature.title}
                       </Typography>
-                      <Typography variant="p" className="text-gray-600 dark:text-gray-300">
+                      <Typography variant="p" className="text-secondary">
                         {feature.description}
                       </Typography>
                     </div>
@@ -165,7 +165,7 @@ export default function PresencePage() {
                     <Typography variant="h4" className="mb-1">
                       {step.title}
                     </Typography>
-                    <Typography variant="p" className="text-gray-600 dark:text-gray-300">
+                    <Typography variant="p" className="text-secondary">
                       {step.description}
                     </Typography>
                   </div>

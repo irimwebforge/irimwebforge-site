@@ -71,8 +71,8 @@ export const ServiceOverview = ({
 }: ServiceOverviewProps) => {
   // Classes pour le fond
   const backgroundClasses = {
-    light: 'bg-gray-50 dark:bg-gray-900',
-    dark: 'bg-gray-900 text-white',
+    light: 'bg-section-secondary',
+    dark: 'surface-secondary text-[var(--foreground)]',
     primary: 'bg-[var(--color-primary)]/10 dark:bg-[var(--color-primary)]/20',
     transparent: '',
   };
@@ -183,7 +183,7 @@ export const ServiceOverview = ({
                     </Link>
                   )}
                 </div>
-                <div className="flex-1 relative h-64 md:h-full rounded-lg bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 transition-all duration-300 hover:shadow-lg">
+                <div className="flex-1 relative h-64 md:h-full rounded-lg bg-gradient-to-r from-[var(--background)] to-[var(--background-alt)] transition-all duration-300 hover:shadow-lg">
                   {/* Emplacement pour une image ou illustration du service */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-4xl p-6 transition-transform duration-300 hover:scale-110">
@@ -201,7 +201,7 @@ export const ServiceOverview = ({
             {services.map((service, index) => (
               <div
                 key={service.id}
-                className="rounded-lg p-6 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-md animate-fade-in"
+                className="rounded-lg p-6 border border-color transition-all duration-300 hover:shadow-md animate-fade-in"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div

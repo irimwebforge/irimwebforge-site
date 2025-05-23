@@ -78,8 +78,8 @@ export const ValueProposition = ({
 }: ValuePropositionProps) => {
   // Classes pour le fond
   const backgroundClasses = {
-    light: 'bg-gray-50 dark:bg-gray-900',
-    dark: 'bg-gray-900 text-white',
+    light: 'bg-section-secondary',
+    dark: 'surface-secondary text-[var(--foreground)]',
     primary: 'bg-[var(--color-primary)]/10 dark:bg-[var(--color-primary)]/20',
     transparent: '',
   };

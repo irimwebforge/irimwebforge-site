@@ -265,7 +265,7 @@ export const Carousel: React.FC<CarouselProps> = ({
         {controls && totalSlides > getActiveSlidesPerView() && (
           <>
             <button
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-75 dark:bg-gray-800 dark:bg-opacity-75 p-2 rounded-full shadow-md hover:bg-opacity-100 dark:hover:bg-opacity-100 transition-all"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 surface-primary/75 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-opacity-100 transition-all"
               onClick={(e) => {
                 e.stopPropagation();
                 prevSlide();
@@ -276,7 +276,7 @@ export const Carousel: React.FC<CarouselProps> = ({
             </button>
 
             <button
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-75 dark:bg-gray-800 dark:bg-opacity-75 p-2 rounded-full shadow-md hover:bg-opacity-100 dark:hover:bg-opacity-100 transition-all"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 surface-primary/75 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-opacity-100 transition-all"
               onClick={(e) => {
                 e.stopPropagation();
                 nextSlide();
@@ -314,7 +314,7 @@ export const Carousel: React.FC<CarouselProps> = ({
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
-                className={`w-2 h-2 rounded-full transition-all ${index === currentIndex ? 'bg-gray-800 dark:bg-gray-200 w-4' : 'bg-gray-300 dark:bg-gray-600'}`}
+                className={`w-2 h-2 rounded-full transition-all ${index === currentIndex ? 'bg-[var(--foreground)] w-4' : 'bg-[var(--color-border)]'}`}
                 onClick={() => goToSlide(index)}
                 aria-label={`Aller au slide ${index + 1}`}
                 aria-current={index === currentIndex}

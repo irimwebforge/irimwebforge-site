@@ -20,9 +20,9 @@ export function BeforeAfterCard({ item, index, color, showIndex = true }: Before
   return (
     <div
       className={cn(
-        'bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg',
+        'surface-primary rounded-xl p-6 shadow-lg',
         'transform transition-all duration-300 hover:scale-[1.02]',
-        'border border-gray-100 dark:border-gray-700'
+        'border border-color'
       )}
     >
       <div className="flex items-center gap-4 mb-6">
@@ -56,18 +56,18 @@ export function BeforeAfterCard({ item, index, color, showIndex = true }: Before
       <div className="grid md:grid-cols-2 gap-6">
         <div
           className={cn(
-            'p-4 bg-gray-50 dark:bg-gray-700 rounded-xl',
+            'p-4 surface-secondary rounded-xl',
             'transform transition-all duration-300',
-            'border border-gray-200 dark:border-gray-600'
+            'border border-color'
           )}
         >
           <div className="flex items-center gap-2 mb-3">
-            <Icon name="X" className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-            <Typography variant="small" className="font-medium text-gray-500 dark:text-gray-400">
+            <Icon name="X" className="w-4 h-4 text-tertiary" />
+            <Typography variant="small" className="font-medium text-tertiary">
               Avant
             </Typography>
           </div>
-          <Typography variant="p" className="text-gray-600 dark:text-gray-300">
+          <Typography variant="p" className="text-secondary">
             {item.before}
           </Typography>
         </div>

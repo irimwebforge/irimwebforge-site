@@ -52,6 +52,7 @@ export function Footer() {
                 <NavLink
                   href="/"
                   color="secondary"
+                  exact={true}
                   className="hover:text-[var(--color-primary)] footer-arrow"
                 >
                   Accueil

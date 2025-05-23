@@ -353,7 +353,7 @@ export default function ContactClient() {
             {contactInfo.map((info) => (
               <div
                 key={info.id}
-                className="group bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-lg hover:scale-105"
+                className="group surface-primary rounded-lg p-6 shadow-sm border border-color transition-all duration-300 hover:shadow-lg hover:scale-105"
               >
                 <div className="flex justify-center mb-4">
                   <div
@@ -386,7 +386,7 @@ export default function ContactClient() {
 
                 <Typography
                   variant="p"
-                  className="text-gray-600 dark:text-gray-300 text-center text-sm"
+                  className="text-tertiary text-center text-sm"
                 >
                   {info.description}
                 </Typography>
@@ -400,7 +400,7 @@ export default function ContactClient() {
       <section className="bg-section-secondary py-16">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-sm border border-gray-100 dark:border-gray-700">
+            <div className="surface-primary rounded-lg p-8 shadow-sm border border-color">
               <div className="text-center mb-6">
                 <Icon
                   name="Shield"
@@ -421,7 +421,7 @@ export default function ContactClient() {
                     <Typography variant="h4" className="font-medium mb-1">
                       45 minutes maximum
                     </Typography>
-                    <Typography variant="p" className="text-gray-600 dark:text-gray-300 text-sm">
+                    <Typography variant="p" className="text-tertiary text-sm">
                       Discussion ciblée sur vos vrais besoins
                     </Typography>
                   </div>
@@ -436,7 +436,7 @@ export default function ContactClient() {
                     <Typography variant="h4" className="font-medium mb-1">
                       Zéro pression
                     </Typography>
-                    <Typography variant="p" className="text-gray-600 dark:text-gray-300 text-sm">
+                    <Typography variant="p" className="text-tertiary text-sm">
                       Échange libre sans obligation
                     </Typography>
                   </div>
@@ -451,7 +451,7 @@ export default function ContactClient() {
                     <Typography variant="h4" className="font-medium mb-1">
                       À l'écoute
                     </Typography>
-                    <Typography variant="p" className="text-gray-600 dark:text-gray-300 text-sm">
+                    <Typography variant="p" className="text-tertiary text-sm">
                       Je comprends votre quotidien avant tout
                     </Typography>
                   </div>
@@ -466,7 +466,7 @@ export default function ContactClient() {
                     <Typography variant="h4" className="font-medium mb-1">
                       Transparence
                     </Typography>
-                    <Typography variant="p" className="text-gray-600 dark:text-gray-300 text-sm">
+                    <Typography variant="p" className="text-tertiary text-sm">
                       Honnête sur mes capacités et votre projet
                     </Typography>
                   </div>

@@ -58,8 +58,8 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
     // Classes pour l'état de l'étape
     const stepStateClasses = {
       completed: `border-${accentColor} ${colorClass}`,
-      current: `border-${accentColor} bg-white ${colorClass.split(' ')[0]}`,
-      pending: 'border-gray-300 bg-gray-100 text-gray-400',
+      current: `border-${accentColor} surface-primary ${colorClass.split(' ')[0]}`,
+      pending: 'border-color surface-secondary text-tertiary',
     };
 
     // Déterminer la classe d'état
@@ -74,7 +74,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
       return (
         <div
           key={step.id}
-          className={`flex-1 relative ${index < steps.length - 1 ? 'before:hidden md:before:block before:absolute before:h-0.5 before:w-full before:top-6 before:left-1/2 before:bg-gray-200 before:z-0' : ''}`}
+          className={`flex-1 relative ${index < steps.length - 1 ? 'before:hidden md:before:block before:absolute before:h-0.5 before:w-full before:top-6 before:left-1/2 before:bg-[var(--color-border)] before:z-0' : ''}`}
         >
           <div className="flex flex-col items-center">
             {/* Indicateur d'étape */}
@@ -129,7 +129,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
       <div key={step.id} className="relative pl-14">
         {/* Ligne verticale */}
         {index < steps.length - 1 && (
-          <div className="absolute left-5 top-12 bottom-0 w-0.5 bg-gray-200 -ml-px"></div>
+          <div className="absolute left-5 top-12 bottom-0 w-0.5 bg-[var(--color-border)] -ml-px"></div>
         )}
 
         {/* Indicateur d'étape */}

@@ -190,7 +190,7 @@ export const Modal: React.FC<ModalProps> = ({
       <div
         ref={modalRef}
         className={cn(
-          'relative bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full m-4',
+          'relative surface-primary rounded-lg shadow-xl w-full m-4',
           sizeClasses[size],
           animationClasses[animation],
           className
@@ -199,7 +199,7 @@ export const Modal: React.FC<ModalProps> = ({
       >
         {/* En-tête du modal */}
         {(title || showCloseButton) && (
-          <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+          <div className="flex justify-between items-center p-4 border-b border-color">
             {title && (
               <div className="font-medium text-lg" id={titleId}>
                 {typeof title === 'string' ? <Typography variant="h3">{title}</Typography> : title}
@@ -208,7 +208,7 @@ export const Modal: React.FC<ModalProps> = ({
             {showCloseButton && (
               <button
                 onClick={onClose}
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors p-1 rounded focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
+                className="text-tertiary hover:text-secondary transition-colors p-1 rounded focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
                 aria-label="Fermer la boîte de dialogue"
                 type="button"
               >
@@ -225,7 +225,7 @@ export const Modal: React.FC<ModalProps> = ({
 
         {/* Pied de modal */}
         {footer && (
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700">{footer}</div>
+          <div className="p-4 border-t border-color">{footer}</div>
         )}
       </div>
     </div>
@@ -286,7 +286,9 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title} footer={footer} size={size}>
-      {typeof message === 'string' ? <Typography variant="p">{message}</Typography> : message}
+      <Typography variant="p" className="mb-4 text-secondary">
+        {message}
+      </Typography>
     </Modal>
   );
 };
@@ -414,7 +416,9 @@ export const AlertModal: React.FC<AlertModalProps> = ({
       footer={footer}
       size={size}
     >
-      {typeof message === 'string' ? <Typography variant="p">{message}</Typography> : message}
+      <Typography variant="p" className="mb-4 text-secondary">
+        {message}
+      </Typography>
     </Modal>
   );
 };
@@ -470,13 +474,13 @@ export const DemoModal: React.FC<DemoModalProps> = ({
     >
       <div className="flex flex-col h-full">
         {description && (
-          <Typography variant="p" className="mb-4 text-gray-600 dark:text-gray-300">
+          <Typography variant="p" className="mb-4 text-secondary">
             {description}
           </Typography>
         )}
-        <div className="relative flex-grow bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden min-h-[500px]">
+        <div className="relative flex-grow surface-secondary rounded-lg overflow-hidden min-h-[500px]">
           {isLoading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800 z-10">
+            <div className="absolute inset-0 flex items-center justify-center surface-secondary z-10">
               <div className="w-12 h-12 border-4 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin"></div>
             </div>
           )}
@@ -539,7 +543,7 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, ser
     >
       <div className="flex flex-col gap-6">
         <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
-          <Typography variant="lead" className="text-gray-700 dark:text-gray-300">
+          <Typography variant="lead" className="text-secondary">
             {service.fullDescription}
           </Typography>
           <div className="flex gap-2 flex-shrink-0">
@@ -552,7 +556,7 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, ser
           </div>
         </div>
 
-        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+        <div className="surface-secondary rounded-lg p-6">
           <Typography as="h4" variant="h4" className="mb-4">
             Fonctionnalités incluses :
           </Typography>
@@ -572,7 +576,7 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, ser
                     {feature.title}
                   </Typography>
                   {feature.description && (
-                    <Typography variant="p" className="text-gray-600 dark:text-gray-300">
+                    <Typography variant="p" className="text-secondary">
                       {feature.description}
                     </Typography>
                   )}
@@ -583,7 +587,7 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, ser
         </div>
 
         {service.testimonial && (
-          <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+          <div className="surface-secondary rounded-lg p-6">
             <blockquote className="text-center">
               <Typography variant="lead" className="mb-6 italic">
                 "{service.testimonial.quote}"
@@ -592,7 +596,7 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, ser
                 <Typography variant="h4" className="mb-1">
                   {service.testimonial.author}
                 </Typography>
-                <Typography variant="p" className="text-gray-600 dark:text-gray-300">
+                <Typography variant="p" className="text-secondary">
                   {service.testimonial.role}
                 </Typography>
               </footer>

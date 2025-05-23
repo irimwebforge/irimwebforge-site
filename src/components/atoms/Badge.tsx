@@ -53,8 +53,8 @@ export const Badge: React.FC<BadgeProps> = ({
   // Couleurs de base selon la variante
   const variantClasses = {
     default: isSolid
-      ? 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
-      : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200',
+      ? 'bg-[var(--color-border)] text-[var(--foreground)]'
+      : 'surface-secondary text-secondary',
     primary: isSolid
       ? 'bg-[var(--color-primary)] text-white'
       : 'bg-[var(--color-primary-bg-accessible)] text-[var(--color-primary-accessible)]',
@@ -94,7 +94,7 @@ export const Badge: React.FC<BadgeProps> = ({
   // Classes de contour
   const outlineClasses = isOutlined
     ? `border border-current bg-transparent ${
-        variant === 'default' ? 'text-gray-600 dark:text-gray-300' : ''
+        variant === 'default' ? 'text-secondary' : ''
       }`
     : '';
 

@@ -116,7 +116,7 @@ export default function Page() {
                     </Typography>
                     <Typography
                       variant="p"
-                      className="mb-4 text-center text-gray-700 dark:text-gray-300"
+                      className="mb-4 text-center text-secondary"
                     >
                       {service.shortDescription}
                     </Typography>
@@ -177,7 +177,7 @@ export default function Page() {
             {features.map((feature) => (
               <div
                 key={feature.id}
-                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-lg"
+                className="surface-primary p-6 rounded-lg shadow-sm border border-color transition-all duration-300 hover:shadow-lg"
               >
                 <div className="flex justify-center mb-4">
                   <div
@@ -192,7 +192,7 @@ export default function Page() {
                 <Typography as="h3" variant="h4" className="mb-2 text-center">
                   {feature.title}
                 </Typography>
-                <Typography variant="p" className="text-center text-gray-600 dark:text-gray-300">
+                <Typography variant="p" className="text-center text-secondary">
                   {feature.description}
                 </Typography>
               </div>
@@ -217,7 +217,7 @@ export default function Page() {
             {projections.map((projection, index) => (
               <div
                 key={index}
-                className="group bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-xl hover:scale-105"
+                className="group surface-primary rounded-lg shadow-sm p-6 border border-color transition-all duration-300 hover:shadow-xl hover:scale-105"
               >
                 <div className="flex justify-center mb-6">
                   <div
@@ -241,7 +241,7 @@ export default function Page() {
                 </Typography>
                 <Divider className="my-4" />
                 <div className="text-center">
-                  <Typography variant="small" className="text-gray-500 dark:text-gray-400">
+                  <Typography variant="small" className="text-tertiary">
                     {projection.company}
                   </Typography>
                 </div>

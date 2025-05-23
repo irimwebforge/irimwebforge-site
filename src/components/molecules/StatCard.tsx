@@ -116,9 +116,9 @@ export const StatCard: React.FC<StatCardProps> = ({
 
     // Classes pour les couleurs de tendance
     const trendColorClasses = {
-      up: 'text-green-600',
-      down: 'text-red-600',
-      neutral: 'text-gray-500',
+      up: 'text-[var(--color-success)]',
+      down: 'text-[var(--color-accent)]',
+      neutral: 'text-tertiary',
     };
 
     // Icônes pour les tendances
@@ -171,7 +171,7 @@ export const StatCard: React.FC<StatCardProps> = ({
       <div className={cn('mt-1 text-sm font-medium', trendColorClasses[direction])}>
         {trendIcons[direction]}
         <span>{trendValue}</span>
-        {label && <span className="ml-1 text-gray-500 text-xs">{label}</span>}
+        {label && <span className="ml-1 text-tertiary text-xs">{label}</span>}
       </div>
     );
   };
@@ -187,14 +187,14 @@ export const StatCard: React.FC<StatCardProps> = ({
         </Typography>
 
         <div className="flex items-baseline">
-          {valuePrefix && <span className="mr-1 text-gray-500">{valuePrefix}</span>}
+          {valuePrefix && <span className="mr-1 text-tertiary">{valuePrefix}</span>}
           <Typography
             variant="h2"
             className={cn(sizeClasses[size].value, variant === 'accent' ? accentColorClass : '')}
           >
             {value}
           </Typography>
-          {valueSuffix && <span className="ml-1 text-gray-500">{valueSuffix}</span>}
+          {valueSuffix && <span className="ml-1 text-tertiary">{valueSuffix}</span>}
         </div>
 
         {subtitle && (

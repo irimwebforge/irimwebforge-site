@@ -39,7 +39,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
   return (
     <article
       className={cn(
-        'group bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-normal',
+        'group surface-primary rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-normal',
         variant === 'compact' ? 'h-full' : ''
       )}
       onClick={onClick}
@@ -65,7 +65,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
 
           {/* Indicateur de démo disponible */}
           {onlineUrl && (
-            <div className="absolute top-4 right-4 bg-white/90 dark:bg-gray-800/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-normal">
+            <div className="absolute top-4 right-4 surface-primary/90 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-normal">
               <Icon name="ExternalLink" className="w-4 h-4 text-[var(--color-primary)]" />
             </div>
           )}
@@ -79,14 +79,14 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
         </Typography>
 
         {variant !== 'compact' && description && (
-          <Typography variant="p" className="mb-4 line-clamp-2 text-gray-600 dark:text-gray-300">
+          <Typography variant="p" className="mb-4 line-clamp-2 text-secondary">
             {description}
           </Typography>
         )}
 
         {/* Meta informations */}
         {(clientName || year) && (
-          <div className="flex items-center gap-2 mb-3 text-sm text-gray-500 dark:text-gray-400">
+          <div className="flex items-center gap-2 mb-3 text-sm text-tertiary">
             {clientName && <span>{clientName}</span>}
             {clientName && year && <span>•</span>}
             {year && <span>{year}</span>}
