@@ -288,10 +288,7 @@ export default function ProjetsClient() {
                           >
                             {project.title}
                           </Typography>
-                          <Typography
-                            variant="small"
-                            className="text-tertiary mb-3"
-                          >
+                          <Typography variant="small" className="text-tertiary mb-3">
                             {project.year}
                           </Typography>
                           <Typography

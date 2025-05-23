@@ -93,9 +93,7 @@ export const Badge: React.FC<BadgeProps> = ({
 
   // Classes de contour
   const outlineClasses = isOutlined
-    ? `border border-current bg-transparent ${
-        variant === 'default' ? 'text-secondary' : ''
-      }`
+    ? `border border-current bg-transparent ${variant === 'default' ? 'text-secondary' : ''}`
     : '';
 
   // Classes de base

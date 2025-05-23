@@ -114,10 +114,7 @@ export default function Page() {
                     <Typography as="h3" variant="h4" className="mb-2 text-center font-bold">
                       {service.title}
                     </Typography>
-                    <Typography
-                      variant="p"
-                      className="mb-4 text-center text-secondary"
-                    >
+                    <Typography variant="p" className="mb-4 text-center text-secondary">
                       {service.shortDescription}
                     </Typography>
                     <div className="flex justify-center gap-2 mb-4">

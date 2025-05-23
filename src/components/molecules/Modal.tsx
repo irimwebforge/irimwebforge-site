@@ -224,9 +224,7 @@ export const Modal: React.FC<ModalProps> = ({
         </div>
 
         {/* Pied de modal */}
-        {footer && (
-          <div className="p-4 border-t border-color">{footer}</div>
-        )}
+        {footer && <div className="p-4 border-t border-color">{footer}</div>}
       </div>
     </div>
   );

@@ -96,7 +96,7 @@ export default function DSLabHomePage() {
             <Icon name="AlertTriangle" size={12} />
             Environnement de développement uniquement
           </div>
-          
+
           <div className="py-1 px-3 text-xs text-center bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full flex items-center gap-1.5">
             <Icon name="Monitor" size={12} />
             Interface adaptative au thème système (clair/sombre)

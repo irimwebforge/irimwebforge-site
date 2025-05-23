@@ -384,10 +384,7 @@ export default function ContactClient() {
                   </Typography>
                 )}
 
-                <Typography
-                  variant="p"
-                  className="text-tertiary text-center text-sm"
-                >
+                <Typography variant="p" className="text-tertiary text-center text-sm">
                   {info.description}
                 </Typography>
               </div>

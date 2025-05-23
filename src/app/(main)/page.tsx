@@ -138,10 +138,7 @@ export default function HomePage() {
             <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
               Ce que mes solutions apportent concrètement
             </Typography>
-            <Typography
-              variant="lead"
-              className="text-secondary max-w-2xl mx-auto leading-relaxed"
-            >
+            <Typography variant="lead" className="text-secondary max-w-2xl mx-auto leading-relaxed">
               Ce que vous gagnez vraiment :
             </Typography>
           </div>
@@ -186,10 +183,7 @@ export default function HomePage() {
                     </div>
                   }
                 >
-                  <Typography
-                    variant="p"
-                    className="text-secondary mt-4 leading-relaxed"
-                  >
+                  <Typography variant="p" className="text-secondary mt-4 leading-relaxed">
                     {benefit.description}
                   </Typography>
                 </Card>
@@ -223,10 +217,7 @@ export default function HomePage() {
             <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
               Mon parcours à vos côtés
             </Typography>
-            <Typography
-              variant="lead"
-              className="text-secondary max-w-2xl mx-auto leading-relaxed"
-            >
+            <Typography variant="lead" className="text-secondary max-w-2xl mx-auto leading-relaxed">
               Mon chemin, étape par étape, pour mieux vous accompagner.
             </Typography>
           </div>
@@ -269,10 +260,7 @@ export default function HomePage() {
                 {/* Texte allégé */}
                 {block.id === 'now' ? (
                   <>
-                    <Typography
-                      variant="p"
-                      className="text-secondary mb-2 leading-relaxed"
-                    >
+                    <Typography variant="p" className="text-secondary mb-2 leading-relaxed">
                       Sites web sur-mesure, pensés pour votre quotidien et votre autonomie.
                     </Typography>
                     <ul className="list-disc pl-5 text-tertiary text-sm">
@@ -282,10 +270,7 @@ export default function HomePage() {
                   </>
                 ) : (
                   <>
-                    <Typography
-                      variant="p"
-                      className="text-secondary mb-2 leading-relaxed"
-                    >
+                    <Typography variant="p" className="text-secondary mb-2 leading-relaxed">
                       Applications et outils qui vont plus loin que le site vitrine.
                     </Typography>
                     <ul className="list-disc pl-5 text-tertiary text-sm">

@@ -195,10 +195,7 @@ export default function Page() {
                   {item.title}
                 </Typography>
 
-                <Typography
-                  variant="p"
-                  className="text-tertiary text-center text-sm"
-                >
+                <Typography variant="p" className="text-tertiary text-center text-sm">
                   {item.description}
                 </Typography>
               </div>

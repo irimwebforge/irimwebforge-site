@@ -19,10 +19,7 @@ export default function NotFound() {
             Page non trouvée
           </Typography>
 
-          <Typography
-            variant="lead"
-            className="mb-8 text-secondary animate-fade-in-up"
-          >
+          <Typography variant="lead" className="mb-8 text-secondary animate-fade-in-up">
             Désolé, la page que vous recherchez semble avoir été déplacée ou n'existe plus.
             <br />
             Pas d'inquiétude, vous pouvez :
