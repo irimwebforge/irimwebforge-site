@@ -161,7 +161,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
           <Card key={feature.id} className="p-6" hover>
             <div className="flex flex-col h-full">
               {/* Icône ou index */}
-              {renderFeatureIcon(feature.icon as IconType, index)}
+              {renderFeatureIcon(feature.icon as IconType, index, 'small', feature.title)}
 
               {/* Titre */}
               <Typography variant="h3" className="text-xl font-bold mt-4 mb-2">
@@ -199,7 +199,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
           <div key={feature.id} className="flex items-start gap-4">
             {/* Icône ou index */}
             <div className="flex-shrink-0 mt-1">
-              {renderFeatureIcon(feature.icon as IconType, index, 'large')}
+              {renderFeatureIcon(feature.icon as IconType, index, 'large', feature.title)}
             </div>
 
             <div>
@@ -247,7 +247,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
               {/* Contenu textuel */}
               <div className="flex-1">
                 {/* Numéro ou icône */}
-                {renderFeatureIcon(feature.icon as IconType, index, 'large')}
+                {renderFeatureIcon(feature.icon as IconType, index, 'large', feature.title)}
 
                 {/* Titre */}
                 <Typography variant="h3" className="text-2xl font-bold mt-4 mb-3">
@@ -310,7 +310,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
         {features.map((feature, index) => (
           <div key={feature.id} className="flex items-start gap-3">
             {/* Icône ou numéro */}
-            {renderFeatureIcon(feature.icon as IconType, index, 'small')}
+            {renderFeatureIcon(feature.icon as IconType, index, 'small', feature.title)}
 
             <div>
               {/* Titre */}
@@ -333,7 +333,8 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
   const renderFeatureIcon = (
     icon: IconType,
     index: number,
-    size: 'small' | 'medium' | 'large' = 'medium'
+    size: 'small' | 'medium' | 'large' = 'medium',
+    altText?: string
   ) => {
     // Dimensions selon la taille
     const dimensions = {
@@ -363,7 +364,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
             <div className={iconClasses}>
               <Image
                 src={icon}
-                alt=""
+                alt={altText || ''}
                 width={size === 'small' ? 16 : 24}
                 height={size === 'small' ? 16 : 24}
               />

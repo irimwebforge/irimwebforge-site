@@ -97,7 +97,7 @@ export const ValueProposition = ({
             <div className="max-w-md mx-auto relative h-64">
               <Image
                 src={imageUrl}
-                alt="Illustration des valeurs"
+                alt="Illustration des valeurs fondamentales du service"
                 fill
                 style={{ objectFit: 'contain' }}
                 className="rounded-lg"
@@ -133,7 +133,7 @@ export const ValueProposition = ({
               <div className="relative h-64 md:h-96 w-full overflow-hidden rounded-lg">
                 <Image
                   src={imageUrl}
-                  alt="Illustration des valeurs"
+                  alt="Illustration des valeurs fondamentales du service"
                   fill
                   style={{ objectFit: 'cover' }}
                   className="rounded-lg"

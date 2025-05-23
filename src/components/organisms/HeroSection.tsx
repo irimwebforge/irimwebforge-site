@@ -3,7 +3,6 @@
 import React from 'react';
 import { Button } from '../atoms/Button';
 import { Typography } from '../atoms/Typography';
-import { HeroPattern } from '../atoms/HeroPattern';
 
 interface HeroSectionProps {
   title: string;
@@ -43,8 +42,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       className={`py-20 px-4 flex items-center justify-center ${className}`}
       style={backgroundStyle}
     >
-      {!backgroundImage && <HeroPattern />}
-
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <Typography
           as="h1"

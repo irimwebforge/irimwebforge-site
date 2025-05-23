@@ -57,6 +57,10 @@ export const Modal: React.FC<ModalProps> = ({
 }) => {
   const [isMounted, setIsMounted] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
+  
+  // ✅ ARIA : Générer des IDs stables pour les références ARIA
+  const [titleId] = useState(() => `modal-title-${Math.random().toString(36).substr(2, 9)}`);
+  const [contentId] = useState(() => `modal-content-${Math.random().toString(36).substr(2, 9)}`);
 
   // Classes pour les tailles
   const sizeClasses = {
@@ -180,6 +184,8 @@ export const Modal: React.FC<ModalProps> = ({
       onClick={handleBackdropClick}
       aria-modal="true"
       role="dialog"
+      aria-labelledby={titleId}
+      aria-describedby={contentId}
     >
       <div
         ref={modalRef}
@@ -195,42 +201,39 @@ export const Modal: React.FC<ModalProps> = ({
         {(title || showCloseButton) && (
           <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
             {title && (
-              <div className="font-medium text-lg">
+              <div 
+                className="font-medium text-lg"
+                id={titleId}
+              >
                 {typeof title === 'string' ? <Typography variant="h3">{title}</Typography> : title}
               </div>
             )}
-
             {showCloseButton && (
               <button
-                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none"
                 onClick={onClose}
-                aria-label="Fermer"
+                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors p-1 rounded focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
+                aria-label="Fermer la boîte de dialogue"
+                type="button"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <Icon name="X" className="w-5 h-5" aria-hidden="true" />
               </button>
             )}
           </div>
         )}
 
-        {/* Corps du modal */}
-        <div className="p-4">{children}</div>
+        {/* Contenu du modal */}
+        <div 
+          className="p-4"
+          id={contentId}
+        >
+          {children}
+        </div>
 
-        {/* Pied du modal */}
+        {/* Pied de modal */}
         {footer && (
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700">{footer}</div>
+          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+            {footer}
+          </div>
         )}
       </div>
     </div>

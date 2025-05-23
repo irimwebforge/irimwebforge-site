@@ -57,25 +57,25 @@ export const Badge: React.FC<BadgeProps> = ({
       : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200',
     primary: isSolid
       ? 'bg-[var(--color-primary)] text-white'
-      : 'bg-[var(--color-primary)]/10 text-[var(--color-primary)]',
+      : 'bg-[var(--color-primary-bg-accessible)] text-[var(--color-primary-accessible)]',
     secondary: isSolid
       ? 'bg-[var(--color-secondary)] text-white'
-      : 'bg-[var(--color-secondary)]/10 text-[var(--color-secondary)]',
+      : 'bg-[var(--color-secondary-bg-accessible)] text-[var(--color-secondary-accessible)]',
     tertiary: isSolid
       ? 'bg-[var(--color-tertiary)] text-white'
-      : 'bg-[var(--color-tertiary)]/10 text-[var(--color-tertiary)]',
+      : 'bg-[var(--color-tertiary-bg-accessible)] text-[var(--color-tertiary-accessible)]',
     success: isSolid
-      ? 'bg-green-600 text-white'
-      : 'bg-green-100 text-green-800 dark:bg-green-900 dark:bg-opacity-20 dark:text-green-400',
+      ? 'bg-[var(--color-success)] text-white'
+      : 'bg-[var(--color-success)]/10 text-[var(--color-success)]',
     warning: isSolid
-      ? 'bg-yellow-500 text-white'
-      : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:bg-opacity-20 dark:text-yellow-400',
+      ? 'bg-[var(--color-warning)] text-white'
+      : 'bg-[var(--color-warning)]/10 text-[var(--color-warning)]',
     error: isSolid
-      ? 'bg-red-600 text-white'
-      : 'bg-red-100 text-red-800 dark:bg-red-900 dark:bg-opacity-20 dark:text-red-400',
+      ? 'bg-[var(--color-accent)] text-white'
+      : 'bg-[var(--color-accent)]/10 text-[var(--color-accent)]',
     info: isSolid
-      ? 'bg-blue-600 text-white'
-      : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:bg-opacity-20 dark:text-blue-400',
+      ? 'bg-[var(--color-info)] text-white'
+      : 'bg-[var(--color-info)]/10 text-[var(--color-info)]',
   };
 
   // Classes de taille

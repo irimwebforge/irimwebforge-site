@@ -56,7 +56,15 @@ export const FormField: React.FC<FormFieldProps> = ({
   fullWidth = true,
 }) => {
   const fieldId = id;
+  const errorId = `${fieldId}-error`;
+  const helperId = `${fieldId}-helper`;
   const baseClasses = cn(fullWidth ? 'w-full' : '', className);
+
+  // ✅ ARIA : Construction des IDs de description
+  const describedBy = [];
+  if (error) describedBy.push(errorId);
+  if (helperText) describedBy.push(helperId);
+  const ariaDescribedBy = describedBy.length > 0 ? describedBy.join(' ') : undefined;
 
   // Champ textarea
   if (type === 'textarea') {
@@ -64,7 +72,7 @@ export const FormField: React.FC<FormFieldProps> = ({
       <div className={cn('flex flex-col gap-1', baseClasses)}>
         <label htmlFor={fieldId} className="text-sm font-medium text-[var(--text-secondary)]">
           {label}
-          {required && <span className="ml-1 text-[var(--color-tertiary)]">*</span>}
+          {required && <span className="ml-1 text-[var(--color-tertiary)]" aria-label="requis">*</span>}
         </label>
         <textarea
           id={fieldId}
@@ -73,17 +81,32 @@ export const FormField: React.FC<FormFieldProps> = ({
           onChange={onChange}
           rows={rows}
           disabled={disabled}
+          // ✅ ARIA : Attributs d'accessibilité
+          aria-required={required}
+          aria-invalid={!!error}
+          aria-describedby={ariaDescribedBy}
           className={cn(
             'w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] surface-primary text-foreground',
             error ? 'border-red-500' : 'border-[var(--border-color)]'
           )}
         />
         {error ? (
-          <Typography variant="small" className="text-red-500 mt-1">
+          <Typography 
+            variant="small" 
+            className="text-red-500 mt-1" 
+            id={errorId}
+            // ✅ ARIA : Message d'erreur en live region
+            role="alert"
+            aria-live="polite"
+          >
             {error}
           </Typography>
         ) : helperText ? (
-          <Typography variant="small" className="text-tertiary mt-1">
+          <Typography 
+            variant="small" 
+            className="text-tertiary mt-1"
+            id={helperId}
+          >
             {helperText}
           </Typography>
         ) : null}
@@ -97,13 +120,17 @@ export const FormField: React.FC<FormFieldProps> = ({
       <div className={cn('flex flex-col gap-1', baseClasses)}>
         <label htmlFor={fieldId} className="text-sm font-medium text-[var(--text-secondary)]">
           {label}
-          {required && <span className="ml-1 text-[var(--color-tertiary)]">*</span>}
+          {required && <span className="ml-1 text-[var(--color-tertiary)]" aria-label="requis">*</span>}
         </label>
         <select
           id={fieldId}
           value={value}
           onChange={onChange}
           disabled={disabled}
+          // ✅ ARIA : Attributs d'accessibilité
+          aria-required={required}
+          aria-invalid={!!error}
+          aria-describedby={ariaDescribedBy}
           className={cn(
             'w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] surface-primary text-foreground',
             error ? 'border-red-500' : 'border-[var(--border-color)]'
@@ -115,17 +142,28 @@ export const FormField: React.FC<FormFieldProps> = ({
             </option>
           )}
           {options.map((option) => (
-            <option key={option.value} value={option.value}>
+            <option key={option.value} value={option.value} disabled={option.disabled}>
               {option.label}
             </option>
           ))}
         </select>
         {error ? (
-          <Typography variant="small" className="text-red-500 mt-1">
+          <Typography 
+            variant="small" 
+            className="text-red-500 mt-1"
+            id={errorId}
+            // ✅ ARIA : Message d'erreur en live region
+            role="alert"
+            aria-live="polite"
+          >
             {error}
           </Typography>
         ) : helperText ? (
-          <Typography variant="small" className="text-tertiary mt-1">
+          <Typography 
+            variant="small" 
+            className="text-tertiary mt-1"
+            id={helperId}
+          >
             {helperText}
           </Typography>
         ) : null}
@@ -138,7 +176,7 @@ export const FormField: React.FC<FormFieldProps> = ({
     <div className={cn('flex flex-col gap-1', baseClasses)}>
       <label htmlFor={fieldId} className="text-sm font-medium text-[var(--text-secondary)]">
         {label}
-        {required && <span className="ml-1 text-[var(--color-tertiary)]">*</span>}
+        {required && <span className="ml-1 text-[var(--color-tertiary)]" aria-label="requis">*</span>}
       </label>
       <input
         id={fieldId}
@@ -147,17 +185,32 @@ export const FormField: React.FC<FormFieldProps> = ({
         value={value}
         onChange={onChange}
         disabled={disabled}
+        // ✅ ARIA : Attributs d'accessibilité
+        aria-required={required}
+        aria-invalid={!!error}
+        aria-describedby={ariaDescribedBy}
         className={cn(
           'w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] surface-primary text-foreground',
           error ? 'border-red-500' : 'border-[var(--border-color)]'
         )}
       />
       {error ? (
-        <Typography variant="small" className="text-red-500 mt-1">
+        <Typography 
+          variant="small" 
+          className="text-red-500 mt-1"
+          id={errorId}
+          // ✅ ARIA : Message d'erreur en live region
+          role="alert"
+          aria-live="polite"
+        >
           {error}
         </Typography>
       ) : helperText ? (
-        <Typography variant="small" className="text-tertiary mt-1">
+        <Typography 
+          variant="small" 
+          className="text-tertiary mt-1"
+          id={helperId}
+        >
           {helperText}
         </Typography>
       ) : null}

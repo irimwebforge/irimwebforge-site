@@ -993,7 +993,7 @@ export default function DesignSystemPage() {
               },
             ]}
             submitButtonText="Envoyer ma demande"
-            successMessage="Merci pour votre message ! Nous vous répondrons très rapidement."
+            _successMessage="Merci pour votre message ! Nous vous répondrons très rapidement."
             variant="card"
           />
         </div>

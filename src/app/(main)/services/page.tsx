@@ -1,5 +1,3 @@
-'use client';
-
 import { PageHeader } from '@/components/organisms/PageHeader';
 import { Icon } from '@/components/atoms/Icon';
 import { Container } from '@/components/atoms/Container';
@@ -11,6 +9,13 @@ import { Button } from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
 import { CTASection } from '@/templates/CTASection';
 import { services } from '@/data/services';
+import Link from 'next/link';
+
+// Métadonnées SEO pour la page services
+export const metadata = {
+  title: 'Nos Services | IrimWebForge - Solutions Présence, Intégrée et Évolutive',
+  description: 'Découvrez nos 3 solutions : Présence (site vitrine), Intégrée (gestion complète) et Évolutive (évolution continue). Autonomie garantie.',
+}
 
 export default function Page() {
   const features = [
@@ -86,74 +91,86 @@ export default function Page() {
         badge={{ text: 'Solutions 2025', variant: 'primary' }}
       />
 
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900">
-        <Container>
-          <div className="grid gap-8 md:grid-cols-3">
-            {services.map((service) => (
-              <Card
-                key={service.id}
-                className="flex flex-col h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl"
-                padding="large"
-                variant="accent"
-                color={service.color}
-                accentPosition="top"
-              >
-                <div className="flex items-center justify-center mb-4">
-                  <Icon
-                    name={service.icon}
-                    className={`w-10 h-10 text-[var(--color-${service.color})]`}
-                  />
-                </div>
-                <Typography as="h3" variant="h4" className="mb-2 text-center font-bold">
-                  {service.title}
-                </Typography>
-                <Typography
-                  variant="p"
-                  className="mb-4 text-center text-gray-700 dark:text-gray-300"
-                >
-                  {service.shortDescription}
-                </Typography>
-                <div className="flex justify-center gap-2 mb-4">
-                  <Badge variant={service.color} className="text-base">
-                    {service.price}
-                  </Badge>
-                  <Badge variant="default" className="text-base">
-                    {service.support}
-                  </Badge>
-                </div>
-                <ul className="mb-6 space-y-2 text-sm flex-1">
-                  {service.features.slice(0, 6).map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <Icon
-                        name="Check"
-                        className={`w-4 h-4 text-[var(--color-${service.color})] mt-1`}
-                      />
-                      <span>{feature.description}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  variant="gradient"
-                  className="w-full mt-auto"
+      <section className="bg-section-primary py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <div className="grid gap-8 md:grid-cols-3">
+              {services.map((service) => (
+                <Link 
+                  key={service.id} 
                   href={`/services/${service.id}`}
+                  className="group block"
                 >
-                  {service.cta}
-                </Button>
-              </Card>
-            ))}
+                  <Card
+                    className="flex flex-col h-full transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer relative overflow-hidden"
+                    padding="large"
+                    variant="accent"
+                    color={service.color}
+                    accentPosition="top"
+                  >
+                    <div className="flex items-center justify-center mb-4">
+                      <Icon
+                        name={service.icon}
+                        className={`w-10 h-10 text-[var(--color-${service.color})] transition-transform duration-150 group-hover:scale-110`}
+                      />
+                    </div>
+                    <Typography as="h3" variant="h4" className="mb-2 text-center font-bold">
+                      {service.title}
+                    </Typography>
+                    <Typography
+                      variant="p"
+                      className="mb-4 text-center text-gray-700 dark:text-gray-300"
+                    >
+                      {service.shortDescription}
+                    </Typography>
+                    <div className="flex justify-center gap-2 mb-4">
+                      <Badge variant={service.color} className="text-base">
+                        {service.price}
+                      </Badge>
+                      <Badge variant="default" className="text-base">
+                        {service.support}
+                      </Badge>
+                    </div>
+                    <ul className="mb-6 space-y-2 text-sm flex-1">
+                      {service.features.slice(0, 6).map((feature, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <Icon
+                            name="Check"
+                            className={`w-4 h-4 text-[var(--color-${service.color})] mt-1`}
+                          />
+                          <span>{feature.description}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    {/* Indicateur visuel d'interaction */}
+                    <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                      <div className={`w-8 h-8 rounded-full bg-[var(--color-${service.color})] flex items-center justify-center shadow-lg`}>
+                        <Icon name="ArrowRight" className="w-4 h-4 text-white" />
+                      </div>
+                    </div>
+
+                    {/* Texte d'appel à l'action discret */}
+                    <div className="text-center mt-auto">
+                      <span className={`text-[var(--color-${service.color})] font-medium text-sm opacity-70 group-hover:opacity-100 transition-opacity duration-300`}>
+                        {service.cta}
+                      </span>
+                    </div>
+                  </Card>
+                </Link>
+              ))}
+            </div>
           </div>
-        </Container>
+        </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-20">
-        <Container>
+      <section className="bg-section-accent py-16">
+        <div className="container mx-auto px-4 content-overlay-soft">
           <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
               Mes différenciateurs
             </Typography>
-            <Typography variant="lead" className="mb-6 max-w-3xl mx-auto">
-              Une approche unique basée sur l'expérience et l'écoute
-            </Typography>
+
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -181,11 +198,11 @@ export default function Page() {
               </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900">
-        <Container>
+      <section className="bg-section-secondary py-16">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
               Les transformations que je vise pour vous
@@ -231,26 +248,29 @@ export default function Page() {
               </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
-      <CTASection
-        title="Échangeons sur vos défis et mon approche"
-        description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
-        primaryAction={{
-          text: 'Prendre contact',
-          url: '/contact',
-          variant: 'gradient',
-        }}
-        secondaryAction={{
-          text: 'Découvrir mon approche',
-          url: '/a-propos',
-          variant: 'secondary',
-        }}
-        variant="card"
-        backgroundColor="gradient"
-        textColor="light"
-      />
+      <section className="bg-cta-soft py-16">
+        <div className="container mx-auto px-4 content-overlay-soft">
+          <CTASection
+            title="Échangeons sur vos défis et mon approche"
+            description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
+            primaryAction={{
+              text: 'Prendre contact',
+              url: '/contact',
+              variant: 'gradient',
+            }}
+            secondaryAction={{
+              text: 'Découvrir mon approche',
+              url: '/a-propos',
+              variant: 'secondary',
+            }}
+            variant="card"
+            backgroundColor="transparent"
+          />
+        </div>
+      </section>
     </main>
   );
 }

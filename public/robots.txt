@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /ds-lab
+
+# Host
+Host: https://irimwebforge.com
+
+# Sitemaps
+Sitemap: https://irimwebforge.com/sitemap.xml

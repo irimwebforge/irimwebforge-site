@@ -119,7 +119,7 @@ const integree: Service = {
     role: "Directeur d'agence",
   },
 
-  cta: 'Je veux cette formule',
+  cta: 'Découvrir la formule Intégrée',
   seoDescription:
     "Solution intégrée d'automatisation pour entreprises. Connectez vos outils métier et optimisez vos processus.",
   seoKeywords: ['intégration', 'automatisation', 'entreprise', 'processus', 'productivité'],

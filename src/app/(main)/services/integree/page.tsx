@@ -1,3 +1,9 @@
+// Métadonnées SEO pour la solution Intégrée
+export const metadata = {
+  title: 'Solution Intégrée | IrimWebForge - Gestion complète et systèmes connectés',
+  description: 'Gestion de rendez-vous, facturation et suivi client intégrés. Tout communique naturellement pour une efficacité maximale.',
+}
+
 import { PageHeader } from '@/components/organisms/PageHeader';
 import { Container } from '@/components/atoms/Container';
 import { Typography } from '@/components/atoms/Typography';
@@ -24,7 +30,7 @@ export default function IntegrationPage() {
       />
 
       {/* Pour qui ? */}
-      <section className="py-12 sm:py-16 bg-white dark:bg-gray-900">
+      <section className="bg-section-primary py-16">
         <Container>
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">
@@ -40,7 +46,7 @@ export default function IntegrationPage() {
               {service.targetAudience.points.map((point, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg"
+                  className="flex items-start gap-3 p-4 bg-white/80 dark:bg-gray-800/80 rounded-lg backdrop-blur-sm"
                 >
                   <Icon name={point.icon} className="w-6 h-6 text-[var(--color-secondary)] mt-1" />
                   <Typography variant="p">{point.text}</Typography>
@@ -52,8 +58,8 @@ export default function IntegrationPage() {
       </section>
 
       {/* Résultats attendus */}
-      <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-900">
-        <Container>
+      <section className="bg-section-accent py-16">
+        <div className="container mx-auto px-4 content-overlay-soft">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">
               <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
@@ -70,11 +76,11 @@ export default function IntegrationPage() {
               ))}
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* Ce que ça inclut */}
-      <section className="py-12 sm:py-16 bg-white dark:bg-gray-900">
+      <section className="bg-section-secondary py-16">
         <Container>
           <div className="max-w-3xl mx-auto">
             <Card className="p-8" variant="accent" color={service.color} accentPosition="top">
@@ -116,7 +122,7 @@ export default function IntegrationPage() {
       </section>
 
       {/* Comment ça se passe */}
-      <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-900">
+      <section className="bg-section-primary py-16">
         <Container>
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">
@@ -165,10 +171,10 @@ export default function IntegrationPage() {
       </section>
 
       {/* Témoignage */}
-      <section className="py-12 sm:py-16 bg-white dark:bg-gray-900">
-        <Container>
+      {/* <section className="bg-section-accent py-16">
+        <div className="container mx-auto px-4 content-overlay-soft">
           <div className="max-w-3xl mx-auto">
-            <Card className="bg-gray-50 dark:bg-gray-800" padding="large">
+            <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm" padding="large">
               <blockquote className="text-center">
                 <Typography variant="lead" className="mb-6 italic">
                   "{service.testimonial.quote}"
@@ -184,12 +190,12 @@ export default function IntegrationPage() {
               </blockquote>
             </Card>
           </div>
-        </Container>
-      </section>
+        </div>
+      </section> */}
 
       {/* CTA */}
-      <section className="py-12 sm:py-16">
-        <Container>
+      <section className="bg-cta-soft py-16">
+        <div className="container mx-auto px-4 content-overlay-soft">
           <div className="max-w-3xl mx-auto text-center">
             <Typography as="h2" variant="h2" className="mb-6 font-bold italic">
               Prêt à automatiser vos processus ?
@@ -201,7 +207,7 @@ export default function IntegrationPage() {
               Réserver un temps d'échange
             </Button>
           </div>
-        </Container>
+        </div>
       </section>
     </main>
   );

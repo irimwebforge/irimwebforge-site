@@ -1,5 +1,3 @@
-'use client';
-
 import { PageHeader } from '@/components/organisms/PageHeader';
 import { Typography } from '@/components/atoms/Typography';
 import { Container } from '@/components/atoms/Container';
@@ -10,17 +8,15 @@ import { StatsShowcase } from '@/templates/StatsShowcase';
 import { Alert } from '@/components/molecules/Alert';
 import { NavLink } from '@/components/atoms/NavLink';
 
-export default function Page() {
-  // Bannière de vision
-  const _VisionBanner = () => (
-    <Alert variant="info" title="" className="mb-8 mx-auto max-w-5xl">
-      <p className="text-sm text-blue-800 dark:text-blue-200">
-        Cette page présente ma vision d'un processus idéal, inspiré par mon expérience avec le
-        projet Corps & Sens. Je privilégie la transparence sur mon approche en développement.
-      </p>
-    </Alert>
-  );
+// Métadonnées SEO pour la page processus
+export const metadata = {
+  title: 'Notre Processus | IrimWebForge - Comment nous créons votre solution sur mesure',
+  description: 'Découvrez notre méthode de travail : de l\'écoute initiale au déploiement, chaque étape pensée pour votre autonomie et votre sérénité.',
+}
 
+export default function Page() {
+  // ✅ Message d'authenticité intégré dans le PageHeader plutôt qu'en bannière séparée
+  
   const processSteps = [
     {
       id: 'step-1',
@@ -130,7 +126,7 @@ export default function Page() {
     <main className="overflow-x-hidden">
       <PageHeader
         title="Une approche qui place votre métier au centre"
-        description="Ma vision: vous accompagner de l'idée à l'autonomie en comprenant d'abord votre activité avant toute considération technique."
+        description="Ma méthode testée avec le projet Corps & Sens : comprendre d'abord votre activité avant toute considération technique. Ce qui a transformé 7h d'administration en 45 minutes par semaine."
         align="center"
         size="medium"
         pattern={true}
@@ -140,7 +136,7 @@ export default function Page() {
         <VisionBanner />
       </Container> */}
 
-      <section className="py-12">
+      <section className="bg-section-primary py-16">
         <Container>
           {/* <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
@@ -162,15 +158,19 @@ export default function Page() {
         </Container>
       </section>
 
-      <StatsShowcase
-        title="Mes engagements pour une collaboration de qualité"
-        description="Des principes fondamentaux qui guideraient notre travail ensemble"
-        stats={stats}
-        layout="horizontal"
-        backgroundColor="light"
-      />
+      <section className="bg-section-accent py-16">
+        <div className="content-overlay-soft">
+          <StatsShowcase
+            title="Mes engagements pour une collaboration de qualité"
+            description="Des principes fondamentaux qui guideraient notre travail ensemble"
+            stats={stats}
+            layout="horizontal"
+            backgroundColor="light"
+          />
+        </div>
+      </section>
 
-      <section className="py-12">
+      <section className="bg-section-secondary py-16">
         <Container>
           <div className="max-w-3xl mx-auto">
             <Typography as="h2" variant="h2" className="mb-8 text-center font-bold italic">
@@ -188,8 +188,8 @@ export default function Page() {
         </Container>
       </section>
 
-      <section className="py-12 bg-gray-50 dark:bg-gray-900">
-        <Container>
+      <section className="bg-cta-soft py-16">
+        <Container className="content-overlay-soft">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <Typography as="h2" variant="h2" className="mb-6 font-bold italic">

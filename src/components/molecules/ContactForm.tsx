@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FormField } from './FormField';
 import { Button } from '../atoms/Button';
 import { Typography } from '../atoms/Typography';
+import { useFormAnnouncements } from '../../hooks/useAccessibility';
 
 export interface ContactFormProps {
   className?: string;
@@ -30,6 +31,14 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   loading = false,
   resetOnSuccess = true,
 }) => {
+  // ✅ ACCESSIBILITÉ : Refs pour la gestion du focus
+  const formRef = useRef<HTMLFormElement>(null);
+  const firstErrorRef = useRef<HTMLDivElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
+  
+  // ✅ ACCESSIBILITÉ : Hook pour les annonces
+  const { announceError, announceSuccess } = useFormAnnouncements();
+
   // États du formulaire
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
@@ -111,6 +120,22 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     }
 
     setErrors(newErrors);
+    
+    // ✅ ACCESSIBILITÉ : Annoncer les erreurs et déplacer le focus
+    if (Object.keys(newErrors).length > 0) {
+      const firstError = Object.keys(newErrors)[0];
+      const firstErrorMessage = newErrors[firstError];
+      announceError(firstError, firstErrorMessage);
+      
+      // Déplacer le focus vers le premier champ en erreur
+      setTimeout(() => {
+        const firstErrorElement = document.getElementById(`contact-${firstError}`);
+        if (firstErrorElement) {
+          firstErrorElement.focus();
+        }
+      }, 100);
+    }
+    
     return Object.keys(newErrors).length === 0;
   };
 
@@ -136,13 +161,23 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       }
 
       setIsSuccess(true);
+      
+      // ✅ ACCESSIBILITÉ : Annoncer le succès et déplacer le focus
+      announceSuccess(successMessage);
+      setTimeout(() => {
+        if (successRef.current) {
+          successRef.current.focus();
+        }
+      }, 100);
+      
       // Réinitialiser le formulaire si demandé
       if (resetOnSuccess) {
         resetForm();
       }
     } catch {
-      // Suppression du paramètre error non utilisé
-      setSubmitError('Une erreur est survenue, veuillez réessayer plus tard.');
+      const errorMessage = 'Une erreur est survenue, veuillez réessayer plus tard.';
+      setSubmitError(errorMessage);
+      announceError('formulaire', errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -161,13 +196,35 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   if (isSuccess) {
     return (
       <div
+        ref={successRef}
         className={`p-6 rounded-lg border-2 border-[var(--color-primary)] bg-[var(--color-primary)] bg-opacity-5 ${className}`}
+        role="region"
+        aria-labelledby="success-title"
+        tabIndex={-1}
       >
-        <Typography variant="h3" className="text-[var(--color-primary)] mb-3">
+        <Typography 
+          variant="h3" 
+          className="text-[var(--color-primary)] mb-3"
+          id="success-title"
+        >
           Demande envoyée !
         </Typography>
         <Typography variant="p">{successMessage}</Typography>
-        <Button variant="outline" className="mt-4" onClick={() => setIsSubmitted(false)}>
+        <Button 
+          variant="outline" 
+          className="mt-4" 
+          onClick={() => {
+            setIsSuccess(false);
+            setIsSubmitted(false);
+            // ✅ ACCESSIBILITÉ : Déplacer le focus vers le premier champ
+            setTimeout(() => {
+              const firstField = document.getElementById('contact-name');
+              if (firstField) {
+                firstField.focus();
+              }
+            }, 100);
+          }}
+        >
           Envoyer un nouveau message
         </Button>
       </div>
@@ -175,10 +232,33 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   }
 
   return (
-    <form onSubmit={handleSubmit} className={`space-y-5 ${className}`}>
-      {/* Message d'erreur global */}
+    <form 
+      ref={formRef}
+      onSubmit={handleSubmit} 
+      className={`space-y-5 ${className}`}
+      // ✅ ARIA : Attributs de formulaire
+      role="form"
+      aria-labelledby="contact-form-title"
+      noValidate
+    >
+      {/* ✅ ACCESSIBILITÉ : Titre du formulaire pour les lecteurs d'écran */}
+      <Typography 
+        variant="h2" 
+        className="sr-only" 
+        id="contact-form-title"
+      >
+        Formulaire de contact
+      </Typography>
+
+      {/* ✅ ARIA : Message d'erreur global avec live region */}
       {submitError && (
-        <div className="p-3 rounded-md bg-red-50 border border-red-200 text-red-600 mb-4">
+        <div 
+          ref={firstErrorRef}
+          className="p-3 rounded-md bg-red-50 border border-red-200 text-red-600 mb-4"
+          role="alert"
+          aria-live="assertive"
+          tabIndex={-1}
+        >
           <Typography variant="small">{submitError}</Typography>
         </div>
       )}
@@ -193,73 +273,84 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           value={formData.name}
           onChange={handleChange}
           error={errors.name}
+          helperText="Votre nom et prénom complets"
         />
 
         {/* Email */}
         <FormField
           id="contact-email"
-          label="Adresse email"
           type="email"
-          placeholder="exemple@domaine.com"
+          label="Adresse email"
+          placeholder="votre@email.com"
           required
           value={formData.email}
           onChange={handleChange}
           error={errors.email}
+          helperText="Nous vous répondrons à cette adresse"
         />
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Téléphone */}
         <FormField
           id="contact-phone"
-          label="Téléphone"
           type="tel"
+          label="Téléphone"
           placeholder="06 12 34 56 78"
-          helperText="Facultatif"
           value={formData.phone}
           onChange={handleChange}
+          helperText="Optionnel - pour un premier échange téléphonique"
         />
 
         {/* Type de projet */}
         <FormField
           id="contact-projectType"
-          label="Type de projet"
           type="select"
-          placeholder="Sélectionnez une option"
-          options={projectTypeOptions}
+          label="Type de projet"
           required
           value={formData.projectType}
           onChange={handleChange}
           error={errors.projectType}
+          options={projectTypeOptions}
+          placeholder="Choisissez un type de projet"
+          helperText="Sélectionnez le type qui correspond le mieux à votre besoin"
         />
       </div>
 
       {/* Message */}
       <FormField
         id="contact-message"
-        label="Votre projet"
         type="textarea"
-        placeholder="Décrivez votre projet, vos besoins et votre univers"
-        helperText="Plus vous serez précis, plus la réponse sera pertinente"
-        rows={6}
+        label="Votre message"
+        placeholder="Décrivez-nous votre projet, vos besoins, vos contraintes..."
         required
         value={formData.message}
         onChange={handleChange}
         error={errors.message}
+        rows={6}
+        helperText="Plus vous êtes précis, mieux nous pourrons vous répondre"
       />
 
-      {/* Bouton d'envoi */}
-      <div className="mt-6">
-        <Button
-          type="submit"
-          variant="primary"
-          fullWidth
-          loading={isSubmitting || loading}
-          disabled={isSubmitting || loading}
-        >
-          {submitButtonText}
-        </Button>
-      </div>
+      {/* ✅ ARIA : Bouton de soumission avec états appropriés */}
+      <Button
+        type="submit"
+        variant="gradient"
+        size="large"
+        fullWidth
+        loading={isSubmitting || loading}
+        disabled={isSubmitting || loading}
+        aria-describedby="submit-help"
+        className="shine-effect"
+      >
+        {isSubmitting ? 'Envoi en cours...' : submitButtonText}
+      </Button>
+      
+      {/* ✅ ACCESSIBILITÉ : Information sur la soumission */}
+      <Typography 
+        variant="small" 
+        className="text-gray-500 text-center"
+        id="submit-help"
+      >
+        En envoyant ce formulaire, vous acceptez d'être recontacté concernant votre demande.
+      </Typography>
     </form>
   );
 };

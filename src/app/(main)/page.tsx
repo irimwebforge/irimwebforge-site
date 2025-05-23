@@ -1,37 +1,23 @@
+// Métadonnées SEO pour la page d'accueil
+export const metadata = {
+  title: 'IrimWebForge - Interfaces admin sur mesure pour votre autonomie numérique',
+  description: 'Libérez-vous de 7h d\'administration par semaine. Solutions web personnalisées pour thérapeutes et indépendants. Simplicité, autonomie et excellence.',
+}
+
 import React from 'react';
 import { HeroSection } from '@/components/organisms/HeroSection';
-import { CTASection } from '@/templates/CTASection';
 import { Container } from '@/components/atoms/Container';
 import { Typography } from '@/components/atoms/Typography';
-import Image from 'next/image';
 import { Icon } from '@/components/atoms/Icon';
 import { Badge } from '@/components/atoms/Badge';
 import { Card } from '@/components/molecules/Card';
-import { Timeline } from '@/components/molecules/Timeline';
+import { HeroPattern } from '@/components/atoms/HeroPattern';
+import dynamic from 'next/dynamic';
 
-const colorMap = {
-  primary: {
-    bg: 'bg-primary-100 dark:bg-primary-900',
-    text: 'text-primary-600 dark:text-primary-400',
-    title: 'text-primary-700 dark:text-primary-300',
-    badge: 'primary',
-    border: 'border-[var(--color-primary)]',
-  },
-  secondary: {
-    bg: 'bg-secondary-100 dark:bg-secondary-900',
-    text: 'text-secondary-600 dark:text-secondary-400',
-    title: 'text-secondary-700 dark:text-secondary-300',
-    badge: 'secondary',
-    border: 'border-[var(--color-secondary)]',
-  },
-  tertiary: {
-    bg: 'bg-tertiary-100 dark:bg-tertiary-900',
-    text: 'text-tertiary-600 dark:text-tertiary-400',
-    title: 'text-tertiary-700 dark:text-tertiary-300',
-    badge: 'tertiary',
-    border: 'border-[var(--color-tertiary)]',
-  },
-};
+// Import dynamique des composants non critiques pour optimiser le LCP
+const CTASection = dynamic(() => import('@/templates/CTASection').then(mod => ({ default: mod.CTASection })), {
+  loading: () => <div className="animate-pulse h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
+});
 
 // Blocs pour la section "Mon parcours à vos côtés"
 const parcoursBlocks = [
@@ -70,18 +56,8 @@ const parcoursBlocks = [
 ];
 
 export default function HomePage() {
-  // Bannière explicative de vision
-  const _VisionNotice = () => (
-    <div className="bg-amber-50 dark:bg-[var(--color-tertiary)]/10 border-b border-amber-200 dark:border-[var(--color-tertiary)]/30 py-2">
-      <Container>
-        <p className="text-sm text-[var(--color-tertiary)] text-center">
-          Cette page présente mon parcours: de l'expérience fondatrice avec mon épouse thérapeute à
-          ma vision pour aider d'autres indépendants à libérer leur temps administratif.
-        </p>
-      </Container>
-    </div>
-  );
-
+  // ✅ Message d'authenticité intégré dans le HeroSection plutôt qu'en bannière séparée
+  
   // Données mises à jour pour la section "Transformations concrètes"
   const clientBenefits = [
     {
@@ -113,46 +89,20 @@ export default function HomePage() {
     },
   ];
 
-  // Projet réel avec l'épouse thérapeute
-  const featuredProject = {
-    id: 'corps-et-sens',
-    title: 'Corps & Sens: Un cas réel de transformation',
-    slug: 'corps-et-sens',
-    description:
-      "Pour mon épouse thérapeute, j'ai créé une interface sur mesure qui a transformé sa gestion de site. Cette expérience concrète a formé ma vision des solutions que je souhaite proposer.",
-    imageUrl: '/images/projects/corps-et-sens.jpg',
-    tags: [
-      { id: 'tag1', label: 'De 7h à 45min', color: 'primary' },
-      { id: 'tag2', label: 'Projet personnel', color: 'secondary' },
-    ],
-    clientName: 'Projet personnel',
-    transformation: {
-      before: 'LE DEFI',
-      after: 'LE RESULTAT',
-    },
-  };
 
   return (
     <main className="overflow-x-hidden">
-      {/* Bandeau de vision */}
-      {/* <VisionNotice /> */}
+      {/* Suppression du bandeau séparé - message intégré dans le hero */}
 
-      {/* 1. HeroSection simplifiée et transparente */}
-      <section className="min-h-[90vh] flex items-center relative">
-        <div className="absolute inset-0 z-0 opacity-10">
-          <Image
-            src="/images/temp/hero-background.svg"
-            alt=""
-            fill
-            style={{ objectFit: 'cover' }}
-            priority
-            loading="eager"
-          />
-        </div>
+      {/* Hero Section */}
+      <section className="bg-hero-soft py-16 lg:py-24 relative">
+        <HeroPattern className="absolute inset-0 z-0" />
+        <div className="container mx-auto px-4 relative z-10">
         <HeroSection
           title="Le pont entre votre vision et sa concrétisation digitale"
           subtitle={
-            "Je crée des espaces numériques où vous vous sentez chez vous des interfaces pensées pour votre quotidien.   Parce que votre temps mérite d'être consacré à votre passion, pas à votre site web."
+            "Je crée des espaces numériques où vous vous sentez chez vous - des interfaces pensées pour votre quotidien.\n\n" +
+            "Parce que votre temps mérite d'être consacré à votre passion, pas à votre site web."
           }
           ctaText="Parlons de votre projet"
           ctaHref="/contact"
@@ -160,15 +110,14 @@ export default function HomePage() {
           secondaryCtaHref="/processus"
           className="w-full space-y-12"
         />
-        {/* Transition vers la section suivante */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-gray-50 dark:to-gray-900" />
+        </div>
       </section>
 
       {/* 2. Histoire authentique et vision professionnelle */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900 relative" id="vision">
+      <section className="bg-section-secondary py-16">
         <Container className="max-w-4xl text-center space-y-10 mb-12 relative z-10">
           <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
-            Un guide, pas un simple technicien
+          Ce que j'ai appris en chemin
           </Typography>
           <Typography variant="lead" className="text-gray-700 dark:text-gray-200 leading-relaxed">
             {`En regardant mon épouse thérapeute lutter avec son site web chaque dimanche, j'ai compris l'évidence : ce n'est pas à vous de vous adapter aux outils, mais aux outils de s'adapter à vous. Cette conviction guide chacun de mes projets aujourd'hui.`}
@@ -182,14 +131,11 @@ export default function HomePage() {
             </Typography>
           </div>
         </Container>
-        {/* Transition vers la section suivante */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-50 dark:from-gray-900 to-transparent" />
       </section>
 
       {/* 3. Transformations possibles avec transparence */}
-      <section className="py-12 sm:py-16 lg:py-20 relative overflow-hidden" id="transformation">
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/10 to-transparent opacity-20 dark:from-[var(--color-primary)]/20 dark:opacity-10"></div>
-        <Container className="relative z-10 mb-12">
+      <section className="bg-section-accent py-16">
+        <div className="container mx-auto px-4 content-overlay-soft">
           <div className="text-center mb-12">
             <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
               Ce que mes solutions apportent concrètement
@@ -198,18 +144,17 @@ export default function HomePage() {
               variant="lead"
               className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
             >
-              Pour vous libérer, concrètement :
+              Ce que vous gagnez vraiment :
             </Typography>
           </div>
 
           <div className="grid md:grid-cols-3 gap-12 items-stretch">
             {clientBenefits.map((benefit) => {
-              const color = benefit.color as 'primary' | 'secondary' | 'tertiary';
               return (
                 <Card
                   key={benefit.id}
                   variant="accent"
-                  color={color}
+                  color={benefit.color as 'primary' | 'secondary' | 'tertiary'}
                   accentPosition="top"
                   padding="large"
                   hover
@@ -217,28 +162,27 @@ export default function HomePage() {
               group flex flex-col items-center text-center h-full
               transition-transform duration-150 ease-in-out
               hover:scale-105 hover:shadow-xl
-              ${colorMap[color].border}
             `}
                   title={
                     <div>
                       <Badge
-                        variant={colorMap[color].badge as 'primary' | 'secondary' | 'tertiary'}
+                        variant={benefit.color as 'primary' | 'secondary' | 'tertiary'}
                         className="mb-2 transition-colors duration-150 group-hover:bg-opacity-80"
                       >
                         {benefit.badge}
                       </Badge>
                       <div className="mb-4 flex justify-center">
                         <div
-                          className={`w-16 h-16 rounded-full flex items-center justify-center transition-transform duration-150 group-hover:scale-110 group-hover:shadow-lg ${colorMap[color].bg}`}
+                          className={`w-16 h-16 rounded-full flex items-center justify-center transition-transform duration-150 group-hover:scale-110 group-hover:shadow-lg bg-[var(--color-${benefit.color})]/10 dark:bg-[var(--color-${benefit.color})]/20`}
                         >
                           <Icon
                             name={benefit.iconName as import('@/components/atoms/Icon').IconName}
-                            className={`w-8 h-8 ${colorMap[color].text}`}
+                            className={`w-8 h-8 text-[var(--color-${benefit.color})]`}
                             aria-hidden="true"
                           />
                         </div>
                       </div>
-                      <span className={`text-xl font-bold ${colorMap[color].title}`}>
+                      <span className={`text-xl font-bold text-[var(--color-${benefit.color})]`}>
                         {benefit.title}
                       </span>
                     </div>
@@ -254,13 +198,11 @@ export default function HomePage() {
               );
             })}
           </div>
-        </Container>
-
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-white dark:to-gray-900" />
+        </div>
       </section>
 
       {/* 4. Cas réel Corps & Sens avec transparence */}
-      <section className="py-8 bg-gray-50 dark:bg-gray-900">
+      <section className="bg-section-primary py-16">
         <Container className="text-center">
           <Typography variant="h3" className="font-bold italic mb-2">
             Exemple concret : Corps & Sens
@@ -277,7 +219,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. Mon parcours d'évolution professionnelle */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50/90 via-white/80 to-[var(--color-secondary)]/10 dark:from-gray-900 dark:via-gray-900/80 dark:to-[var(--color-secondary)]/20 relative">
+      <section className="bg-section-secondary py-16">
         <Container className="mb-12">
           <div className="text-center mb-12">
             <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
@@ -289,53 +231,6 @@ export default function HomePage() {
             >
               Mon chemin, étape par étape, pour mieux vous accompagner.
             </Typography>
-          </div>
-
-          {/* Timeline centrée */}
-          <div className="max-w-2xl mx-auto mb-16">
-            <Timeline
-              steps={[
-                {
-                  id: 'step-1',
-                  title: 'Reconversion & formation',
-                  description:
-                    '13 mois pour maîtriser le développement web et comprendre les besoins réels des indépendants.',
-                  date: '2023',
-                  icon: 'Code',
-                  color: 'primary',
-                },
-                {
-                  id: 'step-2',
-                  title: 'Premier projet transformateur',
-                  description:
-                    "Une interface sur-mesure pour mon épouse thérapeute : 7h d'administration réduites à 45min.",
-                  date: '2024',
-                  icon: 'Lightbulb',
-                  color: 'secondary',
-                },
-                {
-                  id: 'step-3',
-                  title: "Lancement d'IrimWebForge",
-                  description:
-                    "Aider d'autres indépendants à retrouver du temps et de l'autonomie.",
-                  date: '2024',
-                  icon: 'Rocket',
-                  color: 'tertiary',
-                },
-                {
-                  id: 'step-4',
-                  title: 'Outils sur-mesure en évolution',
-                  description:
-                    'Des applications pensées pour évoluer avec vos besoins, étape par étape.',
-                  date: '2025+',
-                  icon: 'TrendingUp',
-                  color: 'primary',
-                },
-              ]}
-              orientation="vertical"
-              withDates={true}
-              className="transition-all duration-300 hover:opacity-95"
-            />
           </div>
 
           {/* Titre de contexte pour les blocs */}
@@ -396,7 +291,7 @@ export default function HomePage() {
                       Applications et outils qui vont plus loin que le site vitrine.
                     </Typography>
                     <ul className="list-disc pl-5 text-gray-600 dark:text-gray-400 text-sm">
-                      <li>MoodCycle : application de suivi en cours</li>
+                      <li>MoodCycle : application de suivi en cours</li>
                       <li>Connexion naturelle entre vos outils et vos données</li>
                     </ul>
                   </>
@@ -408,18 +303,20 @@ export default function HomePage() {
       </section>
 
       {/* 6. CTA honnête et direct */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)]">
-        <CTASection
-          title="Échangeons sur vos défis quotidiens"
-          description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
-          primaryAction={{
-            text: 'Prendre contact',
-            url: '/contact',
-            variant: 'gradient',
-          }}
-          backgroundColor="gradient"
-          align="center"
-        />
+      <section className="bg-cta-soft py-16">
+        <div className="container mx-auto px-4 content-overlay-soft">
+          <CTASection
+            title="Échangeons sur vos défis quotidiens"
+            description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
+            primaryAction={{
+              text: 'Prendre contact',
+              url: '/contact',
+              variant: 'gradient',
+            }}
+            backgroundColor="transparent"
+            align="center"
+          />
+        </div>
       </section>
     </main>
   );

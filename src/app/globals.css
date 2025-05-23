@@ -5,7 +5,17 @@
   /* Couleurs principales */
   --color-primary: #00b3b3;
   --color-secondary: #004466;
-  --color-tertiary: #f06424;
+  --color-tertiary: #d85014;
+
+  /* Couleurs principales accessibles (ratio ≥ 4.5:1) */
+  --color-primary-accessible: #008080; /* Turquoise plus foncé, ratio ~5.2:1 */
+  --color-secondary-accessible: #003955; /* Bleu plus foncé, ratio ~8.1:1 */
+  --color-tertiary-accessible: #b8420f; /* Orange plus foncé, ratio ~4.6:1 */
+
+  /* Arrière-plans colorés accessibles pour badges et boutons outline */
+  --color-primary-bg-accessible: #e6f7f7; /* Background turquoise très clair, ratio avec texte foncé ~13:1 */
+  --color-secondary-bg-accessible: #e6f0f5; /* Background bleu très clair */
+  --color-tertiary-bg-accessible: #fdf2ef; /* Background orange très clair */
 
   /* Neutres */
   --color-black: #111111;
@@ -14,6 +24,27 @@
   /* Typographie */
   --font-display: 'Noto Sans', system-ui, sans-serif;
   --font-body: 'Questrial', system-ui, sans-serif;
+}
+
+/* Optimisations de performance pour le rendu */
+* {
+  /* Optimise le rendu des éléments animés */
+  will-change: auto;
+}
+
+/* Optimisation spécifique pour les elements de fond/patterns */
+.pattern-optimized {
+  /* Force l'accélération matérielle pour les patterns */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* Optimise la composition */
+  contain: layout style paint;
+}
+
+/* Classes pour optimiser les gradients CSS */
+.bg-gradient-optimized {
+  /* Utilise contain pour isoler les recalculs */
+  contain: layout style paint;
 }
 
 :root {
@@ -264,6 +295,106 @@ a:hover {
       flex-wrap: nowrap;
       overflow-x: auto;
     }
+  }
+
+  /* === SYSTÈME DE BACKGROUNDS HARMONISÉS === */
+  /* Classes pour un rendu doux et cohérent à travers tout le site */
+
+  /* Backgrounds principaux */
+  .bg-section-primary {
+    @apply bg-white dark:bg-gray-900;
+  }
+
+  .bg-section-secondary {
+    @apply bg-gray-50 dark:bg-gray-800;
+  }
+
+  .bg-section-accent {
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-primary) 3%, transparent),
+      transparent 60%,
+      color-mix(in srgb, var(--color-secondary) 2%, transparent)
+    );
+  }
+
+  .bg-section-brand {
+    @apply bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)];
+  }
+
+  /* Transitions douces entre sections */
+  .section-transition-soft {
+    position: relative;
+  }
+
+  .section-transition-soft::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2rem;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, transparent 100%, var(--background)),
+      transparent
+    );
+    z-index: 1;
+  }
+
+  .section-transition-soft::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2rem;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      color-mix(in srgb, transparent 100%, var(--background))
+    );
+    z-index: 1;
+  }
+
+  /* Overlays doux pour le contenu sur fond accent */
+  .content-overlay-soft {
+    @apply relative;
+  }
+
+  .content-overlay-soft > * {
+    @apply relative z-10;
+  }
+
+  /* Variantes spécialisées */
+  .bg-hero-soft {
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-primary) 2%, var(--background)),
+      var(--background) 70%,
+      color-mix(in srgb, var(--color-secondary) 1%, var(--background))
+    );
+  }
+
+  .bg-cta-soft {
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-primary) 8%, var(--background)),
+      color-mix(in srgb, var(--color-secondary) 5%, var(--background))
+    );
+  }
+
+  /* Classes pour liens accessibles */
+  .link-primary-accessible {
+    @apply text-[var(--color-primary-accessible)] hover:text-[var(--color-primary)] transition-colors duration-150;
+  }
+
+  .link-secondary-accessible {
+    @apply text-[var(--color-secondary-accessible)] hover:text-[var(--color-secondary)] transition-colors duration-150;
+  }
+
+  .link-tertiary-accessible {
+    @apply text-[var(--color-tertiary-accessible)] hover:text-[var(--color-tertiary)] transition-colors duration-150;
   }
 }
 

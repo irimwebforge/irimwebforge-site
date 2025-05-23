@@ -129,7 +129,7 @@ export const ProjectShowcase = ({
       ? projects.filter((project) =>
           selectedCategories.every((cat) => project.tags.some((tag) => tag.label === cat))
         )
-      : projects;
+    : projects;
 
   // Pagination par flèches
   const projectsPerPage = 3;
@@ -171,65 +171,83 @@ export const ProjectShowcase = ({
 
         {/* Filtres adaptés au style demandé */}
         {showFilters && (
-          <div className="mb-6">
-            <div className="flex flex-wrap justify-center gap-1.5 max-w-4xl mx-auto">
+              <div className="mb-6">
+            <div className="flex flex-col gap-2 max-w-5xl mx-auto">
               {/* Bouton Tous */}
-              <button
-                onClick={() => setSelectedCategories([])}
-                className={`px-3 py-1 text-sm rounded-full border transition-all font-medium ${
-                  selectedCategories.length === 0
-                    ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] shadow'
-                    : 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)] hover:bg-[var(--color-primary)]/20'
-                }`}
-              >
-                Tous
-              </button>
-              {/* Solutions - couleur primaire */}
-              {tagCategories.solution.map((tag) => (
-                <button
-                  key={`solution-${tag}`}
-                  onClick={() => handleCategoryToggle(tag)}
-                  className={`px-3 py-1 text-sm rounded-full border transition-all font-medium ${
-                    selectedCategories.includes(tag)
+              <div className="flex justify-center mb-2">
+                  <button
+                  onClick={() => setSelectedCategories([])}
+                  className={`px-4 py-2 text-sm rounded-full border transition-all font-medium ${
+                    selectedCategories.length === 0
                       ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] shadow'
                       : 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)] hover:bg-[var(--color-primary)]/20'
-                  }`}
-                >
-                  {tag
-                    .replace('Site + Interface Admin', 'Admin')
-                    .replace('Application Mobile', 'Mobile')}
-                </button>
-              ))}
-              {/* Clientèle - couleur secondaire */}
-              {tagCategories.clientele.map((tag) => (
-                <button
-                  key={`clientele-${tag}`}
-                  onClick={() => handleCategoryToggle(tag)}
-                  className={`px-3 py-1 text-sm rounded-full border transition-all font-medium ${
-                    selectedCategories.includes(tag)
-                      ? 'bg-[var(--color-secondary)] text-white border-[var(--color-secondary)] shadow'
-                      : 'bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] border-[var(--color-secondary)] hover:bg-[var(--color-secondary)]/20'
-                  }`}
-                >
-                  {tag.replace('Artisans & Commerçants', 'Artisans')}
-                </button>
-              ))}
-              {/* Statut - couleur tertiaire */}
-              {tagCategories.statut.map((tag) => (
-                <button
-                  key={`statut-${tag}`}
-                  onClick={() => handleCategoryToggle(tag)}
-                  className={`px-3 py-1 text-sm rounded-full border transition-all font-medium ${
-                    selectedCategories.includes(tag)
-                      ? 'bg-[var(--color-tertiary)] text-white border-[var(--color-tertiary)] shadow'
-                      : 'bg-[var(--color-tertiary)]/10 text-[var(--color-tertiary)] border-[var(--color-tertiary)] hover:bg-[var(--color-tertiary)]/20'
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-          </div>
+                    }`}
+                  >
+                  Tous les projets
+                  </button>
+              </div>
+
+              {/* Solutions - ligne avec catégorie + filtres */}
+              {tagCategories.solution.length > 0 && (
+                <div className="flex flex-wrap items-center justify-center gap-2">
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 mr-2">Type de solution:</span>
+                  {tagCategories.solution.map((tag) => (
+                    <button
+                      key={`solution-${tag}`}
+                      onClick={() => handleCategoryToggle(tag)}
+                      className={`px-3 py-1 text-sm rounded-full border transition-all font-medium ${
+                        selectedCategories.includes(tag)
+                          ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] shadow'
+                          : 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)] hover:bg-[var(--color-primary)]/20'
+                      }`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Clientèle - ligne avec catégorie + filtres */}
+              {tagCategories.clientele.length > 0 && (
+                <div className="flex flex-wrap items-center justify-center gap-2">
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 mr-2">Clientèle:</span>
+                  {tagCategories.clientele.map((tag) => (
+                    <button
+                      key={`clientele-${tag}`}
+                      onClick={() => handleCategoryToggle(tag)}
+                      className={`px-3 py-1 text-sm rounded-full border transition-all font-medium ${
+                        selectedCategories.includes(tag)
+                          ? 'bg-[var(--color-secondary)] text-white border-[var(--color-secondary)] shadow'
+                          : 'bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] border-[var(--color-secondary)] hover:bg-[var(--color-secondary)]/20'
+                      }`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Statut - ligne avec catégorie + filtres */}
+              {tagCategories.statut.length > 0 && (
+                <div className="flex flex-wrap items-center justify-center gap-2">
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 mr-2">Statut:</span>
+                  {tagCategories.statut.map((tag) => (
+                    <button
+                      key={`statut-${tag}`}
+                      onClick={() => handleCategoryToggle(tag)}
+                      className={`px-3 py-1 text-sm rounded-full border transition-all font-medium ${
+                        selectedCategories.includes(tag)
+                          ? 'bg-[var(--color-tertiary)] text-white border-[var(--color-tertiary)] shadow'
+                          : 'bg-[var(--color-tertiary)]/10 text-[var(--color-tertiary)] border-[var(--color-tertiary)] hover:bg-[var(--color-tertiary)]/20'
+                      }`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                    </div>
+                  )}
+                </div>
+              </div>
         )}
 
         {/* Message si aucun projet ne correspond au filtre */}

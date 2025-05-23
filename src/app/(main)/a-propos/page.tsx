@@ -1,13 +1,18 @@
-'use client';
+// Métadonnées SEO pour la page à propos
+export const metadata = {
+  title: 'À Propos | IrimWebForge - Eric Zuber, créateur d\'espaces numériques sur mesure',
+  description: 'Découvrez mon parcours, de l\'expérience avec mon épouse thérapeute à ma vision pour libérer les indépendants de leur charge administrative.',
+}
 
 import { PageHeader } from '@/components/organisms/PageHeader';
 import { Typography } from '@/components/atoms/Typography';
-import { Container } from '@/components/atoms/Container';
 import { Icon, IconName } from '@/components/atoms/Icon';
 import { Timeline } from '@/components/molecules/Timeline';
 import { CTASection } from '@/templates/CTASection';
 import { Divider } from '@/components/atoms/Divider';
 import Image from 'next/image';
+import { Card } from '@/components/molecules/Card';
+import { Badge } from '@/components/atoms/Badge';
 
 export default function Page() {
   const journeySteps = [
@@ -86,76 +91,79 @@ export default function Page() {
       />
 
       {/* Présentation personnelle */}
-      <section className="py-12 sm:py-16 lg:py-20">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative aspect-square w-full max-w-xs md:max-w-sm rounded-lg overflow-hidden shadow-lg order-2 md:order-1">
-              <Image
-                src="/images/about/eric-profile.png"
-                alt="Eric Zuber"
-                fill
-                style={{ objectFit: 'cover' }}
-                className="hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, 400px"
-              />
-            </div>
+      <section className="bg-section-primary py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto space-y-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="relative aspect-square w-full max-w-xs md:max-w-sm rounded-lg overflow-hidden shadow-lg order-2 md:order-1">
+                <Image
+                  src="/images/about/eric-profile.png"
+                  alt="Eric Zuber"
+                  fill
+                  priority
+                  style={{ objectFit: 'cover' }}
+                  className="hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 400px"
+                />
+              </div>
 
-            <div className="order-1 md:order-2">
-              <Typography as="h2" variant="h2" className="mb-6 font-bold italic">
-                Eric Zuber, créateur d'IrimWebForge
-              </Typography>
-
-              <Typography variant="p" className="mb-4">
-                Développeur freelance en reconversion, mon parcours atypique me permet d'apporter
-                une perspective différente à vos défis digitaux.
-              </Typography>
-
-              <Typography variant="p" className="mb-4">
-                Ma conviction :
-                <span className="font-medium text-[var(--color-primary)] italic block mt-2 mb-2">
-                  "Les outils numériques devraient libérer du temps pour l'humain, pas en
-                  consommer."
-                </span>
-              </Typography>
-
-              <Typography variant="p" className="mb-6">
-                Cette conviction s'est renforcée en créant une interface pour mon épouse thérapeute,
-                transformant 7h d'administration en 45 minutes. Cette expérience a déclenché ma
-                démarche actuelle.
-              </Typography>
-
-              <div className="p-4 bg-[var(--color-primary)]/10 rounded-lg border-l-4 border-[var(--color-primary)]">
-                <Typography variant="p" className="italic">
-                  "Je crée des ponts entre votre expertise métier et les possibilités du numérique,
-                  pour que vous puissiez vous concentrer sur l'essentiel."
+              <div className="order-1 md:order-2">
+                <Typography as="h2" variant="h2" className="mb-6 font-bold italic">
+                  Eric Zuber, créateur d'IrimWebForge
                 </Typography>
+
+                <Typography variant="p" className="mb-4">
+                  Développeur freelance en reconversion, mon parcours atypique me permet d'apporter
+                  une perspective différente à vos défis digitaux.
+                </Typography>
+
+                <Typography variant="p" className="mb-4">
+                  Ma conviction :
+                  <span className="font-medium text-[var(--color-primary)] italic block mt-2 mb-2">
+                    "Les outils numériques devraient libérer du temps pour l'humain, pas en
+                    consommer."
+                  </span>
+                </Typography>
+
+                <Typography variant="p" className="mb-6">
+                  Cette conviction s'est renforcée en créant une interface pour mon épouse thérapeute,
+                  transformant 7h d'administration en 45 minutes. Cette expérience a déclenché ma
+                  démarche actuelle.
+                </Typography>
+
+                <div className="p-4 bg-[var(--color-primary)]/10 rounded-lg border-l-4 border-[var(--color-primary)]">
+                  <Typography variant="p" className="italic">
+                    "Je crée des ponts entre votre expertise métier et les possibilités du numérique,
+                    pour que vous puissiez vous concentrer sur l'essentiel."
+                  </Typography>
+                </div>
               </div>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* Timeline du parcours */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900">
-        <Container>
-          <div className="text-center mb-12">
-            <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
-              Les étapes clés de mon parcours
-            </Typography>
-            <Typography variant="lead" className="mb-8 max-w-3xl mx-auto">
-              Une reconversion guidée par une expérience personnelle transformatrice
-            </Typography>
-          </div>
-
+      <section className="bg-section-accent py-16">
+        <div className="container mx-auto px-4 content-overlay-soft">
           <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
+                Les étapes clés de mon parcours
+              </Typography>
+              <Typography variant="lead" className="mb-8 max-w-3xl mx-auto">
+                Une reconversion guidée par une expérience personnelle transformatrice
+              </Typography>
+            </div>
+
             <Timeline steps={journeySteps} orientation="vertical" withDates={true} />
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* Mon approche */}
-      <section className="py-12 sm:py-16 lg:py-20">
-        <Container>
+      <section className="bg-section-secondary py-16">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
               Comment je vous fais gagner du temps
@@ -195,12 +203,12 @@ export default function Page() {
               </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* Vision et compétences */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900">
-        <Container>
+      <section className="bg-section-primary py-16">
+        <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <Typography as="h2" variant="h2" className="mb-6 font-bold italic">
@@ -287,26 +295,29 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
-      <CTASection
-        title="Échangeons sur vos défis quotidiens"
-        description="45 minutes pour discuter de votre projet. Sans pression commerciale."
-        primaryAction={{
-          text: 'Prendre contact',
-          url: '/contact',
-          variant: 'gradient',
-        }}
-        secondaryAction={{
-          text: 'Découvrir mes projets',
-          url: '/projets',
-          variant: 'secondary',
-        }}
-        variant="default"
-        backgroundColor="primary"
-        textColor="light"
-      />
+      <section className="bg-cta-soft py-16">
+        <div className="container mx-auto px-4 content-overlay-soft">
+          <CTASection
+            title="Échangeons sur vos défis quotidiens"
+            description="45 minutes pour discuter de votre projet. Sans pression commerciale."
+            primaryAction={{
+              text: 'Prendre contact',
+              url: '/contact',
+              variant: 'gradient',
+            }}
+            secondaryAction={{
+              text: 'Découvrir mes projets',
+              url: '/projets',
+              variant: 'secondary',
+            }}
+            variant="default"
+            backgroundColor="transparent"
+          />
+        </div>
+      </section>
     </main>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Typography } from '../atoms/Typography';
 import { Button } from '../atoms/Button';
 import { Container } from '../atoms/Container';
@@ -8,7 +8,11 @@ import { Badge } from '../atoms/Badge';
 import { NavLink } from '../atoms/NavLink';
 import Image from 'next/image';
 import Link from 'next/link';
-import { HeroPattern } from '../atoms/HeroPattern';
+
+// Import dynamique du HeroPattern pour améliorer le LCP
+const HeroPattern = React.lazy(() => 
+  import('../atoms/HeroPattern').then(module => ({ default: module.HeroPattern }))
+);
 
 export interface PageHeaderProps {
   title: string;
@@ -243,7 +247,11 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   return (
     <header className={headerClasses} style={backgroundStyle}>
       {renderOverlay()}
-      {pattern && !backgroundImage && <HeroPattern />}
+      {pattern && !backgroundImage && (
+        <Suspense fallback={null}>
+          <HeroPattern />
+        </Suspense>
+      )}
 
       <Container>
         <div className={`relative z-10 ${image ? 'flex items-center' : ''}`}>

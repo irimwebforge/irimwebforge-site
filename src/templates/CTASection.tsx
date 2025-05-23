@@ -264,7 +264,7 @@ export const CTASection = ({
               <div className="absolute inset-0 z-0 opacity-20">
                 <Image
                   src={imageSrc}
-                  alt={imageAlt}
+                  alt="Image décorative de fond pour la section d'appel à l'action"
                   fill
                   style={{ objectFit: 'cover' }}
                   className="transition-transform duration-500 hover:scale-105"

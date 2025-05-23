@@ -71,10 +71,11 @@ export const ArrowRightIcon = ({
 // Utilitaires pour générer les classes de couleur
 export const getColorClasses = (color: 'primary' | 'secondary' | 'tertiary') => ({
   bg: `bg-[var(--color-${color})]`,
-  bgLight: `bg-[var(--color-${color})]/10`,
-  bgLightDark: `bg-[var(--color-${color})]/20`,
-  text: `text-[var(--color-${color})]`,
-  border: `border-[var(--color-${color})]`,
+  bgLight: `bg-[var(--color-${color}-bg-accessible)]`,
+  bgLightDark: `bg-[var(--color-${color}-bg-accessible)]`,
+  text: `text-[var(--color-${color}-accessible)]`,
+  textOriginal: `text-[var(--color-${color})]`, // Pour les cas où on veut garder la couleur originale
+  border: `border-[var(--color-${color}-accessible)]`,
   borderLight: `border-[var(--color-${color})]/30`,
 });
 
@@ -82,8 +83,8 @@ export const getServiceColorClasses = (color: 'primary' | 'secondary' | 'tertiar
   const classes = getColorClasses(color);
   return {
     ...classes,
-    iconContainer: `${classes.bgLight} dark:${classes.bgLightDark}`,
+    iconContainer: `${classes.bgLight}`,
     iconText: classes.text,
-    link: `${classes.text} hover:${classes.text} dark:hover:${classes.text}`,
+    link: `${classes.text} hover:${classes.textOriginal}`,
   };
 };

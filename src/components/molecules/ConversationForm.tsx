@@ -52,7 +52,7 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
   const [stepDirection, setStepDirection] = useState<'forward' | 'backward'>('forward');
 
   // Détecter si nous sommes dans un mode multi-étapes
-  const isMultiStep = useMemo(() => Boolean(steps && steps.length > 1), [steps?.length]);
+  const isMultiStep = useMemo(() => Boolean(steps && steps.length > 1), [steps]);
 
   // Gérer les champs de l'étape courante - OPTIMISÉ avec useMemo
   const fieldsPerStep = useMemo(() => {

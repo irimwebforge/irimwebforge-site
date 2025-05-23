@@ -1,3 +1,9 @@
+// Métadonnées SEO pour la solution Présence
+export const metadata = {
+  title: 'Solution Présence | IrimWebForge - Site vitrine professionnel et autonome',
+  description: 'Site web élégant et facile à gérer. Interface pensée pour votre quotidien, sans dépendance technique. Parfait pour débuter votre présence en ligne.',
+}
+
 import { PageHeader } from '@/components/organisms/PageHeader';
 import { Container } from '@/components/atoms/Container';
 import { Typography } from '@/components/atoms/Typography';
@@ -5,10 +11,26 @@ import { Badge } from '@/components/atoms/Badge';
 import { Card } from '@/components/molecules/Card';
 import { Button } from '@/components/atoms/Button';
 import { Icon } from '@/components/atoms/Icon';
-import { IconWithColor, CheckIcon, getServiceColorClasses } from '@/components/atoms/IconWithColor';
+import { IconWithColor, CheckIcon } from '@/components/atoms/IconWithColor';
 import { NavLink } from '@/components/atoms/NavLink';
 import { BeforeAfterCard } from '@/components/molecules/BeforeAfterCard';
 import { services } from '@/data/services';
+
+// Fonction utilitaire côté serveur pour les classes de couleur
+const getServiceColorClasses = (color: 'primary' | 'secondary' | 'tertiary') => {
+  const colorVar = `var(--color-${color})`;
+  return {
+    bg: `bg-[${colorVar}]`,
+    bgLight: `bg-[${colorVar}]/10`,
+    bgLightDark: `bg-[${colorVar}]/20`,
+    text: `text-[${colorVar}]`,
+    border: `border-[${colorVar}]`,
+    borderLight: `border-[${colorVar}]/30`,
+    iconContainer: `bg-[${colorVar}]/10 dark:bg-[${colorVar}]/20`,
+    iconText: `text-[${colorVar}]`,
+    link: `text-[${colorVar}] hover:text-[${colorVar}] dark:hover:text-[${colorVar}]`,
+  };
+};
 
 export default function PresencePage() {
   const service = services.find((s) => s.id === 'presence')!;
@@ -26,7 +48,7 @@ export default function PresencePage() {
       />
 
       {/* Pour qui ? */}
-      <section className="py-12 sm:py-16 bg-white dark:bg-gray-900">
+      <section className="bg-section-primary py-16">
         <Container>
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">
@@ -42,7 +64,7 @@ export default function PresencePage() {
               {service.targetAudience.points.map((point, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg"
+                  className="flex items-start gap-3 p-4 bg-white/80 dark:bg-gray-800/80 rounded-lg backdrop-blur-sm"
                 >
                   <IconWithColor name={point.icon} color="primary" size="lg" className="mt-1" />
                   <Typography variant="p">{point.text}</Typography>
@@ -54,8 +76,8 @@ export default function PresencePage() {
       </section>
 
       {/* Résultats attendus */}
-      <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-900">
-        <Container>
+      <section className="bg-section-accent py-16">
+        <div className="container mx-auto px-4 content-overlay-soft">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">
               <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
@@ -72,11 +94,11 @@ export default function PresencePage() {
               ))}
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* Ce que ça inclut */}
-      <section className="py-12 sm:py-16 bg-white dark:bg-gray-900">
+      <section className="bg-section-secondary py-16">
         <Container>
           <div className="max-w-3xl mx-auto">
             <Card className="p-8" variant="accent" color={service.color} accentPosition="top">
@@ -118,7 +140,7 @@ export default function PresencePage() {
       </section>
 
       {/* Comment ça se passe */}
-      <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-900">
+      <section className="bg-section-primary py-16">
         <Container>
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">
@@ -164,10 +186,10 @@ export default function PresencePage() {
       </section>
 
       {/* Témoignage */}
-      <section className="py-12 sm:py-16 bg-white dark:bg-gray-900">
-        <Container>
+      {/* <section className="bg-section-accent py-16">
+        <div className="container mx-auto px-4 content-overlay-soft">
           <div className="max-w-3xl mx-auto">
-            <Card className="bg-gray-50 dark:bg-gray-800" padding="large">
+            <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm" padding="large">
               <blockquote className="text-center">
                 <Typography variant="lead" className="mb-6 italic">
                   "{service.testimonial.quote}"
@@ -183,12 +205,12 @@ export default function PresencePage() {
               </blockquote>
             </Card>
           </div>
-        </Container>
-      </section>
+        </div>
+      </section> */}
 
       {/* CTA */}
-      <section className="py-12 sm:py-16">
-        <Container>
+      <section className="bg-cta-soft py-16">
+        <div className="container mx-auto px-4 content-overlay-soft">
           <div className="max-w-3xl mx-auto text-center">
             <Typography as="h2" variant="h2" className="mb-6 font-bold italic">
               Prêt à reprendre le contrôle de votre présence en ligne ?
@@ -200,7 +222,7 @@ export default function PresencePage() {
               Réserver un temps d'échange
             </Button>
           </div>
-        </Container>
+        </div>
       </section>
     </main>
   );

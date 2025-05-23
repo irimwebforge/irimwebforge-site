@@ -119,7 +119,7 @@ const presence: Service = {
     role: 'Thérapeute',
   },
 
-  cta: 'Je veux cette formule',
+  cta: 'Découvrir la formule Présence',
   seoDescription:
     'Solution de site web clé en main pour indépendants et thérapeutes. Gestion autonome, formation incluse et support technique.',
   seoKeywords: ['site web', 'indépendant', 'thérapeute', 'autonomie', 'formation'],

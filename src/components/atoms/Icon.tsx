@@ -2,78 +2,163 @@
 
 import React from 'react';
 import { cn } from '../../lib/utils';
-import * as LucideIcons from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 
-// Définition des icônes disponibles
+// Import uniquement des icônes utilisées - optimisation majeure du bundle
+import {
+  // Navigation & Actions
+  ArrowLeft, ArrowRight, ChevronDown, ChevronUp, ExternalLink,
+  Plus, Minus, Search,
+  
+  // Interface utilisateur
+  Check, X, Menu, Shield, Laptop, Smartphone, Coffee, Key,
+  Wrench as Tool, Layout, Square,
+  
+  // Contenu & Média
+  Calendar, CalendarPlus, Image, FileText,
+  
+  // Développement & Design
+  Code, Code2, PenTool, Palette, Pen,
+  
+  // Business & Education
+  GraduationCap, Rocket, UserPlus, CircleUser,
+  
+  // État & Notifications
+  AlertCircle, AlertTriangle, CheckCircle, Construction,
+  Clock, Info, Loader2,
+  
+  // Communication
+  Mail, MessageCircle, MessageSquare, Phone,
+  
+  // Navigation & Position
+  Compass, MapPin,
+  
+  // Visualisation
+  Eye,
+  
+  // Réseaux sociaux
+  Linkedin,
+  
+  // Autres
+  Headphones, Heart, Star, Sparkles, TrendingUp, Lightbulb,
+  
+  // Processus
+  FileCheck, Settings, Users, Target, Zap, Brain, Briefcase,
+  BarChart, BarChart2, Award, Gauge,
+  
+  // Ajouts spécifiques
+  GitBranch, User, Folder, Smile, Layers, UserCheck,
+  HeartPulse, Hammer, PiggyBank, Handshake, RefreshCw,
+  RotateCcw, TestTube, Scissors, Globe, PieChart,
+} from 'lucide-react';
+
+// Définition des icônes disponibles avec imports optimisés
 const icons: Record<string, React.FC<LucideProps>> = {
   // Navigation & Actions
-  ArrowLeft: LucideIcons.ArrowLeft,
-  ArrowRight: LucideIcons.ArrowRight,
-  ChevronDown: LucideIcons.ChevronDown,
-  ChevronUp: LucideIcons.ChevronUp,
-  ExternalLink: LucideIcons.ExternalLink,
-  Plus: LucideIcons.Plus,
-  Search: LucideIcons.Search,
+  ArrowLeft,
+  ArrowRight,
+  ChevronDown,
+  ChevronUp,
+  ExternalLink,
+  Plus,
+  Minus,
+  Search,
 
   // Interface utilisateur
-  Check: LucideIcons.Check,
-  X: LucideIcons.X,
-  Menu: LucideIcons.Menu,
-  Shield: LucideIcons.Shield,
-  Laptop: LucideIcons.Laptop,
-  Smartphone: LucideIcons.Smartphone,
-  Coffee: LucideIcons.Coffee,
-  Key: LucideIcons.Key,
-  Tool: LucideIcons.Wrench,
+  Check,
+  X,
+  Menu,
+  Shield,
+  Laptop,
+  Smartphone,
+  Coffee,
+  Key,
+  Tool,
+  Layout,
+  Square,
 
   // Contenu & Média
-  Calendar: LucideIcons.Calendar,
-  CalendarPlus: LucideIcons.CalendarPlus,
-  Image: LucideIcons.Image,
+  Calendar,
+  CalendarPlus,
+  Image,
+  FileText,
 
   // Développement & Design
-  Code: LucideIcons.Code,
-  Code2: LucideIcons.Code2,
-  PenTool: LucideIcons.PenTool,
-  Palette: LucideIcons.Palette,
+  Code,
+  Code2,
+  PenTool,
+  Palette,
+  Pen,
 
   // Business & Education
-  GraduationCap: LucideIcons.GraduationCap,
-  Rocket: LucideIcons.Rocket,
-  UserPlus: LucideIcons.UserPlus,
-  CircleUser: LucideIcons.CircleUser,
+  GraduationCap,
+  Rocket,
+  UserPlus,
+  CircleUser,
 
   // État & Notifications
-  AlertCircle: LucideIcons.AlertCircle,
-  CheckCircle: LucideIcons.CheckCircle,
-  Construction: LucideIcons.Construction,
-  Clock: LucideIcons.Clock,
+  AlertCircle,
+  AlertTriangle,
+  CheckCircle,
+  Construction,
+  Clock,
+  Info,
+  Loader2,
 
   // Communication
-  Mail: LucideIcons.Mail,
-  MessageCircle: LucideIcons.MessageCircle,
-  Phone: LucideIcons.Phone,
+  Mail,
+  MessageCircle,
+  MessageSquare,
+  Phone,
+
+  // Navigation & Position
+  Compass,
+  MapPin,
+
+  // Visualisation
+  Eye,
+
+  // Réseaux sociaux
+  Linkedin,
 
   // Autres
-  Headphones: LucideIcons.Headphones,
-  Heart: LucideIcons.Heart,
-  Star: LucideIcons.Star,
-  Sparkles: LucideIcons.Sparkles,
-  TrendingUp: LucideIcons.TrendingUp,
-  Lightbulb: LucideIcons.Lightbulb,
+  Headphones,
+  Heart,
+  Star,
+  Sparkles,
+  TrendingUp,
+  Lightbulb,
 
   // Processus
-  FileCheck: LucideIcons.FileCheck,
-  Settings: LucideIcons.Settings,
-  Users: LucideIcons.Users,
-  Target: LucideIcons.Target,
-  Zap: LucideIcons.Zap,
-  Brain: LucideIcons.Brain,
-  Briefcase: LucideIcons.Briefcase,
-  BarChart: LucideIcons.BarChart,
-  Award: LucideIcons.Award,
-  Gauge: LucideIcons.Gauge,
+  FileCheck,
+  Settings,
+  Users,
+  Target,
+  Zap,
+  Brain,
+  Briefcase,
+  BarChart,
+  BarChart2,
+  Award,
+  Gauge,
+
+  // Ajouts personnalisés
+  GitBranch,
+  User,
+  Folder,
+  Smile,
+  Layers,
+  UserCheck,
+  HeartPulse,
+  Hammer,
+  PiggyBank,
+  Handshake,
+  RefreshCw,
+  RotateCcw,
+  TestTube,
+  Scissors,
+  Globe,
+  PieChart,
 };
 
 export type IconName = keyof typeof icons;

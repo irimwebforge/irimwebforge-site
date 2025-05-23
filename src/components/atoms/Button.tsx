@@ -17,12 +17,12 @@ const buttonVariants = cva(
         tertiary:
           'bg-[var(--color-tertiary)] text-white hover:bg-[var(--color-tertiary)]/90 active:bg-[var(--color-tertiary)]/80',
         outline:
-          'border border-[var(--color-primary)] bg-white text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 active:bg-[var(--color-primary)]/20',
+          'border border-[var(--color-primary-accessible)] bg-white text-[var(--color-primary-accessible)] hover:bg-[var(--color-primary-bg-accessible)] active:bg-[var(--color-primary-bg-accessible)]',
         ghost:
-          'text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 active:bg-[var(--color-primary)]/20',
+          'text-[var(--color-primary-accessible)] hover:bg-[var(--color-primary-bg-accessible)] active:bg-[var(--color-primary-bg-accessible)]',
         gradient:
           'bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white hover:brightness-110 active:brightness-90 transition-all duration-200 shine-effect',
-        icon: 'p-2 h-auto w-auto aspect-square text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10',
+        icon: 'p-2 h-auto w-auto aspect-square text-[var(--color-primary-accessible)] hover:bg-[var(--color-primary-bg-accessible)]',
       },
       size: {
         small: 'h-8 px-3 py-2 text-xs',
@@ -48,6 +48,8 @@ type ButtonBaseProps = {
   iconOnly?: boolean;
   loading?: boolean;
   href?: string;
+  'aria-label'?: string;
+  'aria-describedby'?: string;
 } & VariantProps<typeof buttonVariants>;
 
 // Union type pour permettre soit les props de button soit les props de lien
@@ -70,6 +72,8 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
       loading,
       href,
       children,
+      'aria-label': ariaLabel,
+      'aria-describedby': ariaDescribedBy,
       ...props
     },
     ref
@@ -90,21 +94,29 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
       className: iconButtonClass,
     });
 
+    // ✅ ARIA : Props d'accessibilité communes
+    const accessibilityProps = {
+      'aria-label': ariaLabel || (iconOnly ? 'Bouton' : undefined),
+      'aria-describedby': ariaDescribedBy,
+      'aria-busy': loading,
+      disabled: loading || (props as any)?.disabled,
+    };
+
     // Contenu du bouton (pour éviter la duplication)
     const content = (
       <>
         {loading ? (
-          <Icon name="Loader2" className="animate-spin mr-2" />
+          <Icon name="Loader2" className="animate-spin mr-2" aria-hidden="true" />
         ) : icon && iconPosition === 'left' && !iconOnly ? (
-          <span className="mr-2">{icon}</span>
+          <span className="mr-2" aria-hidden="true">{icon}</span>
         ) : null}
 
         {!iconOnly && <span className="relative z-10">{children}</span>}
 
         {icon && iconPosition === 'right' && !iconOnly ? (
-          <span className="ml-2">{icon}</span>
+          <span className="ml-2" aria-hidden="true">{icon}</span>
         ) : iconOnly ? (
-          icon
+          <span aria-hidden="true">{icon}</span>
         ) : null}
       </>
     );
@@ -116,6 +128,8 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
           href={href}
           className={buttonClasses}
           ref={ref as React.Ref<HTMLAnchorElement>}
+          aria-label={ariaLabel}
+          aria-describedby={ariaDescribedBy}
           {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
         >
           {content}
@@ -128,6 +142,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
       <button
         className={buttonClasses}
         ref={ref as React.Ref<HTMLButtonElement>}
+        {...accessibilityProps}
         {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
       >
         {content}

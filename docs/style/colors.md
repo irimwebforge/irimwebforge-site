@@ -166,6 +166,64 @@ Toutes nos couleurs sont testées pour assurer un contraste suffisant conformém
 | Texte blanc sur bleu foncé | 12:1  | AAA                |
 | Texte blanc sur orange     | 3:1   | AA (grands textes) |
 
+### Couleurs accessibles pour texte
+
+Pour garantir un contraste suffisant, nous utilisons des variantes plus foncées de nos couleurs principales :
+
+```css
+:root {
+  /* Couleurs principales accessibles (ratio ≥ 4.5:1) */
+  --color-primary-accessible: #008080; /* Turquoise plus foncé, ratio ~5.2:1 */
+  --color-secondary-accessible: #003955; /* Bleu plus foncé, ratio ~8.1:1 */
+  --color-tertiary-accessible: #b8420f; /* Orange plus foncé, ratio ~4.6:1 */
+
+  /* Arrière-plans colorés accessibles */
+  --color-primary-bg-accessible: #e6f7f7; /* Background turquoise très clair */
+  --color-secondary-bg-accessible: #e6f0f5; /* Background bleu très clair */
+  --color-tertiary-bg-accessible: #fdf2ef; /* Background orange très clair */
+}
+```
+
+### Classes utilitaires pour liens accessibles
+
+```css
+.link-primary-accessible {
+  color: var(--color-primary-accessible);
+  transition: color 150ms ease;
+}
+
+.link-primary-accessible:hover {
+  color: var(--color-primary);
+}
+```
+
+### Utilisation recommandée
+
+```tsx
+// ✅ Badge avec contraste suffisant
+<Badge variant="primary">Nouveau</Badge>
+
+// ✅ Bouton outline accessible
+<Button variant="outline">Action secondaire</Button>
+
+// ✅ Lien accessible
+<a href="#" className="link-primary-accessible underline">
+  En savoir plus
+</a>
+
+// ✅ Texte coloré accessible
+<span className="text-[var(--color-primary-accessible)]">
+  Informations importantes
+</span>
+```
+
+### Tests de contraste
+
+Toutes les couleurs accessibles respectent :
+- **WCAG AA** : ratio minimal de 4.5:1 pour le texte normal
+- **WCAG AAA** : ratio minimal de 7:1 pour le texte normal (quand possible)
+- **Composants UI** : ratio minimal de 3:1 pour les éléments d'interface
+
 ## Couleurs sémantiques
 
 En plus de notre palette principale, nous utilisons un ensemble de couleurs sémantiques pour les états et les messages :

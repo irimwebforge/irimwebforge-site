@@ -120,7 +120,7 @@ const evolutive: Service = {
     role: 'Fondatrice startup',
   },
 
-  cta: 'Je veux cette formule',
+  cta: 'Découvrir la formule Évolutive',
   seoDescription:
     'Solution web évolutive pour entrepreneurs. Démarrez simple et ajoutez des fonctionnalités selon vos besoins.',
   seoKeywords: ['évolutif', 'startup', 'entrepreneur', 'modulaire', 'croissance'],
