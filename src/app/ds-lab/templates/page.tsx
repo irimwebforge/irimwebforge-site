@@ -253,7 +253,7 @@ export default function TemplatesPage() {
                       className="flex-1 px-4 py-3 rounded-md border-0 focus:ring-2 focus:ring-white"
                       aria-label="Email"
                     />
-                    <Button variant="tertiary" size="lg">
+                    <Button variant="tertiary" size="large">
                       {mockCTAVariants.newsletter.buttonLabel}
                     </Button>
                   </div>

@@ -151,13 +151,13 @@ export default function DesignSystemPage() {
                 Variantes de taille
               </Typography>
               <div className="flex flex-wrap gap-2">
-                <Button variant="primary" size="sm">
+                <Button variant="primary" size="small">
                   Petit
                 </Button>
-                <Button variant="primary" size="md">
+                <Button variant="primary" size="medium">
                   Moyen
                 </Button>
-                <Button variant="primary" size="lg">
+                <Button variant="primary" size="large">
                   Grand
                 </Button>
               </div>
@@ -932,11 +932,10 @@ export default function DesignSystemPage() {
       description: 'Aperçu de projet avec image, titre, description et tags',
       component: (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {PROJECTS.map((project, index) => (
+          {PROJECTS.map((project, _index) => (
             <ProjectPreview
               key={project.id}
-              {...project}
-              variant={index === 0 ? 'featured' : 'default'}
+              project={project}
             />
           ))}
         </div>
@@ -1118,7 +1117,7 @@ export default function DesignSystemPage() {
                 { label: 'Demander un devis', href: '#', variant: 'gradient', isMainCta: true },
                 { label: 'Nos références', href: '#', variant: 'outline' },
               ]}
-              size="medium"
+              size="small"
               align="left"
             />
           </div>
@@ -1314,7 +1313,7 @@ export default function DesignSystemPage() {
             <Button
               key={tab.id}
               variant={activeCategory === tab.id ? 'primary' : 'outline'}
-              size="sm"
+              size="small"
               onClick={() => setActiveCategory(tab.id)}
             >
               {tab.label}

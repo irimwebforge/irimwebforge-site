@@ -12,7 +12,7 @@ export type Action = {
   text: string;
   url: string;
   variant?: 'primary' | 'secondary' | 'tertiary' | 'gradient';
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'small' | 'medium' | 'large';
 };
 
 // Types pour les propriétés du composant
@@ -64,7 +64,7 @@ export const CTASection = ({
   // nous utilisons directement le composant CallToAction
   if (variant === 'default') {
     return (
-      <section className={`py-16 ${className}`}>
+      <section className={`py-12 sm:py-16 lg:py-20 ${className}`}>
         <Container>
           <CallToAction
             title={title}
@@ -97,9 +97,9 @@ export const CTASection = ({
   const backgroundClasses = {
     light: 'bg-gray-50 dark:bg-gray-900',
     dark: 'bg-gray-900 text-white',
-    primary: 'bg-[var(--color-primary-50)] dark:bg-[var(--color-primary-900)]',
+    primary: 'bg-[var(--color-primary)]/10 dark:bg-[var(--color-primary)]/20',
     gradient:
-      'bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-secondary-500)] text-white',
+      'bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white',
     transparent: '',
   };
 
@@ -121,7 +121,7 @@ export const CTASection = ({
   if (variant === 'banner') {
     return (
       <section
-        className={`py-12 px-4 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className} transition-all duration-300 hover:shadow-lg animate-fade-in`}
+        className={`py-12 sm:py-16 lg:py-20 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className} transition-all duration-300 hover:shadow-lg animate-fade-in`}
       >
         <Container>
           <div
@@ -136,7 +136,7 @@ export const CTASection = ({
             <div className="md:w-1/3 flex justify-center md:justify-end gap-4">
               <Button
                 variant={primaryAction.variant || 'gradient'}
-                size={primaryAction.size || 'lg'}
+                size={primaryAction.size || 'large'}
                 onClick={() => (window.location.href = primaryAction.url)}
                 className="transition-transform duration-150 hover:scale-105 shine-effect"
               >
@@ -145,7 +145,7 @@ export const CTASection = ({
               {secondaryAction && (
                 <Button
                   variant={secondaryAction.variant || 'secondary'}
-                  size={secondaryAction.size || 'lg'}
+                  size={secondaryAction.size || 'large'}
                   onClick={() => (window.location.href = secondaryAction.url)}
                   className="transition-transform duration-150 hover:scale-105"
                 >
@@ -163,7 +163,7 @@ export const CTASection = ({
   if (variant === 'split') {
     return (
       <section
-        className={`py-16 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className} animate-fade-in`}
+        className={`py-12 sm:py-16 lg:py-20 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className} animate-fade-in`}
       >
         <Container>
           <div
@@ -225,7 +225,7 @@ export const CTASection = ({
               >
                 <Button
                   variant={primaryAction.variant || 'gradient'}
-                  size={primaryAction.size || 'lg'}
+                  size={primaryAction.size || 'large'}
                   onClick={() => (window.location.href = primaryAction.url)}
                   className="shine-effect transition-transform duration-150 hover:scale-105"
                 >
@@ -234,7 +234,7 @@ export const CTASection = ({
                 {secondaryAction && (
                   <Button
                     variant={secondaryAction.variant || 'secondary'}
-                    size={secondaryAction.size || 'lg'}
+                    size={secondaryAction.size || 'large'}
                     onClick={() => (window.location.href = secondaryAction.url)}
                     className="transition-transform duration-150 hover:scale-105"
                   >
@@ -255,7 +255,7 @@ export const CTASection = ({
     const borderClass = borderColor ? `border-2 border-[${borderColor}]` : '';
 
     return (
-      <section className={`py-16 ${className}`}>
+      <section className={`py-12 sm:py-16 lg:py-20 ${className}`}>
         <Container>
           <div
             className={`max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${borderClass} transition-all duration-300 hover:shadow-2xl animate-fade-in`}
@@ -324,7 +324,7 @@ export const CTASection = ({
               >
                 <Button
                   variant={primaryAction.variant || 'gradient'}
-                  size={primaryAction.size || 'lg'}
+                  size={primaryAction.size || 'large'}
                   onClick={() => (window.location.href = primaryAction.url)}
                   className="shine-effect transition-transform duration-150 hover:scale-105"
                 >
@@ -333,7 +333,7 @@ export const CTASection = ({
                 {secondaryAction && (
                   <Button
                     variant={secondaryAction.variant || 'secondary'}
-                    size={secondaryAction.size || 'lg'}
+                    size={secondaryAction.size || 'large'}
                     onClick={() => (window.location.href = secondaryAction.url)}
                     className="transition-transform duration-150 hover:scale-105"
                   >
@@ -351,7 +351,7 @@ export const CTASection = ({
   // Rendu par défaut si aucune variante ne correspond
   return (
     <section
-      className={`py-16 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className}`}
+      className={`py-12 sm:py-16 lg:py-20 ${backgroundClasses[backgroundColor]} ${textClasses[textColor]} ${className}`}
     >
       <Container>
         <div className={`max-w-3xl mx-auto ${alignClasses[align]}`}>
@@ -366,7 +366,7 @@ export const CTASection = ({
           <div className="flex flex-wrap gap-4 justify-center">
             <Button
               variant={primaryAction.variant || 'gradient'}
-              size={primaryAction.size || 'lg'}
+              size={primaryAction.size || 'large'}
               onClick={() => (window.location.href = primaryAction.url)}
               className="shine-effect transition-transform duration-150 hover:scale-105"
             >
@@ -375,7 +375,7 @@ export const CTASection = ({
             {secondaryAction && (
               <Button
                 variant={secondaryAction.variant || 'secondary'}
-                size={secondaryAction.size || 'lg'}
+                size={secondaryAction.size || 'large'}
                 onClick={() => (window.location.href = secondaryAction.url)}
                 className="transition-transform duration-150 hover:scale-105"
               >

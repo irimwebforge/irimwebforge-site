@@ -80,12 +80,12 @@ export const ValueProposition = ({
   const backgroundClasses = {
     light: 'bg-gray-50 dark:bg-gray-900',
     dark: 'bg-gray-900 text-white',
-    primary: 'bg-[var(--color-primary-50)] dark:bg-[var(--color-primary-900)]',
+    primary: 'bg-[var(--color-primary)]/10 dark:bg-[var(--color-primary)]/20',
     transparent: '',
   };
 
   return (
-    <section className={`py-16 ${backgroundClasses[backgroundColor]} ${className}`}>
+    <section className={`py-12 sm:py-16 lg:py-20 ${backgroundClasses[backgroundColor]} ${className}`}>
       <Container>
         {/* En-tête de la section */}
         <div

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Icon } from '@/components/atoms/Icon';
 import { cn } from '@/lib/utils';
+import { PositionVariant } from '@/types/common';
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)]',
@@ -24,9 +25,9 @@ const buttonVariants = cva(
         icon: 'p-2 h-auto w-auto aspect-square text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10',
       },
       size: {
-        sm: 'h-8 px-3 py-2 text-xs',
-        md: 'h-10 px-4 py-2',
-        lg: 'h-12 px-6 py-3 text-base',
+        small: 'h-8 px-3 py-2 text-xs',
+        medium: 'h-10 px-4 py-2',
+        large: 'h-12 px-6 py-3 text-base',
       },
       fullWidth: {
         true: 'w-full',
@@ -34,7 +35,7 @@ const buttonVariants = cva(
     },
     defaultVariants: {
       variant: 'primary',
-      size: 'md',
+      size: 'medium',
       fullWidth: false,
     },
   }
@@ -43,7 +44,7 @@ const buttonVariants = cva(
 // Props de base pour le bouton
 type ButtonBaseProps = {
   icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
+  iconPosition?: PositionVariant;
   iconOnly?: boolean;
   loading?: boolean;
   href?: string;
@@ -78,8 +79,8 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     // Classe conditionnelle pour le bouton d'icône seulement
     const iconButtonClass = cn(
       className,
-      iconOnly && size === 'sm' ? 'p-1' : '',
-      iconOnly && size === 'lg' ? 'p-3' : ''
+      iconOnly && size === 'small' ? 'p-1' : '',
+      iconOnly && size === 'large' ? 'p-3' : ''
     );
 
     const buttonClasses = buttonVariants({

@@ -73,7 +73,7 @@ export const ServiceOverview = ({
   const backgroundClasses = {
     light: 'bg-gray-50 dark:bg-gray-900',
     dark: 'bg-gray-900 text-white',
-    primary: 'bg-[var(--color-primary-50)] dark:bg-[var(--color-primary-900)]',
+    primary: 'bg-[var(--color-primary)]/10 dark:bg-[var(--color-primary)]/20',
     transparent: '',
   };
 
@@ -86,7 +86,7 @@ export const ServiceOverview = ({
   };
 
   return (
-    <section className={`py-16 ${backgroundClasses[backgroundColor]} ${className}`}>
+    <section className={`py-12 sm:py-16 lg:py-20 ${backgroundClasses[backgroundColor]} ${className}`}>
       <Container>
         {/* En-tête de la section */}
         <div className="text-center mb-12 animate-fade-in">
@@ -173,7 +173,7 @@ export const ServiceOverview = ({
                     <Link href={`/services/${service.slug}`}>
                       <Button
                         variant="secondary"
-                        size="sm"
+                        size="small"
                         className="transition-transform duration-150 hover:scale-105"
                       >
                         {service.ctaText || 'En savoir plus'}
@@ -261,7 +261,7 @@ export const ServiceOverview = ({
             <Link href={ctaButtonLink}>
               <Button
                 variant="gradient"
-                size="lg"
+                size="large"
                 className="shine-effect transition-transform duration-150 hover:scale-105"
               >
                 {ctaButtonText}

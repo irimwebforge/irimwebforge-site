@@ -45,7 +45,7 @@ export const CompactCallToAction: React.FC<CompactCallToActionProps> = ({
       <Link href={ctaUrl}>
         <Button
           variant="secondary"
-          size="sm"
+          size="small"
           className={`text-[var(--color-${color})] border-[var(--color-${color})]`}
         >
           {ctaText}

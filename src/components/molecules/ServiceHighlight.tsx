@@ -136,7 +136,7 @@ export const ServiceHighlight: React.FC<ServiceHighlightProps> = ({
           <Link href={ctaLink}>
             <Button
               variant={variant === 'featured' ? 'primary' : 'outline'}
-              size="sm"
+              size="small"
               className={variant === 'featured' ? '' : colorClasses.text}
             >
               {ctaText}

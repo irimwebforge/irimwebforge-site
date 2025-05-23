@@ -3,16 +3,18 @@
 import React from 'react';
 import { Typography } from '../atoms/Typography';
 import Image from 'next/image';
+import { Icon, IconName } from '../atoms/Icon';
 
 export interface TimelineStep {
   id: string;
   title: string;
   description: string;
-  icon?: React.ReactNode;
+  icon?: IconName;
   image?: string;
   date?: string;
   completed?: boolean;
   current?: boolean;
+  color?: 'primary' | 'secondary' | 'tertiary';
 }
 
 export interface ProcessTimelineProps {
@@ -81,7 +83,11 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
                 <div
                   className={`w-12 h-12 flex items-center justify-center rounded-full border-2 ${stateClass}`}
                 >
-                  {step.icon}
+                  <Icon 
+                    name={step.icon} 
+                    size={24} 
+                    className={isCompleted ? 'text-white' : ''}
+                  />
                 </div>
               ) : (
                 <div
@@ -124,7 +130,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
 
     // Rendu d'une étape verticale
     return (
-      <div key={step.id} className="relative pl-10">
+      <div key={step.id} className="relative pl-14">
         {/* Ligne verticale */}
         {index < steps.length - 1 && (
           <div className="absolute left-5 top-12 bottom-0 w-0.5 bg-gray-200 -ml-px"></div>
@@ -136,7 +142,11 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
             <div
               className={`w-10 h-10 flex items-center justify-center rounded-full border-2 ${stateClass}`}
             >
-              {step.icon}
+              <Icon 
+                name={step.icon} 
+                size={20} 
+                className={isCompleted ? 'text-white' : ''}
+              />
             </div>
           ) : (
             <div
@@ -152,7 +162,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
         </div>
 
         {/* Contenu de l'étape */}
-        <div className="pb-8">
+        <div className="pb-8 pl-4">
           <div className="flex items-center mb-1">
             <Typography variant="h3" className="font-bold">
               {step.title}

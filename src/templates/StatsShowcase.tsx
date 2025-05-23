@@ -42,9 +42,9 @@ export function StatsShowcase({
     backgroundColor === 'dark'
       ? 'bg-secondary text-white'
       : backgroundColor === 'primary'
-        ? 'bg-primary-50'
+        ? 'bg-[var(--color-primary)]/10'
         : backgroundColor === 'secondary'
-          ? 'bg-secondary-50'
+          ? 'bg-[var(--color-secondary)]/10'
           : 'bg-white';
 
   // Nombre de colonnes dans la grille
@@ -183,7 +183,7 @@ export function StatsShowcase({
             <div
               key={stat.id || `stat-${index}`}
               className={`p-6 rounded-lg text-center border ${
-                index === 0 ? 'border-primary bg-primary-50/30' : 'border-gray-200'
+                index === 0 ? 'border-primary bg-[var(--color-primary)]/10' : 'border-gray-200'
               }`}
             >
               {stat.icon && (

@@ -3,11 +3,12 @@
 import React from 'react';
 import { Typography } from '../atoms/Typography';
 import { Icon, IconName } from '../atoms/Icon';
+import { StatusVariant } from '@/types/common';
 
 export interface AlertProps {
   title?: string;
   children: React.ReactNode;
-  variant?: 'info' | 'success' | 'warning' | 'error';
+  variant?: StatusVariant;
   className?: string;
   icon?: IconName;
 }

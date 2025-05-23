@@ -71,7 +71,7 @@ const parcoursBlocks = [
 
 export default function HomePage() {
   // Bannière explicative de vision
-  const VisionNotice = () => (
+  const _VisionNotice = () => (
     <div className="bg-amber-50 dark:bg-[var(--color-tertiary)]/10 border-b border-amber-200 dark:border-[var(--color-tertiary)]/30 py-2">
       <Container>
         <p className="text-sm text-[var(--color-tertiary)] text-center">
@@ -86,9 +86,9 @@ export default function HomePage() {
   const clientBenefits = [
     {
       id: 'time',
-      title: "Du temps retrouvé pour l'essentiel",
+      title: "Récupérez du temps pour l'essentiel",
       description:
-        "Concentrez-vous sur vos clients et votre expertise, pas sur votre site web. Mon épouse thérapeute est passée de 7h à 45min d'administration hebdomadaire.",
+        "Concentrez-vous sur vos clients et votre expertise, pas sur votre site web. Comme mon épouse thérapeute : de 7h à 45min d'administration hebdomadaire.",
       iconName: 'Clock',
       color: 'primary',
       badge: 'Temps',
@@ -146,6 +146,7 @@ export default function HomePage() {
             fill
             style={{ objectFit: 'cover' }}
             priority
+            loading="eager"
           />
         </div>
         <HeroSection
@@ -156,7 +157,7 @@ export default function HomePage() {
           ctaText="Parlons de votre projet"
           ctaHref="/contact"
           secondaryCtaText="Comment je travaille"
-          secondaryCtaHref="#vision"
+          secondaryCtaHref="/processus"
           className="w-full space-y-12"
         />
         {/* Transition vers la section suivante */}
@@ -187,7 +188,7 @@ export default function HomePage() {
 
       {/* 3. Transformations possibles avec transparence */}
       <section className="py-12 sm:py-16 lg:py-20 relative overflow-hidden" id="transformation">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 to-transparent opacity-20 dark:from-primary-900 dark:opacity-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/10 to-transparent opacity-20 dark:from-[var(--color-primary)]/20 dark:opacity-10"></div>
         <Container className="relative z-10 mb-12">
           <div className="text-center mb-12">
             <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">
@@ -298,10 +299,11 @@ export default function HomePage() {
                   fill
                   style={{ objectFit: 'cover' }}
                   className="transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
                 />
                 {/* Petit badge en superposition (reste visible) */}
                 <div className="absolute top-4 right-4">
-                  <span className="inline-block px-3 py-1 bg-tertiary-500 text-white rounded-full text-sm font-medium shadow">
+                  <span className="inline-block px-3 py-1 bg-[var(--color-tertiary)] text-white rounded-full text-sm font-medium shadow">
                     7h → 45min
                   </span>
                 </div>
@@ -310,14 +312,30 @@ export default function HomePage() {
               {/* Texte sous l'image */}
               <div className="p-6 flex-grow flex flex-col">
                 <div className="flex flex-wrap gap-2 mb-3">
-                  {featuredProject.tags.map((tag) => (
-                    <span
-                      key={tag.id}
-                      className={`inline-block px-2 py-1 bg-${tag.color}-100 text-${tag.color}-700 dark:bg-${tag.color}-900 dark:text-${tag.color}-300 rounded-md text-xs font-medium`}
-                    >
-                      {tag.label}
-                    </span>
-                  ))}
+                  {featuredProject.tags.map((tag) => {
+                    // Fonction pour obtenir les classes de couleur correctes
+                    const getTagClasses = (color: string) => {
+                      switch (color) {
+                        case 'primary':
+                          return 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] dark:bg-[var(--color-primary)]/20 dark:text-[var(--color-primary)]';
+                        case 'secondary':
+                          return 'bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] dark:bg-[var(--color-secondary)]/20 dark:text-[var(--color-secondary)]';
+                        case 'tertiary':
+                          return 'bg-[var(--color-tertiary)]/10 text-[var(--color-tertiary)] dark:bg-[var(--color-tertiary)]/20 dark:text-[var(--color-tertiary)]';
+                        default:
+                          return 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300';
+                      }
+                    };
+                    
+                    return (
+                      <span
+                        key={tag.id}
+                        className={`inline-block px-2 py-1 rounded-md text-xs font-medium ${getTagClasses(tag.color)}`}
+                      >
+                        {tag.label}
+                      </span>
+                    );
+                  })}
                 </div>
                 <Typography
                   variant="h3"
@@ -333,7 +351,7 @@ export default function HomePage() {
             {/* Timeline transformation */}
             <div className="space-y-10">
               {/* Avant */}
-              <div className="bg-secondary-50 dark:bg-secondary-900/30 p-8 rounded-xl border-l-4 border-secondary-500 transition-all duration-300 hover:shadow-2xl">
+              <div className="bg-[var(--color-secondary)]/10 dark:bg-[var(--color-secondary)]/20 p-8 rounded-xl border-l-4 border-[var(--color-secondary)] transition-all duration-300 hover:shadow-2xl">
                 <div className="flex items-center mb-4">
                   <Badge variant="secondary" className="mr-3">
                     Avant
@@ -360,7 +378,7 @@ export default function HomePage() {
               </div>
 
               {/* Après */}
-              <div className="bg-primary-50 dark:bg-primary-900/30 p-8 rounded-xl border-l-4 border-primary-500 transition-all duration-300 hover:shadow-2xl">
+              <div className="bg-[var(--color-primary)]/10 dark:bg-[var(--color-primary)]/20 p-8 rounded-xl border-l-4 border-[var(--color-primary)] transition-all duration-300 hover:shadow-2xl">
                 <div className="flex items-center mb-4">
                   <Badge variant="primary" className="mr-3">
                     Après
@@ -387,7 +405,7 @@ export default function HomePage() {
               </div>
 
               {/* Résultat */}
-              <div className="bg-tertiary-50 dark:bg-tertiary-900/20 p-8 rounded-xl border border-tertiary-200 dark:border-tertiary-800 mt-12 transition-all duration-300 hover:shadow-2xl">
+              <div className="bg-[var(--color-tertiary)]/10 dark:bg-[var(--color-tertiary)]/20 p-8 rounded-xl border border-[var(--color-tertiary)]/30 dark:border-[var(--color-tertiary)]/50 mt-12 transition-all duration-300 hover:shadow-2xl">
                 <div className="flex items-center mb-4">
                   <Badge variant="tertiary" className="mr-3">
                     Transformation
@@ -420,7 +438,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. Mon parcours d'évolution professionnelle */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50/90 via-white/80 to-secondary-50 dark:from-gray-900 dark:via-gray-900/80 dark:to-secondary-900/30 relative">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50/90 via-white/80 to-[var(--color-secondary)]/10 dark:from-gray-900 dark:via-gray-900/80 dark:to-[var(--color-secondary)]/20 relative">
         <Container className="mb-12">
           <div className="text-center mb-12">
             <Typography variant="h2" className="font-bold italic mb-6 tracking-wide">

@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     const formData = await request.json();
 
     // Formater les données pour l'email
-    const formatFormData = (data: any) => {
+    const formatFormData = (data: Record<string, unknown>) => {
       let formattedData = '';
       for (const key in data) {
         formattedData += `<strong>${formatFieldName(key)}:</strong> ${data[key]}<br><br>`;

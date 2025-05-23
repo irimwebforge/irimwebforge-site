@@ -1,20 +1,13 @@
 import React from 'react';
+import { ColorVariant, StatusVariant, SizeVariant, PositionVariant } from '@/types/common';
 
 export interface BadgeProps {
   children: React.ReactNode;
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'success'
-    | 'warning'
-    | 'error'
-    | 'info'
-    | 'default';
-  size?: 'small' | 'medium' | 'large';
+  variant?: ColorVariant | StatusVariant | 'default';
+  size?: SizeVariant;
   shape?: 'rounded' | 'pill';
   icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
+  iconPosition?: PositionVariant;
   className?: string;
   isSolid?: boolean;
   isOutlined?: boolean;

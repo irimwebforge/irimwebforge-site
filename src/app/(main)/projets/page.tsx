@@ -1,6 +1,4 @@
-'use client';
-
-import React from 'react';
+import React, { useState } from 'react';
 import { PageHeader } from '@/components/organisms/PageHeader';
 import { Typography } from '@/components/atoms/Typography';
 import { Container } from '@/components/atoms/Container';
@@ -10,16 +8,19 @@ import { CTASection } from '@/templates/CTASection';
 import { Alert } from '@/components/molecules/Alert';
 import { Divider } from '@/components/atoms/Divider';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Card } from '@/components/molecules/Card';
-import { Badge } from '@/components/atoms/Badge';
 import { NavLink } from '@/components/atoms/NavLink';
-import { LightBox } from '@/components/molecules/LightBox';
-import { Carousel } from '@/components/molecules/Carousel';
+import { Card } from '@/components/molecules/Card';
+import { DemoModal } from '@/components/molecules/Modal';
 
-export default function Page() {
+export default function ProjetsPage() {
+  const [selectedDemo, setSelectedDemo] = useState<{
+    title: string;
+    url: string;
+    description?: string;
+  } | null>(null);
+
   // Bannière de vision
-  const VisionBanner = () => (
+  const _VisionBanner = () => (
     <Alert variant="info" title="" className="mb-8 mx-auto max-w-5xl">
       <p className="text-sm text-blue-800 dark:text-blue-200">
         Cette page présente mon projet fondateur (Corps & Sens) ainsi que des projets en
@@ -29,63 +30,176 @@ export default function Page() {
     </Alert>
   );
 
+  const projectTags = {
+    solution: [
+      { id: 'site-gestion', label: 'Site + Interface Admin', color: 'primary' as const },
+      { id: 'app-mobile', label: 'Application Mobile', color: 'secondary' as const },
+      { id: 'site-vitrine', label: 'Site Vitrine', color: 'tertiary' as const },
+      { id: 'prototype', label: 'Prototype/Concept', color: 'info' as const }
+    ],
+    clientele: [
+      { id: 'therapeutes', label: 'Thérapeutes', color: 'primary' as const },
+      { id: 'artisans', label: 'Artisans & Commerçants', color: 'secondary' as const },
+      { id: 'creatifs', label: 'Créatifs & Artistes', color: 'tertiary' as const },
+      { id: 'associations', label: 'Associations', color: 'info' as const },
+      { id: 'personnel', label: 'Projet Personnel', color: 'success' as const }
+    ],
+    statut: [
+      { id: 'realise', label: 'Réalisé', color: 'success' as const },
+      { id: 'en-cours', label: 'En Développement', color: 'warning' as const },
+      { id: 'concept', label: 'Concept', color: 'info' as const },
+      { id: 'formation', label: 'Formation', color: 'default' as const }
+    ]
+  };
+
+  const getTagsForProject = (solutionId: string, clienteleId?: string, statutId?: string) => {
+    const tags = [];
+    if (solutionId) {
+      const tag = projectTags.solution.find(t => t.id === solutionId);
+      if (tag) tags.push(tag);
+    }
+    if (clienteleId) {
+      const tag = projectTags.clientele.find(t => t.id === clienteleId);
+      if (tag) tags.push(tag);
+    }
+    if (statutId) {
+      const tag = projectTags.statut.find(t => t.id === statutId);
+      if (tag) tags.push(tag);
+    }
+    return tags;
+  };
+
   const projects = [
-    {
-      id: 'corps-et-sens',
-      title: 'Corps & Sens',
-      slug: 'corps-et-sens',
-      imageUrl: 'images/projects/corps-et-sens.jpg',
-      thumbnailSrc: '/images/projects/corps-et-sens-thumb.jpg',
-      tags: [
-        { id: 'personnel', label: 'Projet Personnel', color: 'primary' as const },
-        { id: 'interface', label: 'Interface Admin', color: 'secondary' as const },
-      ],
-      description:
-        "Projet réalisé pour mon épouse thérapeute qui a transformé 7h d'administration hebdomadaire en 45min. Une interface simplifiée pour la gestion du planning et des contenus.",
-      status: 'Réalisé',
-      featured: true,
-    },
-    {
-      id: 'univers-des-reves',
-      title: 'Univers des Rêves',
-      slug: 'univers-des-reves',
-      imageUrl: '/images/projects/univers-des-reves.jpg',
-      thumbnailSrc: '/images/projects/univers-des-reves-thumb.jpg',
-      tags: [
-        { id: 'conceptuel', label: 'Projet Conceptuel', color: 'tertiary' as const },
-        { id: 'autonomie', label: 'Autonomie Éditoriale', color: 'primary' as const },
-      ],
-      description:
-        "Concept d'interface intuitive permettant à un onirologue de gérer ses contenus sans intervention technique externe. Une vision de l'autonomie numérique que je souhaite permettre.",
-      status: 'Réalisé',
-    },
     {
       id: 'mr-mrs-cbd',
       title: 'Mr&Mrs CBD',
       slug: 'mr-mrs-cbd',
       imageUrl: '/images/projects/cbd-site.jpg',
-      thumbnailSrc: '/images/projects/mr-mrs-cbd-thumb.jpg',
-      tags: [
-        { id: 'en-cours', label: 'En Développement', color: 'secondary' as const },
-        { id: 'artisan', label: 'Commerce Local', color: 'tertiary' as const },
-      ],
+      tags: getTagsForProject('site-gestion', 'artisans', 'concept'),
       description:
         "Projet en développement visant à libérer un commerce local de ses abonnements coûteux. L'objectif est une économie annuelle de 2640€ et une reprise de contrôle totale sur l'évolution du site.",
-      status: 'Concept',
+      year: '2025',
+    },
+    {
+      id: 'univers-des-reves',
+      title: 'Univers des Rêves',
+      slug: 'univers-des-reves',
+      imageUrl: '/images/projects/univers-des-reves.webp',
+      tags: getTagsForProject('site-gestion', 'therapeutes', 'realise'),
+      description:
+        "Concept d'interface intuitive permettant à un onirologue de gérer ses contenus sans intervention technique externe. Une vision de l'autonomie numérique que je souhaite permettre.",
+      year: '2025',
+      onlineUrl: 'https://www.universdesreves.com/',
     },
     {
       id: 'moodcycle',
       title: 'MoodCycle',
       slug: 'moodcycle',
       imageUrl: '/images/projects/moodcycle.jpg',
-      thumbnailSrc: '/images/projects/moodcycle-thumb.jpg',
-      tags: [
-        { id: 'app', label: 'Application Mobile', color: 'primary' as const },
-        { id: 'personnel', label: 'Projet Personnel', color: 'secondary' as const },
-      ],
+      tags: getTagsForProject('app-mobile', 'personnel', 'en-cours'),
       description:
         "Application holistique de suivi de cycle menstruel en développement. Un projet personnel qui explore les possibilités d'interfaces intuitives sur mobile avec React Native.",
-      status: 'En développement',
+      year: '2025',
+    },
+    {
+      id: 'nina-carducci',
+      title: 'Nina Carducci – SEO & Accessibilité',
+      slug: 'nina-carducci',
+      imageUrl: '/images/projects/nina-carducci.webp',
+      tags: getTagsForProject('site-vitrine', 'creatifs', 'formation'),
+      description: "Optimisation du référencement et de l'accessibilité d'un site de photographe.",
+      year: '2025',
+      onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P8_Nina-Carducci',
+    },
+    {
+      id: '724events',
+      title: '724Events – Debug & Tests',
+      slug: '724events',
+      imageUrl: '/images/projects/724events.webp',
+      tags: getTagsForProject('site-vitrine', 'artisans', 'formation'),
+      description: "Débogage et plan de tests pour le site d'une agence événementielle.",
+      year: '2025',
+      onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P9_724Events',
+    },
+    {
+      id: 'corps-et-sens',
+      title: 'Corps & Sens',
+      slug: 'corps-et-sens',
+      imageUrl: 'images/projects/corps-et-sens.jpg',
+      tags: getTagsForProject('site-gestion', 'therapeutes', 'realise'),
+      description: "Projet réalisé pour mon épouse thérapeute qui a transformé 7h d'administration hebdomadaire en 45min. Une interface simplifiée pour la gestion du planning et des contenus.",
+      featured: true,
+      year: '2024',
+      onlineUrl: 'https://corpsetsenstherapie.com/',
+    },
+    {
+      id: 'Riding-Cities',
+      title: 'Riding Cities',
+      slug: 'Riding-Cities',
+      imageUrl: '/images/projects/Riding-Cities.webp',
+      tags: getTagsForProject('site-vitrine', 'associations', 'formation'),
+      description: "Intégration de la page d'accueil d'une association avec HTML & CSS à partir d'une maquette Figma.",
+      year: '2024',
+      onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P2_Riding-Cities/',
+    },
+    {
+      id: 'booki',
+      title: 'Booki – Agence de voyage',
+      slug: 'booki', 
+      imageUrl: '/images/projects/booki.webp',
+      tags: getTagsForProject('site-vitrine', 'artisans', 'formation'),
+      description: "Intégration de la page d'accueil d'une agence de voyage avec HTML & CSS à partir d'une maquette Figma.",
+      year: '2024',
+      onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P3_Booki',
+    },
+    {
+      id: 'ohmyfood',
+      title: 'OhMyFood – Animations CSS',
+      slug: 'ohmyfood',
+      imageUrl: '/images/projects/ohmyfood.webp',
+      tags: getTagsForProject('site-vitrine', 'artisans', 'formation'),
+      description: "Implémentation d'un site foodtech mobile-first avec animations CSS avancées (Sass).",
+      year: '2024',
+      onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P4_Ohmyfood',
+    },
+    {
+      id: 'print-it',
+      title: 'Print-it – Carousel JS',
+      slug: 'print-it',
+      imageUrl: '/images/projects/print-it.webp',
+      tags: getTagsForProject('site-vitrine', 'artisans', 'formation'),
+      description: "Création d'un carousel pour le site d'une imprimerie avec JavaScript.",
+      year: '2024',
+      onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P5_Print-it',
+    },
+    {
+      id: 'sophie-bluel',
+      title: 'Sophie Bluel – Site dynamique JS',
+      slug: 'sophie-bluel',
+      imageUrl: '/images/projects/sophie-bluel.webp',
+      tags: getTagsForProject('site-gestion', 'creatifs', 'formation'),
+      description: "Création d'un site dynamique pour une architecte, intégration d'une API et gestion des événements utilisateur.",
+      year: '2024',
+      onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P6_Sophie-Bluel/FrontEnd',
+    },
+    {
+      id: 'kasa',
+      title: 'Kasa – Application React',
+      slug: 'kasa',
+      imageUrl: '/images/projects/kasa.webp',
+      tags: getTagsForProject('site-vitrine', 'artisans', 'formation'),
+      description: "Développement du front-end de Kasa, application de location immobilière, avec React et React Router.",
+      year: '2024',
+      onlineUrl: 'https://portfolio.irimwebforge.com/projects/OC_IW_P7_Kasa',
+    },
+    {
+      id: 'echos-des-reves',
+      title: 'Echos des Rêves – Projet HTML/CSS',
+      slug: 'echos-des-reves',
+      imageUrl: '/images/projects/echos-des-reves.jpg',
+      tags: getTagsForProject('app-mobile', 'personnel', 'realise'),
+      description: "Premiers pas sur le langage HTML et CSS en analysant et complétant une page web.",
+      year: '2024',
     },
   ];
 
@@ -131,8 +245,9 @@ export default function Page() {
   return (
     <main className="overflow-x-hidden">
       <PageHeader
-        title="Des projets qui racontent une vision"
-        description="Basés sur mon expérience personnelle avec mon épouse thérapeute, voici les types de transformations numériques que j'aimerais rendre possibles."
+        title="Mon portfolio: entre réalisations et vision"
+        description="Un mélange de projets qui raconte mon parcours et illustre ma direction
+              professionnelle."
         align="center"
         size="medium"
         pattern={true}
@@ -142,9 +257,8 @@ export default function Page() {
         <VisionBanner />
       </Container> */}
 
-      <section className="py-16">
-        <Container>
-          <div className="text-center mb-12">
+      <section className="py-8">
+          {/* <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
               Mon portfolio: entre réalisations et vision
             </Typography>
@@ -152,75 +266,27 @@ export default function Page() {
               Un mélange de projets qui raconte mon parcours et illustre ma direction
               professionnelle.
             </Typography>
-          </div>
+          </div> */}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {projects.map((project) => {
-              const mainColor = project.tags[0]?.color || 'primary';
-              return (
-                <Card
-                  key={project.id}
-                  variant="accent"
-                  color={mainColor as 'primary' | 'secondary' | 'tertiary'}
-                  accentPosition="top"
-                  padding="large"
-                  hover
-                  className={`
-                    group flex flex-col h-full
-                    transition-transform duration-150 ease-in-out
-                    hover:scale-105 hover:shadow-xl
-                  `}
-                  title={
-                    <div>
-                      <div className="relative h-48 overflow-hidden rounded-t-lg mb-4">
-                        <Image
-                          src={project.imageUrl || '/images/placeholder.jpg'}
-                          alt={project.title}
-                          fill
-                          style={{ objectFit: 'cover' }}
-                          className="transition-transform duration-500 group-hover:scale-105"
-                        />
-                        <div className="absolute top-2 right-2 bg-white dark:bg-gray-800 px-3 py-1 rounded-full text-xs font-medium shadow-sm">
-                          {project.status}
-                        </div>
-                      </div>
-                      <div className="flex gap-2 mb-3">
-                        {project.tags.map((tag) => (
-                          <Badge
-                            key={tag.id}
-                            variant={tag.color as 'primary' | 'secondary' | 'tertiary'}
-                            className="transition-colors duration-150 group-hover:bg-opacity-80"
-                          >
-                            {tag.label}
-                          </Badge>
-                        ))}
-                      </div>
-                      <Typography as="h3" variant="h3" className="mb-2">
-                        {project.title}
-                      </Typography>
-                    </div>
-                  }
-                >
-                  <Typography variant="p" className="text-gray-600 dark:text-gray-300 mb-4">
-                    {project.description}
-                  </Typography>
-                  <div className="mt-auto pt-4">
-                    <NavLink
-                      href={`/projets/${project.slug}`}
-                      className="inline-flex items-center text-[var(--color-primary)] hover:text-[var(--color-primary-600)] transition-colors duration-normal"
-                    >
-                      En savoir plus
-                      <Icon name="ArrowRight" className="ml-1" size={16} />
-                    </NavLink>
-                  </div>
-                </Card>
-              );
-            })}
-          </div>
-        </Container>
+          <ProjectShowcase
+            title=""
+            projects={projects}
+            showFilters={true}
+            _showMoreButton={false}
+            className="projects-showcase"
+            onProjectClick={(project) => {
+              if (project.onlineUrl) {
+                setSelectedDemo({
+                  title: project.title,
+                  url: project.onlineUrl,
+                  description: project.description
+                });
+              }
+            }}
+          />
       </section>
 
-      <section className="py-16 bg-gray-50 dark:bg-gray-900">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900">
         <Container>
           <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
@@ -295,7 +361,7 @@ export default function Page() {
         </Container>
       </section>
 
-      <section className="py-16">
+      <section className="py-12 sm:py-16 lg:py-20">
         <Container>
           <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-xl">
             <div className="grid grid-cols-1 md:grid-cols-2">
@@ -342,7 +408,7 @@ export default function Page() {
                 </Typography>
 
                 <NavLink
-                  href="/projets/corps-et-sens"
+                  href="https://www.corpsetsenstherapie.com/"
                   className="inline-flex items-center px-6 py-3 rounded-md bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-600)] transition-colors duration-normal"
                 >
                   Découvrir ce projet
@@ -352,7 +418,7 @@ export default function Page() {
 
               <div className="relative h-full min-h-[400px]">
                 <Image
-                  src="/images/projects/corps-et-sens-detail.jpg"
+                  src="/images/projects/corps-et-sens-detail.png"
                   alt="Interface Corps & Sens"
                   fill
                   style={{ objectFit: 'cover' }}
@@ -364,6 +430,14 @@ export default function Page() {
         </Container>
       </section>
 
+      <DemoModal
+        isOpen={selectedDemo !== null}
+        onClose={() => setSelectedDemo(null)}
+        title={selectedDemo?.title || ''}
+        siteUrl={selectedDemo?.url || ''}
+        description={selectedDemo?.description}
+      />
+
       <CTASection
         title="Échangeons sur vos défis quotidiens"
         description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
@@ -374,7 +448,7 @@ export default function Page() {
         }}
         secondaryAction={{
           text: 'Découvrir mon approche',
-          url: '/processus',
+          url: '/a-propos',
           variant: 'secondary',
         }}
         variant="default"

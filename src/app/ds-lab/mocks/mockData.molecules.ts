@@ -266,6 +266,7 @@ export const PROJECTS = [
     title: 'Boutique Élégance',
     slug: 'boutique-elegance',
     imageSrc: '/images/projects/project-placeholder.jpg',
+    imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [PROJECT_TAGS[0], PROJECT_TAGS[1]],
     description:
       'Site e-commerce de produits de luxe avec interface utilisateur simplifiée et système de paiement sécurisé.',
@@ -277,6 +278,7 @@ export const PROJECTS = [
     title: 'Dashboard Analytics',
     slug: 'dashboard-analytics',
     imageSrc: '/images/projects/project-placeholder.jpg',
+    imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [PROJECT_TAGS[2], PROJECT_TAGS[3]],
     description:
       'Tableau de bord analytique pour entreprises avec visualisations de données en temps réel et rapports personnalisables.',
@@ -288,6 +290,7 @@ export const PROJECTS = [
     title: 'Wellness App',
     slug: 'wellness-app',
     imageSrc: '/images/projects/project-placeholder.jpg',
+    imageUrl: '/images/projects/project-placeholder.jpg',
     tags: [PROJECT_TAGS[2]],
     description:
       "Application web de suivi de bien-être avec fonctionnalités de méditation, suivi d'exercices et journal personnel.",

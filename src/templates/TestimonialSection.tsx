@@ -40,9 +40,9 @@ export function TestimonialSection({
     backgroundColor === 'dark'
       ? 'bg-secondary text-white'
       : backgroundColor === 'primary'
-        ? 'bg-primary-50'
+        ? 'bg-[var(--color-primary)]/10'
         : backgroundColor === 'secondary'
-          ? 'bg-secondary-50'
+          ? 'bg-[var(--color-secondary)]/10'
           : 'bg-white';
 
   // Variante featured: Un témoignage principal et les autres plus petits

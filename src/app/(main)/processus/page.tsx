@@ -6,14 +6,13 @@ import { Container } from '@/components/atoms/Container';
 import { Icon, IconName } from '@/components/atoms/Icon';
 import { ProcessTimeline } from '@/components/molecules/ProcessTimeline';
 import { FAQ } from '@/components/molecules/FAQ';
-import { CTASection } from '@/templates/CTASection';
 import { StatsShowcase } from '@/templates/StatsShowcase';
 import { Alert } from '@/components/molecules/Alert';
 import { NavLink } from '@/components/atoms/NavLink';
 
 export default function Page() {
   // Bannière de vision
-  const VisionBanner = () => (
+  const _VisionBanner = () => (
     <Alert variant="info" title="" className="mb-8 mx-auto max-w-5xl">
       <p className="text-sm text-blue-800 dark:text-blue-200">
         Cette page présente ma vision d'un processus idéal, inspiré par mon expérience avec le
@@ -26,48 +25,42 @@ export default function Page() {
     {
       id: 'step-1',
       title: 'Conversation découverte',
-      description:
-        'Un échange de 45 minutes pour explorer vos frustrations quotidiennes et vos aspirations. Je cherche à comprendre votre métier et vos contraintes réelles.',
-      icon: 'Users' as IconName,
+      description: 'Un échange simple pour comprendre votre métier et ce qui vous pose problème.',
+      icon: 'UserPlus' as IconName,
       color: 'primary' as const,
     },
     {
       id: 'step-2',
       title: 'Immersion dans votre métier',
-      description:
-        'Je consacre environ 25% du temps total du projet à comprendre votre activité et vos processus avant même de commencer à parler de solutions techniques.',
-      icon: 'Glasses' as IconName,
+      description: 'Je prends le temps de comprendre comment vous travaillez avant de proposer des solutions.',
+      icon: 'Search' as IconName,
       color: 'primary' as const,
     },
     {
       id: 'step-3',
-      title: 'Conception adaptée à vos besoins',
-      description:
-        'Nous définissons ensemble les fonctionnalités essentielles dont vous avez besoin dans votre quotidien, sans surcharge technique inutile.',
-      icon: 'Pen' as IconName,
+      title: 'Conception sur mesure',
+      description: 'Nous définissons ensemble ce dont vous avez vraiment besoin, sans complications inutiles.',
+      icon: 'PenTool' as IconName,
       color: 'secondary' as const,
     },
     {
       id: 'step-4',
       title: 'Développement par étapes',
-      description:
-        "La création se fait par cycles courts avec des retours fréquents. Vous voyez votre solution prendre forme progressivement et pouvez l'ajuster selon vos sensations.",
-      icon: 'Code' as IconName,
+      description: 'Vous voyez votre solution prendre forme progressivement et pouvez donner votre avis.',
+      icon: 'Code2' as IconName,
       color: 'secondary' as const,
     },
     {
       id: 'step-5',
       title: 'Formation personnalisée',
-      description:
-        "Vous bénéficiez d'une formation adaptée à votre aisance technique, avec des supports visuels que vous pouvez consulter à votre rythme.",
+      description: 'Vous apprenez à utiliser votre site à votre rythme, avec des supports simples.',
       icon: 'GraduationCap' as IconName,
       color: 'tertiary' as const,
     },
     {
       id: 'step-6',
       title: 'Accompagnement progressif',
-      description:
-        "L'objectif est de vous rendre progressivement autonome, tout en restant disponible pour les évolutions futures et l'adaptation à votre croissance.",
+      description: 'Vous devenez autonome progressivement, je reste disponible pour les évolutions.',
       icon: 'Rocket' as IconName,
       color: 'tertiary' as const,
     },
@@ -76,33 +69,28 @@ export default function Page() {
   const faqItems = [
     {
       id: 'faq-1',
-      question: 'Comment se déroulerait une conversation découverte?',
-      answer:
-        "Un échange de 45 minutes où j'écoute plus que je ne parle. L'objectif: comprendre votre activité, vos frustrations actuelles et vos aspirations, sans jargon technique.",
+      question: 'Comment se déroule une conversation découverte?',
+      answer: "Un échange de 45 minutes où j'écoute plus que je ne parle. L'objectif: comprendre votre activité, vos besoins actuels et vos aspirations, sans jargon technique.",
     },
     {
       id: 'faq-2',
-      question: 'Combien de temps faudrait-il pour développer un site?',
-      answer:
-        'Entre 4 et 8 semaines pour un site sur mesure, avec une phase importante de compréhension de votre métier avant la réalisation technique.',
+      question: 'Combien de temps faut-il pour développer un site?',
+      answer: 'Entre 4 et 8 semaines pour un site sur mesure, avec une phase importante de compréhension de votre métier avant la réalisation technique.',
     },
     {
       id: 'faq-3',
-      question: 'Pourrais-je vraiment mettre à jour mon site moi-même?',
-      answer:
-        "Absolument, c'est la raison d'être de mon approche. L'interface administrative est conçue spécifiquement pour votre façon de travailler, avec une formation personnalisée incluse.",
+      question: 'Pourrai-je vraiment mettre à jour mon site moi-même?',
+      answer: "Absolument, c'est la raison d'être de mon approche. L'interface administrative est conçue spécifiquement pour votre façon de travailler, avec une formation personnalisée incluse.",
     },
     {
       id: 'faq-4',
-      question: "Utiliseriez-vous WordPress ou d'autres CMS?",
-      answer:
-        "Je privilégie des solutions sur mesure pour une adaptation totale à vos besoins, sans vous imposer les contraintes d'un CMS standard.",
+      question: "Utilisez-vous WordPress ou d'autres CMS?",
+      answer: "Je privilégie des solutions sur mesure pour une adaptation totale à vos besoins, sans vous imposer les contraintes d'un CMS standard.",
     },
     {
       id: 'faq-5',
-      question: 'Que se passerait-il si mon activité évolue?',
-      answer:
-        'Les solutions sont pensées pour évoluer avec vous, grâce à un accompagnement régulier et des ajustements continus.',
+      question: 'Que se passe-t-il si mon activité évolue?',
+      answer: 'Les solutions sont pensées pour évoluer avec vous, grâce à un accompagnement régulier et des ajustements selon vos besoins.',
     },
   ];
 
@@ -110,17 +98,17 @@ export default function Page() {
     {
       value: '25%',
       label: "Temps d'immersion",
-      description: 'Que je consacrerais à comprendre votre métier',
+      description: 'Consacré à comprendre votre métier',
     },
     {
       value: '4-8',
       label: 'Semaines',
-      description: 'Estimation pour un projet standard',
+      description: 'Pour un projet standard',
     },
     {
       value: '24h',
-      label: 'De réactivité',
-      description: 'Objectif pour répondre à vos demandes',
+      label: 'Réactivité',
+      description: 'Pour répondre à vos demandes',
     },
     {
       value: '1 an',
@@ -145,7 +133,7 @@ export default function Page() {
 
       <section className="py-12">
         <Container>
-          <div className="text-center mb-12">
+          {/* <div className="text-center mb-12">
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
               Un processus en 6 étapes, de la compréhension à l'autonomie
             </Typography>
@@ -153,7 +141,7 @@ export default function Page() {
               Une méthode pensée pour créer des solutions véritablement adaptées à vos besoins
               spécifiques.
             </Typography>
-          </div>
+          </div> */}
 
           <ProcessTimeline
             steps={processSteps}
@@ -251,7 +239,7 @@ export default function Page() {
         </Container>
       </section>
 
-      <CTASection
+      {/* <CTASection
         title="Échangeons sur vos défis numériques"
         description="45 minutes pour échanger sur votre projet. Sans pression commerciale, sans jargon technique."
         primaryAction={{
@@ -262,7 +250,7 @@ export default function Page() {
         variant="banner"
         backgroundColor="primary"
         textColor="light"
-      />
+      /> */}
     </main>
   );
 }

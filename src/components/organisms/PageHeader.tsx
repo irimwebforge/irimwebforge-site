@@ -81,17 +81,17 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
     },
     medium: {
       padding: 'py-12 md:py-16',
-      titleSize: 'text-4xl md:text-5xl',
+      titleSize: 'text-4xl',
       maxWidth: 'max-w-4xl',
     },
     large: {
       padding: 'py-16 md:py-20',
-      titleSize: 'text-5xl md:text-6xl',
+      titleSize: 'text-5xl',
       maxWidth: 'max-w-5xl',
     },
     hero: {
       padding: 'py-20 md:py-28',
-      titleSize: 'text-5xl md:text-7xl',
+      titleSize: 'text-5xl md:text-6xl',
       maxWidth: 'max-w-6xl',
     },
   };
@@ -263,21 +263,22 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             )}
 
             <Typography
+              as="h1"
               variant="h1"
-              className={`${sizeClasses[size].titleSize} font-bold italic mb-4`}
+              className="mb-4"
             >
               {title}
             </Typography>
 
             {subtitle && (
-              <Typography variant="lead" className="text-xl md:text-2xl mb-4 opacity-90">
+              <Typography variant="lead" className="mb-4 opacity-90">
                 {subtitle}
               </Typography>
             )}
 
             {description && (
               <Typography
-                variant="p"
+                variant="lead"
                 className={`mb-6 opacity-80 ${align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : ''}`}
               >
                 {description}

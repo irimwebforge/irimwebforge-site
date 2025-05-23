@@ -6,21 +6,19 @@ import { Typography } from '@/components/atoms/Typography';
 import { Icon, IconName } from '@/components/atoms/Icon';
 import { Container } from '@/components/atoms/Container';
 import { Alert } from '@/components/molecules/Alert';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/atoms/Button';
-import Link from 'next/link';
-import { CTASection } from '@/templates/CTASection';
 import { NavLink } from '@/components/atoms/NavLink';
 
 export default function Page() {
   // États pour le formulaire
-  const [formData, setFormData] = useState({});
+  const [_formData, setFormData] = useState({});
   const [formComplete, setFormComplete] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Bannière de vision
-  const VisionBanner = () => (
+  const _VisionBanner = () => (
     <Alert variant="info" title="" className="mb-8 mx-auto max-w-5xl">
       <p className="text-sm text-blue-800 dark:text-blue-200">
         Cette page vous propose un échange sans engagement pour explorer vos défis quotidiens. Ma
@@ -31,7 +29,7 @@ export default function Page() {
   );
 
   // Fonction pour soumettre le formulaire complet
-  const handleFormSubmit = async (completeData: Record<string, any>) => {
+  const handleFormSubmit = async (completeData: Record<string, unknown>) => {
     setIsSubmitting(true);
     try {
       const response = await fetch('/api/contact', {
@@ -259,7 +257,7 @@ export default function Page() {
         <VisionBanner />
       </Container> */}
 
-      <section id="conversation" className="py-16">
+      <section id="conversation" className="py-12 sm:py-16 lg:py-20">
         <Container>
           <div className="max-w-4xl mx-auto mb-8 text-center">
             <Typography as="h2" variant="h2" className="mb-6 font-bold italic">
@@ -305,7 +303,7 @@ export default function Page() {
         </Container>
       </section>
 
-      <section id="form-section" className="py-16 bg-gray-50 dark:bg-gray-900">
+      <section id="form-section" className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900">
         <Container>
           <div className="max-w-2xl mx-auto mb-12 text-center">
             <Typography as="h2" variant="h2" className="mb-6 font-bold italic">
@@ -315,6 +313,17 @@ export default function Page() {
               Pour que notre échange soit le plus productif possible, partagez quelques informations
               sur vous et votre activité.
             </Typography>
+            
+            {/* Contact direct visible */}
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-8">
+              <Typography variant="p" className="text-blue-800 dark:text-blue-200 mb-3">
+                <strong>Préférez l'échange direct ?</strong>
+              </Typography>
+              <Typography variant="p" className="text-blue-700 dark:text-blue-300">
+                <a href="mailto:contact@irimwebforge.com" className="font-medium hover:underline">contact@irimwebforge.com</a> | 
+                <a href="tel:0678764559" className="font-medium hover:underline ml-2">06 78 76 45 59</a>
+              </Typography>
+            </div>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-10 items-stretch">

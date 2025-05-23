@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { FormField } from './FormField';
 import { Button } from '../atoms/Button';
 import { Typography } from '../atoms/Typography';
@@ -25,7 +25,7 @@ export interface ConversationFormProps {
   fields: ConversationFormField[];
   onSubmit?: (formData: Record<string, unknown>) => void;
   submitButtonText?: string;
-  successMessage?: string;
+  _successMessage?: string;
   loading?: boolean;
   variant?: 'default' | 'card' | 'minimal';
   steps?: { title: string; description: string }[];
@@ -38,7 +38,7 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
   fields,
   onSubmit,
   submitButtonText = 'Envoyer ma demande',
-  successMessage = 'Merci pour votre message. Je vous répondrai dans les meilleurs délais.',
+  _successMessage = 'Merci pour votre message. Je vous répondrai dans les meilleurs délais.',
   loading = false,
   variant = 'default',
   steps,
@@ -52,9 +52,9 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
   const [stepDirection, setStepDirection] = useState<'forward' | 'backward'>('forward');
 
   // Détecter si nous sommes dans un mode multi-étapes
-  const isMultiStep = Boolean(steps && steps.length > 1);
+  const isMultiStep = useMemo(() => Boolean(steps && steps.length > 1), [steps?.length]);
 
-  // Gérer les champs de l'étape courante
+  // Gérer les champs de l'étape courante - OPTIMISÉ avec useMemo
   const fieldsPerStep = useMemo(() => {
     // Si pas de steps, tous les champs sont dans une seule étape
     if (!isMultiStep) return [fields];
@@ -72,11 +72,11 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
     return result;
   }, [fields, steps, isMultiStep]);
 
-  // Les champs visibles sont ceux de l'étape courante
-  const visibleFields = fieldsPerStep[currentStep] || [];
+  // Les champs visibles sont ceux de l'étape courante - OPTIMISÉ avec useMemo
+  const visibleFields = useMemo(() => fieldsPerStep[currentStep] || [], [fieldsPerStep, currentStep]);
 
-  // Validation de tous les champs visibles de l'étape actuelle
-  const validateCurrentStep = (): boolean => {
+  // Validation de tous les champs visibles de l'étape actuelle - OPTIMISÉ avec useCallback
+  const validateCurrentStep = useCallback((): boolean => {
     const newErrors: Record<string, string> = {};
     visibleFields.forEach((field) => {
       const value = formData[field.id];
@@ -92,10 +92,10 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
     });
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
+  }, [visibleFields, formData]);
 
-  // Passer à l'étape suivante
-  const handleNext = () => {
+  // Passer à l'étape suivante - OPTIMISÉ avec useCallback
+  const handleNext = useCallback(() => {
     if (validateCurrentStep()) {
       if (isMultiStep && currentStep < fieldsPerStep.length - 1) {
         setStepDirection('forward');
@@ -110,18 +110,18 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
         setIsSubmitted(true);
       }
     }
-  };
+  }, [validateCurrentStep, isMultiStep, currentStep, fieldsPerStep.length, onSubmit, formData]);
 
-  // Revenir à l'étape précédente
-  const handlePrevious = () => {
+  // Revenir à l'étape précédente - OPTIMISÉ avec useCallback
+  const handlePrevious = useCallback(() => {
     if (currentStep > 0) {
       setStepDirection('backward');
       setCurrentStep(currentStep - 1);
     }
-  };
+  }, [currentStep]);
 
-  // Gestion des changements dans les champs
-  const handleChange = (
+  // Gestion des changements dans les champs - OPTIMISÉ avec useCallback
+  const handleChange = useCallback((
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { id, value, type } = e.target as HTMLInputElement;
@@ -138,15 +138,15 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
         return newErrors;
       });
     }
-  };
+  }, [errors]);
 
-  // Gestion de la touche Enter pour valider
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  // Gestion de la touche Enter pour valider - OPTIMISÉ avec useCallback
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && e.target instanceof HTMLInputElement) {
       e.preventDefault();
       handleNext();
     }
-  };
+  }, [handleNext]);
 
   // Afficher le message de succès si le formulaire a été soumis
   if (isSubmitted) {

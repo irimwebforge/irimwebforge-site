@@ -108,7 +108,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
         >
           {primaryAction && (
             <Link href={primaryAction.url}>
-              <Button variant={primaryAction.variant || 'gradient'} size="lg">
+              <Button variant={primaryAction.variant || 'gradient'} size="large">
                 {primaryAction.text}
               </Button>
             </Link>
@@ -116,7 +116,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
 
           {secondaryAction && (
             <Link href={secondaryAction.url}>
-              <Button variant={secondaryAction.variant || 'secondary'} size="lg">
+              <Button variant={secondaryAction.variant || 'secondary'} size="large">
                 {secondaryAction.text}
               </Button>
             </Link>

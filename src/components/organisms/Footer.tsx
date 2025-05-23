@@ -49,7 +49,11 @@ export function Footer() {
             </Typography>
             <ul className="space-y-2 text-sm">
               <li>
-                <NavLink href="/" color="secondary" className="hover:text-[var(--color-primary)]">
+                <NavLink
+                  href="/"
+                  color="secondary"
+                  className="hover:text-[var(--color-primary)] footer-arrow"
+                >
                   Accueil
                 </NavLink>
               </li>
@@ -57,7 +61,7 @@ export function Footer() {
                 <NavLink
                   href="/services"
                   color="secondary"
-                  className="hover:text-[var(--color-primary)]"
+                  className="hover:text-[var(--color-primary)] footer-arrow"
                 >
                   Services
                 </NavLink>
@@ -66,7 +70,7 @@ export function Footer() {
                 <NavLink
                   href="/projets"
                   color="secondary"
-                  className="hover:text-[var(--color-primary)]"
+                  className="hover:text-[var(--color-primary)] footer-arrow"
                 >
                   Projets
                 </NavLink>
@@ -75,7 +79,7 @@ export function Footer() {
                 <NavLink
                   href="/processus"
                   color="secondary"
-                  className="hover:text-[var(--color-primary)]"
+                  className="hover:text-[var(--color-primary)] footer-arrow"
                 >
                   Processus
                 </NavLink>
@@ -84,7 +88,7 @@ export function Footer() {
                 <NavLink
                   href="/a-propos"
                   color="secondary"
-                  className="hover:text-[var(--color-primary)]"
+                  className="hover:text-[var(--color-primary)] footer-arrow"
                 >
                   À propos
                 </NavLink>
@@ -93,7 +97,7 @@ export function Footer() {
                 <NavLink
                   href="/contact"
                   color="secondary"
-                  className="hover:text-[var(--color-primary)]"
+                  className="hover:text-[var(--color-primary)] footer-arrow"
                 >
                   Contact
                 </NavLink>
@@ -111,7 +115,7 @@ export function Footer() {
                 <NavLink
                   href="/services/presence"
                   color="secondary"
-                  className="hover:text-[var(--color-primary)]"
+                  className="hover:text-[var(--color-primary)] footer-arrow"
                 >
                   Solution Présence
                 </NavLink>
@@ -120,7 +124,7 @@ export function Footer() {
                 <NavLink
                   href="/services/integree"
                   color="secondary"
-                  className="hover:text-[var(--color-primary)]"
+                  className="hover:text-[var(--color-primary)] footer-arrow"
                 >
                   Solution Intégrée
                 </NavLink>
@@ -129,7 +133,7 @@ export function Footer() {
                 <NavLink
                   href="/services/evolutive"
                   color="secondary"
-                  className="hover:text-[var(--color-primary)]"
+                  className="hover:text-[var(--color-primary)] footer-arrow"
                 >
                   Solution Évolutive
                 </NavLink>
@@ -138,7 +142,7 @@ export function Footer() {
                 <NavLink
                   href="/services#diagnostic"
                   color="secondary"
-                  className="hover:text-[var(--color-primary)]"
+                  className="hover:text-[var(--color-primary)] footer-arrow"
                 >
                   Diagnostic Numérique
                 </NavLink>

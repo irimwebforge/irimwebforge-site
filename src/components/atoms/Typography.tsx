@@ -6,7 +6,7 @@ const typographyVariants = cva('', {
     variant: {
       h1: 'text-4xl font-bold font-display italic text-primary',
       h2: 'text-3xl font-bold font-display italic text-primary',
-      h3: 'text-2xl font-bold font-display text-secondary',
+      h3: 'text-2xl font-bold font-display text-primary',
       h4: 'text-xl font-semibold font-display text-secondary',
       p: 'text-base font-body text-foreground',
       lead: 'text-lg font-medium font-body text-foreground',

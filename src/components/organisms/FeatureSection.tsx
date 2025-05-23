@@ -263,7 +263,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
                 {feature.link && (
                   <div className="mt-4">
                     <Link href={feature.link.href}>
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="small">
                         {feature.link.text}
                       </Button>
                     </Link>

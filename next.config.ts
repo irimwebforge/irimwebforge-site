@@ -2,8 +2,13 @@
 const nextConfig = {
   output: 'export', // Génère un site statique
   images: {
-    unoptimized: true, // Nécessaire avec export statique
+    loader: 'custom',
+    loaderFile: './imageLoader.js'
   },
+  trailingSlash: true,
+  experimental: {
+    optimizeCss: true
+  }
 };
 
 module.exports = nextConfig;

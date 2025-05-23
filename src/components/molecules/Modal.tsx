@@ -5,6 +5,8 @@ import { Typography } from '../atoms/Typography';
 import { Button } from '../atoms/Button';
 import { createPortal } from 'react-dom';
 import { cn } from '../../lib/utils';
+import { Icon, IconName } from '../atoms/Icon';
+import { Badge } from '../atoms/Badge';
 
 export interface ModalProps {
   /** État d'ouverture de la modal */
@@ -418,6 +420,206 @@ export const AlertModal: React.FC<AlertModalProps> = ({
       size={size}
     >
       {typeof message === 'string' ? <Typography variant="p">{message}</Typography> : message}
+    </Modal>
+  );
+};
+
+export interface DemoModalProps {
+  /** État d'ouverture de la modal */
+  isOpen: boolean;
+  /** Fonction appelée à la fermeture de la modal */
+  onClose: () => void;
+  /** URL du site à afficher */
+  siteUrl: string;
+  /** Titre du projet */
+  title: string;
+  /** Description optionnelle */
+  description?: string;
+}
+
+export const DemoModal: React.FC<DemoModalProps> = ({
+  isOpen,
+  onClose,
+  siteUrl,
+  title,
+  description
+}) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <Modal 
+      isOpen={isOpen} 
+      onClose={onClose} 
+      title={
+        <div className="flex items-center justify-between w-full gap-4">
+          <Typography as="h3" variant="h3" className="font-medium flex-1">
+            {title}
+          </Typography>
+          <Button
+            variant="secondary"
+            size="small"
+            href={siteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 flex-shrink-0"
+          >
+            <span>Voir en ligne</span>
+            <Icon name="ExternalLink" className="w-4 h-4" />
+          </Button>
+        </div>
+      }
+      size="large"
+      animation="zoom"
+      centered={true}
+      className="w-[90vw] h-[90vh] max-w-[1400px]"
+    >
+      <div className="flex flex-col h-full">
+        {description && (
+          <Typography variant="p" className="mb-4 text-gray-600 dark:text-gray-300">
+            {description}
+          </Typography>
+        )}
+        <div className="relative flex-grow bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden min-h-[500px]">
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800 z-10">
+              <div className="w-12 h-12 border-4 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          )}
+          <iframe 
+            src={siteUrl}
+            className="absolute inset-0 w-full h-full border-0 z-0"
+            style={{ minHeight: '500px' }}
+            title={`Démo de ${title}`}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            onLoad={() => setIsLoading(false)}
+          />
+        </div>
+      </div>
+    </Modal>
+  );
+};
+
+export interface ServiceModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  service: {
+    id: string;
+    title: string;
+    shortDescription: string;
+    fullDescription: string;
+    icon: IconName;
+    color: 'primary' | 'secondary' | 'tertiary';
+    price: string;
+    support: string;
+    features: Array<{
+      title: string;
+      description?: string;
+      icon?: IconName;
+    }>;
+    testimonial?: {
+      quote: string;
+      author: string;
+      role: string;
+    };
+  };
+}
+
+export const ServiceModal: React.FC<ServiceModalProps> = ({
+  isOpen,
+  onClose,
+  service
+}) => {
+  return (
+    <Modal 
+      isOpen={isOpen} 
+      onClose={onClose} 
+      title={
+        <div className="flex items-center gap-3">
+          <Icon name={service.icon} className={`w-8 h-8 text-[var(--color-${service.color})]`} />
+          <Typography as="h3" variant="h3" className="font-medium">
+            {service.title}
+          </Typography>
+        </div>
+      }
+      size="large"
+      animation="zoom"
+      centered={true}
+    >
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
+          <Typography variant="lead" className="text-gray-700 dark:text-gray-300">
+            {service.fullDescription}
+          </Typography>
+          <div className="flex gap-2 flex-shrink-0">
+            <Badge variant={service.color} size="large">
+              {service.price}
+            </Badge>
+            <Badge variant="default" size="large">
+              {service.support}
+            </Badge>
+          </div>
+        </div>
+
+        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+          <Typography as="h4" variant="h4" className="mb-4">
+            Fonctionnalités incluses :
+          </Typography>
+          <div className="grid gap-6 md:grid-cols-2">
+            {service.features.map((feature, index) => (
+              <div key={index} className="flex gap-4">
+                <div className={`p-2 h-fit rounded-lg bg-[var(--color-${service.color}-100)] dark:bg-[var(--color-${service.color}-900)]`}>
+                  <Icon 
+                    name={feature.icon || 'Check'} 
+                    className={`w-5 h-5 text-[var(--color-${service.color})]`} 
+                  />
+                </div>
+                <div>
+                  <Typography variant="h4" className="mb-1">
+                    {feature.title}
+                  </Typography>
+                  {feature.description && (
+                    <Typography variant="p" className="text-gray-600 dark:text-gray-300">
+                      {feature.description}
+                    </Typography>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {service.testimonial && (
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <blockquote className="text-center">
+              <Typography variant="lead" className="mb-6 italic">
+                "{service.testimonial.quote}"
+              </Typography>
+              <footer>
+                <Typography variant="h4" className="mb-1">
+                  {service.testimonial.author}
+                </Typography>
+                <Typography variant="p" className="text-gray-600 dark:text-gray-300">
+                  {service.testimonial.role}
+                </Typography>
+              </footer>
+            </blockquote>
+          </div>
+        )}
+
+        <div className="flex justify-end gap-3 mt-4">
+          <Button variant="outline" onClick={onClose}>
+            Retour
+          </Button>
+          <Button 
+            variant="gradient" 
+            href="/contact"
+            className="shine-effect"
+          >
+            Prendre rendez-vous
+          </Button>
+        </div>
+      </div>
     </Modal>
   );
 };

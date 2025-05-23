@@ -51,14 +51,11 @@ export function Header() {
               <NavLink href="/projets" exact color="primary" useGradient>
                 Projets
               </NavLink>
-              <NavLink href="/processus" exact color="primary" useGradient>
-                Processus
-              </NavLink>
               <NavLink href="/a-propos" exact color="primary" useGradient>
                 À propos
               </NavLink>
               <Link href="/contact">
-                <Button variant="gradient" size="sm" className="shine-effect">
+                <Button variant="gradient" size="small" className="shine-effect">
                   Parlons de votre projet
                 </Button>
               </Link>

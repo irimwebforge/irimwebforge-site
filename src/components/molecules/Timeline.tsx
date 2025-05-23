@@ -20,7 +20,7 @@ export interface TimelineStep {
 export interface TimelineProps {
   steps: TimelineStep[];
   className?: string;
-  variant?: 'default' | 'compact' | 'detailed';
+  _variant?: 'default' | 'compact' | 'detailed';
   orientation?: 'vertical' | 'horizontal';
   withDates?: boolean;
 }
@@ -28,7 +28,7 @@ export interface TimelineProps {
 export const Timeline = ({
   steps,
   className = '',
-  variant = 'default',
+  _variant = 'default',
   orientation = 'vertical',
   withDates = true,
 }: TimelineProps) => {

@@ -30,7 +30,7 @@ export const TemporalSplit: React.FC<TemporalSplitProps> = ({
   className = '',
 }) => {
   return (
-    <section className={`py-16 ${className}`} aria-labelledby="temporal-split-title">
+    <section className={`py-12 sm:py-16 lg:py-20 ${className}`} aria-labelledby="temporal-split-title">
       <Container>
         {/* Titre principal */}
         <Typography
@@ -49,7 +49,7 @@ export const TemporalSplit: React.FC<TemporalSplitProps> = ({
 
           {/* Colonne gauche */}
           <div className="relative p-6 rounded-lg bg-white shadow-md transition-transform hover:scale-[1.02] duration-300">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-primary-600 rounded-t-lg" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary)] rounded-t-lg" />
             <Typography as="h3" variant="h3" className="mb-4 font-semibold">
               {leftContent.title}
             </Typography>
@@ -78,7 +78,7 @@ export const TemporalSplit: React.FC<TemporalSplitProps> = ({
 
           {/* Colonne droite */}
           <div className="relative p-6 rounded-lg bg-white shadow-md transition-transform hover:scale-[1.02] duration-300">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-t-lg" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-secondary)] rounded-t-lg" />
             <Typography as="h3" variant="h3" className="mb-4 font-semibold">
               {rightContent.title}
             </Typography>

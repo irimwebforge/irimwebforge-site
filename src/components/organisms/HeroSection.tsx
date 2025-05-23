@@ -64,14 +64,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </Typography>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button variant="gradient" size="lg" href={ctaHref} className="shine-effect">
+          <Button variant="gradient" size="large" href={ctaHref} className="shine-effect">
             {ctaText}
           </Button>
 
           {secondaryCtaText && (
             <Button
               variant={backgroundImage ? 'outline' : 'outline'}
-              size="lg"
+              size="large"
               href={secondaryCtaHref || ''}
               className={backgroundImage ? 'text-white border-white hover:bg-white/20' : ''}
             >

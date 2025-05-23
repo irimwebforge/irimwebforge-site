@@ -34,6 +34,13 @@
   /* Bordures */
   --border-color: #e5e5e5;
   --border-color-hover: #d4d4d4;
+
+  /* Nouvelles variables pour le design system */
+  --color-info: #2563eb;
+  --color-success: #059669;
+  --color-warning: #eab308;
+  --color-neutral: #64748b;
+  --color-accent: #db2777;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,6 +67,13 @@
     --color-primary: #00b3b3;
     --color-secondary: #005577;
     --color-tertiary: #ff7a3d;
+
+    /* Nouvelles variables pour le design system */
+    --color-info: #60a5fa;
+    --color-success: #34d399;
+    --color-warning: #fde68a;
+    --color-neutral: #94a3b8;
+    --color-accent: #f472b6;
   }
 }
 
@@ -240,6 +254,17 @@ a:hover {
       opacity: 0.8;
     }
   }
+
+  .tabs-wrap {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+  @media (max-width: 640px) {
+    .tabs-wrap {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+  }
 }
 
 /* Styles spécifiques pour les liens de navigation - priorité maximale */
@@ -266,4 +291,34 @@ a:hover {
   -webkit-background-clip: text !important;
   color: transparent !important;
   font-weight: 500 !important;
+}
+
+/* === Style Arrow pour les liens du footer === */
+.footer-arrow {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.footer-arrow::before {
+  pointer-events: none;
+  content: "→";
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  transform: translateX(-1.5em) translateZ(0);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.footer-arrow:hover,
+.footer-arrow:focus {
+  transform: translateX(1em) translateZ(0);
+}
+
+.footer-arrow:hover::before,
+.footer-arrow:focus::before {
+  transform: translateX(-1em) translateZ(0);
+  opacity: 1;
 }
