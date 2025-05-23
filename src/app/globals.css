@@ -41,12 +41,27 @@
   contain: layout style paint;
 }
 
+/* Optimisation mobile pour le HeroPattern */
+.hero-pattern {
+  @media (max-width: 768px) {
+    background-size: 152px 152px !important;
+    opacity: 0.7;
+  }
+}
+
+.hero-pattern > div {
+  @media (max-width: 768px) {
+    background-size: 152px 152px !important;
+  }
+}
+
 /* Classes pour optimiser les gradients CSS */
 .bg-gradient-optimized {
   /* Utilise contain pour isoler les recalculs */
   contain: layout style paint;
 }
 
+/* Thème clair (par défaut) */
 :root {
   /* Couleurs de base */
   --background: #ffffff;
@@ -74,38 +89,30 @@
   --color-accent: #db2777;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Couleurs de base */
-    --background: #0a0a0a;
-    --foreground: #f5f5f5;
-
-    /* Couleurs de surface */
-    --surface-primary: #171717;
-    --surface-secondary: #262626;
-    --surface-tertiary: #404040;
-
-    /* Couleurs de texte */
-    --text-primary: #f5f5f5;
-    --text-secondary: #a3a3a3;
-    --text-tertiary: #737373;
-
-    /* Bordures */
-    --border-color: #404040;
-    --border-color-hover: #525252;
-
-    /* Ajustement des couleurs principales pour le mode sombre */
-    --color-primary: #00b3b3;
-    --color-secondary: #005577;
-    --color-tertiary: #ff7a3d;
-
-    /* Nouvelles variables pour le design system */
-    --color-info: #60a5fa;
-    --color-success: #34d399;
-    --color-warning: #fde68a;
-    --color-neutral: #94a3b8;
-    --color-accent: #f472b6;
-  }
+/* Thème sombre */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+  --surface-primary: #171717;
+  --surface-secondary: #1a1a1a;
+  --surface-tertiary: #202020;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --text-tertiary: #737373;
+  --border-color: #404040;
+  --border-color-hover: #525252;
+  
+  /* Ajustement des couleurs principales */
+  --color-primary: #00b3b3;
+  --color-secondary: #005577;
+  --color-tertiary: #ff7a3d;
+  
+  /* Variables du design system */
+  --color-info: #60a5fa;
+  --color-success: #34d399;
+  --color-warning: #fde68a;
+  --color-neutral: #94a3b8;
+  --color-accent: #f472b6;
 }
 
 /* Les styles globaux */

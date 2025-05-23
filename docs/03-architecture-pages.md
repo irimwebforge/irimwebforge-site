@@ -1,6 +1,6 @@
-# Architecture des Pages - IrimWebForge
+# Architecture des Pages - IRIM Webforge
 
-Ce document détaille l'architecture complète de chaque page principale du site IrimWebForge, incluant les sections, composants, hiérarchie et spécificités responsives.
+Ce document détaille l'architecture complète de chaque page principale du site IRIM Webforge, incluant les sections, composants, hiérarchie et spécificités responsives.
 
 ## 💫 Source de Vérité et Référence d'Implémentation
 
@@ -24,7 +24,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 
 - **Rôle** : Premier contact, présentation de la promesse unique de valeur, différenciation et transformation concrète
 - **URL** : `/`
-- **Balise title** : "IrimWebForge | Des sites web qui libèrent votre temps et votre énergie"
+- **Balise title** : "IRIM Webforge | Des sites web qui libèrent votre temps et votre énergie"
 - **Meta description** : "Développeur freelance spécialisé en interfaces admin sur mesure. Je crée des sites web qui libèrent votre temps et votre énergie. Passez de 7h à 45min d'administration hebdomadaire."
 
 ### Sections (dans l'ordre)
@@ -91,7 +91,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 
 - **Composant** : `ComparativeTable`
 - **Hiérarchie** :
-  - H2 : "Solutions standards vs IrimWebForge"
+  - H2 : "Solutions standards vs IRIM Webforge"
 - **Contenu** :
   - Tableau comparatif à 2 colonnes :
     | SOLUTIONS CMS STANDARDS | IRIMWEBFORGE |
@@ -107,7 +107,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
   - Mobile : Transformer en cartes comparatives empilées
 - **Notes techniques** :
   - Utiliser un contraste visuel fort entre les colonnes
-  - Mettre en évidence la colonne "IrimWebForge" (couleur primaire)
+  - Mettre en évidence la colonne "IRIM Webforge" (couleur primaire)
   - Point critique à ne pas omettre
 
 #### 1.5 Temporalité duale
@@ -197,7 +197,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 
 - **Rôle** : Présenter les services avec clarté et distinction temporelle
 - **URL** : `/services`
-- **Balise title** : "Services | IrimWebForge - Des services qui évoluent avec vous"
+- **Balise title** : "Services | IRIM Webforge - Des services qui évoluent avec vous"
 - **Meta description** : "Découvrez mes services de création de sites web personnalisés avec interfaces administratives sur mesure. Libérez votre temps et concentrez-vous sur votre métier."
 
 ### Sections (dans l'ordre)
@@ -381,7 +381,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 
 - **Rôle** : Faciliter la prise de contact et initier la conversation
 - **URL** : `/contact`
-- **Balise title** : "Contact | IrimWebForge - Discutons de vos aspirations digitales"
+- **Balise title** : "Contact | IRIM Webforge - Discutons de vos aspirations digitales"
 - **Meta description** : "Réservez votre diagnostic numérique personnalisé gratuit de 30 minutes et découvrez comment libérer votre temps professionnel."
 
 ### Sections (dans l'ordre)
@@ -479,7 +479,7 @@ Les spécifications dans ce document doivent être suivies en conjonction avec l
 
 - **Rôle** : Présenter les projets réalisés avec accent sur les transformations
 - **URL** : `/projets`
-- **Balise title** : "Projets | IrimWebForge - Des transformations concrètes"
+- **Balise title** : "Projets | IRIM Webforge - Des transformations concrètes"
 - **Meta description** : "Découvrez comment je transforme l'expérience numérique de mes clients, avec des résultats mesurables comme passer de 7h à 45min d'administration hebdomadaire."
 
 ### Sections (dans l'ordre)

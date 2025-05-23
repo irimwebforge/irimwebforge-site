@@ -1,5 +1,5 @@
 # Configuration Apache pour optimisations de performance
-# IrimWebForge - Site statique Next.js
+# IRIM Webforge - Site statique Next.js
 
 # Activer la compression
 <IfModule mod_deflate.c>

@@ -6,7 +6,7 @@ status: 'active'
 
 # Glossaire de Termes Techniques
 
-Ce document définit la terminologie standard utilisée dans le projet IrimWebForge pour assurer une cohérence dans la documentation et le code.
+Ce document définit la terminologie standard utilisée dans le projet IRIM Webforge pour assurer une cohérence dans la documentation et le code.
 
 ## A
 

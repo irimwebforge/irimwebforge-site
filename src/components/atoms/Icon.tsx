@@ -21,6 +21,7 @@ import {
   X,
   Menu,
   Shield,
+  ShieldCheck,
   Laptop,
   Smartphone,
   Coffee,
@@ -34,6 +35,7 @@ import {
   CalendarPlus,
   Image,
   FileText,
+  Quote,
 
   // Développement & Design
   Code,
@@ -80,6 +82,9 @@ import {
   Sparkles,
   TrendingUp,
   Lightbulb,
+  Monitor,
+  Sun,
+  Moon,
 
   // Processus
   FileCheck,
@@ -130,6 +135,7 @@ const icons: Record<string, React.FC<LucideProps>> = {
   X,
   Menu,
   Shield,
+  ShieldCheck,
   Laptop,
   Smartphone,
   Coffee,
@@ -143,6 +149,7 @@ const icons: Record<string, React.FC<LucideProps>> = {
   CalendarPlus,
   Image,
   FileText,
+  Quote,
 
   // Développement & Design
   Code,
@@ -189,6 +196,9 @@ const icons: Record<string, React.FC<LucideProps>> = {
   Sparkles,
   TrendingUp,
   Lightbulb,
+  Monitor,
+  Sun,
+  Moon,
 
   // Processus
   FileCheck,

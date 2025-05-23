@@ -1,6 +1,6 @@
 // Métadonnées SEO pour la page à propos
 export const metadata = {
-  title: "À Propos | IrimWebForge - Eric Zuber, créateur d'espaces numériques sur mesure",
+  title: "À Propos | IRIM Webforge - Eric Zuber, créateur d'espaces numériques sur mesure",
   description:
     "Découvrez mon parcours, de l'expérience avec mon épouse thérapeute à ma vision pour libérer les indépendants de leur charge administrative.",
 };
@@ -43,7 +43,7 @@ export default function Page() {
     },
     {
       id: 'step-4',
-      title: 'Lancement IrimWebForge',
+      title: 'Lancement IRIM Webforge',
       description:
         "Création officielle de mon activité pour accompagner les indépendants, en combinant mes compétences d'accompagnement et ma passion retrouvée pour le code.",
       date: 'Mars 2025',
@@ -110,7 +110,7 @@ export default function Page() {
 
               <div className="order-1 md:order-2">
                 <Typography as="h2" variant="h2" className="mb-6 font-bold italic">
-                  Eric Zuber, créateur d'IrimWebForge
+                  Eric Zuber, créateur d'IRIM Webforge
                 </Typography>
 
                 <Typography variant="p" className="mb-4">

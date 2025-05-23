@@ -4,7 +4,7 @@ globs:
 alwaysApply: false
 ---
 # Introduction
-Ce dossier regroupe toutes les règles structurantes pour garantir la qualité, la cohérence et la maintenabilité du code, du design et du contenu sur le projet IrimWebForge.
+Ce dossier regroupe toutes les règles structurantes pour garantir la qualité, la cohérence et la maintenabilité du code, du design et du contenu sur le projet IRIM Webforge.
 
 - Inspiré des meilleures pratiques du design system, de l'accessibilité et du clean code.
 - À utiliser comme référence lors de toute création ou refonte de composant, page, animation ou contenu.

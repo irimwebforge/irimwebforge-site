@@ -1,6 +1,6 @@
 # Composants Atomiques
 
-Ce dossier contient les composants atomiques qui constituent les éléments fondamentaux du design system IrimWebForge.
+Ce dossier contient les composants atomiques qui constituent les éléments fondamentaux du design system IRIM Webforge.
 
 ## Principes généraux
 

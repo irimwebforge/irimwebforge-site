@@ -98,8 +98,8 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
   // Classes basées sur la couleur de fond
   const bgClasses = {
     none: '',
-    light: 'bg-gray-50 dark:bg-gray-900',
-    dark: 'bg-gray-900 text-white',
+    light: 'bg-section-primary',
+    dark: 'bg-section-secondary text-[var(--text-primary)]',
     primary: 'bg-[var(--color-primary)] bg-opacity-5',
     secondary: 'bg-[var(--color-secondary)] bg-opacity-5',
     tertiary: 'bg-[var(--color-tertiary)] bg-opacity-5',

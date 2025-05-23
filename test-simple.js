@@ -19,7 +19,7 @@ async function testSimpleEmail() {
     const sameAddressTest = {
       from: process.env.EMAIL_USER, // Même adresse que l'authentification
       to: process.env.EMAIL_USER, // Même adresse que l'envoi
-      subject: '🧪 Test AUTO-ENVOI - IrimWebForge',
+      subject: '🧪 Test AUTO-ENVOI - IRIM Webforge',
       html: `
         <h1>🎯 Test d'auto-envoi</h1>
         <p>Si vous recevez cet email, la configuration fonctionne !</p>

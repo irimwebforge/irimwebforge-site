@@ -1,10 +1,10 @@
-# Positionnement Stratégique IrimWebForge
+# Positionnement Stratégique IRIM Webforge
 
 ## Vision et Promesse Fondamentale
 
 ### Vision Stratégique
 
-IrimWebForge se positionne comme le **pont stratégique entre les aspirations professionnelles et leur concrétisation digitale**. En combinant une profonde compréhension métier à une traduction technique rigoureuse, je crée des expériences digitales qui libèrent le temps et l'énergie de mes clients plutôt que de les contraindre.
+IRIM Webforge se positionne comme le **pont stratégique entre les aspirations professionnelles et leur concrétisation digitale**. En combinant une profonde compréhension métier à une traduction technique rigoureuse, je crée des expériences digitales qui libèrent le temps et l'énergie de mes clients plutôt que de les contraindre.
 
 ### Promesse Fondamentale
 
@@ -176,7 +176,7 @@ Je m'engage sur des résultats chiffrés : temps gagné, augmentation de capacit
 
 Avec une garantie de résultat : réduction d'au moins 60% de votre temps administratif ou remboursement partiel.
 
-### Comparatif Solutions Standards vs IrimWebForge
+### Comparatif Solutions Standards vs IRIM Webforge
 
 | SOLUTIONS CMS STANDARDS                     | IRIMWEBFORGE                     |
 | ------------------------------------------- | -------------------------------- |

@@ -40,9 +40,9 @@
    - Itérez rapidement
    - Documentez les apprentissages
 
-# Guide de contenu textuel - IrimWebForge
+# Guide de contenu textuel - IRIM Webforge
 
-Ce document rassemble tous les textes finalisés pour chaque page du site IrimWebForge, conformément à la nouvelle ligne éditoriale et à la structure documentaire établie.
+Ce document rassemble tous les textes finalisés pour chaque page du site IRIM Webforge, conformément à la nouvelle ligne éditoriale et à la structure documentaire établie.
 
 ## 1. PAGE D'ACCUEIL
 
@@ -134,7 +134,7 @@ Ce document rassemble tous les textes finalisés pour chaque page du site IrimWe
 
 **Titre H2:**
 
-> Solutions standards vs IrimWebForge
+> Solutions standards vs IRIM Webforge
 
 | SOLUTIONS CMS STANDARDS                     | IRIMWEBFORGE                     |
 | ------------------------------------------- | -------------------------------- |

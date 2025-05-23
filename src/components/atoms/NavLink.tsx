@@ -41,9 +41,15 @@ export const NavLink: React.FC<NavLinkProps> = ({
   prefetch,
 }) => {
   const pathname = usePathname();
-  // Si href est juste "/" (page d'accueil), on utilise exact=true par défaut
-  const isExact = href === '/' ? true : exact;
-  const isActive = isExact ? pathname === href : pathname.startsWith(href);
+  
+  // Normaliser les paths en retirant les trailing slash pour la comparaison
+  const normalizedPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
+  const normalizedHref = href === '/' ? '/' : href.replace(/\/$/, '');
+  
+  // Utiliser la prop exact telle qu'elle est fournie
+  const isActive = exact 
+    ? normalizedPathname === normalizedHref 
+    : normalizedPathname.startsWith(normalizedHref);
 
   // Classes de base
   const baseClasses = 'transition-colors duration-200 navlink-custom';

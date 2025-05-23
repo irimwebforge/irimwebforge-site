@@ -140,7 +140,7 @@ export function Footer() {
               </li>
               <li>
                 <NavLink
-                  href="/services#diagnostic"
+                  href="/contact/diagnostic"
                   color="secondary"
                   className="hover:text-[var(--color-primary)] footer-arrow"
                 >

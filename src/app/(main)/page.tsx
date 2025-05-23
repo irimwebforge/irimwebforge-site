@@ -1,6 +1,6 @@
 // Métadonnées SEO pour la page d'accueil
 export const metadata = {
-  title: 'IrimWebForge - Interfaces admin sur mesure pour votre autonomie numérique',
+  title: 'IRIM Webforge - Interfaces admin sur mesure pour votre autonomie numérique',
   description:
     "Libérez-vous de 7h d'administration par semaine. Solutions web personnalisées pour thérapeutes et indépendants. Simplicité, autonomie et excellence.",
 };
@@ -12,7 +12,6 @@ import { Typography } from '@/components/atoms/Typography';
 import { Icon } from '@/components/atoms/Icon';
 import { Badge } from '@/components/atoms/Badge';
 import { Card } from '@/components/molecules/Card';
-import { HeroPattern } from '@/components/atoms/HeroPattern';
 import dynamic from 'next/dynamic';
 
 // Import dynamique des composants non critiques pour optimiser le LCP
@@ -98,23 +97,19 @@ export default function HomePage() {
       {/* Suppression du bandeau séparé - message intégré dans le hero */}
 
       {/* Hero Section */}
-      <section className="bg-hero-soft py-16 lg:py-24 relative">
-        <HeroPattern className="absolute inset-0 z-0" />
-        <div className="container mx-auto px-4 relative z-10">
-          <HeroSection
-            title="Le pont entre votre vision et sa concrétisation digitale"
-            subtitle={
-              'Je crée des espaces numériques où vous vous sentez chez vous - des interfaces pensées pour votre quotidien.\n\n' +
-              "Parce que votre temps mérite d'être consacré à votre passion, pas à votre site web."
-            }
-            ctaText="Parlons de votre projet"
-            ctaHref="/contact"
-            secondaryCtaText="Comment je travaille"
-            secondaryCtaHref="/processus"
-            className="w-full space-y-12"
-          />
-        </div>
-      </section>
+      <HeroSection
+        title="Le pont entre votre vision et sa concrétisation digitale"
+        subtitle={
+          'Je crée des espaces numériques où vous vous sentez chez vous - des interfaces pensées pour votre quotidien.\n\n' +
+          "Parce que votre temps mérite d'être consacré à votre passion, pas à votre site web."
+        }
+        ctaText="Parlons de votre projet"
+        ctaHref="/contact"
+        secondaryCtaText="Comment je travaille"
+        secondaryCtaHref="/processus"
+        pattern={true}
+        className="bg-hero-soft"
+      />
 
       {/* 2. Histoire authentique et vision professionnelle */}
       <section className="bg-section-secondary py-16">

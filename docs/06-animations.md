@@ -1,4 +1,4 @@
-# Guide des Animations IrimWebForge
+# Guide des Animations IRIM Webforge
 
 Ce document définit les règles et patterns d'animation pour maintenir une cohérence visuelle dans l'ensemble du site.
 

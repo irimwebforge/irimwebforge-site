@@ -1,6 +1,6 @@
-# 🌐 IrimWebForge - Site Officiel
+# 🌐 IRIM Webforge - Site Officiel
 
-Site web professionnel d'IrimWebForge, construit avec Next.js 15 et optimisé pour les performances.
+Site web professionnel d'IRIM Webforge, construit avec Next.js 15 et optimisé pour les performances.
 
 ## ⚡ Performances Optimisées
 

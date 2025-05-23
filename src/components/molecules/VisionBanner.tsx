@@ -19,10 +19,10 @@ export interface VisionBannerProps {
 }
 
 /**
- * ✅ VISION BANNER AMÉLIORÉE - IrimWebForge
+ * ✅ VISION BANNER AMÉLIORÉE - IRIM Webforge
  *
  * Bannière authentique qui explique l'approche transparente et personnelle.
- * Respecte le ton de confiance et de proximité caractéristique d'IrimWebForge.
+ * Respecte le ton de confiance et de proximité caractéristique d'IRIM Webforge.
  *
  * Utilisée stratégiquement sur les pages où la contextualisation apporte
  * une vraie valeur (Contact, Projets).
@@ -56,10 +56,10 @@ export const VisionBanner: React.FC<VisionBannerProps> = ({
   // Ne pas rendre si masquée
   if (!isVisible) return null;
 
-  // ✅ Classes conditionnelles avec le style IrimWebForge
+  // ✅ Classes conditionnelles avec le style IRIM Webforge
   const bannerClasses = cn(
     'mb-8 mx-auto max-w-5xl transition-all duration-300 ease-in-out',
-    'border-l-4 border-[var(--color-primary)]', // Accent IrimWebForge
+    'border-l-4 border-[var(--color-primary)]', // Accent IRIM Webforge
     compact ? 'py-3' : 'py-4',
     className
   );
@@ -109,7 +109,7 @@ export const VisionBanner: React.FC<VisionBannerProps> = ({
 };
 
 /**
- * ✅ MESSAGES PRÉDÉFINIS - Ton IrimWebForge
+ * ✅ MESSAGES PRÉDÉFINIS - Ton IRIM Webforge
  *
  * Messages authentiques qui reflètent l'approche transparente et personnelle
  */

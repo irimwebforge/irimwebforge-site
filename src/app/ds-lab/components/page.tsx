@@ -556,7 +556,7 @@ export default function DesignSystemPage() {
     {
       id: 'logo',
       title: 'Logo',
-      description: 'Différentes versions du logo IrimWebForge',
+      description: 'Différentes versions du logo IRIM Webforge',
       component: (
         <div className="space-y-6">
           <div>
@@ -778,7 +778,7 @@ export default function DesignSystemPage() {
       component: (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Testimonial
-            quote="L'équipe d'IrimWebForge a transformé notre présence en ligne. Notre site est non seulement beau mais aussi performant et facile à utiliser."
+            quote="L'équipe d'IRIM Webforge a transformé notre présence en ligne. Notre site est non seulement beau mais aussi performant et facile à utiliser."
             author="Pierre Leroy"
             company="CEO, LeadVision"
             avatarSrc="https://i.pravatar.cc/150?img=11"
@@ -1207,7 +1207,7 @@ export default function DesignSystemPage() {
               showImage={true}
               testimonial={{
                 quote:
-                  "IrimWebForge a transformé notre vision en une interface utilisateur exceptionnelle. Leur équipe a été à l'écoute et proactive tout au long du projet.",
+                  "IRIM Webforge a transformé notre vision en une interface utilisateur exceptionnelle. Leur équipe a été à l'écoute et proactive tout au long du projet.",
                 author: 'Marie Dumas',
                 company: 'DirecteurTech',
                 avatar: '/images/testimonials/avatar-1.svg',
@@ -1296,11 +1296,11 @@ export default function DesignSystemPage() {
   return (
     <div className="container mx-auto p-6 max-w-5xl">
       <Typography as="h1" variant="h1" className="mb-4 text-center">
-        Design System IrimWebForge
+        Design System IRIM Webforge
       </Typography>
 
       <Typography as="p" variant="lead" className="mb-8 text-center max-w-2xl mx-auto">
-        Bibliothèque de composants et système de design pour les projets IrimWebForge
+        Bibliothèque de composants et système de design pour les projets IRIM Webforge
       </Typography>
 
       {/* Navigation par onglets */}

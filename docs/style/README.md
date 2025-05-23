@@ -1,6 +1,6 @@
 # Documentation du Design System
 
-Ce dossier contient la documentation complète du design system d'IrimWebForge.
+Ce dossier contient la documentation complète du design system d'IRIM Webforge.
 
 ## Organisation
 
@@ -33,7 +33,7 @@ Notre architecture de composants suit la méthodologie Atomic Design :
 
 ## Composantes du projet
 
-Le projet IrimWebForge est composé de trois parties distinctes :
+Le projet IRIM Webforge est composé de trois parties distinctes :
 
 1. **App principale** - L'application centrale du site (`/src/app`)
 2. **Blog** - Une section blog (non encore développée)

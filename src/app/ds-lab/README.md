@@ -1,6 +1,6 @@
 # Design System Lab (DS-Lab)
 
-Le Design System Lab est un environnement dédié au développement, à la documentation et aux tests du design system d'IrimWebForge. Ce module permet aux développeurs et designers de visualiser, interagir avec, et comprendre les différents éléments du design system dans un contexte isolé.
+Le Design System Lab est un environnement dédié au développement, à la documentation et aux tests du design system d'IRIM Webforge. Ce module permet aux développeurs et designers de visualiser, interagir avec, et comprendre les différents éléments du design system dans un contexte isolé.
 
 ## 🎯 Objectif
 
@@ -14,7 +14,7 @@ L'objectif du DS-Lab est de :
 
 ## 💫 Source de Vérité
 
-Le DS-Lab est établi comme la source de vérité unique pour le design system d'IrimWebForge. Cela signifie que :
+Le DS-Lab est établi comme la source de vérité unique pour le design system d'IRIM Webforge. Cela signifie que :
 
 - Tous les composants doivent être développés et testés ici en premier
 - Les données mockées dans `/mocks` servent de référence pour l'implémentation
@@ -111,7 +111,7 @@ Pour contribuer au DS-Lab :
 
 ---
 
-© IrimWebForge - Documentation interne
+© IRIM Webforge - Documentation interne
 
 # Design System Lab - Structure
 

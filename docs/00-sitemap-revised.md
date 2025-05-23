@@ -1,11 +1,11 @@
-# SITEMAP Révisé - IrimWebForge
+# SITEMAP Révisé - IRIM Webforge
 
-Ce document présente l'architecture complète révisée du site IrimWebForge, avec la hiérarchie des pages et leur organisation, reflétant la nouvelle structure d'offres et l'approche éditoriale.
+Ce document présente l'architecture complète révisée du site IRIM Webforge, avec la hiérarchie des pages et leur organisation, reflétant la nouvelle structure d'offres et l'approche éditoriale.
 
 ## Hiérarchie des pages
 
 ```
-IrimWebForge
+IRIM Webforge
 ├── Accueil
 │   ├── Hero
 │   │   └── "Des sites web qui libèrent votre temps et votre énergie"
@@ -17,7 +17,7 @@ IrimWebForge
 │   │   ├── Authenticité digitale
 │   │   └── Évolution sans friction
 │   ├── Tableau comparatif
-│   │   └── "Solutions standards vs IrimWebForge"
+│   │   └── "Solutions standards vs IRIM Webforge"
 │   ├── Temporalité duale
 │   │   ├── Ce que je réalise actuellement
 │   │   └── Ce que je développe pour l'avenir
@@ -112,7 +112,7 @@ IrimWebForge
 │   ├── Parcours
 │   │   ├── Expérience précédente
 │   │   ├── Reconversion développement
-│   │   └── Création IrimWebForge
+│   │   └── Création IRIM Webforge
 │   ├── Moment de révélation
 │   │   └── "L'expérience avec mon épouse thérapeute"
 │   ├── Ma posture distinctive

@@ -275,7 +275,7 @@ export default function TemplatesPage() {
   return (
     <div className="container mx-auto p-6 max-w-5xl">
       <Typography as="h1" variant="h1" className="mb-4 text-center">
-        Templates IrimWebForge
+        Templates IRIM Webforge
       </Typography>
 
       <Typography as="p" variant="lead" className="mb-8 text-center max-w-2xl mx-auto">

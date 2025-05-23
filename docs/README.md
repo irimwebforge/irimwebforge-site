@@ -1,10 +1,10 @@
 ---
-title: 'Documentation IrimWebForge'
+title: 'Documentation IRIM Webforge'
 category: 'index'
 status: 'active'
 ---
 
-# Documentation IrimWebForge
+# Documentation IRIM Webforge
 
 ## 🌟 Source de Vérité : DS-Lab
 
@@ -16,7 +16,7 @@ Pour plus d'informations sur les implémentations de référence, consultez :
 - Les exemples de couleur tertiaire : `/src/app/ds-lab/color-tertiary`
 - Les données mockées de référence : `/src/app/ds-lab/mocks`
 
-Bienvenue dans la documentation du projet IrimWebForge. Cette documentation contient toutes les informations nécessaires pour comprendre, développer et maintenir le site.
+Bienvenue dans la documentation du projet IRIM Webforge. Cette documentation contient toutes les informations nécessaires pour comprendre, développer et maintenir le site.
 
 ## Structure de la documentation
 
@@ -56,7 +56,7 @@ Bienvenue dans la documentation du projet IrimWebForge. Cette documentation cont
 
 ## Structure du projet
 
-Le projet IrimWebForge est composé de trois parties distinctes :
+Le projet IRIM Webforge est composé de trois parties distinctes :
 
 1. **App principale** - L'application centrale du site (`/src/app`)
 2. **Blog** - Une section blog (non encore développée)
@@ -89,7 +89,7 @@ Pour améliorer cette documentation :
 
 ## License
 
-© IrimWebForge - Tous droits réservés
+© IRIM Webforge - Tous droits réservés
 
 # Maintenir la documentation : approche flexible et vivante
 

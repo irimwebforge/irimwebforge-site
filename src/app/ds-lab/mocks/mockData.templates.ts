@@ -304,7 +304,7 @@ export const mockStats: Stat[] = [
 export const mockTestimonials: TestimonialItem[] = [
   {
     quote:
-      "IrimWebForge a transformé notre vision en une interface utilisateur exceptionnelle. Leur équipe a été à l'écoute et proactive tout au long du projet.",
+      "IRIM Webforge a transformé notre vision en une interface utilisateur exceptionnelle. Leur équipe a été à l'écoute et proactive tout au long du projet.",
     author: 'Marie Dumas',
     company: 'DirecteurTech',
     projectName: 'Plateforme CRM',

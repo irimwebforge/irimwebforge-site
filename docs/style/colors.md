@@ -4,7 +4,7 @@
 
 ## Palette principale
 
-Notre palette de couleurs est construite autour de trois couleurs principales qui définissent l'identité visuelle d'IrimWebForge :
+Notre palette de couleurs est construite autour de trois couleurs principales qui définissent l'identité visuelle d'IRIM Webforge :
 
 | Couleur    | Code Hex  | Variable CSS        | Rôle                                                       |
 | ---------- | --------- | ------------------- | ---------------------------------------------------------- |

@@ -13,7 +13,7 @@ import Link from 'next/link';
 
 // Métadonnées SEO pour la page services
 export const metadata = {
-  title: 'Nos Services | IrimWebForge - Solutions Présence, Intégrée et Évolutive',
+  title: 'Nos Services | IRIM Webforge - Solutions Présence, Intégrée et Évolutive',
   description:
     'Découvrez nos 3 solutions : Présence (site vitrine), Intégrée (gestion complète) et Évolutive (évolution continue). Autonomie garantie.',
 };

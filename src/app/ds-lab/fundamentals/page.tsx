@@ -7,7 +7,7 @@ import { Badge } from '@/components/atoms/Badge';
 const DesignSystem = () => {
   return (
     <div className="p-8 max-w-6xl mx-auto surface-secondary">
-      <h1 className="text-4xl font-bold mb-8 text-primary">Design System IrimWebForge</h1>
+      <h1 className="text-4xl font-bold mb-8 text-primary">Design System IRIM Webforge</h1>
 
       {/* Couleurs */}
       <section className="mb-12">

@@ -1,8 +1,8 @@
 {
-  "projectName": "IrimWebForge",
+  "projectName": "IRIM Webforge",
   "projectDescription": "Site web freelance spécialisé en interfaces administratives sur mesure",
   "contextInstructions": {
-    "vision": "IrimWebForge est une entreprise freelance spécialisée dans la création d'interfaces administratives sur mesure (hors CMS), avec une approche artisanale et personnalisée. La promesse fondamentale est 'Des sites web qui vous ressemblent vraiment'.",
+    "vision": "IRIM Webforge est une entreprise freelance spécialisée dans la création d'interfaces administratives sur mesure (hors CMS), avec une approche artisanale et personnalisée. La promesse fondamentale est 'Des sites web qui vous ressemblent vraiment'.",
     "identity": {
       "colors": {
         "primary": "#00A0A0",

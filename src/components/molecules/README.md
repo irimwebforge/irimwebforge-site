@@ -1,4 +1,4 @@
-# Composants Moléculaires IrimWebForge
+# Composants Moléculaires IRIM Webforge
 
 Les composants moléculaires combinent plusieurs composants atomiques pour créer des éléments d'interface plus complexes et fonctionnels. Ils suivent l'approche Atomic Design et forment la couche intermédiaire de notre architecture UI.
 

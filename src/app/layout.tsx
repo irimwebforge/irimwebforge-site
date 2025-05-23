@@ -4,12 +4,12 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 
 export const metadata = {
-  title: 'IrimWebForge | Sites web qui libèrent votre temps',
+  title: 'IRIM Webforge | Sites web qui libèrent votre temps',
   description:
     "Développeur freelance spécialisé en interfaces admin sur mesure pour thérapeutes et artisans. Passez de 7h à 45min d'administration.",
   keywords: 'développeur freelance, interface admin, site sur mesure, thérapeute, artisan',
   openGraph: {
-    title: 'IrimWebForge | Sites web qui libèrent votre temps',
+    title: 'IRIM Webforge | Sites web qui libèrent votre temps',
     description: 'Interfaces admin sur mesure pour indépendants',
     type: 'website',
   },
@@ -32,7 +32,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${questrial.variable} ${notoSans.variable}`}>
+    <html lang="fr" className={`${questrial.variable} ${notoSans.variable}`} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'LocalBusiness',
-              name: 'IrimWebForge',
+              name: 'IRIM Webforge',
               url: 'https://irimwebforge.com',
               telephone: '06 78 76 45 59',
               address: {
@@ -61,8 +61,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }),
           }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme') || 'system';
+                  if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
       </head>
-      <body className="font-sans bg-light text-dark">
+      <body className="font-sans bg-[var(--background)] text-[var(--foreground)]">
         {children}
         <GoogleAnalytics gaId="G-QJ7G6HJPDM" />
       </body>

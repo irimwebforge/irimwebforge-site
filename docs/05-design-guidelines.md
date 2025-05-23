@@ -1,4 +1,4 @@
-# Guide de Style IrimWebForge – Version Allégée
+# Guide de Style IRIM Webforge – Version Allégée
 
 > **Note importante :** Ce document est une version simplifiée des principes de design. Pour une documentation complète et détaillée, consultez le [guide de style complet](/docs/style/index.md).
 

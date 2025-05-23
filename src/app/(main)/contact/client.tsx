@@ -222,7 +222,7 @@ export default function ContactClient() {
     <main className="overflow-x-hidden">
       <PageHeader
         title="Discutons de votre projet"
-        description="Un échange de 45 minutes pour comprendre vos besoins et voir comment je peux vous aider."
+        description="Que ce soit pour un projet sur mesure, un diagnostic numérique gratuit de 30 minutes, ou simplement une question, je vous répondrai dans les 24h."
         align="center"
         size="medium"
         pattern={true}

@@ -7,6 +7,7 @@ import { Logo } from '../atoms/Logo';
 import { NavLink } from '../atoms/NavLink';
 import { usePathname } from 'next/navigation';
 import { cn } from '../../lib/utils';
+import { ThemeToggle } from '../atoms/ThemeToggle';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -61,7 +62,7 @@ export function Header() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 py-4 border-b border-color',
           'transition-all duration-300 backdrop-blur-sm',
-          isScrolled ? 'bg-white/80 dark:bg-gray-900/80 shadow-sm' : 'bg-white dark:bg-gray-900'
+          isScrolled ? 'bg-[color-mix(in_srgb,var(--background)_80%,transparent)] shadow-sm' : 'bg-[var(--background)]'
         )}
         role="banner"
       >
@@ -69,7 +70,7 @@ export function Header() {
           <div className="flex justify-between items-center">
             <Link
               href="/"
-              aria-label="IrimWebForge - Retour à l'accueil"
+              aria-label="IRIM Webforge - Retour à l'accueil"
               className="focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 rounded"
             >
               <Logo width={120} height={40} />
@@ -84,15 +85,16 @@ export function Header() {
               <NavLink href="/" exact color="primary" useGradient>
                 Accueil
               </NavLink>
-              <NavLink href="/services" exact color="primary" useGradient>
+              <NavLink href="/services" color="primary" useGradient>
                 Services
               </NavLink>
-              <NavLink href="/projets" exact color="primary" useGradient>
+              <NavLink href="/projets" color="primary" useGradient>
                 Projets
               </NavLink>
               <NavLink href="/a-propos" exact color="primary" useGradient>
                 À propos
               </NavLink>
+              <ThemeToggle />
               <Link href="/contact">
                 <Button variant="gradient" size="small" className="shine-effect">
                   Parlons de votre projet
@@ -101,7 +103,7 @@ export function Header() {
             </nav>
 
             <button
-              className="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
+              className="md:hidden p-2 rounded-md hover:bg-[var(--surface-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 transition-colors duration-200"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={
                 isMobileMenuOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation'
@@ -160,7 +162,6 @@ export function Header() {
                 </NavLink>
                 <NavLink
                   href="/services"
-                  exact
                   color="primary"
                   useGradient
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -169,21 +170,11 @@ export function Header() {
                 </NavLink>
                 <NavLink
                   href="/projets"
-                  exact
                   color="primary"
                   useGradient
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Projets
-                </NavLink>
-                <NavLink
-                  href="/processus"
-                  exact
-                  color="primary"
-                  useGradient
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Processus
                 </NavLink>
                 <NavLink
                   href="/a-propos"
@@ -194,6 +185,10 @@ export function Header() {
                 >
                   À propos
                 </NavLink>
+                <div className="flex items-center justify-between px-2">
+                  <span className="text-sm text-[var(--text-secondary)]">Thème</span>
+                  <ThemeToggle />
+                </div>
                 <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                   <Button variant="gradient" fullWidth className="shine-effect">
                     Discutons de votre projet

@@ -1,4 +1,4 @@
-# Amendement éthique à la stratégie de communication IrimWebForge
+# Amendement éthique à la stratégie de communication IRIM Webforge
 
 ## Objectif
 

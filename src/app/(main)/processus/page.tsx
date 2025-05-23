@@ -10,7 +10,7 @@ import { NavLink } from '@/components/atoms/NavLink';
 
 // Métadonnées SEO pour la page processus
 export const metadata = {
-  title: 'Notre Processus | IrimWebForge - Comment nous créons votre solution sur mesure',
+  title: 'Notre Processus | IRIM Webforge - Comment nous créons votre solution sur mesure',
   description:
     "Découvrez notre méthode de travail : de l'écoute initiale au déploiement, chaque étape pensée pour votre autonomie et votre sérénité.",
 };

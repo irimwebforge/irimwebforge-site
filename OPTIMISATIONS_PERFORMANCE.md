@@ -1,4 +1,4 @@
-# 🚀 Optimisations de Performance - IrimWebForge
+# 🚀 Optimisations de Performance - IRIM Webforge
 
 ## 📊 Problèmes identifiés par Lighthouse
 
@@ -460,7 +460,7 @@ yarn preview
 
 ---
 
-⚡ **Rappel**: Ces optimisations respectent le design system IrimWebForge et maintiennent l'expérience utilisateur while drastically improving performance.
+⚡ **Rappel**: Ces optimisations respectent le design system IRIM Webforge et maintiennent l'expérience utilisateur while drastically improving performance.
 
 _Dernière mise à jour : Janvier 2025_
 _Build time : ~2-5 secondes | Bundle reduction : ~65%_

@@ -71,7 +71,7 @@ export const EnhancedContactForm: React.FC<EnhancedContactFormProps> = ({
 
   const defaultTestimonial = {
     quote:
-      "IrimWebForge a transformé notre vision en une interface utilisateur exceptionnelle. Leur équipe a été à l'écoute et proactive tout au long du projet.",
+      "IRIM Webforge a transformé notre vision en une interface utilisateur exceptionnelle. Leur équipe a été à l'écoute et proactive tout au long du projet.",
     author: 'Marie Dumas',
     company: 'DirecteurTech',
     avatar: '/images/testimonials/avatar-1.jpg',

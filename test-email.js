@@ -35,7 +35,7 @@ async function testEmailConfiguration() {
     const testEmailOptions = {
       from: process.env.EMAIL_FROM,
       to: process.env.EMAIL_TO,
-      subject: '🧪 Test de configuration email - IrimWebForge',
+      subject: '🧪 Test de configuration email - IRIM Webforge',
       html: `
         <h1>Test de configuration email</h1>
         <p>Cet email confirme que la configuration email fonctionne correctement.</p>
@@ -61,7 +61,7 @@ async function testEmailConfiguration() {
     const clientTestEmail = {
       from: process.env.EMAIL_FROM,
       to: process.env.EMAIL_TO, // On s'envoie le test à nous-mêmes
-      subject: '🧪 Test de confirmation client - IrimWebForge',
+      subject: '🧪 Test de confirmation client - IRIM Webforge',
       html: `
         <h1>Merci Jean-Test !</h1>
         <p>J'ai bien reçu votre demande et je vous contacterai dans les 24 heures pour organiser notre conversation.</p>
@@ -74,7 +74,7 @@ async function testEmailConfiguration() {
         </div>
         <hr>
         <p>À très bientôt,</p>
-        <p><strong>Eric Zuber</strong><br>IrimWebForge<br>eric.zuber@irimwebforge.com</p>
+        <p><strong>Eric Zuber</strong><br>IRIM Webforge<br>eric.zuber@irimwebforge.com</p>
       `,
     };
 

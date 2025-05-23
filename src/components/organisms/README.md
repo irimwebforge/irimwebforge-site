@@ -1,10 +1,10 @@
-# Composants Organismes IrimWebForge
+# Composants Organismes IRIM Webforge
 
 Les composants organismes sont des assemblages complexes de composants moléculaires et atomiques. Ils forment des sections entières d'une interface et représentent des parties distinctes des pages.
 
 ## Principes de design
 
-Les composants organismes suivent les principes du design system IrimWebForge :
+Les composants organismes suivent les principes du design system IRIM Webforge :
 
 1. **Hiérarchie visuelle cohérente** :
 

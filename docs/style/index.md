@@ -1,8 +1,8 @@
-# Guide de style IrimWebForge
+# Guide de style IRIM Webforge
 
 ## Structure du projet
 
-Le projet IrimWebForge est composé de trois parties distinctes :
+Le projet IRIM Webforge est composé de trois parties distinctes :
 
 1. **App principale** - L'application centrale du site (`/src/app`)
 2. **Blog** - Une section blog (non encore développée)

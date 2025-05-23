@@ -77,7 +77,7 @@ export default function DSLabHomePage() {
         </Typography>
 
         <Typography variant="lead" className="max-w-2xl text-center">
-          Environnement de développement et de test pour le design system IrimWebForge
+          Environnement de développement et de test pour le design system IRIM Webforge
         </Typography>
 
         <div className="mt-6 text-center">

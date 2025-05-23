@@ -1,6 +1,6 @@
 // Métadonnées SEO pour la solution Évolutive
 export const metadata = {
-  title: 'Solution Évolutive | IrimWebForge - Accompagnement continu et innovations',
+  title: 'Solution Évolutive | IRIM Webforge - Accompagnement continu et innovations',
   description:
     'Évolution continue de votre écosystème numérique. Support technique permanent et nouvelles fonctionnalités adaptées à vos besoins.',
 };
