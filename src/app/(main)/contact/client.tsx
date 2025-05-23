@@ -61,7 +61,7 @@ export default function ContactClient() {
       fields: [
         {
           id: 'timeWasted',
-          label: 'Temps hebdomadaire sur l\'administratif ?',
+          label: "Temps hebdomadaire sur l'administratif ?",
           type: 'select' as const,
           options: [
             { value: 'less-3', label: 'Moins de 3 heures' },
@@ -106,7 +106,7 @@ export default function ContactClient() {
           options: [
             { value: 'site-vitrine', label: 'Site pour présenter mon activité' },
             { value: 'site-admin', label: 'Site avec interface de gestion' },
-            { value: 'amelioration', label: 'Améliorer ce que j\'ai déjà' },
+            { value: 'amelioration', label: "Améliorer ce que j'ai déjà" },
             { value: 'application', label: 'Application spécifique' },
             { value: 'conseil', label: 'Conseil et orientation' },
             { value: 'autre', label: 'Je ne sais pas encore' },
@@ -118,9 +118,9 @@ export default function ContactClient() {
           label: 'Votre calendrier ?',
           type: 'select' as const,
           options: [
-            { value: 'urgent', label: 'Urgent (moins d\'un mois)' },
+            { value: 'urgent', label: "Urgent (moins d'un mois)" },
             { value: 'soon', label: 'Dans les 2-3 mois' },
-            { value: 'later', label: 'Plus tard dans l\'année' },
+            { value: 'later', label: "Plus tard dans l'année" },
             { value: 'no-rush', label: 'Pas pressé' },
           ],
           required: true,
@@ -179,10 +179,10 @@ export default function ContactClient() {
   const handleFormSubmit = async (completeData: Record<string, unknown>) => {
     setIsSubmitting(true);
     setSubmitError('');
-    
+
     try {
       console.log('Envoi des données:', completeData);
-      
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -200,18 +200,18 @@ export default function ContactClient() {
 
       // Si tout se passe bien, marquer le formulaire comme complet
       setFormComplete(true);
-      
     } catch (error) {
-      
       // Message d'erreur plus sympathique
       if (error instanceof Error) {
         if (error.message.includes('fetch')) {
-          setSubmitError("Problème de connexion. Vérifiez votre réseau et réessayez.");
+          setSubmitError('Problème de connexion. Vérifiez votre réseau et réessayez.');
         } else {
           setSubmitError(error.message);
         }
       } else {
-        setSubmitError("Une erreur inattendue s'est produite. Vous pouvez me contacter directement par email !");
+        setSubmitError(
+          "Une erreur inattendue s'est produite. Vous pouvez me contacter directement par email !"
+        );
       }
     } finally {
       setIsSubmitting(false);
@@ -246,7 +246,7 @@ export default function ContactClient() {
               </Container>
             </section>
           )}
-          
+
           <section className="bg-section-primary py-16">
             <Container>
               <div className="max-w-3xl mx-auto">
@@ -254,12 +254,21 @@ export default function ContactClient() {
                   fields={[
                     ...conversationSteps[0].fields,
                     ...conversationSteps[1].fields,
-                    ...conversationSteps[2].fields
+                    ...conversationSteps[2].fields,
                   ]}
                   steps={[
-                    { title: conversationSteps[0].title, description: conversationSteps[0].description },
-                    { title: conversationSteps[1].title, description: conversationSteps[1].description },
-                    { title: conversationSteps[2].title, description: conversationSteps[2].description }
+                    {
+                      title: conversationSteps[0].title,
+                      description: conversationSteps[0].description,
+                    },
+                    {
+                      title: conversationSteps[1].title,
+                      description: conversationSteps[1].description,
+                    },
+                    {
+                      title: conversationSteps[2].title,
+                      description: conversationSteps[2].description,
+                    },
                   ]}
                   onSubmit={handleFormSubmit}
                   loading={isSubmitting}
@@ -295,13 +304,19 @@ export default function ContactClient() {
                 </Typography>
                 <div className="text-left space-y-3">
                   <div className="flex items-start gap-3">
-                    <Icon name="Clock" className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5" />
+                    <Icon
+                      name="Clock"
+                      className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5"
+                    />
                     <Typography variant="p" className="text-blue-800 dark:text-blue-200">
                       <strong>Sous 24h :</strong> Email avec des créneaux pour notre échange
                     </Typography>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Icon name="Users" className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5" />
+                    <Icon
+                      name="Users"
+                      className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5"
+                    />
                     <Typography variant="p" className="text-blue-800 dark:text-blue-200">
                       <strong>45 minutes :</strong> Discussion libre sur vos besoins
                     </Typography>
@@ -463,4 +478,4 @@ export default function ContactClient() {
       </section>
     </main>
   );
-} 
+}

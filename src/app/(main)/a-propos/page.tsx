@@ -1,8 +1,9 @@
 // Métadonnées SEO pour la page à propos
 export const metadata = {
-  title: 'À Propos | IrimWebForge - Eric Zuber, créateur d\'espaces numériques sur mesure',
-  description: 'Découvrez mon parcours, de l\'expérience avec mon épouse thérapeute à ma vision pour libérer les indépendants de leur charge administrative.',
-}
+  title: "À Propos | IrimWebForge - Eric Zuber, créateur d'espaces numériques sur mesure",
+  description:
+    "Découvrez mon parcours, de l'expérience avec mon épouse thérapeute à ma vision pour libérer les indépendants de leur charge administrative.",
+};
 
 import { PageHeader } from '@/components/organisms/PageHeader';
 import { Typography } from '@/components/atoms/Typography';
@@ -126,15 +127,15 @@ export default function Page() {
                 </Typography>
 
                 <Typography variant="p" className="mb-6">
-                  Cette conviction s'est renforcée en créant une interface pour mon épouse thérapeute,
-                  transformant 7h d'administration en 45 minutes. Cette expérience a déclenché ma
-                  démarche actuelle.
+                  Cette conviction s'est renforcée en créant une interface pour mon épouse
+                  thérapeute, transformant 7h d'administration en 45 minutes. Cette expérience a
+                  déclenché ma démarche actuelle.
                 </Typography>
 
                 <div className="p-4 bg-[var(--color-primary)]/10 rounded-lg border-l-4 border-[var(--color-primary)]">
                   <Typography variant="p" className="italic">
-                    "Je crée des ponts entre votre expertise métier et les possibilités du numérique,
-                    pour que vous puissiez vous concentrer sur l'essentiel."
+                    "Je crée des ponts entre votre expertise métier et les possibilités du
+                    numérique, pour que vous puissiez vous concentrer sur l'essentiel."
                   </Typography>
                 </div>
               </div>

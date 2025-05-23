@@ -72,7 +72,11 @@ export const FormField: React.FC<FormFieldProps> = ({
       <div className={cn('flex flex-col gap-1', baseClasses)}>
         <label htmlFor={fieldId} className="text-sm font-medium text-[var(--text-secondary)]">
           {label}
-          {required && <span className="ml-1 text-[var(--color-tertiary)]" aria-label="requis">*</span>}
+          {required && (
+            <span className="ml-1 text-[var(--color-tertiary)]" aria-label="requis">
+              *
+            </span>
+          )}
         </label>
         <textarea
           id={fieldId}
@@ -91,9 +95,9 @@ export const FormField: React.FC<FormFieldProps> = ({
           )}
         />
         {error ? (
-          <Typography 
-            variant="small" 
-            className="text-red-500 mt-1" 
+          <Typography
+            variant="small"
+            className="text-red-500 mt-1"
             id={errorId}
             // ✅ ARIA : Message d'erreur en live region
             role="alert"
@@ -102,11 +106,7 @@ export const FormField: React.FC<FormFieldProps> = ({
             {error}
           </Typography>
         ) : helperText ? (
-          <Typography 
-            variant="small" 
-            className="text-tertiary mt-1"
-            id={helperId}
-          >
+          <Typography variant="small" className="text-tertiary mt-1" id={helperId}>
             {helperText}
           </Typography>
         ) : null}
@@ -120,7 +120,11 @@ export const FormField: React.FC<FormFieldProps> = ({
       <div className={cn('flex flex-col gap-1', baseClasses)}>
         <label htmlFor={fieldId} className="text-sm font-medium text-[var(--text-secondary)]">
           {label}
-          {required && <span className="ml-1 text-[var(--color-tertiary)]" aria-label="requis">*</span>}
+          {required && (
+            <span className="ml-1 text-[var(--color-tertiary)]" aria-label="requis">
+              *
+            </span>
+          )}
         </label>
         <select
           id={fieldId}
@@ -148,8 +152,8 @@ export const FormField: React.FC<FormFieldProps> = ({
           ))}
         </select>
         {error ? (
-          <Typography 
-            variant="small" 
+          <Typography
+            variant="small"
             className="text-red-500 mt-1"
             id={errorId}
             // ✅ ARIA : Message d'erreur en live region
@@ -159,11 +163,7 @@ export const FormField: React.FC<FormFieldProps> = ({
             {error}
           </Typography>
         ) : helperText ? (
-          <Typography 
-            variant="small" 
-            className="text-tertiary mt-1"
-            id={helperId}
-          >
+          <Typography variant="small" className="text-tertiary mt-1" id={helperId}>
             {helperText}
           </Typography>
         ) : null}
@@ -176,7 +176,11 @@ export const FormField: React.FC<FormFieldProps> = ({
     <div className={cn('flex flex-col gap-1', baseClasses)}>
       <label htmlFor={fieldId} className="text-sm font-medium text-[var(--text-secondary)]">
         {label}
-        {required && <span className="ml-1 text-[var(--color-tertiary)]" aria-label="requis">*</span>}
+        {required && (
+          <span className="ml-1 text-[var(--color-tertiary)]" aria-label="requis">
+            *
+          </span>
+        )}
       </label>
       <input
         id={fieldId}
@@ -195,8 +199,8 @@ export const FormField: React.FC<FormFieldProps> = ({
         )}
       />
       {error ? (
-        <Typography 
-          variant="small" 
+        <Typography
+          variant="small"
           className="text-red-500 mt-1"
           id={errorId}
           // ✅ ARIA : Message d'erreur en live region
@@ -206,11 +210,7 @@ export const FormField: React.FC<FormFieldProps> = ({
           {error}
         </Typography>
       ) : helperText ? (
-        <Typography 
-          variant="small" 
-          className="text-tertiary mt-1"
-          id={helperId}
-        >
+        <Typography variant="small" className="text-tertiary mt-1" id={helperId}>
           {helperText}
         </Typography>
       ) : null}

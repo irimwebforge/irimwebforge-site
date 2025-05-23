@@ -65,13 +65,13 @@ const nextConfig = {
           },
         },
       };
-      
+
       // Élimination du code mort plus agressive
       config.optimization.usedExports = true;
       config.optimization.sideEffects = false;
       config.optimization.innerGraph = true;
     }
-    
+
     return config;
   },
   // Optimisation du CSS

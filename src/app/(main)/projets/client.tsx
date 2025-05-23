@@ -139,7 +139,7 @@ export default function ProjetsClient() {
     {
       id: 'booki',
       title: 'Booki – Agence de voyage',
-      slug: 'booki', 
+      slug: 'booki',
       imageUrl: '/images/projects/booki.webp',
       tags: getTagsForProject('site-vitrine', 'artisans', 'formation'),
       description:
@@ -228,15 +228,15 @@ export default function ProjetsClient() {
           <div className="grid gap-8 mb-12 max-w-7xl mx-auto">
             {sortedProjects.map((project, index) => {
               const isCorpsEtSens = project.id === 'corps-et-sens';
-              
+
               return (
                 <div key={project.id} className={`${isCorpsEtSens ? 'row-span-2' : ''}`}>
                   <Card
                     variant={isCorpsEtSens ? 'highlight' : 'default'}
                     padding="large"
                     className={`group relative overflow-hidden transition-all duration-300 hover:shadow-xl ${
-                      isCorpsEtSens 
-                        ? 'border-primary border-2 bg-gradient-to-br from-white via-primary-50 to-primary-100 dark:from-gray-800 dark:via-primary-900/20 dark:to-primary-800/30' 
+                      isCorpsEtSens
+                        ? 'border-primary border-2 bg-gradient-to-br from-white via-primary-50 to-primary-100 dark:from-gray-800 dark:via-primary-900/20 dark:to-primary-800/30'
                         : 'hover:scale-[1.02]'
                     }`}
                   >
@@ -248,8 +248,12 @@ export default function ProjetsClient() {
                       </div>
                     )}
 
-                    <div className={`grid gap-6 ${isCorpsEtSens ? 'md:grid-cols-1 lg:grid-cols-5' : 'md:grid-cols-3'} items-center`}>
-                      <div className={`${isCorpsEtSens ? 'lg:col-span-2' : 'md:col-span-1'} relative`}>
+                    <div
+                      className={`grid gap-6 ${isCorpsEtSens ? 'md:grid-cols-1 lg:grid-cols-5' : 'md:grid-cols-3'} items-center`}
+                    >
+                      <div
+                        className={`${isCorpsEtSens ? 'lg:col-span-2' : 'md:col-span-1'} relative`}
+                      >
                         <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
                           <Image
                             src={project.imageUrl}
@@ -262,7 +266,9 @@ export default function ProjetsClient() {
                         </div>
                       </div>
 
-                      <div className={`${isCorpsEtSens ? 'lg:col-span-3' : 'md:col-span-2'} space-y-4`}>
+                      <div
+                        className={`${isCorpsEtSens ? 'lg:col-span-3' : 'md:col-span-2'} space-y-4`}
+                      >
                         <div className="flex flex-wrap gap-2 mb-3">
                           {project.tags.map((tag) => (
                             <span
@@ -275,18 +281,21 @@ export default function ProjetsClient() {
                         </div>
 
                         <div>
-                          <Typography 
-                            as="h3" 
-                            variant={isCorpsEtSens ? "h2" : "h3"} 
+                          <Typography
+                            as="h3"
+                            variant={isCorpsEtSens ? 'h2' : 'h3'}
                             className={`mb-2 font-bold ${isCorpsEtSens ? 'text-primary' : ''}`}
                           >
                             {project.title}
                           </Typography>
-                          <Typography variant="small" className="text-gray-500 dark:text-gray-400 mb-3">
+                          <Typography
+                            variant="small"
+                            className="text-gray-500 dark:text-gray-400 mb-3"
+                          >
                             {project.year}
                           </Typography>
-                          <Typography 
-                            variant={isCorpsEtSens ? "lead" : "p"} 
+                          <Typography
+                            variant={isCorpsEtSens ? 'lead' : 'p'}
                             className="text-gray-700 dark:text-gray-300 mb-4"
                           >
                             {project.description}
@@ -304,14 +313,16 @@ export default function ProjetsClient() {
                               Voir le projet
                             </NavLink>
                           )}
-                          
+
                           {project.onlineUrl && (
                             <button
-                              onClick={() => openDemo({
-                                title: project.title,
-                                url: project.onlineUrl!,
-                                description: project.description
-                              })}
+                              onClick={() =>
+                                openDemo({
+                                  title: project.title,
+                                  url: project.onlineUrl!,
+                                  description: project.description,
+                                })
+                              }
                               className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 text-sm font-medium"
                             >
                               <Icon name="Eye" className="w-4 h-4" />
@@ -322,8 +333,13 @@ export default function ProjetsClient() {
 
                         {isCorpsEtSens && (
                           <div className="mt-6 p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg border border-primary-200 dark:border-primary-800">
-                            <Typography variant="small" className="text-primary-800 dark:text-primary-200 italic">
-                              💡 Ce projet a été le déclencheur de ma reconversion. Transformer 7h d'administration hebdomadaire en 45min grâce à une interface adaptée m'a fait comprendre l'impact concret du numérique sur mesure.
+                            <Typography
+                              variant="small"
+                              className="text-primary-800 dark:text-primary-200 italic"
+                            >
+                              💡 Ce projet a été le déclencheur de ma reconversion. Transformer 7h
+                              d'administration hebdomadaire en 45min grâce à une interface adaptée
+                              m'a fait comprendre l'impact concret du numérique sur mesure.
                             </Typography>
                           </div>
                         )}
@@ -369,4 +385,4 @@ export default function ProjetsClient() {
       )}
     </main>
   );
-} 
+}

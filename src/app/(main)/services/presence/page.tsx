@@ -1,8 +1,9 @@
 // Métadonnées SEO pour la solution Présence
 export const metadata = {
   title: 'Solution Présence | IrimWebForge - Site vitrine professionnel et autonome',
-  description: 'Site web élégant et facile à gérer. Interface pensée pour votre quotidien, sans dépendance technique. Parfait pour débuter votre présence en ligne.',
-}
+  description:
+    'Site web élégant et facile à gérer. Interface pensée pour votre quotidien, sans dépendance technique. Parfait pour débuter votre présence en ligne.',
+};
 
 import { PageHeader } from '@/components/organisms/PageHeader';
 import { Container } from '@/components/atoms/Container';

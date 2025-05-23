@@ -7,49 +7,110 @@ import type { LucideProps } from 'lucide-react';
 // Import uniquement des icônes utilisées - optimisation majeure du bundle
 import {
   // Navigation & Actions
-  ArrowLeft, ArrowRight, ChevronDown, ChevronUp, ExternalLink,
-  Plus, Minus, Search,
-  
+  ArrowLeft,
+  ArrowRight,
+  ChevronDown,
+  ChevronUp,
+  ExternalLink,
+  Plus,
+  Minus,
+  Search,
+
   // Interface utilisateur
-  Check, X, Menu, Shield, Laptop, Smartphone, Coffee, Key,
-  Wrench as Tool, Layout, Square,
-  
+  Check,
+  X,
+  Menu,
+  Shield,
+  Laptop,
+  Smartphone,
+  Coffee,
+  Key,
+  Wrench as Tool,
+  Layout,
+  Square,
+
   // Contenu & Média
-  Calendar, CalendarPlus, Image, FileText,
-  
+  Calendar,
+  CalendarPlus,
+  Image,
+  FileText,
+
   // Développement & Design
-  Code, Code2, PenTool, Palette, Pen,
-  
+  Code,
+  Code2,
+  PenTool,
+  Palette,
+  Pen,
+
   // Business & Education
-  GraduationCap, Rocket, UserPlus, CircleUser,
-  
+  GraduationCap,
+  Rocket,
+  UserPlus,
+  CircleUser,
+
   // État & Notifications
-  AlertCircle, AlertTriangle, CheckCircle, Construction,
-  Clock, Info, Loader2,
-  
+  AlertCircle,
+  AlertTriangle,
+  CheckCircle,
+  Construction,
+  Clock,
+  Info,
+  Loader2,
+
   // Communication
-  Mail, MessageCircle, MessageSquare, Phone,
-  
+  Mail,
+  MessageCircle,
+  MessageSquare,
+  Phone,
+
   // Navigation & Position
-  Compass, MapPin,
-  
+  Compass,
+  MapPin,
+
   // Visualisation
   Eye,
-  
+
   // Réseaux sociaux
   Linkedin,
-  
+
   // Autres
-  Headphones, Heart, Star, Sparkles, TrendingUp, Lightbulb,
-  
+  Headphones,
+  Heart,
+  Star,
+  Sparkles,
+  TrendingUp,
+  Lightbulb,
+
   // Processus
-  FileCheck, Settings, Users, Target, Zap, Brain, Briefcase,
-  BarChart, BarChart2, Award, Gauge,
-  
+  FileCheck,
+  Settings,
+  Users,
+  Target,
+  Zap,
+  Brain,
+  Briefcase,
+  BarChart,
+  BarChart2,
+  Award,
+  Gauge,
+
   // Ajouts spécifiques
-  GitBranch, User, Folder, Smile, Layers, UserCheck,
-  HeartPulse, Hammer, PiggyBank, Handshake, RefreshCw,
-  RotateCcw, TestTube, Scissors, Globe, PieChart,
+  GitBranch,
+  User,
+  Folder,
+  Smile,
+  Layers,
+  UserCheck,
+  HeartPulse,
+  Hammer,
+  PiggyBank,
+  Handshake,
+  RefreshCw,
+  RotateCcw,
+  TestTube,
+  Scissors,
+  Globe,
+  PieChart,
 } from 'lucide-react';
 
 // Définition des icônes disponibles avec imports optimisés

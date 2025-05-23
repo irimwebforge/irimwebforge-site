@@ -3,9 +3,9 @@ require('dotenv').config();
 
 async function testEmailConfiguration() {
   console.log('🧪 Test de la configuration email...\n');
-  
+
   // Vérifier les variables d'environnement
-  console.log('📋 Variables d\'environnement:');
+  console.log("📋 Variables d'environnement:");
   console.log(`  EMAIL_SERVER: ${process.env.EMAIL_SERVER}`);
   console.log(`  EMAIL_PORT: ${process.env.EMAIL_PORT}`);
   console.log(`  EMAIL_SECURE: ${process.env.EMAIL_SECURE}`);
@@ -31,7 +31,7 @@ async function testEmailConfiguration() {
     console.log('✅ Connexion SMTP réussie !\n');
 
     // Envoyer un email de test
-    console.log('📧 Envoi d\'un email de test...');
+    console.log("📧 Envoi d'un email de test...");
     const testEmailOptions = {
       from: process.env.EMAIL_FROM,
       to: process.env.EMAIL_TO,
@@ -57,7 +57,7 @@ async function testEmailConfiguration() {
     console.log(`📨 Message ID: ${result.messageId}\n`);
 
     // Test avec un email de confirmation client (simulation)
-    console.log('📧 Test d\'email de confirmation client...');
+    console.log("📧 Test d'email de confirmation client...");
     const clientTestEmail = {
       from: process.env.EMAIL_FROM,
       to: process.env.EMAIL_TO, // On s'envoie le test à nous-mêmes
@@ -84,18 +84,21 @@ async function testEmailConfiguration() {
 
     console.log('🎉 Tous les tests sont passés avec succès !');
     console.log('📩 Vérifiez votre boîte de réception pour confirmer la réception des emails.');
-
   } catch (error) {
     console.error('❌ Erreur lors du test:', error);
-    
+
     if (error.code === 'EAUTH') {
       console.log('\n💡 Suggestion: Vérifiez vos identifiants Gmail et assurez-vous que:');
       console.log('   - La validation en deux étapes est activée');
-      console.log('   - Vous utilisez un mot de passe d\'application (pas le mot de passe principal)');
-      console.log('   - Le compte Gmail autorise les applications moins sécurisées (si nécessaire)');
-      console.log('\n🔗 Pour créer un mot de passe d\'application:');
+      console.log(
+        "   - Vous utilisez un mot de passe d'application (pas le mot de passe principal)"
+      );
+      console.log(
+        '   - Le compte Gmail autorise les applications moins sécurisées (si nécessaire)'
+      );
+      console.log("\n🔗 Pour créer un mot de passe d'application:");
       console.log('   1. Allez sur https://myaccount.google.com');
-      console.log('   2. Sécurité > Validation en 2 étapes > Mots de passe d\'application');
+      console.log("   2. Sécurité > Validation en 2 étapes > Mots de passe d'application");
       console.log('   3. Générez un nouveau mot de passe pour "Mail"');
       console.log('   4. Remplacez EMAIL_PASSWORD dans votre fichier .env');
     } else if (error.code === 'ECONNECTION') {
@@ -109,4 +112,4 @@ async function testEmailConfiguration() {
 }
 
 // Lancer le test
-testEmailConfiguration(); 
+testEmailConfiguration();

@@ -18,7 +18,7 @@ async function testSimpleEmail() {
     // Test avec la MÊME adresse pour éviter les problèmes de routage
     const sameAddressTest = {
       from: process.env.EMAIL_USER, // Même adresse que l'authentification
-      to: process.env.EMAIL_USER,   // Même adresse que l'envoi
+      to: process.env.EMAIL_USER, // Même adresse que l'envoi
       subject: '🧪 Test AUTO-ENVOI - IrimWebForge',
       html: `
         <h1>🎯 Test d'auto-envoi</h1>
@@ -33,14 +33,13 @@ async function testSimpleEmail() {
 
     console.log(`📧 Envoi de ${process.env.EMAIL_USER} vers ${process.env.EMAIL_USER}...`);
     const result = await transporter.sendMail(sameAddressTest);
-    
-    console.log('✅ Email d\'auto-envoi réussi !');
+
+    console.log("✅ Email d'auto-envoi réussi !");
     console.log(`📨 Message ID: ${result.messageId}`);
     console.log(`📬 Vérifiez ${process.env.EMAIL_USER} (y compris le dossier spam)`);
-
   } catch (error) {
     console.error('❌ Erreur:', error);
   }
 }
 
-testSimpleEmail(); 
+testSimpleEmail();

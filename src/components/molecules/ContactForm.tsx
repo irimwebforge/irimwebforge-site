@@ -35,7 +35,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   const formRef = useRef<HTMLFormElement>(null);
   const firstErrorRef = useRef<HTMLDivElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
-  
+
   // ✅ ACCESSIBILITÉ : Hook pour les annonces
   const { announceError, announceSuccess } = useFormAnnouncements();
 
@@ -120,13 +120,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     }
 
     setErrors(newErrors);
-    
+
     // ✅ ACCESSIBILITÉ : Annoncer les erreurs et déplacer le focus
     if (Object.keys(newErrors).length > 0) {
       const firstError = Object.keys(newErrors)[0];
       const firstErrorMessage = newErrors[firstError];
       announceError(firstError, firstErrorMessage);
-      
+
       // Déplacer le focus vers le premier champ en erreur
       setTimeout(() => {
         const firstErrorElement = document.getElementById(`contact-${firstError}`);
@@ -135,7 +135,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         }
       }, 100);
     }
-    
+
     return Object.keys(newErrors).length === 0;
   };
 
@@ -161,7 +161,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       }
 
       setIsSuccess(true);
-      
+
       // ✅ ACCESSIBILITÉ : Annoncer le succès et déplacer le focus
       announceSuccess(successMessage);
       setTimeout(() => {
@@ -169,7 +169,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           successRef.current.focus();
         }
       }, 100);
-      
+
       // Réinitialiser le formulaire si demandé
       if (resetOnSuccess) {
         resetForm();
@@ -202,17 +202,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         aria-labelledby="success-title"
         tabIndex={-1}
       >
-        <Typography 
-          variant="h3" 
-          className="text-[var(--color-primary)] mb-3"
-          id="success-title"
-        >
+        <Typography variant="h3" className="text-[var(--color-primary)] mb-3" id="success-title">
           Demande envoyée !
         </Typography>
         <Typography variant="p">{successMessage}</Typography>
-        <Button 
-          variant="outline" 
-          className="mt-4" 
+        <Button
+          variant="outline"
+          className="mt-4"
           onClick={() => {
             setIsSuccess(false);
             setIsSubmitted(false);
@@ -232,9 +228,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   }
 
   return (
-    <form 
+    <form
       ref={formRef}
-      onSubmit={handleSubmit} 
+      onSubmit={handleSubmit}
       className={`space-y-5 ${className}`}
       // ✅ ARIA : Attributs de formulaire
       role="form"
@@ -242,17 +238,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       noValidate
     >
       {/* ✅ ACCESSIBILITÉ : Titre du formulaire pour les lecteurs d'écran */}
-      <Typography 
-        variant="h2" 
-        className="sr-only" 
-        id="contact-form-title"
-      >
+      <Typography variant="h2" className="sr-only" id="contact-form-title">
         Formulaire de contact
       </Typography>
 
       {/* ✅ ARIA : Message d'erreur global avec live region */}
       {submitError && (
-        <div 
+        <div
           ref={firstErrorRef}
           className="p-3 rounded-md bg-red-50 border border-red-200 text-red-600 mb-4"
           role="alert"
@@ -342,13 +334,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       >
         {isSubmitting ? 'Envoi en cours...' : submitButtonText}
       </Button>
-      
+
       {/* ✅ ACCESSIBILITÉ : Information sur la soumission */}
-      <Typography 
-        variant="small" 
-        className="text-gray-500 text-center"
-        id="submit-help"
-      >
+      <Typography variant="small" className="text-gray-500 text-center" id="submit-help">
         En envoyant ce formulaire, vous acceptez d'être recontacté concernant votre demande.
       </Typography>
     </form>

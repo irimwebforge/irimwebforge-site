@@ -10,8 +10,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Import dynamique du HeroPattern pour améliorer le LCP
-const HeroPattern = React.lazy(() => 
-  import('../atoms/HeroPattern').then(module => ({ default: module.HeroPattern }))
+const HeroPattern = React.lazy(() =>
+  import('../atoms/HeroPattern').then((module) => ({ default: module.HeroPattern }))
 );
 
 export interface PageHeaderProps {

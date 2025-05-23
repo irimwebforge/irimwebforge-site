@@ -94,7 +94,7 @@ nav a:focus {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
+
   /* Désactiver les transformations qui peuvent causer des nausées */
   .animate-spin,
   .animate-bounce,
@@ -110,7 +110,7 @@ nav a:focus {
     outline: 3px solid;
     outline-offset: 2px;
   }
-  
+
   button,
   input,
   textarea,
@@ -139,12 +139,12 @@ select:disabled {
 }
 
 /* Indication visuelle pour les éléments requis */
-[aria-required="true"]:not([aria-invalid="true"]) {
+[aria-required='true']:not([aria-invalid='true']) {
   border-left: 3px solid var(--color-primary);
 }
 
 /* Indication visuelle pour les erreurs */
-[aria-invalid="true"] {
+[aria-invalid='true'] {
   border-left: 3px solid #ef4444;
   border-color: #ef4444;
 }
@@ -160,7 +160,7 @@ select:disabled {
 }
 
 /* Alerte visible */
-[role="alert"] {
+[role='alert'] {
   position: relative;
   left: auto;
   width: auto;
@@ -170,12 +170,12 @@ select:disabled {
 
 /* === NAVIGATION === */
 /* Indication claire du lien actuel */
-[aria-current="page"] {
+[aria-current='page'] {
   font-weight: 600;
   position: relative;
 }
 
-[aria-current="page"]::after {
+[aria-current='page']::after {
   content: '';
   position: absolute;
   bottom: -2px;
@@ -188,14 +188,14 @@ select:disabled {
 
 /* === MODALS ET DIALOGS === */
 /* Assurer que les modals bloquent bien l'interaction */
-[aria-modal="true"] {
+[aria-modal='true'] {
   position: fixed;
   inset: 0;
   z-index: 50;
 }
 
 /* Backdrop sombre pour les modals */
-[aria-modal="true"] > div:first-child {
+[aria-modal='true'] > div:first-child {
   background: rgba(0, 0, 0, 0.6);
 }
 
@@ -203,10 +203,10 @@ select:disabled {
 /* Taille minimale pour les cibles tactiles (44px minimum) */
 button,
 a,
-input[type="button"],
-input[type="submit"],
-input[type="checkbox"],
-input[type="radio"] {
+input[type='button'],
+input[type='submit'],
+input[type='checkbox'],
+input[type='radio'] {
   min-height: 44px;
   min-width: 44px;
 }
@@ -240,4 +240,4 @@ input[type="radio"] {
 .debug-aria [aria-labelledby],
 .debug-aria [aria-describedby] {
   outline: 2px dashed blue;
-} 
+}

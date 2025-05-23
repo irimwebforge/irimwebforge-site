@@ -129,7 +129,7 @@ export const ProjectShowcase = ({
       ? projects.filter((project) =>
           selectedCategories.every((cat) => project.tags.some((tag) => tag.label === cat))
         )
-    : projects;
+      : projects;
 
   // Pagination par flèches
   const projectsPerPage = 3;
@@ -171,26 +171,28 @@ export const ProjectShowcase = ({
 
         {/* Filtres adaptés au style demandé */}
         {showFilters && (
-              <div className="mb-6">
+          <div className="mb-6">
             <div className="flex flex-col gap-2 max-w-5xl mx-auto">
               {/* Bouton Tous */}
               <div className="flex justify-center mb-2">
-                  <button
+                <button
                   onClick={() => setSelectedCategories([])}
                   className={`px-4 py-2 text-sm rounded-full border transition-all font-medium ${
                     selectedCategories.length === 0
                       ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] shadow'
                       : 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)] hover:bg-[var(--color-primary)]/20'
-                    }`}
-                  >
+                  }`}
+                >
                   Tous les projets
-                  </button>
+                </button>
               </div>
 
               {/* Solutions - ligne avec catégorie + filtres */}
               {tagCategories.solution.length > 0 && (
                 <div className="flex flex-wrap items-center justify-center gap-2">
-                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 mr-2">Type de solution:</span>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 mr-2">
+                    Type de solution:
+                  </span>
                   {tagCategories.solution.map((tag) => (
                     <button
                       key={`solution-${tag}`}
@@ -210,7 +212,9 @@ export const ProjectShowcase = ({
               {/* Clientèle - ligne avec catégorie + filtres */}
               {tagCategories.clientele.length > 0 && (
                 <div className="flex flex-wrap items-center justify-center gap-2">
-                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 mr-2">Clientèle:</span>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 mr-2">
+                    Clientèle:
+                  </span>
                   {tagCategories.clientele.map((tag) => (
                     <button
                       key={`clientele-${tag}`}
@@ -230,7 +234,9 @@ export const ProjectShowcase = ({
               {/* Statut - ligne avec catégorie + filtres */}
               {tagCategories.statut.length > 0 && (
                 <div className="flex flex-wrap items-center justify-center gap-2">
-                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 mr-2">Statut:</span>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 mr-2">
+                    Statut:
+                  </span>
                   {tagCategories.statut.map((tag) => (
                     <button
                       key={`statut-${tag}`}
@@ -244,10 +250,10 @@ export const ProjectShowcase = ({
                       {tag}
                     </button>
                   ))}
-                    </div>
-                  )}
                 </div>
-              </div>
+              )}
+            </div>
+          </div>
         )}
 
         {/* Message si aucun projet ne correspond au filtre */}

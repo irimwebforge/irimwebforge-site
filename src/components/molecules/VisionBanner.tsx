@@ -20,11 +20,11 @@ export interface VisionBannerProps {
 
 /**
  * ✅ VISION BANNER AMÉLIORÉE - IrimWebForge
- * 
+ *
  * Bannière authentique qui explique l'approche transparente et personnelle.
  * Respecte le ton de confiance et de proximité caractéristique d'IrimWebForge.
- * 
- * Utilisée stratégiquement sur les pages où la contextualisation apporte 
+ *
+ * Utilisée stratégiquement sur les pages où la contextualisation apporte
  * une vraie valeur (Contact, Projets).
  */
 export const VisionBanner: React.FC<VisionBannerProps> = ({
@@ -71,23 +71,25 @@ export const VisionBanner: React.FC<VisionBannerProps> = ({
       role="complementary"
       aria-label="Message de transparence sur notre approche"
     >
-      <Alert 
-        variant={variant} 
+      <Alert
+        variant={variant}
         className="mb-0" // Reset margin car géré par le container
       >
         <div className="flex justify-between items-start gap-4">
           <div className="flex-1">
-            <p className={cn(
-              'text-blue-800 dark:text-blue-200 leading-relaxed',
-              compact ? 'text-sm' : 'text-sm',
-              'font-medium' // Légèrement plus de poids pour le sérieux
-            )}>
+            <p
+              className={cn(
+                'text-blue-800 dark:text-blue-200 leading-relaxed',
+                compact ? 'text-sm' : 'text-sm',
+                'font-medium' // Légèrement plus de poids pour le sérieux
+              )}
+            >
               {message}
             </p>
           </div>
-          
+
           {dismissible && (
-            <button 
+            <button
               onClick={handleDismiss}
               className={cn(
                 'flex-shrink-0 p-1 rounded hover:bg-blue-100 dark:hover:bg-blue-800',
@@ -108,34 +110,34 @@ export const VisionBanner: React.FC<VisionBannerProps> = ({
 
 /**
  * ✅ MESSAGES PRÉDÉFINIS - Ton IrimWebForge
- * 
+ *
  * Messages authentiques qui reflètent l'approche transparente et personnelle
  */
 export const VisionMessages = {
-  contact: 
-    "Cette page vous propose un échange sans engagement pour explorer vos défis quotidiens. " +
-    "Ma démarche est transparente : je débute mon aventure freelance avec une expérience fondatrice " +
-    "et une vision claire de ce que je peux vous apporter.",
-    
-  projets: 
-    "Cette page présente mon projet fondateur (Corps & Sens) ainsi que des projets en développement " +
+  contact:
+    'Cette page vous propose un échange sans engagement pour explorer vos défis quotidiens. ' +
+    'Ma démarche est transparente : je débute mon aventure freelance avec une expérience fondatrice ' +
+    'et une vision claire de ce que je peux vous apporter.',
+
+  projets:
+    'Cette page présente mon projet fondateur (Corps & Sens) ainsi que des projets en développement ' +
     "qui illustrent ma vision. Je privilégie la transparence sur mon parcours : montrer d'où je viens " +
-    "et où je vais pour que vous compreniez qui vous choisissez.",
-    
-  processus: 
-    "Cette approche reflète mon expérience concrète avec le projet Corps & Sens. " +
-    "Je vous présente une méthode testée et affinée, pas de la théorie : " +
+    'et où je vais pour que vous compreniez qui vous choisissez.',
+
+  processus:
+    'Cette approche reflète mon expérience concrète avec le projet Corps & Sens. ' +
+    'Je vous présente une méthode testée et affinée, pas de la théorie : ' +
     "ce qui a fonctionné pour transformer 7h d'administration en 45 minutes par semaine.",
-    
-  services: 
-    "Ces services sont nés de besoins réels identifiés avec mon épouse thérapeute. " +
-    "Chaque solution proposée a été pensée pour répondre aux défis concrets " +
-    "que vivent les indépendants au quotidien."
+
+  services:
+    'Ces services sont nés de besoins réels identifiés avec mon épouse thérapeute. ' +
+    'Chaque solution proposée a été pensée pour répondre aux défis concrets ' +
+    'que vivent les indépendants au quotidien.',
 } as const;
 
 /**
  * ✅ COMPOSANT DE CONVENANCE - Usage rapide
- * 
+ *
  * Pour utiliser facilement les messages prédéfinis avec le bon ton
  */
 interface QuickVisionBannerProps {
@@ -160,4 +162,4 @@ export const QuickVisionBanner: React.FC<QuickVisionBannerProps> = ({
       storageKey={page}
     />
   );
-}; 
+};

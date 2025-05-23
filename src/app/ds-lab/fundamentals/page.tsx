@@ -139,11 +139,15 @@ const DesignSystem = () => {
                   <span className="text-sm text-secondary">Ratio amélioré</span>
                 </div>
                 <div className="flex gap-4">
-                  <Button variant="outline" size="small">Bouton outline</Button>
+                  <Button variant="outline" size="small">
+                    Bouton outline
+                  </Button>
                   <span className="text-sm text-secondary">Contraste renforcé</span>
                 </div>
                 <div className="flex gap-4">
-                  <a href="#" className="link-primary-accessible underline">Lien accessible</a>
+                  <a href="#" className="link-primary-accessible underline">
+                    Lien accessible
+                  </a>
                   <span className="text-sm text-secondary">Lisibilité améliorée</span>
                 </div>
               </div>

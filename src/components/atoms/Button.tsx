@@ -108,13 +108,17 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
         {loading ? (
           <Icon name="Loader2" className="animate-spin mr-2" aria-hidden="true" />
         ) : icon && iconPosition === 'left' && !iconOnly ? (
-          <span className="mr-2" aria-hidden="true">{icon}</span>
+          <span className="mr-2" aria-hidden="true">
+            {icon}
+          </span>
         ) : null}
 
         {!iconOnly && <span className="relative z-10">{children}</span>}
 
         {icon && iconPosition === 'right' && !iconOnly ? (
-          <span className="ml-2" aria-hidden="true">{icon}</span>
+          <span className="ml-2" aria-hidden="true">
+            {icon}
+          </span>
         ) : iconOnly ? (
           <span aria-hidden="true">{icon}</span>
         ) : null}

@@ -57,7 +57,7 @@ export const Modal: React.FC<ModalProps> = ({
 }) => {
   const [isMounted, setIsMounted] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
-  
+
   // ✅ ARIA : Générer des IDs stables pour les références ARIA
   const [titleId] = useState(() => `modal-title-${Math.random().toString(36).substr(2, 9)}`);
   const [contentId] = useState(() => `modal-content-${Math.random().toString(36).substr(2, 9)}`);
@@ -201,10 +201,7 @@ export const Modal: React.FC<ModalProps> = ({
         {(title || showCloseButton) && (
           <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
             {title && (
-              <div 
-                className="font-medium text-lg"
-                id={titleId}
-              >
+              <div className="font-medium text-lg" id={titleId}>
                 {typeof title === 'string' ? <Typography variant="h3">{title}</Typography> : title}
               </div>
             )}
@@ -222,18 +219,13 @@ export const Modal: React.FC<ModalProps> = ({
         )}
 
         {/* Contenu du modal */}
-        <div 
-          className="p-4"
-          id={contentId}
-        >
+        <div className="p-4" id={contentId}>
           {children}
         </div>
 
         {/* Pied de modal */}
         {footer && (
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-            {footer}
-          </div>
+          <div className="p-4 border-t border-gray-200 dark:border-gray-700">{footer}</div>
         )}
       </div>
     </div>

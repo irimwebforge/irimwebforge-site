@@ -1,209 +1,238 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test de Contraste - IrimWebForge</title>
     <style>
-        :root {
-            /* Couleurs originales */
-            --color-primary: #00b3b3;
-            --color-secondary: #004466;
-            --color-tertiary: #d85014;
-            
-            /* Couleurs accessibles */
-            --color-primary-accessible: #008080;
-            --color-secondary-accessible: #003955;
-            --color-tertiary-accessible: #b8420f;
-            
-            /* Backgrounds accessibles */
-            --color-primary-bg-accessible: #e6f7f7;
-            --color-secondary-bg-accessible: #e6f0f5;
-            --color-tertiary-bg-accessible: #fdf2ef;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background: #ffffff;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .section {
-            padding: 20px;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-        }
-        
-        .before {
-            background: #fff5f5;
-        }
-        
-        .after {
-            background: #f0fff0;
-        }
-        
-        .badge {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-            margin: 5px;
-        }
-        
-        .badge-primary-old {
-            background: rgba(0, 179, 179, 0.1);
-            color: var(--color-primary);
-        }
-        
-        .badge-primary-new {
-            background: var(--color-primary-bg-accessible);
-            color: var(--color-primary-accessible);
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            margin: 5px;
-            border: 1px solid;
-        }
-        
-        .btn-outline-old {
-            border-color: var(--color-primary);
-            background: white;
-            color: var(--color-primary);
-        }
-        
-        .btn-outline-new {
-            border-color: var(--color-primary-accessible);
-            background: white;
-            color: var(--color-primary-accessible);
-        }
-        
-        .link-old {
-            color: var(--color-primary);
-            text-decoration: underline;
-        }
-        
-        .link-new {
-            color: var(--color-primary-accessible);
-            text-decoration: underline;
-        }
-        
-        .contrast-info {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-        }
-        
-        h1, h2 {
-            color: #333;
-        }
-        
-        .status {
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 11px;
-            font-weight: bold;
-            margin-left: 10px;
-        }
-        
-        .fail {
-            background: #ffebee;
-            color: #c62828;
-        }
-        
-        .pass {
-            background: #e8f5e8;
-            color: #2e7d32;
-        }
+      :root {
+        /* Couleurs originales */
+        --color-primary: #00b3b3;
+        --color-secondary: #004466;
+        --color-tertiary: #d85014;
+
+        /* Couleurs accessibles */
+        --color-primary-accessible: #008080;
+        --color-secondary-accessible: #003955;
+        --color-tertiary-accessible: #b8420f;
+
+        /* Backgrounds accessibles */
+        --color-primary-bg-accessible: #e6f7f7;
+        --color-secondary-bg-accessible: #e6f0f5;
+        --color-tertiary-bg-accessible: #fdf2ef;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        background: #ffffff;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .section {
+        padding: 20px;
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+      }
+
+      .before {
+        background: #fff5f5;
+      }
+
+      .after {
+        background: #f0fff0;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+        margin: 5px;
+      }
+
+      .badge-primary-old {
+        background: rgba(0, 179, 179, 0.1);
+        color: var(--color-primary);
+      }
+
+      .badge-primary-new {
+        background: var(--color-primary-bg-accessible);
+        color: var(--color-primary-accessible);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 500;
+        margin: 5px;
+        border: 1px solid;
+      }
+
+      .btn-outline-old {
+        border-color: var(--color-primary);
+        background: white;
+        color: var(--color-primary);
+      }
+
+      .btn-outline-new {
+        border-color: var(--color-primary-accessible);
+        background: white;
+        color: var(--color-primary-accessible);
+      }
+
+      .link-old {
+        color: var(--color-primary);
+        text-decoration: underline;
+      }
+
+      .link-new {
+        color: var(--color-primary-accessible);
+        text-decoration: underline;
+      }
+
+      .contrast-info {
+        font-size: 12px;
+        color: #666;
+        margin-top: 5px;
+      }
+
+      h1,
+      h2 {
+        color: #333;
+      }
+
+      .status {
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 11px;
+        font-weight: bold;
+        margin-left: 10px;
+      }
+
+      .fail {
+        background: #ffebee;
+        color: #c62828;
+      }
+
+      .pass {
+        background: #e8f5e8;
+        color: #2e7d32;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>Test d'Amélioration du Contraste</h1>
-        <p>Comparaison avant/après des ajustements d'accessibilité pour IrimWebForge</p>
-        
-        <div class="comparison">
-            <div class="section before">
-                <h2>❌ Avant (Problématique)</h2>
-                
-                <h3>Badges</h3>
-                <div class="badge badge-primary-old">Badge primaire</div>
-                <div class="contrast-info">Ratio: ~2.9:1 <span class="status fail">ÉCHEC WCAG AA</span></div>
-                
-                <h3>Boutons outline</h3>
-                <a href="#" class="btn btn-outline-old">Action secondaire</a>
-                <div class="contrast-info">Ratio: ~2.9:1 <span class="status fail">ÉCHEC WCAG AA</span></div>
-                
-                <h3>Liens</h3>
-                <a href="#" class="link-old">En savoir plus</a>
-                <div class="contrast-info">Ratio: ~2.9:1 <span class="status fail">ÉCHEC WCAG AA</span></div>
-                
-                <h3>Texte coloré</h3>
-                <span style="color: var(--color-primary);">Informations importantes</span>
-                <div class="contrast-info">Ratio: ~2.9:1 <span class="status fail">ÉCHEC WCAG AA</span></div>
-            </div>
-            
-            <div class="section after">
-                <h2>✅ Après (Accessible)</h2>
-                
-                <h3>Badges</h3>
-                <div class="badge badge-primary-new">Badge primaire</div>
-                <div class="contrast-info">Ratio: ~5.2:1 <span class="status pass">RÉUSSITE WCAG AA</span></div>
-                
-                <h3>Boutons outline</h3>
-                <a href="#" class="btn btn-outline-new">Action secondaire</a>
-                <div class="contrast-info">Ratio: ~5.2:1 <span class="status pass">RÉUSSITE WCAG AA</span></div>
-                
-                <h3>Liens</h3>
-                <a href="#" class="link-new">En savoir plus</a>
-                <div class="contrast-info">Ratio: ~5.2:1 <span class="status pass">RÉUSSITE WCAG AA</span></div>
-                
-                <h3>Texte coloré</h3>
-                <span style="color: var(--color-primary-accessible);">Informations importantes</span>
-                <div class="contrast-info">Ratio: ~5.2:1 <span class="status pass">RÉUSSITE WCAG AA</span></div>
-            </div>
+      <h1>Test d'Amélioration du Contraste</h1>
+      <p>Comparaison avant/après des ajustements d'accessibilité pour IrimWebForge</p>
+
+      <div class="comparison">
+        <div class="section before">
+          <h2>❌ Avant (Problématique)</h2>
+
+          <h3>Badges</h3>
+          <div class="badge badge-primary-old">Badge primaire</div>
+          <div class="contrast-info">
+            Ratio: ~2.9:1 <span class="status fail">ÉCHEC WCAG AA</span>
+          </div>
+
+          <h3>Boutons outline</h3>
+          <a href="#" class="btn btn-outline-old">Action secondaire</a>
+          <div class="contrast-info">
+            Ratio: ~2.9:1 <span class="status fail">ÉCHEC WCAG AA</span>
+          </div>
+
+          <h3>Liens</h3>
+          <a href="#" class="link-old">En savoir plus</a>
+          <div class="contrast-info">
+            Ratio: ~2.9:1 <span class="status fail">ÉCHEC WCAG AA</span>
+          </div>
+
+          <h3>Texte coloré</h3>
+          <span style="color: var(--color-primary)">Informations importantes</span>
+          <div class="contrast-info">
+            Ratio: ~2.9:1 <span class="status fail">ÉCHEC WCAG AA</span>
+          </div>
         </div>
-        
-        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 30px;">
-            <h2>🎯 Résumé des améliorations</h2>
-            <ul>
-                <li><strong>Couleur primaire :</strong> #00b3b3 → #008080 (variation de -15% en luminosité)</li>
-                <li><strong>Couleur secondaire :</strong> #004466 → #003955 (variation de -12% en luminosité)</li>
-                <li><strong>Couleur tertiaire :</strong> #d85014 → #b8420f (variation de -18% en luminosité)</li>
-                <li><strong>Arrière-plans :</strong> Opacité 10% → Couleurs dédiées très claires</li>
-                <li><strong>Conformité :</strong> Toutes les combinaisons respectent WCAG 2.1 AA (4.5:1)</li>
-                <li><strong>Identité visuelle :</strong> Conservée grâce à des variations subtiles</li>
-            </ul>
+
+        <div class="section after">
+          <h2>✅ Après (Accessible)</h2>
+
+          <h3>Badges</h3>
+          <div class="badge badge-primary-new">Badge primaire</div>
+          <div class="contrast-info">
+            Ratio: ~5.2:1 <span class="status pass">RÉUSSITE WCAG AA</span>
+          </div>
+
+          <h3>Boutons outline</h3>
+          <a href="#" class="btn btn-outline-new">Action secondaire</a>
+          <div class="contrast-info">
+            Ratio: ~5.2:1 <span class="status pass">RÉUSSITE WCAG AA</span>
+          </div>
+
+          <h3>Liens</h3>
+          <a href="#" class="link-new">En savoir plus</a>
+          <div class="contrast-info">
+            Ratio: ~5.2:1 <span class="status pass">RÉUSSITE WCAG AA</span>
+          </div>
+
+          <h3>Texte coloré</h3>
+          <span style="color: var(--color-primary-accessible)">Informations importantes</span>
+          <div class="contrast-info">
+            Ratio: ~5.2:1 <span class="status pass">RÉUSSITE WCAG AA</span>
+          </div>
         </div>
-        
-        <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; margin-top: 20px;">
-            <h2>📋 Standards respectés</h2>
-            <ul>
-                <li>✅ <strong>WCAG 2.1 AA :</strong> Ratio minimal de 4.5:1 pour le texte normal</li>
-                <li>✅ <strong>Animations :</strong> Durées conformes (150ms-500ms)</li>
-                <li>✅ <strong>Design System :</strong> Palette turquoise, bleu, orange conservée</li>
-                <li>✅ <strong>Accessibilité :</strong> Support des préférences utilisateur (prefers-reduced-motion)</li>
-            </ul>
-        </div>
+      </div>
+
+      <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 30px">
+        <h2>🎯 Résumé des améliorations</h2>
+        <ul>
+          <li>
+            <strong>Couleur primaire :</strong> #00b3b3 → #008080 (variation de -15% en luminosité)
+          </li>
+          <li>
+            <strong>Couleur secondaire :</strong> #004466 → #003955 (variation de -12% en
+            luminosité)
+          </li>
+          <li>
+            <strong>Couleur tertiaire :</strong> #d85014 → #b8420f (variation de -18% en luminosité)
+          </li>
+          <li><strong>Arrière-plans :</strong> Opacité 10% → Couleurs dédiées très claires</li>
+          <li>
+            <strong>Conformité :</strong> Toutes les combinaisons respectent WCAG 2.1 AA (4.5:1)
+          </li>
+          <li><strong>Identité visuelle :</strong> Conservée grâce à des variations subtiles</li>
+        </ul>
+      </div>
+
+      <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; margin-top: 20px">
+        <h2>📋 Standards respectés</h2>
+        <ul>
+          <li>✅ <strong>WCAG 2.1 AA :</strong> Ratio minimal de 4.5:1 pour le texte normal</li>
+          <li>✅ <strong>Animations :</strong> Durées conformes (150ms-500ms)</li>
+          <li>✅ <strong>Design System :</strong> Palette turquoise, bleu, orange conservée</li>
+          <li>
+            ✅ <strong>Accessibilité :</strong> Support des préférences utilisateur
+            (prefers-reduced-motion)
+          </li>
+        </ul>
+      </div>
     </div>
-</body>
-</html> 
+  </body>
+</html>

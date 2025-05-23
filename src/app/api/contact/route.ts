@@ -5,17 +5,17 @@ export async function POST(request: Request) {
   try {
     // Récupérer les données du formulaire
     const formData = await request.json();
-    
+
     // Log des données reçues (sans données sensibles)
-    console.log('Formulaire reçu:', { 
-      prenom: formData.prenom, 
+    console.log('Formulaire reçu:', {
+      prenom: formData.prenom,
       activite: formData.activite,
-      hasEmail: !!formData.email 
+      hasEmail: !!formData.email,
     });
 
     // Vérifier que nous avons au moins le prénom
     if (!formData.prenom) {
-      return NextResponse.json({ error: "Le prénom est requis" }, { status: 400 });
+      return NextResponse.json({ error: 'Le prénom est requis' }, { status: 400 });
     }
 
     // Formater les noms des champs pour l'affichage
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
 
     // Tentative d'envoi d'email seulement si la configuration est disponible
     let emailSent = false;
-    
+
     if (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD) {
       try {
         // Configurer le transporteur email
@@ -128,13 +128,13 @@ export async function POST(request: Request) {
                 <!-- Footer -->
                 <div style="background: #f8fafc; padding: 20px 24px; text-align: center; border-top: 1px solid #e5e7eb;">
                   <p style="color: #6b7280; margin: 0; font-size: 14px;">
-                    📅 Reçu le ${new Date().toLocaleDateString('fr-FR', { 
-                      weekday: 'long', 
-                      year: 'numeric', 
-                      month: 'long', 
+                    📅 Reçu le ${new Date().toLocaleDateString('fr-FR', {
+                      weekday: 'long',
+                      year: 'numeric',
+                      month: 'long',
                       day: 'numeric',
                       hour: '2-digit',
-                      minute: '2-digit'
+                      minute: '2-digit',
                     })}
                   </p>
                   <p style="color: #9ca3af; margin: 8px 0 0 0; font-size: 12px;">Email automatique depuis irimwebforge.com</p>
@@ -238,7 +238,7 @@ export async function POST(request: Request) {
 
         emailSent = true;
       } catch (emailError) {
-        console.error('Erreur lors de l\'envoi de l\'email:', emailError);
+        console.error("Erreur lors de l'envoi de l'email:", emailError);
         // On continue sans échouer - les données sont sauvegardées dans les logs
       }
     } else {
@@ -246,23 +246,25 @@ export async function POST(request: Request) {
     }
 
     // Retourner le succès même si l'email a échoué
-    return NextResponse.json({ 
-      success: true, 
+    return NextResponse.json({
+      success: true,
       emailSent,
-      message: emailSent 
-        ? "Demande reçue et email envoyé avec succès" 
-        : "Demande reçue et sauvegardée"
+      message: emailSent
+        ? 'Demande reçue et email envoyé avec succès'
+        : 'Demande reçue et sauvegardée',
     });
-
   } catch (error) {
-    console.error('Erreur générale dans l\'API contact:', error);
-    
+    console.error("Erreur générale dans l'API contact:", error);
+
     // Retourner une erreur plus spécifique
-    const errorMessage = error instanceof Error ? error.message : "Erreur inconnue";
-    
-    return NextResponse.json({ 
-      error: "Erreur lors du traitement de votre demande",
-      details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
-    }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'Erreur inconnue';
+
+    return NextResponse.json(
+      {
+        error: 'Erreur lors du traitement de votre demande',
+        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
+      },
+      { status: 500 }
+    );
   }
 }

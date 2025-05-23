@@ -67,16 +67,16 @@ export function Header() {
       >
         <div className="mx-auto px-4 sm:px-6 max-w-6xl">
           <div className="flex justify-between items-center">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               aria-label="IrimWebForge - Retour à l'accueil"
               className="focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 rounded"
             >
               <Logo width={120} height={40} />
             </Link>
 
-            <nav 
-              className="hidden md:flex items-center space-x-6" 
+            <nav
+              className="hidden md:flex items-center space-x-6"
               role="navigation"
               aria-label="Navigation principale"
               id="main-navigation"
@@ -103,7 +103,9 @@ export function Header() {
             <button
               className="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label={isMobileMenuOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation'}
+              aria-label={
+                isMobileMenuOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation'
+              }
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
               aria-haspopup="true"
@@ -136,57 +138,57 @@ export function Header() {
           </div>
 
           {isMobileMenuOpen && (
-            <div 
+            <div
               className="mt-4 py-4 border-t md:hidden"
               id="mobile-menu"
               role="region"
               aria-label="Menu de navigation mobile"
             >
-              <nav 
-                className="flex flex-col space-y-4" 
+              <nav
+                className="flex flex-col space-y-4"
                 role="navigation"
                 aria-label="Navigation mobile"
               >
-                <NavLink 
-                  href="/" 
-                  exact 
-                  color="primary" 
+                <NavLink
+                  href="/"
+                  exact
+                  color="primary"
                   useGradient
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Accueil
                 </NavLink>
-                <NavLink 
-                  href="/services" 
-                  exact 
-                  color="primary" 
+                <NavLink
+                  href="/services"
+                  exact
+                  color="primary"
                   useGradient
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Services
                 </NavLink>
-                <NavLink 
-                  href="/projets" 
-                  exact 
-                  color="primary" 
+                <NavLink
+                  href="/projets"
+                  exact
+                  color="primary"
                   useGradient
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Projets
                 </NavLink>
-                <NavLink 
-                  href="/processus" 
-                  exact 
-                  color="primary" 
+                <NavLink
+                  href="/processus"
+                  exact
+                  color="primary"
                   useGradient
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Processus
                 </NavLink>
-                <NavLink 
-                  href="/a-propos" 
-                  exact 
-                  color="primary" 
+                <NavLink
+                  href="/a-propos"
+                  exact
+                  color="primary"
                   useGradient
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

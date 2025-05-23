@@ -14,8 +14,9 @@ import Link from 'next/link';
 // Métadonnées SEO pour la page services
 export const metadata = {
   title: 'Nos Services | IrimWebForge - Solutions Présence, Intégrée et Évolutive',
-  description: 'Découvrez nos 3 solutions : Présence (site vitrine), Intégrée (gestion complète) et Évolutive (évolution continue). Autonomie garantie.',
-}
+  description:
+    'Découvrez nos 3 solutions : Présence (site vitrine), Intégrée (gestion complète) et Évolutive (évolution continue). Autonomie garantie.',
+};
 
 export default function Page() {
   const features = [
@@ -96,11 +97,7 @@ export default function Page() {
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <div className="grid gap-8 md:grid-cols-3">
               {services.map((service) => (
-                <Link 
-                  key={service.id} 
-                  href={`/services/${service.id}`}
-                  className="group block"
-                >
+                <Link key={service.id} href={`/services/${service.id}`} className="group block">
                   <Card
                     className="flex flex-col h-full transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer relative overflow-hidden"
                     padding="large"
@@ -142,17 +139,21 @@ export default function Page() {
                         </li>
                       ))}
                     </ul>
-                    
+
                     {/* Indicateur visuel d'interaction */}
                     <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                      <div className={`w-8 h-8 rounded-full bg-[var(--color-${service.color})] flex items-center justify-center shadow-lg`}>
+                      <div
+                        className={`w-8 h-8 rounded-full bg-[var(--color-${service.color})] flex items-center justify-center shadow-lg`}
+                      >
                         <Icon name="ArrowRight" className="w-4 h-4 text-white" />
                       </div>
                     </div>
 
                     {/* Texte d'appel à l'action discret */}
                     <div className="text-center mt-auto">
-                      <span className={`text-[var(--color-${service.color})] font-medium text-sm opacity-70 group-hover:opacity-100 transition-opacity duration-300`}>
+                      <span
+                        className={`text-[var(--color-${service.color})] font-medium text-sm opacity-70 group-hover:opacity-100 transition-opacity duration-300`}
+                      >
                         {service.cta}
                       </span>
                     </div>
@@ -170,7 +171,6 @@ export default function Page() {
             <Typography as="h2" variant="h2" className="mb-4 font-bold italic">
               Mes différenciateurs
             </Typography>
-
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">

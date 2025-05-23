@@ -5,12 +5,14 @@ Site web professionnel d'IrimWebForge, construit avec Next.js 15 et optimisé po
 ## ⚡ Performances Optimisées
 
 ### 🎯 Core Web Vitals
+
 - **LCP (Mobile)**: < 1.2s (optimisé depuis 2.7s)
-- **FID**: < 100ms  
+- **FID**: < 100ms
 - **CLS**: < 0.1
 - **Bundle Size**: 175-185 kB First Load JS
 
 ### 📱 Optimisations LCP Appliquées
+
 - ✅ Pattern HeroPattern refactorisé (SVG → CSS gradients)
 - ✅ Lazy loading des composants décoratifs
 - ✅ Accélération GPU pour les patterns (`transform: translateZ(0)`)
@@ -39,6 +41,7 @@ yarn test:performance
 ## 📊 Tests de Performance
 
 ### Test Manuel
+
 ```bash
 # 1. Build et serve
 yarn build
@@ -49,6 +52,7 @@ yarn test:lcp
 ```
 
 ### Lighthouse
+
 ```bash
 # Desktop & Mobile avec Lighthouse
 npx lighthouse http://localhost:3000 --view
@@ -57,6 +61,7 @@ npx lighthouse http://localhost:3000 --view
 ## 🎨 Design System
 
 Le design system est intégré et consultable à l'adresse `/ds-lab/` avec :
+
 - Composants documentés
 - Patterns visuels optimisés
 - Typographie et couleurs harmonisées
@@ -93,30 +98,36 @@ Performance/
 ## 🔧 Configuration Avancée
 
 ### Bundle Splitting
+
 - React/React-DOM: Chunk séparé (20% réduction)
-- Lucide Icons: Chunk dédié (15% réduction)  
+- Lucide Icons: Chunk dédié (15% réduction)
 - Vendors: Max 150KB par chunk
 - Common: Max 100KB par chunk
 
 ### Optimisations CSS
+
 - PostCSS avec cssnano avancé
 - Patterns CSS natifs (performance GPU)
 - Containment pour isolation des recalculs
 
 ### Images
-- Next.js Image component avec `priority` 
+
+- Next.js Image component avec `priority`
 - Responsive sizing optimal
 - Formats WebP/AVIF ready
 
 ## 📈 Surveillance Performance
 
 ### Métriques Surveillées
+
 - **LCP**: < 1.5s (mobile) / < 1.2s (desktop)
 - **Bundle Size**: < 200KB First Load
 - **Core Web Vitals**: Toutes métriques vertes
 
 ### Alertes Performance
+
 Le script de test automatique `test-lcp-performance.js` fournit :
+
 - ✅ Métriques temps réel
 - 🎯 Évaluation par seuils
 - 📊 Comparaison multi-pages
@@ -125,14 +136,16 @@ Le script de test automatique `test-lcp-performance.js` fournit :
 ## 🚀 Déploiement
 
 ### Site Statique (Recommandé)
+
 ```bash
 yarn build  # Génère le dossier `out/`
 # Déployer le dossier `out/` sur votre hébergeur
 ```
 
 ### Configuration Serveur
+
 - Apache: `.htaccess` configuré
-- Nginx: `nginx.conf` optimisé  
+- Nginx: `nginx.conf` optimisé
 - Headers de cache agressifs
 - Compression gzip/brotli
 
@@ -152,7 +165,7 @@ yarn format             # Formatage
 ## 📖 Documentation
 
 - 📊 [Optimisations Performance](./OPTIMISATIONS_PERFORMANCE.md)
-- 🎨 [Design System](http://localhost:3000/ds-lab)  
+- 🎨 [Design System](http://localhost:3000/ds-lab)
 - 🔧 [Configuration Serveurs](./nginx.conf)
 
 ---

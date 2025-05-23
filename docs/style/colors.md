@@ -220,6 +220,7 @@ Pour garantir un contraste suffisant, nous utilisons des variantes plus foncées
 ### Tests de contraste
 
 Toutes les couleurs accessibles respectent :
+
 - **WCAG AA** : ratio minimal de 4.5:1 pour le texte normal
 - **WCAG AAA** : ratio minimal de 7:1 pour le texte normal (quand possible)
 - **Composants UI** : ratio minimal de 3:1 pour les éléments d'interface

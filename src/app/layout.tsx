@@ -5,7 +5,8 @@ import './globals.css';
 
 export const metadata = {
   title: 'IrimWebForge | Sites web qui libèrent votre temps',
-  description: 'Développeur freelance spécialisé en interfaces admin sur mesure pour thérapeutes et artisans. Passez de 7h à 45min d\'administration.',
+  description:
+    "Développeur freelance spécialisé en interfaces admin sur mesure pour thérapeutes et artisans. Passez de 7h à 45min d'administration.",
   keywords: 'développeur freelance, interface admin, site sur mesure, thérapeute, artisan',
   openGraph: {
     title: 'IrimWebForge | Sites web qui libèrent votre temps',
@@ -38,28 +39,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "IrimWebForge",
-      "url": "https://irimwebforge.com",
-      "telephone": "06 78 76 45 59",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "11 route de Paris",
-        "addressLocality": "Ittenheim",
-        "postalCode": "67117",
-        "addressCountry": "FR"
-      },
-      "service": {
-        "@type": "Service",
-        "name": "Développement interfaces administratives sur mesure"
-      }
-    })
-  }}
-/>
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: 'IrimWebForge',
+              url: 'https://irimwebforge.com',
+              telephone: '06 78 76 45 59',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '11 route de Paris',
+                addressLocality: 'Ittenheim',
+                postalCode: '67117',
+                addressCountry: 'FR',
+              },
+              service: {
+                '@type': 'Service',
+                name: 'Développement interfaces administratives sur mesure',
+              },
+            }),
+          }}
+        />
       </head>
       <body className="font-sans bg-light text-dark">
         {children}

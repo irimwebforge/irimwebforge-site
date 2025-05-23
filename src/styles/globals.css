@@ -3,4 +3,4 @@
 @tailwind utilities;
 
 /* Importer les styles d'accessibilité */
-@import './accessibility.css'; 
+@import './accessibility.css';

@@ -1,8 +1,9 @@
 // Métadonnées SEO pour la solution Intégrée
 export const metadata = {
   title: 'Solution Intégrée | IrimWebForge - Gestion complète et systèmes connectés',
-  description: 'Gestion de rendez-vous, facturation et suivi client intégrés. Tout communique naturellement pour une efficacité maximale.',
-}
+  description:
+    'Gestion de rendez-vous, facturation et suivi client intégrés. Tout communique naturellement pour une efficacité maximale.',
+};
 
 import { PageHeader } from '@/components/organisms/PageHeader';
 import { Container } from '@/components/atoms/Container';

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 /**
  * ✅ HOOK D'ACCESSIBILITÉ - Utilitaires pour l'accessibilité
- * 
+ *
  * Fournit des fonctions pour :
  * - Annonces aux lecteurs d'écran (live regions)
  * - Gestion du focus
@@ -16,11 +16,11 @@ export const useAccessibility = () => {
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
-    
+
     const handleChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);
     };
-    
+
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
@@ -53,7 +53,7 @@ export const useAccessibility = () => {
     if (announcerRef.current) {
       announcerRef.current.setAttribute('aria-live', priority);
       announcerRef.current.textContent = message;
-      
+
       // Nettoyer après 1 seconde
       setTimeout(() => {
         if (announcerRef.current) {
@@ -69,19 +69,18 @@ export const useAccessibility = () => {
    * @param options - Options de focus
    */
   const focusElement = (
-    elementId: string | React.RefObject<HTMLElement>, 
-    options: { 
+    elementId: string | React.RefObject<HTMLElement>,
+    options: {
       preventScroll?: boolean;
       announce?: string;
     } = {}
   ) => {
-    const element = typeof elementId === 'string' 
-      ? document.getElementById(elementId)
-      : elementId.current;
-      
+    const element =
+      typeof elementId === 'string' ? document.getElementById(elementId) : elementId.current;
+
     if (element) {
       element.focus({ preventScroll: options.preventScroll });
-      
+
       if (options.announce) {
         announce(options.announce);
       }
@@ -104,13 +103,13 @@ export const useAccessibility = () => {
   const useEscapeKey = (callback: () => void, enabled: boolean = true) => {
     useEffect(() => {
       if (!enabled) return;
-      
+
       const handleEscape = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
           callback();
         }
       };
-      
+
       window.addEventListener('keydown', handleEscape);
       return () => window.removeEventListener('keydown', handleEscape);
     }, [callback, enabled]);
@@ -150,4 +149,4 @@ export const useFormAnnouncements = () => {
     announceSuccess,
     announceValidation,
   };
-}; 
+};
