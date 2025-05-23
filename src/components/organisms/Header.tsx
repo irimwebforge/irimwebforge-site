@@ -62,7 +62,9 @@ export function Header() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 py-4 border-b border-color',
           'transition-all duration-300 backdrop-blur-sm',
-          isScrolled ? 'bg-[color-mix(in_srgb,var(--background)_80%,transparent)] shadow-sm' : 'bg-[var(--background)]'
+          isScrolled
+            ? 'bg-[color-mix(in_srgb,var(--background)_80%,transparent)] shadow-sm'
+            : 'bg-[var(--background)]'
         )}
         role="banner"
       >

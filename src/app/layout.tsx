@@ -32,7 +32,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${questrial.variable} ${notoSans.variable}`} suppressHydrationWarning>
+    <html
+      lang="fr"
+      className={`${questrial.variable} ${notoSans.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />

@@ -8,9 +8,9 @@ export function ThemeToggle() {
 
   useEffect(() => {
     // Récupérer le thème initial
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | 'system' || 'system';
+    const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark' | 'system') || 'system';
     setTheme(savedTheme);
-    
+
     // Appliquer le thème initial
     applyTheme(savedTheme);
 
@@ -21,15 +21,15 @@ export function ThemeToggle() {
         applyTheme('system');
       }
     };
-    
+
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, [theme]);
 
   const applyTheme = (newTheme: 'light' | 'dark' | 'system') => {
     const root = document.documentElement;
-    const isDark = 
-      newTheme === 'dark' || 
+    const isDark =
+      newTheme === 'dark' ||
       (newTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     if (isDark) {

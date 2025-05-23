@@ -41,14 +41,14 @@ export const NavLink: React.FC<NavLinkProps> = ({
   prefetch,
 }) => {
   const pathname = usePathname();
-  
+
   // Normaliser les paths en retirant les trailing slash pour la comparaison
   const normalizedPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
   const normalizedHref = href === '/' ? '/' : href.replace(/\/$/, '');
-  
+
   // Utiliser la prop exact telle qu'elle est fournie
-  const isActive = exact 
-    ? normalizedPathname === normalizedHref 
+  const isActive = exact
+    ? normalizedPathname === normalizedHref
     : normalizedPathname.startsWith(normalizedHref);
 
   // Classes de base

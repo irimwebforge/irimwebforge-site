@@ -102,7 +102,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
 
   // Classes de thème basées sur le thème
   const themeClasses = {
-    light: 'bg-[color-mix(in_srgb,var(--background)_60%,transparent)] text-[var(--text-primary)] backdrop-blur-sm',
+    light:
+      'bg-[color-mix(in_srgb,var(--background)_60%,transparent)] text-[var(--text-primary)] backdrop-blur-sm',
     dark: 'bg-[color-mix(in_srgb,var(--surface-secondary)_60%,transparent)] text-[var(--text-primary)] backdrop-blur-sm',
     primary: 'bg-[var(--color-primary)] text-white',
     secondary: 'bg-[var(--color-secondary)] text-white',
@@ -254,7 +255,9 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       )}
 
       <Container>
-        <div className={`relative z-10 ${image ? 'flex items-center' : ''} ${pattern && !backgroundImage ? 'bg-[color-mix(in_srgb,var(--background)_80%,transparent)] backdrop-blur-sm rounded-lg p-6' : ''}`}>
+        <div
+          className={`relative z-10 ${image ? 'flex items-center' : ''} ${pattern && !backgroundImage ? 'bg-[color-mix(in_srgb,var(--background)_80%,transparent)] backdrop-blur-sm rounded-lg p-6' : ''}`}
+        >
           {image && image.position === 'left' && renderImage()}
 
           <div

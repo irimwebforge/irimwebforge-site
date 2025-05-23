@@ -56,9 +56,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </Suspense>
       )}
 
-      <div 
+      <div
         className={`max-w-4xl mx-auto text-center relative z-10 ${
-          pattern && !backgroundImage ? 'bg-[color-mix(in_srgb,var(--background)_80%,transparent)] backdrop-blur-sm rounded-lg p-8' : ''
+          pattern && !backgroundImage
+            ? 'bg-[color-mix(in_srgb,var(--background)_80%,transparent)] backdrop-blur-sm rounded-lg p-8'
+            : ''
         }`}
       >
         <Typography
