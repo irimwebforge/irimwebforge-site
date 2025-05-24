@@ -98,10 +98,10 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <HeroSection
-        title="Le pont entre votre vision et sa concrétisation digitale"
+        title="Des sites web qui vous ressemblent vraiment"
         subtitle={
           'Je crée des espaces numériques où vous vous sentez chez vous - des interfaces pensées pour votre quotidien.\n\n' +
-          "Parce que votre temps mérite d'être consacré à votre passion, pas à votre site web."
+          "Parce que votre temps mérite d'être consacré à votre passion, pas à votre site web. "
         }
         ctaText="Parlons de votre projet"
         ctaHref="/contact"
