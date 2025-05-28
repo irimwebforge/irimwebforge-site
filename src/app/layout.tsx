@@ -4,7 +4,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 
 export const metadata = {
-  title: 'IRIM Webforge | Sites web qui libèrent votre temps',
+  title: 'IRIM Webforge | Sites web qui vous ressemblent',
   description:
     "Développeur freelance spécialisé en interfaces admin sur mesure pour thérapeutes et artisans. Passez de 7h à 45min d'administration.",
   keywords: 'développeur freelance, interface admin, site sur mesure, thérapeute, artisan',
