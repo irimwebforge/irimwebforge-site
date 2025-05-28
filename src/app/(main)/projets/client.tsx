@@ -63,13 +63,13 @@ export default function ProjetsClient() {
 
   const projects = [
     {
-      id: 'cbd-shop',
-      title: 'CBD-Shop',
-      slug: 'cbd-shop',
+      id: 'multi-shop-demo',
+      title: 'DemoForge',
+      slug: 'multi-shop-demo',
       imageUrl: '/images/projects/cbd-site.jpg',
       tags: getTagsForProject('site-gestion', 'artisans', 'concept'),
       description:
-        "Projet en développement visant à libérer un commerce local de ses abonnements coûteux. L'objectif est une économie annuelle de 2640€ et une reprise de contrôle totale sur l'évolution du site.",
+        "Prototype multi-univers (brasserie, thé, beauté, herboristerie) en cours de développement - un aperçu de ce que je peux créer spécifiquement pour votre métier.",
       year: '2025',
     },
     {
