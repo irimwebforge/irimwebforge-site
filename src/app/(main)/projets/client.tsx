@@ -69,7 +69,7 @@ export default function ProjetsClient() {
       imageUrl: '/images/projects/cbd-site.jpg',
       tags: getTagsForProject('site-gestion', 'artisans', 'concept'),
       description:
-        "Prototype multi-univers (brasserie, thé, beauté, herboristerie) en cours de développement - un aperçu de ce que je peux créer spécifiquement pour votre métier.",
+        'Prototype multi-univers (brasserie, thé, beauté, herboristerie) en cours de développement - un aperçu de ce que je peux créer spécifiquement pour votre métier.',
       year: '2025',
     },
     {
