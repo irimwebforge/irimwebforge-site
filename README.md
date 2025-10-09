@@ -135,16 +135,21 @@ Le script de test automatique `test-lcp-performance.js` fournit :
 
 ## 🚀 Déploiement
 
-### Site Statique (Recommandé)
+### Déploiement Simple
 
 ```bash
-yarn build  # Génère le dossier `out/`
-# Déployer le dossier `out/` sur votre hébergeur
+./deploy.sh  # Build local + upload par rsync (8MB)
 ```
+
+En cas de problème :
+```bash
+./rollback.sh  # Restaure la version précédente
+```
+
+**Voir [DEPLOYMENT.md](./DEPLOYMENT.md) pour le guide complet**
 
 ### Configuration Serveur
 
-- Apache: `.htaccess` configuré
 - Nginx: `nginx.conf` optimisé
 - Headers de cache agressifs
 - Compression gzip/brotli
@@ -164,9 +169,11 @@ yarn format             # Formatage
 
 ## 📖 Documentation
 
+- 🚀 [Guide de Déploiement](./DEPLOYMENT.md)
+- 📝 [Changelog](./CHANGELOG.md)
 - 📊 [Optimisations Performance](./OPTIMISATIONS_PERFORMANCE.md)
 - 🎨 [Design System](http://localhost:3000/ds-lab)
-- 🔧 [Configuration Serveurs](./nginx.conf)
+- 🔧 [Configuration Nginx](./nginx.conf)
 
 ---
 

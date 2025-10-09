@@ -82,6 +82,7 @@ export const Logo = ({
         src={logoPath}
         alt="IRIM Webforge"
         fill
+        sizes={`${finalWidth}px`}
         style={{ objectFit: 'contain' }}
         quality={90}
         priority={priority}
