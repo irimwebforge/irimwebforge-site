@@ -66,7 +66,7 @@ export default function ProjetsClient() {
       id: 'multi-shop-demo',
       title: 'DemoForge',
       slug: 'multi-shop-demo',
-      imageUrl: '/images/projects/cbd-site.jpg',
+      imageUrl: '/images/projects/cbd-site.webp',
       tags: getTagsForProject('site-gestion', 'artisans', 'concept'),
       description:
         'Prototype multi-univers (brasserie, thé, beauté, herboristerie) en cours de développement - un aperçu de ce que je peux créer spécifiquement pour votre métier.',
@@ -87,7 +87,7 @@ export default function ProjetsClient() {
       id: 'moodcycle',
       title: 'MoodCycle',
       slug: 'moodcycle',
-      imageUrl: '/images/projects/moodcycle.jpg',
+      imageUrl: '/images/projects/moodcycle.webp',
       tags: getTagsForProject('app-mobile', 'personnel', 'en-cours'),
       description:
         "Application holistique de suivi de cycle menstruel en développement. Un projet personnel qui explore les possibilités d'interfaces intuitives sur mobile avec React Native.",
@@ -117,7 +117,7 @@ export default function ProjetsClient() {
       id: 'corps-et-sens',
       title: 'Corps & Sens',
       slug: 'corps-et-sens',
-      imageUrl: '/images/projects/corps-et-sens.jpg',
+      imageUrl: '/images/projects/corps-et-sens.webp',
       tags: getTagsForProject('site-gestion', 'therapeutes', 'realise'),
       description:
         "Projet réalisé pour mon épouse thérapeute qui a transformé 7h d'administration hebdomadaire en 45min. Une interface simplifiée pour la gestion du planning et des contenus.",
