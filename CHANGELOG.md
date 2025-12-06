@@ -9,6 +9,9 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ### Ajouté
 
+- **Nouveaux projets au portfolio** :
+  - **ResetPulse** : Application mobile Time Timer pour cerveaux neuroatypiques (React Native, App Store & Google Play)
+  - **Libera Luminosa** : Site vitrine pour accompagnante en développement personnel
 - Documentation de déploiement (`DEPLOYMENT.md`)
 - Script de déploiement simplifié (`deploy.sh`)
 - Script de rollback (`rollback.sh`)
@@ -19,16 +22,20 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ### Optimisé
 
+- **Nettoyage des images du portfolio** : Suppression des fichiers redondants (PNG/JPG quand WebP existe)
+  - Fichiers supprimés : cbd-site.*, corps-et-sens.jpg, moodcycle.jpg, echos-des-reves.jpg, univers-des-reves.jpg
+  - Gain : ~3MB d'espace disque
 - **Images des projets converties en WebP** : Réduction de 72% du poids
   - `moodcycle.jpg` : 537KB → 68KB (-87%)
   - `corps-et-sens.jpg` : 409KB → 230KB (-44%)
   - `cbd-site.jpg` : 380KB → 60KB (-84%)
   - `corps-et-sens-detail.png` : 220KB → 69KB (-69%)
   - **Impact** : 1.1MB économisés, amélioration significative du temps de chargement sur mobile
-  - **Fichiers modifiés** : `src/app/(main)/projets/client.tsx`
 
 ### Corrigé
 
+- **Modale d'aperçu projets** : L'iframe occupe maintenant toute la hauteur disponible
+  - Fichier modifié : `src/components/molecules/Modal.tsx`
 - **Bug CSS critique** : Les pages mentions-légales et politique-confidentialité ne chargeaient pas le CSS
   - **Cause** : Incohérence entre le hash CSS référencé dans le HTML (`fd0ed08bcd9a54aa.css`) et le fichier CSS disponible (`eaef4767d9338a4f.css`)
   - **Solution** : Ajout de la prop `sizes` au composant `Logo` pour éviter les incohérences de build Next.js
@@ -36,6 +43,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ### Modifié
 
+- **Image DemoForge** : Nouvelle image dédiée remplaçant cbd-site.webp
 - Système de déploiement migré de git-hook vers rsync
   - Ancien : Build sur serveur, 700MB par release, 17 releases = 12GB
   - Nouveau : Build local, 8MB déployés, 1 backup

@@ -468,15 +468,15 @@ export const DemoModal: React.FC<DemoModalProps> = ({
       size="large"
       animation="zoom"
       centered={true}
-      className="w-[90vw] h-[90vh] max-w-[1400px]"
+      className="w-[90vw] max-w-[1400px] !h-[85vh]"
     >
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col" style={{ height: 'calc(85vh - 120px)' }}>
         {description && (
-          <Typography variant="p" className="mb-4 text-secondary">
+          <Typography variant="p" className="mb-4 text-secondary flex-shrink-0">
             {description}
           </Typography>
         )}
-        <div className="relative flex-grow surface-secondary rounded-lg overflow-hidden min-h-[500px]">
+        <div className="relative flex-1 surface-secondary rounded-lg overflow-hidden">
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center surface-secondary z-10">
               <div className="w-12 h-12 border-4 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin"></div>
@@ -485,7 +485,6 @@ export const DemoModal: React.FC<DemoModalProps> = ({
           <iframe
             src={siteUrl}
             className="absolute inset-0 w-full h-full border-0 z-0"
-            style={{ minHeight: '500px' }}
             title={`Démo de ${title}`}
             loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

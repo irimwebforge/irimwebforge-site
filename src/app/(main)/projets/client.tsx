@@ -63,14 +63,37 @@ export default function ProjetsClient() {
 
   const projects = [
     {
+      id: 'resetpulse',
+      title: 'ResetPulse',
+      slug: 'resetpulse',
+      imageUrl: '/images/projects/resetpulse.webp',
+      tags: getTagsForProject('app-mobile', 'personnel', 'realise'),
+      description:
+        'Application mobile Time Timer visuel pour cerveaux neuroatypiques. 15 palettes, 16 activités. React Native, disponible sur App Store et Google Play.',
+      year: '2025',
+      onlineUrl: 'http://resetpulse.irimwebforge.com/',
+    },
+    {
+      id: 'libera-luminosa',
+      title: 'Libera Luminosa',
+      slug: 'libera-luminosa',
+      imageUrl: '/images/projects/libera-luminosa.webp',
+      tags: getTagsForProject('site-vitrine', 'therapeutes', 'realise'),
+      description:
+        "Site vitrine élégant pour une accompagnante en développement personnel. Design lumineux et apaisant reflétant l'univers du bien-être et de l'harmonie.",
+      year: '2025',
+      onlineUrl: 'https://liberaluminosa.fr/',
+    },
+    {
       id: 'multi-shop-demo',
       title: 'DemoForge',
       slug: 'multi-shop-demo',
-      imageUrl: '/images/projects/cbd-site.webp',
+      imageUrl: '/images/projects/demoforge.webp',
       tags: getTagsForProject('site-gestion', 'artisans', 'concept'),
       description:
-        'Prototype multi-univers (brasserie, thé, beauté, herboristerie) en cours de développement - un aperçu de ce que je peux créer spécifiquement pour votre métier.',
+        'Prototype multi-univers (brasserie, thé, beauté, herboristerie) - un aperçu de ce que je peux créer spécifiquement pour votre métier.',
       year: '2025',
+      onlineUrl: 'https://demoforge.irimwebforge.com/',
     },
     {
       id: 'univers-des-reves',
@@ -220,8 +243,8 @@ export default function ProjetsClient() {
 
       <section className="py-16 bg-section-primary">
         <Container className="px-4">
-          {/* <QuickVisionBanner 
-            page="projets" 
+          {/* <QuickVisionBanner
+            page="projets"
             dismissible={true}
           /> */}
 
