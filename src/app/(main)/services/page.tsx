@@ -52,6 +52,14 @@ export default function Page() {
       icon: 'BarChart' as IconName,
       color: 'primary' as const,
     },
+    {
+      id: 'ia',
+      title: "L'IA au service de votre métier",
+      description:
+        "J'intègre des automatisations intelligentes pour réduire vos tâches répétitives. Pas de gadget, du concret qui vous fait gagner du temps.",
+      icon: 'Sparkles' as IconName,
+      color: 'secondary' as const,
+    },
   ];
 
   const projections = [
@@ -65,10 +73,10 @@ export default function Page() {
     },
     {
       quote:
-        'Vous changez un prix, ça se met à jour partout. Votre planning et vos factures se parlent. Vous récupérez vos soirées.',
-      author: 'Pour les artisans et commerçants',
+        'Réservations, tarifs, disponibilités, facturation : tout connecté. Vous changez un prix, ça se met à jour partout. Vous récupérez vos soirées.',
+      author: 'Pour les commerçants et prestataires',
       company: 'Basé sur les besoins observés',
-      icon: 'Hammer' as IconName,
+      icon: 'Store' as IconName,
       color: 'secondary' as const,
     },
     {
@@ -85,7 +93,7 @@ export default function Page() {
     <main className="overflow-x-hidden transition-all duration-300">
       <PageHeader
         title="Des solutions numériques pour libérer votre temps"
-        description="Des solutions concrètes, pensées pour les indépendants, artisans et entrepreneurs qui veulent se concentrer sur leur métier, pas sur la technique."
+        description="Des solutions concrètes, pensées pour les thérapeutes, commerçants, artisans et tous les indépendants qui veulent se concentrer sur leur métier, pas sur la technique."
         align="center"
         size="large"
         pattern
@@ -95,6 +103,14 @@ export default function Page() {
       <section className="bg-section-primary py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-8">
+            {/* Teaser offre Starter */}
+            <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 rounded-lg p-4 mb-8">
+              <Typography variant="p" className="text-primary-700 dark:text-primary-300">
+                <Icon name="Zap" className="w-4 h-4 inline mr-2" />
+                <strong>Nouveau :</strong> Une offre d'entrée à partir de 500€ pour démarrer simplement.{' '}
+                <Link href="/contact" className="underline font-medium">Parlons-en →</Link>
+              </Typography>
+            </div>
             <div className="grid gap-8 md:grid-cols-3">
               {services.map((service) => (
                 <Link key={service.id} href={`/services/${service.id}`} className="group block">
@@ -170,7 +186,7 @@ export default function Page() {
             </Typography>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {features.map((feature) => (
               <div
                 key={feature.id}
