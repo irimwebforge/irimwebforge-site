@@ -35,13 +35,11 @@ Toute évolution des animations doit d'abord être testée et validée dans le D
 ### Règles d'Usage
 
 1. **Micro-interactions (150ms)**
-
    - Hover sur les boutons
    - Focus sur les inputs
    - Changements d'état subtils
 
 2. **Transitions Standard (300ms)**
-
    - Apparition/disparition d'éléments
    - Changements de couleur
    - Transformations simples
@@ -66,19 +64,16 @@ Toute évolution des animations doit d'abord être testée et validée dans le D
 ### Règles d'Usage
 
 1. **ease-in-out**
-
    - Transitions d'interface
    - Changements d'état
    - Animations de navigation
 
 2. **ease-out**
-
    - Apparitions d'éléments
    - Entrées de modals
    - Notifications
 
 3. **ease-in**
-
    - Disparitions d'éléments
    - Sorties de modals
    - Fermetures de menus
@@ -265,7 +260,6 @@ Toute évolution des animations doit d'abord être testée et validée dans le D
    ```
 
 2. **Contrôle de l'Utilisateur**
-
    - Éviter les animations automatiques
    - Permettre l'arrêt des animations
    - Fournir des alternatives statiques
@@ -278,12 +272,10 @@ Toute évolution des animations doit d'abord être testée et validée dans le D
 ### Bonnes Pratiques
 
 1. **Durée Maximale**
-
    - Ne pas dépasser 500ms pour les animations d'interface
    - Limiter les animations continues à 5 secondes
 
 2. **Feedback Visuel**
-
    - Assurer un contraste suffisant
    - Fournir des indicateurs non-animés
    - Maintenir la lisibilité pendant les animations

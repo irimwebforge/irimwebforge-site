@@ -3,11 +3,13 @@
 ## AVANT DE CODER
 
 **Strategie migration (dec 2025)** : Hub one-page + Blog MDX
+
 - Hub = conversion en 10 secondes (telephone XXL)
 - Blog = contenu detaille (pages existantes migrees en articles)
 - Le contenu ne disparait pas, il se reorganise
 
 **Utilise les composants existants** : `src/components/`
+
 - Button, Badge, Card, Typography, Container, Icon
 - PageHeader, CTASection, Timeline, ConversationForm
 - NE PAS recoder from scratch

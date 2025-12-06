@@ -163,12 +163,10 @@ Les espacements s'adaptent à différentes tailles d'écran :
 ## Bonnes pratiques
 
 1. **Cohérence**
-
    - Utiliser exclusivement l'échelle d'espacement définie
    - Maintenir des ratios constants (par exemple, espacements internes/externes)
 
 2. **Hiérarchie visuelle**
-
    - Utiliser l'espacement pour renforcer les relations entre éléments
    - Créer des zones distinctes avec des espacements plus grands
 

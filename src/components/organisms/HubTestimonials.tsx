@@ -6,14 +6,15 @@ import { Icon } from '@/components/atoms/Icon';
 const testimonials = [
   {
     id: 'jezabel',
-    quote: "Mon site m'a apporté de nouveaux clients grâce au référencement et à la réservation en ligne. La synchronisation agenda me simplifie la vie et me libère du temps pour mes patients.",
+    quote:
+      "Mon site m'a apporté de nouveaux clients grâce au référencement et à la réservation en ligne. La synchronisation agenda me simplifie la vie et me libère du temps pour mes patients.",
     author: 'Jezabel',
     role: 'Thérapeute',
     project: 'Corps & Sens',
   },
   {
     id: 'severine',
-    quote: "Ce site me ressemble. Un gros poids est parti avec sa création. Merci pour tout.",
+    quote: 'Ce site me ressemble. Un gros poids est parti avec sa création. Merci pour tout.',
     author: 'Séverine',
     role: 'Thérapeute',
     project: 'Libera Luminosa',
@@ -37,10 +38,7 @@ export function HubTestimonials() {
           {testimonials.map((t) => (
             <Card key={t.id} variant="outline" padding="large" className="relative">
               {/* Quote icon */}
-              <Icon
-                name="Quote"
-                className="w-10 h-10 text-primary/20 absolute top-6 right-6"
-              />
+              <Icon name="Quote" className="w-10 h-10 text-primary/20 absolute top-6 right-6" />
 
               {/* Quote */}
               <Typography variant="p" className="text-lg italic mb-6 pr-12">
@@ -66,7 +64,6 @@ export function HubTestimonials() {
             </Card>
           ))}
         </div>
-
       </Container>
     </section>
   );

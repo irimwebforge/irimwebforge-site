@@ -3,7 +3,6 @@
 ## 📝 Principes Rédactionnels
 
 1. **Authenticité avant perfection**
-
    - Privilégiez votre voix naturelle
    - Adaptez les exemples à votre contexte
    - Testez différentes approches
@@ -30,7 +29,6 @@
 ## 💡 Processus Créatif
 
 1. **Première Version**
-
    - Écrivez spontanément
    - Gardez la structure de base
    - Notez vos intuitions

@@ -111,7 +111,6 @@ Les templates sont des squelettes de pages qui définissent la structure et le p
 ### Principes de conception
 
 1. **Composition**
-
    - Privilégier la composition plutôt que l'héritage
    - Utiliser les props pour la personnalisation
    - Un composant = une responsabilité unique

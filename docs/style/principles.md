@@ -5,13 +5,11 @@
 ## 🎯 Principes clés
 
 1. **Simplicité avant tout**
-
    - Utiliser les composants du DS Lab (`src/app/ds-lab`) comme référence
    - En cas de doute, privilégier la solution la plus simple
    - Expérimenter dans le DS Lab avant d'implémenter en production
 
 2. **Design System vivant**
-
    - Le dossier `src/app/ds-lab/playground/` est dédié aux expérimentations
    - Les meilleures innovations seront intégrées au design system
    - Documentation et tests sont partie intégrante du processus
@@ -52,13 +50,11 @@ _Pour plus de détails, consultez la [documentation des composants](./atomic-des
 ## 🚀 Process d'innovation
 
 1. **Idée nouvelle ?**
-
    - Expérimenter dans le playground du DS Lab
    - Documenter l'approche et les résultats
    - Partager avec l'équipe
 
 2. **Validation**
-
    - Tests utilisateurs
    - Retours d'expérience
    - Intégration progressive

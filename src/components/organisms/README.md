@@ -7,13 +7,11 @@ Les composants organismes sont des assemblages complexes de composants molécula
 Les composants organismes suivent les principes du design system IRIM Webforge :
 
 1. **Hiérarchie visuelle cohérente** :
-
    - Utilisation de l'italique gras pour les titres principaux (h1, h2)
    - Réservation du dégradé avec effet brillance aux CTA principaux
    - Utilisation parcimonieuse de la couleur tertiaire (orange) pour les éléments d'accentuation
 
 2. **Navigation optimisée** :
-
    - Utilisation de liens actifs en dégradé pour la navigation principale
    - Feedback visuel cohérent dans les menus et fils d'Ariane
 

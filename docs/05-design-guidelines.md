@@ -5,13 +5,11 @@
 ## 🎯 Principes Fondamentaux
 
 1. **Simplicité avant tout**
-
    - Utiliser les composants du DS Lab (`src/app/ds-lab`)
    - En cas de doute, privilégier la solution la plus simple
    - Expérimenter dans le DS Lab avant d'implémenter
 
 2. **Zones d'expérimentation**
-
    - Le dossier `src/app/ds-lab/playground/` est dédié aux expérimentations
    - Toute nouvelle idée peut y être testée sans contrainte
    - Les meilleures innovations seront intégrées au design system
@@ -52,7 +50,6 @@ Pour plus de détails sur l'architecture des composants, consultez la [documenta
 ## 🚀 Process d'Innovation
 
 1. **Idée nouvelle ?**
-
    - Direction playground
    - Expérimentation libre
    - Documentation des découvertes

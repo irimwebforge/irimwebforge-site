@@ -143,13 +143,11 @@ Les organismes sont des composants complexes qui combinent plusieurs molécules 
 ## Bonnes pratiques
 
 1. **Cohérence**
-
    - Utiliser les mêmes patterns de design à travers le site
    - Maintenir la cohérence des interactions
    - Réutiliser les mêmes organismes pour des fonctions similaires
 
 2. **Modularité**
-
    - Concevoir les organismes pour être réutilisables dans différents contextes
    - Paramétrer via les props plutôt que créer des variantes spécifiques
    - Permettre la personnalisation sans compromettre la cohérence

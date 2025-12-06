@@ -161,12 +161,10 @@ mocks/
 ## Développement progressif
 
 1. **Étape 1** : Variantes des composants existants
-
    - Utiliser les adaptateurs existants
    - Documenter les nouvelles variantes
 
 2. **Étape 2** : Pages complètes
-
    - Assembler les composants existants
    - Réutiliser les adaptateurs
    - Éviter la duplication

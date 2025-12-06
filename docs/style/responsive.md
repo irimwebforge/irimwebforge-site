@@ -227,19 +227,16 @@ _Pour plus de détails, consultez la [documentation typographique](./typography.
 ## Bonnes pratiques
 
 1. **Toujours tester sur différents appareils**
-
    - Utiliser les outils de développement des navigateurs
    - Tester sur de vrais appareils quand c'est possible
    - Vérifier les orientations portrait et paysage sur mobile
 
 2. **Considérer la performance**
-
    - Optimiser les images avec srcset/sizes ou image moderne (next/image)
    - Charger les ressources lourdes conditionnellement
    - Utiliser le lazy loading pour les médias
 
 3. **Simplifier pour mobile**
-
    - Réduire les animations complexes sur mobile
    - Simplifier les interactions pour écrans tactiles
    - Privilégier la lisibilité et les tailles de touch targets adéquates

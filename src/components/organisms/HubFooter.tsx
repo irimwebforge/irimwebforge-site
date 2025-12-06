@@ -32,7 +32,11 @@ const linkColumns = [
     links: [
       { label: 'Mentions légales', href: '/mentions-legales' },
       { label: 'Politique de confidentialité', href: '/politique-confidentialite' },
-      { label: 'Réserver un échange', href: 'https://cal.com/eric-zuber-nxxypt/30min', external: true },
+      {
+        label: 'Réserver un échange',
+        href: 'https://cal.com/eric-zuber-nxxypt/30min',
+        external: true,
+      },
     ],
   },
 ];
@@ -60,9 +64,7 @@ export function HubFooter() {
                         →
                       </span>
                       {link.label}
-                      {link.external && (
-                        <Icon name="ExternalLink" className="w-3 h-3 opacity-50" />
-                      )}
+                      {link.external && <Icon name="ExternalLink" className="w-3 h-3 opacity-50" />}
                     </NavLink>
                   </li>
                 ))}
@@ -88,7 +90,6 @@ export function HubFooter() {
             </Typography>
           </div>
         </div>
-
       </Container>
     </footer>
   );

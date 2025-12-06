@@ -10,32 +10,41 @@ const proofs = [
   {
     id: 'resetpulse',
     title: 'ResetPulse',
-    description: 'App Time Timer pour cerveaux neuroatypiques. 15 palettes, 16 activités, multilingue.',
+    description:
+      'App Time Timer pour cerveaux neuroatypiques. 15 palettes, 16 activités, multilingue.',
     badge: '177 pays',
     image: '/images/projects/resetpulse.webp',
     links: [
-      { label: 'App Store', url: 'https://apps.apple.com/app/resetpulse/id6737482441', icon: 'Apple' },
-      { label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.music4music.resetpulse', icon: 'Play' },
+      {
+        label: 'App Store',
+        url: 'https://apps.apple.com/app/resetpulse/id6737482441',
+        icon: 'Apple',
+      },
+      {
+        label: 'Google Play',
+        url: 'https://play.google.com/store/apps/details?id=com.music4music.resetpulse',
+        icon: 'Play',
+      },
     ],
   },
   {
     id: 'demoforge',
     title: 'DemoForge',
-    description: 'Plateforme démo interactive multi-univers. Testez la modification des produits en temps réel.',
+    description:
+      'Plateforme démo interactive multi-univers. Testez la modification des produits en temps réel.',
     badge: 'Live',
     image: '/images/projects/demoforge.webp',
-    links: [
-      { label: 'Tester', url: 'https://demoforge.irimwebforge.com', icon: 'ExternalLink' },
-    ],
+    links: [{ label: 'Tester', url: 'https://demoforge.irimwebforge.com', icon: 'ExternalLink' }],
   },
   {
-    id: 'corps-et-sens',
-    title: 'Corps & Sens',
-    description: "Interface thérapeute : 7h d'administration → 45 minutes. Le projet qui a tout déclenché.",
-    badge: 'Projet fondateur',
-    image: '/images/projects/corps-et-sens.webp',
+    id: 'libera-luminosa',
+    title: 'Libera Luminosa',
+    description:
+      'Site yoga avec gestion des cours et ateliers. Séverine gère tout en autonomie.',
+    badge: 'Client actif',
+    image: '/images/projects/libera-luminosa.webp',
     links: [
-      { label: 'Voir le site', url: 'https://corpsetsenstherapie.com', icon: 'ExternalLink' },
+      { label: 'Voir le site', url: 'https://liberaluminosa.fr', icon: 'ExternalLink' },
     ],
   },
 ];
@@ -55,7 +64,12 @@ export function HubProofs() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {proofs.map((proof) => (
-            <Card key={proof.id} variant="elevated" padding="none" className="overflow-hidden group">
+            <Card
+              key={proof.id}
+              variant="elevated"
+              padding="none"
+              className="overflow-hidden group"
+            >
               {/* Image */}
               <div className="relative aspect-video overflow-hidden">
                 <Image
@@ -97,7 +111,6 @@ export function HubProofs() {
             </Card>
           ))}
         </div>
-
       </Container>
     </section>
   );

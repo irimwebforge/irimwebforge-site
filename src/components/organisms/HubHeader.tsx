@@ -17,10 +17,10 @@ export function HubHeader() {
           </NavLink>
 
           {/* Right side */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <NavLink
               href="/ds-lab"
-              className="text-sm text-secondary hover:text-primary transition-colors hidden sm:block"
+              className="text-sm text-secondary hover:text-primary transition-colors hidden md:block"
             >
               DS-Lab
             </NavLink>
@@ -28,10 +28,29 @@ export function HubHeader() {
             <Button
               variant="gradient"
               size="small"
+              href="tel:+33678764559"
+              className="hidden sm:flex"
+            >
+              06 78 76 45 59
+            </Button>
+            <Button
+              variant="outline"
+              size="small"
               href="https://cal.com/eric-zuber-nxxypt/30min"
               target="_blank"
+              className="hidden sm:flex"
             >
-              Réserver
+              Visio
+            </Button>
+            {/* Mobile: just phone icon */}
+            <Button
+              variant="gradient"
+              size="small"
+              href="tel:+33678764559"
+              className="sm:hidden"
+              aria-label="Appeler"
+            >
+              Appeler
             </Button>
           </div>
         </div>
