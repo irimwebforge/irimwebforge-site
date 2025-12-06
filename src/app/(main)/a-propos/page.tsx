@@ -49,6 +49,22 @@ export default function Page() {
       date: 'Mars 2025',
       icon: 'Rocket' as IconName,
     },
+    {
+      id: 'step-5',
+      title: 'ResetPulse déployé dans 177 pays',
+      description:
+        "Application mobile Time Timer pour cerveaux neuroatypiques. Disponible sur App Store et Google Play. 15 palettes, 16 activités, multilingue.",
+      date: 'Décembre 2025',
+      icon: 'Smartphone' as IconName,
+    },
+    {
+      id: 'step-6',
+      title: 'DemoForge plateforme live',
+      description:
+        "Plateforme démo interactive multi-univers pour commerçants. Architecture fullstack complète avec modification en temps réel.",
+      date: 'Décembre 2025',
+      icon: 'Store' as IconName,
+    },
   ];
 
   const approach = [
@@ -85,7 +101,7 @@ export default function Page() {
     <main className="overflow-x-hidden">
       <PageHeader
         title="Mon parcours au service de votre autonomie"
-        description="Développeur en reconversion guidé par une expérience personnelle transformatrice."
+        description="Créateur de solutions digitales guidé par une expérience personnelle transformatrice."
         align="center"
         size="medium"
         pattern={true}
@@ -114,8 +130,8 @@ export default function Page() {
                 </Typography>
 
                 <Typography variant="p" className="mb-4">
-                  Développeur freelance en reconversion, mon parcours atypique me permet d'apporter
-                  une perspective différente à vos défis digitaux.
+                  Créateur de solutions digitales, mon parcours atypique me permet d'apporter
+                  une perspective différente à vos défis numériques.
                 </Typography>
 
                 <Typography variant="p" className="mb-4">
@@ -273,8 +289,8 @@ export default function Page() {
                       'JavaScript/TypeScript',
                       'React/Next.js',
                       'Node.js/Express',
-                      'React Native',
-                      'HTML/CSS/SCSS',
+                      'React Native (Apps mobiles)',
+                      'IA & Automatisation',
                       'Design UI/UX',
                     ].map((tech) => (
                       <div key={tech} className="flex items-center gap-2">
