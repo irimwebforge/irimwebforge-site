@@ -1,19 +1,19 @@
+import { HubHeader } from '@/components/organisms/HubHeader';
 import { HubHero } from '@/components/organisms/HubHero';
+import { HubProofs } from '@/components/organisms/HubProofs';
+import { HubTestimonials } from '@/components/organisms/HubTestimonials';
+import { HubFooter } from '@/components/organisms/HubFooter';
 
 export default function HubPage() {
   return (
-    <main>
-      <HubHero />
-
-      {/* Placeholder sections */}
-      <section id="preuves" className="min-h-screen bg-section-secondary flex items-center justify-center">
-        <p className="text-2xl text-tertiary">Section Preuves — à venir</p>
-      </section>
-
-      <section id="positionnement" className="min-h-screen bg-section-accent flex items-center justify-center">
-        <p className="text-2xl text-tertiary">Section Positionnement — à venir</p>
-      </section>
-
-    </main>
+    <>
+      <HubHeader />
+      <main className="pt-16">
+        <HubHero />
+        <HubProofs />
+        <HubTestimonials />
+        <HubFooter />
+      </main>
+    </>
   );
 }
