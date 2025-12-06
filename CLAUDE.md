@@ -34,6 +34,8 @@ irimwebforge-site/
 │   └── styles/        # Styles globaux
 ├── docs/              # Documentation projet
 ├── public/            # Assets statiques
+├── scripts/           # Scripts deploy/rollback/cleanup
+├── tests/             # Tests performance et diagnostics
 ├── out/               # Build SSG (8MB)
 └── .claude/           # Config Claude locale
 ```
@@ -49,8 +51,8 @@ irimwebforge-site/
 ### Méthode actuelle (simplifiée)
 
 ```bash
-./deploy.sh    # Build local + rsync vers VPS
-./rollback.sh  # Restauration version précédente
+scripts/deploy.sh    # Build local + rsync vers VPS
+scripts/rollback.sh  # Restauration version précédente
 ```
 
 ### Architecture serveur
@@ -66,7 +68,7 @@ irimwebforge-site/
 
 1. Développement local
 2. `npm run build` → génère `out/`
-3. `./deploy.sh` → rsync `out/` vers VPS
+3. `scripts/deploy.sh` → rsync `out/` vers VPS
 4. Nginx sert depuis `current/`
 
 ## Commandes essentielles
@@ -78,13 +80,13 @@ npm run build         # Build production
 npm run lint          # Vérification code
 
 # Déploiement
-./deploy.sh          # Déployer nouvelle version
-./rollback.sh        # Revenir version précédente
-./cleanup-releases.sh # Nettoyer anciennes releases (12GB)
+scripts/deploy.sh          # Déployer nouvelle version
+scripts/rollback.sh        # Revenir version précédente
+scripts/cleanup-releases.sh # Nettoyer anciennes releases (12GB)
 
 # Tests
-npm test             # Tests unitaires
-node test-lcp-performance.js  # Test performances
+npm test                        # Tests unitaires
+node tests/test-lcp-performance.js  # Test performances
 
 # Accès serveur
 ssh vps              # Connexion VPS

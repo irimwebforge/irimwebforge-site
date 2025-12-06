@@ -26,7 +26,7 @@ Les fichiers sont buildés en local puis synchronisés sur le serveur.
 
 ```bash
 # Déployer la nouvelle version
-./deploy.sh
+scripts/deploy.sh
 ```
 
 Ce script :
@@ -47,7 +47,7 @@ Ce script :
 En cas de problème :
 
 ```bash
-./rollback.sh
+scripts/rollback.sh
 ```
 
 Restaure instantanément la version précédente depuis le backup.
@@ -59,7 +59,7 @@ Restaure instantanément la version précédente depuis le backup.
 Les anciennes releases (système précédent) prennent ~12GB. Pour les nettoyer :
 
 ```bash
-./cleanup-releases.sh
+scripts/cleanup-releases.sh
 ```
 
 ⚠️ **Note** : Ce script supprime le dossier `/srv/www/internal/irimwebforge.com/releases/` contenant 17 anciennes releases.
@@ -82,8 +82,8 @@ L'ancien système utilisait un git hook `post-receive` qui :
 
 **Migration** :
 
-1. Utiliser `./deploy.sh` pour les prochains déploiements
-2. Lancer `./cleanup-releases.sh` pour libérer l'espace
+1. Utiliser `scripts/deploy.sh` pour les prochains déploiements
+2. Lancer `scripts/cleanup-releases.sh` pour libérer l'espace
 
 ## Configuration Nginx
 
@@ -110,7 +110,7 @@ Voir `nginx.conf` pour la configuration complète.
 ssh vps "df -h /"
 
 # Nettoyer les anciennes releases
-./cleanup-releases.sh
+scripts/cleanup-releases.sh
 ```
 
 ### Vérifier la version déployée
