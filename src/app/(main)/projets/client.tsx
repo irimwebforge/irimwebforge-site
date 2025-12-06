@@ -69,7 +69,7 @@ export default function ProjetsClient() {
       imageUrl: '/images/projects/resetpulse.webp',
       tags: getTagsForProject('app-mobile', 'personnel', 'realise'),
       description:
-        'Application mobile Time Timer visuel pour cerveaux neuroatypiques. 15 palettes, 16 activités. React Native, disponible sur App Store et Google Play.',
+        'Application mobile Time Timer visuel pour cerveaux neuroatypiques. Déployée dans 177 pays sur App Store et Google Play. 15 palettes, 16 activités. React Native.',
       year: '2025',
       onlineUrl: 'http://resetpulse.irimwebforge.com/',
     },
@@ -91,7 +91,7 @@ export default function ProjetsClient() {
       imageUrl: '/images/projects/demoforge.webp',
       tags: getTagsForProject('site-gestion', 'artisans', 'concept'),
       description:
-        'Prototype multi-univers (brasserie, thé, beauté, herboristerie) - un aperçu de ce que je peux créer spécifiquement pour votre métier.',
+        'Plateforme démo interactive multi-univers (brasserie, thé, beauté, herboristerie). Testez vous-même la modification des produits en temps réel.',
       year: '2025',
       onlineUrl: 'https://demoforge.irimwebforge.com/',
     },
