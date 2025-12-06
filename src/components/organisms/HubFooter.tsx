@@ -20,7 +20,8 @@ const linkColumns = [
   {
     title: 'Ressources',
     links: [
-      { label: 'DS-Lab — mon design system', href: '/ds-lab' },
+      { label: 'Portfolio complet', href: 'https://portfolio.irimwebforge.com', external: true },
+      { label: 'DS-Lab — design system', href: '/ds-lab' },
       { label: 'ResetPulse', href: 'https://resetpulse.irimwebforge.com', external: true },
       { label: 'DemoForge', href: 'https://demoforge.irimwebforge.com', external: true },
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ericzuber/', external: true },

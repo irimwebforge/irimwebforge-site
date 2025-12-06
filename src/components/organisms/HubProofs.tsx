@@ -14,16 +14,14 @@ const proofs = [
       'App Time Timer pour cerveaux neuroatypiques. 15 palettes, 16 activités, multilingue.',
     badge: '177 pays',
     image: '/images/projects/resetpulse.webp',
-    links: [
+    storeBadges: [
       {
-        label: 'App Store',
+        store: 'apple',
         url: 'https://apps.apple.com/app/resetpulse/id6737482441',
-        icon: 'Apple',
       },
       {
-        label: 'Google Play',
+        store: 'google',
         url: 'https://play.google.com/store/apps/details?id=com.music4music.resetpulse',
-        icon: 'Play',
       },
     ],
   },
@@ -39,13 +37,10 @@ const proofs = [
   {
     id: 'libera-luminosa',
     title: 'Libera Luminosa',
-    description:
-      'Site yoga avec gestion des cours et ateliers. Séverine gère tout en autonomie.',
+    description: 'Site yoga avec gestion des cours et ateliers. Séverine gère tout en autonomie.',
     badge: 'Client actif',
     image: '/images/projects/libera-luminosa.webp',
-    links: [
-      { label: 'Voir le site', url: 'https://liberaluminosa.fr', icon: 'ExternalLink' },
-    ],
+    links: [{ label: 'Voir le site', url: 'https://liberaluminosa.fr', icon: 'ExternalLink' }],
   },
 ];
 
@@ -92,21 +87,52 @@ export function HubProofs() {
                   {proof.description}
                 </Typography>
 
-                {/* Links */}
-                <div className="flex flex-wrap gap-2">
-                  {proof.links.map((link) => (
-                    <Button
-                      key={link.label}
-                      variant="outline"
-                      size="small"
-                      href={link.url}
-                      target="_blank"
-                    >
-                      <Icon name={link.icon as any} className="w-4 h-4 mr-1" />
-                      {link.label}
-                    </Button>
-                  ))}
-                </div>
+                {/* Store Badges for ResetPulse */}
+                {'storeBadges' in proof && proof.storeBadges && (
+                  <div className="flex flex-wrap gap-3">
+                    {proof.storeBadges.map((badge: { store: string; url: string }) => (
+                      <a
+                        key={badge.store}
+                        href={badge.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-transform hover:scale-105"
+                      >
+                        {badge.store === 'apple' ? (
+                          <img
+                            src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/fr-fr?size=250x83"
+                            alt="Télécharger sur l'App Store"
+                            className="h-10"
+                          />
+                        ) : (
+                          <img
+                            src="https://play.google.com/intl/en_us/badges/static/images/badges/fr_badge_web_generic.png"
+                            alt="Disponible sur Google Play"
+                            className="h-10"
+                          />
+                        )}
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+                {/* Regular Links for other projects */}
+                {'links' in proof && proof.links && (
+                  <div className="flex flex-wrap gap-2">
+                    {proof.links.map((link: { label: string; url: string; icon: string }) => (
+                      <Button
+                        key={link.label}
+                        variant="outline"
+                        size="small"
+                        href={link.url}
+                        target="_blank"
+                      >
+                        <Icon name={link.icon as any} className="w-4 h-4 mr-1" />
+                        {link.label}
+                      </Button>
+                    ))}
+                  </div>
+                )}
               </div>
             </Card>
           ))}

@@ -98,9 +98,7 @@ const articles: Record<
         </p>
 
         <h3>Artisanat digital</h3>
-        <p>
-          Chaque interface est conçue sur mesure, comme un artisan façonne une pièce unique.
-        </p>
+        <p>Chaque interface est conçue sur mesure, comme un artisan façonne une pièce unique.</p>
 
         <h3>Transparence</h3>
         <p>Je suis honnête sur mes capacités actuelles et mes ambitions futures.</p>

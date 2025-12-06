@@ -23,9 +23,10 @@ const articles = [
 
 export function HubArticles() {
   return (
-    <section className="py-16 bg-section-primary">
+    <section className="py-16 bg-section-accent">
       <Container>
-        <div className="text-center mb-12">
+        {/* Section avec accent orange */}
+        <div className="border-l-4 border-l-[var(--color-tertiary)] pl-8 mb-12">
           <Typography as="h2" variant="h2" className="mb-4">
             En savoir plus
           </Typography>
