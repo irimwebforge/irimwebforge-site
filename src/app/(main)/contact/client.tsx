@@ -148,12 +148,21 @@ export default function ContactClient() {
   // Informations de contact
   const contactInfo = [
     {
+      id: 'phone',
+      title: 'Téléphone',
+      value: '06 78 76 45 59',
+      description: 'Appelez-moi directement',
+      icon: 'Phone' as IconName,
+      color: 'primary' as const,
+      href: 'tel:+33678764559',
+    },
+    {
       id: 'email',
       title: 'Email',
       value: 'eric.zuber@irimwebforge.com',
       description: 'Réponse garantie sous 24h',
       icon: 'Mail' as IconName,
-      color: 'primary' as const,
+      color: 'secondary' as const,
       href: 'mailto:eric.zuber@irimwebforge.com',
     },
     {
@@ -237,6 +246,33 @@ export default function ContactClient() {
 
       {!formComplete && (
         <>
+          {/* Bloc Telephone XXL */}
+          <section className="bg-section-accent py-12">
+            <Container>
+              <div className="max-w-2xl mx-auto text-center">
+                <div className="bg-primary-50 dark:bg-primary-900/30 border-2 border-primary-200 dark:border-primary-700 rounded-2xl p-8 shadow-lg">
+                  <div className="w-16 h-16 bg-primary-100 dark:bg-primary-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name="Phone" className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+                  </div>
+                  <Typography variant="h2" className="text-2xl font-bold mb-2">
+                    <a
+                      href="tel:+33678764559"
+                      className="text-primary-600 dark:text-primary-400 hover:underline"
+                    >
+                      06 78 76 45 59
+                    </a>
+                  </Typography>
+                  <Typography variant="p" className="text-secondary mb-4">
+                    Appelez-moi directement — je réponds sous 24h
+                  </Typography>
+                  <Typography variant="p" className="text-tertiary text-sm italic">
+                    Chaque projet commence par une conversation. Parlons du vôtre.
+                  </Typography>
+                </div>
+              </div>
+            </Container>
+          </section>
+
           {submitError && (
             <section className="py-8">
               <Container>
