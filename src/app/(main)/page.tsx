@@ -1,10 +1,19 @@
+import { HubHero } from '@/components/organisms/HubHero';
+
 export default function HubPage() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">IRIM Webforge</h1>
-        <p className="text-xl text-gray-600">Hub en construction</p>
-      </div>
+    <main>
+      <HubHero />
+
+      {/* Placeholder sections */}
+      <section id="preuves" className="min-h-screen bg-section-secondary flex items-center justify-center">
+        <p className="text-2xl text-tertiary">Section Preuves — à venir</p>
+      </section>
+
+      <section id="positionnement" className="min-h-screen bg-section-accent flex items-center justify-center">
+        <p className="text-2xl text-tertiary">Section Positionnement — à venir</p>
+      </section>
+
     </main>
-  )
+  );
 }

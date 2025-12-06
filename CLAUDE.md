@@ -1,17 +1,30 @@
 # CLAUDE.md - IRIM Webforge Site
 
+## AVANT DE CODER
+
+**Strategie migration (dec 2025)** : Hub one-page + Blog MDX
+- Hub = conversion en 10 secondes (telephone XXL)
+- Blog = contenu detaille (pages existantes migrees en articles)
+- Le contenu ne disparait pas, il se reorganise
+
+**Utilise les composants existants** : `src/components/`
+- Button, Badge, Card, Typography, Container, Icon
+- PageHeader, CTASection, Timeline, ConversationForm
+- NE PAS recoder from scratch
+
+**Brief complet** : `cockpit/active/brief-hub.md`
+
+---
+
 ## Vue d'ensemble du projet
 
-Site vitrine statique Next.js 15 pour IRIM Webforge, studio de création digitale. Déployé sur VPS via rsync après build local.
+Site statique Next.js 15 pour IRIM Webforge. Deploye sur VPS via rsync.
 
-### Caractéristiques clés
+### Stack
 
-- Site statique SSG avec Next.js 15 et TypeScript
-- Design system Atomic Design avec Tailwind CSS
-- Optimisations Core Web Vitals (LCP < 1.2s)
-- Score Lighthouse 95+
-- Formulaires de contact et diagnostic
-- Pages : services, projets, à propos, blog
+- Next.js 15 + TypeScript + Tailwind CSS
+- Design system Atomic Design dans `src/components/`
+- Score Lighthouse 95+, LCP < 1.2s
 
 ## Historique Claude Code
 
