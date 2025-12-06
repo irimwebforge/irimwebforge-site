@@ -29,7 +29,7 @@ ssh $REMOTE_HOST "
 
 # 3. Sync du dossier out/ vers le serveur
 echo "📤 Upload des fichiers (rsync)..."
-rsync -avz --delete \
+rsync -avz --delete --chmod=F644,D755 \
   --exclude='*.map' \
   --exclude='*.txt' \
   out/ $REMOTE_HOST:$CURRENT_PATH/
