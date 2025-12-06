@@ -1,8 +1,8 @@
 // Métadonnées SEO pour la page d'accueil
 export const metadata = {
-  title: 'IRIM Webforge - Interfaces admin sur mesure pour votre autonomie numérique',
+  title: 'IRIM Webforge - Sites web, Apps et Solutions digitales sur mesure',
   description:
-    "Libérez-vous de 7h d'administration par semaine. Solutions web personnalisées pour thérapeutes et indépendants. Simplicité, autonomie et excellence.",
+    "Sites web, applications mobiles et solutions digitales pour thérapeutes, commerçants, artisans et indépendants. Simplicité, autonomie et excellence.",
 };
 
 import React from 'react';
@@ -98,10 +98,10 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <HeroSection
-        title="Des sites web qui vous ressemblent vraiment"
+        title="Sites web · Apps · Solutions digitales sur mesure"
         subtitle={
-          'Je crée des espaces numériques où vous vous sentez chez vous - des interfaces pensées pour votre quotidien.\n\n' +
-          "Parce que votre temps mérite d'être consacré à votre passion, pas à votre site web. "
+          'Je crée des outils numériques où vous vous sentez chez vous - des interfaces pensées pour votre quotidien, pas pour impressionner.\n\n' +
+          'Thérapeutes · Commerçants · Artisans · Indépendants'
         }
         ctaText="Parlons de votre projet"
         ctaHref="/contact"
@@ -110,6 +110,74 @@ export default function HomePage() {
         pattern={true}
         className="bg-hero-soft"
       />
+
+      {/* Grid Compétences */}
+      <section className="bg-section-primary py-12">
+        <Container>
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <Card
+              variant="accent"
+              color="primary"
+              accentPosition="top"
+              padding="normal"
+              hover
+              className="text-center"
+            >
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mb-3">
+                  <Icon name="Globe" className="w-6 h-6 text-[var(--color-primary)]" />
+                </div>
+                <Typography variant="h3" className="text-lg font-bold mb-2">
+                  Sites vitrines
+                </Typography>
+                <Typography variant="p" className="text-secondary text-sm">
+                  Pour thérapeutes, artisans, commerçants
+                </Typography>
+              </div>
+            </Card>
+            <Card
+              variant="accent"
+              color="secondary"
+              accentPosition="top"
+              padding="normal"
+              hover
+              className="text-center"
+            >
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 rounded-full bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center mb-3">
+                  <Icon name="Smartphone" className="w-6 h-6 text-[var(--color-secondary)]" />
+                </div>
+                <Typography variant="h3" className="text-lg font-bold mb-2">
+                  Apps mobiles
+                </Typography>
+                <Typography variant="p" className="text-secondary text-sm">
+                  ResetPulse : 177 pays, App Store & Play Store
+                </Typography>
+              </div>
+            </Card>
+            <Card
+              variant="accent"
+              color="tertiary"
+              accentPosition="top"
+              padding="normal"
+              hover
+              className="text-center"
+            >
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 rounded-full bg-tertiary-100 dark:bg-tertiary-900 flex items-center justify-center mb-3">
+                  <Icon name="Sparkles" className="w-6 h-6 text-[var(--color-tertiary)]" />
+                </div>
+                <Typography variant="h3" className="text-lg font-bold mb-2">
+                  IA & Automatisation
+                </Typography>
+                <Typography variant="p" className="text-secondary text-sm">
+                  Des outils intelligents pour votre quotidien
+                </Typography>
+              </div>
+            </Card>
+          </div>
+        </Container>
+      </section>
 
       {/* 2. Histoire authentique et vision professionnelle */}
       <section className="bg-section-secondary py-16">
