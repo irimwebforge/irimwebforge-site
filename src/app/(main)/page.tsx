@@ -2,7 +2,7 @@
 export const metadata = {
   title: 'IRIM Webforge - Sites web, Apps et Solutions digitales sur mesure',
   description:
-    "Sites web, applications mobiles et solutions digitales pour thérapeutes, commerçants, artisans et indépendants. Simplicité, autonomie et excellence.",
+    'Sites web, applications mobiles et solutions digitales pour thérapeutes, commerçants, artisans et indépendants. Simplicité, autonomie et excellence.',
 };
 
 import React from 'react';

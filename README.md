@@ -142,6 +142,7 @@ Le script de test automatique `test-lcp-performance.js` fournit :
 ```
 
 En cas de problème :
+
 ```bash
 ./rollback.sh  # Restaure la version précédente
 ```

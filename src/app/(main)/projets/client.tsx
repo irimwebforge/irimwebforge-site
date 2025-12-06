@@ -357,7 +357,7 @@ export default function ProjetsClient() {
                               variant="small"
                               className="text-primary-800 dark:text-primary-200 italic"
                             >
-                              💡 Ce projet a été le déclencheur de ma reconversion. Transformer 7h
+                              💡 Ce projet a été le déclencheur de mon parcours actuel. Transformer 7h
                               d'administration hebdomadaire en 45min grâce à une interface adaptée
                               m'a fait comprendre l'impact concret du numérique sur mesure.
                             </Typography>

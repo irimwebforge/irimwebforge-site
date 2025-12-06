@@ -148,6 +148,15 @@ export function Footer() {
                   Diagnostic Numérique
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  href="/ds-lab"
+                  color="secondary"
+                  className="hover:text-[var(--color-primary)] footer-arrow"
+                >
+                  Design System Lab
+                </NavLink>
+              </li>
             </ul>
           </div>
 

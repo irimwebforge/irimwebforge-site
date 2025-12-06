@@ -11,5 +11,25 @@
   },
   // ⚠️ Permet à VS Code de te demander si tu veux utiliser le SDK TypeScript local
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs"
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#00cdd0",
+    "activityBar.background": "#00cdd0",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#df00dc",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#00cdd0",
+    "statusBar.background": "#009b9d",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#00cdd0",
+    "statusBarItem.remoteBackground": "#009b9d",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#009b9d",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#009b9d99",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#009B9D"
 }

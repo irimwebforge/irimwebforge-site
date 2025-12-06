@@ -107,8 +107,11 @@ export default function Page() {
             <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 rounded-lg p-4 mb-8">
               <Typography variant="p" className="text-primary-700 dark:text-primary-300">
                 <Icon name="Zap" className="w-4 h-4 inline mr-2" />
-                <strong>Nouveau :</strong> Une offre d'entrée à partir de 500€ pour démarrer simplement.{' '}
-                <Link href="/contact" className="underline font-medium">Parlons-en →</Link>
+                <strong>Nouveau :</strong> Une offre d'entrée à partir de 500€ pour démarrer
+                simplement.{' '}
+                <Link href="/contact" className="underline font-medium">
+                  Parlons-en →
+                </Link>
               </Typography>
             </div>
             <div className="grid gap-8 md:grid-cols-3">

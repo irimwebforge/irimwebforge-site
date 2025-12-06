@@ -23,7 +23,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 ### Optimisé
 
 - **Nettoyage des images du portfolio** : Suppression des fichiers redondants (PNG/JPG quand WebP existe)
-  - Fichiers supprimés : cbd-site.*, corps-et-sens.jpg, moodcycle.jpg, echos-des-reves.jpg, univers-des-reves.jpg
+  - Fichiers supprimés : cbd-site.\*, corps-et-sens.jpg, moodcycle.jpg, echos-des-reves.jpg, univers-des-reves.jpg
   - Gain : ~3MB d'espace disque
 - **Images des projets converties en WebP** : Réduction de 72% du poids
   - `moodcycle.jpg` : 537KB → 68KB (-87%)

@@ -53,7 +53,7 @@ export default function Page() {
       id: 'step-5',
       title: 'ResetPulse déployé dans 177 pays',
       description:
-        "Application mobile Time Timer pour cerveaux neuroatypiques. Disponible sur App Store et Google Play. 15 palettes, 16 activités, multilingue.",
+        'Application mobile Time Timer pour cerveaux neuroatypiques. Disponible sur App Store et Google Play. 15 palettes, 16 activités, multilingue.',
       date: 'Décembre 2025',
       icon: 'Smartphone' as IconName,
     },
@@ -61,7 +61,7 @@ export default function Page() {
       id: 'step-6',
       title: 'DemoForge plateforme live',
       description:
-        "Plateforme démo interactive multi-univers pour commerçants. Architecture fullstack complète avec modification en temps réel.",
+        'Plateforme démo interactive multi-univers pour commerçants. Architecture fullstack complète avec modification en temps réel.',
       date: 'Décembre 2025',
       icon: 'Store' as IconName,
     },
@@ -130,8 +130,8 @@ export default function Page() {
                 </Typography>
 
                 <Typography variant="p" className="mb-4">
-                  Créateur de solutions digitales, mon parcours atypique me permet d'apporter
-                  une perspective différente à vos défis numériques.
+                  Créateur de solutions digitales, mon parcours atypique me permet d'apporter une
+                  perspective différente à vos défis numériques.
                 </Typography>
 
                 <Typography variant="p" className="mb-4">
@@ -169,7 +169,7 @@ export default function Page() {
                 Les étapes clés de mon parcours
               </Typography>
               <Typography variant="lead" className="mb-8 max-w-3xl mx-auto">
-                Une reconversion guidée par une expérience personnelle transformatrice
+                Un parcours guidé par une expérience personnelle transformatrice
               </Typography>
             </div>
 
