@@ -40,3 +40,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Cockpit local (dual-agent workflow)
+cockpit/
+
+# Anciens fichiers nettoyés
+import/
+models/
