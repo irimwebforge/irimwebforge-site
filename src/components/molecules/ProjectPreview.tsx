@@ -79,14 +79,14 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
         </Typography>
 
         {variant !== 'compact' && description && (
-          <Typography variant="p" className="mb-4 line-clamp-2 text-secondary">
+          <Typography variant="p" className="mb-4 line-clamp-2 text-[var(--text-secondary)]">
             {description}
           </Typography>
         )}
 
         {/* Meta informations */}
         {(clientName || year) && (
-          <div className="flex items-center gap-2 mb-3 text-sm text-tertiary">
+          <div className="flex items-center gap-2 mb-3 text-sm text-[var(--text-secondary)]">
             {clientName && <span>{clientName}</span>}
             {clientName && year && <span>•</span>}
             {year && <span>{year}</span>}

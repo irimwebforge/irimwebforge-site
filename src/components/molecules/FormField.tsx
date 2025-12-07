@@ -106,7 +106,7 @@ export const FormField: React.FC<FormFieldProps> = ({
             {error}
           </Typography>
         ) : helperText ? (
-          <Typography variant="small" className="text-tertiary mt-1" id={helperId}>
+          <Typography variant="small" className="text-[var(--text-secondary)] mt-1" id={helperId}>
             {helperText}
           </Typography>
         ) : null}
@@ -163,7 +163,7 @@ export const FormField: React.FC<FormFieldProps> = ({
             {error}
           </Typography>
         ) : helperText ? (
-          <Typography variant="small" className="text-tertiary mt-1" id={helperId}>
+          <Typography variant="small" className="text-[var(--text-secondary)] mt-1" id={helperId}>
             {helperText}
           </Typography>
         ) : null}
@@ -210,7 +210,7 @@ export const FormField: React.FC<FormFieldProps> = ({
           {error}
         </Typography>
       ) : helperText ? (
-        <Typography variant="small" className="text-tertiary mt-1" id={helperId}>
+        <Typography variant="small" className="text-[var(--text-secondary)] mt-1" id={helperId}>
           {helperText}
         </Typography>
       ) : null}

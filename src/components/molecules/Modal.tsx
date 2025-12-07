@@ -208,7 +208,7 @@ export const Modal: React.FC<ModalProps> = ({
             {showCloseButton && (
               <button
                 onClick={onClose}
-                className="text-tertiary hover:text-secondary transition-colors p-1 rounded focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
+                className="text-[var(--text-secondary)] hover:text-[var(--text-secondary)] transition-colors p-1 rounded focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
                 aria-label="Fermer la boîte de dialogue"
                 type="button"
               >
@@ -250,7 +250,7 @@ export interface ConfirmModalProps {
   /** Texte du bouton d'annulation */
   cancelLabel?: string;
   /** Style visuel du bouton de confirmation */
-  confirmVariant?: 'primary' | 'secondary' | 'tertiary';
+  confirmVariant?: 'primary' | 'secondary' | 'gradient';
   /** Taille de la modal */
   size?: 'small' | 'medium' | 'large';
 }
@@ -284,7 +284,7 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title} footer={footer} size={size}>
-      <Typography variant="p" className="mb-4 text-secondary">
+      <Typography variant="p" className="mb-4 text-[var(--text-secondary)]">
         {message}
       </Typography>
     </Modal>
@@ -414,7 +414,7 @@ export const AlertModal: React.FC<AlertModalProps> = ({
       footer={footer}
       size={size}
     >
-      <Typography variant="p" className="mb-4 text-secondary">
+      <Typography variant="p" className="mb-4 text-[var(--text-secondary)]">
         {message}
       </Typography>
     </Modal>
@@ -472,7 +472,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({
     >
       <div className="flex flex-col" style={{ height: 'calc(85vh - 120px)' }}>
         {description && (
-          <Typography variant="p" className="mb-4 text-secondary flex-shrink-0">
+          <Typography variant="p" className="mb-4 text-[var(--text-secondary)] flex-shrink-0">
             {description}
           </Typography>
         )}
@@ -540,7 +540,7 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, ser
     >
       <div className="flex flex-col gap-6">
         <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
-          <Typography variant="lead" className="text-secondary">
+          <Typography variant="lead" className="text-[var(--text-secondary)]">
             {service.fullDescription}
           </Typography>
           <div className="flex gap-2 flex-shrink-0">
@@ -573,7 +573,7 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, ser
                     {feature.title}
                   </Typography>
                   {feature.description && (
-                    <Typography variant="p" className="text-secondary">
+                    <Typography variant="p" className="text-[var(--text-secondary)]">
                       {feature.description}
                     </Typography>
                   )}
@@ -593,7 +593,7 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, ser
                 <Typography variant="h4" className="mb-1">
                   {service.testimonial.author}
                 </Typography>
-                <Typography variant="p" className="text-secondary">
+                <Typography variant="p" className="text-[var(--text-secondary)]">
                   {service.testimonial.role}
                 </Typography>
               </footer>

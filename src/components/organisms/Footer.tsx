@@ -13,12 +13,12 @@ export function Footer() {
           {/* Logo et description */}
           <div className="md:col-span-1">
             <Logo width={100} height={33} />
-            <Typography variant="small" className="mt-4 text-secondary">
+            <Typography variant="small" className="mt-4 text-[var(--text-secondary)]">
               Studio de création digitale spécialisé dans la conception d'interfaces sur mesure.
             </Typography>
             {/* Réseaux sociaux */}
             <div className="mt-6">
-              <Typography variant="p" className="font-semibold text-base mb-4 text-primary">
+              <Typography variant="p" className="font-semibold text-base mb-4 text-[var(--color-primary)]">
                 Suivez-moi
               </Typography>
               <div className="flex space-x-4">
@@ -26,7 +26,7 @@ export function Footer() {
                   href="https://www.linkedin.com/in/eric-zuber-b9060650/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-secondary hover:text-[var(--color-primary)]"
+                  className="text-[var(--text-secondary)] hover:text-[var(--color-primary)]"
                 >
                   LinkedIn
                 </a>
@@ -34,7 +34,7 @@ export function Footer() {
                   href="https://github.com/Ricomaldo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-secondary hover:text-[var(--color-primary)]"
+                  className="text-[var(--text-secondary)] hover:text-[var(--color-primary)]"
                 >
                   GitHub
                 </a>
@@ -44,7 +44,7 @@ export function Footer() {
 
           {/* Liens rapides */}
           <div>
-            <Typography variant="p" className="font-semibold text-base mb-4 text-primary">
+            <Typography variant="p" className="font-semibold text-base mb-4 text-[var(--color-primary)]">
               Navigation
             </Typography>
             <ul className="space-y-2 text-sm">
@@ -108,7 +108,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <Typography variant="p" className="font-semibold text-base mb-4 text-primary">
+            <Typography variant="p" className="font-semibold text-base mb-4 text-[var(--color-primary)]">
               Solutions
             </Typography>
             <ul className="space-y-2 text-sm">
@@ -162,31 +162,31 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <Typography variant="p" className="font-semibold text-base mb-4 text-primary">
+            <Typography variant="p" className="font-semibold text-base mb-4 text-[var(--color-primary)]">
               Contact
             </Typography>
             <ul className="space-y-2 text-sm">
-              <li className="text-secondary">contact@irimwebforge.com</li>
-              <li className="text-secondary">06 78 76 45 59</li>
-              <li className="text-secondary">11 route de Paris, 67117 Ittenheim</li>
+              <li className="text-[var(--text-secondary)]">contact@irimwebforge.com</li>
+              <li className="text-[var(--text-secondary)]">06 78 76 45 59</li>
+              <li className="text-[var(--text-secondary)]">11 route de Paris, 67117 Ittenheim</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-color flex flex-col md:flex-row justify-between items-center">
-          <Typography variant="small" className="text-xs text-tertiary mb-4 md:mb-0">
+          <Typography variant="small" className="text-xs text-[var(--text-secondary)] mb-4 md:mb-0">
             &copy; {currentYear} IRIM Webforge. Tous droits réservés.
           </Typography>
           <div className="flex space-x-4">
             <NavLink
               href="/mentions-legales"
-              className="text-xs text-tertiary hover:text-secondary"
+              className="text-xs text-[var(--text-secondary)] hover:text-[var(--color-primary)]"
             >
               Mentions légales
             </NavLink>
             <NavLink
               href="/politique-confidentialite"
-              className="text-xs text-tertiary hover:text-secondary"
+              className="text-xs text-[var(--text-secondary)] hover:text-[var(--color-primary)]"
             >
               Politique de confidentialité
             </NavLink>

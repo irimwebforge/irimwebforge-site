@@ -164,7 +164,7 @@ export const FAQ: React.FC<FAQProps> = ({
           aria-hidden={!isOpen}
         >
           {typeof item.answer === 'string' ? (
-            <Typography variant="p" className="text-secondary">
+            <Typography variant="p" className="text-[var(--text-secondary)]">
               {item.answer}
             </Typography>
           ) : (
@@ -186,7 +186,7 @@ export const FAQ: React.FC<FAQProps> = ({
           )}
 
           {subtitle && (
-            <Typography variant="lead" className="text-secondary">
+            <Typography variant="lead" className="text-[var(--text-secondary)]">
               {subtitle}
             </Typography>
           )}
@@ -253,7 +253,7 @@ export const FAQItemComponent: React.FC<FAQItemComponentProps> = ({
         )}
       >
         {typeof answer === 'string' ? (
-          <Typography variant="p" className="text-secondary">
+          <Typography variant="p" className="text-[var(--text-secondary)]">
             {answer}
           </Typography>
         ) : (

@@ -13,9 +13,8 @@ const HeroPattern: React.FC<{ className?: string }> = ({ className = '' }) => {
       className={`w-full h-full absolute inset-0 pattern-optimized hero-pattern transition-all duration-300 ${className}`}
       style={{
         zIndex: 0,
-        // Thème clair
+        // Pattern uniquement, sans fond (le parent gère le dégradé)
         backgroundImage: `url("${svgPattern}")`,
-        backgroundColor: 'color-mix(in srgb, var(--surface-secondary) 40%, transparent)',
         backgroundSize: '304px 304px',
       }}
     >
@@ -24,7 +23,6 @@ const HeroPattern: React.FC<{ className?: string }> = ({ className = '' }) => {
         className="dark:block hidden w-full h-full absolute inset-0 transition-opacity duration-300"
         style={{
           backgroundImage: `url("${svgPatternDark}")`,
-          backgroundColor: 'color-mix(in srgb, var(--surface-tertiary) 20%, transparent)',
           backgroundSize: '304px 304px',
         }}
       />

@@ -84,14 +84,14 @@ export const Testimonial: React.FC<TestimonialProps> = ({
           </Typography>
 
           {company && (
-            <Typography variant="small" className="text-secondary">
+            <Typography variant="small" className="text-[var(--text-secondary)]">
               {company}
             </Typography>
           )}
 
           {projectName && (
             <div className="mt-1">
-              <Typography variant="small" className="text-tertiary">
+              <Typography variant="small" className="text-[var(--text-secondary)]">
                 {projectUrl ? (
                   <a href={projectUrl} className="text-[var(--color-primary)] hover:underline">
                     Projet : {projectName}

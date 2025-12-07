@@ -127,7 +127,7 @@ export const TechnologyStack: React.FC<TechnologyStackProps> = ({
             </Typography>
 
             {tech.description && (
-              <Typography variant="small" className="text-secondary mt-1">
+              <Typography variant="small" className="text-[var(--text-secondary)] mt-1">
                 {tech.description}
               </Typography>
             )}
@@ -138,7 +138,7 @@ export const TechnologyStack: React.FC<TechnologyStackProps> = ({
               href={tech.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:underline"
+              className="text-[var(--color-primary)] hover:underline"
               aria-label={`En savoir plus sur ${tech.name}`}
             >
               <svg
@@ -229,7 +229,7 @@ export const TechnologyStack: React.FC<TechnologyStackProps> = ({
           )}
 
           {subtitle && (
-            <Typography variant="lead" className="text-secondary">
+            <Typography variant="lead" className="text-[var(--text-secondary)]">
               {subtitle}
             </Typography>
           )}

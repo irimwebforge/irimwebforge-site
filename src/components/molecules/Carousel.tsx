@@ -248,7 +248,7 @@ export const Carousel: React.FC<CarouselProps> = ({
           )}
 
           {subtitle && (
-            <Typography variant="lead" className="text-secondary">
+            <Typography variant="lead" className="text-[var(--text-secondary)]">
               {subtitle}
             </Typography>
           )}

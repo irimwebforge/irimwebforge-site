@@ -75,7 +75,7 @@ export const Divider: React.FC<DividerProps> = ({
 
   // Si un label est fourni et que l'orientation est horizontale
   if (label && orientation === 'horizontal') {
-    const labelColor = color !== 'default' ? `text-[var(--color-${color})]` : 'text-secondary';
+    const labelColor = color !== 'default' ? `text-[var(--color-${color})]` : 'text-[var(--text-secondary)]';
 
     return (
       <div className={cn('flex items-center', spacingClasses[spacing], highlightClass)}>

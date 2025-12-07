@@ -352,7 +352,7 @@ export const Gallery: React.FC<GalleryProps> = ({
             </div>
 
             {showCaption && image.caption && (
-              <Typography variant="small" className="mt-2 text-center text-secondary">
+              <Typography variant="small" className="mt-2 text-center text-[var(--text-secondary)]">
                 {image.caption}
               </Typography>
             )}

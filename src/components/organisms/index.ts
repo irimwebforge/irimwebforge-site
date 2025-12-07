@@ -1,9 +1,3 @@
-export { HubHero } from './HubHero';
-export { HubProofs } from './HubProofs';
-export { HubTestimonials } from './HubTestimonials';
-export { HubFooter } from './HubFooter';
-export { HubHeader } from './HubHeader';
-export { HubArticles } from './HubArticles';
 export { EnhancedContactForm } from './EnhancedContactForm';
 export { FeatureSection } from './FeatureSection';
 export { Footer } from './Footer';

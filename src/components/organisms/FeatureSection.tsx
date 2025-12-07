@@ -169,7 +169,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
               </Typography>
 
               {/* Description */}
-              <Typography variant="p" className="text-secondary flex-grow">
+              <Typography variant="p" className="text-[var(--text-secondary)] flex-grow">
                 {feature.description}
               </Typography>
 
@@ -209,7 +209,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
               </Typography>
 
               {/* Description */}
-              <Typography variant="p" className="text-secondary">
+              <Typography variant="p" className="text-[var(--text-secondary)]">
                 {feature.description}
               </Typography>
 
@@ -255,7 +255,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
                 </Typography>
 
                 {/* Description */}
-                <Typography variant="p" className="text-secondary">
+                <Typography variant="p" className="text-[var(--text-secondary)]">
                   {feature.description}
                 </Typography>
 
@@ -319,7 +319,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
               </Typography>
 
               {/* Description */}
-              <Typography variant="small" className="text-secondary">
+              <Typography variant="small" className="text-[var(--text-secondary)]">
                 {feature.description}
               </Typography>
             </div>

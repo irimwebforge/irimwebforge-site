@@ -104,7 +104,7 @@ export const ServiceHighlight: React.FC<ServiceHighlightProps> = ({
       {/* Description */}
       <Typography
         variant="p"
-        className={cn('text-secondary', bulletPoints.length > 0 ? 'mb-4' : '')}
+        className={cn('text-[var(--text-secondary)]', bulletPoints.length > 0 ? 'mb-4' : '')}
       >
         {description}
       </Typography>
@@ -122,7 +122,7 @@ export const ServiceHighlight: React.FC<ServiceHighlightProps> = ({
                   'border'
                 )}
               ></span>
-              <Typography variant="small" className="text-secondary flex-1">
+              <Typography variant="small" className="text-[var(--text-secondary)] flex-1">
                 {point}
               </Typography>
             </li>

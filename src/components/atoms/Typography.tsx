@@ -4,10 +4,10 @@ import { cva, type VariantProps } from 'class-variance-authority';
 const typographyVariants = cva('', {
   variants: {
     variant: {
-      h1: 'text-4xl font-bold font-display italic text-primary',
-      h2: 'text-3xl font-bold font-display italic text-primary',
-      h3: 'text-2xl font-bold font-display text-primary',
-      h4: 'text-xl font-semibold font-display text-secondary',
+      h1: 'text-4xl font-bold font-display italic text-[var(--color-secondary-accessible)]',
+      h2: 'text-3xl font-bold font-display italic text-[var(--color-secondary-accessible)]',
+      h3: 'text-2xl font-bold font-display text-[var(--color-secondary-accessible)]',
+      h4: 'text-xl font-semibold font-display text-foreground',
       p: 'text-base font-body text-foreground',
       lead: 'text-lg font-medium font-body text-foreground',
       small: 'text-sm font-body text-foreground/80',

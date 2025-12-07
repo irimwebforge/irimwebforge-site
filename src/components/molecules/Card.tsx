@@ -136,7 +136,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
             {subtitle && (
               <div className="mt-1">
                 {typeof subtitle === 'string' ? (
-                  <p className="text-sm text-secondary">{subtitle}</p>
+                  <p className="text-sm text-[var(--text-secondary)]">{subtitle}</p>
                 ) : (
                   subtitle
                 )}

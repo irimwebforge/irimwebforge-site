@@ -62,12 +62,12 @@ export function BeforeAfterCard({ item, index, color, showIndex = true }: Before
           )}
         >
           <div className="flex items-center gap-2 mb-3">
-            <Icon name="X" className="w-4 h-4 text-tertiary" />
-            <Typography variant="small" className="font-medium text-tertiary">
+            <Icon name="X" className="w-4 h-4 text-[var(--text-secondary)]" />
+            <Typography variant="small" className="font-medium text-[var(--text-secondary)]">
               Avant
             </Typography>
           </div>
-          <Typography variant="p" className="text-secondary">
+          <Typography variant="p" className="text-[var(--text-secondary)]">
             {item.before}
           </Typography>
         </div>

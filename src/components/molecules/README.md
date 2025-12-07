@@ -20,7 +20,7 @@ Nos composants moléculaires suivent la même hiérarchie visuelle que les compo
 
 - **Primaire (Turquoise)** : `#00B3B3` - Éléments interactifs, accentuation, focus
 - **Secondaire (Bleu foncé)** : `#004466` - Éléments de structure, en-têtes
-- **Tertiaire (Orange)** : `#F06424` - Éléments d'accentuation limités (badges, alertes, mise en évidence de textes clés)
+- **Tertiaire (Orange)** : `#d85014` - Éléments d'accentuation limités (badges, alertes, bordures, icônes)
 
 ### Effets spéciaux
 
@@ -40,7 +40,7 @@ Conteneur polyvalent pour présenter du contenu structuré avec différentes var
   title="Titre de la carte"
   subtitle="Sous-titre optionnel"
   variant="accent"
-  color="tertiary"
+  color="primary"
   hover={true}
 >
   Contenu de la carte

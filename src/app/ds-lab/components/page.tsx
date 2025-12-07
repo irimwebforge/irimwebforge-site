@@ -9,8 +9,6 @@ import { Badge } from '../../../components/atoms/Badge';
 import { Card } from '../../../components/molecules/Card';
 import { Tabs } from '../../../components/molecules/Tabs';
 import { Logo } from '../../../components/atoms/Logo';
-import { Header } from '../../../components/organisms/Header';
-import { Footer } from '../../../components/organisms/Footer';
 import { HeroSection } from '../../../components/organisms/HeroSection';
 import { PageHeader } from '../../../components/organisms/PageHeader';
 import { FeatureSection } from '../../../components/organisms/FeatureSection';
@@ -97,7 +95,7 @@ export default function DesignSystemPage() {
               expérience digitale sur-mesure et unique. Nous privilégions un processus artisanal qui
               permet une immersion profonde dans l'univers de chaque client.
             </Typography>
-            <Typography variant="small" className="mt-2 text-tertiary">
+            <Typography variant="small" className="mt-2 text-[var(--text-secondary)]">
               Les mots clés sont automatiquement accentués avec la couleur tertiaire
             </Typography>
           </div>
@@ -113,7 +111,7 @@ export default function DesignSystemPage() {
         'Boutons selon la hiérarchie visuelle validée : CTA dégradé, primaire turquoise, alternatives',
       component: (
         <div className="space-y-4">
-          <div className="p-4 border-l-4 border-l-[var(--color-tertiary)] bg-amber-50/30 rounded-md">
+          <div className="p-4 border-l-4 border-l-[var(--color-tertiary)] bg-[var(--color-tertiary-bg-accessible)] rounded-md">
             <Typography variant="p" className="font-medium mb-3">
               Hiérarchie visuelle des boutons
             </Typography>
@@ -122,7 +120,7 @@ export default function DesignSystemPage() {
                 <Button variant="gradient" className="w-full shine-effect">
                   Bouton CTA principal (dégradé + brillance)
                 </Button>
-                <Typography variant="small" className="text-tertiary mt-1">
+                <Typography variant="small" className="text-[var(--text-secondary)] mt-1">
                   Pour les actions principales, appels à l'action
                 </Typography>
               </div>
@@ -130,15 +128,23 @@ export default function DesignSystemPage() {
                 <Button variant="primary" className="w-full">
                   Bouton primaire (turquoise)
                 </Button>
-                <Typography variant="small" className="text-tertiary mt-1">
+                <Typography variant="small" className="text-[var(--text-secondary)] mt-1">
                   Pour les actions secondaires importantes
+                </Typography>
+              </div>
+              <div>
+                <Button variant="secondary" className="w-full">
+                  Bouton secondaire (bleu)
+                </Button>
+                <Typography variant="small" className="text-[var(--text-secondary)] mt-1">
+                  Pour les actions tertiaires
                 </Typography>
               </div>
               <div>
                 <Button variant="outline" className="w-full">
                   Bouton outline
                 </Button>
-                <Typography variant="small" className="text-tertiary mt-1">
+                <Typography variant="small" className="text-[var(--text-secondary)] mt-1">
                   Pour les actions alternatives
                 </Typography>
               </div>
@@ -168,10 +174,12 @@ export default function DesignSystemPage() {
                 Variantes de couleur
               </Typography>
               <div className="flex flex-wrap gap-2">
-                <Button variant="primary">Primaire</Button>
-                <Button variant="secondary">Secondaire</Button>
-                <Button variant="tertiary">Tertiaire</Button>
+                <Button variant="primary">Primaire (turquoise)</Button>
+                <Button variant="secondary">Secondaire (bleu)</Button>
               </div>
+              <Typography variant="small" className="text-[var(--text-secondary)] mt-1">
+                Orange réservé à l'accentuation (bordures, badges, icônes)
+              </Typography>
             </div>
           </div>
 
@@ -202,7 +210,9 @@ export default function DesignSystemPage() {
                 <Button variant="primary" loading>
                   Chargement
                 </Button>
-                <Button variant="ghost">Lien textuel →</Button>
+                <a href="#" className="inline-flex items-center text-[var(--color-primary)] hover:!text-[#d85014] border-b-2 border-[var(--color-tertiary)] transition-colors">
+                  Lien signature →
+                </a>
               </div>
             </div>
 
@@ -282,12 +292,8 @@ export default function DesignSystemPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input
-              label="Variante tertiaire (orange)"
-              variant="tertiary"
-              placeholder="Bordure orange"
-            />
             <Input label="Avec erreur" error="Ce champ est requis" placeholder="Valeur invalide" />
+            <Input label="Désactivé" disabled placeholder="Champ désactivé" />
           </div>
         </div>
       ),
@@ -323,16 +329,6 @@ export default function DesignSystemPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Select
-              label="Variante tertiaire (orange)"
-              variant="tertiary"
-              options={[
-                { value: 'option1', label: 'Option 1' },
-                { value: 'option2', label: 'Option 2' },
-                { value: 'option3', label: 'Option 3' },
-              ]}
-              defaultValue=""
-            />
-            <Select
               label="Avec erreur"
               error="Ce champ est requis"
               options={[
@@ -340,6 +336,16 @@ export default function DesignSystemPage() {
                 { value: 'option2', label: 'Option 2' },
                 { value: 'option3', label: 'Option 3' },
               ]}
+            />
+            <Select
+              label="Désactivé"
+              disabled
+              options={[
+                { value: 'option1', label: 'Option 1' },
+                { value: 'option2', label: 'Option 2' },
+                { value: 'option3', label: 'Option 3' },
+              ]}
+              defaultValue=""
             />
           </div>
         </div>
@@ -367,15 +373,15 @@ export default function DesignSystemPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Textarea
-              label="Variante tertiaire (orange)"
-              variant="tertiary"
-              placeholder="Bordure orange"
-              rows={3}
-            />
-            <Textarea
               label="Avec erreur"
               error="Ce champ est requis"
               placeholder="Message invalide"
+              rows={3}
+            />
+            <Textarea
+              label="Désactivé"
+              disabled
+              placeholder="Zone désactivée"
               rows={3}
             />
           </div>
@@ -430,24 +436,6 @@ export default function DesignSystemPage() {
       description: 'Liens de navigation avec états actifs, support pour dégradé et soulignement',
       component: (
         <div className="space-y-6">
-          {/* Note explicative sur les effets de survol */}
-          <div className="p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded-md mb-4">
-            <Typography variant="small" className="font-medium text-yellow-800">
-              Note : Les liens de navigation ci-dessous démontrent plusieurs caractéristiques :
-            </Typography>
-            <ul className="ml-5 mt-2 list-disc text-yellow-800">
-              <li className="text-sm">
-                Changement de couleur au survol selon le type (primaire, secondaire, tertiaire)
-              </li>
-              <li className="text-sm">
-                Animation de soulignement au survol (ajoutée pour rendre l'effet plus visible)
-              </li>
-              <li className="text-sm">
-                Effet de texte en dégradé pour les liens actifs avec useGradient
-              </li>
-            </ul>
-          </div>
-
           <div className="p-4 border border-color rounded-md mb-4">
             <Typography variant="small" className="font-medium mb-2">
               Styles de base
@@ -456,7 +444,7 @@ export default function DesignSystemPage() {
               <NavLink
                 href="#"
                 color="primary"
-                className="relative group px-3 py-1 hover:bg-blue-50"
+                className="relative group px-3 py-1 hover:bg-[var(--color-primary-bg-accessible)]"
               >
                 <span>Lien standard</span>
                 <span className="absolute bottom-0 left-0 w-0 h-1 bg-[var(--color-primary)] transition-all duration-300 group-hover:w-full bg-[repeating-linear-gradient(45deg,var(--color-primary),var(--color-primary)_5px,transparent_5px,transparent_10px)]"></span>
@@ -466,7 +454,7 @@ export default function DesignSystemPage() {
                 href="/ds-lab/components"
                 exact
                 color="primary"
-                className="relative group px-3 py-1 hover:bg-blue-50"
+                className="relative group px-3 py-1 hover:bg-[var(--color-primary-bg-accessible)]"
               >
                 <span>Lien actif</span>
               </NavLink>
@@ -475,7 +463,7 @@ export default function DesignSystemPage() {
                 href="#"
                 underline
                 color="primary"
-                className="relative group px-3 py-1 hover:bg-blue-50"
+                className="relative group px-3 py-1 hover:bg-[var(--color-primary-bg-accessible)]"
               >
                 <span>Avec soulignement</span>
               </NavLink>
@@ -484,7 +472,7 @@ export default function DesignSystemPage() {
                 href="#"
                 icon={<SampleIcon />}
                 color="primary"
-                className="relative group px-3 py-1 hover:bg-blue-50"
+                className="relative group px-3 py-1 hover:bg-[var(--color-primary-bg-accessible)]"
               >
                 <span>Avec icône</span>
                 <span className="absolute bottom-0 left-0 w-0 h-1 bg-[var(--color-primary)] transition-all duration-300 group-hover:w-full bg-[repeating-linear-gradient(45deg,var(--color-primary),var(--color-primary)_5px,transparent_5px,transparent_10px)]"></span>
@@ -565,19 +553,19 @@ export default function DesignSystemPage() {
             </Typography>
             <div className="flex flex-wrap gap-6 items-center">
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">
+                <Typography variant="small" className="mb-1 text-[var(--text-secondary)]">
                   Light
                 </Typography>
                 <Logo width={150} mode="light" format="svg" />
               </div>
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">
+                <Typography variant="small" className="mb-1 text-[var(--text-secondary)]">
                   Dark
                 </Typography>
                 <Logo width={150} mode="dark" format="svg" />
               </div>
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">
+                <Typography variant="small" className="mb-1 text-[var(--text-secondary)]">
                   Default
                 </Typography>
                 <Logo width={150} mode="default" format="svg" />
@@ -590,13 +578,13 @@ export default function DesignSystemPage() {
             </Typography>
             <div className="flex flex-wrap gap-6 items-center">
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">
+                <Typography variant="small" className="mb-1 text-[var(--text-secondary)]">
                   Light
                 </Typography>
                 <Logo width={150} mode="light" format="png" />
               </div>
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">
+                <Typography variant="small" className="mb-1 text-[var(--text-secondary)]">
                   Dark
                 </Typography>
                 <Logo width={150} mode="dark" format="png" />
@@ -609,13 +597,13 @@ export default function DesignSystemPage() {
             </Typography>
             <div className="flex flex-wrap gap-6 items-center">
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">
+                <Typography variant="small" className="mb-1 text-[var(--text-secondary)]">
                   Light
                 </Typography>
                 <Logo width={200} mode="light" variant="banner" />
               </div>
               <div>
-                <Typography variant="small" className="mb-1 text-secondary">
+                <Typography variant="small" className="mb-1 text-[var(--text-secondary)]">
                   Dark
                 </Typography>
                 <Logo width={200} mode="dark" variant="banner" />
@@ -1004,72 +992,13 @@ export default function DesignSystemPage() {
   // Données des composants organismes
   const organismComponents: ComponentType[] = [
     {
-      id: 'header',
-      title: 'Header',
-      description:
-        'En-tête du site avec navigation et logo, utilisant le dégradé pour les liens actifs',
-      component: (
-        <div className="space-y-4">
-          <div className="p-4 border-l-4 border-l-[var(--color-tertiary)] bg-amber-50/30 rounded-md mb-4">
-            <Typography variant="p" className="font-medium mb-2">
-              Points clés du Header
-            </Typography>
-            <ul className="ml-5 list-disc text-sm space-y-1">
-              <li>NavLinks avec effet de dégradé pour les liens actifs (useGradient)</li>
-              <li>Bouton de contact en CTA principal (gradient + effet brillance)</li>
-              <li>Menu responsive avec maintien des styles visuels</li>
-            </ul>
-          </div>
-
-          <div className="border border-color rounded-lg overflow-hidden">
-            <Header />
-          </div>
-        </div>
-      ),
-    },
-    {
-      id: 'footer',
-      title: 'Footer',
-      description: 'Pied de page avec liens et informations organisés par sections',
-      component: (
-        <div className="space-y-4">
-          <div className="p-4 border-l-4 border-l-[var(--color-primary)] bg-blue-50/30 rounded-md mb-4">
-            <Typography variant="p" className="font-medium mb-2">
-              Éléments du Footer
-            </Typography>
-            <ul className="ml-5 list-disc text-sm space-y-1">
-              <li>Utilisation du composant NavLink pour tous les liens</li>
-              <li>Typographie hiérarchisée avec composant Typography</li>
-              <li>Organisation claire des sections de navigation</li>
-            </ul>
-          </div>
-
-          <div className="border border-color rounded-lg overflow-hidden scale-90 origin-top">
-            <Footer />
-          </div>
-        </div>
-      ),
-    },
-    {
       id: 'hero-section',
       title: 'HeroSection',
       description:
         "Section d'en-tête principale avec titre en italique gras et CTA principal brillant",
       component: (
-        <div className="space-y-4">
-          <div className="p-4 border-l-4 border-l-[var(--color-secondary)] bg-cyan-50/30 rounded-md mb-4">
-            <Typography variant="p" className="font-medium mb-2">
-              Caractéristiques de la HeroSection
-            </Typography>
-            <ul className="ml-5 list-disc text-sm space-y-1">
-              <li>Titre principal (h1) en italique gras selon la hiérarchie visuelle</li>
-              <li>CTA principal avec dégradé et effet brillance</li>
-              <li>CTA secondaire en variante outline pour la hiérarchie d'actions</li>
-            </ul>
-          </div>
-
-          <div className="border border-color rounded-lg overflow-hidden">
-            <HeroSection
+        <div className="border border-color rounded-lg overflow-hidden">
+          <HeroSection
               title="Créez des interfaces exceptionnelles"
               subtitle="Design system complet pour des expériences utilisateur cohérentes et professionnelles"
               ctaText="Explorer nos services"
@@ -1077,8 +1006,7 @@ export default function DesignSystemPage() {
               secondaryCtaText="En savoir plus"
               secondaryCtaHref="#"
               className="py-12"
-            />
-          </div>
+          />
         </div>
       ),
     },
@@ -1087,21 +1015,8 @@ export default function DesignSystemPage() {
       title: 'PageHeader',
       description: 'En-tête de page configurable avec titre, actions et styles variés',
       component: (
-        <div className="space-y-4">
-          <div className="p-4 border-l-4 border-l-[var(--color-primary)] bg-blue-50/30 rounded-md mb-4">
-            <Typography variant="p" className="font-medium mb-2">
-              Options du PageHeader
-            </Typography>
-            <ul className="ml-5 list-disc text-sm space-y-1">
-              <li>Titre h1 en italique gras pour respecter la hiérarchie visuelle</li>
-              <li>CTA avec effet brillance pour les actions principales</li>
-              <li>Système flexible de breadcrumbs avec NavLink</li>
-              <li>Plusieurs variantes de taille et d'apparence</li>
-            </ul>
-          </div>
-
-          <div className="border border-color rounded-lg overflow-hidden">
-            <PageHeader
+        <div className="border border-color rounded-lg overflow-hidden">
+          <PageHeader
               title="Votre projet mérite le meilleur"
               subtitle="Découvrez notre approche"
               badge={{ text: 'Nouveau', variant: 'tertiary' }}
@@ -1115,9 +1030,8 @@ export default function DesignSystemPage() {
                 { label: 'Nos références', href: '#', variant: 'outline' },
               ]}
               size="small"
-              align="left"
-            />
-          </div>
+            align="left"
+          />
         </div>
       ),
     },
@@ -1127,21 +1041,8 @@ export default function DesignSystemPage() {
       description:
         'Section pour présenter les fonctionnalités ou avantages avec différents layouts',
       component: (
-        <div className="space-y-4">
-          <div className="p-4 border-l-4 border-l-[var(--color-tertiary)] bg-amber-50/30 rounded-md mb-4">
-            <Typography variant="p" className="font-medium mb-2">
-              Caractéristiques du FeatureSection
-            </Typography>
-            <ul className="ml-5 list-disc text-sm space-y-1">
-              <li>Titre h2 en italique gras conforme à la hiérarchie typographique</li>
-              <li>CTA principal avec effet brillance si marqué comme tel</li>
-              <li>Multiples layouts pour différentes présentations (grid, cards, list, etc.)</li>
-              <li>Styles d'icônes et numérotation personnalisables</li>
-            </ul>
-          </div>
-
-          <div className="border border-color rounded-lg overflow-hidden">
-            <FeatureSection
+        <div className="border border-color rounded-lg overflow-hidden">
+          <FeatureSection
               title="Nos services"
               subtitle="Solutions sur mesure pour vos besoins digitaux"
               features={[
@@ -1175,8 +1076,7 @@ export default function DesignSystemPage() {
               }}
               textAlign="center"
               className="py-8"
-            />
-          </div>
+          />
         </div>
       ),
     },
@@ -1185,21 +1085,8 @@ export default function DesignSystemPage() {
       title: 'EnhancedContactForm',
       description: 'Formulaire de contact enrichi avec sections complémentaires',
       component: (
-        <div className="space-y-4">
-          <div className="p-4 border-l-4 border-l-[var(--color-secondary)] bg-cyan-50/30 rounded-md mb-4">
-            <Typography variant="p" className="font-medium mb-2">
-              Éléments du formulaire de contact
-            </Typography>
-            <ul className="ml-5 list-disc text-sm space-y-1">
-              <li>Titre h2 en italique gras pour la cohérence typographique</li>
-              <li>Utilisation mesurée des accents de couleur</li>
-              <li>Mise en valeur des services proposés</li>
-              <li>Adaptation responsive du formulaire</li>
-            </ul>
-          </div>
-
-          <div className="border border-color rounded-lg overflow-hidden">
-            <EnhancedContactForm
+        <div className="border border-color rounded-lg overflow-hidden">
+          <EnhancedContactForm
               title="Discutons de votre projet"
               subtitle="Nous vous répondrons sous 24h"
               accentColor="primary"
@@ -1230,8 +1117,7 @@ export default function DesignSystemPage() {
                 },
               ]}
               className="max-w-4xl mx-auto"
-            />
-          </div>
+          />
         </div>
       ),
     },
@@ -1270,7 +1156,7 @@ export default function DesignSystemPage() {
               <Typography as="h3" variant="h3" className="mb-2">
                 {comp.title}
               </Typography>
-              <Typography variant="p" className="mb-4 text-secondary">
+              <Typography variant="p" className="mb-4 text-[var(--text-secondary)]">
                 {comp.description}
               </Typography>
 
@@ -1326,7 +1212,7 @@ export default function DesignSystemPage() {
       <div className="text-center mt-12">
         <Link
           href="/ds-lab"
-          className="inline-flex items-center text-primary hover:text-primary/80 border-b-2 border-[var(--color-tertiary)]"
+          className="inline-flex items-center text-[var(--color-primary)] hover:!text-[#d85014] border-b-2 border-[var(--color-tertiary)] transition-colors"
         >
           <Icon name="ArrowLeft" size={16} className="mr-2" />
           Retour au DS Lab

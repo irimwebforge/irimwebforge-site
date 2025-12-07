@@ -4,35 +4,18 @@ import { useEffect, useState } from 'react';
 import { Icon } from './Icon';
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark' | 'system'>('system');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
   useEffect(() => {
-    // Récupérer le thème initial
-    const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark' | 'system') || 'system';
+    // Récupérer le thème initial (dark par défaut)
+    const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark') || 'dark';
     setTheme(savedTheme);
-
-    // Appliquer le thème initial
     applyTheme(savedTheme);
+  }, []);
 
-    // Écouter les changements de préférences système
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = () => {
-      if (theme === 'system') {
-        applyTheme('system');
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme]);
-
-  const applyTheme = (newTheme: 'light' | 'dark' | 'system') => {
+  const applyTheme = (newTheme: 'light' | 'dark') => {
     const root = document.documentElement;
-    const isDark =
-      newTheme === 'dark' ||
-      (newTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-    if (isDark) {
+    if (newTheme === 'dark') {
       root.classList.add('dark');
     } else {
       root.classList.remove('dark');
@@ -40,7 +23,7 @@ export function ThemeToggle() {
   };
 
   const toggleTheme = () => {
-    const newTheme = theme === 'system' ? 'light' : theme === 'light' ? 'dark' : 'system';
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     applyTheme(newTheme);
@@ -54,10 +37,8 @@ export function ThemeToggle() {
     >
       {theme === 'dark' ? (
         <Icon name="Moon" className="w-5 h-5" />
-      ) : theme === 'light' ? (
-        <Icon name="Sun" className="w-5 h-5" />
       ) : (
-        <Icon name="Monitor" className="w-5 h-5" />
+        <Icon name="Sun" className="w-5 h-5" />
       )}
     </button>
   );

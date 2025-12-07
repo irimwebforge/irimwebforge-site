@@ -334,7 +334,7 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
           {title}
         </Typography>
         {subtitle && (
-          <Typography variant="p" className="mb-6 text-tertiary">
+          <Typography variant="p" className="mb-6 text-[var(--text-secondary)]">
             {subtitle}
           </Typography>
         )}
@@ -353,7 +353,7 @@ export const ConversationForm: React.FC<ConversationFormProps> = ({
         {title}
       </Typography>
       {subtitle && (
-        <Typography variant="p" className="mb-6 text-tertiary">
+        <Typography variant="p" className="mb-6 text-[var(--text-secondary)]">
           {subtitle}
         </Typography>
       )}

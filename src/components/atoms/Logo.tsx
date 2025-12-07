@@ -1,9 +1,8 @@
 'use client';
 
-'use client';
-
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+
 interface LogoProps {
   className?: string;
   width?: number;
@@ -14,6 +13,7 @@ interface LogoProps {
   onClick?: () => void;
   priority?: boolean;
 }
+
 export const Logo = ({
   className = '',
   width = 150,
@@ -23,25 +23,25 @@ export const Logo = ({
   onClick,
   priority = false,
 }: LogoProps) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true); // dark par défaut
 
   useEffect(() => {
-    // Vérification initiale uniquement si le mode est auto
     if (typeof window !== 'undefined' && mode === 'auto') {
-      setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-      // Mise en place d'un écouteur pour les changements de préférence
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      const handleChange = (e: MediaQueryListEvent) => {
-        setIsDarkMode(e.matches);
+      // Détecte la classe .dark sur le HTML (pas prefers-color-scheme)
+      const checkDarkMode = () => {
+        setIsDarkMode(document.documentElement.classList.contains('dark'));
       };
 
-      mediaQuery.addEventListener('change', handleChange);
+      checkDarkMode();
 
-      // Nettoyage lors du démontage du composant
-      return () => {
-        mediaQuery.removeEventListener('change', handleChange);
-      };
+      // Observer les changements de classe sur html
+      const observer = new MutationObserver(checkDarkMode);
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
+
+      return () => observer.disconnect();
     }
   }, [mode]);
 

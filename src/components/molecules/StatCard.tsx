@@ -118,7 +118,7 @@ export const StatCard: React.FC<StatCardProps> = ({
     const trendColorClasses = {
       up: 'text-[var(--color-success)]',
       down: 'text-[var(--color-accent)]',
-      neutral: 'text-tertiary',
+      neutral: 'text-[var(--text-secondary)]',
     };
 
     // Icônes pour les tendances
@@ -171,7 +171,7 @@ export const StatCard: React.FC<StatCardProps> = ({
       <div className={cn('mt-1 text-sm font-medium', trendColorClasses[direction])}>
         {trendIcons[direction]}
         <span>{trendValue}</span>
-        {label && <span className="ml-1 text-tertiary text-xs">{label}</span>}
+        {label && <span className="ml-1 text-[var(--text-secondary)] text-xs">{label}</span>}
       </div>
     );
   };
@@ -182,23 +182,23 @@ export const StatCard: React.FC<StatCardProps> = ({
       {renderIcon()}
 
       <div className={cn('flex flex-col', layout === 'horizontal' && icon ? 'flex-1' : '')}>
-        <Typography variant="small" className={cn('text-secondary', sizeClasses[size].title)}>
+        <Typography variant="small" className={cn('text-[var(--text-secondary)]', sizeClasses[size].title)}>
           {title}
         </Typography>
 
         <div className="flex items-baseline">
-          {valuePrefix && <span className="mr-1 text-tertiary">{valuePrefix}</span>}
+          {valuePrefix && <span className="mr-1 text-[var(--text-secondary)]">{valuePrefix}</span>}
           <Typography
             variant="h2"
             className={cn(sizeClasses[size].value, variant === 'accent' ? accentColorClass : '')}
           >
             {value}
           </Typography>
-          {valueSuffix && <span className="ml-1 text-tertiary">{valueSuffix}</span>}
+          {valueSuffix && <span className="ml-1 text-[var(--text-secondary)]">{valueSuffix}</span>}
         </div>
 
         {subtitle && (
-          <Typography variant="small" className={cn('text-secondary', sizeClasses[size].subtitle)}>
+          <Typography variant="small" className={cn('text-[var(--text-secondary)]', sizeClasses[size].subtitle)}>
             {subtitle}
           </Typography>
         )}
@@ -273,7 +273,7 @@ export const StatGroup: React.FC<StatGroupProps> = ({
           )}
 
           {subtitle && (
-            <Typography variant="lead" className="text-secondary">
+            <Typography variant="lead" className="text-[var(--text-secondary)]">
               {subtitle}
             </Typography>
           )}

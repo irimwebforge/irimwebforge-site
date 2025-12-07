@@ -20,7 +20,7 @@ Notre design system utilise une hiérarchie visuelle claire avec les principes s
 
 - **Primaire (Turquoise)** : `#00B3B3` - Éléments interactifs, liens et accents
 - **Secondaire (Bleu foncé)** : `#004466` - Titres, textes importants, éléments d'autorité
-- **Tertiaire (Orange)** : `#F06424` - Uniquement pour accentuation (bordures, badges, icônes)
+- **Tertiaire (Orange)** : `#d85014` - Uniquement pour accentuation (bordures, badges, icônes)
 
 ### Boutons
 
@@ -40,7 +40,7 @@ Composant pour les actions interactives.
 <Button variant="outline">Action alternative</Button>
 ```
 
-**Variantes** : `gradient` (CTA), `primary`, `secondary`, `tertiary`, `outline`, `ghost`, `icon`  
+**Variantes** : `gradient` (CTA), `primary`, `secondary`, `outline`, `ghost`, `icon`  
 **Effets** : La variante `gradient` utilise l'effet de brillance au survol
 
 ### Typography

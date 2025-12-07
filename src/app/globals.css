@@ -3,9 +3,9 @@
 
 @theme {
   /* Couleurs principales */
-  --color-primary: #00b3b3;
-  --color-secondary: #004466;
-  --color-tertiary: #d85014;
+  --color-primary: #00b3b3; /* Turquoise */
+  --color-secondary: #004466; /* Bleu foncé */
+  --color-tertiary: #d85014; /* Orange */
 
   /* Couleurs principales accessibles (ratio ≥ 4.5:1) */
   --color-primary-accessible: #008080; /* Turquoise plus foncé, ratio ~5.2:1 */
@@ -13,7 +13,7 @@
   --color-tertiary-accessible: #b8420f; /* Orange plus foncé, ratio ~4.6:1 */
 
   /* Arrière-plans colorés accessibles pour badges et boutons outline */
-  --color-primary-bg-accessible: #e6f7f7; /* Background turquoise très clair, ratio avec texte foncé ~13:1 */
+  --color-primary-bg-accessible: #e6f7f7; /* Background turquoise très clair */
   --color-secondary-bg-accessible: #e6f0f5; /* Background bleu très clair */
   --color-tertiary-bg-accessible: #fdf2ef; /* Background orange très clair */
 
@@ -81,6 +81,21 @@
   --border-color: #e5e5e5;
   --border-color-hover: #d4d4d4;
 
+  /* Couleurs principales (dupliquées de @theme pour compatibilité) */
+  --color-primary: #00b3b3;
+  --color-secondary: #004466;
+  --color-tertiary: #d85014;
+
+  /* Couleurs accessibles */
+  --color-primary-accessible: #008080;
+  --color-secondary-accessible: #003955;
+  --color-tertiary-accessible: #b8420f;
+
+  /* Backgrounds accessibles */
+  --color-primary-bg-accessible: #e6f7f7;
+  --color-secondary-bg-accessible: #e6f0f5;
+  --color-tertiary-bg-accessible: #fdf2ef;
+
   /* Nouvelles variables pour le design system */
   --color-info: #2563eb;
   --color-success: #059669;
@@ -102,9 +117,14 @@
   --border-color: #404040;
   --border-color-hover: #525252;
 
-  /* Ajustement des couleurs principales */
+  /* Couleur outline button - blanc en dark */
+  --color-outline: #ffffff;
+  --color-outline-hover-bg: rgba(255, 255, 255, 0.1);
+
+  /* Ajustement des couleurs principales pour dark mode */
   --color-primary: #00b3b3;
   --color-secondary: #005577;
+  --color-secondary-accessible: #66b3cc; /* Bleu accessible sur fond sombre */
   --color-tertiary: #ff7a3d;
 
   /* Variables du design system */
@@ -130,7 +150,7 @@ h5,
 h6 {
   font-family: var(--font-display);
   font-weight: 700;
-  color: var(--text-primary);
+  /* Couleur gérée par Typography component */
 }
 
 a {

@@ -16,7 +16,7 @@ export interface CallToActionProps {
     /** URL de destination */
     url: string;
     /** Style visuel du bouton */
-    variant?: 'primary' | 'secondary' | 'tertiary' | 'gradient';
+    variant?: 'primary' | 'secondary' | 'gradient';
   };
   /** Configuration de l'action secondaire */
   secondaryAction?: {
@@ -25,7 +25,7 @@ export interface CallToActionProps {
     /** URL de destination */
     url: string;
     /** Style visuel du bouton */
-    variant?: 'primary' | 'secondary' | 'tertiary' | 'outline' | 'gradient';
+    variant?: 'primary' | 'secondary' | 'outline' | 'gradient';
   };
   /** Classes CSS additionnelles */
   className?: string;
@@ -94,7 +94,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
         </Typography>
 
         {description && (
-          <Typography variant="lead" className="mb-6 text-secondary">
+          <Typography variant="lead" className="mb-6 text-[var(--text-secondary)]">
             {description}
           </Typography>
         )}

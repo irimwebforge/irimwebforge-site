@@ -10,7 +10,7 @@ export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElemen
   label?: string;
   error?: string;
   helpText?: string;
-  variant?: 'default' | 'primary' | 'tertiary';
+  variant?: 'default' | 'primary';
   options: SelectOption[];
 }
 
@@ -21,13 +21,11 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       default: 'focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]',
       primary:
         'border-[var(--color-primary)]/30 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]',
-      tertiary:
-        'border-[var(--color-tertiary)]/30 focus:ring-[var(--color-tertiary)] focus:border-[var(--color-tertiary)]',
     };
 
     return (
       <div className="flex flex-col gap-1">
-        {label && <label className="text-sm font-medium text-secondary mb-1">{label}</label>}
+        {label && <label className="text-sm font-medium text-[var(--text-secondary)] mb-1">{label}</label>}
         <select
           className={cn(
             `w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 bg-white appearance-none`,
@@ -47,7 +45,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           ))}
         </select>
         {error && <span className="text-sm text-red-500 mt-1">{error}</span>}
-        {helpText && !error && <span className="text-xs text-tertiary mt-1">{helpText}</span>}
+        {helpText && !error && <span className="text-xs text-[var(--text-secondary)] mt-1">{helpText}</span>}
       </div>
     );
   }

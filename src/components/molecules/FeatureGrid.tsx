@@ -113,7 +113,7 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({
           >
             {feature.title}
           </Typography>
-          <Typography variant="p" className="text-secondary">
+          <Typography variant="p" className="text-[var(--text-secondary)]">
             {feature.description}
           </Typography>
           {feature.link && (

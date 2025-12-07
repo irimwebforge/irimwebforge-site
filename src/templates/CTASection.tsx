@@ -11,7 +11,7 @@ import Image from 'next/image';
 export type Action = {
   text: string;
   url: string;
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'gradient';
+  variant?: 'primary' | 'secondary' | 'gradient';
   size?: 'small' | 'medium' | 'large';
 };
 

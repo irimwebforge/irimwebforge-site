@@ -54,7 +54,7 @@ export const Badge: React.FC<BadgeProps> = ({
   const variantClasses = {
     default: isSolid
       ? 'bg-[var(--color-border)] text-[var(--foreground)]'
-      : 'surface-secondary text-secondary',
+      : 'surface-secondary text-[var(--text-secondary)]',
     primary: isSolid
       ? 'bg-[var(--color-primary)] text-white'
       : 'bg-[var(--color-primary-bg-accessible)] text-[var(--color-primary-accessible)]',
@@ -93,7 +93,7 @@ export const Badge: React.FC<BadgeProps> = ({
 
   // Classes de contour
   const outlineClasses = isOutlined
-    ? `border border-current bg-transparent ${variant === 'default' ? 'text-secondary' : ''}`
+    ? `border border-current bg-transparent ${variant === 'default' ? 'text-[var(--text-secondary)]' : ''}`
     : '';
 
   // Classes de base

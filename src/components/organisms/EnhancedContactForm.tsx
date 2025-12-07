@@ -110,7 +110,7 @@ export const EnhancedContactForm: React.FC<EnhancedContactFormProps> = ({
               Nouveau projet
             </Badge>
           </div>
-          <Typography variant="p" className="text-secondary">
+          <Typography variant="p" className="text-[var(--text-secondary)]">
             {subtitle}
           </Typography>
         </div>
@@ -150,13 +150,13 @@ export const EnhancedContactForm: React.FC<EnhancedContactFormProps> = ({
             </div>
           )}
           <div>
-            <Typography variant="p" className="italic text-secondary mb-2">
+            <Typography variant="p" className="italic text-[var(--text-secondary)] mb-2">
               "{testimonialToShow.quote}"
             </Typography>
             <Typography variant="small" className="font-semibold">
               {testimonialToShow.author}
               {testimonialToShow.company && (
-                <span className="text-secondary font-normal"> — {testimonialToShow.company}</span>
+                <span className="text-[var(--text-secondary)] font-normal"> — {testimonialToShow.company}</span>
               )}
             </Typography>
           </div>

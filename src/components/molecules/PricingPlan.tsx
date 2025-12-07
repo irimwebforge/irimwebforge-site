@@ -85,7 +85,7 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
           {typeof price.amount === 'number' ? `${price.amount}` : price.amount}
         </span>
         <span className="text-xl ml-1">{currency}</span>
-        {period && <span className="text-sm text-tertiary ml-1">{period}</span>}
+        {period && <span className="text-sm text-[var(--text-secondary)] ml-1">{period}</span>}
         {suffix && <span className="text-sm ml-1">{suffix}</span>}
       </div>
     );
@@ -126,7 +126,7 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
             <span
               className={cn(
                 'mr-2 mt-1',
-                feature.included ? `text-[var(--color-${color})]` : 'text-tertiary'
+                feature.included ? `text-[var(--color-${color})]` : 'text-[var(--text-secondary)]'
               )}
             >
               {feature.included ? (
@@ -162,7 +162,7 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
             </span>
             <Typography
               variant="small"
-              className={cn(!feature.included ? 'text-tertiary line-through' : '')}
+              className={cn(!feature.included ? 'text-[var(--text-secondary)] line-through' : '')}
             >
               {feature.text}
             </Typography>
@@ -183,7 +183,7 @@ export const PricingPlan: React.FC<PricingPlanProps> = ({
         </Typography>
 
         {description && (
-          <Typography variant="small" className="text-tertiary">
+          <Typography variant="small" className="text-[var(--text-secondary)]">
             {description}
           </Typography>
         )}

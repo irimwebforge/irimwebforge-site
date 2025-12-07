@@ -14,10 +14,8 @@ const buttonVariants = cva(
           'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary)]/90 active:bg-[var(--color-primary)]/80',
         secondary:
           'bg-[var(--color-secondary)] text-white hover:bg-[var(--color-secondary)]/90 active:bg-[var(--color-secondary)]/80',
-        tertiary:
-          'bg-[var(--color-tertiary)] text-white hover:bg-[var(--color-tertiary)]/90 active:bg-[var(--color-tertiary)]/80',
         outline:
-          'border border-[var(--color-primary-accessible)] bg-white text-[var(--color-primary-accessible)] hover:bg-[var(--color-primary-bg-accessible)] active:bg-[var(--color-primary-bg-accessible)]',
+          'border-2 border-[#008080] bg-transparent text-[#008080] hover:bg-[#e6f7f7]',
         ghost:
           'text-[var(--color-primary-accessible)] hover:bg-[var(--color-primary-bg-accessible)] active:bg-[var(--color-primary-bg-accessible)]',
         gradient:

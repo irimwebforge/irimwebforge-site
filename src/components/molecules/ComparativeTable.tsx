@@ -194,7 +194,7 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
         </Typography>
 
         {row.description && (
-          <Typography variant="small" className="text-secondary mb-4">
+          <Typography variant="small" className="text-[var(--text-secondary)] mb-4">
             {row.description}
           </Typography>
         )}
@@ -264,7 +264,7 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
                     </Typography>
 
                     {column.description && (
-                      <Typography variant="small" className="mt-1 text-secondary">
+                      <Typography variant="small" className="mt-1 text-[var(--text-secondary)]">
                         {column.description}
                       </Typography>
                     )}
@@ -285,7 +285,7 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
                     </Typography>
 
                     {row.description && (
-                      <Typography variant="small" className="text-secondary mt-1">
+                      <Typography variant="small" className="text-[var(--text-secondary)] mt-1">
                         {row.description}
                       </Typography>
                     )}
@@ -324,7 +324,7 @@ export const ComparativeTable: React.FC<ComparativeTableProps> = ({
           )}
 
           {subtitle && (
-            <Typography variant="lead" className="text-secondary">
+            <Typography variant="lead" className="text-[var(--text-secondary)]">
               {subtitle}
             </Typography>
           )}

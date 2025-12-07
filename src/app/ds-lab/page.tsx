@@ -7,7 +7,6 @@ import { Card } from '@/components/molecules/Card';
 import { Logo } from '@/components/atoms/Logo';
 import { Icon, type IconName } from '@/components/atoms/Icon';
 import { Badge } from '@/components/atoms/Badge';
-import { Button } from '@/components/atoms/Button';
 
 interface PageItem {
   title: string;
@@ -47,21 +46,6 @@ const pages: PageItem[] = [
     iconName: 'FileText',
     variant: 'default',
   },
-  {
-    title: 'Couleur Tertiaire',
-    description: "Utilisation de l'orange comme élément d'accentuation et de contraste",
-    href: '/ds-lab/color-tertiary',
-    iconName: 'Square',
-    badge: 'Nouveau',
-    variant: 'highlight',
-  },
-  {
-    title: 'Mocks',
-    description: 'Données factices utilisées dans les démonstrations',
-    href: '/ds-lab/mocks',
-    iconName: 'BarChart2',
-    variant: 'default',
-  },
 ];
 
 export default function DSLabHomePage() {
@@ -80,26 +64,11 @@ export default function DSLabHomePage() {
           Environnement de développement et de test pour le design system IRIM Webforge
         </Typography>
 
-        <div className="mt-6 text-center">
-          <Button
-            variant="gradient"
-            className="shine-effect"
-            icon={<Icon name="Sparkles" />}
-            aria-label="Explorer le Design System"
-          >
-            Explorer le Design System
-          </Button>
-        </div>
-
         <div className="flex flex-col gap-2 mt-4">
-          <div className="py-1 px-3 text-xs text-center bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full flex items-center gap-1.5">
-            <Icon name="AlertTriangle" size={12} />
-            Environnement de développement uniquement
-          </div>
 
-          <div className="py-1 px-3 text-xs text-center bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full flex items-center gap-1.5">
+          <div className="py-1 px-3 text-xs text-center bg-[var(--color-primary-bg-accessible)] text-[var(--color-primary-accessible)] rounded-full flex items-center gap-1.5">
             <Icon name="Monitor" size={12} />
-            Interface adaptative au thème système (clair/sombre)
+            Interface adaptative au thème (clair/sombre)
           </div>
         </div>
       </div>
@@ -126,7 +95,7 @@ export default function DSLabHomePage() {
                   <Icon
                     name={page.iconName}
                     size={24}
-                    className={`text-primary transition-all duration-300 ${
+                    className={`text-[var(--color-primary)] transition-all duration-300 ${
                       hoveredCardIndex === index ? 'scale-110' : 'scale-100'
                     }`}
                   />
@@ -142,7 +111,7 @@ export default function DSLabHomePage() {
                       </Badge>
                     )}
                   </div>
-                  <Typography variant="p" className="text-secondary">
+                  <Typography variant="p" className="text-[var(--text-secondary)]">
                     {page.description}
                   </Typography>
                 </div>
@@ -152,7 +121,7 @@ export default function DSLabHomePage() {
                   <Icon
                     name="ArrowRight"
                     size={16}
-                    className={`text-primary transition-all duration-300 ${
+                    className={`text-[var(--color-primary)] transition-all duration-300 ${
                       hoveredCardIndex === index ? 'translate-x-1 opacity-100' : 'opacity-50'
                     }`}
                   />
@@ -164,7 +133,7 @@ export default function DSLabHomePage() {
       </div>
 
       <div className="mt-16 text-center">
-        <Link href="/" className="text-primary hover:underline inline-flex items-center gap-2">
+        <Link href="/" className="inline-flex items-center text-[var(--color-primary)] hover:!text-[#d85014] border-b-2 border-[var(--color-tertiary)] transition-colors gap-2">
           <Icon name="ArrowLeft" size={16} />
           Retour à l'accueil
         </Link>

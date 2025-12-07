@@ -69,7 +69,7 @@ export const Step: React.FC<StepProps> = ({
             {title}
           </Typography>
 
-          <Typography as="p" variant="p" className="mt-1 text-secondary">
+          <Typography as="p" variant="p" className="mt-1 text-[var(--text-secondary)]">
             {description}
           </Typography>
         </div>

@@ -120,7 +120,7 @@ export const Timeline = ({
               </Typography>
 
               {/* Description */}
-              <Typography variant="p" className="text-secondary mb-3">
+              <Typography variant="p" className="text-[var(--text-secondary)] mb-3">
                 {step.description}
               </Typography>
 

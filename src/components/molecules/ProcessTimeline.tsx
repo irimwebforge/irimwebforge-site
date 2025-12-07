@@ -59,7 +59,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
     const stepStateClasses = {
       completed: `border-${accentColor} ${colorClass}`,
       current: `border-${accentColor} surface-primary ${colorClass.split(' ')[0]}`,
-      pending: 'border-color surface-secondary text-tertiary',
+      pending: 'border-color surface-secondary text-[var(--text-secondary)]',
     };
 
     // Déterminer la classe d'état
@@ -105,7 +105,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
               </Typography>
 
               {!compact && (
-                <Typography variant="small" className="text-secondary">
+                <Typography variant="small" className="text-[var(--text-secondary)]">
                   {step.description}
                 </Typography>
               )}
@@ -170,7 +170,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
             )}
           </div>
 
-          <Typography variant="p" className="text-secondary mb-3">
+          <Typography variant="p" className="text-[var(--text-secondary)] mb-3">
             {step.description}
           </Typography>
 
@@ -201,7 +201,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
           )}
 
           {subtitle && (
-            <Typography variant="lead" className="text-secondary">
+            <Typography variant="lead" className="text-[var(--text-secondary)]">
               {subtitle}
             </Typography>
           )}

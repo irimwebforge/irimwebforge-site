@@ -96,7 +96,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
             primary: 'bg-[var(--color-primary)] bg-opacity-10 text-[var(--color-primary)]',
             secondary: 'bg-[var(--color-secondary)] bg-opacity-10 text-[var(--color-secondary)]',
             tertiary: 'bg-[var(--color-tertiary)] bg-opacity-10 text-[var(--color-tertiary)]',
-            default: 'surface-secondary text-secondary',
+            default: 'surface-secondary text-[var(--text-secondary)]',
           };
 
           return (
@@ -143,7 +143,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
             {author.name}
           </Typography>
           {author.role && (
-            <Typography variant="small" className="text-tertiary text-xs">
+            <Typography variant="small" className="text-[var(--text-secondary)] text-xs">
               {author.role}
             </Typography>
           )}
@@ -155,7 +155,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
   // Rendu de la méta-information (date et temps de lecture)
   const renderMeta = () => {
     return (
-      <div className="flex items-center text-tertiary text-sm mt-2">
+      <div className="flex items-center text-[var(--text-secondary)] text-sm mt-2">
         <time dateTime={new Date(publishedAt).toISOString()}>{formatDate(publishedAt)}</time>
 
         {readTime && (
@@ -190,7 +190,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
             </Typography>
 
             {excerpt && (
-              <Typography variant="p" className="mt-2 text-secondary line-clamp-2">
+              <Typography variant="p" className="mt-2 text-[var(--text-secondary)] line-clamp-2">
                 {excerpt}
               </Typography>
             )}
@@ -220,7 +220,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
           </Typography>
 
           {excerpt && variant !== 'compact' && (
-            <Typography variant="p" className="mt-2 text-secondary line-clamp-3">
+            <Typography variant="p" className="mt-2 text-[var(--text-secondary)] line-clamp-3">
               {excerpt}
             </Typography>
           )}
@@ -314,7 +314,7 @@ export const BlogPostGrid: React.FC<BlogPostGridProps> = ({
             )}
 
             {subtitle && (
-              <Typography variant="lead" className="text-secondary">
+              <Typography variant="lead" className="text-[var(--text-secondary)]">
                 {subtitle}
               </Typography>
             )}
