@@ -39,103 +39,90 @@ export const Carousel: React.FC<CarouselProps> = ({
   subtitle,
   _centerMode = false,
 }) => {
-  // Conversion des enfants en array
   const childrenArray = React.Children.toArray(children);
   const totalSlides = childrenArray.length;
 
-  // États
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // Pour le loop infini, on clone les slides au debut et a la fin
+  const extendedSlides = loop
+    ? [...childrenArray, ...childrenArray, ...childrenArray] // 3x pour smooth loop
+    : childrenArray;
+
+  const [currentIndex, setCurrentIndex] = useState(loop ? totalSlides : 0); // Commence au milieu
   const [isHovering, setIsHovering] = useState(false);
-  const [slideWidth, setSlideWidth] = useState(0);
-  const [_containerWidth, setContainerWidth] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStartX, setDragStartX] = useState(0);
-  const [dragDelta, setDragDelta] = useState(0);
 
-  // Refs
   const containerRef = useRef<HTMLDivElement>(null);
-  const slideRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  // Déterminer le nombre de slides par vue en fonction de la taille de l'écran
+
+  // Slides par vue selon ecran
   const getActiveSlidesPerView = useCallback(() => {
     if (!responsive) return slidesPerView;
-
     if (typeof window !== 'undefined') {
       const width = window.innerWidth;
       if (width < 640) return 1;
       if (width < 768) return Math.min(2, slidesPerView);
       if (width < 1024) return Math.min(3, slidesPerView);
-      return slidesPerView;
     }
-
     return slidesPerView;
   }, [responsive, slidesPerView]);
-  // Calculer les tailles des slides et du conteneur
-  const updateSizes = useCallback(() => {
-    if (containerRef.current && slideRef.current) {
-      setContainerWidth(containerRef.current.offsetWidth);
-      const calculatedWidth = responsive
-        ? containerRef.current.offsetWidth / getActiveSlidesPerView()
-        : containerRef.current.offsetWidth / slidesPerView;
-      setSlideWidth(calculatedWidth);
-    }
-  }, [responsive, slidesPerView, getActiveSlidesPerView]);
 
-  // Initialiser les tailles et mettre à jour lors du redimensionnement
+  const activeSlidesPerView = getActiveSlidesPerView();
+  const slideWidthPercent = 100 / activeSlidesPerView;
+
+  // Gestion du loop infini - repositionner sans animation quand on atteint les clones
   useEffect(() => {
-    updateSizes();
+    if (!loop) return;
 
-    const handleResize = () => {
-      updateSizes();
-    };
+    // Si on est sur les clones de fin, sauter au debut reel
+    if (currentIndex >= totalSlides * 2) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(totalSlides);
+      }, 500);
+      return () => clearTimeout(timeout);
+    }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [updateSizes]);
+    // Si on est sur les clones de debut, sauter a la fin reelle
+    if (currentIndex < totalSlides) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(totalSlides * 2 - activeSlidesPerView);
+      }, 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, totalSlides, loop, activeSlidesPerView]);
 
-  // Fonction pour passer au slide suivant
+  // Reactiver la transition apres repositionnement
+  useEffect(() => {
+    if (!isTransitioning) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(true);
+      }, 50);
+      return () => clearTimeout(timeout);
+    }
+  }, [isTransitioning]);
+
   const nextSlide = useCallback(() => {
-    if (loop || currentIndex < totalSlides - getActiveSlidesPerView()) {
-      setCurrentIndex((prevIndex) => {
-        const newIndex = prevIndex + 1;
-        return loop && newIndex >= totalSlides ? 0 : newIndex;
-      });
-    }
-  }, [currentIndex, loop, totalSlides, getActiveSlidesPerView]);
+    setCurrentIndex((prev) => prev + 1);
+  }, []);
 
-  // Fonction pour passer au slide précédent
   const prevSlide = useCallback(() => {
-    if (loop || currentIndex > 0) {
-      setCurrentIndex((prevIndex) => {
-        const newIndex = prevIndex - 1;
-        return loop && newIndex < 0 ? totalSlides - 1 : newIndex;
-      });
-    }
-  }, [currentIndex, loop, totalSlides]);
+    setCurrentIndex((prev) => prev - 1);
+  }, []);
 
-  // Fonction pour aller à un slide spécifique
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
-
-  // Gestion du défilement automatique
+  // Autoplay
   useEffect(() => {
-    if (autoPlay && !isHovering && !isDragging) {
-      intervalRef.current = setInterval(() => {
-        nextSlide();
-      }, interval);
+    if (autoPlay && !isHovering) {
+      intervalRef.current = setInterval(nextSlide, interval);
     }
-
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [autoPlay, interval, isHovering, isDragging, nextSlide]);
+  }, [autoPlay, interval, isHovering, nextSlide]);
 
-  // Gestion du swipe sur mobile
+  // Touch handlers
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.touches[0].clientX);
     setTouchEndX(e.touches[0].clientX);
@@ -146,51 +133,10 @@ export const Carousel: React.FC<CarouselProps> = ({
   };
 
   const handleTouchEnd = () => {
-    if (touchStartX - touchEndX > 50) {
-      // Swipe vers la gauche
-      nextSlide();
-    } else if (touchEndX - touchStartX > 50) {
-      // Swipe vers la droite
-      prevSlide();
-    }
+    if (touchStartX - touchEndX > 50) nextSlide();
+    else if (touchEndX - touchStartX > 50) prevSlide();
   };
 
-  // Gestion du glisser-déposer
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setDragStartX(e.clientX);
-    setDragDelta(0);
-    e.preventDefault();
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging) {
-      const delta = e.clientX - dragStartX;
-      setDragDelta(delta);
-    }
-  };
-
-  const handleMouseUp = () => {
-    if (isDragging) {
-      if (dragDelta > 50) {
-        prevSlide();
-      } else if (dragDelta < -50) {
-        nextSlide();
-      }
-      setIsDragging(false);
-      setDragDelta(0);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (isDragging) {
-      setIsDragging(false);
-      setDragDelta(0);
-    }
-    setIsHovering(false);
-  };
-
-  // Classes pour l'espacement
   const spacingClasses = {
     none: 'gap-0',
     small: 'gap-2',
@@ -198,55 +144,59 @@ export const Carousel: React.FC<CarouselProps> = ({
     large: 'gap-6',
   };
 
-  // Calculer le décalage pour le positionnement des slides
   const getTransformStyle = () => {
-    const offset = -currentIndex * slideWidth;
-    const dragOffset = isDragging ? dragDelta : 0;
-
     if (animation === 'slide') {
+      const offsetPercent = -currentIndex * slideWidthPercent;
       return {
-        transform: `translateX(${offset + dragOffset}px)`,
-        transition: isDragging ? 'none' : 'transform 0.5s ease',
+        transform: `translateX(${offsetPercent}%)`,
+        transition: isTransitioning ? 'transform 0.5s ease' : 'none',
       };
     }
-
     return {};
   };
 
-  // Wrapper pour le contenu du slide
   const renderSlide = (child: React.ReactNode, index: number) => {
-    const isActive = index === currentIndex;
-    const isVisible = index >= currentIndex && index < currentIndex + getActiveSlidesPerView();
-
     return (
       <div
-        ref={index === 0 ? slideRef : null}
         key={index}
-        className={`carousel-slide ${animation === 'fade' ? 'absolute inset-0' : 'relative'} ${animation === 'fade' && isActive ? 'opacity-100 z-10' : animation === 'fade' ? 'opacity-0' : ''}`}
-        style={{
-          width: slideWidth,
-          opacity: animation === 'fade' ? (isActive ? 1 : 0) : 1,
-          transition: animation === 'fade' ? 'opacity 0.5s ease' : 'none',
-        }}
+        className="carousel-slide flex-shrink-0"
+        style={{ width: `${slideWidthPercent}%` }}
       >
-        <div className={`h-full ${!isVisible && animation !== 'fade' ? 'opacity-60' : ''}`}>
-          {child}
-        </div>
+        <div className="h-full px-1">{child}</div>
+      </div>
+    );
+  };
+
+  // Indicateurs - seulement pour les slides reels
+  const renderIndicators = () => {
+    if (!indicators || totalSlides <= 1) return null;
+
+    // Calculer l'index reel (0 to totalSlides-1)
+    const realIndex = ((currentIndex - totalSlides) % totalSlides + totalSlides) % totalSlides;
+
+    return (
+      <div className="flex justify-center mt-4 space-x-2">
+        {Array.from({ length: totalSlides }).map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full transition-all ${
+              index === realIndex
+                ? 'bg-[var(--foreground)] w-4'
+                : 'bg-[var(--color-border)]'
+            }`}
+            onClick={() => setCurrentIndex(totalSlides + index)}
+            aria-label={`Aller au slide ${index + 1}`}
+          />
+        ))}
       </div>
     );
   };
 
   return (
     <div className={`carousel-container ${className}`}>
-      {/* Titre et sous-titre */}
       {(title || subtitle) && (
         <div className="mb-6">
-          {title && (
-            <Typography variant="h2" className="mb-2">
-              {title}
-            </Typography>
-          )}
-
+          {title && <Typography variant="h2" className="mb-2">{title}</Typography>}
           {subtitle && (
             <Typography variant="lead" className="text-[var(--text-secondary)]">
               {subtitle}
@@ -255,32 +205,23 @@ export const Carousel: React.FC<CarouselProps> = ({
         </div>
       )}
 
-      {/* Conteneur principal du carrousel */}
       <div
         className="relative"
         onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={handleMouseLeave}
+        onMouseLeave={() => setIsHovering(false)}
       >
-        {/* Contrôles */}
-        {controls && totalSlides > getActiveSlidesPerView() && (
+        {controls && totalSlides > activeSlidesPerView && (
           <>
             <button
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 surface-primary/75 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-opacity-100 transition-all"
-              onClick={(e) => {
-                e.stopPropagation();
-                prevSlide();
-              }}
-              aria-label="Slide précédent"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10 bg-white dark:bg-gray-800 p-2 rounded-full shadow-lg hover:scale-110 transition-transform"
+              onClick={prevSlide}
+              aria-label="Slide precedent"
             >
               <Icon name="ChevronLeft" size={24} />
             </button>
-
             <button
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 surface-primary/75 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-opacity-100 transition-all"
-              onClick={(e) => {
-                e.stopPropagation();
-                nextSlide();
-              }}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10 bg-white dark:bg-gray-800 p-2 rounded-full shadow-lg hover:scale-110 transition-transform"
+              onClick={nextSlide}
               aria-label="Slide suivant"
             >
               <Icon name="ChevronRight" size={24} />
@@ -288,40 +229,22 @@ export const Carousel: React.FC<CarouselProps> = ({
           </>
         )}
 
-        {/* Conteneur des slides */}
         <div
           ref={containerRef}
           className={`overflow-hidden ${adaptiveHeight ? 'h-auto' : 'relative'}`}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseLeave}
         >
           <div
-            className={`flex ${animation === 'fade' ? 'relative' : ''} ${spacingClasses[spacing]}`}
+            className={`flex ${spacingClasses[spacing]}`}
             style={getTransformStyle()}
           >
-            {childrenArray.map((child, index) => renderSlide(child, index))}
+            {extendedSlides.map((child, index) => renderSlide(child, index))}
           </div>
         </div>
 
-        {/* Indicateurs */}
-        {indicators && totalSlides > 1 && (
-          <div className="flex justify-center mt-4 space-x-2">
-            {Array.from({ length: totalSlides }).map((_, index) => (
-              <button
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all ${index === currentIndex ? 'bg-[var(--foreground)] w-4' : 'bg-[var(--color-border)]'}`}
-                onClick={() => goToSlide(index)}
-                aria-label={`Aller au slide ${index + 1}`}
-                aria-current={index === currentIndex}
-              />
-            ))}
-          </div>
-        )}
+        {renderIndicators()}
       </div>
     </div>
   );

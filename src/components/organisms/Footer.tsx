@@ -1,206 +1,204 @@
-import _Link from 'next/link';
-import { Logo } from '../atoms/Logo';
 import { NavLink } from '../atoms/NavLink';
 import { Typography } from '../atoms/Typography';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
-  return (
-    <footer className="py-12 border-t border-color surface-primary" role="contentinfo">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo et description */}
-          <div className="md:col-span-1">
-            <Logo width={100} height={33} />
-            <Typography variant="small" className="mt-4 text-[var(--text-secondary)]">
-              Studio de création digitale spécialisé dans la conception d'interfaces sur mesure.
-            </Typography>
-            {/* Réseaux sociaux */}
-            <div className="mt-6">
-              <Typography
-                variant="p"
-                className="font-semibold text-base mb-4 text-[var(--color-primary)]"
-              >
-                Suivez-moi
-              </Typography>
-              <div className="flex space-x-4">
-                <a
-                  href="https://www.linkedin.com/in/eric-zuber-b9060650/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--text-secondary)] hover:text-[var(--color-primary)]"
-                >
-                  LinkedIn
-                </a>
-                <a
-                  href="https://github.com/Ricomaldo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--text-secondary)] hover:text-[var(--color-primary)]"
-                >
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </div>
+  const linkClass = 'text-secondary hover:text-primary footer-arrow';
 
-          {/* Liens rapides */}
+  return (
+    <footer className="py-10 border-t border-color surface-primary" role="contentinfo">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Colonne 1 : Mes sites + Sites clients */}
           <div>
-            <Typography
-              variant="p"
-              className="font-semibold text-base mb-4 text-[var(--color-primary)]"
-            >
-              Navigation
+            <Typography variant="p" className="font-semibold text-sm mb-2 text-primary">
+              Mes sites
             </Typography>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-0.5 text-sm mb-4">
               <li>
-                <NavLink
-                  href="/"
-                  color="secondary"
-                  exact={true}
-                  className="hover:text-[var(--color-primary)] footer-arrow"
-                >
+                <NavLink href="/" color="secondary" exact={true} className="hover:text-primary footer-arrow">
                   Accueil
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  href="/services"
-                  color="secondary"
-                  className="hover:text-[var(--color-primary)] footer-arrow"
-                >
-                  Services
+                <NavLink href="/blog" color="secondary" className="hover:text-primary footer-arrow">
+                  Blog
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  href="/projets"
-                  color="secondary"
-                  className="hover:text-[var(--color-primary)] footer-arrow"
+                <a
+                  href="https://portfolio.irimwebforge.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
                 >
-                  Projets
-                </NavLink>
+                  Portfolio technique
+                </a>
               </li>
               <li>
-                <NavLink
-                  href="/processus"
-                  color="secondary"
-                  className="hover:text-[var(--color-primary)] footer-arrow"
+                <a
+                  href="https://demoforge.irimwebforge.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
                 >
-                  Processus
-                </NavLink>
+                  DemoForge
+                </a>
               </li>
               <li>
-                <NavLink
-                  href="/a-propos"
-                  color="secondary"
-                  className="hover:text-[var(--color-primary)] footer-arrow"
+                <a
+                  href="https://resetpulse.irimwebforge.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
                 >
-                  À propos
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  href="/contact"
-                  color="secondary"
-                  className="hover:text-[var(--color-primary)] footer-arrow"
-                >
-                  Contact
-                </NavLink>
+                  ResetPulse
+                </a>
               </li>
             </ul>
-          </div>
 
-          {/* Services */}
-          <div>
-            <Typography
-              variant="p"
-              className="font-semibold text-base mb-4 text-[var(--color-primary)]"
-            >
-              Solutions
+            <Typography variant="p" className="font-semibold text-sm mb-2 text-primary">
+              Sites clients
             </Typography>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-0.5 text-sm">
               <li>
-                <NavLink
-                  href="/services/presence"
-                  color="secondary"
-                  className="hover:text-[var(--color-primary)] footer-arrow"
+                <a
+                  href="https://corpsetsenstherapie.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
                 >
-                  Solution Présence
-                </NavLink>
+                  Corps & Sens
+                </a>
               </li>
               <li>
-                <NavLink
-                  href="/services/integree"
-                  color="secondary"
-                  className="hover:text-[var(--color-primary)] footer-arrow"
+                <a
+                  href="https://liberaluminosa.fr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
                 >
-                  Solution Intégrée
-                </NavLink>
+                  Libera Luminosa
+                </a>
               </li>
               <li>
-                <NavLink
-                  href="/services/evolutive"
-                  color="secondary"
-                  className="hover:text-[var(--color-primary)] footer-arrow"
+                <a
+                  href="https://www.universdesreves.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
                 >
-                  Solution Évolutive
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  href="/contact/diagnostic"
-                  color="secondary"
-                  className="hover:text-[var(--color-primary)] footer-arrow"
-                >
-                  Diagnostic Numérique
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  href="/ds-lab"
-                  color="secondary"
-                  className="hover:text-[var(--color-primary)] footer-arrow"
-                >
-                  Design System Lab
-                </NavLink>
+                  Univers des Reves
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Colonne 2 : En savoir plus + Pour les devs */}
           <div>
-            <Typography
-              variant="p"
-              className="font-semibold text-base mb-4 text-[var(--color-primary)]"
-            >
+            <Typography variant="p" className="font-semibold text-sm mb-2 text-primary">
+              En savoir plus
+            </Typography>
+            <ul className="space-y-0.5 text-sm mb-4">
+              <li>
+                <NavLink href="/blog/mon-parcours" color="secondary" className="hover:text-primary footer-arrow">
+                  Mon parcours
+                </NavLink>
+              </li>
+              <li>
+                <NavLink href="/blog/ma-methode" color="secondary" className="hover:text-primary footer-arrow">
+                  Ma methode
+                </NavLink>
+              </li>
+              <li>
+                <NavLink href="/blog/mes-services" color="secondary" className="hover:text-primary footer-arrow">
+                  Mes services
+                </NavLink>
+              </li>
+              <li>
+                <NavLink href="/blog/mes-realisations" color="secondary" className="hover:text-primary footer-arrow">
+                  Mes realisations
+                </NavLink>
+              </li>
+            </ul>
+
+            <Typography variant="p" className="font-semibold text-sm mb-2 text-primary">
+              Pour les devs
+            </Typography>
+            <ul className="space-y-0.5 text-sm">
+              <li>
+                <NavLink href="/ds-lab" color="secondary" className="hover:text-primary footer-arrow">
+                  DS-Lab
+                </NavLink>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/Ricomaldo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
+                >
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/eric-zuber-b9060650/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
+                >
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Colonne 3 : Coordonnees */}
+          <div>
+            <Typography variant="p" className="font-semibold text-sm mb-2 text-primary">
               Contact
             </Typography>
-            <ul className="space-y-2 text-sm">
-              <li className="text-[var(--text-secondary)]">contact@irimwebforge.com</li>
-              <li className="text-[var(--text-secondary)]">06 78 76 45 59</li>
-              <li className="text-[var(--text-secondary)]">11 route de Paris, 67117 Ittenheim</li>
+            <ul className="space-y-0.5 text-sm">
+              <li>
+                <a href="tel:+33678764559" className={linkClass}>
+                  06 78 76 45 59
+                </a>
+              </li>
+              <li>
+                <a href="mailto:contact@irimwebforge.com" className={linkClass}>
+                  contact@irimwebforge.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://cal.com/eric-zuber-nxxypt/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
+                >
+                  Reserver une visio
+                </a>
+              </li>
             </ul>
+            <Typography variant="small" className="mt-4 text-tertiary text-xs">
+              11 route de Paris<br />
+              67117 Ittenheim
+            </Typography>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-color flex flex-col md:flex-row justify-between items-center">
-          <Typography variant="small" className="text-xs text-[var(--text-secondary)] mb-4 md:mb-0">
-            &copy; {currentYear} IRIM Webforge. Tous droits réservés.
+        <div className="mt-8 pt-6 border-t border-color flex flex-col md:flex-row justify-between items-center">
+          <Typography variant="small" className="text-xs text-tertiary mb-4 md:mb-0">
+            &copy; {currentYear} IRIM Webforge
           </Typography>
           <div className="flex space-x-4">
-            <NavLink
-              href="/mentions-legales"
-              className="text-xs text-[var(--text-secondary)] hover:text-[var(--color-primary)]"
-            >
-              Mentions légales
+            <NavLink href="/mentions-legales" className="text-xs text-tertiary hover:text-primary footer-arrow">
+              Mentions legales
             </NavLink>
-            <NavLink
-              href="/politique-confidentialite"
-              className="text-xs text-[var(--text-secondary)] hover:text-[var(--color-primary)]"
-            >
-              Politique de confidentialité
+            <NavLink href="/politique-confidentialite" className="text-xs text-tertiary hover:text-primary footer-arrow">
+              Confidentialite
             </NavLink>
           </div>
         </div>

@@ -13,6 +13,7 @@ import { ProjectPreview } from '@/components/molecules/ProjectPreview';
 import { Modal } from '@/components/molecules/Modal';
 import { Footer } from '@/components/organisms/Footer';
 import { BlogPostCard } from '@/components/molecules/BlogPostCard';
+import { Carousel } from '@/components/molecules/Carousel';
 import { proofs, testimonials, articles } from '@/data/hub';
 
 const CAL_URL = 'https://cal.com/eric-zuber-nxxypt/30min';
@@ -31,8 +32,8 @@ export default function HubPage() {
             </NavLink>
 
             <div className="flex items-center gap-2 sm:gap-4">
-              <NavLink href="/blog" color="tertiary" className="text-sm hidden md:block">
-                Blog
+              <NavLink href="https://portfolio.irimwebforge.com" color="tertiary" className="text-sm hidden md:block" target="_blank">
+                Portfolio
               </NavLink>
               <NavLink href="/ds-lab" color="tertiary" className="text-sm hidden md:block">
                 DS-Lab
@@ -48,8 +49,8 @@ export default function HubPage() {
 
       <main className="pt-16">
         {/* HERO */}
-        <section className="min-h-screen flex items-center bg-section-primary relative overflow-hidden">
-          <Container className="py-16 relative z-10">
+        <section className="min-h-[70vh] flex items-center bg-section-primary relative overflow-hidden">
+          <Container className="py-12 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <Badge variant="tertiary" className="mb-6">
                 Strasbourg, Alsace
@@ -92,6 +93,12 @@ export default function HubPage() {
                 </a>
               ))}
             </div>
+
+            <div className="text-center mt-12">
+              <Button variant="secondary" size="large" href="/portfolio">
+                Voir tous mes projets
+              </Button>
+            </div>
           </Container>
         </section>
 
@@ -122,31 +129,42 @@ export default function HubPage() {
           </Container>
         </section>
 
-        {/* ARTICLES */}
-        <section className="py-16 bg-section-accent">
+        {/* ARTICLES CAROUSEL */}
+        <section className="py-20 bg-section-accent">
           <Container>
             <div className="text-center mb-12">
               <Typography as="h2" variant="h2" className="mb-4">
                 En savoir plus
               </Typography>
-              <Typography variant="subtle">Mon histoire et mes offres en détail</Typography>
+              <Typography variant="subtle">Mon histoire, ma methode et mes realisations</Typography>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {articles.map((article) => (
-                <BlogPostCard
-                  key={article.id}
-                  id={article.id}
-                  title={article.title}
-                  slug={article.slug}
-                  excerpt={article.excerpt}
-                  coverImage={article.coverImage}
-                  publishedAt={article.publishedAt}
-                  readTime={article.readTime}
-                  tags={article.tags}
-                  variant="default"
-                />
-              ))}
+            <div className="max-w-4xl mx-auto">
+              <Carousel
+                slidesPerView={2}
+                responsive={false}
+                autoPlay={true}
+                interval={4000}
+                controls={true}
+                indicators={true}
+                loop={true}
+                spacing="medium"
+              >
+                {articles.map((article) => (
+                  <BlogPostCard
+                    key={article.id}
+                    id={article.id}
+                    title={article.title}
+                    slug={article.slug}
+                    excerpt={article.excerpt}
+                    coverImage={article.coverImage}
+                    publishedAt={article.publishedAt}
+                    readTime={article.readTime}
+                    tags={article.tags}
+                    variant="compact"
+                  />
+                ))}
+              </Carousel>
             </div>
           </Container>
         </section>

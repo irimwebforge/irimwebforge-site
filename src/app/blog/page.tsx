@@ -4,32 +4,25 @@ import { Card } from '@/components/molecules/Card';
 import { Button } from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
 import Link from 'next/link';
+import { getAllArticles, formatDate, getReadingTime, getArticleBySlug } from '@/lib/mdx';
 
 export const metadata = {
   title: 'Blog | IRIM Webforge',
-  description: 'Articles, études de cas et ressources pour indépendants et thérapeutes',
+  description: 'Articles, etudes de cas et ressources pour independants et therapeutes',
 };
 
-const articles = [
-  {
-    slug: 'mon-parcours',
-    title: 'Mon parcours au service de votre autonomie',
-    description:
-      'De formateur à développeur web, comment une expérience personnelle transformatrice guide ma démarche.',
-    date: '6 décembre 2025',
-    tags: ['parcours', 'histoire', 'valeurs'],
-  },
-  {
-    slug: 'mes-services',
-    title: 'Mes services et tarifs',
-    description:
-      'Des solutions numériques pour libérer votre temps. 3 formules adaptées à vos besoins.',
-    date: '6 décembre 2025',
-    tags: ['services', 'tarifs', 'offres'],
-  },
-];
-
 export default function BlogPage() {
+  const articles = getAllArticles();
+
+  // Get reading time for each article
+  const articlesWithReadingTime = articles.map((article) => {
+    const fullArticle = getArticleBySlug(article.slug);
+    return {
+      ...article,
+      readingTime: fullArticle ? getReadingTime(fullArticle.content) : '',
+    };
+  });
+
   return (
     <main className="min-h-screen bg-section-primary py-16">
       <Container>
@@ -38,41 +31,59 @@ export default function BlogPage() {
             Blog
           </Typography>
           <Typography variant="lead" className="mb-12 text-secondary">
-            Mon histoire, mes offres et mes réflexions sur le numérique au service des indépendants.
+            Mon histoire, mes offres et mes reflexions sur le numerique au service des independants.
           </Typography>
 
-          <div className="space-y-6">
-            {articles.map((article) => (
-              <Link key={article.slug} href={`/blog/${article.slug}`} className="block group">
-                <Card
-                  variant="default"
-                  padding="large"
-                  className="transition-all duration-300 hover:shadow-lg hover:border-primary-300"
-                >
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {article.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  <Typography as="h2" variant="h3" className="mb-2 group-hover:text-primary-600">
-                    {article.title}
-                  </Typography>
-                  <Typography variant="p" className="text-secondary mb-3">
-                    {article.description}
-                  </Typography>
-                  <Typography variant="small" className="text-tertiary">
-                    {article.date}
-                  </Typography>
-                </Card>
-              </Link>
-            ))}
-          </div>
+          {articles.length === 0 ? (
+            <div className="text-center py-12">
+              <Typography variant="p" className="text-tertiary">
+                Aucun article pour le moment. Revenez bientot !
+              </Typography>
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {articlesWithReadingTime.map((article) => (
+                <Link key={article.slug} href={`/blog/${article.slug}`} className="block group">
+                  <Card
+                    variant="default"
+                    padding="large"
+                    className="transition-all duration-300 hover:shadow-lg hover:border-primary-300"
+                  >
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {article.tags.map((tag) => (
+                        <Badge key={tag} variant="secondary" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                    <Typography as="h2" variant="h3" className="mb-2 group-hover:text-primary-600">
+                      {article.title}
+                    </Typography>
+                    <Typography variant="p" className="text-secondary mb-3">
+                      {article.description}
+                    </Typography>
+                    <div className="flex items-center gap-4">
+                      <Typography variant="small" className="text-tertiary">
+                        {formatDate(article.date)}
+                      </Typography>
+                      {article.readingTime && (
+                        <>
+                          <span className="text-tertiary">•</span>
+                          <Typography variant="small" className="text-tertiary">
+                            {article.readingTime}
+                          </Typography>
+                        </>
+                      )}
+                    </div>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          )}
 
           <div className="mt-12 text-center">
             <Button variant="outline" href="/">
-              Retour à l'accueil
+              Retour a l'accueil
             </Button>
           </div>
         </div>

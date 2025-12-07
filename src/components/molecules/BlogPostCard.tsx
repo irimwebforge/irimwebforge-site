@@ -206,16 +206,28 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
     // Variantes default, featured et compact
     return (
       <>
-        {coverImage && (
-          <div className="relative h-48 sm:h-64 rounded-t-lg overflow-hidden">
-            <Image src={coverImage} alt={title} fill className="object-cover" />
-          </div>
-        )}
+        <div className={cn(
+          "relative rounded-t-lg overflow-hidden",
+          variant === 'compact' ? 'aspect-[4/3]' : 'h-48 sm:h-64'
+        )}>
+          <Image
+            src={coverImage || '/images/logo.png'}
+            alt={title}
+            fill
+            className={cn(
+              "object-cover",
+              !coverImage && "object-contain p-8 bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-950 dark:to-primary-900"
+            )}
+          />
+        </div>
 
-        <div className={cn('p-5', variant === 'featured' ? 'p-6' : '')}>
-          {renderTags()}
+        <div className={cn(
+          variant === 'compact' ? 'p-3' : 'p-5',
+          variant === 'featured' ? 'p-6' : ''
+        )}>
+          {variant !== 'compact' && renderTags()}
 
-          <Typography variant={variant === 'compact' ? 'h4' : 'h3'} className="mt-2">
+          <Typography variant={variant === 'compact' ? 'h4' : 'h3'} className={variant === 'compact' ? 'text-sm font-semibold' : 'mt-2'}>
             {title}
           </Typography>
 
@@ -225,7 +237,13 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
             </Typography>
           )}
 
-          {renderMeta()}
+          {variant === 'compact' ? (
+            <Typography variant="small" className="text-tertiary text-xs mt-1">
+              {formatReadTime(readTime)}
+            </Typography>
+          ) : (
+            renderMeta()
+          )}
 
           {variant !== 'compact' && renderAuthor()}
         </div>

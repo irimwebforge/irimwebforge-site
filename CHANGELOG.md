@@ -9,6 +9,37 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ### Ajouté
 
+- **Blog MDX avec composants DS-Lab** :
+  - Infrastructure MDX : `next-mdx-remote`, `gray-matter`
+  - Parser MDX avec frontmatter (`src/lib/mdx.ts`)
+  - Mapping 20+ composants DS-Lab (`src/components/mdx/MDXComponents.tsx`)
+  - 4 articles migres depuis pages V1 :
+    - `mon-parcours.mdx` (Timeline, valeurs)
+    - `ma-methode.mdx` (ProcessTimeline, FAQ, StatsShowcase)
+    - `mes-services.mdx` (tarifs, formules)
+    - `mes-realisations.mdx` (14 projets avec ProjectCard)
+- **Carousel infini** : Loop continu dans les deux sens avec clonage des slides
+- **Footer refonte** : 3 colonnes (Mes sites, En savoir plus, Contact) avec animation fleche
+- **CTA Portfolio** : Bouton secondaire sous les preuves
+
+### Modifie
+
+- **Header** : Blog remplace par Portfolio (lien interne)
+- **Section Articles** : Carousel 2 slides avec autoplay au lieu de grille statique
+- **BlogPostCard compact** : Ratio 4:3, fallback logo.png si pas d'image
+- **Hero** : `min-h-[70vh]` au lieu de `min-h-screen`
+- **Style prose MDX** : h2 avec bordure, line-height 1.75, blockquotes stylees
+
+### Supprime
+
+- Strapi abandonne au profit de MDX
+
+---
+
+## [Precedent]
+
+### Ajouté
+
 - **Nouveaux projets au portfolio** :
   - **ResetPulse** : Application mobile Time Timer pour cerveaux neuroatypiques (React Native, App Store & Google Play)
   - **Libera Luminosa** : Site vitrine pour accompagnante en développement personnel
