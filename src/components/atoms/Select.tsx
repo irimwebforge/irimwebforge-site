@@ -25,7 +25,9 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 
     return (
       <div className="flex flex-col gap-1">
-        {label && <label className="text-sm font-medium text-[var(--text-secondary)] mb-1">{label}</label>}
+        {label && (
+          <label className="text-sm font-medium text-[var(--text-secondary)] mb-1">{label}</label>
+        )}
         <select
           className={cn(
             `w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 bg-white appearance-none`,
@@ -45,7 +47,9 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           ))}
         </select>
         {error && <span className="text-sm text-red-500 mt-1">{error}</span>}
-        {helpText && !error && <span className="text-xs text-[var(--text-secondary)] mt-1">{helpText}</span>}
+        {helpText && !error && (
+          <span className="text-xs text-[var(--text-secondary)] mt-1">{helpText}</span>
+        )}
       </div>
     );
   }

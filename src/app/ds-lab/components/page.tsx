@@ -210,7 +210,10 @@ export default function DesignSystemPage() {
                 <Button variant="primary" loading>
                   Chargement
                 </Button>
-                <a href="#" className="inline-flex items-center text-[var(--color-primary)] hover:!text-[#d85014] border-b-2 border-[var(--color-tertiary)] transition-colors">
+                <a
+                  href="#"
+                  className="inline-flex items-center text-[var(--color-primary)] hover:!text-[#d85014] border-b-2 border-[var(--color-tertiary)] transition-colors"
+                >
                   Lien signature →
                 </a>
               </div>
@@ -378,12 +381,7 @@ export default function DesignSystemPage() {
               placeholder="Message invalide"
               rows={3}
             />
-            <Textarea
-              label="Désactivé"
-              disabled
-              placeholder="Zone désactivée"
-              rows={3}
-            />
+            <Textarea label="Désactivé" disabled placeholder="Zone désactivée" rows={3} />
           </div>
         </div>
       ),
@@ -999,13 +997,13 @@ export default function DesignSystemPage() {
       component: (
         <div className="border border-color rounded-lg overflow-hidden">
           <HeroSection
-              title="Créez des interfaces exceptionnelles"
-              subtitle="Design system complet pour des expériences utilisateur cohérentes et professionnelles"
-              ctaText="Explorer nos services"
-              ctaHref="#"
-              secondaryCtaText="En savoir plus"
-              secondaryCtaHref="#"
-              className="py-12"
+            title="Créez des interfaces exceptionnelles"
+            subtitle="Design system complet pour des expériences utilisateur cohérentes et professionnelles"
+            ctaText="Explorer nos services"
+            ctaHref="#"
+            secondaryCtaText="En savoir plus"
+            secondaryCtaHref="#"
+            className="py-12"
           />
         </div>
       ),
@@ -1017,19 +1015,19 @@ export default function DesignSystemPage() {
       component: (
         <div className="border border-color rounded-lg overflow-hidden">
           <PageHeader
-              title="Votre projet mérite le meilleur"
-              subtitle="Découvrez notre approche"
-              badge={{ text: 'Nouveau', variant: 'tertiary' }}
-              breadcrumbs={[
-                { label: 'Accueil', href: '/' },
-                { label: 'Services', href: '/services' },
-                { label: 'Développement web', href: '#' },
-              ]}
-              actions={[
-                { label: 'Demander un devis', href: '#', variant: 'gradient', isMainCta: true },
-                { label: 'Nos références', href: '#', variant: 'outline' },
-              ]}
-              size="small"
+            title="Votre projet mérite le meilleur"
+            subtitle="Découvrez notre approche"
+            badge={{ text: 'Nouveau', variant: 'tertiary' }}
+            breadcrumbs={[
+              { label: 'Accueil', href: '/' },
+              { label: 'Services', href: '/services' },
+              { label: 'Développement web', href: '#' },
+            ]}
+            actions={[
+              { label: 'Demander un devis', href: '#', variant: 'gradient', isMainCta: true },
+              { label: 'Nos références', href: '#', variant: 'outline' },
+            ]}
+            size="small"
             align="left"
           />
         </div>
@@ -1043,39 +1041,39 @@ export default function DesignSystemPage() {
       component: (
         <div className="border border-color rounded-lg overflow-hidden">
           <FeatureSection
-              title="Nos services"
-              subtitle="Solutions sur mesure pour vos besoins digitaux"
-              features={[
-                {
-                  id: 'feature1',
-                  title: "Design d'interface",
-                  description: 'Interfaces utilisateur intuitives et attrayantes',
-                  icon: 'Palette',
-                },
-                {
-                  id: 'feature2',
-                  title: 'Développement web',
-                  description: 'Sites et applications web performants',
-                  icon: 'Code',
-                },
-                {
-                  id: 'feature3',
-                  title: 'Optimisation SEO',
-                  description: 'Améliorez votre visibilité en ligne',
-                  icon: 'Search',
-                },
-              ]}
-              columns={3}
-              layout="grid"
-              backgroundColor="light"
-              cta={{
-                text: 'Tous nos services',
-                href: '#',
-                variant: 'gradient',
-                isMainCta: true,
-              }}
-              textAlign="center"
-              className="py-8"
+            title="Nos services"
+            subtitle="Solutions sur mesure pour vos besoins digitaux"
+            features={[
+              {
+                id: 'feature1',
+                title: "Design d'interface",
+                description: 'Interfaces utilisateur intuitives et attrayantes',
+                icon: 'Palette',
+              },
+              {
+                id: 'feature2',
+                title: 'Développement web',
+                description: 'Sites et applications web performants',
+                icon: 'Code',
+              },
+              {
+                id: 'feature3',
+                title: 'Optimisation SEO',
+                description: 'Améliorez votre visibilité en ligne',
+                icon: 'Search',
+              },
+            ]}
+            columns={3}
+            layout="grid"
+            backgroundColor="light"
+            cta={{
+              text: 'Tous nos services',
+              href: '#',
+              variant: 'gradient',
+              isMainCta: true,
+            }}
+            textAlign="center"
+            className="py-8"
           />
         </div>
       ),
@@ -1087,36 +1085,36 @@ export default function DesignSystemPage() {
       component: (
         <div className="border border-color rounded-lg overflow-hidden">
           <EnhancedContactForm
-              title="Discutons de votre projet"
-              subtitle="Nous vous répondrons sous 24h"
-              accentColor="primary"
-              style="card"
-              showImage={true}
-              testimonial={{
-                quote:
-                  "IRIM Webforge a transformé notre vision en une interface utilisateur exceptionnelle. Leur équipe a été à l'écoute et proactive tout au long du projet.",
-                author: 'Marie Dumas',
-                company: 'DirecteurTech',
-                avatar: '/images/testimonials/avatar-1.svg',
-              }}
-              services={[
-                {
-                  icon: '/icons/website.svg',
-                  title: 'Site web sur mesure',
-                  description: 'Des sites web personnalisés et performants.',
-                },
-                {
-                  icon: '/icons/admin.svg',
-                  title: "Interfaces d'administration",
-                  description: 'Des tableaux de bord efficaces pour gérer vos données.',
-                },
-                {
-                  icon: '/icons/support.svg',
-                  title: 'Support réactif',
-                  description: 'Une assistance continue pour tous vos besoins.',
-                },
-              ]}
-              className="max-w-4xl mx-auto"
+            title="Discutons de votre projet"
+            subtitle="Nous vous répondrons sous 24h"
+            accentColor="primary"
+            style="card"
+            showImage={true}
+            testimonial={{
+              quote:
+                "IRIM Webforge a transformé notre vision en une interface utilisateur exceptionnelle. Leur équipe a été à l'écoute et proactive tout au long du projet.",
+              author: 'Marie Dumas',
+              company: 'DirecteurTech',
+              avatar: '/images/testimonials/avatar-1.svg',
+            }}
+            services={[
+              {
+                icon: '/icons/website.svg',
+                title: 'Site web sur mesure',
+                description: 'Des sites web personnalisés et performants.',
+              },
+              {
+                icon: '/icons/admin.svg',
+                title: "Interfaces d'administration",
+                description: 'Des tableaux de bord efficaces pour gérer vos données.',
+              },
+              {
+                icon: '/icons/support.svg',
+                title: 'Support réactif',
+                description: 'Une assistance continue pour tous vos besoins.',
+              },
+            ]}
+            className="max-w-4xl mx-auto"
           />
         </div>
       ),

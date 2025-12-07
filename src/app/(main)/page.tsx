@@ -38,11 +38,7 @@ export default function HubPage() {
                 DS-Lab
               </NavLink>
               <ThemeToggle />
-              <Button
-                variant="gradient"
-                size="small"
-                onClick={() => setIsCalModalOpen(true)}
-              >
+              <Button variant="gradient" size="small" onClick={() => setIsCalModalOpen(true)}>
                 Réserver 30min
               </Button>
             </div>
@@ -68,11 +64,7 @@ export default function HubPage() {
               </Typography>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  variant="gradient"
-                  size="large"
-                  onClick={() => setIsCalModalOpen(true)}
-                >
+                <Button variant="gradient" size="large" onClick={() => setIsCalModalOpen(true)}>
                   Réserver 30min
                 </Button>
                 <Button variant="outline" size="large" href="#preuves">
@@ -90,19 +82,12 @@ export default function HubPage() {
               <Typography as="h2" variant="h2" className="mb-4">
                 Ce que j'ai construit
               </Typography>
-              <Typography variant="subtle">
-                Apps, Plateformes, Vitrines
-              </Typography>
+              <Typography variant="subtle">Apps, Plateformes, Vitrines</Typography>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {proofs.map((proof) => (
-                <a
-                  key={proof.id}
-                  href={proof.onlineUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a key={proof.id} href={proof.onlineUrl} target="_blank" rel="noopener noreferrer">
                   <ProjectPreview project={proof} />
                 </a>
               ))}
@@ -144,9 +129,7 @@ export default function HubPage() {
               <Typography as="h2" variant="h2" className="mb-4">
                 En savoir plus
               </Typography>
-              <Typography variant="subtle">
-                Mon histoire et mes offres en détail
-              </Typography>
+              <Typography variant="subtle">Mon histoire et mes offres en détail</Typography>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">

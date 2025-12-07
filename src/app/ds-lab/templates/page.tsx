@@ -47,9 +47,9 @@ export default function TemplatesPage() {
       component: (
         <div className="border border-color rounded-lg overflow-hidden">
           <ValueProposition
-              title="Nos valeurs"
-              description="Ce qui nous guide au quotidien"
-              values={adaptValues(mockValues)}
+            title="Nos valeurs"
+            description="Ce qui nous guide au quotidien"
+            values={adaptValues(mockValues)}
           />
         </div>
       ),
@@ -61,9 +61,9 @@ export default function TemplatesPage() {
       component: (
         <div className="border border-color rounded-lg overflow-hidden">
           <ProjectShowcase
-              title="Nos réalisations"
-              description="Découvrez nos derniers projets"
-              projects={adaptProjects(mockProjects)}
+            title="Nos réalisations"
+            description="Découvrez nos derniers projets"
+            projects={adaptProjects(mockProjects)}
           />
         </div>
       ),
@@ -75,9 +75,9 @@ export default function TemplatesPage() {
       component: (
         <div className="border border-color rounded-lg overflow-hidden">
           <ServiceOverview
-              title="Nos services"
-              description="Des solutions adaptées à vos besoins"
-              services={adaptServices(mockServices)}
+            title="Nos services"
+            description="Des solutions adaptées à vos besoins"
+            services={adaptServices(mockServices)}
           />
         </div>
       ),
@@ -89,11 +89,11 @@ export default function TemplatesPage() {
       component: (
         <div className="border border-color rounded-lg overflow-hidden">
           <CTASection
-              title="Prêt à démarrer votre projet ?"
-              description="Discutons ensemble de vos besoins et objectifs"
-              {...adaptActions(
-                { label: 'Commencer maintenant', href: '#' },
-                { label: 'En savoir plus', href: '#' }
+            title="Prêt à démarrer votre projet ?"
+            description="Discutons ensemble de vos besoins et objectifs"
+            {...adaptActions(
+              { label: 'Commencer maintenant', href: '#' },
+              { label: 'En savoir plus', href: '#' }
             )}
           />
         </div>
@@ -106,14 +106,14 @@ export default function TemplatesPage() {
       component: (
         <div className="border border-color rounded-lg overflow-hidden">
           <TestimonialSection
-              title="Ils nous font confiance"
-              description="Ce que nos clients disent de nous"
-              {...adaptTestimonials(mockTestimonials, {
-                withCta: true,
-                ctaText: 'Voir tous les témoignages',
-                ctaUrl: '#',
-              })}
-              variant="featured"
+            title="Ils nous font confiance"
+            description="Ce que nos clients disent de nous"
+            {...adaptTestimonials(mockTestimonials, {
+              withCta: true,
+              ctaText: 'Voir tous les témoignages',
+              ctaUrl: '#',
+            })}
+            variant="featured"
           />
         </div>
       ),
@@ -125,17 +125,17 @@ export default function TemplatesPage() {
       component: (
         <div className="border border-color rounded-lg overflow-hidden">
           <StatsShowcase
-              title="Nos chiffres clés"
-              description="Des résultats qui parlent d'eux-mêmes"
-              {...adaptStats(mockStats, {
-                withIcons: true,
-                colorScheme: 'mixed',
-                withCta: true,
-                ctaText: 'Découvrir notre approche',
-                ctaUrl: '#',
-              })}
-              layout="cards"
-              columns={4}
+            title="Nos chiffres clés"
+            description="Des résultats qui parlent d'eux-mêmes"
+            {...adaptStats(mockStats, {
+              withIcons: true,
+              colorScheme: 'mixed',
+              withCta: true,
+              ctaText: 'Découvrir notre approche',
+              ctaUrl: '#',
+            })}
+            layout="cards"
+            columns={4}
           />
         </div>
       ),
@@ -147,35 +147,35 @@ export default function TemplatesPage() {
       component: (
         <div className="border border-color rounded-lg overflow-hidden">
           <section className="py-12 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white">
-              <div className="container mx-auto px-4 max-w-4xl">
-                <div className="text-center mb-8">
-                  <Typography as="h2" variant="h2" className="mb-3">
-                    {mockCTAVariants.newsletter.title}
-                  </Typography>
-                  <Typography variant="lead">{mockCTAVariants.newsletter.description}</Typography>
-                </div>
-
-                <div className="max-w-xl mx-auto">
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      placeholder={mockCTAVariants.newsletter.inputPlaceholder}
-                      className="flex-1 px-4 py-3 rounded-md border-0 focus:ring-2 focus:ring-white"
-                      aria-label="Email"
-                    />
-                    <Button variant="primary" size="large">
-                      {mockCTAVariants.newsletter.buttonLabel}
-                    </Button>
-                  </div>
-                  <Typography
-                    variant="subtle"
-                    className="text-white opacity-80 text-center mt-3 text-sm"
-                  >
-                    {mockCTAVariants.newsletter.disclaimerText}
-                  </Typography>
-                </div>
+            <div className="container mx-auto px-4 max-w-4xl">
+              <div className="text-center mb-8">
+                <Typography as="h2" variant="h2" className="mb-3">
+                  {mockCTAVariants.newsletter.title}
+                </Typography>
+                <Typography variant="lead">{mockCTAVariants.newsletter.description}</Typography>
               </div>
-            </section>
+
+              <div className="max-w-xl mx-auto">
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <input
+                    type="email"
+                    placeholder={mockCTAVariants.newsletter.inputPlaceholder}
+                    className="flex-1 px-4 py-3 rounded-md border-0 focus:ring-2 focus:ring-white"
+                    aria-label="Email"
+                  />
+                  <Button variant="primary" size="large">
+                    {mockCTAVariants.newsletter.buttonLabel}
+                  </Button>
+                </div>
+                <Typography
+                  variant="subtle"
+                  className="text-white opacity-80 text-center mt-3 text-sm"
+                >
+                  {mockCTAVariants.newsletter.disclaimerText}
+                </Typography>
+              </div>
+            </div>
+          </section>
         </div>
       ),
     },

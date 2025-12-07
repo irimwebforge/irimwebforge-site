@@ -89,13 +89,40 @@
 ### Échelle typographique
 
 ```css
-h1 { font-size: 2.25rem; line-height: 1.25; font-weight: 700; font-style: italic; }
-h2 { font-size: 1.875rem; line-height: 1.25; font-weight: 700; font-style: italic; }
-h3 { font-size: 1.5rem; line-height: 1.375; font-weight: 700; }
-h4 { font-size: 1.25rem; line-height: 1.375; font-weight: 600; }
-p  { font-size: 1rem; line-height: 1.5; }
-.lead { font-size: 1.125rem; line-height: 1.625; }
-.small { font-size: 0.875rem; line-height: 1.5; }
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.25;
+  font-weight: 700;
+  font-style: italic;
+}
+h2 {
+  font-size: 1.875rem;
+  line-height: 1.25;
+  font-weight: 700;
+  font-style: italic;
+}
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.375;
+  font-weight: 700;
+}
+h4 {
+  font-size: 1.25rem;
+  line-height: 1.375;
+  font-weight: 600;
+}
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.625;
+}
+.small {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
 ```
 
 ### Responsive
@@ -114,15 +141,15 @@ p  { font-size: 1rem; line-height: 1.5; }
 ### Échelle (multiples de 4px)
 
 ```css
---space-1: 0.25rem;   /* 4px */
---space-2: 0.5rem;    /* 8px */
---space-3: 0.75rem;   /* 12px */
---space-4: 1rem;      /* 16px */
---space-6: 1.5rem;    /* 24px */
---space-8: 2rem;      /* 32px */
---space-12: 3rem;     /* 48px */
---space-16: 4rem;     /* 64px */
---space-20: 5rem;     /* 80px */
+--space-1: 0.25rem; /* 4px */
+--space-2: 0.5rem; /* 8px */
+--space-3: 0.75rem; /* 12px */
+--space-4: 1rem; /* 16px */
+--space-6: 1.5rem; /* 24px */
+--space-8: 2rem; /* 32px */
+--space-12: 3rem; /* 48px */
+--space-16: 4rem; /* 64px */
+--space-20: 5rem; /* 80px */
 ```
 
 ### Application
@@ -140,10 +167,10 @@ p  { font-size: 1rem; line-height: 1.5; }
 
 ```typescript
 const breakpoints = {
-  sm: '640px',     // Mobile large
-  md: '768px',     // Tablette
-  lg: '1024px',    // Desktop
-  xl: '1280px',    // Large Desktop
+  sm: '640px', // Mobile large
+  md: '768px', // Tablette
+  lg: '1024px', // Desktop
+  xl: '1280px', // Large Desktop
   '2xl': '1536px', // Extra Large
 };
 ```

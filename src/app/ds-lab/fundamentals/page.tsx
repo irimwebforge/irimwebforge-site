@@ -7,15 +7,21 @@ import { Badge } from '@/components/atoms/Badge';
 const DesignSystem = () => {
   return (
     <div className="p-8 max-w-6xl mx-auto surface-secondary">
-      <h1 className="text-4xl font-bold mb-8 text-[var(--color-secondary)]">Design System IRIM Webforge</h1>
+      <h1 className="text-4xl font-bold mb-8 text-[var(--color-secondary)]">
+        Design System IRIM Webforge
+      </h1>
 
       {/* Couleurs */}
       <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 text-[var(--color-secondary)]">Palette de couleurs</h2>
+        <h2 className="text-2xl font-bold mb-4 text-[var(--color-secondary)]">
+          Palette de couleurs
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h3 className="text-lg font-semibold mb-2 text-[var(--color-secondary)]">Couleurs principales</h3>
+            <h3 className="text-lg font-semibold mb-2 text-[var(--color-secondary)]">
+              Couleurs principales
+            </h3>
             <div className="grid grid-cols-1 gap-4">
               <div>
                 <div
@@ -42,7 +48,9 @@ const DesignSystem = () => {
                   </div>
                 </div>
                 <div className="p-2 surface-primary border border-color rounded-b-md">
-                  <p className="font-semibold text-[var(--color-secondary)]">Bleu foncé - Secondaire</p>
+                  <p className="font-semibold text-[var(--color-secondary)]">
+                    Bleu foncé - Secondaire
+                  </p>
                   <p className="text-sm text-secondary">Expertise, profondeur, confiance</p>
                 </div>
               </div>
@@ -57,7 +65,9 @@ const DesignSystem = () => {
                   </div>
                 </div>
                 <div className="p-2 surface-primary border border-color border-l-0 rounded-br-md">
-                  <p className="font-semibold text-[var(--color-tertiary)]">Orange - Tertiaire (Accentuation)</p>
+                  <p className="font-semibold text-[var(--color-tertiary)]">
+                    Orange - Tertiaire (Accentuation)
+                  </p>
                   <p className="text-sm text-secondary">
                     Élément d'accentuation pour bordures, badges et mise en valeur
                   </p>
@@ -74,7 +84,9 @@ const DesignSystem = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-2 text-[var(--color-secondary)]">Couleurs accessibles</h3>
+            <h3 className="text-lg font-semibold mb-2 text-[var(--color-secondary)]">
+              Couleurs accessibles
+            </h3>
             <div className="grid grid-cols-1 gap-4">
               <div>
                 <div
@@ -86,7 +98,9 @@ const DesignSystem = () => {
                   </div>
                 </div>
                 <div className="p-2 surface-primary border border-color rounded-b-md">
-                  <p className="font-semibold text-[var(--color-primary-accessible)]">Turquoise accessible</p>
+                  <p className="font-semibold text-[var(--color-primary-accessible)]">
+                    Turquoise accessible
+                  </p>
                   <p className="text-sm text-secondary">Ratio de contraste 5.2:1 - WCAG AA ✓</p>
                 </div>
               </div>
@@ -101,7 +115,9 @@ const DesignSystem = () => {
                   </div>
                 </div>
                 <div className="p-2 surface-primary border border-color rounded-b-md">
-                  <p className="font-semibold text-[var(--color-secondary-accessible)]">Bleu accessible</p>
+                  <p className="font-semibold text-[var(--color-secondary-accessible)]">
+                    Bleu accessible
+                  </p>
                   <p className="text-sm text-secondary">Ratio de contraste 8.1:1 - WCAG AAA ✓</p>
                 </div>
               </div>
@@ -116,7 +132,9 @@ const DesignSystem = () => {
                   </div>
                 </div>
                 <div className="p-2 surface-primary border border-color rounded-b-md">
-                  <p className="font-semibold text-[var(--color-tertiary-accessible)]">Orange accessible</p>
+                  <p className="font-semibold text-[var(--color-tertiary-accessible)]">
+                    Orange accessible
+                  </p>
                   <p className="text-sm text-secondary">Ratio de contraste 4.6:1 - WCAG AA ✓</p>
                 </div>
               </div>
@@ -132,11 +150,15 @@ const DesignSystem = () => {
 
       {/* Utilisation des couleurs */}
       <section className="mb-12 border-l-4 border-l-[var(--color-tertiary)] pl-4">
-        <h2 className="text-2xl font-bold mb-4 text-[var(--color-secondary)]">Utilisation des couleurs</h2>
+        <h2 className="text-2xl font-bold mb-4 text-[var(--color-secondary)]">
+          Utilisation des couleurs
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div className="surface-primary p-6 rounded-md border border-color">
-            <h3 className="text-lg font-semibold mb-4 text-[var(--color-secondary)]">Couleurs principales</h3>
+            <h3 className="text-lg font-semibold mb-4 text-[var(--color-secondary)]">
+              Couleurs principales
+            </h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start">
                 <div
@@ -144,8 +166,8 @@ const DesignSystem = () => {
                   style={{ backgroundColor: 'var(--color-primary)' }}
                 ></div>
                 <span>
-                  <strong className="text-[var(--color-primary)]">Turquoise</strong> - Couleur principale pour
-                  éléments interactifs, liens et accents
+                  <strong className="text-[var(--color-primary)]">Turquoise</strong> - Couleur
+                  principale pour éléments interactifs, liens et accents
                 </span>
               </li>
               <li className="flex items-start">
@@ -154,8 +176,8 @@ const DesignSystem = () => {
                   style={{ backgroundColor: 'var(--color-secondary)' }}
                 ></div>
                 <span>
-                  <strong className="text-[var(--color-secondary)]">Bleu foncé</strong> - Titres, textes importants
-                  et éléments d'autorité
+                  <strong className="text-[var(--color-secondary)]">Bleu foncé</strong> - Titres,
+                  textes importants et éléments d'autorité
                 </span>
               </li>
               <li className="flex items-start">
@@ -164,8 +186,8 @@ const DesignSystem = () => {
                   style={{ backgroundColor: 'var(--color-tertiary)' }}
                 ></div>
                 <span>
-                  <strong className="text-[var(--color-tertiary)]">Orange</strong> - Uniquement pour accentuation :
-                  bordures, badges, icônes et mise en valeur
+                  <strong className="text-[var(--color-tertiary)]">Orange</strong> - Uniquement pour
+                  accentuation : bordures, badges, icônes et mise en valeur
                 </span>
               </li>
             </ul>
@@ -180,7 +202,9 @@ const DesignSystem = () => {
           </div>
 
           <div className="surface-primary p-6 rounded-md border border-color">
-            <h3 className="text-lg font-semibold mb-4 text-[var(--color-secondary)]">Hiérarchie visuelle</h3>
+            <h3 className="text-lg font-semibold mb-4 text-[var(--color-secondary)]">
+              Hiérarchie visuelle
+            </h3>
             <div className="space-y-4">
               <div className="p-3 rounded-md bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white text-center font-medium relative overflow-hidden group">
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full group-hover:translate-x-full transition-all duration-700"></span>
@@ -282,7 +306,10 @@ const DesignSystem = () => {
 
             <div className="mb-3">
               <span className="block text-xs text-tertiary mb-1">Corps de texte - Regular</span>
-              <span className="block text-base text-[var(--text-primary)]" style={{ fontFamily: 'sans-serif' }}>
+              <span
+                className="block text-base text-[var(--text-primary)]"
+                style={{ fontFamily: 'sans-serif' }}
+              >
                 Nous créons des interfaces digitales personnalisées qui capturent l&apos;essence,
                 les valeurs et la vision uniques de chaque client. Notre approche artisanale nous
                 différencie des solutions standardisées.
@@ -302,7 +329,10 @@ const DesignSystem = () => {
 
             <div>
               <span className="block text-xs text-tertiary mb-1">Petit texte / Labels</span>
-              <span className="block text-sm text-[var(--text-primary)]" style={{ fontFamily: 'sans-serif' }}>
+              <span
+                className="block text-sm text-[var(--text-primary)]"
+                style={{ fontFamily: 'sans-serif' }}
+              >
                 Interfaces personnalisées • Design sur mesure • Accompagnement continu
               </span>
             </div>
@@ -312,7 +342,9 @@ const DesignSystem = () => {
 
       {/* Composants atomiques */}
       <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 text-[var(--color-secondary)]">Composants atomiques</h2>
+        <h2 className="text-2xl font-bold mb-4 text-[var(--color-secondary)]">
+          Composants atomiques
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Boutons */}
@@ -352,7 +384,10 @@ const DesignSystem = () => {
               </div>
 
               <div>
-                <a href="#" className="inline-flex items-center text-[var(--color-primary)] hover:!text-[#d85014] border-b-2 border-[var(--color-tertiary)] transition-colors">
+                <a
+                  href="#"
+                  className="inline-flex items-center text-[var(--color-primary)] hover:!text-[#d85014] border-b-2 border-[var(--color-tertiary)] transition-colors"
+                >
                   Lien signature →
                 </a>
                 <p className="text-xs text-tertiary mt-1">Navigation et liens textuels</p>
@@ -362,7 +397,9 @@ const DesignSystem = () => {
 
           {/* Badges et accents */}
           <div className="surface-primary p-6 rounded-md border border-color">
-            <h3 className="text-lg font-semibold mb-4 text-[var(--color-secondary)]">Badges et accents</h3>
+            <h3 className="text-lg font-semibold mb-4 text-[var(--color-secondary)]">
+              Badges et accents
+            </h3>
 
             <div className="space-y-4">
               <div>
@@ -375,14 +412,18 @@ const DesignSystem = () => {
               </div>
 
               <div>
-                <h4 className="text-sm font-medium mb-2 text-[var(--color-secondary)]">Bordures d'accentuation</h4>
+                <h4 className="text-sm font-medium mb-2 text-[var(--color-secondary)]">
+                  Bordures d'accentuation
+                </h4>
                 <div className="p-3 border-l-4 border-l-[var(--color-tertiary)] bg-[var(--color-tertiary-bg-accessible)]">
                   Élément avec bordure orange
                 </div>
               </div>
 
               <div>
-                <h4 className="text-sm font-medium mb-2 text-[var(--color-secondary)]">Accents colorés</h4>
+                <h4 className="text-sm font-medium mb-2 text-[var(--color-secondary)]">
+                  Accents colorés
+                </h4>
                 <div className="flex gap-2">
                   <div className="w-8 h-8 flex items-center justify-center text-[var(--color-tertiary)]">
                     <Icon name="Star" />
@@ -400,7 +441,9 @@ const DesignSystem = () => {
 
           {/* Cartes et conteneurs */}
           <div className="surface-primary p-6 rounded-md border border-color">
-            <h3 className="text-lg font-semibold mb-4 text-[var(--color-secondary)]">Cartes et conteneurs</h3>
+            <h3 className="text-lg font-semibold mb-4 text-[var(--color-secondary)]">
+              Cartes et conteneurs
+            </h3>
 
             <div className="space-y-4">
               <div className="p-4 border border-color rounded-md hover:shadow-md transition-all">
@@ -433,7 +476,9 @@ const DesignSystem = () => {
 
       {/* Principes d'utilisation des couleurs */}
       <section className="mb-12 p-6 border border-dashed border-[var(--color-tertiary)] rounded-lg">
-        <h2 className="text-2xl font-bold mb-4 text-[var(--color-secondary)]">Principes d'utilisation</h2>
+        <h2 className="text-2xl font-bold mb-4 text-[var(--color-secondary)]">
+          Principes d'utilisation
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -505,8 +550,7 @@ const DesignSystem = () => {
             </ul>
           </div>
         </div>
-
-        </section>
+      </section>
 
       {/* Liens vers d'autres ressources */}
       <div className="text-center mt-12">

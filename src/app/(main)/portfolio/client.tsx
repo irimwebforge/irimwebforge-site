@@ -18,7 +18,8 @@ const allProjects: Project[] = [
     title: 'ResetPulse',
     slug: 'resetpulse',
     imageUrl: '/images/projects/resetpulse.webp',
-    description: 'Application mobile Time Timer visuel pour cerveaux neuroatypiques. 15 palettes, 16 activités. React Native.',
+    description:
+      'Application mobile Time Timer visuel pour cerveaux neuroatypiques. 15 palettes, 16 activités. React Native.',
     tags: [{ id: 'reach', label: '177 pays', color: 'primary' }],
     year: '2025',
     onlineUrl: 'http://resetpulse.irimwebforge.com/',
@@ -28,7 +29,8 @@ const allProjects: Project[] = [
     title: 'Corps & Sens',
     slug: 'corps-et-sens',
     imageUrl: '/images/projects/corps-et-sens.webp',
-    description: "7h d'admin hebdomadaire transformées en 45min. Interface simplifiée pour thérapeute.",
+    description:
+      "7h d'admin hebdomadaire transformées en 45min. Interface simplifiée pour thérapeute.",
     tags: [{ id: 'status', label: 'Projet fondateur', color: 'secondary' }],
     year: '2024',
     onlineUrl: 'https://corpsetsenstherapie.com/',
@@ -38,7 +40,8 @@ const allProjects: Project[] = [
     title: 'DemoForge',
     slug: 'demoforge',
     imageUrl: '/images/projects/demoforge.webp',
-    description: 'Plateforme démo interactive multi-univers. Testez la modification des produits en temps réel.',
+    description:
+      'Plateforme démo interactive multi-univers. Testez la modification des produits en temps réel.',
     tags: [{ id: 'status', label: 'Live', color: 'success' }],
     year: '2025',
     onlineUrl: 'https://demoforge.irimwebforge.com/',
@@ -58,7 +61,7 @@ const allProjects: Project[] = [
     title: 'Univers des Rêves',
     slug: 'univers-des-reves',
     imageUrl: '/images/projects/univers-des-reves.webp',
-    description: "Interface intuitive pour onirologue. Gestion autonome des contenus.",
+    description: 'Interface intuitive pour onirologue. Gestion autonome des contenus.',
     tags: [{ id: 'type', label: 'Thérapeute', color: 'tertiary' }],
     year: '2025',
     onlineUrl: 'https://www.universdesreves.com/',
@@ -84,7 +87,7 @@ const formationProjects = [
   {
     id: '724events',
     title: '724Events',
-    description: "Débogage et plan de tests pour une agence événementielle.",
+    description: 'Débogage et plan de tests pour une agence événementielle.',
     url: 'https://portfolio.irimwebforge.com/projects/OC_IW_P9_724Events',
   },
   {
@@ -96,7 +99,7 @@ const formationProjects = [
   {
     id: 'sophie-bluel',
     title: 'Sophie Bluel',
-    description: "Site dynamique pour architecte avec API.",
+    description: 'Site dynamique pour architecte avec API.',
     url: 'https://portfolio.irimwebforge.com/projects/OC_IW_P6_Sophie-Bluel/FrontEnd',
   },
   {
@@ -189,12 +192,10 @@ export default function PortfolioClient() {
         <section className="py-16 bg-section-accent">
           <Container>
             <div className="text-center">
-              <Button
-                variant="ghost"
-                onClick={() => setShowFormation(!showFormation)}
-              >
+              <Button variant="ghost" onClick={() => setShowFormation(!showFormation)}>
                 <Icon name={showFormation ? 'ChevronUp' : 'ChevronDown'} className="w-5 h-5 mr-2" />
-                {showFormation ? 'Masquer' : 'Voir'} les projets de formation ({formationProjects.length})
+                {showFormation ? 'Masquer' : 'Voir'} les projets de formation (
+                {formationProjects.length})
               </Button>
 
               {showFormation && (

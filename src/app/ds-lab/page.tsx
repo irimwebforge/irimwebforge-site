@@ -65,7 +65,6 @@ export default function DSLabHomePage() {
         </Typography>
 
         <div className="flex flex-col gap-2 mt-4">
-
           <div className="py-1 px-3 text-xs text-center bg-[var(--color-primary-bg-accessible)] text-[var(--color-primary-accessible)] rounded-full flex items-center gap-1.5">
             <Icon name="Monitor" size={12} />
             Interface adaptative au thème (clair/sombre)
@@ -133,7 +132,10 @@ export default function DSLabHomePage() {
       </div>
 
       <div className="mt-16 text-center">
-        <Link href="/" className="inline-flex items-center text-[var(--color-primary)] hover:!text-[#d85014] border-b-2 border-[var(--color-tertiary)] transition-colors gap-2">
+        <Link
+          href="/"
+          className="inline-flex items-center text-[var(--color-primary)] hover:!text-[#d85014] border-b-2 border-[var(--color-tertiary)] transition-colors gap-2"
+        >
           <Icon name="ArrowLeft" size={16} />
           Retour à l'accueil
         </Link>

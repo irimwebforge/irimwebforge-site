@@ -18,7 +18,10 @@ export function Footer() {
             </Typography>
             {/* Réseaux sociaux */}
             <div className="mt-6">
-              <Typography variant="p" className="font-semibold text-base mb-4 text-[var(--color-primary)]">
+              <Typography
+                variant="p"
+                className="font-semibold text-base mb-4 text-[var(--color-primary)]"
+              >
                 Suivez-moi
               </Typography>
               <div className="flex space-x-4">
@@ -44,7 +47,10 @@ export function Footer() {
 
           {/* Liens rapides */}
           <div>
-            <Typography variant="p" className="font-semibold text-base mb-4 text-[var(--color-primary)]">
+            <Typography
+              variant="p"
+              className="font-semibold text-base mb-4 text-[var(--color-primary)]"
+            >
               Navigation
             </Typography>
             <ul className="space-y-2 text-sm">
@@ -108,7 +114,10 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <Typography variant="p" className="font-semibold text-base mb-4 text-[var(--color-primary)]">
+            <Typography
+              variant="p"
+              className="font-semibold text-base mb-4 text-[var(--color-primary)]"
+            >
               Solutions
             </Typography>
             <ul className="space-y-2 text-sm">
@@ -162,7 +171,10 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <Typography variant="p" className="font-semibold text-base mb-4 text-[var(--color-primary)]">
+            <Typography
+              variant="p"
+              className="font-semibold text-base mb-4 text-[var(--color-primary)]"
+            >
               Contact
             </Typography>
             <ul className="space-y-2 text-sm">

@@ -336,7 +336,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       </Button>
 
       {/* ✅ ACCESSIBILITÉ : Information sur la soumission */}
-      <Typography variant="small" className="text-[var(--text-secondary)] text-center" id="submit-help">
+      <Typography
+        variant="small"
+        className="text-[var(--text-secondary)] text-center"
+        id="submit-help"
+      >
         En envoyant ce formulaire, vous acceptez d'être recontacté concernant votre demande.
       </Typography>
     </form>

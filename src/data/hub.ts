@@ -41,7 +41,8 @@ export const proofs: Proof[] = [
     id: 'resetpulse',
     title: 'ResetPulse',
     slug: 'resetpulse',
-    description: 'App Time Timer pour cerveaux neuroatypiques. 15 palettes, 16 activités, multilingue.',
+    description:
+      'App Time Timer pour cerveaux neuroatypiques. 15 palettes, 16 activités, multilingue.',
     imageUrl: '/images/projects/resetpulse.webp',
     tags: [{ id: 'reach', label: '177 pays', color: 'primary' }],
     year: '2025',
@@ -51,7 +52,8 @@ export const proofs: Proof[] = [
     id: 'demoforge',
     title: 'DemoForge',
     slug: 'demoforge',
-    description: 'Plateforme démo interactive multi-univers. Testez la modification des produits en temps réel.',
+    description:
+      'Plateforme démo interactive multi-univers. Testez la modification des produits en temps réel.',
     imageUrl: '/images/projects/demoforge.webp',
     tags: [{ id: 'status', label: 'Live', color: 'success' }],
     year: '2025',
@@ -99,7 +101,8 @@ export const articles: Article[] = [
     id: 'parcours',
     title: 'Mon parcours au service de votre autonomie',
     slug: 'mon-parcours',
-    excerpt: 'De formateur à développeur. Comment une expérience personnelle avec mon épouse thérapeute a transformé ma vision du numérique.',
+    excerpt:
+      'De formateur à développeur. Comment une expérience personnelle avec mon épouse thérapeute a transformé ma vision du numérique.',
     coverImage: '/images/about/eric-profile.png',
     publishedAt: '2025-12-06',
     readTime: 5,
@@ -109,7 +112,8 @@ export const articles: Article[] = [
     id: 'services',
     title: 'Mes services et tarifs',
     slug: 'mes-services',
-    excerpt: '3 formules adaptées à vos besoins : Présence, Intégrée, Évolutive. Des solutions concrètes à partir de 500€.',
+    excerpt:
+      '3 formules adaptées à vos besoins : Présence, Intégrée, Évolutive. Des solutions concrètes à partir de 500€.',
     coverImage: '/images/services/services-hero.webp',
     publishedAt: '2025-12-06',
     readTime: 8,
@@ -152,4 +156,3 @@ export const footerLinks: FooterLinkColumn[] = [
     ],
   },
 ];
-

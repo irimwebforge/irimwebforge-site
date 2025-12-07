@@ -156,7 +156,10 @@ export const EnhancedContactForm: React.FC<EnhancedContactFormProps> = ({
             <Typography variant="small" className="font-semibold">
               {testimonialToShow.author}
               {testimonialToShow.company && (
-                <span className="text-[var(--text-secondary)] font-normal"> — {testimonialToShow.company}</span>
+                <span className="text-[var(--text-secondary)] font-normal">
+                  {' '}
+                  — {testimonialToShow.company}
+                </span>
               )}
             </Typography>
           </div>

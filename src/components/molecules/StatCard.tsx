@@ -182,7 +182,10 @@ export const StatCard: React.FC<StatCardProps> = ({
       {renderIcon()}
 
       <div className={cn('flex flex-col', layout === 'horizontal' && icon ? 'flex-1' : '')}>
-        <Typography variant="small" className={cn('text-[var(--text-secondary)]', sizeClasses[size].title)}>
+        <Typography
+          variant="small"
+          className={cn('text-[var(--text-secondary)]', sizeClasses[size].title)}
+        >
           {title}
         </Typography>
 
@@ -198,7 +201,10 @@ export const StatCard: React.FC<StatCardProps> = ({
         </div>
 
         {subtitle && (
-          <Typography variant="small" className={cn('text-[var(--text-secondary)]', sizeClasses[size].subtitle)}>
+          <Typography
+            variant="small"
+            className={cn('text-[var(--text-secondary)]', sizeClasses[size].subtitle)}
+          >
             {subtitle}
           </Typography>
         )}

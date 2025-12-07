@@ -83,7 +83,10 @@ export function StatsShowcase({
                 key={stat.id || `stat-${index}`}
                 className="py-6 md:py-0 md:px-6 text-center flex-1"
               >
-                <Typography variant="h3" className="text-3xl font-bold text-[var(--color-primary)] mb-2">
+                <Typography
+                  variant="h3"
+                  className="text-3xl font-bold text-[var(--color-primary)] mb-2"
+                >
                   {stat.value}
                 </Typography>
                 <Typography variant="p" className="font-medium text-[var(--text-secondary)] mb-1">
@@ -183,7 +186,9 @@ export function StatsShowcase({
             <div
               key={stat.id || `stat-${index}`}
               className={`p-6 rounded-lg text-center border ${
-                index === 0 ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/10' : 'border-gray-200'
+                index === 0
+                  ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/10'
+                  : 'border-gray-200'
               }`}
             >
               {stat.icon && (

@@ -19,7 +19,9 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <div className="flex flex-col gap-1">
-        {label && <label className="text-sm font-medium text-[var(--text-secondary)] mb-1">{label}</label>}
+        {label && (
+          <label className="text-sm font-medium text-[var(--text-secondary)] mb-1">{label}</label>
+        )}
         <textarea
           rows={rows}
           className={cn(
@@ -31,7 +33,9 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           {...props}
         />
         {error && <span className="text-sm text-red-500 mt-1">{error}</span>}
-        {helpText && !error && <span className="text-xs text-[var(--text-secondary)] mt-1">{helpText}</span>}
+        {helpText && !error && (
+          <span className="text-xs text-[var(--text-secondary)] mt-1">{helpText}</span>
+        )}
       </div>
     );
   }
