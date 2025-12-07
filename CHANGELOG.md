@@ -5,7 +5,9 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
-## [Non publié]
+## [2.0.0] - 2025-12-07
+
+Hub MVP deploye en production. Refonte complete vers one-page + blog MDX.
 
 ### Ajouté
 
@@ -33,10 +35,16 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 ### Supprime
 
 - Strapi abandonne au profit de MDX
+- Pages legacy archivees dans `src/app/_archive/`
+
+### Infrastructure
+
+- Nettoyage serveur : anciennes pages legacy supprimees
+- Dependencies reinstallees (fix lockfile swc)
 
 ---
 
-## [Precedent]
+## [1.1.0] - 2025-10-09
 
 ### Ajouté
 
